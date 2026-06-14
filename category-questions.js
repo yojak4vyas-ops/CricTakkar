@@ -1,7 +1,8 @@
 // ===== CRICTAKKAR CATEGORY QUESTION BANK =====
-// Every question verified against ESPNcricinfo and Wikipedia.
-// Last verified: June 2025
+// Verified against ESPNcricinfo, Wikipedia, and live search results.
+// Last updated: June 2026
 // RULE: Never add a question without checking ESPNcricinfo first.
+// RULE: Always web-search "as of today" facts before adding them.
 
 const categoryQuestions = {
 
@@ -10,34 +11,34 @@ const categoryQuestions = {
   // ================================================
   ipl: [
     {
+      question: "Which team won the IPL 2025 title — their first ever IPL trophy?",
+      options: ["Mumbai Indians", "Punjab Kings", "Royal Challengers Bengaluru", "Kolkata Knight Riders"],
+      correct: 2,
+      fact: "🏆 RCB won their first ever IPL title in 2025 after 17 years of heartbreak, beating Punjab Kings by 6 runs in the final at Ahmedabad. Captain was Rajat Patidar."
+    },
+    {
       question: "Which team won the IPL 2024 title?",
       options: ["Mumbai Indians", "Sunrisers Hyderabad", "Kolkata Knight Riders", "Rajasthan Royals"],
       correct: 2,
-      fact: "🏆 KKR won their third IPL title in 2024, defeating Sunrisers Hyderabad in the final at Chepauk, Chennai."
+      fact: "🏆 KKR won their third IPL title in 2024, defeating Sunrisers Hyderabad by 8 wickets in the final at Chepauk, Chennai. Shreyas Iyer was the captain."
     },
     {
       question: "Which team won the IPL 2023 title?",
       options: ["Mumbai Indians", "Chennai Super Kings", "Gujarat Titans", "Rajasthan Royals"],
       correct: 1,
-      fact: "🦁 Chennai Super Kings won their 5th IPL title in 2023 under MS Dhoni, defeating Gujarat Titans in the final."
+      fact: "🦁 Chennai Super Kings won their 5th IPL title in 2023 under MS Dhoni, defeating Gujarat Titans by 5 wickets in the final at Ahmedabad."
     },
     {
       question: "Who has scored the most runs in IPL history?",
       options: ["Rohit Sharma", "David Warner", "Shikhar Dhawan", "Virat Kohli"],
       correct: 3,
-      fact: "👑 Virat Kohli is the all-time leading run-scorer in IPL history with over 8,000 runs across his career."
+      fact: "👑 Virat Kohli is the all-time leading run-scorer in IPL history with over 8,000 runs. He also won the Orange Cap in IPL 2024 with 741 runs."
     },
     {
       question: "Who has taken the most wickets in IPL history?",
       options: ["Lasith Malinga", "Amit Mishra", "Dwayne Bravo", "Yuzvendra Chahal"],
       correct: 3,
-      fact: "🌀 Yuzvendra Chahal is the highest wicket-taker in IPL history. He surpassed Dwayne Bravo's record during IPL 2024."
-    },
-    {
-      question: "Which IPL team is based in Hyderabad?",
-      options: ["Rajasthan Royals", "Punjab Kings", "Sunrisers Hyderabad", "Lucknow Super Giants"],
-      correct: 2,
-      fact: "☀️ Sunrisers Hyderabad play their home matches at Rajiv Gandhi International Cricket Stadium in Uppal, Hyderabad."
+      fact: "🌀 Yuzvendra Chahal is the highest wicket-taker in IPL history, surpassing Dwayne Bravo's record during IPL 2024."
     },
     {
       question: "In which year was the IPL first played?",
@@ -52,52 +53,52 @@ const categoryQuestions = {
       fact: "🐍 Shane Warne led Rajasthan Royals to the 2008 IPL title — considered one of the greatest captaincy performances in T20 history."
     },
     {
-      question: "Which stadium hosted the first ever IPL match in 2008?",
-      options: ["Wankhede Stadium, Mumbai", "Eden Gardens, Kolkata", "M Chinnaswamy Stadium, Bengaluru", "Feroz Shah Kotla, Delhi"],
-      correct: 2,
-      fact: "🏟️ The first IPL match was played at M Chinnaswamy Stadium, Bengaluru on 18 April 2008 between RCB and KKR."
-    },
-    {
-      question: "Who hit the first six in IPL history?",
-      options: ["Brendon McCullum", "Virat Kohli", "Adam Gilchrist", "Sourav Ganguly"],
+      question: "Which player scored 175* in an IPL match — the highest individual score in IPL history?",
+      options: ["Chris Gayle", "AB de Villiers", "Brendon McCullum", "David Warner"],
       correct: 0,
-      fact: "💥 Brendon McCullum hit the first six in IPL history during his explosive 158* for KKR in the very first IPL match in 2008."
-    },
-    {
-      question: "Which IPL team has won the most titles as of end of IPL 2024?",
-      options: ["Chennai Super Kings", "Mumbai Indians", "Both are equal on 5 titles each", "Kolkata Knight Riders"],
-      correct: 2,
-      fact: "🏆 After IPL 2023, both Mumbai Indians and Chennai Super Kings are level on 5 IPL titles each — the most by any team."
+      fact: "💣 Chris Gayle scored 175* off just 66 balls for RCB against PWI in 2013 — the highest individual score in IPL history."
     },
     {
       question: "What is the name of RCB's home stadium?",
       options: ["Wankhede Stadium", "Eden Gardens", "M Chinnaswamy Stadium", "Arun Jaitley Stadium"],
       correct: 2,
-      fact: "🏟️ Royal Challengers Bengaluru play at M Chinnaswamy Stadium in Bengaluru, one of the most high-scoring venues in the IPL."
+      fact: "🏟️ Royal Challengers Bengaluru play at M Chinnaswamy Stadium in Bengaluru — one of the most high-scoring venues in the IPL."
     },
     {
-      question: "Which player scored 175* in an IPL match — the highest individual score in IPL history?",
-      options: ["Chris Gayle", "AB de Villiers", "Brendon McCullum", "David Warner"],
-      correct: 0,
-      fact: "💣 Chris Gayle scored 175* off just 66 balls for RCB against PWI in 2013 — the highest score in IPL history."
-    },
-    {
-      question: "Which team did MS Dhoni lead to their first IPL title?",
-      options: ["Mumbai Indians", "Chennai Super Kings", "Rising Pune Supergiant", "Deccan Chargers"],
+      question: "Which was the first IPL match ever played and where?",
+      options: ["MI vs CSK at Wankhede", "RCB vs KKR at Chinnaswamy", "RR vs CSK at Chepauk", "KKR vs SRH at Eden Gardens"],
       correct: 1,
-      fact: "🦁 MS Dhoni led Chennai Super Kings to their first IPL title in 2010. He has been CSK's captain for almost their entire history."
+      fact: "🏟️ The first ever IPL match was played at M Chinnaswamy Stadium, Bengaluru on 18 April 2008 between RCB and KKR. Brendon McCullum scored 158* for KKR."
+    },
+    {
+      question: "How many IPL titles have Mumbai Indians won?",
+      options: ["3", "4", "5", "6"],
+      correct: 2,
+      fact: "🏆 Mumbai Indians have won 5 IPL titles — in 2013, 2015, 2017, 2019 and 2020. They are joint-most successful along with Chennai Super Kings."
     },
     {
       question: "Who won the Orange Cap (most runs) in IPL 2024?",
-      options: ["Virat Kohli", "Rohit Sharma", "Travis Head", "Virat Kohli"],
-      correct: 0,
-      fact: "🧡 Virat Kohli won the Orange Cap in IPL 2024 with 741 runs — including his first IPL century after 17 years in the tournament."
+      options: ["Rohit Sharma", "Travis Head", "Virat Kohli", "KL Rahul"],
+      correct: 2,
+      fact: "🧡 Virat Kohli won the Orange Cap in IPL 2024 with 741 runs — including his first ever IPL century after 17 years in the tournament."
     },
     {
       question: "What does IPL stand for?",
       options: ["India Premier League", "Indian Premier League", "International Premier League", "India Power League"],
       correct: 1,
       fact: "🏏 IPL stands for Indian Premier League. It was founded by the BCCI in 2008 and is now the richest cricket league in the world."
+    },
+    {
+      question: "Which IPL team is based in Hyderabad?",
+      options: ["Rajasthan Royals", "Punjab Kings", "Sunrisers Hyderabad", "Lucknow Super Giants"],
+      correct: 2,
+      fact: "☀️ Sunrisers Hyderabad play their home matches at Rajiv Gandhi International Cricket Stadium in Uppal, Hyderabad."
+    },
+    {
+      question: "Who captained RCB to their first ever IPL title in 2025?",
+      options: ["Virat Kohli", "Faf du Plessis", "Rajat Patidar", "Glenn Maxwell"],
+      correct: 2,
+      fact: "🌟 Rajat Patidar captained RCB to their first IPL title in 2025 — ending 17 years of heartbreak for RCB fans around the world."
     }
   ],
 
@@ -142,16 +143,10 @@ const categoryQuestions = {
       fact: "🧱 Rahul Dravid earned the nickname 'The Wall' and retired with 13,288 Test runs — the second highest by an Indian after Sachin."
     },
     {
-      question: "In which city was the famous 2001 Test match where India won after following on against Australia?",
+      question: "In which city was the famous 2001 Test where India won after following on against Australia?",
       options: ["Mumbai", "Chennai", "Kolkata", "Delhi"],
       correct: 2,
-      fact: "🏟️ The famous 2001 Test was played at Eden Gardens, Kolkata. VVS Laxman scored 281* and India won after following on — one of cricket's greatest upsets."
-    },
-    {
-      question: "Who was the first batsman to be given out by the third umpire (TV umpire) in Test cricket?",
-      options: ["Sachin Tendulkar", "Kapil Dev", "Sachin Tendulkar", "Kiran More"],
-      correct: 3,
-      fact: "📺 Kiran More was the first player given out by TV umpire technology in a Test match — South Africa vs India in Durban in 1992."
+      fact: "🏟️ The famous 2001 Test was at Eden Gardens, Kolkata. VVS Laxman scored 281* and India won after following on — one of cricket's greatest upsets."
     },
     {
       question: "Which country did India play their very first Test match against in 1932?",
@@ -178,12 +173,6 @@ const categoryQuestions = {
       fact: "🇮🇳 Sunil Gavaskar was the first batsman to score 34 Test centuries — a world record at the time he retired in 1987."
     },
     {
-      question: "Which Test match is known as the 'Tied Test' between India and Australia in 1986?",
-      options: ["Kolkata Test 1986", "Madras Test 1986", "Mumbai Test 1986", "Delhi Test 1986"],
-      correct: 1,
-      fact: "🤝 The Madras Test of 1986 between India and Australia ended in a tie — only the second tied Test in history. Dean Jones scored a heroic 210."
-    },
-    {
       question: "How many runs separate teams for a follow-on to be enforced in a 5-day Test?",
       options: ["100 runs", "150 runs", "200 runs", "250 runs"],
       correct: 2,
@@ -194,6 +183,18 @@ const categoryQuestions = {
       options: ["Vijay Merchant", "CK Nayudu", "Lala Amarnath", "Vijay Hazare"],
       correct: 2,
       fact: "🏏 Lala Amarnath scored India's first Test century — 118 against England in Bombay in December 1933."
+    },
+    {
+      question: "Which Indian bowler has taken the most Test wickets ever?",
+      options: ["Kapil Dev", "Harbhajan Singh", "Zaheer Khan", "Anil Kumble"],
+      correct: 3,
+      fact: "🌀 Anil Kumble is India's highest wicket-taker in Tests with 619 wickets — the third highest in the history of Test cricket."
+    },
+    {
+      question: "In how many innings does each team bat in a Test match?",
+      options: ["1", "2", "3", "4"],
+      correct: 1,
+      fact: "📜 Each team gets 2 innings in a Test match. That is why Tests can last up to 5 days — they are the ultimate test of skill and endurance."
     }
   ],
 
@@ -211,7 +212,7 @@ const categoryQuestions = {
       question: "Who holds the record for the highest individual score in ODI cricket with 264?",
       options: ["Martin Guptill", "Chris Gayle", "Virender Sehwag", "Rohit Sharma"],
       correct: 3,
-      fact: "💥 Rohit Sharma scored 264 against Sri Lanka in Kolkata on 13 November 2014 — the highest score in ODI cricket history."
+      fact: "💥 Rohit Sharma scored 264 against Sri Lanka in Kolkata on 13 November 2014 — the highest individual score in ODI cricket history."
     },
     {
       question: "Which country won the first ever Cricket World Cup in 1975?",
@@ -223,7 +224,7 @@ const categoryQuestions = {
       question: "In which year did India win their first Cricket World Cup?",
       options: ["1975", "1979", "1983", "1987"],
       correct: 2,
-      fact: "🇮🇳 India won the 1983 World Cup at Lord's under Kapil Dev — one of sport's greatest upsets. India beat the mighty West Indies in the final."
+      fact: "🇮🇳 India won the 1983 World Cup at Lord's under Kapil Dev — one of sport's greatest ever upsets. India beat the mighty West Indies in the final."
     },
     {
       question: "How many overs does each team face in an ODI match?",
@@ -232,34 +233,22 @@ const categoryQuestions = {
       fact: "🏏 Each team faces 50 overs in an ODI. ODIs were originally 60 overs per side when they began in 1971."
     },
     {
-      question: "Who scored the most runs in a single ODI World Cup tournament?",
+      question: "Who scored the most runs in a single ODI World Cup tournament — 648 runs in 2019?",
       options: ["Sachin Tendulkar", "Rohit Sharma", "David Warner", "Martin Guptill"],
       correct: 1,
-      fact: "🏆 Rohit Sharma scored 648 runs in the 2019 ODI World Cup — the most by any batsman in a single World Cup edition."
+      fact: "🏆 Rohit Sharma scored 648 runs in the 2019 ODI World Cup including 5 centuries — the most by any batsman in a single World Cup edition."
     },
     {
       question: "Which team won the 2023 ODI World Cup held in India?",
       options: ["India", "Australia", "South Africa", "New Zealand"],
       correct: 1,
-      fact: "🏆 Australia won the 2023 ODI World Cup in India, defeating the host nation India in the final at Narendra Modi Stadium, Ahmedabad."
+      fact: "🏆 Australia won the 2023 ODI World Cup, defeating host nation India in the final at Narendra Modi Stadium, Ahmedabad."
     },
     {
       question: "Who captained India in the 1983 World Cup winning team?",
       options: ["Sunil Gavaskar", "Dilip Vengsarkar", "Kapil Dev", "Mohinder Amarnath"],
       correct: 2,
-      fact: "🇮🇳 Kapil Dev was India's captain in 1983. His famous unbeaten 175 against Zimbabwe in the group stage is one of cricket's greatest innings."
-    },
-    {
-      question: "What was special about Kapil Dev's 175* against Zimbabwe in the 1983 World Cup?",
-      options: ["It was scored without any boundaries", "India were 17 for 5 when he came in and he rescued them", "He hit 10 sixes in the innings", "It was his debut match"],
-      correct: 1,
-      fact: "🦁 India were in deep trouble at 17 for 5 when Kapil Dev came in. He scored 175* to take India to 266 — and no TV cameras were recording the match!"
-    },
-    {
-      question: "Which India vs Pakistan match result happened in the 1992 World Cup?",
-      options: ["India won by 7 wickets", "Pakistan won by 43 runs", "Match was tied", "Match was abandoned"],
-      correct: 1,
-      fact: "🏏 Pakistan beat India by 43 runs in the 1992 World Cup in Sydney. Imran Khan's Pakistan went on to win the entire tournament."
+      fact: "🇮🇳 Kapil Dev captained India in 1983. His unbeaten 175 against Zimbabwe in the group stage is one of cricket's greatest ever innings."
     },
     {
       question: "How many players are in a cricket team?",
@@ -277,7 +266,7 @@ const categoryQuestions = {
       question: "Which Indian bowler took the most wickets in the 2011 World Cup?",
       options: ["Harbhajan Singh", "Zaheer Khan", "Munaf Patel", "Ashish Nehra"],
       correct: 1,
-      fact: "🎳 Zaheer Khan was India's leading wicket-taker in the 2011 World Cup with 21 wickets — the joint highest wicket-taker of the tournament."
+      fact: "🎳 Zaheer Khan was India's leading wicket-taker in the 2011 World Cup with 21 wickets — joint highest wicket-taker of the entire tournament."
     },
     {
       question: "Where was the 2011 ODI World Cup final played?",
@@ -289,7 +278,19 @@ const categoryQuestions = {
       question: "Who was named Player of the Tournament in the 2011 ODI World Cup?",
       options: ["MS Dhoni", "Sachin Tendulkar", "Yuvraj Singh", "Zaheer Khan"],
       correct: 2,
-      fact: "🌟 Yuvraj Singh was named Player of the Tournament in the 2011 World Cup. He scored 362 runs AND took 15 wickets — a legendary all-round performance."
+      fact: "🌟 Yuvraj Singh was Player of the Tournament in 2011 — he scored 362 runs AND took 15 wickets. A truly legendary all-round performance."
+    },
+    {
+      question: "Who hit the winning six in the 2011 ODI World Cup final?",
+      options: ["Virat Kohli", "Yuvraj Singh", "Gautam Gambhir", "MS Dhoni"],
+      correct: 3,
+      fact: "🎯 MS Dhoni hit the winning six off Nuwan Kulasekara to seal India's 2011 World Cup victory. He finished unbeaten on 91."
+    },
+    {
+      question: "Which Indian cricketer scored a century on his Test debut at Lord's in 1996?",
+      options: ["Sachin Tendulkar", "Virat Kohli", "Sourav Ganguly", "Rahul Dravid"],
+      correct: 2,
+      fact: "🎩 Sourav Ganguly scored 131 on his Test debut at Lord's in 1996 — one of the most celebrated debut innings in Indian cricket history."
     }
   ],
 
@@ -298,10 +299,22 @@ const categoryQuestions = {
   // ================================================
   t20: [
     {
-      question: "Which country won the inaugural ICC T20 World Cup in 2007?",
-      options: ["Pakistan", "Australia", "India", "Sri Lanka"],
+      question: "Which country has won the most T20 World Cup titles as of June 2026?",
+      options: ["West Indies", "England", "India", "Australia"],
       correct: 2,
-      fact: "🏆 India won the first T20 World Cup in South Africa in 2007 under MS Dhoni, beating Pakistan in a thrilling final."
+      fact: "🇮🇳 India leads all teams with 3 T20 World Cup titles — won in 2007, 2024 and 2026. They are the first team ever to defend the T20 World Cup."
+    },
+    {
+      question: "Who won the T20 World Cup 2026?",
+      options: ["England", "Australia", "New Zealand", "India"],
+      correct: 3,
+      fact: "🏆 India won the T20 World Cup 2026, beating New Zealand in the final at Narendra Modi Stadium, Ahmedabad. It was India's third T20 World Cup title."
+    },
+    {
+      question: "Who captained India in the T20 World Cup 2026?",
+      options: ["Rohit Sharma", "Virat Kohli", "Suryakumar Yadav", "Jasprit Bumrah"],
+      correct: 2,
+      fact: "🌟 Suryakumar Yadav captained India to the T20 World Cup 2026 title, with Sanju Samson named Player of the Tournament."
     },
     {
       question: "Who won the T20 World Cup 2024?",
@@ -310,22 +323,22 @@ const categoryQuestions = {
       fact: "🇮🇳 India won the T20 World Cup 2024 in the West Indies and USA, defeating South Africa in the final under Rohit Sharma."
     },
     {
-      question: "Who hit the last-ball six to win the 2007 T20 World Cup final for India against Pakistan?",
-      options: ["MS Dhoni", "Yuvraj Singh", "Misbah-ul-Haq tried to scoop but was caught", "Joginder Sharma bowled the last over"],
+      question: "Which country won the inaugural ICC T20 World Cup in 2007?",
+      options: ["Pakistan", "Australia", "India", "Sri Lanka"],
       correct: 2,
-      fact: "😮 Actually, Pakistan needed 13 off the last over. Misbah-ul-Haq tried a scoop shot off Joginder Sharma and was caught at short fine leg. India won by 5 runs."
+      fact: "🏆 India won the first T20 World Cup in South Africa in 2007 under MS Dhoni, beating Pakistan in a thrilling final by 5 runs."
     },
     {
       question: "Who took the last wicket to win India the 2007 T20 World Cup — a surprise choice to bowl the last over?",
       options: ["Irfan Pathan", "RP Singh", "Harbhajan Singh", "Joginder Sharma"],
       correct: 3,
-      fact: "🎳 MS Dhoni gave the last over to Joginder Sharma — an unknown pacer — instead of Harbhajan. Sharma took the crucial last wicket. A legendary captain's call."
+      fact: "🎳 MS Dhoni gave the last over to Joginder Sharma — an unknown pacer. Misbah-ul-Haq was caught trying a scoop shot. India won by 5 runs."
     },
     {
       question: "How many overs does each team face in a T20 match?",
       options: ["10 overs", "15 overs", "20 overs", "25 overs"],
       correct: 2,
-      fact: "⚡ Each team faces exactly 20 overs in a T20 match. This format was designed to make cricket faster and more exciting."
+      fact: "⚡ Each team faces exactly 20 overs in a T20 match. This format was designed to make cricket faster and more exciting for all audiences."
     },
     {
       question: "Who scored the first century in T20 World Cup history?",
@@ -334,22 +347,10 @@ const categoryQuestions = {
       fact: "💣 Chris Gayle scored the first century in T20 World Cup history — 117 against South Africa in the 2007 T20 World Cup."
     },
     {
-      question: "Which England player hit 6 sixes in one over in the 2007 T20 World Cup?",
-      options: ["Andrew Flintoff", "Kevin Pietersen", "Stuart Broad", "Paul Collingwood"],
-      correct: 1,
-      fact: "💥 Yuvraj Singh hit Kevin Pietersen — wait, actually Yuvraj hit Stuart Broad for 6 sixes in an over against England in the 2007 T20 World Cup."
-    },
-    {
       question: "Who did Yuvraj Singh hit for 6 sixes in one over in the 2007 T20 World Cup?",
       options: ["Andrew Flintoff", "Kevin Pietersen", "Stuart Broad", "Dimitri Mascarenhas"],
       correct: 2,
-      fact: "💥 Yuvraj Singh hit Stuart Broad for 6 sixes in one over in the 2007 T20 World Cup semifinal against England — one of cricket's most iconic moments."
-    },
-    {
-      question: "Which country has won the most T20 World Cup titles?",
-      options: ["India", "West Indies", "England", "Australia"],
-      correct: 1,
-      fact: "🏆 West Indies have won the T20 World Cup twice — in 2012 and 2016. No other country has won it more than once as of 2024."
+      fact: "💥 Yuvraj Singh hit Stuart Broad for 6 sixes in one over in the 2007 T20 World Cup against England — one of cricket's most iconic moments."
     },
     {
       question: "Where was the T20 World Cup 2024 held?",
@@ -358,10 +359,22 @@ const categoryQuestions = {
       fact: "🌍 The 2024 T20 World Cup was co-hosted by West Indies and USA — the first time the USA hosted a major cricket tournament."
     },
     {
+      question: "Where was the T20 World Cup 2026 held?",
+      options: ["England and Ireland", "Australia and New Zealand", "West Indies and USA", "India and Sri Lanka"],
+      correct: 3,
+      fact: "🇮🇳 The 2026 T20 World Cup was co-hosted by India and Sri Lanka. India won as hosts — breaking the host nation curse that had lasted 19 years."
+    },
+    {
       question: "Who won the Player of the Tournament award in the T20 World Cup 2024?",
-      options: ["Rohit Sharma", "Jasprit Bumrah", "Virat Kohli", "Hardik Pandya"],
+      options: ["Rohit Sharma", "Virat Kohli", "Hardik Pandya", "Jasprit Bumrah"],
+      correct: 3,
+      fact: "🌟 Jasprit Bumrah won Player of the Tournament in T20 World Cup 2024. He was India's most important bowler throughout the tournament."
+    },
+    {
+      question: "Who was named Player of the Tournament in the T20 World Cup 2026?",
+      options: ["Suryakumar Yadav", "Jasprit Bumrah", "Sanju Samson", "Varun Chakravarthy"],
       correct: 2,
-      fact: "🌟 Jasprit Bumrah won the Player of the Tournament in T20 World Cup 2024. He was India's most important bowler throughout the tournament."
+      fact: "🌟 Sanju Samson was named Player of the Tournament in the T20 World Cup 2026, playing a key role in India's historic back-to-back title wins."
     },
     {
       question: "What was the venue of the T20 World Cup 2024 final?",
@@ -370,22 +383,10 @@ const categoryQuestions = {
       fact: "🏟️ The T20 World Cup 2024 final between India and South Africa was played at Kensington Oval in Bridgetown, Barbados."
     },
     {
-      question: "Virat Kohli scored how many runs in the T20 World Cup 2024 final against South Africa?",
-      options: ["56", "66", "76", "86"],
-      correct: 2,
-      fact: "🌟 Virat Kohli scored 76 runs in the T20 World Cup 2024 final against South Africa — one of his greatest innings under pressure."
-    },
-    {
-      question: "Which team did India beat in the semifinal of the T20 World Cup 2024?",
-      options: ["Australia", "Bangladesh", "England", "Afghanistan"],
-      correct: 0,
-      fact: "🏏 India beat England in the T20 World Cup 2024 semifinal. Adil Rashid and other English bowlers fought hard but India prevailed."
-    },
-    {
-      question: "In the 2007 T20 World Cup, India and Pakistan played a group stage match that ended in a tie. How was the winner decided?",
-      options: ["Super over", "Bowl out (penalty shootout style)", "Toss of a coin", "Run rate"],
+      question: "In the 2007 T20 World Cup, India and Pakistan played a group stage tie. How was the winner decided?",
+      options: ["Super over", "Bowl out", "Toss of a coin", "Run rate"],
       correct: 1,
-      fact: "🎳 The India vs Pakistan group match in 2007 was tied. It was decided by a bowl-out — like a penalty shootout. India won the bowl-out 3–0."
+      fact: "🎳 The India vs Pakistan group match in 2007 was tied and decided by a bowl-out — like a penalty shootout in football. India won 3–0."
     }
   ]
 
