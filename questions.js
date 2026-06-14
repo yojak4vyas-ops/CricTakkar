@@ -109,10 +109,10 @@ const questionBank = [
 
   // ===== IPL =====
   {
-    question: "Which IPL team has won the most IPL titles as of 2024?",
-    options: ["Chennai Super Kings", "Mumbai Indians", "Kolkata Knight Riders", "Royal Challengers Bengaluru"],
-    correct: 0,
-    fact: "🏆 Chennai Super Kings won their 5th IPL title in 2023. Mumbai Indians also have 5 titles. CSK won again in 2023 making them level."
+    question: "Which team won the IPL 2025 title for the very first time?",
+    options: ["Punjab Kings", "Mumbai Indians", "Royal Challengers Bengaluru", "Gujarat Titans"],
+    correct: 2,
+    fact: "🏆 RCB won their maiden IPL title in 2025 after 17 years of near-misses, beating Punjab Kings by 6 runs in the final in Ahmedabad."
   },
   {
     question: "Who won the IPL 2024 title?",
