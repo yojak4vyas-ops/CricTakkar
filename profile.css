@@ -1,0 +1,224 @@
+/* ===== PROFILE PAGE STYLES ===== */
+
+.profile-wrapper {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-header-card {
+  background: linear-gradient(135deg, rgba(244,169,0,0.15), rgba(244,169,0,0.05));
+  border: 1px solid rgba(244,169,0,0.25);
+  border-radius: 20px;
+  padding: 28px 24px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  position: relative;
+}
+
+.profile-avatar {
+  font-size: 3rem;
+  width: 72px;
+  height: 72px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-header-info {
+  flex: 1;
+}
+
+.profile-username {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.profile-team {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+}
+
+.profile-level-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #f4a900, #e07b00);
+  color: #0a0e1a;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 100px;
+}
+
+.logout-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(239,68,68,0.15);
+  border-color: rgba(239,68,68,0.3);
+  color: #ef4444;
+}
+
+.xp-section {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px 22px;
+}
+
+.xp-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.xp-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.xp-bar-container {
+  background: rgba(255,255,255,0.08);
+  border-radius: 100px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.xp-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #f4a900, #e07b00);
+  border-radius: 100px;
+  transition: width 0.6s ease;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.stat-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-card-number {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #f4a900;
+  margin-bottom: 4px;
+}
+
+.stat-card-label {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.levels-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 22px;
+}
+
+.levels-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #ffffff;
+}
+
+.levels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.03);
+}
+
+.level-item span {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.level-item.current-level {
+  background: rgba(244,169,0,0.12);
+  border: 1px solid rgba(244,169,0,0.3);
+  color: #f4a900;
+  font-weight: 700;
+}
+
+.level-item.current-level span {
+  color: rgba(244,169,0,0.7);
+}
+
+.quick-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 24px;
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 420px;
+  margin: 60px auto 0;
+}
+
+@media (max-width: 600px) {
+  .profile-wrapper {
+    padding: 20px 16px 48px;
+  }
+  .profile-header-card {
+    padding: 20px 16px;
+    padding-top: 48px;
+  }
+  .logout-btn {
+    top: 12px;
+    right: 12px;
+  }
+  .stat-card-number {
+    font-size: 1.5rem;
+  }
+}
