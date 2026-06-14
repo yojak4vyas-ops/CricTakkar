@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CricTakkar — Cricket. Quiz. Battle.</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-logo">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#" class="nav-link">Quiz</a>
+      <a href="#" class="nav-link">Leaderboard</a>
+      <a href="#" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION (big banner at top) -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="tagline-small">🇮🇳 India's Cricket Quiz Platform</div>
+      <h1 class="hero-title">Aao CricTakkar<br/>Karte Hain! 🏏</h1>
+      <p class="hero-subtitle">Cricket. Quiz. Battle. — Test your cricket knowledge, beat your friends, and climb the leaderboard.</p>
+      <div class="hero-buttons">
+        <button class="btn-primary" onclick="showComingSoon()">Play Daily Quiz 🎯</button>
+        <button class="btn-secondary" onclick="showComingSoon()">Challenge a Friend ⚔️</button>
+      </div>
+    </div>
+    <div class="hero-graphic">🏆</div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-number">200+</span>
+      <span class="stat-label">Quiz Questions</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">5</span>
+      <span class="stat-label">Categories</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Cricket Fun</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">Free</span>
+      <span class="stat-label">Always</span>
+    </div>
+  </section>
+
+  <!-- FEATURE CARDS -->
+  <section class="features">
+    <h2 class="section-title">What Can You Do on CricTakkar?</h2>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3 class="card-title">Daily Quiz</h3>
+        <p class="card-desc">5 questions every day. 15-second timer. Can you get a perfect score?</p>
+        <button class="card-btn" onclick="showComingSoon()">Play Now</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⚔️</div>
+        <h3 class="card-title">Battle Friends</h3>
+        <p class="card-desc">Create a room, share the code on WhatsApp, and quiz battle live!</p>
+        <button class="card-btn" onclick="showComingSoon()">Start Battle</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🏆</div>
+        <h3 class="card-title">Leaderboard</h3>
+        <p class="card-desc">Weekly and monthly rankings. Can you reach the top?</p>
+        <button class="card-btn" onclick="showComingSoon()">View Rankings</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📚</div>
+        <h3 class="card-title">Category Quizzes</h3>
+        <p class="card-desc">IPL, Test, ODI, T20 World Cup — pick your favourite format.</p>
+        <button class="card-btn" onclick="showComingSoon()">Choose Category</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🔥</div>
+        <h3 class="card-title">Daily Streak</h3>
+        <p class="card-desc">Play every day to keep your streak alive. Don't break the chain!</p>
+        <button class="card-btn" onclick="showComingSoon()">My Streak</button>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌟</div>
+        <h3 class="card-title">XP & Levels</h3>
+        <p class="card-desc">Start as a Debutant. Earn XP. Rise to Test Legend!</p>
+        <button class="card-btn" onclick="showComingSoon()">My Level</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMING SOON POPUP -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-box">
+      <div class="popup-icon">🚧</div>
+      <h3>Coming Soon!</h3>
+      <p>This feature is being built. Check back soon!</p>
+      <button class="btn-primary" onclick="closePopup()">Got it!</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>🏏 CricTakkar — Made with ❤️ for Indian Cricket Fans</p>
+    <p>Follow us: <a href="https://instagram.com/crictakkar" target="_blank">@crictakkar</a></p>
+    <p style="margin-top: 8px; font-size: 0.75rem; opacity: 0.6;">© 2025 CricTakkar. All rights reserved.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
