@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Quizzes — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="categories.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Daily Quiz</a>
+      <a href="categories.html" class="nav-link active">Categories</a>
+      <a href="#" class="nav-link">Leaderboard</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1 class="page-title">Category Quizzes</h1>
+    <p class="page-subtitle">Pick your favourite format and test your knowledge</p>
+  </section>
+
+  <!-- CATEGORY CARDS -->
+  <section class="categories-section">
+    <div class="categories-grid">
+
+      <div class="category-card ipl-card" onclick="startCategoryQuiz('ipl')">
+        <div class="cat-icon">🏏</div>
+        <div class="cat-info">
+          <h2 class="cat-title">IPL</h2>
+          <p class="cat-desc">Indian Premier League — the biggest T20 league in the world</p>
+          <div class="cat-meta">
+            <span class="cat-questions">15 Questions</span>
+            <span class="cat-difficulty">Medium</span>
+          </div>
+        </div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="category-card test-card" onclick="startCategoryQuiz('test')">
+        <div class="cat-icon">🎩</div>
+        <div class="cat-info">
+          <h2 class="cat-title">Test Cricket</h2>
+          <p class="cat-desc">The purest form of cricket — 5 days, ultimate skill</p>
+          <div class="cat-meta">
+            <span class="cat-questions">15 Questions</span>
+            <span class="cat-difficulty">Hard</span>
+          </div>
+        </div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="category-card odi-card" onclick="startCategoryQuiz('odi')">
+        <div class="cat-icon">🌍</div>
+        <div class="cat-info">
+          <h2 class="cat-title">ODI Cricket</h2>
+          <p class="cat-desc">One Day Internationals — World Cups, classics and records</p>
+          <div class="cat-meta">
+            <span class="cat-questions">15 Questions</span>
+            <span class="cat-difficulty">Medium</span>
+          </div>
+        </div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+      <div class="category-card t20-card" onclick="startCategoryQuiz('t20')">
+        <div class="cat-icon">⚡</div>
+        <div class="cat-info">
+          <h2 class="cat-title">T20 World Cup</h2>
+          <p class="cat-desc">Twenty20 World Cups — fast, furious and unforgettable</p>
+          <div class="cat-meta">
+            <span class="cat-questions">15 Questions</span>
+            <span class="cat-difficulty">Medium</span>
+          </div>
+        </div>
+        <div class="cat-arrow">→</div>
+      </div>
+
+    </div>
+  </section>
+
+  <script>
+    function startCategoryQuiz(category) {
+      // Save which category was chosen, then open the quiz page
+      localStorage.setItem('selectedCategory', category);
+      window.location.href = 'category-quiz.html';
+    }
+  </script>
+
+</body>
+</html>
