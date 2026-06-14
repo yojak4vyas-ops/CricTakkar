@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Profile — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Daily Quiz</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="profile.html" class="nav-link active">Profile</a>
+    </div>
+  </nav>
+
+  <!-- LOADING STATE -->
+  <div class="profile-wrapper" id="loadingState">
+    <div style="text-align:center; padding: 80px 24px;">
+      <div style="font-size:3rem; margin-bottom:16px;">⏳</div>
+      <p style="color:rgba(255,255,255,0.5);">Loading your profile...</p>
+    </div>
+  </div>
+
+  <!-- NOT LOGGED IN -->
+  <div class="profile-wrapper" id="notLoggedIn" style="display:none">
+    <div class="profile-card" style="text-align:center">
+      <div style="font-size:3.5rem; margin-bottom:16px;">🏏</div>
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:10px;">Join CricTakkar</h2>
+      <p style="color:rgba(255,255,255,0.55); margin-bottom:28px; line-height:1.7;">
+        Create a free account to save your scores, track your streak, earn XP and climb the leaderboard!
+      </p>
+      <button class="btn-primary" style="width:100%; margin-bottom:12px;"
+        onclick="window.location.href='login.html'">
+        Sign Up Free 🚀
+      </button>
+      <button class="btn-secondary" style="width:100%;"
+        onclick="window.location.href='login.html'">
+        Already have an account? Log In
+      </button>
+    </div>
+  </div>
+
+  <!-- LOGGED IN PROFILE -->
+  <div class="profile-wrapper" id="profileState" style="display:none">
+
+    <div class="profile-header-card">
+      <div class="profile-avatar" id="profileAvatar">🏏</div>
+      <div class="profile-header-info">
+        <h1 class="profile-username" id="profileUsername">Loading...</h1>
+        <div class="profile-team" id="profileTeam">Loading...</div>
+        <div class="profile-level-badge" id="profileLevel">Debutant</div>
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">Log Out</button>
+    </div>
+
+    <div class="xp-section">
+      <div class="xp-labels">
+        <span class="xp-label">⚡ <span id="xpAmount">0</span> XP</span>
+        <span class="xp-label" id="xpNextLabel">500 XP to next level</span>
+      </div>
+      <div class="xp-bar-container">
+        <div class="xp-bar" id="xpBar" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-card-number" id="statQuizzes">0</div>
+        <div class="stat-card-label">Quizzes Played</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-number" id="statAccuracy">0%</div>
+        <div class="stat-card-label">Accuracy</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-number" id="statStreak">0 🔥</div>
+        <div class="stat-card-label">Current Streak</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-card-number" id="statBestStreak">0</div>
+        <div class="stat-card-label">Best Streak</div>
+      </div>
+    </div>
+
+    <div class="levels-card">
+      <h3 class="levels-title">🏆 Level Roadmap</h3>
+      <div class="levels-list">
+        <div class="level-item" id="lvl1">🏏 Debutant <span>0 XP</span></div>
+        <div class="level-item" id="lvl2">🌟 Club Cricketer <span>200 XP</span></div>
+        <div class="level-item" id="lvl3">⚡ State Player <span>500 XP</span></div>
+        <div class="level-item" id="lvl4">🔥 IPL Pro <span>1000 XP</span></div>
