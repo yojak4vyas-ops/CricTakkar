@@ -96,3 +96,105 @@
         <div class="level-item" id="lvl2">🌟 Club Cricketer <span>200 XP</span></div>
         <div class="level-item" id="lvl3">⚡ State Player <span>500 XP</span></div>
         <div class="level-item" id="lvl4">🔥 IPL Pro <span>1000 XP</span></div>
+        <div class="level-item" id="lvl5">🎯 T20 Star <span>2000 XP</span></div>
+        <div class="level-item" id="lvl6">🏆 ODI Champion <span>3000 XP</span></div>
+        <div class="level-item" id="lvl7">👑 Test Legend <span>5000 XP</span></div>
+      </div>
+    </div>
+
+    <div class="quick-links">
+      <button class="btn-primary" onclick="window.location.href='quiz.html'">Play Daily Quiz 🎯</button>
+      <button class="btn-secondary" onclick="window.location.href='categories.html'">Category Quizzes 📚</button>
+    </div>
+
+  </div>
+
+  <script type="module">
+    import { watchAuthState, getUserProfile, logoutUser, calculateLevel } from './firebase-config.js';
+
+    watchAuthState(async function(user) {
+      document.getElementById('loadingState').style.display = 'none';
+
+      if (user) {
+        document.getElementById('profileState').style.display = 'block';
+        const result = await getUserProfile(user.uid);
+
+        if (result.success) {
+          const data = result.data;
+
+          document.getElementById('profileUsername').textContent = data.username;
+          document.getElementById('profileTeam').textContent = '❤️ ' + data.favouriteTeam;
+          document.getElementById('profileLevel').textContent = data.level || 'Debutant';
+          document.getElementById('xpAmount').textContent = data.xp || 0;
+          document.getElementById('statQuizzes').textContent = data.quizzesPlayed || 0;
+          document.getElementById('statStreak').textContent = (data.currentStreak || 0) + ' 🔥';
+          document.getElementById('statBestStreak').textContent = data.bestStreak || 0;
+
+          const accuracy = data.totalQuestions > 0
+            ? Math.round((data.totalScore / data.totalQuestions) * 100)
+            : 0;
+          document.getElementById('statAccuracy').textContent = accuracy + '%';
+
+          const avatars = {
+            'Mumbai Indians': '💙',
+            'Chennai Super Kings': '💛',
+            'Royal Challengers Bengaluru': '❤️',
+            'Kolkata Knight Riders': '💜',
+            'Rajasthan Royals': '🩷',
+            'Delhi Capitals': '💙',
+            'Punjab Kings': '❤️',
+            'Sunrisers Hyderabad': '🧡',
+            'Gujarat Titans': '🩵',
+            'Lucknow Super Giants': '🩵',
+            'India': '🇮🇳'
+          };
+          document.getElementById('profileAvatar').textContent =
+            avatars[data.favouriteTeam] || '🏏';
+
+          const xp = data.xp || 0;
+          const levelThresholds = [0, 200, 500, 1000, 2000, 3000, 5000];
+          let currentThreshold = 0;
+          let nextThreshold = 200;
+          for (let i = 0; i < levelThresholds.length - 1; i++) {
+            if (xp >= levelThresholds[i]) {
+              currentThreshold = levelThresholds[i];
+              nextThreshold = levelThresholds[i + 1];
+            }
+          }
+          const progressPercent = Math.min(
+            ((xp - currentThreshold) / (nextThreshold - currentThreshold)) * 100,
+            100
+          );
+          document.getElementById('xpBar').style.width = progressPercent + '%';
+          document.getElementById('xpNextLabel').textContent =
+            xp >= 5000 ? 'Maximum Level Reached! 👑' :
+            (nextThreshold - xp) + ' XP to next level';
+
+          const levelMap = {
+            'Debutant': 'lvl1',
+            'Club Cricketer': 'lvl2',
+            'State Player': 'lvl3',
+            'IPL Pro': 'lvl4',
+            'T20 Star': 'lvl5',
+            'ODI Champion': 'lvl6',
+            'Test Legend': 'lvl7'
+          };
+          const currentLevelId = levelMap[data.level];
+          if (currentLevelId) {
+            document.getElementById(currentLevelId).classList.add('current-level');
+          }
+        }
+
+      } else {
+        document.getElementById('notLoggedIn').style.display = 'flex';
+      }
+    });
+
+    window.handleLogout = async function() {
+      await logoutUser();
+      window.location.href = 'index.html';
+    };
+  </script>
+
+</body>
+</html>
