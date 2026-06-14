@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Category Quiz — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quiz.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Daily Quiz</a>
+      <a href="categories.html" class="nav-link active">Categories</a>
+      <a href="#" class="nav-link">Leaderboard</a>
+    </div>
+  </nav>
+
+  <!-- SCREEN 1: START SCREEN -->
+  <div class="quiz-wrapper" id="startScreen">
+    <div class="quiz-card">
+      <div class="quiz-start-icon" id="categoryIcon">🏏</div>
+      <h1 class="quiz-start-title" id="categoryTitle">IPL Quiz</h1>
+      <p class="quiz-start-sub">10 questions · 15 seconds each · How well do you know this format?</p>
+      <div class="quiz-rules">
+        <div class="rule-item">⏱️ 15 seconds per question</div>
+        <div class="rule-item">✅ 4 options — pick the right one</div>
+        <div class="rule-item">🌟 Fun fact after every answer</div>
+        <div class="rule-item">🏆 Score revealed at the end</div>
+      </div>
+      <button class="btn-primary" style="width:100%; font-size:1.1rem; padding:16px;" onclick="startCategoryQuiz()">
+        Start Quiz 🚀
+      </button>
+      <button class="btn-secondary" style="width:100%; margin-top:12px;" onclick="window.location.href='categories.html'">
+        ← Choose Different Category
+      </button>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: QUESTION SCREEN -->
+  <div class="quiz-wrapper" id="questionScreen" style="display:none">
+    <div class="quiz-card">
+
+      <div class="progress-bar-container">
+        <div class="progress-bar" id="progressBar"></div>
+      </div>
+
+      <div class="quiz-meta">
+        <span class="question-counter" id="questionCounter">Question 1 of 10</span>
+        <div class="timer-circle" id="timerCircle">
+          <span id="timerNumber">15</span>
+        </div>
+      </div>
+
+      <h2 class="question-text" id="questionText">Question goes here</h2>
+
+      <div class="options-grid" id="optionsGrid">
+        <button class="option-btn" id="opt0" onclick="selectAnswer(0)"></button>
+        <button class="option-btn" id="opt1" onclick="selectAnswer(1)"></button>
+        <button class="option-btn" id="opt2" onclick="selectAnswer(2)"></button>
+        <button class="option-btn" id="opt3" onclick="selectAnswer(3)"></button>
+      </div>
+
+      <div class="fact-box" id="factBox" style="display:none">
+        <p class="fact-text" id="factText"></p>
+        <button class="btn-primary" style="margin-top:16px; width:100%;" onclick="nextQuestion()">
+          Next Question →
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCREEN 3: SCORE SCREEN -->
+  <div class="quiz-wrapper" id="scoreScreen" style="display:none">
+    <div class="quiz-card" style="text-align:center">
+      <div class="score-emoji" id="scoreEmoji">🏆</div>
+      <h2 class="score-title" id="scoreTitle">Great Job!</h2>
+      <div class="score-display">
+        <span id="scoreNumber">0</span>
+        <span class="score-out-of" id="scoreOutOf">/10</span>
+      </div>
+      <p class="score-message" id="scoreMessage">You did well!</p>
+
+      <div class="score-breakdown" id="scoreBreakdown"></div>
+
+      <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px;">
+        <button class="btn-primary" onclick="shareScore()">Share Score 📤</button>
+        <button class="btn-secondary" onclick="restartQuiz()">Play Again 🔄</button>
+        <button class="btn-secondary" onclick="window.location.href='categories.html'">Try Another Category 📚</button>
+        <button class="btn-secondary" onclick="window.location.href='index.html'">Back to Home 🏠</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="category-questions.js"></script>
+  <script src="category-quiz.js"></script>
+</body>
+</html>
