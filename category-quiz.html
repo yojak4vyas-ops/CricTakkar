@@ -17,7 +17,7 @@
       <a href="index.html" class="nav-link">Home</a>
       <a href="quiz.html" class="nav-link">Daily Quiz</a>
       <a href="categories.html" class="nav-link active">Categories</a>
-      <a href="#" class="nav-link">Leaderboard</a>
+      <a href="profile.html" class="nav-link">Profile</a>
     </div>
   </nav>
 
@@ -97,6 +97,29 @@
       </div>
     </div>
   </div>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
 
   <script src="category-questions.js"></script>
   <script src="category-quiz.js"></script>
