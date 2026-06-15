@@ -27,8 +27,8 @@
       <p class="auth-subtitle">India's Cricket Quiz Platform</p>
 
       <div class="auth-tabs">
-        <button class="auth-tab active" id="loginTab" onclick="showLogin()">Log In</button>
-        <button class="auth-tab" id="signupTab" onclick="showSignup()">Sign Up</button>
+        <button class="auth-tab active" id="loginTab" id="loginTabBtn">Log In</button>
+        <button class="auth-tab" id="signupTab" id="signupTabBtn">Sign Up</button>
       </div>
 
       <div class="error-box" id="errorBox" style="display:none">
@@ -49,7 +49,7 @@
           <label class="input-label">Password</label>
           <input type="password" class="auth-input" id="loginPassword" placeholder="Your password" />
         </div>
-        <button class="btn-primary auth-btn" id="loginBtn" onclick="handleLogin()">
+        <button class="btn-primary auth-btn" id="loginBtn">
           Log In 🏏
         </button>
       </div>
@@ -85,7 +85,7 @@
           <label class="input-label">Password (minimum 6 characters)</label>
           <input type="password" class="auth-input" id="signupPassword" placeholder="Create a password" />
         </div>
-        <button class="btn-primary auth-btn" id="signupBtn" onclick="handleSignup()">
+        <button class="btn-primary auth-btn" id="signupBtn">
           Create Account 🚀
         </button>
       </div>
@@ -96,18 +96,59 @@
   <script type="module">
     import { signUpUser, loginUser, watchAuthState } from './firebase-config.js';
 
+    // ===== CHECK IF ALREADY LOGGED IN =====
     watchAuthState(function(user) {
       if (user) {
         window.location.href = 'profile.html';
       }
     });
 
-    window.showLogin = function() {
+    // ===== TAB SWITCHING =====
+    document.getElementById('loginTab').addEventListener('click', function() {
       document.getElementById('loginForm').style.display = 'block';
       document.getElementById('signupForm').style.display = 'none';
       document.getElementById('loginTab').classList.add('active');
       document.getElementById('signupTab').classList.remove('active');
-      hideMessages();
-    };
+      document.getElementById('errorBox').style.display = 'none';
+      document.getElementById('successBox').style.display = 'none';
+    });
 
-    window.showSignup = function() {
+    document.getElementById('signupTab').addEventListener('click', function() {
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupTab').classList.add('active');
+      document.getElementById('loginTab').classList.remove('active');
+      document.getElementById('errorBox').style.display = 'none';
+      document.getElementById('successBox').style.display = 'none';
+    });
+
+    // ===== LOGIN BUTTON =====
+    document.getElementById('loginBtn').addEventListener('click', async function() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (!email || !password) {
+        showError('Please fill in both email and password.');
+        return;
+      }
+
+      this.textContent = 'Logging in...';
+      this.disabled = true;
+
+      const result = await loginUser(email, password);
+
+      if (result.success) {
+        showSuccess('Welcome back! Taking you to your profile...');
+        setTimeout(() => { window.location.href = 'profile.html'; }, 1000);
+      } else {
+        showError(getFriendlyError(result.error));
+        this.textContent = 'Log In 🏏';
+        this.disabled = false;
+      }
+    });
+
+    // ===== SIGN UP BUTTON =====
+    document.getElementById('signupBtn').addEventListener('click', async function() {
+      const username = document.getElementById('signupUsername').value.trim();
+      const team = document.getElementById('signupTeam').value;
+      const email = document.getElementById('signupEmail').v
