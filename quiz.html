@@ -16,8 +16,8 @@
     <div class="nav-links">
       <a href="index.html" class="nav-link">Home</a>
       <a href="quiz.html" class="nav-link active">Quiz</a>
-      <a href="#" class="nav-link">Leaderboard</a>
-      <a href="#" class="nav-link">Profile</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="profile.html" class="nav-link">Profile</a>
     </div>
   </nav>
 
@@ -43,12 +43,10 @@
   <div class="quiz-wrapper" id="questionScreen" style="display:none">
     <div class="quiz-card">
 
-      <!-- Progress bar -->
       <div class="progress-bar-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
 
-      <!-- Question counter and timer -->
       <div class="quiz-meta">
         <span class="question-counter" id="questionCounter">Question 1 of 5</span>
         <div class="timer-circle" id="timerCircle">
@@ -56,10 +54,8 @@
         </div>
       </div>
 
-      <!-- The question text -->
       <h2 class="question-text" id="questionText">Question goes here</h2>
 
-      <!-- 4 answer options -->
       <div class="options-grid" id="optionsGrid">
         <button class="option-btn" id="opt0" onclick="selectAnswer(0)"></button>
         <button class="option-btn" id="opt1" onclick="selectAnswer(1)"></button>
@@ -67,7 +63,6 @@
         <button class="option-btn" id="opt3" onclick="selectAnswer(3)"></button>
       </div>
 
-      <!-- Fun fact box (hidden until answer selected) -->
       <div class="fact-box" id="factBox" style="display:none">
         <p class="fact-text" id="factText"></p>
         <button class="btn-primary" style="margin-top:16px; width:100%;" onclick="nextQuestion()">
@@ -88,10 +83,7 @@
         <span class="score-out-of">/5</span>
       </div>
       <p class="score-message" id="scoreMessage">You did well!</p>
-
-      <!-- Score breakdown -->
       <div class="score-breakdown" id="scoreBreakdown"></div>
-
       <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px;">
         <button class="btn-primary" onclick="shareScore()">Share Score 📤</button>
         <button class="btn-secondary" onclick="restartQuiz()">Play Again 🔄</button>
@@ -99,6 +91,30 @@
       </div>
     </div>
   </div>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ===== FIREBASE SETUP =====
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
 
   <script src="questions.js"></script>
   <script src="quiz.js"></script>
