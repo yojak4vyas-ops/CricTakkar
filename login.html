@@ -102,7 +102,7 @@
     // ===== FIREBASE SETUP =====
     const firebaseConfig = {
       apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
-      authDomain: "cric-takkar.vercel.app",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
       projectId: "crictakkar-44c10",
       storageBucket: "crictakkar-44c10.firebasestorage.app",
       messagingSenderId: "96883177573",
@@ -115,9 +115,6 @@
 
     // ===== GOOGLE PROVIDER =====
     const googleProvider = new firebase.auth.GoogleAuthProvider();
-    googleProvider.setCustomParameters({
-      client_id: '96883177573-1su71qe8r07qal57j7n6qblcns0iog4k.apps.googleusercontent.com'
-    });
 
     // ===== CHECK IF ALREADY LOGGED IN =====
     auth.onAuthStateChanged(function(user) {
@@ -126,13 +123,13 @@
       }
     });
 
-    // ===== GOOGLE LOGIN =====
+    // ===== GOOGLE LOGIN WITH POPUP =====
     document.getElementById('googleBtn').addEventListener('click', function() {
-      auth.signInWithRedirect(googleProvider);
-    });
+      var btn = document.getElementById('googleBtn');
+      btn.disabled = true;
+      btn.textContent = 'Opening Google...';
 
-    auth.getRedirectResult().then(function(result) {
-      if (result && result.user) {
+      auth.signInWithPopup(googleProvider).then(function(result) {
         var user = result.user;
         db.collection('users').doc(user.uid).get().then(function(doc) {
           if (!doc.exists) {
@@ -152,13 +149,19 @@
               joinedDate: new Date().toISOString()
             });
           }
-          window.location.href = 'profile.html';
+          showSuccess('Welcome! Taking you to your profile...');
+          setTimeout(function() { window.location.href = 'profile.html'; }, 1000);
         });
-      }
-    }).catch(function(error) {
-      if (error.code !== 'auth/popup-closed-by-user') {
-        showError('Google sign in failed. Please try again.');
-      }
+      }).catch(function(error) {
+        if (error.code === 'auth/popup-closed-by-user') {
+          btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" /> Continue with Google';
+          btn.disabled = false;
+        } else {
+          showError('Google sign in failed: ' + error.message);
+          btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" /> Continue with Google';
+          btn.disabled = false;
+        }
+      });
     });
 
     // ===== TAB SWITCHING =====
