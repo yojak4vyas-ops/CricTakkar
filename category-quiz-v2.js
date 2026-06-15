@@ -1,62 +1,62 @@
 // ===== CRICTAKKAR CATEGORY QUIZ ENGINE V2 =====
 
-var selectedCategory = localStorage.getItem('selectedCategory') || 'ipl';
+var crictakkarCategory = localStorage.getItem('selectedCategory') || 'ipl';
 
-var categoryInfo = {
+var crictakkarCategoryInfo = {
   ipl: { title: 'IPL Quiz', icon: '🏏' },
   test: { title: 'Test Cricket Quiz', icon: '🎩' },
   odi: { title: 'ODI Cricket Quiz', icon: '🌍' },
   t20: { title: 'T20 World Cup Quiz', icon: '⚡' }
 };
 
-var currentQuestions = [];
-var currentIndex = 0;
-var score = 0;
-var timerInterval = null;
-var timeLeft = 15;
-var answered = false;
-var results = [];
-var TOTAL_QUESTIONS = 10;
+var crictakkarQuestions = [];
+var crictakkarIndex = 0;
+var crictakkarScore = 0;
+var crictakkarTimer = null;
+var crictakkarTimeLeft = 15;
+var crictakkarAnswered = false;
+var crictakkarResults = [];
+var crictakkarTotal = 10;
 
 // ===== SET UP START SCREEN =====
 window.onload = function() {
-  var info = categoryInfo[selectedCategory];
+  var info = crictakkarCategoryInfo[crictakkarCategory];
   document.getElementById('categoryTitle').textContent = info.title;
   document.getElementById('categoryIcon').textContent = info.icon;
 };
 
 // ===== START THE QUIZ =====
 function startCategoryQuiz() {
-  var allQuestions = categoryQuestions[selectedCategory];
+  var allQuestions = categoryQuestions[crictakkarCategory];
 
-  currentQuestions = allQuestions.slice()
+  crictakkarQuestions = allQuestions.slice()
     .sort(function() { return Math.random() - 0.5; })
-    .slice(0, TOTAL_QUESTIONS);
+    .slice(0, crictakkarTotal);
 
-  currentIndex = 0;
-  score = 0;
-  results = [];
+  crictakkarIndex = 0;
+  crictakkarScore = 0;
+  crictakkarResults = [];
 
   document.getElementById('startScreen').style.display = 'none';
   document.getElementById('questionScreen').style.display = 'flex';
 
-  loadQuestion();
+  crictakkarLoadQuestion();
 }
 
 // ===== LOAD A QUESTION =====
-function loadQuestion() {
-  answered = false;
-  timeLeft = 15;
+function crictakkarLoadQuestion() {
+  crictakkarAnswered = false;
+  crictakkarTimeLeft = 15;
 
-  var q = currentQuestions[currentIndex];
+  var q = crictakkarQuestions[crictakkarIndex];
 
-  var progress = (currentIndex / TOTAL_QUESTIONS) * 100;
+  var progress = (crictakkarIndex / crictakkarTotal) * 100;
   document.getElementById('progressBar').style.width = progress + '%';
 
   document.getElementById('questionCounter').textContent =
-    'Question ' + (currentIndex + 1) + ' of ' + TOTAL_QUESTIONS;
+    'Question ' + (crictakkarIndex + 1) + ' of ' + crictakkarTotal;
 
-  document.getElementById('timerNumber').textContent = timeLeft;
+  document.getElementById('timerNumber').textContent = crictakkarTimeLeft;
   document.getElementById('timerCircle').classList.remove('danger');
   document.getElementById('questionText').textContent = q.question;
 
@@ -68,71 +68,71 @@ function loadQuestion() {
   });
 
   document.getElementById('factBox').style.display = 'none';
-  startTimer();
+  crictakkarStartTimer();
 }
 
 // ===== TIMER =====
-function startTimer() {
-  clearInterval(timerInterval);
+function crictakkarStartTimer() {
+  clearInterval(crictakkarTimer);
 
-  timerInterval = setInterval(function() {
-    timeLeft--;
-    document.getElementById('timerNumber').textContent = timeLeft;
+  crictakkarTimer = setInterval(function() {
+    crictakkarTimeLeft--;
+    document.getElementById('timerNumber').textContent = crictakkarTimeLeft;
 
-    if (timeLeft <= 5) {
+    if (crictakkarTimeLeft <= 5) {
       document.getElementById('timerCircle').classList.add('danger');
     }
 
-    if (timeLeft <= 0) {
-      clearInterval(timerInterval);
-      if (!answered) {
-        timeUp();
+    if (crictakkarTimeLeft <= 0) {
+      clearInterval(crictakkarTimer);
+      if (!crictakkarAnswered) {
+        crictakkarTimeUp();
       }
     }
   }, 1000);
 }
 
 // ===== TIME UP =====
-function timeUp() {
-  answered = true;
-  results.push(false);
-  disableAllOptions();
-  document.getElementById('opt' + currentQuestions[currentIndex].correct)
+function crictakkarTimeUp() {
+  crictakkarAnswered = true;
+  crictakkarResults.push(false);
+  crictakkarDisableOptions();
+  document.getElementById('opt' + crictakkarQuestions[crictakkarIndex].correct)
     .classList.add('correct');
-  showFact("⏰ Time's up! The correct answer was highlighted above.");
+  crictakkarShowFact("⏰ Time's up! The correct answer was highlighted above.");
 }
 
 // ===== SELECT ANSWER =====
 function selectAnswer(selectedIndex) {
-  if (answered) return;
-  answered = true;
-  clearInterval(timerInterval);
+  if (crictakkarAnswered) return;
+  crictakkarAnswered = true;
+  clearInterval(crictakkarTimer);
 
-  var correctIndex = currentQuestions[currentIndex].correct;
+  var correctIndex = crictakkarQuestions[crictakkarIndex].correct;
   var isCorrect = selectedIndex === correctIndex;
 
-  disableAllOptions();
+  crictakkarDisableOptions();
 
   if (isCorrect) {
-    score++;
-    results.push(true);
+    crictakkarScore++;
+    crictakkarResults.push(true);
     document.getElementById('opt' + selectedIndex).classList.add('correct');
   } else {
-    results.push(false);
+    crictakkarResults.push(false);
     document.getElementById('opt' + selectedIndex).classList.add('wrong');
     document.getElementById('opt' + correctIndex).classList.add('correct');
   }
 
-  showFact(currentQuestions[currentIndex].fact);
+  crictakkarShowFact(crictakkarQuestions[crictakkarIndex].fact);
 }
 
 // ===== SHOW FACT =====
-function showFact(factText) {
+function crictakkarShowFact(factText) {
   document.getElementById('factText').textContent = factText;
   document.getElementById('factBox').style.display = 'block';
 
   var nextBtn = document.querySelector('#factBox .btn-primary');
-  if (currentIndex === TOTAL_QUESTIONS - 1) {
+  if (crictakkarIndex === crictakkarTotal - 1) {
     nextBtn.textContent = 'See My Score 🏆';
   } else {
     nextBtn.textContent = 'Next Question →';
@@ -140,7 +140,7 @@ function showFact(factText) {
 }
 
 // ===== DISABLE OPTIONS =====
-function disableAllOptions() {
+function crictakkarDisableOptions() {
   document.querySelectorAll('.option-btn').forEach(function(btn) {
     btn.disabled = true;
   });
@@ -148,42 +148,42 @@ function disableAllOptions() {
 
 // ===== NEXT QUESTION =====
 function nextQuestion() {
-  currentIndex++;
-  if (currentIndex >= TOTAL_QUESTIONS) {
-    showScoreScreen();
+  crictakkarIndex++;
+  if (crictakkarIndex >= crictakkarTotal) {
+    crictakkarShowScore();
   } else {
-    loadQuestion();
+    crictakkarLoadQuestion();
   }
 }
 
 // ===== SCORE SCREEN =====
-function showScoreScreen() {
+function crictakkarShowScore() {
   document.getElementById('progressBar').style.width = '100%';
   document.getElementById('questionScreen').style.display = 'none';
   document.getElementById('scoreScreen').style.display = 'flex';
 
-  document.getElementById('scoreNumber').textContent = score;
-  document.getElementById('scoreOutOf').textContent = '/' + TOTAL_QUESTIONS;
+  document.getElementById('scoreNumber').textContent = crictakkarScore;
+  document.getElementById('scoreOutOf').textContent = '/' + crictakkarTotal;
 
-  var scoreData = getScoreData(score, TOTAL_QUESTIONS);
+  var scoreData = crictakkarGetScoreData(crictakkarScore, crictakkarTotal);
   document.getElementById('scoreEmoji').textContent = scoreData.emoji;
   document.getElementById('scoreTitle').textContent = scoreData.title;
   document.getElementById('scoreMessage').textContent = scoreData.message;
 
   var breakdown = document.getElementById('scoreBreakdown');
   breakdown.innerHTML = '';
-  results.forEach(function(isCorrect) {
+  crictakkarResults.forEach(function(isCorrect) {
     var dot = document.createElement('div');
     dot.className = 'breakdown-dot ' + (isCorrect ? 'correct' : 'wrong');
     dot.textContent = isCorrect ? '✓' : '✗';
     breakdown.appendChild(dot);
   });
 
-  saveScoreToFirebase(score, TOTAL_QUESTIONS);
+  crictakkarSaveScore(crictakkarScore, crictakkarTotal);
 }
 
 // ===== SAVE SCORE TO FIREBASE =====
-function saveScoreToFirebase(finalScore, total) {
+function crictakkarSaveScore(finalScore, total) {
   auth.onAuthStateChanged(function(user) {
     if (user) {
       var xpEarned = finalScore * 10;
@@ -193,7 +193,7 @@ function saveScoreToFirebase(finalScore, total) {
         if (doc.exists) {
           var data = doc.data();
           var newXP = (data.xp || 0) + xpEarned;
-          var newLevel = calculateLevel(newXP);
+          var newLevel = crictakkarGetLevel(newXP);
 
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
@@ -202,22 +202,18 @@ function saveScoreToFirebase(finalScore, total) {
             xp: newXP,
             level: newLevel
           }).then(function() {
-            console.log('✅ Category score saved! +' + xpEarned + ' XP');
+            console.log('✅ Score saved! +' + xpEarned + ' XP');
           }).catch(function(error) {
-            console.error('❌ Error updating score:', error);
+            console.error('❌ Error:', error);
           });
         }
-      }).catch(function(error) {
-        console.error('❌ Error getting user data:', error);
       });
-    } else {
-      console.log('ℹ️ No user logged in — score not saved');
     }
   });
 }
 
 // ===== CALCULATE LEVEL =====
-function calculateLevel(xp) {
+function crictakkarGetLevel(xp) {
   if (xp >= 5000) return "Test Legend";
   if (xp >= 3000) return "ODI Champion";
   if (xp >= 2000) return "T20 Star";
@@ -228,7 +224,7 @@ function calculateLevel(xp) {
 }
 
 // ===== SCORE MESSAGE =====
-function getScoreData(score, total) {
+function crictakkarGetScoreData(score, total) {
   var percent = score / total;
   if (percent === 1) return {
     emoji: '🏆', title: 'Perfect Score! Absolute Legend!',
@@ -254,9 +250,9 @@ function getScoreData(score, total) {
 
 // ===== SHARE SCORE =====
 function shareScore() {
-  var info = categoryInfo[selectedCategory];
+  var info = crictakkarCategoryInfo[crictakkarCategory];
   var shareText =
-    '🏏 I scored ' + score + '/' + TOTAL_QUESTIONS +
+    '🏏 I scored ' + crictakkarScore + '/' + crictakkarTotal +
     ' on the CricTakkar ' + info.title + '!\n' +
     'Can you beat me? Play free at crictakkar.in\n' +
     '#CricTakkar #Cricket #CricketQuiz';
