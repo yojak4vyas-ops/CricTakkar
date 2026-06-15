@@ -69,7 +69,9 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
-      if (!answered) timeUp();
+      if (!answered) {
+        timeUp();
+      }
     }
   }, 1000);
 }
@@ -79,7 +81,8 @@ function timeUp() {
   answered = true;
   results.push(false);
   disableAllOptions();
-  document.getElementById('opt' + currentQuestions[currentIndex].correct).classList.add('correct');
+  document.getElementById('opt' + currentQuestions[currentIndex].correct)
+    .classList.add('correct');
   showFact("⏰ Time's up! The correct answer was highlighted above.");
 }
 
@@ -113,12 +116,18 @@ function showFact(factText) {
   document.getElementById('factBox').style.display = 'block';
 
   const nextBtn = document.querySelector('#factBox .btn-primary');
-  nextBtn.textContent = currentIndex === 4 ? 'See My Score 🏆' : 'Next Question →';
+  if (currentIndex === 4) {
+    nextBtn.textContent = 'See My Score 🏆';
+  } else {
+    nextBtn.textContent = 'Next Question →';
+  }
 }
 
 // ===== DISABLE ALL OPTIONS =====
 function disableAllOptions() {
-  document.querySelectorAll('.option-btn').forEach(btn => { btn.disabled = true; });
+  document.querySelectorAll('.option-btn').forEach(btn => {
+    btn.disabled = true;
+  });
 }
 
 // ===== NEXT QUESTION =====
@@ -152,40 +161,42 @@ function showScoreScreen() {
     breakdown.appendChild(dot);
   });
 
+  // Save score to Firebase
   saveScoreToFirebase(score, 5);
 }
 
 // ===== SAVE SCORE TO FIREBASE =====
-function saveScoreToFirebase(scoreVal, total) {
-  // Wait until Firebase auth is ready
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (!user) {
-      console.log('Not logged in — score not saved');
-      return;
+function saveScoreToFirebase(finalScore, total) {
+  // Use onAuthStateChanged to make sure user is confirmed before saving
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      var xpEarned = finalScore * 10;
+      var userRef = db.collection('users').doc(user.uid);
+
+      userRef.get().then(function(doc) {
+        if (doc.exists) {
+          var data = doc.data();
+          var newXP = (data.xp || 0) + xpEarned;
+          var newLevel = calculateLevel(newXP);
+
+          userRef.update({
+            quizzesPlayed: (data.quizzesPlayed || 0) + 1,
+            totalScore: (data.totalScore || 0) + finalScore,
+            totalQuestions: (data.totalQuestions || 0) + total,
+            xp: newXP,
+            level: newLevel
+          }).then(function() {
+            console.log('✅ Score saved! +' + xpEarned + ' XP earned');
+          }).catch(function(error) {
+            console.error('❌ Error updating score:', error);
+          });
+        }
+      }).catch(function(error) {
+        console.error('❌ Error getting user data:', error);
+      });
+    } else {
+      console.log('ℹ️ No user logged in — score not saved');
     }
-
-    var xpEarned = scoreVal * 10;
-    var userRef = firebase.firestore().collection('users').doc(user.uid);
-
-    userRef.get().then(function(doc) {
-      if (doc.exists) {
-        var data = doc.data();
-        var newXP = (data.xp || 0) + xpEarned;
-        var newLevel = calculateLevel(newXP);
-
-        userRef.update({
-          quizzesPlayed: (data.quizzesPlayed || 0) + 1,
-          totalScore: (data.totalScore || 0) + scoreVal,
-          totalQuestions: (data.totalQuestions || 0) + total,
-          xp: newXP,
-          level: newLevel
-        }).then(function() {
-          console.log('✅ Daily quiz score saved! +' + xpEarned + ' XP');
-        });
-      }
-    }).catch(function(error) {
-      console.error('Error saving score:', error);
-    });
   });
 }
 
@@ -202,12 +213,36 @@ function calculateLevel(xp) {
 
 // ===== SCORE MESSAGE DATA =====
 function getScoreData(score) {
-  if (score === 5) return { emoji: '🏆', title: 'Perfect Score! Test Legend!', message: 'You got every single question right. You are a true cricket genius!' };
-  if (score === 4) return { emoji: '🌟', title: 'Excellent! Almost Perfect!', message: 'Just one slip. Your cricket knowledge is seriously impressive!' };
-  if (score === 3) return { emoji: '👏', title: 'Good Game!', message: 'Solid performance! Keep playing daily to improve your streak.' };
-  if (score === 2) return { emoji: '🏏', title: 'Getting There!', message: 'Two right is a start. Play the daily quiz every day and improve!' };
-  if (score === 1) return { emoji: '😅', title: 'Keep Practicing!', message: 'One right answer! The fun facts will help you learn fast.' };
-  return { emoji: '😬', title: 'Tough Day at the Crease!', message: "Don't give up! Even Sachin had bad days. Come back tomorrow!" };
+  if (score === 5) return {
+    emoji: '🏆',
+    title: 'Perfect Score! Test Legend!',
+    message: 'You got every single question right. You are a true cricket genius!'
+  };
+  if (score === 4) return {
+    emoji: '🌟',
+    title: 'Excellent! Almost Perfect!',
+    message: 'Just one slip. Your cricket knowledge is seriously impressive!'
+  };
+  if (score === 3) return {
+    emoji: '👏',
+    title: 'Good Game!',
+    message: 'Solid performance! Keep playing daily to improve your streak.'
+  };
+  if (score === 2) return {
+    emoji: '🏏',
+    title: 'Getting There!',
+    message: 'Two right is a start. Play the daily quiz every day and improve!'
+  };
+  if (score === 1) return {
+    emoji: '😅',
+    title: 'Keep Practicing!',
+    message: 'One right answer! The fun facts will help you learn fast.'
+  };
+  return {
+    emoji: '😬',
+    title: 'Tough Day at the Crease!',
+    message: "Don't give up! Even Sachin had bad days. Come back tomorrow!"
+  };
 }
 
 // ===== SHARE SCORE =====
@@ -218,7 +253,10 @@ function shareScore() {
     '#CricTakkar #Cricket #CricketQuiz';
 
   if (navigator.share) {
-    navigator.share({ title: 'CricTakkar Quiz Score', text: scoreText });
+    navigator.share({
+      title: 'CricTakkar Quiz Score',
+      text: scoreText
+    });
   } else {
     navigator.clipboard.writeText(scoreText).then(function() {
       alert('Score copied! Paste it on WhatsApp or Instagram. 🏏');
