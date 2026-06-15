@@ -1,7 +1,7 @@
 // ===== FIREBASE SETUP FOR CRICTAKKAR =====
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, updateDoc, increment } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // Your Firebase project details
@@ -18,13 +18,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const googleProvider = new GoogleAuthProvider();
 
-// ===== SIGN UP A NEW USER =====
+// ===== SIGN UP WITH EMAIL AND PASSWORD =====
 async function signUpUser(email, password, username, favouriteTeam) {
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
 
+    // Send verification email
+    await sendEmailVerification(user);
+
+    // Save profile to database
     await setDoc(doc(db, "users", user.uid), {
       username: username,
       email: email,
@@ -36,6 +41,8 @@ async function signUpUser(email, password, username, favouriteTeam) {
       bestStreak: 0,
       xp: 0,
       level: "Debutant",
+      emailVerified: false,
+      loginMethod: "email",
       joinedDate: new Date().toISOString()
     });
 
@@ -45,11 +52,46 @@ async function signUpUser(email, password, username, favouriteTeam) {
   }
 }
 
-// ===== LOG IN AN EXISTING USER =====
+// ===== LOG IN WITH EMAIL AND PASSWORD =====
 async function loginUser(email, password) {
   try {
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     return { success: true, user: userCredential.user };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+}
+
+// ===== SIGN IN WITH GOOGLE =====
+async function signInWithGoogle() {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+
+    // Check if this user already has a profile
+    const existingProfile = await getUserProfile(user.uid);
+
+    if (!existingProfile.success) {
+      // New user — create their profile
+      await setDoc(doc(db, "users", user.uid), {
+        username: user.displayName || "CricFan",
+        email: user.email,
+        favouriteTeam: "",
+        quizzesPlayed: 0,
+        totalScore: 0,
+        totalQuestions: 0,
+        currentStreak: 0,
+        bestStreak: 0,
+        xp: 0,
+        level: "Debutant",
+        emailVerified: true,
+        loginMethod: "google",
+        joinedDate: new Date().toISOString()
+      });
+      return { success: true, user: user, isNewUser: true };
+    }
+
+    return { success: true, user: user, isNewUser: false };
   } catch (error) {
     return { success: false, error: error.message };
   }
@@ -65,7 +107,7 @@ async function logoutUser() {
   }
 }
 
-// ===== GET USER PROFILE DATA =====
+// ===== GET USER PROFILE =====
 async function getUserProfile(uid) {
   try {
     const docRef = doc(db, "users", uid);
@@ -102,28 +144,3 @@ async function saveQuizResult(uid, score, totalQuestions) {
     return { success: true };
   } catch (error) {
     return { success: false, error: error.message };
-  }
-}
-
-// ===== CALCULATE LEVEL FROM XP =====
-function calculateLevel(xp) {
-  if (xp >= 5000) return "Test Legend";
-  if (xp >= 3000) return "ODI Champion";
-  if (xp >= 2000) return "T20 Star";
-  if (xp >= 1000) return "IPL Pro";
-  if (xp >= 500)  return "State Player";
-  if (xp >= 200)  return "Club Cricketer";
-  return "Debutant";
-}
-
-// ===== WATCH IF USER IS LOGGED IN OR NOT =====
-function watchAuthState(callback) {
-  onAuthStateChanged(auth, callback);
-}
-
-export {
-  auth, db,
-  signUpUser, loginUser, logoutUser,
-  getUserProfile, saveQuizResult,
-  watchAuthState, calculateLevel
-};
