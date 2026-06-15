@@ -57,7 +57,7 @@
         <div class="profile-team" id="profileTeam">Loading...</div>
         <div class="profile-level-badge" id="profileLevel">Debutant</div>
       </div>
-      <button class="logout-btn" onclick="handleLogout()">Log Out</button>
+      <button class="logout-btn" id="logoutBtn">Log Out</button>
     </div>
 
     <div class="xp-section">
@@ -109,91 +109,148 @@
 
   </div>
 
-  <script type="module">
-    import { watchAuthState, getUserProfile, logoutUser, calculateLevel } from './firebase-config.js';
+  <!-- FIREBASE LOADED DIRECTLY -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
-    watchAuthState(async function(user) {
+  <script>
+    // ===== FIREBASE SETUP =====
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // ===== CALCULATE LEVEL FROM XP =====
+    function calculateLevel(xp) {
+      if (xp >= 5000) return "Test Legend";
+      if (xp >= 3000) return "ODI Champion";
+      if (xp >= 2000) return "T20 Star";
+      if (xp >= 1000) return "IPL Pro";
+      if (xp >= 500)  return "State Player";
+      if (xp >= 200)  return "Club Cricketer";
+      return "Debutant";
+    }
+
+    // ===== LOGOUT BUTTON =====
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      auth.signOut().then(function() {
+        window.location.href = 'index.html';
+      });
+    });
+
+    // ===== WATCH AUTH STATE =====
+    auth.onAuthStateChanged(function(user) {
       document.getElementById('loadingState').style.display = 'none';
 
       if (user) {
         document.getElementById('profileState').style.display = 'block';
-        const result = await getUserProfile(user.uid);
 
-        if (result.success) {
-          const data = result.data;
+        // Load user profile from Firestore
+        db.collection('users').doc(user.uid).get().then(function(doc) {
+          if (doc.exists) {
+            var data = doc.data();
 
-          document.getElementById('profileUsername').textContent = data.username;
-          document.getElementById('profileTeam').textContent = '❤️ ' + data.favouriteTeam;
-          document.getElementById('profileLevel').textContent = data.level || 'Debutant';
-          document.getElementById('xpAmount').textContent = data.xp || 0;
-          document.getElementById('statQuizzes').textContent = data.quizzesPlayed || 0;
-          document.getElementById('statStreak').textContent = (data.currentStreak || 0) + ' 🔥';
-          document.getElementById('statBestStreak').textContent = data.bestStreak || 0;
+            document.getElementById('profileUsername').textContent = data.username || 'Cricket Fan';
+            document.getElementById('profileTeam').textContent = '❤️ ' + (data.favouriteTeam || 'Cricket');
+            document.getElementById('profileLevel').textContent = data.level || 'Debutant';
+            document.getElementById('xpAmount').textContent = data.xp || 0;
+            document.getElementById('statQuizzes').textContent = data.quizzesPlayed || 0;
+            document.getElementById('statStreak').textContent = (data.currentStreak || 0) + ' 🔥';
+            document.getElementById('statBestStreak').textContent = data.bestStreak || 0;
 
-          const accuracy = data.totalQuestions > 0
-            ? Math.round((data.totalScore / data.totalQuestions) * 100)
-            : 0;
-          document.getElementById('statAccuracy').textContent = accuracy + '%';
+            var accuracy = data.totalQuestions > 0
+              ? Math.round((data.totalScore / data.totalQuestions) * 100)
+              : 0;
+            document.getElementById('statAccuracy').textContent = accuracy + '%';
 
-          const avatars = {
-            'Mumbai Indians': '💙',
-            'Chennai Super Kings': '💛',
-            'Royal Challengers Bengaluru': '❤️',
-            'Kolkata Knight Riders': '💜',
-            'Rajasthan Royals': '🩷',
-            'Delhi Capitals': '💙',
-            'Punjab Kings': '❤️',
-            'Sunrisers Hyderabad': '🧡',
-            'Gujarat Titans': '🩵',
-            'Lucknow Super Giants': '🩵',
-            'India': '🇮🇳'
-          };
-          document.getElementById('profileAvatar').textContent =
-            avatars[data.favouriteTeam] || '🏏';
+            // Set avatar emoji based on team
+            var avatars = {
+              'Mumbai Indians': '💙',
+              'Chennai Super Kings': '💛',
+              'Royal Challengers Bengaluru': '❤️',
+              'Kolkata Knight Riders': '💜',
+              'Rajasthan Royals': '🩷',
+              'Delhi Capitals': '💙',
+              'Punjab Kings': '❤️',
+              'Sunrisers Hyderabad': '🧡',
+              'Gujarat Titans': '🩵',
+              'Lucknow Super Giants': '🩵',
+              'India': '🇮🇳'
+            };
+            document.getElementById('profileAvatar').textContent =
+              avatars[data.favouriteTeam] || '🏏';
 
-          const xp = data.xp || 0;
-          const levelThresholds = [0, 200, 500, 1000, 2000, 3000, 5000];
-          let currentThreshold = 0;
-          let nextThreshold = 200;
-          for (let i = 0; i < levelThresholds.length - 1; i++) {
-            if (xp >= levelThresholds[i]) {
-              currentThreshold = levelThresholds[i];
-              nextThreshold = levelThresholds[i + 1];
+            // XP progress bar
+            var xp = data.xp || 0;
+            var levelThresholds = [0, 200, 500, 1000, 2000, 3000, 5000];
+            var currentThreshold = 0;
+            var nextThreshold = 200;
+            for (var i = 0; i < levelThresholds.length - 1; i++) {
+              if (xp >= levelThresholds[i]) {
+                currentThreshold = levelThresholds[i];
+                nextThreshold = levelThresholds[i + 1];
+              }
             }
-          }
-          const progressPercent = Math.min(
-            ((xp - currentThreshold) / (nextThreshold - currentThreshold)) * 100,
-            100
-          );
-          document.getElementById('xpBar').style.width = progressPercent + '%';
-          document.getElementById('xpNextLabel').textContent =
-            xp >= 5000 ? 'Maximum Level Reached! 👑' :
-            (nextThreshold - xp) + ' XP to next level';
+            var progressPercent = Math.min(
+              ((xp - currentThreshold) / (nextThreshold - currentThreshold)) * 100,
+              100
+            );
+            document.getElementById('xpBar').style.width = progressPercent + '%';
+            document.getElementById('xpNextLabel').textContent =
+              xp >= 5000 ? 'Maximum Level Reached! 👑' :
+              (nextThreshold - xp) + ' XP to next level';
 
-          const levelMap = {
-            'Debutant': 'lvl1',
-            'Club Cricketer': 'lvl2',
-            'State Player': 'lvl3',
-            'IPL Pro': 'lvl4',
-            'T20 Star': 'lvl5',
-            'ODI Champion': 'lvl6',
-            'Test Legend': 'lvl7'
-          };
-          const currentLevelId = levelMap[data.level];
-          if (currentLevelId) {
-            document.getElementById(currentLevelId).classList.add('current-level');
+            // Highlight current level
+            var levelMap = {
+              'Debutant': 'lvl1',
+              'Club Cricketer': 'lvl2',
+              'State Player': 'lvl3',
+              'IPL Pro': 'lvl4',
+              'T20 Star': 'lvl5',
+              'ODI Champion': 'lvl6',
+              'Test Legend': 'lvl7'
+            };
+            var currentLevelId = levelMap[data.level];
+            if (currentLevelId) {
+              document.getElementById(currentLevelId).classList.add('current-level');
+            }
+
+          } else {
+            // Profile does not exist — create a basic one
+            db.collection('users').doc(user.uid).set({
+              username: user.displayName || 'Cricket Fan',
+              email: user.email || '',
+              favouriteTeam: '',
+              quizzesPlayed: 0,
+              totalScore: 0,
+              totalQuestions: 0,
+              currentStreak: 0,
+              bestStreak: 0,
+              xp: 0,
+              level: 'Debutant',
+              joinedDate: new Date().toISOString()
+            }).then(function() {
+              window.location.reload();
+            });
           }
-        }
+        }).catch(function(error) {
+          console.error('Error loading profile:', error);
+        });
 
       } else {
+        // Not logged in
         document.getElementById('notLoggedIn').style.display = 'flex';
       }
     });
-
-    window.handleLogout = async function() {
-      await logoutUser();
-      window.location.href = 'index.html';
-    };
   </script>
 
 </body>
