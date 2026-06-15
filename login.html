@@ -145,14 +145,17 @@
       hideMessages();
     });
 
-    // ===== GOOGLE LOGIN =====
+// ===== GOOGLE LOGIN =====
     document.getElementById('googleBtn').addEventListener('click', function() {
-      auth.signInWithPopup(googleProvider).then(function(result) {
+      auth.signInWithRedirect(googleProvider);
+    });
+
+    // Handle redirect result when page loads
+    auth.getRedirectResult().then(function(result) {
+      if (result && result.user) {
         var user = result.user;
-        // Check if new user
         db.collection('users').doc(user.uid).get().then(function(doc) {
           if (!doc.exists) {
-            // New user — create profile
             db.collection('users').doc(user.uid).set({
               username: user.displayName || 'CricFan',
               email: user.email,
@@ -171,11 +174,11 @@
           }
           window.location.href = 'profile.html';
         });
-      }).catch(function(error) {
-        if (error.code !== 'auth/popup-closed-by-user') {
-          showError('Google sign in failed. Please try again.');
-        }
-      });
+      }
+    }).catch(function(error) {
+      if (error.code !== 'auth/popup-closed-by-user') {
+        showError('Google sign in failed: ' + error.message);
+      }
     });
 
     // ===== LOGIN BUTTON =====
