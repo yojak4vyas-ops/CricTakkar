@@ -18,41 +18,6 @@ let answered = false;
 let results = [];
 const TOTAL_QUESTIONS = 10;
 
-// ===== FIREBASE SETUP =====
-var firebaseScript1 = document.createElement('script');
-firebaseScript1.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';
-document.head.appendChild(firebaseScript1);
-
-firebaseScript1.onload = function() {
-  var firebaseScript2 = document.createElement('script');
-  firebaseScript2.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js';
-  document.head.appendChild(firebaseScript2);
-
-  firebaseScript2.onload = function() {
-    var firebaseScript3 = document.createElement('script');
-    firebaseScript3.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js';
-    document.head.appendChild(firebaseScript3);
-
-    firebaseScript3.onload = function() {
-      const firebaseConfig = {
-        apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
-        authDomain: "crictakkar-44c10.firebaseapp.com",
-        projectId: "crictakkar-44c10",
-        storageBucket: "crictakkar-44c10.firebasestorage.app",
-        messagingSenderId: "96883177573",
-        appId: "1:96883177573:web:215aba6e651fbac6086e8c"
-      };
-
-      if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-      }
-
-      window.firebaseAuth = firebase.auth();
-      window.firebaseDb = firebase.firestore();
-    };
-  };
-};
-
 // ===== SET UP START SCREEN =====
 window.onload = function() {
   const info = categoryInfo[selectedCategory];
@@ -216,47 +181,40 @@ function showScoreScreen() {
     breakdown.appendChild(dot);
   });
 
-  // ===== SAVE TO FIREBASE =====
+  // Save score to Firebase
   saveScoreToFirebase(score, TOTAL_QUESTIONS);
 }
 
 // ===== SAVE SCORE TO FIREBASE =====
 function saveScoreToFirebase(score, total) {
-  var attempts = 0;
-  var interval = setInterval(function() {
-    attempts++;
-    if (window.firebaseAuth && window.firebaseDb) {
-      clearInterval(interval);
+  var user = auth.currentUser;
+  if (!user) {
+    console.log('No user logged in — score not saved');
+    return;
+  }
 
-      var user = window.firebaseAuth.currentUser;
-      if (user) {
-        var userRef = window.firebaseDb.collection('users').doc(user.uid);
-        var xpEarned = score * 10;
+  var xpEarned = score * 10;
+  var userRef = db.collection('users').doc(user.uid);
 
-        userRef.get().then(function(doc) {
-          if (doc.exists) {
-            var data = doc.data();
-            var newXP = (data.xp || 0) + xpEarned;
-            var newLevel = calculateLevel(newXP);
+  userRef.get().then(function(doc) {
+    if (doc.exists) {
+      var data = doc.data();
+      var newXP = (data.xp || 0) + xpEarned;
+      var newLevel = calculateLevel(newXP);
 
-            userRef.update({
-              quizzesPlayed: (data.quizzesPlayed || 0) + 1,
-              totalScore: (data.totalScore || 0) + score,
-              totalQuestions: (data.totalQuestions || 0) + total,
-              xp: newXP,
-              level: newLevel
-            }).then(function() {
-              console.log('Category quiz score saved! XP earned: ' + xpEarned);
-            });
-          }
-        });
-      }
+      userRef.update({
+        quizzesPlayed: (data.quizzesPlayed || 0) + 1,
+        totalScore: (data.totalScore || 0) + score,
+        totalQuestions: (data.totalQuestions || 0) + total,
+        xp: newXP,
+        level: newLevel
+      }).then(function() {
+        console.log('Category score saved! +' + xpEarned + ' XP');
+      });
     }
-    if (attempts > 20) {
-      clearInterval(interval);
-      console.log('Firebase not ready — score not saved');
-    }
-  }, 500);
+  }).catch(function(error) {
+    console.error('Error saving score:', error);
+  });
 }
 
 // ===== CALCULATE LEVEL =====
