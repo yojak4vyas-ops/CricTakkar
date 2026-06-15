@@ -105,4 +105,185 @@
       authDomain: "crictakkar-44c10.firebaseapp.com",
       projectId: "crictakkar-44c10",
       storageBucket: "crictakkar-44c10.firebasestorage.app",
-      messagingSenderId:
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // ===== GOOGLE PROVIDER WITH CLIENT ID =====
+    const googleProvider = new firebase.auth.GoogleAuthProvider();
+    googleProvider.setCustomParameters({
+      client_id: '96883177573-1su71qe8r07qal57j7n6qblcns0iog4k.apps.googleusercontent.com'
+    });
+
+    // ===== CHECK IF ALREADY LOGGED IN =====
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        window.location.href = 'profile.html';
+      }
+    });
+
+    // ===== GOOGLE LOGIN =====
+    document.getElementById('googleBtn').addEventListener('click', function() {
+      auth.signInWithRedirect(googleProvider);
+    });
+
+    // Handle redirect result when page loads
+    auth.getRedirectResult().then(function(result) {
+      if (result && result.user) {
+        var user = result.user;
+        db.collection('users').doc(user.uid).get().then(function(doc) {
+          if (!doc.exists) {
+            db.collection('users').doc(user.uid).set({
+              username: user.displayName || 'CricFan',
+              email: user.email,
+              favouriteTeam: '',
+              quizzesPlayed: 0,
+              totalScore: 0,
+              totalQuestions: 0,
+              currentStreak: 0,
+              bestStreak: 0,
+              xp: 0,
+              level: 'Debutant',
+              emailVerified: true,
+              loginMethod: 'google',
+              joinedDate: new Date().toISOString()
+            });
+          }
+          window.location.href = 'profile.html';
+        });
+      }
+    }).catch(function(error) {
+      if (error.code !== 'auth/popup-closed-by-user') {
+        showError('Google sign in failed. Please try again.');
+      }
+    });
+
+    // ===== TAB SWITCHING =====
+    document.getElementById('loginTab').addEventListener('click', function() {
+      document.getElementById('loginForm').style.display = 'block';
+      document.getElementById('signupForm').style.display = 'none';
+      document.getElementById('loginTab').classList.add('active');
+      document.getElementById('signupTab').classList.remove('active');
+      hideMessages();
+    });
+
+    document.getElementById('signupTab').addEventListener('click', function() {
+      document.getElementById('signupForm').style.display = 'block';
+      document.getElementById('loginForm').style.display = 'none';
+      document.getElementById('signupTab').classList.add('active');
+      document.getElementById('loginTab').classList.remove('active');
+      hideMessages();
+    });
+
+    // ===== LOGIN BUTTON =====
+    document.getElementById('loginBtn').addEventListener('click', function() {
+      var email = document.getElementById('loginEmail').value.trim();
+      var password = document.getElementById('loginPassword').value;
+
+      if (!email || !password) {
+        showError('Please fill in both email and password.');
+        return;
+      }
+
+      var btn = document.getElementById('loginBtn');
+      btn.textContent = 'Logging in...';
+      btn.disabled = true;
+
+      auth.signInWithEmailAndPassword(email, password).then(function() {
+        showSuccess('Welcome back! Taking you to your profile...');
+        setTimeout(function() { window.location.href = 'profile.html'; }, 1000);
+      }).catch(function(error) {
+        showError(getFriendlyError(error.code));
+        btn.textContent = 'Log In 🏏';
+        btn.disabled = false;
+      });
+    });
+
+    // ===== SIGN UP BUTTON =====
+    document.getElementById('signupBtn').addEventListener('click', function() {
+      var username = document.getElementById('signupUsername').value.trim();
+      var team = document.getElementById('signupTeam').value;
+      var email = document.getElementById('signupEmail').value.trim();
+      var password = document.getElementById('signupPassword').value;
+
+      if (!username || !team || !email || !password) {
+        showError('Please fill in all fields.');
+        return;
+      }
+      if (username.length < 3) {
+        showError('Username must be at least 3 characters.');
+        return;
+      }
+      if (password.length < 6) {
+        showError('Password must be at least 6 characters.');
+        return;
+      }
+
+      var btn = document.getElementById('signupBtn');
+      btn.textContent = 'Creating account...';
+      btn.disabled = true;
+
+      auth.createUserWithEmailAndPassword(email, password).then(function(result) {
+        var user = result.user;
+        user.sendEmailVerification();
+        return db.collection('users').doc(user.uid).set({
+          username: username,
+          email: email,
+          favouriteTeam: team,
+          quizzesPlayed: 0,
+          totalScore: 0,
+          totalQuestions: 0,
+          currentStreak: 0,
+          bestStreak: 0,
+          xp: 0,
+          level: 'Debutant',
+          emailVerified: false,
+          loginMethod: 'email',
+          joinedDate: new Date().toISOString()
+        });
+      }).then(function() {
+        showSuccess('Account created! A verification email has been sent. You can play while you verify! 🏏');
+        setTimeout(function() { window.location.href = 'profile.html'; }, 2500);
+      }).catch(function(error) {
+        showError(getFriendlyError(error.code));
+        btn.textContent = 'Create Account 🚀';
+        btn.disabled = false;
+      });
+    });
+
+    // ===== HELPER FUNCTIONS =====
+    function showError(message) {
+      document.getElementById('errorMessage').textContent = message;
+      document.getElementById('errorBox').style.display = 'block';
+      document.getElementById('successBox').style.display = 'none';
+    }
+
+    function showSuccess(message) {
+      document.getElementById('successMessage').textContent = message;
+      document.getElementById('successBox').style.display = 'block';
+      document.getElementById('errorBox').style.display = 'none';
+    }
+
+    function hideMessages() {
+      document.getElementById('errorBox').style.display = 'none';
+      document.getElementById('successBox').style.display = 'none';
+    }
+
+    function getFriendlyError(code) {
+      if (code === 'auth/email-already-in-use') return 'This email is already registered. Try logging in instead.';
+      if (code === 'auth/wrong-password') return 'Wrong password. Please try again.';
+      if (code === 'auth/user-not-found') return 'No account found with this email. Sign up first!';
+      if (code === 'auth/invalid-email') return 'Please enter a valid email address.';
+      if (code === 'auth/weak-password') return 'Password is too weak. Use at least 6 characters.';
+      if (code === 'auth/network-request-failed') return 'No internet connection. Please check your connection.';
+      if (code === 'auth/invalid-credential') return 'Wrong email or password. Please try again.';
+      return 'Something went wrong. Please try again.';
+    }
+  </script>
+
+</body>
+</html>
