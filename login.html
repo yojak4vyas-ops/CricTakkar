@@ -102,7 +102,7 @@
     // ===== FIREBASE SETUP =====
     const firebaseConfig = {
       apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
-      authDomain: "crictakkar-44c10.firebaseapp.com",
+      authDomain: "cric-takkar.vercel.app",
       projectId: "crictakkar-44c10",
       storageBucket: "crictakkar-44c10.firebasestorage.app",
       messagingSenderId: "96883177573",
@@ -113,7 +113,7 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // ===== GOOGLE PROVIDER WITH CLIENT ID =====
+    // ===== GOOGLE PROVIDER =====
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     googleProvider.setCustomParameters({
       client_id: '96883177573-1su71qe8r07qal57j7n6qblcns0iog4k.apps.googleusercontent.com'
@@ -131,7 +131,6 @@
       auth.signInWithRedirect(googleProvider);
     });
 
-    // Handle redirect result when page loads
     auth.getRedirectResult().then(function(result) {
       if (result && result.user) {
         var user = result.user;
