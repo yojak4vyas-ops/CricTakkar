@@ -1,6 +1,5 @@
 // ===== CRICTAKKAR QUIZ ENGINE =====
 
-// These variables track the quiz state
 let currentQuestions = [];
 let currentIndex = 0;
 let score = 0;
@@ -8,42 +7,6 @@ let timerInterval = null;
 let timeLeft = 15;
 let answered = false;
 let results = [];
-
-// ===== FIREBASE SETUP =====
-// Load Firebase to save quiz results
-var firebaseScript1 = document.createElement('script');
-firebaseScript1.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';
-document.head.appendChild(firebaseScript1);
-
-firebaseScript1.onload = function() {
-  var firebaseScript2 = document.createElement('script');
-  firebaseScript2.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js';
-  document.head.appendChild(firebaseScript2);
-
-  firebaseScript2.onload = function() {
-    var firebaseScript3 = document.createElement('script');
-    firebaseScript3.src = 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js';
-    document.head.appendChild(firebaseScript3);
-
-    firebaseScript3.onload = function() {
-      const firebaseConfig = {
-        apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
-        authDomain: "crictakkar-44c10.firebaseapp.com",
-        projectId: "crictakkar-44c10",
-        storageBucket: "crictakkar-44c10.firebasestorage.app",
-        messagingSenderId: "96883177573",
-        appId: "1:96883177573:web:215aba6e651fbac6086e8c"
-      };
-
-      if (!firebase.apps.length) {
-        firebase.initializeApp(firebaseConfig);
-      }
-
-      window.firebaseAuth = firebase.auth();
-      window.firebaseDb = firebase.firestore();
-    };
-  };
-};
 
 // ===== START THE QUIZ =====
 function startQuiz() {
@@ -78,8 +41,7 @@ function loadQuestion() {
     'Question ' + (currentIndex + 1) + ' of 5';
 
   document.getElementById('timerNumber').textContent = timeLeft;
-  const timerCircle = document.getElementById('timerCircle');
-  timerCircle.classList.remove('danger');
+  document.getElementById('timerCircle').classList.remove('danger');
 
   document.getElementById('questionText').textContent = q.question;
 
@@ -120,12 +82,9 @@ function startTimer() {
 function timeUp() {
   answered = true;
   results.push(false);
-
   disableAllOptions();
-
   document.getElementById('opt' + currentQuestions[currentIndex].correct)
     .classList.add('correct');
-
   showFact("⏰ Time's up! The correct answer was highlighted above.");
 }
 
@@ -133,7 +92,6 @@ function timeUp() {
 function selectAnswer(selectedIndex) {
   if (answered) return;
   answered = true;
-
   clearInterval(timerInterval);
 
   const correctIndex = currentQuestions[currentIndex].correct;
@@ -177,7 +135,6 @@ function disableAllOptions() {
 // ===== NEXT QUESTION =====
 function nextQuestion() {
   currentIndex++;
-
   if (currentIndex >= 5) {
     showScoreScreen();
   } else {
@@ -206,52 +163,40 @@ function showScoreScreen() {
     breakdown.appendChild(dot);
   });
 
-  // ===== SAVE TO FIREBASE =====
+  // Save score to Firebase
   saveScoreToFirebase(score, 5);
 }
 
 // ===== SAVE SCORE TO FIREBASE =====
 function saveScoreToFirebase(score, total) {
-  // Wait for Firebase to be ready
-  var attempts = 0;
-  var interval = setInterval(function() {
-    attempts++;
-    if (window.firebaseAuth && window.firebaseDb) {
-      clearInterval(interval);
+  var user = auth.currentUser;
+  if (!user) {
+    console.log('No user logged in — score not saved');
+    return;
+  }
 
-      var user = window.firebaseAuth.currentUser;
-      if (user) {
-        var userRef = window.firebaseDb.collection('users').doc(user.uid);
-        var xpEarned = score * 10;
+  var xpEarned = score * 10;
+  var userRef = db.collection('users').doc(user.uid);
 
-        // Get current data first
-        userRef.get().then(function(doc) {
-          if (doc.exists) {
-            var data = doc.data();
-            var newXP = (data.xp || 0) + xpEarned;
-            var newLevel = calculateLevel(newXP);
-            var newQuizzesPlayed = (data.quizzesPlayed || 0) + 1;
-            var newTotalScore = (data.totalScore || 0) + score;
-            var newTotalQuestions = (data.totalQuestions || 0) + total;
+  userRef.get().then(function(doc) {
+    if (doc.exists) {
+      var data = doc.data();
+      var newXP = (data.xp || 0) + xpEarned;
+      var newLevel = calculateLevel(newXP);
 
-            userRef.update({
-              quizzesPlayed: newQuizzesPlayed,
-              totalScore: newTotalScore,
-              totalQuestions: newTotalQuestions,
-              xp: newXP,
-              level: newLevel
-            }).then(function() {
-              console.log('Score saved! XP earned: ' + xpEarned);
-            });
-          }
-        });
-      }
+      userRef.update({
+        quizzesPlayed: (data.quizzesPlayed || 0) + 1,
+        totalScore: (data.totalScore || 0) + score,
+        totalQuestions: (data.totalQuestions || 0) + total,
+        xp: newXP,
+        level: newLevel
+      }).then(function() {
+        console.log('Score saved! +' + xpEarned + ' XP');
+      });
     }
-    if (attempts > 20) {
-      clearInterval(interval);
-      console.log('Firebase not ready — score not saved');
-    }
-  }, 500);
+  }).catch(function(error) {
+    console.error('Error saving score:', error);
+  });
 }
 
 // ===== CALCULATE LEVEL =====
