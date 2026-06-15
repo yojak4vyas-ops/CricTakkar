@@ -26,15 +26,28 @@
       <h1 class="auth-title">CricTakkar</h1>
       <p class="auth-subtitle">India's Cricket Quiz Platform</p>
 
+      <!-- GOOGLE LOGIN BUTTON -->
+      <button class="google-btn" id="googleBtn">
+        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" />
+        Continue with Google
+      </button>
+
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <!-- TABS -->
       <div class="auth-tabs">
         <button class="auth-tab active" id="loginTab">Log In</button>
         <button class="auth-tab" id="signupTab">Sign Up</button>
       </div>
 
+      <!-- ERROR BOX -->
       <div class="error-box" id="errorBox" style="display:none">
         <span id="errorMessage">Something went wrong.</span>
       </div>
 
+      <!-- SUCCESS BOX -->
       <div class="success-box" id="successBox" style="display:none">
         <span id="successMessage">Done!</span>
       </div>
@@ -94,12 +107,33 @@
   </div>
 
   <script type="module">
-    import { signUpUser, loginUser, watchAuthState } from '/firebase-config.js';
+    import { signUpUser, loginUser, signInWithGoogle, watchAuthState } from '/firebase-config.js';
 
     // ===== CHECK IF ALREADY LOGGED IN =====
     watchAuthState(function(user) {
       if (user) {
         window.location.href = 'profile.html';
+      }
+    });
+
+    // ===== GOOGLE LOGIN =====
+    document.getElementById('googleBtn').addEventListener('click', async function() {
+      this.textContent = 'Signing in...';
+      this.disabled = true;
+
+      const result = await signInWithGoogle();
+
+      if (result.success) {
+        if (result.isNewUser) {
+          showSuccess('Welcome to CricTakkar! 🏏 Taking you to your profile...');
+        } else {
+          showSuccess('Welcome back! Taking you to your profile...');
+        }
+        setTimeout(() => { window.location.href = 'profile.html'; }, 1000);
+      } else {
+        showError('Google sign in failed. Please try again.');
+        this.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" /> Continue with Google';
+        this.disabled = false;
       }
     });
 
@@ -141,71 +175,4 @@
         showSuccess('Welcome back! Taking you to your profile...');
         setTimeout(() => { window.location.href = 'profile.html'; }, 1000);
       } else {
-        showError(getFriendlyError(result.error));
-        this.textContent = 'Log In 🏏';
-        this.disabled = false;
-      }
-    });
-
-    // ===== SIGN UP BUTTON =====
-    document.getElementById('signupBtn').addEventListener('click', async function() {
-      const username = document.getElementById('signupUsername').value.trim();
-      const team = document.getElementById('signupTeam').value;
-      const email = document.getElementById('signupEmail').value.trim();
-      const password = document.getElementById('signupPassword').value;
-
-      if (!username || !team || !email || !password) {
-        showError('Please fill in all fields.');
-        return;
-      }
-      if (username.length < 3) {
-        showError('Username must be at least 3 characters.');
-        return;
-      }
-      if (password.length < 6) {
-        showError('Password must be at least 6 characters.');
-        return;
-      }
-
-      this.textContent = 'Creating account...';
-      this.disabled = true;
-
-      const result = await signUpUser(email, password, username, team);
-
-      if (result.success) {
-        showSuccess('Account created! Welcome to CricTakkar! 🏏');
-        setTimeout(() => { window.location.href = 'profile.html'; }, 1000);
-      } else {
-        showError(getFriendlyError(result.error));
-        this.textContent = 'Create Account 🚀';
-        this.disabled = false;
-      }
-    });
-
-    // ===== HELPER FUNCTIONS =====
-    function showError(message) {
-      document.getElementById('errorMessage').textContent = message;
-      document.getElementById('errorBox').style.display = 'block';
-      document.getElementById('successBox').style.display = 'none';
-    }
-
-    function showSuccess(message) {
-      document.getElementById('successMessage').textContent = message;
-      document.getElementById('successBox').style.display = 'block';
-      document.getElementById('errorBox').style.display = 'none';
-    }
-
-    function getFriendlyError(error) {
-      if (error.includes('email-already-in-use')) return 'This email is already registered. Try logging in instead.';
-      if (error.includes('wrong-password')) return 'Wrong password. Please try again.';
-      if (error.includes('user-not-found')) return 'No account found with this email. Sign up first!';
-      if (error.includes('invalid-email')) return 'Please enter a valid email address.';
-      if (error.includes('weak-password')) return 'Password is too weak. Use at least 6 characters.';
-      if (error.includes('network-request-failed')) return 'No internet connection. Please check your connection.';
-      if (error.includes('invalid-credential')) return 'Wrong email or password. Please try again.';
-      return 'Something went wrong. Please try again.';
-    }
-  </script>
-
-</body>
-</html>
+        showError(getFriendlyErro
