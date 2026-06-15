@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- NAVIGATION BAR -->
   <nav class="navbar">
     <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
     <div class="nav-links">
@@ -21,7 +20,6 @@
     </div>
   </nav>
 
-  <!-- SCREEN 1: START SCREEN -->
   <div class="quiz-wrapper" id="startScreen">
     <div class="quiz-card">
       <div class="quiz-start-icon" id="categoryIcon">🏏</div>
@@ -42,41 +40,33 @@
     </div>
   </div>
 
-  <!-- SCREEN 2: QUESTION SCREEN -->
   <div class="quiz-wrapper" id="questionScreen" style="display:none">
     <div class="quiz-card">
-
       <div class="progress-bar-container">
         <div class="progress-bar" id="progressBar"></div>
       </div>
-
       <div class="quiz-meta">
         <span class="question-counter" id="questionCounter">Question 1 of 10</span>
         <div class="timer-circle" id="timerCircle">
           <span id="timerNumber">15</span>
         </div>
       </div>
-
       <h2 class="question-text" id="questionText">Question goes here</h2>
-
       <div class="options-grid" id="optionsGrid">
         <button class="option-btn" id="opt0" onclick="selectAnswer(0)"></button>
         <button class="option-btn" id="opt1" onclick="selectAnswer(1)"></button>
         <button class="option-btn" id="opt2" onclick="selectAnswer(2)"></button>
         <button class="option-btn" id="opt3" onclick="selectAnswer(3)"></button>
       </div>
-
       <div class="fact-box" id="factBox" style="display:none">
         <p class="fact-text" id="factText"></p>
         <button class="btn-primary" style="margin-top:16px; width:100%;" onclick="nextQuestion()">
           Next Question →
         </button>
       </div>
-
     </div>
   </div>
 
-  <!-- SCREEN 3: SCORE SCREEN -->
   <div class="quiz-wrapper" id="scoreScreen" style="display:none">
     <div class="quiz-card" style="text-align:center">
       <div class="score-emoji" id="scoreEmoji">🏆</div>
@@ -86,9 +76,7 @@
         <span class="score-out-of" id="scoreOutOf">/10</span>
       </div>
       <p class="score-message" id="scoreMessage">You did well!</p>
-
       <div class="score-breakdown" id="scoreBreakdown"></div>
-
       <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px;">
         <button class="btn-primary" onclick="shareScore()">Share Score 📤</button>
         <button class="btn-secondary" onclick="restartQuiz()">Play Again 🔄</button>
@@ -104,7 +92,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-    const firebaseConfig = {
+    var firebaseConfig = {
       apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
       authDomain: "crictakkar-44c10.firebaseapp.com",
       projectId: "crictakkar-44c10",
@@ -117,8 +105,8 @@
       firebase.initializeApp(firebaseConfig);
     }
 
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+    var auth = firebase.auth();
+    var db = firebase.firestore();
   </script>
 
   <script src="category-questions.js"></script>
