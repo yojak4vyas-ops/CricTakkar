@@ -1,36 +1,36 @@
 // ===== CRICTAKKAR CATEGORY QUIZ ENGINE =====
 
-const selectedCategory = localStorage.getItem('selectedCategory') || 'ipl';
+var selectedCategory = localStorage.getItem('selectedCategory') || 'ipl';
 
-const categoryInfo = {
+var categoryInfo = {
   ipl: { title: 'IPL Quiz', icon: '🏏' },
   test: { title: 'Test Cricket Quiz', icon: '🎩' },
   odi: { title: 'ODI Cricket Quiz', icon: '🌍' },
   t20: { title: 'T20 World Cup Quiz', icon: '⚡' }
 };
 
-let currentQuestions = [];
-let currentIndex = 0;
-let score = 0;
-let timerInterval = null;
-let timeLeft = 15;
-let answered = false;
-let results = [];
-const TOTAL_QUESTIONS = 10;
+var currentQuestions = [];
+var currentIndex = 0;
+var score = 0;
+var timerInterval = null;
+var timeLeft = 15;
+var answered = false;
+var results = [];
+var TOTAL_QUESTIONS = 10;
 
 // ===== SET UP START SCREEN =====
 window.onload = function() {
-  const info = categoryInfo[selectedCategory];
+  var info = categoryInfo[selectedCategory];
   document.getElementById('categoryTitle').textContent = info.title;
   document.getElementById('categoryIcon').textContent = info.icon;
 };
 
 // ===== START THE QUIZ =====
 function startCategoryQuiz() {
-  const allQuestions = categoryQuestions[selectedCategory];
+  var allQuestions = categoryQuestions[selectedCategory];
 
-  currentQuestions = [...allQuestions]
-    .sort(() => Math.random() - 0.5)
+  currentQuestions = allQuestions.slice()
+    .sort(function() { return Math.random() - 0.5; })
     .slice(0, TOTAL_QUESTIONS);
 
   currentIndex = 0;
@@ -48,9 +48,9 @@ function loadQuestion() {
   answered = false;
   timeLeft = 15;
 
-  const q = currentQuestions[currentIndex];
+  var q = currentQuestions[currentIndex];
 
-  const progress = (currentIndex / TOTAL_QUESTIONS) * 100;
+  var progress = (currentIndex / TOTAL_QUESTIONS) * 100;
   document.getElementById('progressBar').style.width = progress + '%';
 
   document.getElementById('questionCounter').textContent =
@@ -60,7 +60,7 @@ function loadQuestion() {
   document.getElementById('timerCircle').classList.remove('danger');
   document.getElementById('questionText').textContent = q.question;
 
-  const optionButtons = document.querySelectorAll('.option-btn');
+  var optionButtons = document.querySelectorAll('.option-btn');
   optionButtons.forEach(function(btn, index) {
     btn.textContent = q.options[index];
     btn.className = 'option-btn';
@@ -85,7 +85,9 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
-      if (!answered) timeUp();
+      if (!answered) {
+        timeUp();
+      }
     }
   }, 1000);
 }
@@ -95,7 +97,8 @@ function timeUp() {
   answered = true;
   results.push(false);
   disableAllOptions();
-  document.getElementById('opt' + currentQuestions[currentIndex].correct).classList.add('correct');
+  document.getElementById('opt' + currentQuestions[currentIndex].correct)
+    .classList.add('correct');
   showFact("⏰ Time's up! The correct answer was highlighted above.");
 }
 
@@ -105,8 +108,8 @@ function selectAnswer(selectedIndex) {
   answered = true;
   clearInterval(timerInterval);
 
-  const correctIndex = currentQuestions[currentIndex].correct;
-  const isCorrect = selectedIndex === correctIndex;
+  var correctIndex = currentQuestions[currentIndex].correct;
+  var isCorrect = selectedIndex === correctIndex;
 
   disableAllOptions();
 
@@ -128,8 +131,12 @@ function showFact(factText) {
   document.getElementById('factText').textContent = factText;
   document.getElementById('factBox').style.display = 'block';
 
-  const nextBtn = document.querySelector('#factBox .btn-primary');
-  nextBtn.textContent = currentIndex === TOTAL_QUESTIONS - 1 ? 'See My Score 🏆' : 'Next Question →';
+  var nextBtn = document.querySelector('#factBox .btn-primary');
+  if (currentIndex === TOTAL_QUESTIONS - 1) {
+    nextBtn.textContent = 'See My Score 🏆';
+  } else {
+    nextBtn.textContent = 'Next Question →';
+  }
 }
 
 // ===== DISABLE OPTIONS =====
@@ -158,15 +165,15 @@ function showScoreScreen() {
   document.getElementById('scoreNumber').textContent = score;
   document.getElementById('scoreOutOf').textContent = '/' + TOTAL_QUESTIONS;
 
-  const scoreData = getScoreData(score, TOTAL_QUESTIONS);
+  var scoreData = getScoreData(score, TOTAL_QUESTIONS);
   document.getElementById('scoreEmoji').textContent = scoreData.emoji;
   document.getElementById('scoreTitle').textContent = scoreData.title;
   document.getElementById('scoreMessage').textContent = scoreData.message;
 
-  const breakdown = document.getElementById('scoreBreakdown');
+  var breakdown = document.getElementById('scoreBreakdown');
   breakdown.innerHTML = '';
   results.forEach(function(isCorrect) {
-    const dot = document.createElement('div');
+    var dot = document.createElement('div');
     dot.className = 'breakdown-dot ' + (isCorrect ? 'correct' : 'wrong');
     dot.textContent = isCorrect ? '✓' : '✗';
     breakdown.appendChild(dot);
@@ -176,35 +183,36 @@ function showScoreScreen() {
 }
 
 // ===== SAVE SCORE TO FIREBASE =====
-function saveScoreToFirebase(scoreVal, total) {
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (!user) {
-      console.log('Not logged in — score not saved');
-      return;
+function saveScoreToFirebase(finalScore, total) {
+  auth.onAuthStateChanged(function(user) {
+    if (user) {
+      var xpEarned = finalScore * 10;
+      var userRef = db.collection('users').doc(user.uid);
+
+      userRef.get().then(function(doc) {
+        if (doc.exists) {
+          var data = doc.data();
+          var newXP = (data.xp || 0) + xpEarned;
+          var newLevel = calculateLevel(newXP);
+
+          userRef.update({
+            quizzesPlayed: (data.quizzesPlayed || 0) + 1,
+            totalScore: (data.totalScore || 0) + finalScore,
+            totalQuestions: (data.totalQuestions || 0) + total,
+            xp: newXP,
+            level: newLevel
+          }).then(function() {
+            console.log('✅ Category score saved! +' + xpEarned + ' XP');
+          }).catch(function(error) {
+            console.error('❌ Error updating score:', error);
+          });
+        }
+      }).catch(function(error) {
+        console.error('❌ Error getting user data:', error);
+      });
+    } else {
+      console.log('ℹ️ No user logged in — score not saved');
     }
-
-    var xpEarned = scoreVal * 10;
-    var userRef = firebase.firestore().collection('users').doc(user.uid);
-
-    userRef.get().then(function(doc) {
-      if (doc.exists) {
-        var data = doc.data();
-        var newXP = (data.xp || 0) + xpEarned;
-        var newLevel = calculateLevel(newXP);
-
-        userRef.update({
-          quizzesPlayed: (data.quizzesPlayed || 0) + 1,
-          totalScore: (data.totalScore || 0) + scoreVal,
-          totalQuestions: (data.totalQuestions || 0) + total,
-          xp: newXP,
-          level: newLevel
-        }).then(function() {
-          console.log('✅ Category quiz score saved! +' + xpEarned + ' XP');
-        });
-      }
-    }).catch(function(error) {
-      console.error('Error saving score:', error);
-    });
   });
 }
 
@@ -221,18 +229,33 @@ function calculateLevel(xp) {
 
 // ===== SCORE MESSAGE =====
 function getScoreData(score, total) {
-  const percent = score / total;
-  if (percent === 1) return { emoji: '🏆', title: 'Perfect Score! Absolute Legend!', message: 'You got every single question right. You know this format inside out!' };
-  if (percent >= 0.8) return { emoji: '🌟', title: 'Excellent! Almost Perfect!', message: 'Outstanding cricket knowledge. Just a couple slipped away!' };
-  if (percent >= 0.6) return { emoji: '👏', title: 'Good Game!', message: 'Solid performance! Keep playing to sharpen your knowledge.' };
-  if (percent >= 0.4) return { emoji: '🏏', title: 'Getting There!', message: 'Not bad! The fun facts will help you improve fast.' };
-  return { emoji: '😬', title: 'Tough Day at the Crease!', message: "Don't give up! Even legends had bad days. Come back and try again!" };
+  var percent = score / total;
+  if (percent === 1) return {
+    emoji: '🏆', title: 'Perfect Score! Absolute Legend!',
+    message: 'You got every single question right. You know this format inside out!'
+  };
+  if (percent >= 0.8) return {
+    emoji: '🌟', title: 'Excellent! Almost Perfect!',
+    message: 'Outstanding cricket knowledge. Just a couple slipped away!'
+  };
+  if (percent >= 0.6) return {
+    emoji: '👏', title: 'Good Game!',
+    message: 'Solid performance! Keep playing to sharpen your knowledge.'
+  };
+  if (percent >= 0.4) return {
+    emoji: '🏏', title: 'Getting There!',
+    message: 'Not bad! The fun facts will help you improve fast.'
+  };
+  return {
+    emoji: '😬', title: 'Tough Day at the Crease!',
+    message: "Don't give up! Even legends had bad days. Come back and try again!"
+  };
 }
 
 // ===== SHARE SCORE =====
 function shareScore() {
-  const info = categoryInfo[selectedCategory];
-  const shareText =
+  var info = categoryInfo[selectedCategory];
+  var shareText =
     '🏏 I scored ' + score + '/' + TOTAL_QUESTIONS +
     ' on the CricTakkar ' + info.title + '!\n' +
     'Can you beat me? Play free at crictakkar.in\n' +
