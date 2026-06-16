@@ -412,7 +412,7 @@
           snapshot.forEach(function(doc) {
             const data = doc.data();
             // Only include users who have actually played at least 1 quiz
-            if ((data.quizzesPlayed || 0) > 0) {
+            if ((data.xp || 0) > 0) {
               allUsers.push({
                 uid: doc.id,
                 username: data.username || 'Cricket Fan',
