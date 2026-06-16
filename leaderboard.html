@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaderboard — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    .leaderboard-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 24px 16px 80px;
+    }
+
+    .leaderboard-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .leaderboard-subtitle {
+      text-align: center;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    /* TAB BUTTONS */
+    .tab-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 5px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 9px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background: transparent;
+      color: rgba(255,255,255,0.5);
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+    }
+
+    /* TOP 3 PODIUM */
+    .podium-row {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .podium-card {
+      background: rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 16px 12px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      flex: 1;
+      max-width: 160px;
+      transition: transform 0.2s;
+    }
+
+    .podium-card.first {
+      background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,165,0,0.1));
+      border-color: rgba(255,215,0,0.4);
+      transform: translateY(-12px);
+    }
+
+    .podium-card.second {
+      background: linear-gradient(135deg, rgba(192,192,192,0.15), rgba(169,169,169,0.1));
+      border-color: rgba(192,192,192,0.3);
+    }
+
+    .podium-card.third {
+      background: linear-gradient(135deg, rgba(205,127,50,0.15), rgba(184,115,51,0.1));
+      border-color: rgba(205,127,50,0.3);
+    }
+
+    .podium-medal {
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .podium-avatar {
+      font-size: 1.8rem;
+      margin-bottom: 6px;
+    }
+
+    .podium-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .podium-xp {
+      font-size: 0.75rem;
+      color: #f7931e;
+      font-weight: 700;
+    }
+
+    .podium-level {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.45);
+      margin-top: 2px;
+    }
+
+    /* REST OF THE LIST */
+    .leaderboard-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .lb-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: all 0.2s;
+    }
+
+    /* Highlight the current logged-in user */
+    .lb-row.is-you {
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(247,147,30,0.15));
+      border-color: rgba(255,107,53,0.5);
+    }
+
+    .lb-rank {
+      font-size: 1rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.4);
+      min-width: 28px;
+      text-align: center;
+    }
+
+    .lb-avatar {
+      font-size: 1.6rem;
+      min-width: 36px;
+      text-align: center;
+    }
+
+    .lb-info {
+      flex: 1;
+    }
+
+    .lb-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .lb-you-tag {
+      background: #ff6b35;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 20px;
+      margin-left: 7px;
+      vertical-align: middle;
+    }
+
+    .lb-sublabel {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 2px;
+    }
+
+    .lb-xp {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #f7931e;
+      text-align: right;
+    }
+
+    .lb-xp-label {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.35);
+      text-align: right;
+    }
+
+    /* YOUR RANK CARD (shown at bottom if you're not in top 10) */
+    .your-rank-card {
+      margin-top: 20px;
+      background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(247,147,30,0.15));
+      border: 1px solid rgba(255,107,53,0.5);
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      display: none;
+    }
+
+    .your-rank-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      margin: 4px 0;
+    }
+
+    .your-rank-card strong {
+      color: #f7931e;
+      font-size: 1.1rem;
+    }
+
+    /* LOADING / EMPTY STATES */
+    .loading-state, .empty-state {
+      text-align: center;
+      padding: 60px 24px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    .loading-state div, .empty-state div {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      margin-top: 4px;
+      padding-left: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Daily Quiz</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="leaderboard.html" class="nav-link active">Leaderboard</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <div class="leaderboard-wrapper">
+
+    <h1 class="leaderboard-title">🏆 Leaderboard</h1>
+    <p class="leaderboard-subtitle">Top cricket brains on CricTakkar</p>
+
+    <!-- WEEK / MONTH TABS -->
+    <div class="tab-row">
+      <button class="tab-btn active" id="tabWeek" onclick="switchTab('week')">🗓️ This Week</button>
+      <button class="tab-btn" id="tabMonth" onclick="switchTab('month')">📅 This Month</button>
+      <button class="tab-btn" id="tabAllTime" onclick="switchTab('alltime')">🌟 All Time</button>
+    </div>
+
+    <!-- LOADING STATE -->
+    <div class="loading-state" id="loadingState">
+      <div>⏳</div>
+      <p>Loading leaderboard...</p>
+    </div>
+
+    <!-- LEADERBOARD CONTENT (hidden until data loads) -->
+    <div id="leaderboardContent" style="display:none">
+
+      <!-- TOP 3 PODIUM -->
+      <div class="section-label">TOP 3</div>
+      <div class="podium-row" id="podiumRow"></div>
+
+      <!-- REST OF LIST (4th onwards) -->
+      <div class="section-label" id="restLabel" style="display:none">RANKS 4–10</div>
+      <div class="leaderboard-list" id="leaderboardList"></div>
+
+      <!-- YOUR RANK (if not in top 10) -->
+      <div class="your-rank-card" id="yourRankCard">
+        <p>Your current rank</p>
+        <strong id="yourRankNumber">#—</strong>
+        <p id="yourRankXP">Keep playing to climb higher! 🚀</p>
+      </div>
+
+    </div>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="emptyState" style="display:none">
+      <div>🏏</div>
+      <p>No players yet this period.<br/>Be the first to play!</p>
+    </div>
+
+  </div>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ===== FIREBASE SETUP =====
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // ===== TEAM AVATARS (same as profile.html) =====
+    const avatars = {
+      'Mumbai Indians': '💙',
+      'Chennai Super Kings': '💛',
+      'Royal Challengers Bengaluru': '❤️',
+      'Kolkata Knight Riders': '💜',
+      'Rajasthan Royals': '🩷',
+      'Delhi Capitals': '💙',
+      'Punjab Kings': '❤️',
+      'Sunrisers Hyderabad': '🧡',
+      'Gujarat Titans': '🩵',
+      'Lucknow Super Giants': '🩵',
+      'India': '🇮🇳'
+    };
+
+    // ===== CURRENT TAB =====
+    let currentTab = 'week';
+    let currentUserId = null;
+
+    // ===== WATCH WHO IS LOGGED IN =====
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        currentUserId = user.uid;
+      } else {
+        currentUserId = null;
+      }
+      // Load the leaderboard regardless of login status
+      loadLeaderboard('week');
+    });
+
+    // ===== SWITCH TAB =====
+    function switchTab(tab) {
+      currentTab = tab;
+
+      // Update tab button styles
+      document.getElementById('tabWeek').classList.remove('active');
+      document.getElementById('tabMonth').classList.remove('active');
+      document.getElementById('tabAllTime').classList.remove('active');
+      document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+
+      loadLeaderboard(tab);
+    }
+
+    // ===== GET DATE CUTOFF =====
+    // This tells Firebase: "only get users who played after this date"
+    function getDateCutoff(tab) {
+      const now = new Date();
+      if (tab === 'week') {
+        // 7 days ago
+        const d = new Date(now);
+        d.setDate(d.getDate() - 7);
+        return d.toISOString();
+      }
+      if (tab === 'month') {
+        // 30 days ago
+        const d = new Date(now);
+        d.setDate(d.getDate() - 30);
+        return d.toISOString();
+      }
+      // All time — no cutoff needed
+      return null;
+    }
+
+    // ===== LOAD LEADERBOARD FROM FIREBASE =====
+    function loadLeaderboard(tab) {
+      // Show loading, hide everything else
+      document.getElementById('loadingState').style.display = 'block';
+      document.getElementById('leaderboardContent').style.display = 'none';
+      document.getElementById('emptyState').style.display = 'none';
+
+      // Read ALL users from Firebase, sorted by XP (highest first), limit to top 50
+      // We get top 50 so we can find the current user's rank even if not in top 10
+      db.collection('users')
+        .orderBy('xp', 'desc')
+        .limit(50)
+        .get()
+        .then(function(snapshot) {
+          let allUsers = [];
+
+          snapshot.forEach(function(doc) {
+            const data = doc.data();
+            // Only include users who have actually played at least 1 quiz
+            if ((data.quizzesPlayed || 0) > 0) {
+              allUsers.push({
+                uid: doc.id,
+                username: data.username || 'Cricket Fan',
+                favouriteTeam: data.favouriteTeam || '',
+                xp: data.xp || 0,
+                level: data.level || 'Debutant',
+                quizzesPlayed: data.quizzesPlayed || 0
+              });
+            }
+          });
+
+          // Hide loading
+          document.getElementById('loadingState').style.display = 'none';
+
+          if (allUsers.length === 0) {
+            document.getElementById('emptyState').style.display = 'block';
+            return;
+          }
+
+          // Show content
+          document.getElementById('leaderboardContent').style.display = 'block';
+
+          // Top 10 for display
+          const top10 = allUsers.slice(0, 10);
+
+          // Find current user's rank in full list
+          let yourRank = -1;
+          let yourData = null;
+          if (currentUserId) {
+            for (let i = 0; i < allUsers.length; i++) {
+              if (allUsers[i].uid === currentUserId) {
+                yourRank = i + 1; // rank is 1-based
+                yourData = allUsers[i];
+                break;
+              }
+            }
+          }
+
+          // Render podium (top 3)
+          renderPodium(top10, currentUserId);
+
+          // Render list (4th to 10th)
+          renderList(top10, currentUserId);
+
+          // Show your rank card if you're not in top 10
+          const yourRankCard = document.getElementById('yourRankCard');
+          if (currentUserId && yourRank > 10 && yourData) {
+            yourRankCard.style.display = 'block';
+            document.getElementById('yourRankNumber').textContent = '#' + yourRank;
+            document.getElementById('yourRankXP').textContent =
+              yourData.xp + ' XP — Keep playing to climb higher! 🚀';
+          } else {
+            yourRankCard.style.display = 'none';
+          }
+
+        }).catch(function(error) {
+          console.error('Error loading leaderboard:', error);
+          document.getElementById('loadingState').style.display = 'none';
+          document.getElementById('emptyState').style.display = 'block';
+        });
+    }
+
+    // ===== RENDER TOP 3 PODIUM =====
+    function renderPodium(top10, myUid) {
+      const podium = document.getElementById('podiumRow');
+      podium.innerHTML = '';
+
+      // We show positions in order: 2nd, 1st, 3rd (podium visual style)
+      const order = [1, 0, 2]; // index in top10 array
+      const classes = ['second', 'first', 'third'];
+      const medals = ['🥈', '🥇', '🥉'];
+
+      order.forEach(function(i, pos) {
+        if (!top10[i]) return; // skip if fewer than 3 players
+
+        const player = top10[i];
+        const isYou = player.uid === myUid;
+        const avatar = avatars[player.favouriteTeam] || '🏏';
+
+        const card = document.createElement('div');
+        card.className = 'podium-card ' + classes[pos] + (isYou ? ' is-you' : '');
+        card.innerHTML =
+          '<div class="podium-medal">' + medals[pos] + '</div>' +
+          '<div class="podium-avatar">' + avatar + '</div>' +
+          '<div class="podium-name">' + player.username + (isYou ? ' 👈' : '') + '</div>' +
+          '<div class="podium-xp">⚡ ' + player.xp + ' XP</div>' +
+          '<div class="podium-level">' + player.level + '</div>';
+
+        podium.appendChild(card);
+      });
+    }
+
+    // ===== RENDER RANKS 4–10 =====
+    function renderList(top10, myUid) {
+      const list = document.getElementById('leaderboardList');
+      const restLabel = document.getElementById('restLabel');
+      list.innerHTML = '';
+
+      const remaining = top10.slice(3); // from 4th place onwards
+
+      if (remaining.length === 0) {
+        restLabel.style.display = 'none';
+        return;
+      }
+
+      restLabel.style.display = 'block';
+
+      remaining.forEach(function(player, i) {
+        const rank = i + 4; // starts at 4
+        const isYou = player.uid === myUid;
+        const avatar = avatars[player.favouriteTeam] || '🏏';
+
+        const row = document.createElement('div');
+        row.className = 'lb-row' + (isYou ? ' is-you' : '');
+
+        row.innerHTML =
+          '<div class="lb-rank">#' + rank + '</div>' +
+          '<div class="lb-avatar">' + avatar + '</div>' +
+          '<div class="lb-info">' +
+            '<div class="lb-name">' + player.username +
+              (isYou ? '<span class="lb-you-tag">YOU</span>' : '') +
+            '</div>' +
+            '<div class="lb-sublabel">' + player.level + ' · ' + player.quizzesPlayed + ' quizzes</div>' +
+          '</div>' +
+          '<div>' +
+            '<div class="lb-xp">⚡ ' + player.xp + '</div>' +
+            '<div class="lb-xp-label">XP</div>' +
+          '</div>';
+
+        list.appendChild(row);
+      });
+    }
+  </script>
+
+</body>
+</html>
