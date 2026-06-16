@@ -368,7 +368,7 @@
       document.getElementById('tabWeek').classList.remove('active');
       document.getElementById('tabMonth').classList.remove('active');
       document.getElementById('tabAllTime').classList.remove('active');
-      document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1)).classList.add('active');
+      if (tab === 'week') document.getElementById('tabWeek').classList.add('active'); if (tab === 'month') document.getElementById('tabMonth').classList.add('active'); if (tab === 'alltime') document.getElementById('tabAllTime').classList.add('active');
 
       loadLeaderboard(tab);
     }
