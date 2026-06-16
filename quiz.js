@@ -167,7 +167,6 @@ function showScoreScreen() {
 
 // ===== SAVE SCORE TO FIREBASE =====
 function saveScoreToFirebase(finalScore, total) {
-  // Use onAuthStateChanged to make sure user is confirmed before saving
   auth.onAuthStateChanged(function(user) {
     if (user) {
       var xpEarned = finalScore * 10;
@@ -179,14 +178,52 @@ function saveScoreToFirebase(finalScore, total) {
           var newXP = (data.xp || 0) + xpEarned;
           var newLevel = calculateLevel(newXP);
 
+          // ===== STREAK LOGIC =====
+          var today = new Date();
+          var todayStr = today.getFullYear() + '-' +
+            String(today.getMonth() + 1).padStart(2, '0') + '-' +
+            String(today.getDate()).padStart(2, '0');
+
+          var lastPlayed = data.lastPlayedDate || '';
+          var currentStreak = data.currentStreak || 0;
+          var bestStreak = data.bestStreak || 0;
+
+          var yesterday = new Date(today);
+          yesterday.setDate(yesterday.getDate() - 1);
+          var yesterdayStr = yesterday.getFullYear() + '-' +
+            String(yesterday.getMonth() + 1).padStart(2, '0') + '-' +
+            String(yesterday.getDate()).padStart(2, '0');
+
+          if (lastPlayed === todayStr) {
+            // Already played today — streak unchanged
+            console.log('Already played today — streak unchanged');
+          } else if (lastPlayed === yesterdayStr) {
+            // Played yesterday — increase streak
+            currentStreak = currentStreak + 1;
+            console.log('Streak increased to ' + currentStreak);
+          } else {
+            // Missed a day or first time — reset to 1
+            currentStreak = 1;
+            console.log('Streak reset to 1');
+          }
+
+          if (currentStreak > bestStreak) {
+            bestStreak = currentStreak;
+          }
+          // ===== END STREAK LOGIC =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
             totalQuestions: (data.totalQuestions || 0) + total,
             xp: newXP,
-            level: newLevel
+            level: newLevel,
+            currentStreak: currentStreak,
+            bestStreak: bestStreak,
+            lastPlayedDate: todayStr
           }).then(function() {
-            console.log('✅ Score saved! +' + xpEarned + ' XP earned');
+            console.log('✅ Score saved! +' + xpEarned + ' XP. Streak: ' + currentStreak);
+            showStreakMessage(currentStreak);
           }).catch(function(error) {
             console.error('❌ Error updating score:', error);
           });
@@ -198,6 +235,35 @@ function saveScoreToFirebase(finalScore, total) {
       console.log('ℹ️ No user logged in — score not saved');
     }
   });
+}
+
+// ===== SHOW STREAK MESSAGE ON SCORE SCREEN =====
+function showStreakMessage(streak) {
+  if (streak < 2) return;
+
+  var message = '';
+  if (streak === 2) message = '🔥 2 day streak! You are on a roll!';
+  else if (streak === 3) message = '🔥🔥 3 days in a row! Keep it going!';
+  else if (streak === 7) message = '🏆 7 day streak! One full week — legend!';
+  else if (streak >= 30) message = '👑 ' + streak + ' day streak! You are a CricTakkar god!';
+  else message = '🔥 ' + streak + ' day streak! Do not break it!';
+
+  var scoreCard = document.querySelector('#scoreScreen .quiz-card');
+  if (scoreCard) {
+    var streakDiv = document.createElement('div');
+    streakDiv.style.cssText =
+      'background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(247,147,30,0.15));' +
+      'border: 1px solid rgba(255,107,53,0.5);' +
+      'border-radius: 12px;' +
+      'padding: 14px;' +
+      'margin-top: 16px;' +
+      'text-align: center;' +
+      'font-weight: 700;' +
+      'color: #f7931e;' +
+      'font-size: 1rem;';
+    streakDiv.textContent = message;
+    scoreCard.appendChild(streakDiv);
+  }
 }
 
 // ===== CALCULATE LEVEL =====
