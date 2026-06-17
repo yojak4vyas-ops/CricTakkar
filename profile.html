@@ -7,6 +7,121 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="profile.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== USERNAME SETUP OVERLAY ===== */
+    /* This is the popup that appears if user has no valid username */
+    .username-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 24px;
+    }
+
+    .username-setup-card {
+      background: #1a1a2e;
+      border: 1px solid rgba(255, 107, 53, 0.4);
+      border-radius: 20px;
+      padding: 32px 24px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .username-setup-card .setup-icon {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+
+    .username-setup-card h2 {
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .username-setup-card p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .username-setup-input {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      outline: none;
+      box-sizing: border-box;
+      margin-bottom: 8px;
+    }
+
+    .username-setup-input:focus {
+      border-color: rgba(255,107,53,0.6);
+    }
+
+    .username-setup-status {
+      font-size: 0.78rem;
+      font-weight: 600;
+      min-height: 20px;
+      margin-bottom: 16px;
+      text-align: left;
+      padding-left: 2px;
+    }
+
+    .username-setup-status.available { color: #27ae60; }
+    .username-setup-status.taken { color: #e74c3c; }
+    .username-setup-status.checking { color: rgba(255,255,255,0.4); }
+
+    .username-setup-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      border: none;
+      border-radius: 10px;
+      padding: 14px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .username-setup-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .username-setup-error {
+      color: #e74c3c;
+      font-size: 0.8rem;
+      margin-top: 10px;
+      min-height: 18px;
+    }
+
+    .username-rules {
+      background: rgba(255,255,255,0.04);
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .username-rules p {
+      color: rgba(255,255,255,0.35);
+      font-size: 0.75rem;
+      margin: 0;
+      line-height: 1.8;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,9 +131,43 @@
       <a href="index.html" class="nav-link">Home</a>
       <a href="quiz.html" class="nav-link">Daily Quiz</a>
       <a href="categories.html" class="nav-link">Categories</a>
-      <a href="leaderboard.html" class="nav-link">Leaderboard</a> <a href="profile.html" class="nav-link active">Profile</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="profile.html" class="nav-link active">Profile</a>
     </div>
   </nav>
+
+  <!-- ===== USERNAME SETUP OVERLAY ===== -->
+  <!-- Hidden by default. Shown automatically if user has no valid username. -->
+  <div class="username-overlay" id="usernameOverlay" style="display:none">
+    <div class="username-setup-card">
+      <div class="setup-icon">🏏</div>
+      <h2>Pick Your CricTakkar Username</h2>
+      <p>This is your unique identity on CricTakkar. Friends will find you by this name on the leaderboard.</p>
+
+      <div class="username-rules">
+        <p>
+          ✅ Letters, numbers, underscores only<br/>
+          ✅ At least 3 characters<br/>
+          ✅ Maximum 20 characters<br/>
+          ❌ No spaces or special characters
+        </p>
+      </div>
+
+      <input
+        class="username-setup-input"
+        id="usernameSetupInput"
+        type="text"
+        maxlength="20"
+        placeholder="e.g. CricketFan_Mumbai"
+        oninput="onUsernameSetupType()"
+      />
+      <div class="username-setup-status" id="usernameSetupStatus"></div>
+      <button class="username-setup-btn" id="usernameSetupBtn" onclick="saveNewUsername()">
+        Save Username 🚀
+      </button>
+      <div class="username-setup-error" id="usernameSetupError"></div>
+    </div>
+  </div>
 
   <!-- LOADING STATE -->
   <div class="profile-wrapper" id="loadingState">
@@ -109,7 +258,7 @@
 
   </div>
 
-  <!-- FIREBASE LOADED DIRECTLY -->
+  <!-- FIREBASE -->
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
@@ -129,6 +278,9 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
+    // Stores the current user's uid so the username save function can use it
+    var currentUserId = null;
+
     // ===== LOGOUT BUTTON =====
     document.getElementById('logoutBtn').addEventListener('click', function() {
       auth.signOut().then(function() {
@@ -136,82 +288,46 @@
       });
     });
 
+    // ===== CHECK IF USERNAME IS VALID =====
+    // A valid username has no spaces, only letters/numbers/underscores, min 3 chars
+    function isValidUsername(username) {
+      return /^[a-zA-Z0-9_]{3,20}$/.test(username);
+    }
+
     // ===== WATCH AUTH STATE =====
     auth.onAuthStateChanged(function(user) {
       document.getElementById('loadingState').style.display = 'none';
 
       if (user) {
+        currentUserId = user.uid;
         document.getElementById('profileState').style.display = 'block';
 
         db.collection('users').doc(user.uid).get().then(function(doc) {
           if (doc.exists) {
             var data = doc.data();
 
-            document.getElementById('profileUsername').textContent = data.username || 'Cricket Fan';
-            document.getElementById('profileTeam').textContent = '❤️ ' + (data.favouriteTeam || 'Cricket');
-            document.getElementById('profileLevel').textContent = data.level || 'Debutant';
-            document.getElementById('xpAmount').textContent = data.xp || 0;
-            document.getElementById('statQuizzes').textContent = data.quizzesPlayed || 0;
-            document.getElementById('statStreak').textContent = (data.currentStreak || 0) + ' 🔥';
-            document.getElementById('statBestStreak').textContent = data.bestStreak || 0;
-
-            var accuracy = data.totalQuestions > 0
-              ? Math.round((data.totalScore / data.totalQuestions) * 100)
-              : 0;
-            document.getElementById('statAccuracy').textContent = accuracy + '%';
-
-            var avatars = {
-              'Mumbai Indians': '💙',
-              'Chennai Super Kings': '💛',
-              'Royal Challengers Bengaluru': '❤️',
-              'Kolkata Knight Riders': '💜',
-              'Rajasthan Royals': '🩷',
-              'Delhi Capitals': '💙',
-              'Punjab Kings': '❤️',
-              'Sunrisers Hyderabad': '🧡',
-              'Gujarat Titans': '🩵',
-              'Lucknow Super Giants': '🩵',
-              'India': '🇮🇳'
-            };
-            document.getElementById('profileAvatar').textContent =
-              avatars[data.favouriteTeam] || '🏏';
-
-            var xp = data.xp || 0;
-            var levelThresholds = [0, 200, 500, 1000, 2000, 3000, 5000];
-            var currentThreshold = 0;
-            var nextThreshold = 200;
-            for (var i = 0; i < levelThresholds.length - 1; i++) {
-              if (xp >= levelThresholds[i]) {
-                currentThreshold = levelThresholds[i];
-                nextThreshold = levelThresholds[i + 1];
+            // ===== USERNAME VALIDITY CHECK =====
+            // If username is missing or not valid, show the setup overlay
+            // This catches: Google users with display names, empty usernames, names with spaces
+            var username = data.username || '';
+            if (!isValidUsername(username)) {
+              // Show the username setup popup — user must set one before continuing
+              document.getElementById('usernameOverlay').style.display = 'flex';
+              // Pre-fill with a cleaned version of their name as a suggestion
+              var suggestion = username.replace(/[^a-zA-Z0-9_]/g, '');
+              if (suggestion.length >= 3) {
+                document.getElementById('usernameSetupInput').value = suggestion;
+                onUsernameSetupType(); // trigger the availability check immediately
               }
             }
-            var progressPercent = Math.min(
-              ((xp - currentThreshold) / (nextThreshold - currentThreshold)) * 100,
-              100
-            );
-            document.getElementById('xpBar').style.width = progressPercent + '%';
-            document.getElementById('xpNextLabel').textContent =
-              xp >= 5000 ? 'Maximum Level Reached! 👑' :
-              (nextThreshold - xp) + ' XP to next level';
 
-            var levelMap = {
-              'Debutant': 'lvl1',
-              'Club Cricketer': 'lvl2',
-              'State Player': 'lvl3',
-              'IPL Pro': 'lvl4',
-              'T20 Star': 'lvl5',
-              'ODI Champion': 'lvl6',
-              'Test Legend': 'lvl7'
-            };
-            var currentLevelId = levelMap[data.level];
-            if (currentLevelId) {
-              document.getElementById(currentLevelId).classList.add('current-level');
-            }
+            // Load the rest of the profile normally regardless
+            loadProfileData(data);
 
           } else {
+            // Brand new user with no Firestore record — create one and show username setup
             db.collection('users').doc(user.uid).set({
-              username: user.displayName || 'Cricket Fan',
+              username: '',
               email: user.email || '',
               favouriteTeam: '',
               quizzesPlayed: 0,
@@ -223,9 +339,10 @@
               level: 'Debutant',
               joinedDate: new Date().toISOString()
             }).then(function() {
-              window.location.reload();
+              document.getElementById('usernameOverlay').style.display = 'flex';
             });
           }
+
         }).catch(function(error) {
           console.error('Error loading profile:', error);
         });
@@ -234,6 +351,204 @@
         document.getElementById('notLoggedIn').style.display = 'flex';
       }
     });
+
+    // ===== LOAD PROFILE DATA INTO THE PAGE =====
+    function loadProfileData(data) {
+      document.getElementById('profileUsername').textContent = data.username || 'Cricket Fan';
+      document.getElementById('profileTeam').textContent = '❤️ ' + (data.favouriteTeam || 'Cricket');
+      document.getElementById('profileLevel').textContent = data.level || 'Debutant';
+      document.getElementById('xpAmount').textContent = data.xp || 0;
+      document.getElementById('statQuizzes').textContent = data.quizzesPlayed || 0;
+      document.getElementById('statStreak').textContent = (data.currentStreak || 0) + ' 🔥';
+      document.getElementById('statBestStreak').textContent = data.bestStreak || 0;
+
+      var accuracy = data.totalQuestions > 0
+        ? Math.round((data.totalScore / data.totalQuestions) * 100)
+        : 0;
+      document.getElementById('statAccuracy').textContent = accuracy + '%';
+
+      var avatars = {
+        'Mumbai Indians': '💙',
+        'Chennai Super Kings': '💛',
+        'Royal Challengers Bengaluru': '❤️',
+        'Kolkata Knight Riders': '💜',
+        'Rajasthan Royals': '🩷',
+        'Delhi Capitals': '💙',
+        'Punjab Kings': '❤️',
+        'Sunrisers Hyderabad': '🧡',
+        'Gujarat Titans': '🩵',
+        'Lucknow Super Giants': '🩵',
+        'India': '🇮🇳'
+      };
+      document.getElementById('profileAvatar').textContent =
+        avatars[data.favouriteTeam] || '🏏';
+
+      var xp = data.xp || 0;
+      var levelThresholds = [0, 200, 500, 1000, 2000, 3000, 5000];
+      var currentThreshold = 0;
+      var nextThreshold = 200;
+      for (var i = 0; i < levelThresholds.length - 1; i++) {
+        if (xp >= levelThresholds[i]) {
+          currentThreshold = levelThresholds[i];
+          nextThreshold = levelThresholds[i + 1];
+        }
+      }
+      var progressPercent = Math.min(
+        ((xp - currentThreshold) / (nextThreshold - currentThreshold)) * 100,
+        100
+      );
+      document.getElementById('xpBar').style.width = progressPercent + '%';
+      document.getElementById('xpNextLabel').textContent =
+        xp >= 5000 ? 'Maximum Level Reached! 👑' :
+        (nextThreshold - xp) + ' XP to next level';
+
+      var levelMap = {
+        'Debutant': 'lvl1',
+        'Club Cricketer': 'lvl2',
+        'State Player': 'lvl3',
+        'IPL Pro': 'lvl4',
+        'T20 Star': 'lvl5',
+        'ODI Champion': 'lvl6',
+        'Test Legend': 'lvl7'
+      };
+      var currentLevelId = levelMap[data.level];
+      if (currentLevelId) {
+        document.getElementById(currentLevelId).classList.add('current-level');
+      }
+    }
+
+    // ===== USERNAME SETUP OVERLAY FUNCTIONS =====
+
+    var usernameCheckTimer = null;
+
+    // Called every time user types in the username setup box
+    function onUsernameSetupType() {
+      var input = document.getElementById('usernameSetupInput');
+      var statusEl = document.getElementById('usernameSetupStatus');
+      var username = input.value.trim();
+
+      clearTimeout(usernameCheckTimer);
+      statusEl.className = 'username-setup-status';
+      statusEl.textContent = '';
+
+      if (username.length === 0) return;
+
+      // Show format error instantly without waiting
+      if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+        statusEl.className = 'username-setup-status taken';
+        statusEl.textContent = '❌ Only letters, numbers, underscores allowed.';
+        return;
+      }
+
+      if (username.length < 3) {
+        statusEl.className = 'username-setup-status checking';
+        statusEl.textContent = 'Keep typing... (min 3 characters)';
+        return;
+      }
+
+      // Valid format — now check Firebase after 600ms pause
+      statusEl.className = 'username-setup-status checking';
+      statusEl.textContent = 'Checking availability...';
+
+      usernameCheckTimer = setTimeout(function() {
+        db.collection('users')
+          .where('username', '==', username)
+          .limit(1)
+          .get()
+          .then(function(snapshot) {
+            // Make sure this isn't matching the user's own current username
+            var takenByOther = false;
+            snapshot.forEach(function(doc) {
+              if (doc.id !== currentUserId) {
+                takenByOther = true;
+              }
+            });
+
+            if (takenByOther) {
+              statusEl.className = 'username-setup-status taken';
+              statusEl.textContent = '❌ Username taken. Try another.';
+            } else {
+              statusEl.className = 'username-setup-status available';
+              statusEl.textContent = '✅ Username available!';
+            }
+          })
+          .catch(function() {
+            statusEl.textContent = '';
+          });
+      }, 600);
+    }
+
+    // ===== SAVE THE NEW USERNAME TO FIREBASE =====
+    function saveNewUsername() {
+      var input = document.getElementById('usernameSetupInput');
+      var errorEl = document.getElementById('usernameSetupError');
+      var btn = document.getElementById('usernameSetupBtn');
+      var statusEl = document.getElementById('usernameSetupStatus');
+      var username = input.value.trim();
+
+      errorEl.textContent = '';
+
+      // Validate format
+      if (!isValidUsername(username)) {
+        errorEl.textContent = 'Please enter a valid username (letters, numbers, underscores, min 3 characters).';
+        return;
+      }
+
+      // Must show available before saving
+      if (!statusEl.textContent.includes('available')) {
+        errorEl.textContent = 'Please wait for the availability check to complete.';
+        return;
+      }
+
+      btn.textContent = 'Saving...';
+      btn.disabled = true;
+
+      // Final check in Firebase before saving — in case someone else grabbed it
+      // in the seconds since the live check ran
+      db.collection('users')
+        .where('username', '==', username)
+        .limit(1)
+        .get()
+        .then(function(snapshot) {
+          var takenByOther = false;
+          snapshot.forEach(function(doc) {
+            if (doc.id !== currentUserId) takenByOther = true;
+          });
+
+          if (takenByOther) {
+            errorEl.textContent = '❌ Someone just took that username. Please choose another.';
+            btn.textContent = 'Save Username 🚀';
+            btn.disabled = false;
+            statusEl.className = 'username-setup-status taken';
+            statusEl.textContent = '❌ Username taken. Try another.';
+            input.value = '';
+            return;
+          }
+
+          // Username is free — save it
+          db.collection('users').doc(currentUserId).update({
+            username: username
+          }).then(function() {
+            // Hide the overlay — user is done
+            document.getElementById('usernameOverlay').style.display = 'none';
+            // Update the displayed username on the profile page instantly
+            document.getElementById('profileUsername').textContent = username;
+            btn.textContent = 'Save Username 🚀';
+            btn.disabled = false;
+          }).catch(function(err) {
+            console.error('Error saving username:', err);
+            errorEl.textContent = 'Could not save. Please try again.';
+            btn.textContent = 'Save Username 🚀';
+            btn.disabled = false;
+          });
+        })
+        .catch(function() {
+          errorEl.textContent = 'Could not verify username. Please try again.';
+          btn.textContent = 'Save Username 🚀';
+          btn.disabled = false;
+        });
+    }
+
   </script>
 
 </body>
