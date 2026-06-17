@@ -17,7 +17,8 @@
       <a href="index.html" class="nav-link">Home</a>
       <a href="quiz.html" class="nav-link active">Quiz</a>
       <a href="categories.html" class="nav-link">Categories</a>
-      <a href="leaderboard.html" class="nav-link">Leaderboard</a> <a href="profile.html" class="nav-link">Profile</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="profile.html" class="nav-link">Profile</a>
     </div>
   </nav>
 
@@ -84,8 +85,24 @@
       </div>
       <p class="score-message" id="scoreMessage">You did well!</p>
       <div class="score-breakdown" id="scoreBreakdown"></div>
+
+      <!-- SCORE CARD PREVIEW — shows the generated image before sharing -->
+      <div id="scoreCardPreview" style="display:none; margin-top:20px;">
+        <img id="scoreCardImage"
+             style="width:100%; border-radius:16px; box-shadow:0 8px 32px rgba(255,107,53,0.3);"
+             alt="Your Score Card" />
+      </div>
+
       <div style="display:flex; flex-direction:column; gap:12px; margin-top:24px;">
-        <button class="btn-primary" onclick="shareScore()">Share Score 📤</button>
+        <button class="btn-primary" id="generateCardBtn" onclick="generateAndShowCard()">
+          Generate Score Card 🎨
+        </button>
+        <button class="btn-primary" id="shareCardBtn" style="display:none; background:linear-gradient(135deg,#25D366,#128C7E);" onclick="shareCardToWhatsApp()">
+          Share on WhatsApp 💬
+        </button>
+        <button class="btn-primary" id="downloadCardBtn" style="display:none; background:linear-gradient(135deg,#833AB4,#E1306C);" onclick="downloadCard()">
+          Download for Instagram 📸
+        </button>
         <button class="btn-secondary" onclick="restartQuiz()">Play Again 🔄</button>
         <button class="btn-secondary" onclick="window.location.href='index.html'">Back to Home 🏠</button>
       </div>
