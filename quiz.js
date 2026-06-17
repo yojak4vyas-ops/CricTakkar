@@ -7,6 +7,7 @@ let timerInterval = null;
 let timeLeft = 15;
 let answered = false;
 let results = [];
+let generatedCardDataUrl = null; // stores the card image after generation
 
 // ===== START THE QUIZ =====
 function startQuiz() {
@@ -14,6 +15,7 @@ function startQuiz() {
   currentIndex = 0;
   score = 0;
   results = [];
+  generatedCardDataUrl = null;
 
   document.getElementById('startScreen').style.display = 'none';
   document.getElementById('questionScreen').style.display = 'flex';
@@ -147,6 +149,13 @@ function showScoreScreen() {
   document.getElementById('scoreScreen').style.display = 'flex';
   document.getElementById('scoreNumber').textContent = score;
 
+  // Reset score card buttons and preview for fresh game
+  document.getElementById('scoreCardPreview').style.display = 'none';
+  document.getElementById('generateCardBtn').style.display = 'block';
+  document.getElementById('shareCardBtn').style.display = 'none';
+  document.getElementById('downloadCardBtn').style.display = 'none';
+  generatedCardDataUrl = null;
+
   const scoreData = getScoreData(score);
   document.getElementById('scoreEmoji').textContent = scoreData.emoji;
   document.getElementById('scoreTitle').textContent = scoreData.title;
@@ -195,14 +204,11 @@ function saveScoreToFirebase(finalScore, total) {
             String(yesterday.getDate()).padStart(2, '0');
 
           if (lastPlayed === todayStr) {
-            // Already played today — streak unchanged
             console.log('Already played today — streak unchanged');
           } else if (lastPlayed === yesterdayStr) {
-            // Played yesterday — increase streak
             currentStreak = currentStreak + 1;
             console.log('Streak increased to ' + currentStreak);
           } else {
-            // Missed a day or first time — reset to 1
             currentStreak = 1;
             console.log('Streak reset to 1');
           }
@@ -311,172 +317,182 @@ function getScoreData(score) {
   };
 }
 
-// ===== GENERATE AND SHARE SCORE CARD IMAGE =====
-function shareScore() {
-  generateScoreCard(function(imageDataUrl) {
-    // Try native share (works on Android/iPhone)
-    fetch(imageDataUrl)
-      .then(res => res.blob())
-      .then(blob => {
-        const file = new File([blob], 'crictakkar-score.png', { type: 'image/png' });
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-          navigator.share({
-            title: 'CricTakkar Quiz Score',
-            text: '🏏 I scored ' + score + '/5 on CricTakkar! Can you beat me? crictakkar.in',
-            files: [file]
-          });
-        } else {
-          // Fallback — just download the image
-          downloadScoreCard(imageDataUrl);
-        }
-      });
+// ===== STEP 1: USER CLICKS "GENERATE SCORE CARD" =====
+// This draws the card and shows a preview on screen
+function generateAndShowCard() {
+  var btn = document.getElementById('generateCardBtn');
+  btn.textContent = 'Generating... ⏳';
+  btn.disabled = true;
+
+  generateScoreCard(function(dataUrl) {
+    generatedCardDataUrl = dataUrl;
+
+    // Show the preview image on screen
+    var img = document.getElementById('scoreCardImage');
+    img.src = dataUrl;
+    document.getElementById('scoreCardPreview').style.display = 'block';
+
+    // Hide generate button, show share + download buttons
+    btn.style.display = 'none';
+    document.getElementById('shareCardBtn').style.display = 'block';
+    document.getElementById('downloadCardBtn').style.display = 'block';
   });
 }
 
-// ===== DOWNLOAD SCORE CARD =====
-function downloadScoreCard(imageDataUrl) {
-  const link = document.createElement('a');
-  link.download = 'crictakkar-score.png';
-  link.href = imageDataUrl;
-  link.click();
-  alert('Score card saved! Now share it on WhatsApp or Instagram. 🏏');
+// ===== STEP 2A: SHARE ON WHATSAPP =====
+function shareCardToWhatsApp() {
+  var text = '🏏 I scored ' + score + '/5 on CricTakkar Daily Quiz!\n' +
+    '🔥 Test your cricket knowledge at crictakkar.in\n' +
+    '#CricTakkar #Cricket #IndianCricket';
+  var whatsappUrl = 'https://wa.me/?text=' + encodeURIComponent(text);
+  window.open(whatsappUrl, '_blank');
 }
 
-// ===== DRAW THE SCORE CARD ON A CANVAS =====
+// ===== STEP 2B: DOWNLOAD FOR INSTAGRAM =====
+function downloadCard() {
+  if (!generatedCardDataUrl) return;
+  var link = document.createElement('a');
+  link.download = 'CricTakkar-Score.png';
+  link.href = generatedCardDataUrl;
+  link.click();
+}
+
+// ===== DRAW THE SCORE CARD (1080x1080 square — perfect for Instagram) =====
 function generateScoreCard(callback) {
-  const canvas = document.createElement('canvas');
+  var canvas = document.createElement('canvas');
   canvas.width = 1080;
   canvas.height = 1080;
-  const ctx = canvas.getContext('2d');
+  var ctx = canvas.getContext('2d');
 
-  // --- Background gradient ---
-  const bg = ctx.createLinearGradient(0, 0, 1080, 1080);
+  // --- Dark background ---
+  var bg = ctx.createLinearGradient(0, 0, 1080, 1080);
   bg.addColorStop(0, '#0a0a0f');
   bg.addColorStop(1, '#1a1a2e');
   ctx.fillStyle = bg;
   ctx.fillRect(0, 0, 1080, 1080);
 
-  // --- Orange top border stripe ---
-  const stripe = ctx.createLinearGradient(0, 0, 1080, 0);
+  // --- Orange top stripe ---
+  var stripe = ctx.createLinearGradient(0, 0, 1080, 0);
   stripe.addColorStop(0, '#ff6b35');
   stripe.addColorStop(1, '#f7931e');
   ctx.fillStyle = stripe;
-  ctx.fillRect(0, 0, 1080, 12);
+  ctx.fillRect(0, 0, 1080, 14);
 
-  // --- Decorative circle (background) ---
+  // --- Big faint circle in background (decorative) ---
   ctx.beginPath();
-  ctx.arc(540, 540, 420, 0, Math.PI * 2);
-  ctx.strokeStyle = 'rgba(255, 107, 53, 0.08)';
-  ctx.lineWidth = 80;
+  ctx.arc(540, 540, 400, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(255, 107, 53, 0.07)';
+  ctx.lineWidth = 100;
   ctx.stroke();
 
-  // --- LOGO PLACEHOLDER (cricket ball emoji big) ---
-  ctx.font = '100px serif';
+  // --- Cricket bat emoji as logo placeholder ---
+  ctx.font = '110px serif';
   ctx.textAlign = 'center';
-  ctx.fillText('🏏', 540, 200);
+  ctx.fillText('🏏', 540, 210);
 
-  // --- CricTakkar name ---
-  ctx.font = 'bold 90px Arial';
-  ctx.textAlign = 'center';
-  const nameGrad = ctx.createLinearGradient(300, 0, 780, 0);
-  nameGrad.addColorStop(0, '#ff6b35');
-  nameGrad.addColorStop(1, '#f7931e');
-  ctx.fillStyle = nameGrad;
-  ctx.fillText('CricTakkar', 540, 310);
+  // --- CricTakkar title ---
+  ctx.font = 'bold 96px Arial';
+  var titleGrad = ctx.createLinearGradient(200, 0, 880, 0);
+  titleGrad.addColorStop(0, '#ff6b35');
+  titleGrad.addColorStop(1, '#f7931e');
+  ctx.fillStyle = titleGrad;
+  ctx.fillText('CricTakkar', 540, 330);
 
-  // --- Tagline ---
-  ctx.font = '36px Arial';
-  ctx.fillStyle = 'rgba(255,255,255,0.5)';
-  ctx.fillText('Cricket. Quiz. Battle.', 540, 370);
+  // --- Tagline below title ---
+  ctx.font = '38px Arial';
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.fillText('Cricket. Quiz. Battle.', 540, 390);
 
-  // --- Divider line ---
+  // --- Horizontal divider line ---
   ctx.beginPath();
-  ctx.moveTo(200, 410);
-  ctx.lineTo(880, 410);
-  ctx.strokeStyle = 'rgba(255,107,53,0.3)';
+  ctx.moveTo(160, 430);
+  ctx.lineTo(920, 430);
+  ctx.strokeStyle = 'rgba(255,107,53,0.25)';
   ctx.lineWidth = 2;
   ctx.stroke();
 
-  // --- Score display ---
-  ctx.font = 'bold 200px Arial';
-  ctx.textAlign = 'center';
-  const scoreGrad = ctx.createLinearGradient(300, 430, 780, 630);
+  // --- Big score number ---
+  ctx.font = 'bold 220px Arial';
+  var scoreGrad = ctx.createLinearGradient(300, 440, 780, 660);
   scoreGrad.addColorStop(0, '#ff6b35');
   scoreGrad.addColorStop(1, '#f7931e');
   ctx.fillStyle = scoreGrad;
-  ctx.fillText(score + '/5', 540, 640);
+  ctx.fillText(score + '/5', 540, 660);
 
-  // --- Score label ---
-  const scoreData = getScoreData(score);
-  ctx.font = 'bold 52px Arial';
+  // --- Score title text ---
+  var scoreData = getScoreData(score);
+  ctx.font = 'bold 50px Arial';
   ctx.fillStyle = '#ffffff';
-  ctx.fillText(scoreData.title, 540, 710);
+  ctx.fillText(scoreData.title, 540, 730);
 
-  // --- Dot breakdown ---
-  const dotSize = 60;
-  const dotGap = 30;
-  const totalWidth = (dotSize + dotGap) * 5 - dotGap;
-  const startX = (1080 - totalWidth) / 2;
+  // --- Dot breakdown (green = correct, red = wrong) ---
+  var dotRadius = 34;
+  var dotGap = 28;
+  var totalDotsWidth = (dotRadius * 2 + dotGap) * 5 - dotGap;
+  var dotStartX = (1080 - totalDotsWidth) / 2 + dotRadius;
+  var dotY = 800;
+
   results.forEach(function(isCorrect, i) {
-    const x = startX + i * (dotSize + dotGap);
-    const y = 760;
+    var cx = dotStartX + i * (dotRadius * 2 + dotGap);
     ctx.beginPath();
-    ctx.arc(x + dotSize / 2, y + dotSize / 2, dotSize / 2, 0, Math.PI * 2);
+    ctx.arc(cx, dotY, dotRadius, 0, Math.PI * 2);
     ctx.fillStyle = isCorrect ? '#27ae60' : '#e74c3c';
     ctx.fill();
-    ctx.font = 'bold 36px Arial';
+    ctx.font = 'bold 38px Arial';
     ctx.fillStyle = '#ffffff';
     ctx.textAlign = 'center';
-    ctx.fillText(isCorrect ? '✓' : '✗', x + dotSize / 2, y + dotSize / 2 + 13);
+    ctx.fillText(isCorrect ? '✓' : '✗', cx, dotY + 14);
   });
 
-  // --- Streak (fetched from Firebase if logged in) ---
+  // --- Now fetch streak from Firebase and finish drawing ---
   try {
     auth.onAuthStateChanged(function(user) {
       if (user) {
         db.collection('users').doc(user.uid).get().then(function(doc) {
+          var streak = 0;
           if (doc.exists) {
-            var streak = doc.data().currentStreak || 0;
-            drawStreakAndFinish(ctx, canvas, streak, callback);
-          } else {
-            drawStreakAndFinish(ctx, canvas, 0, callback);
+            streak = doc.data().currentStreak || 0;
           }
+          finishCardDrawing(ctx, canvas, streak, callback);
+        }).catch(function() {
+          finishCardDrawing(ctx, canvas, 0, callback);
         });
       } else {
-        drawStreakAndFinish(ctx, canvas, 0, callback);
+        finishCardDrawing(ctx, canvas, 0, callback);
       }
     });
   } catch(e) {
-    drawStreakAndFinish(ctx, canvas, 0, callback);
+    finishCardDrawing(ctx, canvas, 0, callback);
   }
 }
 
-// ===== FINISH DRAWING AFTER STREAK IS KNOWN =====
-function drawStreakAndFinish(ctx, canvas, streak, callback) {
-  // --- Streak badge ---
+// ===== FINISH THE CARD — add streak and bottom elements =====
+function finishCardDrawing(ctx, canvas, streak, callback) {
+
+  // --- Streak line (only if streak is 2 or more) ---
   if (streak >= 2) {
-    ctx.font = 'bold 44px Arial';
+    ctx.font = 'bold 48px Arial';
     ctx.textAlign = 'center';
     ctx.fillStyle = '#f7931e';
-    ctx.fillText('🔥 ' + streak + ' Day Streak', 540, 910);
+    ctx.fillText('🔥 ' + streak + ' Day Streak!', 540, 900);
   }
 
   // --- Bottom tagline ---
-  ctx.font = '38px Arial';
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.font = '36px Arial';
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
   ctx.textAlign = 'center';
-  ctx.fillText('Aao CricTakkar karte hain!', 540, 980);
+  ctx.fillText('Aao CricTakkar karte hain!', 540, 970);
 
-  // --- Orange bottom border stripe ---
-  const stripe2 = ctx.createLinearGradient(0, 0, 1080, 0);
+  // --- Orange bottom stripe ---
+  var stripe2 = ctx.createLinearGradient(0, 0, 1080, 0);
   stripe2.addColorStop(0, '#ff6b35');
   stripe2.addColorStop(1, '#f7931e');
   ctx.fillStyle = stripe2;
-  ctx.fillRect(0, 1068, 1080, 12);
+  ctx.fillRect(0, 1066, 1080, 14);
 
-  // --- Convert to image and return ---
-  const imageDataUrl = canvas.toDataURL('image/png');
-  callback(imageDataUrl);
+  // --- Convert canvas to image and send back ---
+  var dataUrl = canvas.toDataURL('image/png');
+  callback(dataUrl);
 }
 
 // ===== PLAY AGAIN =====
