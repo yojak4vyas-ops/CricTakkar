@@ -61,7 +61,18 @@
       <div id="signupForm" style="display:none">
         <div class="input-group">
           <label class="input-label" for="signupUsername">Username</label>
-          <input type="text" class="auth-input" id="signupUsername" placeholder="e.g. CricketFan_Mumbai" maxlength="20" />
+          <input type="text" class="auth-input" id="signupUsername"
+            placeholder="e.g. CricketFan_Mumbai"
+            maxlength="20"
+            oninput="resetUsernameStatus()" />
+          <!-- Live availability indicator shown as user types -->
+          <div id="usernameStatus" style="
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-top: 5px;
+            min-height: 18px;
+            padding-left: 2px;
+          "></div>
         </div>
         <div class="input-group">
           <label class="input-label" for="signupTeam">Favourite Team</label>
@@ -113,7 +124,6 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // ===== GOOGLE PROVIDER =====
     const googleProvider = new firebase.auth.GoogleAuthProvider();
 
     // ===== CHECK IF ALREADY LOGGED IN =====
@@ -123,7 +133,7 @@
       }
     });
 
-    // ===== GOOGLE LOGIN WITH POPUP =====
+    // ===== GOOGLE LOGIN =====
     document.getElementById('googleBtn').addEventListener('click', function() {
       var btn = document.getElementById('googleBtn');
       btn.disabled = true;
@@ -133,8 +143,14 @@
         var user = result.user;
         db.collection('users').doc(user.uid).get().then(function(doc) {
           if (!doc.exists) {
+            // For Google users, generate a unique username automatically
+            // We take their display name and add a random 4-digit number
+            var baseName = (user.displayName || 'CricFan').replace(/\s+/g, '');
+            var randomNum = Math.floor(1000 + Math.random() * 9000);
+            var autoUsername = baseName + randomNum;
+
             db.collection('users').doc(user.uid).set({
-              username: user.displayName || 'CricFan',
+              username: autoUsername,
               email: user.email,
               favouriteTeam: '',
               quizzesPlayed: 0,
@@ -205,6 +221,63 @@
       });
     });
 
+    // ===== USERNAME LIVE CHECK =====
+    // This runs when user stops typing in the username box
+    // It checks Firebase and shows a green tick or red cross instantly
+    var usernameCheckTimer = null;
+
+    document.getElementById('signupUsername').addEventListener('input', function() {
+      var username = this.value.trim();
+      var statusEl = document.getElementById('usernameStatus');
+
+      // Clear any previous check timer
+      clearTimeout(usernameCheckTimer);
+
+      // Reset if too short
+      if (username.length < 3) {
+        statusEl.textContent = '';
+        return;
+      }
+
+      statusEl.style.color = 'rgba(255,255,255,0.4)';
+      statusEl.textContent = 'Checking...';
+
+      // Wait 600ms after user stops typing before checking
+      // This avoids checking Firebase on every single keystroke
+      usernameCheckTimer = setTimeout(function() {
+        checkUsernameAvailability(username);
+      }, 600);
+    });
+
+    function checkUsernameAvailability(username) {
+      var statusEl = document.getElementById('usernameStatus');
+
+      db.collection('users')
+        .where('username', '==', username)
+        .limit(1)
+        .get()
+        .then(function(snapshot) {
+          if (snapshot.empty) {
+            // Username is free
+            statusEl.style.color = '#27ae60';
+            statusEl.textContent = '✅ Username available!';
+          } else {
+            // Username is taken
+            statusEl.style.color = '#e74c3c';
+            statusEl.textContent = '❌ Username already taken. Try another.';
+          }
+        })
+        .catch(function() {
+          statusEl.textContent = '';
+        });
+    }
+
+    function resetUsernameStatus() {
+      // Called on every keystroke via oninput on the input field
+      // Clears the status immediately when user changes the text
+      // (the input event listener above then re-checks after 600ms)
+    }
+
     // ===== SIGN UP BUTTON =====
     document.getElementById('signupBtn').addEventListener('click', function() {
       var username = document.getElementById('signupUsername').value.trim();
@@ -212,6 +285,7 @@
       var email = document.getElementById('signupEmail').value.trim();
       var password = document.getElementById('signupPassword').value;
 
+      // Basic validation first
       if (!username || !team || !email || !password) {
         showError('Please fill in all fields.');
         return;
@@ -225,36 +299,76 @@
         return;
       }
 
+      // Block certain characters that would break the friend search
+      var validUsername = /^[a-zA-Z0-9_]+$/.test(username);
+      if (!validUsername) {
+        showError('Username can only contain letters, numbers, and underscores. No spaces or special characters.');
+        return;
+      }
+
       var btn = document.getElementById('signupBtn');
-      btn.textContent = 'Creating account...';
+      btn.textContent = 'Checking username...';
       btn.disabled = true;
 
-      auth.createUserWithEmailAndPassword(email, password).then(function(result) {
-        var user = result.user;
-        user.sendEmailVerification();
-        return db.collection('users').doc(user.uid).set({
-          username: username,
-          email: email,
-          favouriteTeam: team,
-          quizzesPlayed: 0,
-          totalScore: 0,
-          totalQuestions: 0,
-          currentStreak: 0,
-          bestStreak: 0,
-          xp: 0,
-          level: 'Debutant',
-          emailVerified: false,
-          loginMethod: 'email',
-          joinedDate: new Date().toISOString()
+      // ===== USERNAME UNIQUENESS CHECK =====
+      // Before creating the account, search Firebase for this username
+      // If another user already has it, block the signup
+      db.collection('users')
+        .where('username', '==', username)
+        .limit(1)
+        .get()
+        .then(function(snapshot) {
+
+          if (!snapshot.empty) {
+            // Username is taken — stop here, show error
+            showError('❌ Username "' + username + '" is already taken. Please choose a different one.');
+            btn.textContent = 'Create Account 🚀';
+            btn.disabled = false;
+            return;
+          }
+
+          // Username is free — now create the Firebase Auth account
+          btn.textContent = 'Creating account...';
+
+          auth.createUserWithEmailAndPassword(email, password)
+            .then(function(result) {
+              var user = result.user;
+              user.sendEmailVerification();
+
+              // Save user profile to Firestore
+              return db.collection('users').doc(user.uid).set({
+                username: username,
+                email: email,
+                favouriteTeam: team,
+                quizzesPlayed: 0,
+                totalScore: 0,
+                totalQuestions: 0,
+                currentStreak: 0,
+                bestStreak: 0,
+                xp: 0,
+                level: 'Debutant',
+                emailVerified: false,
+                loginMethod: 'email',
+                joinedDate: new Date().toISOString()
+              });
+            })
+            .then(function() {
+              showSuccess('Account created! A verification email has been sent. You can play while you verify! 🏏');
+              setTimeout(function() { window.location.href = 'profile.html'; }, 2500);
+            })
+            .catch(function(error) {
+              showError(getFriendlyError(error.code));
+              btn.textContent = 'Create Account 🚀';
+              btn.disabled = false;
+            });
+
+        })
+        .catch(function(error) {
+          console.error('Username check failed:', error);
+          showError('Could not verify username. Please try again.');
+          btn.textContent = 'Create Account 🚀';
+          btn.disabled = false;
         });
-      }).then(function() {
-        showSuccess('Account created! A verification email has been sent. You can play while you verify! 🏏');
-        setTimeout(function() { window.location.href = 'profile.html'; }, 2500);
-      }).catch(function(error) {
-        showError(getFriendlyError(error.code));
-        btn.textContent = 'Create Account 🚀';
-        btn.disabled = false;
-      });
     });
 
     // ===== HELPER FUNCTIONS =====
