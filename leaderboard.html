@@ -32,25 +32,27 @@
     /* TAB BUTTONS */
     .tab-row {
       display: flex;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 24px;
       background: rgba(255,255,255,0.05);
       border-radius: 12px;
       padding: 5px;
+      flex-wrap: wrap;
     }
 
     .tab-btn {
       flex: 1;
-      padding: 10px;
+      padding: 10px 6px;
       border: none;
       border-radius: 9px;
       font-family: 'Poppins', sans-serif;
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: 0.78rem;
       cursor: pointer;
       background: transparent;
       color: rgba(255,255,255,0.5);
       transition: all 0.2s;
+      min-width: 60px;
     }
 
     .tab-btn.active {
@@ -94,37 +96,15 @@
       border-color: rgba(205,127,50,0.3);
     }
 
-    .podium-medal {
-      font-size: 2rem;
-      margin-bottom: 6px;
-    }
-
-    .podium-avatar {
-      font-size: 1.8rem;
-      margin-bottom: 6px;
-    }
-
+    .podium-medal { font-size: 2rem; margin-bottom: 6px; }
+    .podium-avatar { font-size: 1.8rem; margin-bottom: 6px; }
     .podium-name {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 0.8rem; font-weight: 700; color: #fff;
+      margin-bottom: 4px; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis;
     }
-
-    .podium-xp {
-      font-size: 0.75rem;
-      color: #f7931e;
-      font-weight: 700;
-    }
-
-    .podium-level {
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.45);
-      margin-top: 2px;
-    }
+    .podium-xp { font-size: 0.75rem; color: #f7931e; font-weight: 700; }
+    .podium-level { font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-top: 2px; }
 
     /* REST OF THE LIST */
     .leaderboard-list {
@@ -144,67 +124,46 @@
       transition: all 0.2s;
     }
 
-    /* Highlight the current logged-in user */
     .lb-row.is-you {
       background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(247,147,30,0.15));
       border-color: rgba(255,107,53,0.5);
     }
 
     .lb-rank {
-      font-size: 1rem;
-      font-weight: 900;
-      color: rgba(255,255,255,0.4);
-      min-width: 28px;
-      text-align: center;
+      font-size: 1rem; font-weight: 900;
+      color: rgba(255,255,255,0.4); min-width: 28px; text-align: center;
     }
-
-    .lb-avatar {
-      font-size: 1.6rem;
-      min-width: 36px;
-      text-align: center;
-    }
-
-    .lb-info {
-      flex: 1;
-    }
-
-    .lb-name {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
+    .lb-avatar { font-size: 1.6rem; min-width: 36px; text-align: center; }
+    .lb-info { flex: 1; }
+    .lb-name { font-size: 0.95rem; font-weight: 700; color: #fff; }
     .lb-you-tag {
-      background: #ff6b35;
-      color: #fff;
-      font-size: 0.6rem;
-      font-weight: 800;
-      padding: 2px 7px;
+      background: #ff6b35; color: #fff; font-size: 0.6rem;
+      font-weight: 800; padding: 2px 7px; border-radius: 20px;
+      margin-left: 7px; vertical-align: middle;
+    }
+    .lb-sublabel { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 2px; }
+    .lb-xp { font-size: 0.9rem; font-weight: 800; color: #f7931e; text-align: right; }
+    .lb-xp-label { font-size: 0.65rem; color: rgba(255,255,255,0.35); text-align: right; }
+
+    /* REMOVE FRIEND BUTTON on each row */
+    .lb-remove-btn {
+      background: rgba(255,59,48,0.15);
+      border: 1px solid rgba(255,59,48,0.3);
+      color: rgba(255,59,48,0.8);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
       border-radius: 20px;
-      margin-left: 7px;
-      vertical-align: middle;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      margin-left: 8px;
+      transition: all 0.2s;
+    }
+    .lb-remove-btn:hover {
+      background: rgba(255,59,48,0.3);
     }
 
-    .lb-sublabel {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.4);
-      margin-top: 2px;
-    }
-
-    .lb-xp {
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: #f7931e;
-      text-align: right;
-    }
-
-    .lb-xp-label {
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.35);
-      text-align: right;
-    }
-
-    /* YOUR RANK CARD (shown at bottom if you're not in top 10) */
+    /* YOUR RANK CARD */
     .your-rank-card {
       margin-top: 20px;
       background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(247,147,30,0.15));
@@ -214,40 +173,121 @@
       text-align: center;
       display: none;
     }
-
-    .your-rank-card p {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.85rem;
-      margin: 4px 0;
-    }
-
-    .your-rank-card strong {
-      color: #f7931e;
-      font-size: 1.1rem;
-    }
+    .your-rank-card p { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin: 4px 0; }
+    .your-rank-card strong { color: #f7931e; font-size: 1.1rem; }
 
     /* LOADING / EMPTY STATES */
     .loading-state, .empty-state {
-      text-align: center;
-      padding: 60px 24px;
-      color: rgba(255,255,255,0.4);
+      text-align: center; padding: 60px 24px; color: rgba(255,255,255,0.4);
     }
-
-    .loading-state div, .empty-state div {
-      font-size: 2.5rem;
-      margin-bottom: 12px;
-    }
+    .loading-state div, .empty-state div { font-size: 2.5rem; margin-bottom: 12px; }
 
     /* SECTION LABEL */
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.75rem; font-weight: 700;
+      color: rgba(255,255,255,0.35); letter-spacing: 1.5px;
+      text-transform: uppercase; margin-bottom: 12px;
+      margin-top: 4px; padding-left: 4px;
+    }
+
+    /* ===== FRIENDS TAB SPECIFIC STYLES ===== */
+
+    /* Add friend input box */
+    .add-friend-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .add-friend-box h3 {
+      color: #fff;
+      font-size: 1rem;
       font-weight: 700;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      margin-top: 4px;
-      padding-left: 4px;
+      margin-bottom: 6px;
+    }
+
+    .add-friend-box p {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    .add-friend-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .add-friend-input {
+      flex: 1;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .add-friend-input::placeholder {
+      color: rgba(255,255,255,0.3);
+    }
+
+    .add-friend-input:focus {
+      border-color: rgba(255,107,53,0.5);
+    }
+
+    .add-friend-btn {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      border: none;
+      border-radius: 10px;
+      padding: 12px 18px;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .add-friend-msg {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      min-height: 20px;
+    }
+
+    .add-friend-msg.success { color: #27ae60; }
+    .add-friend-msg.error { color: #e74c3c; }
+
+    /* Login prompt for friends tab */
+    .login-prompt {
+      text-align: center;
+      padding: 40px 24px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .login-prompt div { font-size: 2.5rem; margin-bottom: 12px; }
+
+    .login-prompt p {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+      margin-bottom: 16px;
+    }
+
+    .login-prompt a {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
     }
   </style>
 </head>
@@ -269,11 +309,12 @@
     <h1 class="leaderboard-title">🏆 Leaderboard</h1>
     <p class="leaderboard-subtitle">Top cricket brains on CricTakkar</p>
 
-    <!-- WEEK / MONTH TABS -->
+    <!-- TABS — now 4 tabs -->
     <div class="tab-row">
-      <button class="tab-btn active" id="tabWeek" onclick="switchTab('week')">🗓️ This Week</button>
-      <button class="tab-btn" id="tabMonth" onclick="switchTab('month')">📅 This Month</button>
-      <button class="tab-btn" id="tabAllTime" onclick="switchTab('alltime')">🌟 All Time</button>
+      <button class="tab-btn active" id="tabWeek"    onclick="switchTab('week')">🗓️ Week</button>
+      <button class="tab-btn"        id="tabMonth"   onclick="switchTab('month')">📅 Month</button>
+      <button class="tab-btn"        id="tabAllTime" onclick="switchTab('alltime')">🌟 All Time</button>
+      <button class="tab-btn"        id="tabFriends" onclick="switchTab('friends')">👥 Friends</button>
     </div>
 
     <!-- LOADING STATE -->
@@ -282,27 +323,63 @@
       <p>Loading leaderboard...</p>
     </div>
 
-    <!-- LEADERBOARD CONTENT (hidden until data loads) -->
+    <!-- GLOBAL LEADERBOARD CONTENT (week / month / alltime) -->
     <div id="leaderboardContent" style="display:none">
-
-      <!-- TOP 3 PODIUM -->
       <div class="section-label">TOP 3</div>
       <div class="podium-row" id="podiumRow"></div>
-
-      <!-- REST OF LIST (4th onwards) -->
       <div class="section-label" id="restLabel" style="display:none">RANKS 4–10</div>
       <div class="leaderboard-list" id="leaderboardList"></div>
-
-      <!-- YOUR RANK (if not in top 10) -->
       <div class="your-rank-card" id="yourRankCard">
         <p>Your current rank</p>
         <strong id="yourRankNumber">#—</strong>
         <p id="yourRankXP">Keep playing to climb higher! 🚀</p>
       </div>
-
     </div>
 
-    <!-- EMPTY STATE -->
+    <!-- FRIENDS TAB CONTENT -->
+    <div id="friendsContent" style="display:none">
+
+      <!-- Shown only when NOT logged in -->
+      <div class="login-prompt" id="friendsLoginPrompt" style="display:none">
+        <div>🔒</div>
+        <p>Log in to add friends and see how you compare!</p>
+        <a href="login.html">Log In / Sign Up</a>
+      </div>
+
+      <!-- Shown when logged in -->
+      <div id="friendsLoggedIn" style="display:none">
+
+        <!-- ADD FRIEND BOX -->
+        <div class="add-friend-box">
+          <h3>➕ Add a Friend</h3>
+          <p>Type their exact CricTakkar username to add them.</p>
+          <div class="add-friend-row">
+            <input
+              class="add-friend-input"
+              id="friendUsernameInput"
+              type="text"
+              placeholder="Enter username..."
+              onkeydown="if(event.key==='Enter') addFriend()"
+            />
+            <button class="add-friend-btn" onclick="addFriend()">Add</button>
+          </div>
+          <div class="add-friend-msg" id="addFriendMsg"></div>
+        </div>
+
+        <!-- FRIENDS LEADERBOARD LIST -->
+        <div class="section-label">YOUR FRIEND BATTLE</div>
+        <div class="leaderboard-list" id="friendsList"></div>
+
+        <!-- Empty state for friends -->
+        <div class="empty-state" id="friendsEmptyState" style="display:none">
+          <div>👥</div>
+          <p>No friends added yet.<br/>Add a friend above to start competing!</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EMPTY STATE (global tabs) -->
     <div class="empty-state" id="emptyState" style="display:none">
       <div>🏏</div>
       <p>No players yet this period.<br/>Be the first to play!</p>
@@ -330,7 +407,7 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // ===== TEAM AVATARS (same as profile.html) =====
+    // ===== TEAM AVATARS =====
     const avatars = {
       'Mumbai Indians': '💙',
       'Chennai Super Kings': '💛',
@@ -345,18 +422,25 @@
       'India': '🇮🇳'
     };
 
-    // ===== CURRENT TAB =====
     let currentTab = 'week';
     let currentUserId = null;
+    let currentUserData = null;
 
     // ===== WATCH WHO IS LOGGED IN =====
     auth.onAuthStateChanged(function(user) {
       if (user) {
         currentUserId = user.uid;
+        // Fetch current user's own data so we can include them in friends leaderboard
+        db.collection('users').doc(user.uid).get().then(function(doc) {
+          if (doc.exists) {
+            currentUserData = doc.data();
+            currentUserData.uid = user.uid;
+          }
+        });
       } else {
         currentUserId = null;
+        currentUserData = null;
       }
-      // Load the leaderboard regardless of login status
       loadLeaderboard('week');
     });
 
@@ -364,54 +448,44 @@
     function switchTab(tab) {
       currentTab = tab;
 
-      // Update tab button styles
       document.getElementById('tabWeek').classList.remove('active');
       document.getElementById('tabMonth').classList.remove('active');
       document.getElementById('tabAllTime').classList.remove('active');
-      if (tab === 'week') document.getElementById('tabWeek').classList.add('active'); if (tab === 'month') document.getElementById('tabMonth').classList.add('active'); if (tab === 'alltime') document.getElementById('tabAllTime').classList.add('active');
+      document.getElementById('tabFriends').classList.remove('active');
 
-      loadLeaderboard(tab);
+      if (tab === 'week')    document.getElementById('tabWeek').classList.add('active');
+      if (tab === 'month')   document.getElementById('tabMonth').classList.add('active');
+      if (tab === 'alltime') document.getElementById('tabAllTime').classList.add('active');
+      if (tab === 'friends') document.getElementById('tabFriends').classList.add('active');
+
+      // Show the right section
+      if (tab === 'friends') {
+        document.getElementById('leaderboardContent').style.display = 'none';
+        document.getElementById('emptyState').style.display = 'none';
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('friendsContent').style.display = 'block';
+        loadFriendsTab();
+      } else {
+        document.getElementById('friendsContent').style.display = 'none';
+        loadLeaderboard(tab);
+      }
     }
 
-    // ===== GET DATE CUTOFF =====
-    // This tells Firebase: "only get users who played after this date"
-    function getDateCutoff(tab) {
-      const now = new Date();
-      if (tab === 'week') {
-        // 7 days ago
-        const d = new Date(now);
-        d.setDate(d.getDate() - 7);
-        return d.toISOString();
-      }
-      if (tab === 'month') {
-        // 30 days ago
-        const d = new Date(now);
-        d.setDate(d.getDate() - 30);
-        return d.toISOString();
-      }
-      // All time — no cutoff needed
-      return null;
-    }
-
-    // ===== LOAD LEADERBOARD FROM FIREBASE =====
+    // ===== LOAD GLOBAL LEADERBOARD =====
     function loadLeaderboard(tab) {
-      // Show loading, hide everything else
       document.getElementById('loadingState').style.display = 'block';
       document.getElementById('leaderboardContent').style.display = 'none';
       document.getElementById('emptyState').style.display = 'none';
+      document.getElementById('friendsContent').style.display = 'none';
 
-      // Read ALL users from Firebase, sorted by XP (highest first), limit to top 50
-      // We get top 50 so we can find the current user's rank even if not in top 10
       db.collection('users')
         .orderBy('xp', 'desc')
         .limit(50)
         .get()
         .then(function(snapshot) {
           let allUsers = [];
-
           snapshot.forEach(function(doc) {
             const data = doc.data();
-            // Only include users who have actually played at least 1 quiz
             if ((data.xp || 0) > 0) {
               allUsers.push({
                 uid: doc.id,
@@ -424,7 +498,6 @@
             }
           });
 
-          // Hide loading
           document.getElementById('loadingState').style.display = 'none';
 
           if (allUsers.length === 0) {
@@ -432,32 +505,25 @@
             return;
           }
 
-          // Show content
           document.getElementById('leaderboardContent').style.display = 'block';
 
-          // Top 10 for display
           const top10 = allUsers.slice(0, 10);
 
-          // Find current user's rank in full list
           let yourRank = -1;
           let yourData = null;
           if (currentUserId) {
             for (let i = 0; i < allUsers.length; i++) {
               if (allUsers[i].uid === currentUserId) {
-                yourRank = i + 1; // rank is 1-based
+                yourRank = i + 1;
                 yourData = allUsers[i];
                 break;
               }
             }
           }
 
-          // Render podium (top 3)
           renderPodium(top10, currentUserId);
-
-          // Render list (4th to 10th)
           renderList(top10, currentUserId);
 
-          // Show your rank card if you're not in top 10
           const yourRankCard = document.getElementById('yourRankCard');
           if (currentUserId && yourRank > 10 && yourData) {
             yourRankCard.style.display = 'block';
@@ -480,14 +546,12 @@
       const podium = document.getElementById('podiumRow');
       podium.innerHTML = '';
 
-      // We show positions in order: 2nd, 1st, 3rd (podium visual style)
-      const order = [1, 0, 2]; // index in top10 array
+      const order = [1, 0, 2];
       const classes = ['second', 'first', 'third'];
       const medals = ['🥈', '🥇', '🥉'];
 
       order.forEach(function(i, pos) {
-        if (!top10[i]) return; // skip if fewer than 3 players
-
+        if (!top10[i]) return;
         const player = top10[i];
         const isYou = player.uid === myUid;
         const avatar = avatars[player.favouriteTeam] || '🏏';
@@ -511,23 +575,17 @@
       const restLabel = document.getElementById('restLabel');
       list.innerHTML = '';
 
-      const remaining = top10.slice(3); // from 4th place onwards
-
-      if (remaining.length === 0) {
-        restLabel.style.display = 'none';
-        return;
-      }
-
+      const remaining = top10.slice(3);
+      if (remaining.length === 0) { restLabel.style.display = 'none'; return; }
       restLabel.style.display = 'block';
 
       remaining.forEach(function(player, i) {
-        const rank = i + 4; // starts at 4
+        const rank = i + 4;
         const isYou = player.uid === myUid;
         const avatar = avatars[player.favouriteTeam] || '🏏';
 
         const row = document.createElement('div');
         row.className = 'lb-row' + (isYou ? ' is-you' : '');
-
         row.innerHTML =
           '<div class="lb-rank">#' + rank + '</div>' +
           '<div class="lb-avatar">' + avatar + '</div>' +
@@ -545,6 +603,237 @@
         list.appendChild(row);
       });
     }
+
+    // ===== LOAD FRIENDS TAB =====
+    function loadFriendsTab() {
+      // Not logged in — show login prompt
+      if (!currentUserId) {
+        document.getElementById('friendsLoginPrompt').style.display = 'block';
+        document.getElementById('friendsLoggedIn').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('friendsLoginPrompt').style.display = 'none';
+      document.getElementById('friendsLoggedIn').style.display = 'block';
+
+      // Clear message and input
+      document.getElementById('addFriendMsg').textContent = '';
+      document.getElementById('friendUsernameInput').value = '';
+
+      // Load friends list
+      loadFriendsList();
+    }
+
+    // ===== LOAD AND DISPLAY FRIENDS LEADERBOARD =====
+    function loadFriendsList() {
+      const listEl = document.getElementById('friendsList');
+      const emptyEl = document.getElementById('friendsEmptyState');
+      listEl.innerHTML = '<div style="color:rgba(255,255,255,0.4); text-align:center; padding:20px;">Loading...</div>';
+      emptyEl.style.display = 'none';
+
+      // Get current user's friend list from Firebase
+      db.collection('users').doc(currentUserId).get().then(function(doc) {
+        if (!doc.exists) return;
+
+        const data = doc.data();
+        const friendUids = data.friends || []; // array of friend UIDs
+
+        // Always include yourself in the friends leaderboard
+        // Build list of UIDs to fetch: yourself + all friends
+        const uidsToFetch = [currentUserId, ...friendUids];
+
+        if (friendUids.length === 0) {
+          // No friends yet — just show yourself
+          listEl.innerHTML = '';
+          emptyEl.style.display = 'block';
+
+          // Still show yourself at top
+          var selfEntry = [{
+            uid: currentUserId,
+            username: data.username || 'You',
+            favouriteTeam: data.favouriteTeam || '',
+            xp: data.xp || 0,
+            level: data.level || 'Debutant',
+            quizzesPlayed: data.quizzesPlayed || 0,
+            isYou: true
+          }];
+          renderFriendsList(selfEntry);
+          return;
+        }
+
+        // Fetch all friends' data from Firebase
+        // Firebase allows fetching up to 10 docs at once with 'in' query
+        // We chunk into groups of 10 just in case someone has many friends
+        var chunks = [];
+        for (var i = 0; i < uidsToFetch.length; i += 10) {
+          chunks.push(uidsToFetch.slice(i, i + 10));
+        }
+
+        var allPlayers = [];
+        var promises = chunks.map(function(chunk) {
+          return db.collection('users')
+            .where(firebase.firestore.FieldPath.documentId(), 'in', chunk)
+            .get()
+            .then(function(snap) {
+              snap.forEach(function(d) {
+                var pd = d.data();
+                allPlayers.push({
+                  uid: d.id,
+                  username: pd.username || 'Cricket Fan',
+                  favouriteTeam: pd.favouriteTeam || '',
+                  xp: pd.xp || 0,
+                  level: pd.level || 'Debutant',
+                  quizzesPlayed: pd.quizzesPlayed || 0,
+                  isYou: d.id === currentUserId
+                });
+              });
+            });
+        });
+
+        Promise.all(promises).then(function() {
+          // Sort by XP highest first
+          allPlayers.sort(function(a, b) { return b.xp - a.xp; });
+          listEl.innerHTML = '';
+          renderFriendsList(allPlayers);
+        });
+
+      }).catch(function(err) {
+        console.error('Error loading friends:', err);
+        listEl.innerHTML = '<div style="color:#e74c3c; text-align:center; padding:20px;">Could not load friends. Please try again.</div>';
+      });
+    }
+
+    // ===== RENDER FRIENDS LEADERBOARD =====
+    function renderFriendsList(players) {
+      const listEl = document.getElementById('friendsList');
+
+      players.forEach(function(player, i) {
+        var rank = i + 1;
+        var avatar = avatars[player.favouriteTeam] || '🏏';
+        var rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '#' + rank;
+
+        var row = document.createElement('div');
+        row.className = 'lb-row' + (player.isYou ? ' is-you' : '');
+
+        // Build remove button HTML — only show for friends, not for yourself
+        var removeBtn = '';
+        if (!player.isYou) {
+          removeBtn = '<button class="lb-remove-btn" onclick="removeFriend(\'' + player.uid + '\', \'' + player.username + '\')">Remove</button>';
+        }
+
+        row.innerHTML =
+          '<div class="lb-rank">' + rankEmoji + '</div>' +
+          '<div class="lb-avatar">' + avatar + '</div>' +
+          '<div class="lb-info">' +
+            '<div class="lb-name">' + player.username +
+              (player.isYou ? '<span class="lb-you-tag">YOU</span>' : '') +
+            '</div>' +
+            '<div class="lb-sublabel">' + player.level + ' · ' + player.quizzesPlayed + ' quizzes</div>' +
+          '</div>' +
+          '<div style="display:flex; align-items:center; gap:8px;">' +
+            '<div>' +
+              '<div class="lb-xp">⚡ ' + player.xp + '</div>' +
+              '<div class="lb-xp-label">XP</div>' +
+            '</div>' +
+            removeBtn +
+          '</div>';
+
+        listEl.appendChild(row);
+      });
+    }
+
+    // ===== ADD A FRIEND BY USERNAME =====
+    function addFriend() {
+      var input = document.getElementById('friendUsernameInput');
+      var msgEl = document.getElementById('addFriendMsg');
+      var username = input.value.trim();
+
+      if (!username) {
+        msgEl.className = 'add-friend-msg error';
+        msgEl.textContent = 'Please type a username first.';
+        return;
+      }
+
+      if (!currentUserId) {
+        msgEl.className = 'add-friend-msg error';
+        msgEl.textContent = 'You must be logged in to add friends.';
+        return;
+      }
+
+      msgEl.className = 'add-friend-msg';
+      msgEl.textContent = 'Searching...';
+
+      // Search Firebase for a user with this exact username
+      db.collection('users')
+        .where('username', '==', username)
+        .limit(1)
+        .get()
+        .then(function(snapshot) {
+          if (snapshot.empty) {
+            msgEl.className = 'add-friend-msg error';
+            msgEl.textContent = '❌ Username not found. Ask your friend for their exact username.';
+            return;
+          }
+
+          var friendDoc = snapshot.docs[0];
+          var friendUid = friendDoc.id;
+
+          // Cannot add yourself
+          if (friendUid === currentUserId) {
+            msgEl.className = 'add-friend-msg error';
+            msgEl.textContent = '😄 That is you! Add someone else.';
+            return;
+          }
+
+          // Check if already a friend
+          db.collection('users').doc(currentUserId).get().then(function(myDoc) {
+            var myData = myDoc.data();
+            var currentFriends = myData.friends || [];
+
+            if (currentFriends.includes(friendUid)) {
+              msgEl.className = 'add-friend-msg error';
+              msgEl.textContent = '👥 ' + username + ' is already your friend!';
+              return;
+            }
+
+            // Add friend UID to your friends array in Firebase
+            var updatedFriends = [...currentFriends, friendUid];
+            db.collection('users').doc(currentUserId).update({
+              friends: updatedFriends
+            }).then(function() {
+              msgEl.className = 'add-friend-msg success';
+              msgEl.textContent = '✅ ' + username + ' added! Battle begins!';
+              input.value = '';
+              // Reload the friends list to show the new friend
+              loadFriendsList();
+            });
+          });
+        })
+        .catch(function(err) {
+          console.error('Error searching user:', err);
+          msgEl.className = 'add-friend-msg error';
+          msgEl.textContent = 'Something went wrong. Please try again.';
+        });
+    }
+
+    // ===== REMOVE A FRIEND =====
+    function removeFriend(friendUid, friendName) {
+      if (!confirm('Remove ' + friendName + ' from your friends?')) return;
+
+      db.collection('users').doc(currentUserId).get().then(function(doc) {
+        var currentFriends = doc.data().friends || [];
+        var updatedFriends = currentFriends.filter(function(uid) {
+          return uid !== friendUid;
+        });
+
+        db.collection('users').doc(currentUserId).update({
+          friends: updatedFriends
+        }).then(function() {
+          loadFriendsList(); // Refresh the list
+        });
+      });
+    }
+
   </script>
 
 </body>
