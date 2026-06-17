@@ -311,23 +311,172 @@ function getScoreData(score) {
   };
 }
 
-// ===== SHARE SCORE =====
+// ===== GENERATE AND SHARE SCORE CARD IMAGE =====
 function shareScore() {
-  const scoreText =
-    '🏏 I scored ' + score + '/5 on CricTakkar Daily Quiz!\n' +
-    'Can you beat me? Play at crictakkar.in\n' +
-    '#CricTakkar #Cricket #CricketQuiz';
+  generateScoreCard(function(imageDataUrl) {
+    // Try native share (works on Android/iPhone)
+    fetch(imageDataUrl)
+      .then(res => res.blob())
+      .then(blob => {
+        const file = new File([blob], 'crictakkar-score.png', { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          navigator.share({
+            title: 'CricTakkar Quiz Score',
+            text: '🏏 I scored ' + score + '/5 on CricTakkar! Can you beat me? crictakkar.in',
+            files: [file]
+          });
+        } else {
+          // Fallback — just download the image
+          downloadScoreCard(imageDataUrl);
+        }
+      });
+  });
+}
 
-  if (navigator.share) {
-    navigator.share({
-      title: 'CricTakkar Quiz Score',
-      text: scoreText
+// ===== DOWNLOAD SCORE CARD =====
+function downloadScoreCard(imageDataUrl) {
+  const link = document.createElement('a');
+  link.download = 'crictakkar-score.png';
+  link.href = imageDataUrl;
+  link.click();
+  alert('Score card saved! Now share it on WhatsApp or Instagram. 🏏');
+}
+
+// ===== DRAW THE SCORE CARD ON A CANVAS =====
+function generateScoreCard(callback) {
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1080;
+  const ctx = canvas.getContext('2d');
+
+  // --- Background gradient ---
+  const bg = ctx.createLinearGradient(0, 0, 1080, 1080);
+  bg.addColorStop(0, '#0a0a0f');
+  bg.addColorStop(1, '#1a1a2e');
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, 1080, 1080);
+
+  // --- Orange top border stripe ---
+  const stripe = ctx.createLinearGradient(0, 0, 1080, 0);
+  stripe.addColorStop(0, '#ff6b35');
+  stripe.addColorStop(1, '#f7931e');
+  ctx.fillStyle = stripe;
+  ctx.fillRect(0, 0, 1080, 12);
+
+  // --- Decorative circle (background) ---
+  ctx.beginPath();
+  ctx.arc(540, 540, 420, 0, Math.PI * 2);
+  ctx.strokeStyle = 'rgba(255, 107, 53, 0.08)';
+  ctx.lineWidth = 80;
+  ctx.stroke();
+
+  // --- LOGO PLACEHOLDER (cricket ball emoji big) ---
+  ctx.font = '100px serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('🏏', 540, 200);
+
+  // --- CricTakkar name ---
+  ctx.font = 'bold 90px Arial';
+  ctx.textAlign = 'center';
+  const nameGrad = ctx.createLinearGradient(300, 0, 780, 0);
+  nameGrad.addColorStop(0, '#ff6b35');
+  nameGrad.addColorStop(1, '#f7931e');
+  ctx.fillStyle = nameGrad;
+  ctx.fillText('CricTakkar', 540, 310);
+
+  // --- Tagline ---
+  ctx.font = '36px Arial';
+  ctx.fillStyle = 'rgba(255,255,255,0.5)';
+  ctx.fillText('Cricket. Quiz. Battle.', 540, 370);
+
+  // --- Divider line ---
+  ctx.beginPath();
+  ctx.moveTo(200, 410);
+  ctx.lineTo(880, 410);
+  ctx.strokeStyle = 'rgba(255,107,53,0.3)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // --- Score display ---
+  ctx.font = 'bold 200px Arial';
+  ctx.textAlign = 'center';
+  const scoreGrad = ctx.createLinearGradient(300, 430, 780, 630);
+  scoreGrad.addColorStop(0, '#ff6b35');
+  scoreGrad.addColorStop(1, '#f7931e');
+  ctx.fillStyle = scoreGrad;
+  ctx.fillText(score + '/5', 540, 640);
+
+  // --- Score label ---
+  const scoreData = getScoreData(score);
+  ctx.font = 'bold 52px Arial';
+  ctx.fillStyle = '#ffffff';
+  ctx.fillText(scoreData.title, 540, 710);
+
+  // --- Dot breakdown ---
+  const dotSize = 60;
+  const dotGap = 30;
+  const totalWidth = (dotSize + dotGap) * 5 - dotGap;
+  const startX = (1080 - totalWidth) / 2;
+  results.forEach(function(isCorrect, i) {
+    const x = startX + i * (dotSize + dotGap);
+    const y = 760;
+    ctx.beginPath();
+    ctx.arc(x + dotSize / 2, y + dotSize / 2, dotSize / 2, 0, Math.PI * 2);
+    ctx.fillStyle = isCorrect ? '#27ae60' : '#e74c3c';
+    ctx.fill();
+    ctx.font = 'bold 36px Arial';
+    ctx.fillStyle = '#ffffff';
+    ctx.textAlign = 'center';
+    ctx.fillText(isCorrect ? '✓' : '✗', x + dotSize / 2, y + dotSize / 2 + 13);
+  });
+
+  // --- Streak (fetched from Firebase if logged in) ---
+  try {
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        db.collection('users').doc(user.uid).get().then(function(doc) {
+          if (doc.exists) {
+            var streak = doc.data().currentStreak || 0;
+            drawStreakAndFinish(ctx, canvas, streak, callback);
+          } else {
+            drawStreakAndFinish(ctx, canvas, 0, callback);
+          }
+        });
+      } else {
+        drawStreakAndFinish(ctx, canvas, 0, callback);
+      }
     });
-  } else {
-    navigator.clipboard.writeText(scoreText).then(function() {
-      alert('Score copied! Paste it on WhatsApp or Instagram. 🏏');
-    });
+  } catch(e) {
+    drawStreakAndFinish(ctx, canvas, 0, callback);
   }
+}
+
+// ===== FINISH DRAWING AFTER STREAK IS KNOWN =====
+function drawStreakAndFinish(ctx, canvas, streak, callback) {
+  // --- Streak badge ---
+  if (streak >= 2) {
+    ctx.font = 'bold 44px Arial';
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#f7931e';
+    ctx.fillText('🔥 ' + streak + ' Day Streak', 540, 910);
+  }
+
+  // --- Bottom tagline ---
+  ctx.font = '38px Arial';
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  ctx.textAlign = 'center';
+  ctx.fillText('Aao CricTakkar karte hain!', 540, 980);
+
+  // --- Orange bottom border stripe ---
+  const stripe2 = ctx.createLinearGradient(0, 0, 1080, 0);
+  stripe2.addColorStop(0, '#ff6b35');
+  stripe2.addColorStop(1, '#f7931e');
+  ctx.fillStyle = stripe2;
+  ctx.fillRect(0, 1068, 1080, 12);
+
+  // --- Convert to image and return ---
+  const imageDataUrl = canvas.toDataURL('image/png');
+  callback(imageDataUrl);
 }
 
 // ===== PLAY AGAIN =====
