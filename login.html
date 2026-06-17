@@ -46,6 +46,7 @@
         <span id="successMessage">Done!</span>
       </div>
 
+      <!-- LOGIN FORM -->
       <div id="loginForm">
         <div class="input-group">
           <label class="input-label" for="loginEmail">Email Address</label>
@@ -58,22 +59,28 @@
         <button class="btn-primary auth-btn" id="loginBtn">Log In 🏏</button>
       </div>
 
+      <!-- SIGNUP FORM -->
       <div id="signupForm" style="display:none">
+
+        <!-- FULL NAME — new field -->
+        <div class="input-group">
+          <label class="input-label" for="signupName">Full Name</label>
+          <input type="text" class="auth-input" id="signupName"
+            placeholder="e.g. Yojak Vyas" maxlength="40" />
+        </div>
+
+        <!-- USERNAME -->
         <div class="input-group">
           <label class="input-label" for="signupUsername">Username</label>
           <input type="text" class="auth-input" id="signupUsername"
-            placeholder="e.g. CricketFan_Mumbai"
-            maxlength="20"
-            oninput="resetUsernameStatus()" />
-          <!-- Live availability indicator shown as user types -->
+            placeholder="e.g. YojakVyas_123" maxlength="20"
+            oninput="liveCheckUsername()" />
           <div id="usernameStatus" style="
-            font-size: 0.78rem;
-            font-weight: 600;
-            margin-top: 5px;
-            min-height: 18px;
-            padding-left: 2px;
+            font-size:0.78rem; font-weight:600;
+            margin-top:5px; min-height:18px; padding-left:2px;
           "></div>
         </div>
+
         <div class="input-group">
           <label class="input-label" for="signupTeam">Favourite Team</label>
           <select class="auth-input auth-select" id="signupTeam">
@@ -91,14 +98,17 @@
             <option value="Lucknow Super Giants">Lucknow Super Giants</option>
           </select>
         </div>
+
         <div class="input-group">
           <label class="input-label" for="signupEmail">Email Address</label>
           <input type="email" class="auth-input" id="signupEmail" placeholder="you@example.com" />
         </div>
+
         <div class="input-group">
           <label class="input-label" for="signupPassword">Password (minimum 6 characters)</label>
           <input type="password" class="auth-input" id="signupPassword" placeholder="Create a password" />
         </div>
+
         <button class="btn-primary auth-btn" id="signupBtn">Create Account 🚀</button>
       </div>
 
@@ -110,7 +120,6 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
   <script>
-    // ===== FIREBASE SETUP =====
     const firebaseConfig = {
       apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
       authDomain: "crictakkar-44c10.firebaseapp.com",
@@ -123,14 +132,11 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const db = firebase.firestore();
-
     const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-    // ===== CHECK IF ALREADY LOGGED IN =====
+    // ===== ALREADY LOGGED IN =====
     auth.onAuthStateChanged(function(user) {
-      if (user) {
-        window.location.href = 'profile.html';
-      }
+      if (user) { window.location.href = 'profile.html'; }
     });
 
     // ===== GOOGLE LOGIN =====
@@ -143,13 +149,13 @@
         var user = result.user;
         db.collection('users').doc(user.uid).get().then(function(doc) {
           if (!doc.exists) {
-            // For Google users, generate a unique username automatically
-            // We take their display name and add a random 4-digit number
+            // Auto-generate a unique username for Google users
             var baseName = (user.displayName || 'CricFan').replace(/\s+/g, '');
             var randomNum = Math.floor(1000 + Math.random() * 9000);
             var autoUsername = baseName + randomNum;
 
             db.collection('users').doc(user.uid).set({
+              name: user.displayName || '',
               username: autoUsername,
               email: user.email,
               favouriteTeam: '',
@@ -169,14 +175,12 @@
           setTimeout(function() { window.location.href = 'profile.html'; }, 1000);
         });
       }).catch(function(error) {
-        if (error.code === 'auth/popup-closed-by-user') {
-          btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" /> Continue with Google';
-          btn.disabled = false;
-        } else {
-          showError('Google sign in failed: ' + error.message);
-          btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" /> Continue with Google';
-          btn.disabled = false;
+        if (error.code !== 'auth/popup-closed-by-user') {
+          showError('Google sign in failed. Please try again.');
         }
+        var btn = document.getElementById('googleBtn');
+        btn.innerHTML = '<img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" width="20" /> Continue with Google';
+        btn.disabled = false;
       });
     });
 
@@ -197,15 +201,12 @@
       hideMessages();
     });
 
-    // ===== LOGIN BUTTON =====
+    // ===== LOGIN =====
     document.getElementById('loginBtn').addEventListener('click', function() {
       var email = document.getElementById('loginEmail').value.trim();
       var password = document.getElementById('loginPassword').value;
 
-      if (!email || !password) {
-        showError('Please fill in both email and password.');
-        return;
-      }
+      if (!email || !password) { showError('Please fill in both fields.'); return; }
 
       var btn = document.getElementById('loginBtn');
       btn.textContent = 'Logging in...';
@@ -221,122 +222,85 @@
       });
     });
 
-    // ===== USERNAME LIVE CHECK =====
-    // This runs when user stops typing in the username box
-    // It checks Firebase and shows a green tick or red cross instantly
-    var usernameCheckTimer = null;
-
-    document.getElementById('signupUsername').addEventListener('input', function() {
-      var username = this.value.trim();
+    // ===== LIVE USERNAME CHECK =====
+    var usernameTimer = null;
+    function liveCheckUsername() {
+      var username = document.getElementById('signupUsername').value.trim();
       var statusEl = document.getElementById('usernameStatus');
+      clearTimeout(usernameTimer);
+      statusEl.style.color = 'rgba(255,255,255,0.4)';
+      statusEl.textContent = '';
 
-      // Clear any previous check timer
-      clearTimeout(usernameCheckTimer);
+      if (username.length < 3) return;
 
-      // Reset if too short
-      if (username.length < 3) {
-        statusEl.textContent = '';
+      if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+        statusEl.style.color = '#e74c3c';
+        statusEl.textContent = '❌ Letters, numbers, underscores only.';
         return;
       }
 
-      statusEl.style.color = 'rgba(255,255,255,0.4)';
       statusEl.textContent = 'Checking...';
-
-      // Wait 600ms after user stops typing before checking
-      // This avoids checking Firebase on every single keystroke
-      usernameCheckTimer = setTimeout(function() {
-        checkUsernameAvailability(username);
+      usernameTimer = setTimeout(function() {
+        db.collection('users').where('username', '==', username).limit(1).get()
+          .then(function(snap) {
+            if (snap.empty) {
+              statusEl.style.color = '#27ae60';
+              statusEl.textContent = '✅ Username available!';
+            } else {
+              statusEl.style.color = '#e74c3c';
+              statusEl.textContent = '❌ Already taken. Try another.';
+            }
+          });
       }, 600);
-    });
-
-    function checkUsernameAvailability(username) {
-      var statusEl = document.getElementById('usernameStatus');
-
-      db.collection('users')
-        .where('username', '==', username)
-        .limit(1)
-        .get()
-        .then(function(snapshot) {
-          if (snapshot.empty) {
-            // Username is free
-            statusEl.style.color = '#27ae60';
-            statusEl.textContent = '✅ Username available!';
-          } else {
-            // Username is taken
-            statusEl.style.color = '#e74c3c';
-            statusEl.textContent = '❌ Username already taken. Try another.';
-          }
-        })
-        .catch(function() {
-          statusEl.textContent = '';
-        });
     }
 
-    function resetUsernameStatus() {
-      // Called on every keystroke via oninput on the input field
-      // Clears the status immediately when user changes the text
-      // (the input event listener above then re-checks after 600ms)
-    }
-
-    // ===== SIGN UP BUTTON =====
+    // ===== SIGN UP =====
     document.getElementById('signupBtn').addEventListener('click', function() {
+      var name     = document.getElementById('signupName').value.trim();
       var username = document.getElementById('signupUsername').value.trim();
-      var team = document.getElementById('signupTeam').value;
-      var email = document.getElementById('signupEmail').value.trim();
+      var team     = document.getElementById('signupTeam').value;
+      var email    = document.getElementById('signupEmail').value.trim();
       var password = document.getElementById('signupPassword').value;
 
-      // Basic validation first
-      if (!username || !team || !email || !password) {
-        showError('Please fill in all fields.');
-        return;
+      // Validation
+      if (!name || !username || !team || !email || !password) {
+        showError('Please fill in all fields.'); return;
+      }
+      if (name.length < 2) {
+        showError('Please enter your full name.'); return;
       }
       if (username.length < 3) {
-        showError('Username must be at least 3 characters.');
-        return;
+        showError('Username must be at least 3 characters.'); return;
+      }
+      if (!/^[a-zA-Z0-9_]+$/.test(username)) {
+        showError('Username can only contain letters, numbers, and underscores.'); return;
       }
       if (password.length < 6) {
-        showError('Password must be at least 6 characters.');
-        return;
-      }
-
-      // Block certain characters that would break the friend search
-      var validUsername = /^[a-zA-Z0-9_]+$/.test(username);
-      if (!validUsername) {
-        showError('Username can only contain letters, numbers, and underscores. No spaces or special characters.');
-        return;
+        showError('Password must be at least 6 characters.'); return;
       }
 
       var btn = document.getElementById('signupBtn');
       btn.textContent = 'Checking username...';
       btn.disabled = true;
 
-      // ===== USERNAME UNIQUENESS CHECK =====
-      // Before creating the account, search Firebase for this username
-      // If another user already has it, block the signup
-      db.collection('users')
-        .where('username', '==', username)
-        .limit(1)
-        .get()
+      // Check username is unique
+      db.collection('users').where('username', '==', username).limit(1).get()
         .then(function(snapshot) {
-
           if (!snapshot.empty) {
-            // Username is taken — stop here, show error
-            showError('❌ Username "' + username + '" is already taken. Please choose a different one.');
+            showError('❌ Username "' + username + '" is already taken. Please choose another.');
             btn.textContent = 'Create Account 🚀';
             btn.disabled = false;
             return;
           }
 
-          // Username is free — now create the Firebase Auth account
           btn.textContent = 'Creating account...';
 
           auth.createUserWithEmailAndPassword(email, password)
             .then(function(result) {
               var user = result.user;
               user.sendEmailVerification();
-
-              // Save user profile to Firestore
               return db.collection('users').doc(user.uid).set({
+                name: name,
                 username: username,
                 email: email,
                 favouriteTeam: team,
@@ -353,7 +317,7 @@
               });
             })
             .then(function() {
-              showSuccess('Account created! A verification email has been sent. You can play while you verify! 🏏');
+              showSuccess('Account created! Verification email sent. 🏏');
               setTimeout(function() { window.location.href = 'profile.html'; }, 2500);
             })
             .catch(function(error) {
@@ -361,42 +325,31 @@
               btn.textContent = 'Create Account 🚀';
               btn.disabled = false;
             });
-
-        })
-        .catch(function(error) {
-          console.error('Username check failed:', error);
-          showError('Could not verify username. Please try again.');
-          btn.textContent = 'Create Account 🚀';
-          btn.disabled = false;
         });
     });
 
-    // ===== HELPER FUNCTIONS =====
-    function showError(message) {
-      document.getElementById('errorMessage').textContent = message;
+    function showError(msg) {
+      document.getElementById('errorMessage').textContent = msg;
       document.getElementById('errorBox').style.display = 'block';
       document.getElementById('successBox').style.display = 'none';
     }
-
-    function showSuccess(message) {
-      document.getElementById('successMessage').textContent = message;
+    function showSuccess(msg) {
+      document.getElementById('successMessage').textContent = msg;
       document.getElementById('successBox').style.display = 'block';
       document.getElementById('errorBox').style.display = 'none';
     }
-
     function hideMessages() {
       document.getElementById('errorBox').style.display = 'none';
       document.getElementById('successBox').style.display = 'none';
     }
-
     function getFriendlyError(code) {
-      if (code === 'auth/email-already-in-use') return 'This email is already registered. Try logging in instead.';
+      if (code === 'auth/email-already-in-use') return 'This email is already registered. Try logging in.';
       if (code === 'auth/wrong-password') return 'Wrong password. Please try again.';
-      if (code === 'auth/user-not-found') return 'No account found with this email. Sign up first!';
+      if (code === 'auth/user-not-found') return 'No account with this email. Sign up first!';
       if (code === 'auth/invalid-email') return 'Please enter a valid email address.';
-      if (code === 'auth/weak-password') return 'Password is too weak. Use at least 6 characters.';
-      if (code === 'auth/network-request-failed') return 'No internet connection. Please check your connection.';
-      if (code === 'auth/invalid-credential') return 'Wrong email or password. Please try again.';
+      if (code === 'auth/weak-password') return 'Password too weak. Use at least 6 characters.';
+      if (code === 'auth/network-request-failed') return 'No internet connection.';
+      if (code === 'auth/invalid-credential') return 'Wrong email or password.';
       return 'Something went wrong. Please try again.';
     }
   </script>
