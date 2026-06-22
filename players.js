@@ -1,6 +1,6 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
 // Format rule: "All-format" = played at least 1 match in Tests, ODIs AND T20Is internationally
-// Every entry verified against ESPNcricinfo and Wikipedia — June 2025
+// Every entry verified against ESPNcricinfo — June 2025
 
 const wordlePlayers = [
   {
@@ -10,7 +10,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2000s",
     format: "All-format"
-    // Verified: 200 Tests, 463 ODIs, 1 T20I (vs South Africa, 2006) — ESPNcricinfo
+    // 200 Tests, 463 ODIs, 1 T20I (vs South Africa 2006) — ESPNcricinfo
   },
   {
     name: "MS Dhoni",
@@ -19,7 +19,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 90 Tests, 350 ODIs, 98 T20Is — ESPNcricinfo
+    // 90 Tests, 350 ODIs, 98 T20Is — ESPNcricinfo
   },
   {
     name: "Virat Kohli",
@@ -28,7 +28,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 113 Tests, 292 ODIs, 125 T20Is — ESPNcricinfo
+    // 113 Tests, 292 ODIs, 125 T20Is — ESPNcricinfo
   },
   {
     name: "Rohit Sharma",
@@ -37,7 +37,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 67 Tests, 264 ODIs, 159 T20Is — ESPNcricinfo
+    // 67 Tests, 264 ODIs, 159 T20Is — ESPNcricinfo
   },
   {
     name: "Anil Kumble",
@@ -46,7 +46,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2000s",
     format: "All-format"
-    // Verified: 132 Tests, 271 ODIs, 1 T20I — ESPNcricinfo
+    // 132 Tests, 271 ODIs, 1 T20I — ESPNcricinfo
   },
   {
     name: "Kapil Dev",
@@ -55,7 +55,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "90s",
     format: "ODI"
-    // Verified: 131 Tests, 225 ODIs — retired 1994, T20I format did not exist. NO T20Is.
+    // 131 Tests, 225 ODIs — retired 1994, T20I format did not exist. ZERO T20Is.
   },
   {
     name: "Sourav Ganguly",
@@ -63,8 +63,9 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Left-hand",
     era: "2000s",
-    format: "All-format"
-    // Verified: 113 Tests, 311 ODIs, 1 T20I (vs South Africa, 2007) — ESPNcricinfo
+    format: "ODI"
+    // 113 Tests, 311 ODIs — ESPNcricinfo match page shows NO T20I debut for India.
+    // All T20 appearances were IPL/domestic only. ZERO T20 Internationals.
   },
   {
     name: "Rahul Dravid",
@@ -73,7 +74,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2000s",
     format: "All-format"
-    // Verified: 164 Tests, 344 ODIs, 1 T20I (vs England, 2011) — ESPNcricinfo
+    // 164 Tests, 344 ODIs, 1 T20I (vs England 2011) — Britannica + ESPNcricinfo confirmed
   },
   {
     name: "Yuvraj Singh",
@@ -82,7 +83,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 40 Tests, 304 ODIs, 58 T20Is — ESPNcricinfo
+    // 40 Tests, 304 ODIs, 58 T20Is — ESPNcricinfo
   },
   {
     name: "Harbhajan Singh",
@@ -91,7 +92,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2000s",
     format: "All-format"
-    // Verified: 103 Tests, 236 ODIs, 28 T20Is — ESPNcricinfo
+    // 103 Tests, 236 ODIs, 28 T20Is — ESPNcricinfo
   },
   {
     name: "Brian Lara",
@@ -100,8 +101,8 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     era: "2000s",
     format: "ODI"
-    // Verified: 131 Tests, 299 ODIs — retired April 2007. ZERO T20 Internationals.
-    // His T20 appearances (Southern Rocks 2010) were domestic, not international.
+    // 131 Tests, 299 ODIs — retired April 2007. ZERO T20 Internationals.
+    // Southern Rocks T20 (2010) was domestic Zimbabwe cricket, not international.
   },
   {
     name: "Shane Warne",
@@ -110,8 +111,8 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2000s",
     format: "ODI"
-    // Verified: 145 Tests, 194 ODIs — retired January 2007. ZERO T20 Internationals.
-    // IPL (Rajasthan Royals) was domestic/franchise cricket, not international T20I.
+    // 145 Tests, 194 ODIs — retired January 2007. ZERO T20 Internationals.
+    // IPL (Rajasthan Royals) was franchise/domestic cricket, not T20I.
   },
   {
     name: "Ricky Ponting",
@@ -120,7 +121,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2000s",
     format: "All-format"
-    // Verified: 168 Tests, 375 ODIs, 17 T20Is — ESPNcricinfo
+    // 168 Tests, 375 ODIs, 17 T20Is — ESPNcricinfo confirmed
   },
   {
     name: "AB de Villiers",
@@ -129,7 +130,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 114 Tests, 228 ODIs, 78 T20Is — ESPNcricinfo
+    // 114 Tests, 228 ODIs, 78 T20Is — ESPNcricinfo
   },
   {
     name: "Chris Gayle",
@@ -138,7 +139,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 103 Tests, 301 ODIs, 79 T20Is — ESPNcricinfo
+    // 103 Tests, 301 ODIs, 79 T20Is — ESPNcricinfo
   },
   {
     name: "Wasim Akram",
@@ -147,7 +148,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     era: "90s",
     format: "ODI"
-    // Verified: 104 Tests, 356 ODIs — retired 2003. T20I cricket did not exist. ZERO T20Is.
+    // 104 Tests, 356 ODIs — retired 2003. T20I cricket did not exist. ZERO T20Is.
   },
   {
     name: "Kumar Sangakkara",
@@ -156,7 +157,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     era: "2010s",
     format: "All-format"
-    // Verified: 134 Tests, 404 ODIs, 56 T20Is — ESPNcricinfo
+    // 134 Tests, 404 ODIs, 56 T20Is — ESPNcricinfo
   },
   {
     name: "Jasprit Bumrah",
@@ -165,7 +166,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2020s",
     format: "All-format"
-    // Verified: 40+ Tests, 80+ ODIs, 75+ T20Is — ESPNcricinfo
+    // 40+ Tests, 80+ ODIs, 75+ T20Is — ESPNcricinfo
   },
   {
     name: "Hardik Pandya",
@@ -174,7 +175,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2020s",
     format: "All-format"
-    // Verified: 13 Tests, 70+ ODIs, 110+ T20Is — ESPNcricinfo
+    // 13 Tests, 70+ ODIs, 110+ T20Is — ESPNcricinfo
   },
   {
     name: "Suryakumar Yadav",
@@ -183,6 +184,6 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     era: "2020s",
     format: "All-format"
-    // Verified: 7 Tests, 50+ ODIs, 70+ T20Is — ESPNcricinfo
+    // 7 Tests, 50+ ODIs, 70+ T20Is — ESPNcricinfo
   }
 ];
