@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cricket Wordle — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    .wordle-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 100px 16px 60px;
+    }
+    .wordle-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 24px;
+      padding: 32px 24px;
+      width: 100%;
+      max-width: 620px;
+    }
+    .wordle-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .wordle-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .wordle-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.9rem;
+    }
+    .attempts-left {
+      display: inline-block;
+      background: rgba(255,107,53,0.15);
+      border: 1px solid rgba(255,107,53,0.3);
+      border-radius: 20px;
+      padding: 4px 16px;
+      font-size: 0.85rem;
+      color: #f7931e;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    /* CLUE LEGEND */
+    .legend {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.6);
+    }
+    .legend-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+    }
+    .legend-dot.green { background: #27ae60; }
+    .legend-dot.yellow { background: #f39c12; }
+    .legend-dot.grey { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); }
+
+    /* CLUE COLUMN HEADERS */
+    .clue-headers {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1.2fr 1fr 1.2fr;
+      gap: 6px;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+    .clue-header {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* GUESS ROWS */
+    .guess-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 24px;
+    }
+    .guess-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1.2fr 1fr 1.2fr;
+      gap: 6px;
+    }
+    .guess-cell {
+      border-radius: 10px;
+      padding: 10px 6px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      min-height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.2;
+      transition: all 0.3s ease;
+    }
+    .guess-cell.green {
+      background: rgba(39,174,96,0.25);
+      border-color: #27ae60;
+      color: #2ecc71;
+    }
+    .guess-cell.yellow {
+      background: rgba(243,156,18,0.25);
+      border-color: #f39c12;
+      color: #f7ca18;
+    }
+    .guess-cell.grey {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+    }
+    .guess-cell.name-cell {
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* INPUT AREA */
+    .input-area {
+      margin-bottom: 16px;
+    }
+    .input-label {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .player-input-wrap {
+      position: relative;
+    }
+    .player-input {
+      width: 100%;
+      background: rgba(255,255,255,0.07);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 14px 16px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      box-sizing: border-box;
+    }
+    .player-input:focus {
+      border-color: #ff6b35;
+    }
+    .autocomplete-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #1a1a2e;
+      border: 1px solid rgba(255,107,53,0.3);
+      border-radius: 12px;
+      margin-top: 4px;
+      z-index: 100;
+      overflow: hidden;
+    }
+    .autocomplete-item {
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.15s;
+    }
+    .autocomplete-item:last-child { border-bottom: none; }
+    .autocomplete-item:hover {
+      background: rgba(255,107,53,0.15);
+      color: #ff6b35;
+    }
+
+    /* RESULT SCREEN */
+    .result-box {
+      text-align: center;
+      padding: 20px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      margin-bottom: 20px;
+    }
+    .result-emoji { font-size: 3rem; margin-bottom: 8px; }
+    .result-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .result-answer {
+      color: #f7931e;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .share-text-box {
+      background: rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 14px;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 16px;
+      line-height: 1.8;
+      text-align: left;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Quiz</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <div class="wordle-wrapper">
+    <div class="wordle-card">
+
+      <div class="wordle-header">
+        <div class="wordle-title">🟩 Cricket Wordle</div>
+        <div class="wordle-sub">Guess today's mystery cricketer in 6 tries</div>
+        <div class="attempts-left" id="attemptsLeft">6 attempts remaining</div>
+      </div>
+
+      <!-- LEGEND -->
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot green"></div> Exact match</div>
+        <div class="legend-item"><div class="legend-dot yellow"></div> Close match</div>
+        <div class="legend-item"><div class="legend-dot grey"></div> No match</div>
+      </div>
+
+      <!-- COLUMN HEADERS -->
+      <div class="clue-headers">
+        <div class="clue-header">Player</div>
+        <div class="clue-header">Country</div>
+        <div class="clue-header">Role</div>
+        <div class="clue-header">Bat Style</div>
+        <div class="clue-header">Era</div>
+        <div class="clue-header">Format</div>
+      </div>
+
+      <!-- 6 GUESS ROWS -->
+      <div class="guess-rows" id="guessRows">
+        <!-- Rows built by JS -->
+      </div>
+
+      <!-- INPUT AREA -->
+      <div class="input-area" id="inputArea">
+        <div class="input-label">Type a cricketer's name:</div>
+        <div class="player-input-wrap">
+          <input
+            type="text"
+            class="player-input"
+            id="playerInput"
+            placeholder="e.g. Virat Kohli"
+            autocomplete="off"
+            oninput="showSuggestions()"
+            onkeydown="handleEnter(event)"
+          />
+          <div class="autocomplete-list" id="autocompleteList" style="display:none"></div>
+        </div>
+        <button class="btn-primary" style="width:100%; margin-top:12px;" onclick="submitGuess()">
+          Submit Guess
+        </button>
+      </div>
+
+      <!-- RESULT (shown after win or loss) -->
+      <div id="resultBox" style="display:none">
+        <div class="result-box">
+          <div class="result-emoji" id="resultEmoji">🏆</div>
+          <div class="result-title" id="resultTitle">You got it!</div>
+          <div class="result-answer" id="resultAnswer"></div>
+          <div class="share-text-box" id="shareTextBox"></div>
+          <button class="btn-primary" style="width:100%; background:linear-gradient(135deg,#25D366,#128C7E); margin-bottom:10px;" onclick="shareOnWhatsApp()">
+            Share on WhatsApp 💬
+          </button>
+          <button class="btn-secondary" style="width:100%;" onclick="window.location.href='index.html'">
+            Back to Home 🏠
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const wAuth = firebase.auth();
+    const wDb = firebase.firestore();
+  </script>
+
+  <script src="players.js"></script>
+  <script src="wordle.js"></script>
+</body>
+</html>
