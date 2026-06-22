@@ -48,7 +48,134 @@
       margin-top: 8px;
     }
 
-    /* CLUE LEGEND */
+    /* START SCREEN */
+    .wordle-start-card {
+      text-align: center;
+    }
+    .wordle-start-icon { font-size: 3.5rem; margin-bottom: 12px; }
+    .wordle-start-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .wordle-start-sub {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+
+    /* HOW TO PLAY BOX */
+    .how-to-play {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .how-to-play-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .how-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .how-step-num {
+      background: linear-gradient(135deg, #ff6b35, #f7931e);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.8rem;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* COLOUR LEGEND */
+    .colour-legend {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      text-align: left;
+    }
+    .colour-legend-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .colour-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .colour-tile {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .colour-tile.green { background: rgba(39,174,96,0.3); border: 2px solid #27ae60; }
+    .colour-tile.yellow { background: rgba(243,156,18,0.3); border: 2px solid #f39c12; }
+    .colour-tile.grey { background: rgba(255,255,255,0.06); border: 2px solid rgba(255,255,255,0.2); }
+    .colour-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.4;
+    }
+    .colour-desc strong { color: #fff; }
+
+    /* ATTRIBUTES SHOWN */
+    .attributes-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 28px;
+      text-align: left;
+    }
+    .attributes-box-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 14px;
+      text-align: center;
+    }
+    .attr-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.88rem;
+    }
+    .attr-row:last-child { border-bottom: none; }
+    .attr-name { color: #f7931e; font-weight: 700; }
+    .attr-example { color: rgba(255,255,255,0.55); font-size: 0.8rem; }
+
+    /* LEGEND (inside game) */
     .legend {
       display: flex;
       gap: 12px;
@@ -138,17 +265,13 @@
     }
 
     /* INPUT AREA */
-    .input-area {
-      margin-bottom: 16px;
-    }
+    .input-area { margin-bottom: 16px; }
     .input-label {
       color: rgba(255,255,255,0.6);
       font-size: 0.85rem;
       margin-bottom: 8px;
     }
-    .player-input-wrap {
-      position: relative;
-    }
+    .player-input-wrap { position: relative; }
     .player-input {
       width: 100%;
       background: rgba(255,255,255,0.07);
@@ -161,9 +284,7 @@
       outline: none;
       box-sizing: border-box;
     }
-    .player-input:focus {
-      border-color: #ff6b35;
-    }
+    .player-input:focus { border-color: #ff6b35; }
     .autocomplete-list {
       position: absolute;
       top: 100%;
@@ -239,7 +360,93 @@
     </div>
   </nav>
 
-  <div class="wordle-wrapper">
+  <!-- SCREEN 1: START / HOW TO PLAY -->
+  <div class="wordle-wrapper" id="wStartScreen">
+    <div class="wordle-card wordle-start-card">
+
+      <div class="wordle-start-icon">🟩</div>
+      <div class="wordle-start-title">Cricket Wordle</div>
+      <div class="wordle-start-sub">One mystery cricketer every day. Same player for everyone.</div>
+
+      <!-- HOW TO PLAY -->
+      <div class="how-to-play">
+        <div class="how-to-play-title">📖 How to Play</div>
+        <div class="how-step">
+          <div class="how-step-num">1</div>
+          <div>Type any cricketer's name in the box and submit your guess.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">2</div>
+          <div>After each guess, you see 5 coloured tiles — one for each attribute of that player.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">3</div>
+          <div>Use the colours as clues to narrow down who the mystery player is.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">4</div>
+          <div>Get all 5 tiles green = you found the player! You have 6 attempts total.</div>
+        </div>
+        <div class="how-step">
+          <div class="how-step-num">5</div>
+          <div>Share your coloured tile result on WhatsApp and challenge your friends!</div>
+        </div>
+      </div>
+
+      <!-- COLOUR MEANINGS -->
+      <div class="colour-legend">
+        <div class="colour-legend-title">🎨 What the Colours Mean</div>
+        <div class="colour-row">
+          <div class="colour-tile green">🟩</div>
+          <div class="colour-desc"><strong>Green — Exact match.</strong> Your guess and the mystery player share this attribute exactly.</div>
+        </div>
+        <div class="colour-row">
+          <div class="colour-tile yellow">🟨</div>
+          <div class="colour-desc"><strong>Yellow — Close match.</strong> Era is one step away (e.g. you guessed 2000s, answer is 2010s). Or one is All-format and the other is a specific format.</div>
+        </div>
+        <div class="colour-row">
+          <div class="colour-tile grey">⬛</div>
+          <div class="colour-desc"><strong>Grey — No match.</strong> This attribute is completely different from the mystery player.</div>
+        </div>
+      </div>
+
+      <!-- 5 ATTRIBUTES EXPLAINED -->
+      <div class="attributes-box">
+        <div class="attributes-box-title">🏏 The 5 Clues You Get After Each Guess</div>
+        <div class="attr-row">
+          <span class="attr-name">Country</span>
+          <span class="attr-example">India / Australia / Pakistan…</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-name">Role</span>
+          <span class="attr-example">Batsman / Bowler / All-rounder / Wicketkeeper</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-name">Bat Style</span>
+          <span class="attr-example">Right-hand / Left-hand</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-name">Era</span>
+          <span class="attr-example">90s / 2000s / 2010s / 2020s</span>
+        </div>
+        <div class="attr-row">
+          <span class="attr-name">Format</span>
+          <span class="attr-example">Test / ODI / T20 / All-format</span>
+        </div>
+      </div>
+
+      <button class="btn-primary" style="width:100%; font-size:1.1rem; padding:16px;" onclick="startWordle()">
+        I Understand — Let's Play! 🟩
+      </button>
+      <button class="btn-secondary" style="width:100%; margin-top:12px;" onclick="window.location.href='index.html'">
+        Back to Home
+      </button>
+
+    </div>
+  </div>
+
+  <!-- SCREEN 2: GAME SCREEN -->
+  <div class="wordle-wrapper" id="wGameScreen" style="display:none">
     <div class="wordle-card">
 
       <div class="wordle-header">
@@ -248,14 +455,12 @@
         <div class="attempts-left" id="attemptsLeft">6 attempts remaining</div>
       </div>
 
-      <!-- LEGEND -->
       <div class="legend">
         <div class="legend-item"><div class="legend-dot green"></div> Exact match</div>
         <div class="legend-item"><div class="legend-dot yellow"></div> Close match</div>
         <div class="legend-item"><div class="legend-dot grey"></div> No match</div>
       </div>
 
-      <!-- COLUMN HEADERS -->
       <div class="clue-headers">
         <div class="clue-header">Player</div>
         <div class="clue-header">Country</div>
@@ -265,12 +470,8 @@
         <div class="clue-header">Format</div>
       </div>
 
-      <!-- 6 GUESS ROWS -->
-      <div class="guess-rows" id="guessRows">
-        <!-- Rows built by JS -->
-      </div>
+      <div class="guess-rows" id="guessRows"></div>
 
-      <!-- INPUT AREA -->
       <div class="input-area" id="inputArea">
         <div class="input-label">Type a cricketer's name:</div>
         <div class="player-input-wrap">
@@ -290,7 +491,6 @@
         </button>
       </div>
 
-      <!-- RESULT (shown after win or loss) -->
       <div id="resultBox" style="display:none">
         <div class="result-box">
           <div class="result-emoji" id="resultEmoji">🏆</div>
