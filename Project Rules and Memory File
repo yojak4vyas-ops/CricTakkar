@@ -1,0 +1,248 @@
+This file is the permanent memory for this project. Always read it before starting work, and always update the Current Build Status section at the end of each session.
+
+# CricTakkar — Project Master Brief
+
+---
+
+## WHO I AM
+
+- I have zero coding knowledge. I am completely non-technical.
+- I have a laptop and can give 1.5 hours every day.
+- My budget is zero — every tool used must be free.
+- I am based in Maharashtra, India.
+- The app is for the Indian cricket audience.
+
+---
+
+## HOW YOU MUST TALK TO ME
+
+- Always give step-by-step instructions assuming I know nothing about code.
+- Never use technical terms without immediately explaining them in simple English.
+- Always tell me exactly: which website to open, what to click, what to type, where to paste.
+- When I paste an error message, stop everything and fix it before moving on.
+- At the start of every chat session, tell me: what we built last time, and what we are doing today.
+- At the end of every chat session, give me a 5-line summary of what we completed today.
+- Build one feature completely before starting the next.
+- After every feature is built, make me test it before moving on.
+- Never assume I remember something from a previous session — always remind me.
+- Never give find-and-replace instructions. Always give the complete file to paste from scratch.
+
+---
+
+## THE APP — CRICTAKKAR
+
+A cricket knowledge and battle platform for Indian cricket fans.
+Tagline: "Aao CricTakkar karte hain" / "Cricket. Quiz. Battle."
+Target domain: crictakkar.in
+Instagram handle: @crictakkar
+
+---
+
+## LEGAL BOUNDARIES (IMPORTANT — NEVER CROSS THESE)
+
+- No cash prize contests of any kind.
+- No token, coin, or virtual currency system that converts to real money.
+- No paid entry for a chance to win — this requires an NOGC licence under India's 2025 Online Gaming Act.
+- All gameplay is completely free.
+- Revenue comes only from: ads, subscriptions, affiliate links, brand sponsorships.
+
+---
+
+## REVENUE MODEL
+
+- Google AdSense: ads shown between quizzes and on results screen. Never mid-question.
+- Premium subscription: ₹99–199/month via Razorpay. Benefits: ad-free, exclusive quiz packs, Pro badge on profile.
+- Affiliate links: Dream11, My11Circle, MPL referral links. ₹50–500 per referred signup.
+- Brand sponsorships: brands pay ₹5,000–50,000 to sponsor a weekly contest. They provide the prize (merch, vouchers). Legal and safe.
+- Revenue target: ₹1–2 lakh/month at 100,000 monthly active users.
+
+---
+
+## COMPLETE FEATURE LIST
+
+### PHASE 1 — Core App (Days 1–12, 1.5 hrs/day)
+Goal: A working app live on the internet with real users by Day 12.
+
+1. Home screen with navigation bar
+2. Daily quiz — 5 questions, 15-second countdown timer, 4 answer options, reveal correct answer after each, show a fun fact
+3. Category quizzes — IPL, Test cricket, ODIs, T20 World Cup, Player-specific packs
+4. Question bank — 200+ questions each with 4 options, correct answer marked, fun fact
+5. User login and profiles — using Firebase Authentication (free)
+6. User profile page — username, favourite team, quizzes played, accuracy %, best streak
+7. Global leaderboard — top players this week and this month
+8. Friends leaderboard — beat specific friends
+9. Daily streak system — play every day to keep streak alive, lose it if you miss a day
+10. XP and level system — earn XP per quiz, levels from Debutant → Test Legend
+11. Shareable score card — auto-generated image of score to share on WhatsApp and Instagram
+12. Deploy live on Vercel — app accessible by anyone on the internet
+
+### PHASE 2 — Content Features (Days 13–22)
+Goal: Add all unique content features that make CricTakkar different from any other app.
+
+13. Speed round quiz — 30 questions in 60 seconds ✅ Done Day 9
+14. Guess the player — blurred/silhouette image, user guesses the cricketer (skipping for now)
+15. Guess the stats — clubbed into existing question bank, no separate page needed ✅ Decision made Day 10
+16. Cricket Wordle — guess the cricketer in 6 tries with clues (country, role, bat style, era, format) ✅ Done Day 10
+17. Ranking challenge — drag and drop 5 players in correct order (by average, by sixes etc.)
+18. Badges and titles — "Sachin Scholar", "IPL Legend", "Test Specialist", "Speed Demon" etc.
+19. Stats dashboard — user's strongest category, weakest era, accuracy over time graph
+20. Avatar customisation — team jersey, helmet, bat — cosmetic unlockables
+21. Cricket Poetry section
+22. Top 5 section
+23. On This Day — daily cricket history card
+24. Cricket news feed
+25. Push notifications
+26. Match day alert
+27. Hindi language support
+28. Player encyclopaedia
+
+### PHASE 3 — Multiplayer (Days 23–40)
+Goal: Real-time tournaments with 100+ players simultaneously.
+
+29. Private room system
+30. Public matchmaking lobby
+31. Classic Mode
+32. Speed Mode
+33. Elimination Mode
+34. Tournament structure
+35. Live leaderboard
+36. Emoji reactions
+37. Spectator mode
+38. Power-ups
+39. Daily 8pm scheduled tournament
+40. IPL season special tournaments
+41. State leaderboard
+42. 1v1 duel
+
+### PHASE 4 — Money Features (Days 41–50)
+Goal: Turn the app into an earning platform.
+
+43. Google AdSense integration
+44. Premium Pro subscription
+45. Affiliate banners
+46. Sponsored contest system
+47. Admin dashboard
+
+---
+
+## TECH STACK (ALL FREE)
+
+- Frontend: HTML, CSS, JavaScript — I copy-paste all code you write
+- Hosting: Vercel (free) — makes the app live on the internet
+- Code storage: GitHub (free) — stores all our code safely
+- Database and login: Firebase (free tier) — stores users, scores, questions
+- Real-time multiplayer: Socket.io + Node.js — handles live tournaments
+- Multiplayer hosting: Railway.app (free tier) — runs the live server
+- Payments: Razorpay — for Premium subscriptions
+- AI poems: Claude API — generates match poems automatically
+- Cricket live data: CricAPI (free tier) — for live match quiz triggers
+- Design and graphics: Canva (free) — logo, score cards, social media posts
+- Email list: Brevo (free up to 500 contacts) — weekly newsletter
+
+---
+
+## BUILD RULES — FOLLOW EVERY SINGLE SESSION
+
+1. Start every session by telling me what we completed last time and what today's goal is.
+2. End every session by giving me a 5-line summary of what we finished today.
+3. Build and test one feature completely before touching the next.
+4. Deploy to Vercel after every completed feature so the app is always live.
+5. If I paste an error, fix it immediately — do not continue building until the error is resolved.
+6. Never write code without explaining in plain English what it does and why.
+7. Always give me the complete file to paste — never partial edits or find-and-replace instructions.
+8. Launch after Phase 1 Day 12. Do not wait for the full app to be ready.
+9. Remind me to save my work to GitHub at the end of every session.
+10. If I ask what day of building we are on, calculate it from Phase 1 Day 1 onwards.
+
+---
+
+## QUESTION QUALITY RULE — PERMANENT (Added after Day 2)
+
+Every question added to CricTakkar — by me or by Claude — must pass this checklist before going into the app.
+
+CHECKLIST (all boxes must be true):
+- Fact checked on ESPNcricinfo
+- Fact checked on Wikipedia
+- All 4 options are plausible (not obviously silly wrong answers)
+- The fun fact adds something new — not just repeating the answer
+- No "as of today" answers that will become outdated (e.g. "current world record holder")
+
+QUESTIONS WE WILL NEVER WRITE:
+- Anything involving "hat-trick" unless verified on ESPNcricinfo first
+- Any "fastest", "most", "highest" record without checking the exact current record holder
+- Any question about a match result from memory
+- Any statistic with a specific number without verifying the source
+
+WHAT CLAUDE MUST DO:
+- Every time Claude writes a new question, Claude must state clearly: "Verified on ESPNcricinfo — [what the source confirms]"
+- If Claude is not 100% certain, Claude must say "I am not fully certain — please verify this on ESPNcricinfo before adding"
+- Never add a question just because it sounds right
+- Before adding any question involving "most titles", "current champion", "who holds the record" or any fact that changes over time — do a web search first to confirm the latest answer. Do not rely on training data for live records.
+
+---
+
+## CRICKET WORDLE PLAYER DATA RULE — PERMANENT (Added Day 10)
+
+The Cricket Wordle game uses a player database in `players.js`. Every player entry has 5 attributes: country, role, battingStyle, era, format.
+
+FORMAT RULE — THIS IS CRITICAL:
+- "All-format" means the player played at least 1 official international match in ALL THREE formats: Tests, ODIs, AND T20 Internationals.
+- IPL, Big Bash, domestic T20, franchise cricket — these do NOT count as T20 Internationals.
+- If a player retired before T20 Internationals existed (before 2005) — they cannot be All-format.
+- If a player played only 1 T20I — that still counts as All-format (e.g. Sachin, Ganguly — wait, Ganguly played zero T20Is, he is ODI only).
+
+VERIFIED FORMAT CORRECTIONS MADE ON DAY 10:
+- Brian Lara → ODI (retired 2007, zero T20Is — Southern Rocks T20 in 2010 was domestic Zimbabwe cricket)
+- Shane Warne → ODI (retired January 2007, zero T20Is — IPL was franchise cricket not T20I)
+- Wasim Akram → ODI (retired 2003, T20I format did not exist)
+- Kapil Dev → ODI (retired 1994, T20I format did not exist)
+- Sourav Ganguly → ODI (zero T20 Internationals for India — all T20 appearances were IPL/domestic only)
+- Rahul Dravid → All-format (played 1 T20I vs England in 2011 — verified on ESPNcricinfo and Britannica)
+
+BEFORE ADDING ANY NEW PLAYER TO players.js:
+- Always verify their format on ESPNcricinfo first — check the Debut/Last Matches page for T20I section
+- If there is no T20I debut listed on ESPNcricinfo, they have zero T20Is — mark them as ODI or Test only
+- Never assume a player is All-format because they played IPL or domestic T20
+- Always add a comment line with the verification source and match counts
+
+---
+
+## DAILY SESSION FORMAT
+
+Every session must follow this structure:
+1. START: "Last session we completed [X]. Today we are building [Y]."
+2. BUILD: Step by step instructions with full code to copy-paste.
+3. TEST: Tell me exactly how to test that the feature works.
+4. DEPLOY: Remind me to push to GitHub and deploy on Vercel.
+5. END: "Today we completed [X]. Next session we will build [Y]."
+
+---
+
+## CURRENT BUILD STATUS
+
+- Day: 12 Complete
+- Last completed:
+  Day 9 — Full Phase 1 end-to-end test passed. Speed Round Quiz built (speedround.html + speedround.js). 30 questions, 60-second timer, instant answer flash, Speed Demon badge at 25/30, XP saved to Firebase. Speed Round card added to home screen.
+  Day 10 — Cricket Wordle built (wordle.html + wordle.js + players.js). 20 verified players, 5 attributes each, 6 guesses, colour-coded tiles (green/yellow/grey), autocomplete input, WhatsApp share of emoji tile result, XP saved to Firebase. Full rules screen shown before game starts. All player format attributes verified against ESPNcricinfo — Ganguly, Lara, Warne, Wasim, Kapil corrected to ODI-only.
+  Day 11 — Ranking Challenge built (ranking.html + ranking.js). 5 drag-and-drop challenges with touch support for mobile, XP saved to Firebase. Fact-checked all player stats — fixed 4 real errors: Steve Smith swapped for Ricky Ponting (Smith is still active, average keeps changing), James Anderson wicket count and sort order corrected (704 wickets, was ranked wrongly above Warne), broken England flag emoji fixed, IPL titles list rebuilt to include RCB's 2025 and 2026 championships and correct Rajasthan Royals count (1 title, not 2).
+  Day 12 — Badges & Titles system built across 6 files (profile.html, profile.css, quiz.js, category-quiz-v2.js, wordle.js, ranking.js). 9 badges total: Debutant, Perfectionist, Sachin Scholar, IPL Legend, Speed Demon, Wordle Wizard, Ranking Master, On Fire, Test Legend. 3 are computed directly from existing profile data (no extra writes needed); 6 unlock live during gameplay via a `badges` object saved to Firestore. Verified level-naming system is consistent across all game files. Fact-checked category quiz bank (IPL/Test/ODI/T20) — all confirmed accurate, including 2026 T20 World Cup results.
+- Next task: Feature 19 — Stats Dashboard (user's strongest category, weakest era, accuracy over time graph)
+
+---
+
+## HOW TO START EACH DAY
+
+Begin every chat session inside this project with:
+"Starting Day [number] of CricTakkar. Yesterday we [what you did]. Today let's [what's next]."
+
+---
+
+## WHEN TO UPDATE THESE INSTRUCTIONS
+
+Only update these instructions when:
+- A full Phase is completed (update Current Build Status section only)
+- A major feature is added or removed from the plan
+- A tool in the tech stack changes
+- A permanent rule is added (like the Question Quality Rule above)
+
+Do NOT update for daily progress — that goes in your personal Google Doc diary.
