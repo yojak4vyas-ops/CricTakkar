@@ -124,6 +124,102 @@
       line-height: 1.9;
       padding-left: 18px;
     }
+
+    /* CATEGORY STRENGTH CARDS */
+    .category-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .category-card {
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+    }
+    .category-card.strongest {
+      background: rgba(39,174,96,0.1);
+      border: 1px solid rgba(39,174,96,0.3);
+    }
+    .category-card.weakest {
+      background: rgba(231,76,60,0.08);
+      border: 1px solid rgba(231,76,60,0.25);
+    }
+    .category-card-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .category-card.strongest .category-card-label { color: #6fe3a0; }
+    .category-card.weakest .category-card-label { color: #f0897c; }
+    .category-card-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .category-card-acc {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+    }
+    .category-note {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+    }
+
+    /* ACCURACY OVER TIME CHART */
+    .chart-wrap { position: relative; }
+    .chart-svg { width: 100%; height: 140px; display: block; overflow: visible; }
+    .chart-tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: #1a1a2e;
+      border: 1px solid rgba(244,169,0,0.4);
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 0.72rem;
+      color: #fff;
+      white-space: nowrap;
+      transform: translate(-50%, -120%);
+      opacity: 0;
+      transition: opacity 0.1s;
+      z-index: 5;
+    }
+    .chart-empty {
+      text-align: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      padding: 24px 0;
+    }
+
+    /* ACTIVITY CALENDAR */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(14, 1fr);
+      gap: 3px;
+      margin-bottom: 10px;
+    }
+    .calendar-cell {
+      aspect-ratio: 1;
+      border-radius: 3px;
+      background: rgba(255,255,255,0.05);
+    }
+    .calendar-legend {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 4px;
+      font-size: 0.68rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .calendar-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+    }
   </style>
 </head>
 <body>
@@ -239,6 +335,27 @@
       </div>
     </div>
 
+    <!-- CATEGORY STRENGTH -->
+    <div class="section-card">
+      <div class="section-title">Category Strength</div>
+      <div class="section-subtitle" id="categorySubtitle">Based on quizzes played since this feature was added</div>
+      <div id="categoryContent"></div>
+    </div>
+
+    <!-- ACCURACY OVER TIME -->
+    <div class="section-card">
+      <div class="section-title">Accuracy Over Time</div>
+      <div class="section-subtitle">Your daily quiz accuracy, day by day</div>
+      <div id="accuracyChartContent"></div>
+    </div>
+
+    <!-- ACTIVITY CALENDAR -->
+    <div class="section-card">
+      <div class="section-title">Activity Calendar</div>
+      <div class="section-subtitle">Last 70 days — darker means more quizzes that day</div>
+      <div id="activityCalendarContent"></div>
+    </div>
+
     <!-- BADGES -->
     <div class="badges-card">
       <div class="badge-summary-row">
@@ -252,8 +369,6 @@
     <div class="coming-soon-card">
       <div class="coming-soon-title">🚧 Coming soon to this dashboard</div>
       <ul class="coming-soon-list">
-        <li>Your strongest and weakest quiz category</li>
-        <li>An accuracy-over-time graph</li>
         <li>Your strongest and weakest cricket era</li>
       </ul>
     </div>
@@ -352,6 +467,176 @@
 
       // Badges
       renderBadges(data);
+
+      // New in step 2: category strength, accuracy over time, activity calendar
+      var quizHistory = data.quizHistory || [];
+      renderCategoryStrength(quizHistory);
+      renderAccuracyChart(quizHistory);
+      renderActivityCalendar(quizHistory);
+    }
+
+    // Display names for each category value stored in quizHistory entries.
+    var CATEGORY_NAMES = { 'Daily': 'Daily Quiz', 'ipl': 'IPL', 'test': 'Test Cricket', 'odi': 'ODI', 't20': 'T20 World Cup' };
+
+    // ===== CATEGORY STRENGTH =====
+    function renderCategoryStrength(history) {
+      var container = document.getElementById('categoryContent');
+      var byCategory = {};
+
+      history.forEach(function(h) {
+        if (!byCategory[h.category]) byCategory[h.category] = { score: 0, total: 0, count: 0 };
+        byCategory[h.category].score += h.score;
+        byCategory[h.category].total += h.total;
+        byCategory[h.category].count += 1;
+      });
+
+      var categories = Object.keys(byCategory);
+
+      if (categories.length === 0) {
+        container.innerHTML = '<div class="category-note">Play a few quizzes across different categories (Daily, IPL, Test, ODI, T20) to see your strongest and weakest here.</div>';
+        return;
+      }
+
+      var strongest = null, weakest = null, mostPlayed = null;
+      categories.forEach(function(cat) {
+        var c = byCategory[cat];
+        var acc = c.total > 0 ? (c.score / c.total) : 0;
+        if (!strongest || acc > strongest.acc) strongest = { cat: cat, acc: acc };
+        if (!weakest || acc < weakest.acc) weakest = { cat: cat, acc: acc };
+        if (!mostPlayed || c.count > byCategory[mostPlayed].count) mostPlayed = cat;
+      });
+
+      if (categories.length === 1) {
+        container.innerHTML =
+          '<div class="category-note">You\'ve only played ' + (CATEGORY_NAMES[categories[0]] || categories[0]) +
+          ' so far (' + Math.round(strongest.acc * 100) + '% accuracy). Try another category to see a strongest-vs-weakest comparison.</div>';
+        return;
+      }
+
+      var name = function(cat) { return CATEGORY_NAMES[cat] || cat; };
+
+      container.innerHTML =
+        '<div class="category-cards">' +
+          '<div class="category-card strongest">' +
+            '<div class="category-card-label">💪 Strongest</div>' +
+            '<div class="category-card-name">' + name(strongest.cat) + '</div>' +
+            '<div class="category-card-acc">' + Math.round(strongest.acc * 100) + '% accuracy</div>' +
+          '</div>' +
+          '<div class="category-card weakest">' +
+            '<div class="category-card-label">📉 Weakest</div>' +
+            '<div class="category-card-name">' + name(weakest.cat) + '</div>' +
+            '<div class="category-card-acc">' + Math.round(weakest.acc * 100) + '% accuracy</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="category-note">Most played: ' + name(mostPlayed) + ' (' + byCategory[mostPlayed].count + ' quiz' + (byCategory[mostPlayed].count === 1 ? '' : 'zes') + ')</div>';
+    }
+
+    // ===== ACCURACY OVER TIME =====
+    function renderAccuracyChart(history) {
+      var container = document.getElementById('accuracyChartContent');
+      var byDate = {};
+      history.forEach(function(h) {
+        if (!byDate[h.date]) byDate[h.date] = { score: 0, total: 0 };
+        byDate[h.date].score += h.score;
+        byDate[h.date].total += h.total;
+      });
+      var dates = Object.keys(byDate).sort();
+
+      if (dates.length < 2) {
+        container.innerHTML = '<div class="chart-empty">Play quizzes on a couple of different days to see your accuracy trend here.</div>';
+        return;
+      }
+
+      var points = dates.map(function(d) {
+        return { date: d, accuracy: byDate[d].total > 0 ? Math.round((byDate[d].score / byDate[d].total) * 100) : 0 };
+      });
+
+      var w = 600, h = 140, padX = 10, padY = 16;
+      var stepX = (w - padX * 2) / (points.length - 1);
+      var yFor = function(acc) { return h - padY - (acc / 100) * (h - padY * 2); };
+
+      var coords = points.map(function(p, i) { return { x: padX + i * stepX, y: yFor(p.accuracy), p: p }; });
+
+      var linePath = coords.map(function(c, i) { return (i === 0 ? 'M' : 'L') + c.x.toFixed(1) + ',' + c.y.toFixed(1); }).join(' ');
+      var areaPath = linePath + ' L' + coords[coords.length - 1].x.toFixed(1) + ',' + (h - padY) +
+        ' L' + coords[0].x.toFixed(1) + ',' + (h - padY) + ' Z';
+
+      var gridLines = [0, 50, 100].map(function(v) {
+        var y = yFor(v);
+        return '<line x1="' + padX + '" y1="' + y + '" x2="' + (w - padX) + '" y2="' + y +
+          '" stroke="rgba(255,255,255,0.08)" stroke-width="1" />' +
+          '<text x="0" y="' + (y + 3) + '" font-size="9" fill="rgba(255,255,255,0.3)">' + v + '%</text>';
+      }).join('');
+
+      var dots = coords.map(function(c, i) {
+        var isEnd = i === coords.length - 1;
+        return '<circle class="chart-dot" data-i="' + i + '" cx="' + c.x.toFixed(1) + '" cy="' + c.y.toFixed(1) +
+          '" r="' + (isEnd ? 4 : 3) + '" fill="' + (isEnd ? '#f4a900' : '#0a0e1a') +
+          '" stroke="#f4a900" stroke-width="2" style="cursor:pointer" />';
+      }).join('');
+
+      container.innerHTML =
+        '<div class="chart-wrap">' +
+          '<svg class="chart-svg" viewBox="0 0 ' + w + ' ' + h + '" preserveAspectRatio="none" id="accSvg">' +
+            gridLines +
+            '<path d="' + areaPath + '" fill="rgba(244,169,0,0.12)" stroke="none" />' +
+            '<path d="' + linePath + '" fill="none" stroke="#f4a900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />' +
+            dots +
+          '</svg>' +
+          '<div class="chart-tooltip" id="accTooltip"></div>' +
+        '</div>' +
+        '<div class="category-note">' + points[0].date + ' → ' + points[points.length - 1].date + '</div>';
+
+      var tooltip = document.getElementById('accTooltip');
+      document.querySelectorAll('.chart-dot').forEach(function(dot) {
+        dot.addEventListener('mouseenter', function() {
+          var i = parseInt(dot.getAttribute('data-i'), 10);
+          var p = coords[i].p;
+          tooltip.textContent = p.date + ': ' + p.accuracy + '%';
+          tooltip.style.left = (coords[i].x / w * 100) + '%';
+          tooltip.style.top = (coords[i].y / h * 100) + '%';
+          tooltip.style.opacity = '1';
+        });
+        dot.addEventListener('mouseleave', function() {
+          tooltip.style.opacity = '0';
+        });
+      });
+    }
+
+    // ===== ACTIVITY CALENDAR =====
+    function renderActivityCalendar(history) {
+      var container = document.getElementById('activityCalendarContent');
+      var countByDate = {};
+      history.forEach(function(h) {
+        countByDate[h.date] = (countByDate[h.date] || 0) + 1;
+      });
+
+      var days = 70;
+      var today = new Date();
+      var cells = '';
+      var maxCount = 1;
+      for (var key in countByDate) { if (countByDate[key] > maxCount) maxCount = countByDate[key]; }
+
+      for (var i = days - 1; i >= 0; i--) {
+        var d = new Date(today);
+        d.setDate(d.getDate() - i);
+        var dateStr = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        var count = countByDate[dateStr] || 0;
+        var opacity = count === 0 ? 0.05 : 0.25 + (count / maxCount) * 0.75;
+        cells += '<div class="calendar-cell" title="' + dateStr + ': ' + count + ' quiz' + (count === 1 ? '' : 'zes') +
+          '" style="background: rgba(244,169,0,' + opacity.toFixed(2) + ')"></div>';
+      }
+
+      container.innerHTML =
+        '<div class="calendar-grid">' + cells + '</div>' +
+        '<div class="calendar-legend">' +
+          'Less ' +
+          '<div class="calendar-legend-dot" style="background:rgba(244,169,0,0.05)"></div>' +
+          '<div class="calendar-legend-dot" style="background:rgba(244,169,0,0.4)"></div>' +
+          '<div class="calendar-legend-dot" style="background:rgba(244,169,0,0.7)"></div>' +
+          '<div class="calendar-legend-dot" style="background:rgba(244,169,0,1)"></div>' +
+          ' More' +
+        '</div>';
     }
 
     function renderBadges(data) {

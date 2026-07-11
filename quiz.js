@@ -226,6 +226,12 @@ function saveScoreToFirebase(finalScore, total) {
           }
           // ===== END BADGES =====
 
+          // ===== QUIZ HISTORY — powers the Stats Dashboard's category/time stats =====
+          var quizHistory = data.quizHistory || [];
+          quizHistory.push({ category: 'Daily', score: finalScore, total: total, date: todayStr });
+          if (quizHistory.length > 200) quizHistory = quizHistory.slice(quizHistory.length - 200);
+          // ===== END QUIZ HISTORY =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
@@ -235,7 +241,8 @@ function saveScoreToFirebase(finalScore, total) {
             currentStreak: currentStreak,
             bestStreak: bestStreak,
             lastPlayedDate: todayStr,
-            badges: badges
+            badges: badges,
+            quizHistory: quizHistory
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP. Streak: ' + currentStreak);
             showStreakMessage(currentStreak);

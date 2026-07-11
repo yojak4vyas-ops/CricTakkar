@@ -208,13 +208,24 @@ function crictakkarSaveScore(finalScore, total) {
           }
           // ===== END BADGES =====
 
+          // ===== QUIZ HISTORY — powers the Stats Dashboard's category/time stats =====
+          var today = new Date();
+          var todayStr = today.getFullYear() + '-' +
+            String(today.getMonth() + 1).padStart(2, '0') + '-' +
+            String(today.getDate()).padStart(2, '0');
+          var quizHistory = data.quizHistory || [];
+          quizHistory.push({ category: crictakkarCategory, score: finalScore, total: total, date: todayStr });
+          if (quizHistory.length > 200) quizHistory = quizHistory.slice(quizHistory.length - 200);
+          // ===== END QUIZ HISTORY =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
             totalQuestions: (data.totalQuestions || 0) + total,
             xp: newXP,
             level: newLevel,
-            badges: badges
+            badges: badges,
+            quizHistory: quizHistory
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP');
           }).catch(function(error) {
