@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stats Dashboard — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    .stats-page-header {
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .stats-page-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .stats-page-sub {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.88rem;
+    }
+
+    .section-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 22px;
+    }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .section-subtitle {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 16px;
+    }
+
+    /* GAME-BY-GAME BREAKDOWN */
+    .game-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .game-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .game-icon {
+      font-size: 1.6rem;
+      width: 42px;
+      height: 42px;
+      background: rgba(244,169,0,0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .game-info { flex: 1; min-width: 0; }
+    .game-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 2px;
+    }
+    .game-detail {
+      font-size: 0.76rem;
+      color: rgba(255,255,255,0.45);
+    }
+    .game-number {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #f4a900;
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    /* BADGE SUMMARY HEADLINE */
+    .badge-summary-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 18px;
+    }
+    .badge-summary-number {
+      font-size: 2rem;
+      font-weight: 900;
+      color: #f4a900;
+    }
+    .badge-summary-label {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* COMING SOON TEASER */
+    .coming-soon-card {
+      background: rgba(255,107,53,0.06);
+      border: 1px dashed rgba(255,107,53,0.3);
+      border-radius: 16px;
+      padding: 20px 22px;
+    }
+    .coming-soon-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #f7931e;
+      margin-bottom: 8px;
+    }
+    .coming-soon-list {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.9;
+      padding-left: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Daily Quiz</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="stats.html" class="nav-link active">📊 Stats</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <!-- LOADING -->
+  <div class="profile-wrapper" id="loadingState">
+    <div style="text-align:center; padding:80px 24px;">
+      <div style="font-size:3rem; margin-bottom:16px;">⏳</div>
+      <p style="color:rgba(255,255,255,0.5);">Loading your stats...</p>
+    </div>
+  </div>
+
+  <!-- NOT LOGGED IN -->
+  <div class="profile-wrapper" id="notLoggedIn" style="display:none">
+    <div class="profile-card" style="text-align:center">
+      <div style="font-size:3.5rem; margin-bottom:16px;">📊</div>
+      <h2 style="font-size:1.5rem; font-weight:800; margin-bottom:10px;">Track Your Stats</h2>
+      <p style="color:rgba(255,255,255,0.55); margin-bottom:28px; line-height:1.7;">
+        Log in to see your quiz stats, Wordle record, Speed Round scores, and badges all in one place.
+      </p>
+      <button class="btn-primary" style="width:100%; margin-bottom:12px;"
+        onclick="window.location.href='login.html'">Sign Up Free 🚀</button>
+      <button class="btn-secondary" style="width:100%;"
+        onclick="window.location.href='login.html'">Already have an account? Log In</button>
+    </div>
+  </div>
+
+  <!-- STATS DASHBOARD -->
+  <div class="profile-wrapper" id="statsState" style="display:none">
+
+    <div class="stats-page-header">
+      <div class="stats-page-title">📊 Your Stats Dashboard</div>
+      <div class="stats-page-sub">Everything you've played on CricTakkar, in one place</div>
+    </div>
+
+    <!-- OVERVIEW -->
+    <div class="section-card">
+      <div class="section-title">Overview</div>
+      <div class="section-subtitle">Your all-time totals across every game</div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-number" id="statQuizzes">0</div>
+          <div class="stat-card-label">Quizzes Played</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-number" id="statAccuracy">0%</div>
+          <div class="stat-card-label">Overall Accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-number" id="statStreak">0 🔥</div>
+          <div class="stat-card-label">Current Streak</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-number" id="statBestStreak">0</div>
+          <div class="stat-card-label">Best Streak</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-number" id="statXP">0</div>
+          <div class="stat-card-label">Total XP</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-number" id="statLevel">Debutant</div>
+          <div class="stat-card-label">Current Level</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GAME-BY-GAME BREAKDOWN -->
+    <div class="section-card">
+      <div class="section-title">Game-by-Game Breakdown</div>
+      <div class="section-subtitle">How you're doing in each part of CricTakkar</div>
+      <div class="game-grid">
+
+        <div class="game-row">
+          <div class="game-icon">🎯</div>
+          <div class="game-info">
+            <div class="game-name">Daily & Category Quiz</div>
+            <div class="game-detail" id="quizDetail">0 quizzes played</div>
+          </div>
+          <div class="game-number" id="quizAccuracyNum">0%</div>
+        </div>
+
+        <div class="game-row">
+          <div class="game-icon">🟩</div>
+          <div class="game-info">
+            <div class="game-name">Cricket Wordle</div>
+            <div class="game-detail" id="wordleDetail">0 games played</div>
+          </div>
+          <div class="game-number" id="wordleWinRateNum">0%</div>
+        </div>
+
+        <div class="game-row">
+          <div class="game-icon">⚡</div>
+          <div class="game-info">
+            <div class="game-name">Speed Round</div>
+            <div class="game-detail" id="speedDetail">Not played yet</div>
+          </div>
+          <div class="game-number" id="speedBestNum">—</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BADGES -->
+    <div class="badges-card">
+      <div class="badge-summary-row">
+        <div class="badge-summary-number" id="badgeCount">0/9</div>
+        <div class="badge-summary-label">Badges Unlocked</div>
+      </div>
+      <div class="badges-grid" id="badgesGrid"></div>
+    </div>
+
+    <!-- COMING SOON -->
+    <div class="coming-soon-card">
+      <div class="coming-soon-title">🚧 Coming soon to this dashboard</div>
+      <ul class="coming-soon-list">
+        <li>Your strongest and weakest quiz category</li>
+        <li>An accuracy-over-time graph</li>
+        <li>Your strongest and weakest cricket era</li>
+      </ul>
+    </div>
+
+    <div class="quick-links">
+      <button class="btn-primary" onclick="window.location.href='profile.html'">View Full Profile 👤</button>
+      <button class="btn-secondary" onclick="window.location.href='categories.html'">Play a Quiz 📚</button>
+    </div>
+
+  </div>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // Same badge list as profile.html, kept in sync so counts match everywhere.
+    var BADGE_LIST = [
+      { key: 'debutant',      icon: '🌱', name: 'Debutant',        desc: 'Play your first quiz',            computed: true },
+      { key: 'perfectionist', icon: '💯', name: 'Perfectionist',   desc: '5/5 on the Daily Quiz' },
+      { key: 'sachinScholar', icon: '🏏', name: 'Sachin Scholar',  desc: '100% on the Test Cricket quiz' },
+      { key: 'iplLegend',     icon: '🎯', name: 'IPL Legend',      desc: '100% on the IPL quiz' },
+      { key: 'speedDemon',    icon: '⚡', name: 'Speed Demon',     desc: '25+/30 on Speed Round' },
+      { key: 'wordleWizard',  icon: '🟩', name: 'Wordle Wizard',   desc: 'Win Wordle in 3 tries or less' },
+      { key: 'rankingMaster', icon: '📊', name: 'Ranking Master',  desc: 'Perfect 5/5 on Ranking Challenge' },
+      { key: 'onFire',        icon: '🔥', name: 'On Fire',         desc: '7 day streak',                    computed: true },
+      { key: 'testLegend',    icon: '👑', name: 'Test Legend',     desc: 'Reach the top level',              computed: true }
+    ];
+
+    auth.onAuthStateChanged(function(user) {
+      document.getElementById('loadingState').style.display = 'none';
+
+      if (!user) {
+        document.getElementById('notLoggedIn').style.display = 'flex';
+        return;
+      }
+
+      db.collection('users').doc(user.uid).get().then(function(doc) {
+        document.getElementById('statsState').style.display = 'block';
+        var data = doc.exists ? doc.data() : {};
+        renderStats(data);
+      });
+    });
+
+    function renderStats(data) {
+      // Overview
+      var quizzesPlayed = data.quizzesPlayed || 0;
+      var totalScore = data.totalScore || 0;
+      var totalQuestions = data.totalQuestions || 0;
+      var accuracy = totalQuestions > 0 ? Math.round((totalScore / totalQuestions) * 100) : 0;
+
+      document.getElementById('statQuizzes').textContent = quizzesPlayed;
+      document.getElementById('statAccuracy').textContent = accuracy + '%';
+      document.getElementById('statStreak').textContent = (data.currentStreak || 0) + ' 🔥';
+      document.getElementById('statBestStreak').textContent = data.bestStreak || 0;
+      document.getElementById('statXP').textContent = data.xp || 0;
+      document.getElementById('statLevel').textContent = data.level || 'Debutant';
+
+      // Quiz breakdown
+      document.getElementById('quizDetail').textContent =
+        quizzesPlayed + ' quiz' + (quizzesPlayed === 1 ? '' : 'zes') + ' played';
+      document.getElementById('quizAccuracyNum').textContent = accuracy + '%';
+
+      // Wordle breakdown
+      var wordlePlayed = data.wordlePlayed || 0;
+      var wordleWins = data.wordleWins || 0;
+      var wordleWinRate = wordlePlayed > 0 ? Math.round((wordleWins / wordlePlayed) * 100) : 0;
+      document.getElementById('wordleDetail').textContent =
+        wordlePlayed > 0
+          ? wordlePlayed + ' game' + (wordlePlayed === 1 ? '' : 's') + ' played, ' + wordleWins + ' won'
+          : 'Not played yet';
+      document.getElementById('wordleWinRateNum').textContent = wordlePlayed > 0 ? wordleWinRate + '%' : '—';
+
+      // Speed Round breakdown
+      var speedRoundsPlayed = data.speedRoundsPlayed || 0;
+      var speedRoundBest = data.speedRoundBest || 0;
+      document.getElementById('speedDetail').textContent =
+        speedRoundsPlayed > 0
+          ? speedRoundsPlayed + ' round' + (speedRoundsPlayed === 1 ? '' : 's') + ' played'
+          : 'Not played yet';
+      document.getElementById('speedBestNum').textContent =
+        speedRoundsPlayed > 0 ? speedRoundBest + '/30' : '—';
+
+      // Badges
+      renderBadges(data);
+    }
+
+    function renderBadges(data) {
+      var badgesFromFirebase = data.badges || {};
+      var grid = document.getElementById('badgesGrid');
+      grid.innerHTML = '';
+      var unlockedCount = 0;
+
+      BADGE_LIST.forEach(function(badge) {
+        var unlocked = false;
+
+        if (badge.computed) {
+          if (badge.key === 'debutant') {
+            unlocked = (data.quizzesPlayed || 0) >= 1;
+          } else if (badge.key === 'onFire') {
+            unlocked = (data.bestStreak || 0) >= 7;
+          } else if (badge.key === 'testLegend') {
+            unlocked = data.level === 'Test Legend';
+          }
+        } else {
+          unlocked = badgesFromFirebase[badge.key] === true;
+        }
+
+        if (unlocked) unlockedCount++;
+
+        var el = document.createElement('div');
+        el.className = 'badge-item ' + (unlocked ? 'badge-unlocked' : 'badge-locked');
+        el.innerHTML =
+          '<div class="badge-icon">' + (unlocked ? badge.icon : '🔒') + '</div>' +
+          '<div class="badge-name">' + badge.name + '</div>' +
+          '<div class="badge-desc">' + badge.desc + '</div>';
+        grid.appendChild(el);
+      });
+
+      document.getElementById('badgeCount').textContent = unlockedCount + '/' + BADGE_LIST.length;
+    }
+  </script>
+
+</body>
+</html>

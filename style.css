@@ -51,6 +51,21 @@ body {
   color: #f4a900;
 }
 
+/* Narrow phones: keep nav links on one row, scrollable within the navbar
+   itself, instead of letting them push the whole page wider than the screen. */
+@media (max-width: 480px) {
+  .navbar { padding: 14px 16px; }
+  .nav-logo { font-size: 1.15rem; }
+  .nav-links {
+    gap: 14px;
+    overflow-x: auto;
+    max-width: 62vw;
+    scrollbar-width: none;
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-link { font-size: 0.78rem; white-space: nowrap; flex-shrink: 0; }
+}
+
 /* ===== HERO SECTION ===== */
 .hero {
   display: flex;
