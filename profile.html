@@ -275,6 +275,15 @@
       </div>
     </div>
 
+    <!-- ===== BADGES & TITLES ===== -->
+    <div class="badges-card">
+      <h3 class="badges-title">🏅 Badges & Titles</h3>
+      <p class="badges-subtitle">Unlock these by playing across CricTakkar</p>
+      <div class="badges-grid" id="badgesGrid">
+        <!-- Filled in by JavaScript below -->
+      </div>
+    </div>
+
     <!-- LEVEL ROADMAP -->
     <div class="levels-card">
       <h3 class="levels-title">🏆 Level Roadmap</h3>
@@ -316,6 +325,21 @@
     const db = firebase.firestore();
 
     var currentUserId = null;
+
+    // ===== BADGE DEFINITIONS =====
+    // "key" matches the field saved inside data.badges in Firestore (for earned-by-playing badges).
+    // "computed" badges don't need a Firestore write — we work them out directly from existing data.
+    var BADGE_LIST = [
+      { key: 'debutant',      icon: '🌱', name: 'Debutant',        desc: 'Play your first quiz',            computed: true },
+      { key: 'perfectionist', icon: '💯', name: 'Perfectionist',   desc: '5/5 on the Daily Quiz' },
+      { key: 'sachinScholar', icon: '🏏', name: 'Sachin Scholar',  desc: '100% on the Test Cricket quiz' },
+      { key: 'iplLegend',     icon: '🎯', name: 'IPL Legend',      desc: '100% on the IPL quiz' },
+      { key: 'speedDemon',    icon: '⚡', name: 'Speed Demon',     desc: '25+/30 on Speed Round' },
+      { key: 'wordleWizard',  icon: '🟩', name: 'Wordle Wizard',   desc: 'Win Wordle in 3 tries or less' },
+      { key: 'rankingMaster', icon: '📊', name: 'Ranking Master',  desc: 'Perfect 5/5 on Ranking Challenge' },
+      { key: 'onFire',        icon: '🔥', name: 'On Fire',         desc: '7 day streak',                    computed: true },
+      { key: 'testLegend',    icon: '👑', name: 'Test Legend',     desc: 'Reach the top level',              computed: true }
+    ];
 
     // ===== LOGOUT =====
     document.getElementById('logoutBtn').addEventListener('click', function() {
@@ -388,6 +412,7 @@
               bestStreak: 0,
               xp: 0,
               level: 'Debutant',
+              badges: {},
               joinedDate: new Date().toISOString()
             }).then(function() {
               document.getElementById('setupOverlay').style.display = 'flex';
@@ -454,6 +479,42 @@
       };
       var lid = levelMap[data.level];
       if (lid) document.getElementById(lid).classList.add('current-level');
+
+      // Badges
+      renderBadges(data);
+    }
+
+    // ===== RENDER BADGES GRID =====
+    function renderBadges(data) {
+      var badgesFromFirebase = data.badges || {};
+      var grid = document.getElementById('badgesGrid');
+      grid.innerHTML = '';
+
+      BADGE_LIST.forEach(function(badge) {
+        var unlocked = false;
+
+        if (badge.computed) {
+          // These are worked out directly from data already on the profile —
+          // no extra Firebase write needed from any game file.
+          if (badge.key === 'debutant') {
+            unlocked = (data.quizzesPlayed || 0) >= 1;
+          } else if (badge.key === 'onFire') {
+            unlocked = (data.bestStreak || 0) >= 7;
+          } else if (badge.key === 'testLegend') {
+            unlocked = data.level === 'Test Legend';
+          }
+        } else {
+          unlocked = badgesFromFirebase[badge.key] === true;
+        }
+
+        var el = document.createElement('div');
+        el.className = 'badge-item ' + (unlocked ? 'badge-unlocked' : 'badge-locked');
+        el.innerHTML =
+          '<div class="badge-icon">' + (unlocked ? badge.icon : '🔒') + '</div>' +
+          '<div class="badge-name">' + badge.name + '</div>' +
+          '<div class="badge-desc">' + badge.desc + '</div>';
+        grid.appendChild(el);
+      });
     }
 
     // ===== SETUP OVERLAY — USERNAME LIVE CHECK =====
