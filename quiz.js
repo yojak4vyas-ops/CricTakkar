@@ -218,6 +218,14 @@ function saveScoreToFirebase(finalScore, total) {
           }
           // ===== END STREAK LOGIC =====
 
+          // ===== BADGES — Perfectionist (Day 12) =====
+          // Unlocked the moment a player scores a perfect 5/5 on the Daily Quiz.
+          var badges = data.badges || {};
+          if (finalScore === total) {
+            badges.perfectionist = true;
+          }
+          // ===== END BADGES =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
@@ -226,7 +234,8 @@ function saveScoreToFirebase(finalScore, total) {
             level: newLevel,
             currentStreak: currentStreak,
             bestStreak: bestStreak,
-            lastPlayedDate: todayStr
+            lastPlayedDate: todayStr,
+            badges: badges
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP. Streak: ' + currentStreak);
             showStreakMessage(currentStreak);
