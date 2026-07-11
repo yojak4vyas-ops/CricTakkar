@@ -195,12 +195,26 @@ function crictakkarSaveScore(finalScore, total) {
           var newXP = (data.xp || 0) + xpEarned;
           var newLevel = crictakkarGetLevel(newXP);
 
+          // ===== BADGES — Sachin Scholar & IPL Legend (Day 12) =====
+          // Unlocked on a perfect score in the matching category quiz.
+          var badges = data.badges || {};
+          if (finalScore === total) {
+            if (crictakkarCategory === 'test') {
+              badges.sachinScholar = true;
+            }
+            if (crictakkarCategory === 'ipl') {
+              badges.iplLegend = true;
+            }
+          }
+          // ===== END BADGES =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
             totalQuestions: (data.totalQuestions || 0) + total,
             xp: newXP,
-            level: newLevel
+            level: newLevel,
+            badges: badges
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP');
           }).catch(function(error) {
