@@ -248,6 +248,8 @@ Every session must follow this structure:
 
 ## HOW TO START EACH DAY
 
+Start a new chat each day rather than continuing an old one. CLAUDE.md already carries everything that matters (build status, rules, feature list), so a fresh chat loses nothing — and it keeps daily usage limits from being eaten up by reprocessing many days of old conversation. Only continue the same chat if doing a second session on the same day, shortly after the first.
+
 Begin every chat session inside this project with:
 "Starting Day [number] of CricTakkar. Yesterday we [what you did]. Today let's [what's next]."
 
