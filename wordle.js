@@ -193,11 +193,21 @@ function wSaveToFirebase(won) {
       var data = doc.data();
       var newXP = (data.xp || 0) + xpEarned;
       var newLevel = wCalculateLevel(newXP);
+
+      // ===== BADGES — Wordle Wizard (Day 12) =====
+      // Unlocked by winning Cricket Wordle in 3 guesses or fewer.
+      var badges = data.badges || {};
+      if (won && wGuesses.length <= 3) {
+        badges.wordleWizard = true;
+      }
+      // ===== END BADGES =====
+
       userRef.update({
         xp: newXP,
         level: newLevel,
         wordlePlayed: (data.wordlePlayed || 0) + 1,
-        wordleWins: (data.wordleWins || 0) + (won ? 1 : 0)
+        wordleWins: (data.wordleWins || 0) + (won ? 1 : 0),
+        badges: badges
       });
     });
   });
