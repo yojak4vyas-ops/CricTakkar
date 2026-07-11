@@ -149,6 +149,7 @@ Goal: Turn the app into an earning platform.
 6. Edit project files directly. Use small, targeted edits rather than rewriting whole files unless a full rewrite is genuinely needed.
 7. Launch after Phase 1 Day 12. Do not wait for the full app to be ready.
 8. If I ask what day of building we are on, calculate it from Phase 1 Day 1 onwards.
+9. When showing me a built feature, always show it as a Claude Artifact (a real preview I can open and click through, using sample data if needed) — never just a live browser preview or a description. Claude can still use a live browser internally to test and verify the code works, but what gets shown to me must be an Artifact.
 
 ---
 
