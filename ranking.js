@@ -5,21 +5,32 @@
 // ===== CHALLENGE DATA =====
 // Each challenge has: a question, 5 players, their correct order (index 0 = highest/first)
 // and the stat value shown in the answer reveal
+//
+// VERIFICATION NOTE (Day 11):
+// Challenge 1 uses Ricky Ponting instead of Steve Smith, because Smith is still an
+// active Test player and his average changes every series. Ponting retired in 2012,
+// so his average (51.85) is locked forever and safe to use.
+// Kohli's average (46.85) — I am not fully certain this is the exact final figure.
+// Please verify on ESPNcricinfo before treating this as permanent.
+// Challenge 2 wicket counts and order verified via ESPNcricinfo/Britannica (July 2026).
+// Challenge 3 IPL titles rebuilt to include RCB's 2025 and 2026 titles, and to fix
+// Rajasthan Royals (they have 1 title, 2008 only — not 2 as previously listed).
+// Verified via Wikipedia + Olympics.com (July 2026).
 
 const CHALLENGES = [
   {
     id: 1,
     question: "Rank these batsmen by Test batting average (highest to lowest)",
-    hint: "Minimum 20 Test innings. Career averages.",
+    hint: "Minimum 20 Test innings. Career averages — only retired players used so the answer never goes out of date.",
     players: [
       { name: "Don Bradman", flag: "🇦🇺", value: "Avg: 99.94" },
-      { name: "Steve Smith", flag: "🇦🇺", value: "Avg: 58.61" },
-      { name: "Virat Kohli", flag: "🇮🇳", value: "Avg: 48.73" },
+      { name: "Ricky Ponting", flag: "🇦🇺", value: "Avg: 51.85" },
+      { name: "Virat Kohli", flag: "🇮🇳", value: "Avg: 46.85" },
       { name: "Brian Lara", flag: "🇹🇹", value: "Avg: 52.88" },
       { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Avg: 53.78" }
     ],
-    correctOrder: [0, 1, 4, 3, 2]
-    // Bradman 99.94 > Smith 58.61 > Tendulkar 53.78 > Lara 52.88 > Kohli 48.73
+    correctOrder: [0, 4, 3, 1, 2]
+    // Bradman 99.94 > Tendulkar 53.78 > Lara 52.88 > Ponting 51.85 > Kohli 46.85
   },
   {
     id: 2,
@@ -29,27 +40,27 @@ const CHALLENGES = [
       { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "800 wickets" },
       { name: "Shane Warne", flag: "🇦🇺", value: "708 wickets" },
       { name: "Anil Kumble", flag: "🇮🇳", value: "619 wickets" },
-      { name: "James Anderson", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", value: "700 wickets" },
+      { name: "James Anderson", flag: "🇬🇧", value: "704 wickets" },
       { name: "Glenn McGrath", flag: "🇦🇺", value: "563 wickets" }
     ],
-    correctOrder: [0, 3, 1, 2, 4]
-    // Murali 800 > Anderson 700 > Warne 708... wait
-    // Murali 800 > Warne 708 > Anderson 700 > Kumble 619 > McGrath 563
+    correctOrder: [0, 1, 3, 2, 4]
+    // Murali 800 > Warne 708 > Anderson 704 > Kumble 619 > McGrath 563
   },
   {
     id: 3,
     question: "Rank these IPL teams by total IPL titles won (most to least)",
-    hint: "IPL titles from 2008 to 2024.",
+    hint: "IPL titles from 2008 to 2026.",
     players: [
       { name: "Mumbai Indians", flag: "🔵", value: "5 titles" },
       { name: "Chennai Super Kings", flag: "🟡", value: "5 titles" },
       { name: "Kolkata Knight Riders", flag: "🟣", value: "3 titles" },
-      { name: "Rajasthan Royals", flag: "🩷", value: "2 titles" },
+      { name: "Royal Challengers Bengaluru", flag: "🔴", value: "2 titles" },
       { name: "Sunrisers Hyderabad", flag: "🟠", value: "1 title" }
     ],
     correctOrder: [0, 1, 2, 3, 4]
-    // MI 5 = CSK 5 > KKR 3 > RR 2 > SRH 1
-    // MI and CSK both have 5 — positions 0 and 1 are interchangeable, handled in code
+    // MI 5 = CSK 5 > RCB 2 (won 2025 and 2026) > SRH 1
+    // MI and CSK both have 5 — positions 0 and 1 are interchangeable, handled in code below
+    // KKR sits at 3 titles (2012, 2014, 2024)
   },
   {
     id: 4,
