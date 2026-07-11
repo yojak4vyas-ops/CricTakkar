@@ -34,7 +34,7 @@ function buildGuessRows() {
     var row = document.createElement('div');
     row.className = 'guess-row';
     row.id = 'row-' + i;
-    var cols = ['name', 'country', 'role', 'battingStyle', 'era', 'format'];
+    var cols = ['name', 'country', 'role', 'battingStyle', 'debutYear', 'format', 'iplTeam', 'iplTeamsCount', 'iccTrophies'];
     cols.forEach(function(col) {
       var cell = document.createElement('div');
       cell.className = 'guess-cell' + (col === 'name' ? ' name-cell' : '');
@@ -119,16 +119,49 @@ function submitGuess() {
   if (wGuesses.length >= wMaxGuesses) { wGameOver = true; setTimeout(function() { showResult(false); }, 400); }
 }
 
+// ===== ABBREVIATIONS — keep table columns narrow enough to fit without scrolling =====
+var countryAbbr = {
+  'India': 'IND', 'Australia': 'AUS', 'West Indies': 'WI', 'New Zealand': 'NZ',
+  'Sri Lanka': 'SL', 'Pakistan': 'PAK', 'England': 'ENG', 'South Africa': 'SA',
+  'Bangladesh': 'BAN', 'Afghanistan': 'AFG', 'Zimbabwe': 'ZIM'
+};
+var roleAbbr = {
+  'Batsman': 'BAT', 'Bowler': 'BWL', 'All-rounder': 'AR', 'Wicketkeeper': 'WK'
+};
+var battingStyleAbbr = { 'Right-hand': 'R', 'Left-hand': 'L' };
+var formatAbbr = { 'All-format': 'ALL', 'ODI': 'ODI' };
+var iplTeamAbbr = {
+  'Mumbai Indians': 'MI', 'Chennai Super Kings': 'CSK', 'Royal Challengers Bangalore': 'RCB',
+  'Kolkata Knight Riders': 'KKR', 'Rajasthan Royals': 'RR', 'Deccan Chargers': 'DCH',
+  'Delhi Daredevils': 'DD', 'Delhi Capitals': 'DC', 'Punjab Kings': 'PBKS',
+  'Kings XI Punjab': 'KXIP', 'Gujarat Titans': 'GT', 'Lucknow Super Giants': 'LSG',
+  'Sunrisers Hyderabad': 'SRH', 'Rising Pune Supergiant': 'RPS', 'Pune Warriors': 'PWI',
+  "Didn't play IPL": '—'
+};
+
+// ===== SHORT DISPLAY TEXT FOR A CELL (comparisons still use the raw player values) =====
+function displayValue(attr, player) {
+  var v = player[attr];
+  if (attr === 'country') return countryAbbr[v] || v;
+  if (attr === 'role') return roleAbbr[v] || v;
+  if (attr === 'battingStyle') return battingStyleAbbr[v] || v;
+  if (attr === 'format') return formatAbbr[v] || v;
+  if (attr === 'iplTeam') return iplTeamAbbr[v] || v;
+  return v;
+}
+
 // ===== COMPARE PLAYERS =====
 function comparePlayer(guessed, target) {
-  var attrs = ['country', 'role', 'battingStyle', 'era', 'format'];
+  var attrs = ['country', 'role', 'battingStyle', 'debutYear', 'format', 'iplTeam', 'iplTeamsCount', 'iccTrophies'];
   return attrs.map(function(attr) {
-    if (guessed[attr] === target[attr]) return 'green';
-    if (attr === 'era') {
-      var eras = ['90s', '2000s', '2010s', '2020s'];
-      var gIdx = eras.indexOf(guessed.era);
-      var tIdx = eras.indexOf(target.era);
-      if (Math.abs(gIdx - tIdx) === 1) return 'yellow';
+    var gVal = guessed[attr];
+    var tVal = target[attr];
+    if (gVal === tVal) return 'green';
+    if (attr === 'debutYear') {
+      if (Math.abs(gVal - tVal) <= 5) return 'yellow';
+    }
+    if (attr === 'iplTeamsCount' || attr === 'iccTrophies') {
+      if (Math.abs(gVal - tVal) === 1) return 'yellow';
     }
     if (attr === 'format') {
       if (guessed.format === 'All-format' || target.format === 'All-format') return 'yellow';
@@ -139,13 +172,14 @@ function comparePlayer(guessed, target) {
 
 // ===== FILL ROW WITH COLOURS =====
 function fillRow(rowIndex, player, result) {
-  var attrs = ['country', 'role', 'battingStyle', 'era', 'format'];
+  var attrs = ['country', 'role', 'battingStyle', 'debutYear', 'format', 'iplTeam', 'iplTeamsCount', 'iccTrophies'];
   var nameCell = document.getElementById('row-' + rowIndex + '-name');
   nameCell.textContent = player.name;
   nameCell.classList.add('grey');
   attrs.forEach(function(attr, i) {
     var cell = document.getElementById('row-' + rowIndex + '-' + attr);
-    cell.textContent = player[attr];
+    cell.textContent = displayValue(attr, player);
+    cell.title = player[attr];
     cell.classList.add(result[i]);
   });
 }
