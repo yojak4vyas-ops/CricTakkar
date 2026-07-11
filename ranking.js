@@ -10,12 +10,17 @@
 // Challenge 1 uses Ricky Ponting instead of Steve Smith, because Smith is still an
 // active Test player and his average changes every series. Ponting retired in 2012,
 // so his average (51.85) is locked forever and safe to use.
-// Kohli's average (46.85) — I am not fully certain this is the exact final figure.
-// Please verify on ESPNcricinfo before treating this as permanent.
+// Kohli's final Test average: 46.85 — confirmed by user on Day 11, matches web search
+// findings. Kohli has retired from Tests, so this number is now locked and safe to use.
 // Challenge 2 wicket counts and order verified via ESPNcricinfo/Britannica (July 2026).
 // Challenge 3 IPL titles rebuilt to include RCB's 2025 and 2026 titles, and to fix
 // Rajasthan Royals (they have 1 title, 2008 only — not 2 as previously listed).
 // Verified via Wikipedia + Olympics.com (July 2026).
+//
+// FIX NOTE (Day 12): calculateLevel() below previously used different level names
+// (National Reserve, International, Test Cricketer) than the rest of the app.
+// Now matches the standard used in profile.html, quiz.js, speedround.js and wordle.js:
+// Debutant -> Club Cricketer -> State Player -> IPL Pro -> T20 Star -> ODI Champion -> Test Legend
 
 const CHALLENGES = [
   {
@@ -342,8 +347,8 @@ function submitAnswer() {
   // Show result
   showResult(correct, challenge, xpEarned);
 
-  // Save XP to Firebase
-  saveXP(xpEarned);
+  // Save XP to Firebase — pass how many were correct so we can check the Ranking Master badge
+  saveXP(xpEarned, correct);
 }
 
 // ===== SHOW RESULT PANEL =====
@@ -430,7 +435,9 @@ function shareFinish() {
 }
 
 // ===== SAVE XP TO FIREBASE =====
-function saveXP(xpEarned) {
+// correctCount = how many positions were correct in this one challenge (0-5)
+// Used to check the Ranking Master badge (perfect 5/5 on any single challenge)
+function saveXP(xpEarned, correctCount) {
   try {
     const user = firebase.auth().currentUser;
     if (!user) return;
@@ -447,10 +454,17 @@ function saveXP(xpEarned) {
       const newXP = currentXP + xpEarned;
       const newLevel = calculateLevel(newXP);
 
+      // Ranking Master badge — perfect 5/5 on any single challenge
+      const badges = data.badges || {};
+      if (correctCount === 5) {
+        badges.rankingMaster = true;
+      }
+
       transaction.update(userRef, {
         xp: newXP,
         level: newLevel,
-        rankingPlayed: (data.rankingPlayed || 0) + 1
+        rankingPlayed: (data.rankingPlayed || 0) + 1,
+        badges: badges
       });
     });
   } catch (err) {
@@ -460,12 +474,13 @@ function saveXP(xpEarned) {
 }
 
 // ===== CALCULATE LEVEL =====
+// Matches the standard used across the whole app (profile.html, quiz.js, speedround.js, wordle.js)
 function calculateLevel(xp) {
-  if (xp < 100) return 'Debutant';
-  if (xp < 300) return 'Club Cricketer';
-  if (xp < 600) return 'State Player';
-  if (xp < 1000) return 'National Reserve';
-  if (xp < 1500) return 'International';
-  if (xp < 2500) return 'Test Cricketer';
-  return 'Test Legend';
+  if (xp >= 5000) return "Test Legend";
+  if (xp >= 3000) return "ODI Champion";
+  if (xp >= 2000) return "T20 Star";
+  if (xp >= 1000) return "IPL Pro";
+  if (xp >= 500)  return "State Player";
+  if (xp >= 200)  return "Club Cricketer";
+  return "Debutant";
 }
