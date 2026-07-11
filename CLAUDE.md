@@ -152,6 +152,26 @@ Goal: Turn the app into an earning platform.
 
 ---
 
+## MODEL SELECTION RULE — PERMANENT (Added Day 12)
+
+I cannot judge on my own which Claude model (Sonnet vs Opus vs Haiku) is right for a given piece of work, and Claude cannot switch the main conversation model itself — only I can do that, in the app's model picker. So Claude must proactively tell me which model to be on.
+
+DEFAULT: Sonnet 5 for almost everything in this project — it's a mostly straightforward frontend/Firebase app and Sonnet is the right cost/quality balance.
+
+WHEN TO SWITCH TO OPUS:
+- Phase 3 (Multiplayer) — designing the real-time Socket.io architecture, tournament sync, and matchmaking logic. Once that architecture is settled, routine feature work in Phase 3 can drop back to Sonnet.
+- Phase 4 (Money Features) — Razorpay payment integration and admin dashboard access control. Money handling and access control deserve the extra care.
+- Any bug Claude is still stuck on after 2+ attempts on Sonnet.
+- A contested cricket fact (record holder, "most/fastest/highest") that stays unclear even after a web search under the Question Quality Rule.
+
+NEVER use Haiku to build this project — quality and reliability matter more than raw speed given the legal and financial stakes (Online Gaming Act, Razorpay payments).
+
+WHAT CLAUDE MUST DO:
+- At the start of every new feature or phase, state plainly which model I should be on, e.g. "Use Sonnet 5 for this" or "Switch to Opus for this one — here's why."
+- Do this even when the answer is "stay on Sonnet" — don't assume I'll remember or guess correctly.
+
+---
+
 ## QUESTION QUALITY RULE — PERMANENT (Added after Day 2)
 
 Every question added to CricTakkar — by me or by Claude — must pass this checklist before going into the app.
