@@ -164,12 +164,23 @@ function srSaveToFirebase(finalScore) {
         badges.speedDemon = true;
       }
 
+      // ===== QUIZ HISTORY — powers the Stats Dashboard's category/time stats =====
+      var today = new Date();
+      var todayStr = today.getFullYear() + '-' +
+        String(today.getMonth() + 1).padStart(2, '0') + '-' +
+        String(today.getDate()).padStart(2, '0');
+      var quizHistory = data.quizHistory || [];
+      quizHistory.push({ category: 'Speed Round', score: finalScore, total: srTotal, date: todayStr });
+      if (quizHistory.length > 200) quizHistory = quizHistory.slice(quizHistory.length - 200);
+      // ===== END QUIZ HISTORY =====
+
       userRef.update({
         xp: newXP,
         level: newLevel,
         speedRoundBest: newBest,
         badges: badges,
-        speedRoundsPlayed: (data.speedRoundsPlayed || 0) + 1
+        speedRoundsPlayed: (data.speedRoundsPlayed || 0) + 1,
+        quizHistory: quizHistory
       }).then(function() {
         console.log('✅ Speed Round saved! Score: ' + finalScore + '/30, +' + xpEarned + ' XP');
       }).catch(function(err) {

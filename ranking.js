@@ -425,6 +425,39 @@ function showFinishScreen() {
 
   document.getElementById('finishScreen').classList.add('show');
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  saveRankingHistory(totalCorrect, maxScore);
+}
+
+// ===== SAVE RANKING SESSION TO QUIZ HISTORY =====
+// Logged once per full 5-challenge session — powers the Stats Dashboard's category/time stats
+function saveRankingHistory(finalScore, total) {
+  try {
+    const user = firebase.auth().currentUser;
+    if (!user) return;
+
+    const db = firebase.firestore();
+    const userRef = db.collection('users').doc(user.uid);
+
+    var today = new Date();
+    var todayStr = today.getFullYear() + '-' +
+      String(today.getMonth() + 1).padStart(2, '0') + '-' +
+      String(today.getDate()).padStart(2, '0');
+
+    db.runTransaction(async (transaction) => {
+      const doc = await transaction.get(userRef);
+      if (!doc.exists) return;
+
+      const data = doc.data();
+      var quizHistory = data.quizHistory || [];
+      quizHistory.push({ category: 'Ranking', score: finalScore, total: total, date: todayStr });
+      if (quizHistory.length > 200) quizHistory = quizHistory.slice(quizHistory.length - 200);
+
+      transaction.update(userRef, { quizHistory: quizHistory });
+    });
+  } catch (err) {
+    console.log('Ranking history not saved — user not logged in');
+  }
 }
 
 // ===== SHARE FINISH =====
