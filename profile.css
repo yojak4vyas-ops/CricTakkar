@@ -293,6 +293,63 @@
   }
 }
 
+/* ===== MY POEMS (Day 14) ===== */
+.my-poem-row {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.my-poem-row + .my-poem-row { margin-top: 10px; }
+
+.my-poem-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.my-poem-title { font-size: 0.9rem; font-weight: 700; color: #fff; }
+
+.my-poem-snippet {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.my-poem-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.my-poem-delete-btn {
+  background: rgba(239,68,68,0.12);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: #ef4444;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  flex-shrink: 0;
+}
+.my-poem-delete-btn:hover { background: rgba(239,68,68,0.22); }
+
+.my-poems-empty {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  padding: 16px 0;
+}
+.my-poems-empty a { color: #f4a900; font-weight: 700; text-decoration: none; }
+
 .levels-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);

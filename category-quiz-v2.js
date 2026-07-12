@@ -6,7 +6,8 @@ var crictakkarCategoryInfo = {
   ipl: { title: 'IPL Quiz', icon: '🏏' },
   test: { title: 'Test Cricket Quiz', icon: '🎩' },
   odi: { title: 'ODI Cricket Quiz', icon: '🌍' },
-  t20: { title: 'T20 World Cup Quiz', icon: '⚡' }
+  t20: { title: 'T20 World Cup Quiz', icon: '⚡' },
+  poetry: { title: 'Poetry Quiz', icon: '✍️' }
 };
 
 var crictakkarQuestions = [];

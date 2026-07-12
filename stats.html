@@ -400,6 +400,15 @@
           <div class="game-number" id="speedBestNum">—</div>
         </div>
 
+        <div class="game-row">
+          <div class="game-icon">✍️</div>
+          <div class="game-info">
+            <div class="game-name">Cricket Poetry</div>
+            <div class="game-detail" id="poetryDetail">Not shared yet</div>
+          </div>
+          <div class="game-number" id="poetryLikesNum">—</div>
+        </div>
+
       </div>
     </div>
 
@@ -506,8 +515,32 @@
         renderStats(data);
         renderPercentile(user.uid, data);
         renderFriendsComparison(user.uid, data);
+        renderPoetryStats(user.uid);
       });
     });
+
+    // ===== POETRY BREAKDOWN =====
+    // Community poems are treated like any other game here — a count of what was
+    // played/shared, plus a headline number (total likes received across all poems).
+    function renderPoetryStats(uid) {
+      db.collection('communityPoems').where('authorUid', '==', uid).get()
+        .then(function(snapshot) {
+          var count = 0;
+          var totalLikes = 0;
+          snapshot.forEach(function(doc) {
+            count++;
+            totalLikes += (doc.data().likes || []).length;
+          });
+
+          document.getElementById('poetryDetail').textContent =
+            count > 0 ? count + ' poem' + (count === 1 ? '' : 's') + ' shared' : 'Not shared yet';
+          document.getElementById('poetryLikesNum').textContent =
+            count > 0 ? '❤️ ' + totalLikes : '—';
+        })
+        .catch(function(err) {
+          console.error('Error loading poetry stats:', err);
+        });
+    }
 
     function renderStats(data) {
       // Overview
@@ -564,7 +597,7 @@
     }
 
     // Display names for each category value stored in quizHistory entries.
-    var CATEGORY_NAMES = { 'Daily': 'Daily Quiz', 'ipl': 'IPL', 'test': 'Test Cricket', 'odi': 'ODI', 't20': 'T20 World Cup', 'Speed Round': 'Speed Round', 'Ranking': 'Ranking Challenge' };
+    var CATEGORY_NAMES = { 'Daily': 'Daily Quiz', 'ipl': 'IPL', 'test': 'Test Cricket', 'odi': 'ODI', 't20': 'T20 World Cup', 'poetry': 'Poetry Quiz', 'Speed Round': 'Speed Round', 'Ranking': 'Ranking Challenge' };
 
     // ===== CATEGORY STRENGTH =====
     function renderCategoryStrength(history) {

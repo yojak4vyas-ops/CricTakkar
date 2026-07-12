@@ -69,6 +69,11 @@
   border-color: rgba(244, 169, 0, 0.4);
 }
 
+.poetry-card {
+  background: linear-gradient(135deg, #330f1a 0%, #7a1f3d 100%);
+  border-color: rgba(236, 72, 153, 0.4);
+}
+
 .cat-icon {
   font-size: 2.8rem;
   flex-shrink: 0;

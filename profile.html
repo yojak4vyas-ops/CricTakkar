@@ -289,6 +289,13 @@
       </div>
     </div>
 
+    <!-- ===== MY POEMS ===== -->
+    <div class="badges-card">
+      <h3 class="badges-title">✍️ My Poems</h3>
+      <p class="badges-subtitle">Cricket poems you've shared with the community</p>
+      <div id="myPoemsContent"></div>
+    </div>
+
     <!-- ===== AVATAR CUSTOMISATION ===== -->
     <div class="badges-card">
       <h3 class="badges-title">🎨 Customise Your Avatar</h3>
@@ -445,6 +452,72 @@
       });
     }
 
+    // ===== MY POEMS =====
+    // Community poems the player has submitted (poetry.html), shown here too —
+    // poems are treated like any other game: something you did, visible on your profile.
+    function renderMyPoems(uid) {
+      var container = document.getElementById('myPoemsContent');
+
+      db.collection('communityPoems').where('authorUid', '==', uid).get()
+        .then(function(snapshot) {
+          var poems = [];
+          snapshot.forEach(function(doc) { poems.push({ id: doc.id, data: doc.data() }); });
+
+          // Sort newest first client-side (avoids needing a composite Firestore index)
+          poems.sort(function(a, b) {
+            var at = a.data.createdAt ? a.data.createdAt.toMillis() : 0;
+            var bt = b.data.createdAt ? b.data.createdAt.toMillis() : 0;
+            return bt - at;
+          });
+
+          if (poems.length === 0) {
+            container.innerHTML = '<div class="my-poems-empty">You haven\'t shared a poem yet. <a href="poetry.html">Write one →</a></div>';
+            return;
+          }
+
+          container.innerHTML = '';
+          poems.forEach(function(p) {
+            var d = p.data;
+            var snippet = d.body.length > 100 ? d.body.slice(0, 100) + '…' : d.body;
+            var row = document.createElement('div');
+            row.className = 'my-poem-row';
+            row.innerHTML =
+              '<div class="my-poem-title-row">' +
+                '<div class="my-poem-title">' + escapePoemHtml(d.title) + '</div>' +
+                '<button class="my-poem-delete-btn" onclick="deleteMyPoem(\'' + p.id + '\')">🗑️ Delete</button>' +
+              '</div>' +
+              '<div class="my-poem-snippet">' + escapePoemHtml(snippet) + '</div>' +
+              '<div class="my-poem-meta">' +
+                '<span>❤️ ' + ((d.likes || []).length) + '</span>' +
+                '<span>💬 ' + (d.commentCount || 0) + '</span>' +
+              '</div>';
+            container.appendChild(row);
+          });
+        })
+        .catch(function(err) {
+          console.error('Error loading my poems:', err);
+          container.innerHTML = '<div class="my-poems-empty">Could not load your poems right now.</div>';
+        });
+    }
+
+    function deleteMyPoem(poemId) {
+      if (!confirm('Delete this poem? This cannot be undone.')) return;
+
+      var ref = db.collection('communityPoems').doc(poemId);
+      ref.collection('comments').get().then(function(snap) {
+        var batch = db.batch();
+        snap.forEach(function(d) { batch.delete(d.ref); });
+        batch.delete(ref);
+        return batch.commit();
+      }).then(function() { renderMyPoems(currentUserId); });
+    }
+
+    function escapePoemHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str || '';
+      return div.innerHTML;
+    }
+
     // ===== LOGOUT =====
     document.getElementById('logoutBtn').addEventListener('click', function() {
       auth.signOut().then(function() { window.location.href = 'index.html'; });
@@ -501,6 +574,7 @@
             }
 
             loadProfileData(data);
+            renderMyPoems(user.uid);
 
           } else {
             // No record — create blank and show setup

@@ -442,6 +442,98 @@ const categoryQuestions = {
       fact: "🎳 The India vs Pakistan group match in 2007 was tied and decided by a bowl-out — like a penalty shootout in football. India won 3–0.",
       era: "2000s"
     }
+  ],
+
+  // ===== POETRY QUIZ (Day 14) =====
+  // Same question/options/correct/fact/era shape as every other category — the quiz
+  // engine needs no changes. Each poem is 4 lines or fewer and describes a moment
+  // already verified elsewhere in the app (questions.js/category-questions.js/
+  // onthisday.js/poems.js) — no new unverified facts introduced here.
+  poetry: [
+    {
+      question: "Four days I stood, my bat held high,\nfour hundred runs beneath the sky,\nin Antigua's sun, a record fell—\nwhose innings does this poem tell?",
+      options: ["Brian Lara", "Matthew Hayden", "Virender Sehwag", "Sachin Tendulkar"],
+      correct: 0,
+      fact: "🦁 Brian Lara scored 400* against England in Antigua in 2004 — the highest individual score in Test cricket history.",
+      era: "2000s"
+    },
+    {
+      question: "The wait was twenty-eight years long,\none final six, a nation's song,\nat Wankhede the sixes fly—\nwho lifted the World Cup to the sky?",
+      options: ["MS Dhoni", "Yuvraj Singh", "Virat Kohli", "Gautam Gambhir"],
+      correct: 0,
+      fact: "🏆 MS Dhoni hit the winning six off Nuwan Kulasekara to seal India's 2011 World Cup victory at Wankhede Stadium, Mumbai.",
+      era: "2010s"
+    },
+    {
+      question: "From seventeen for five I rose,\na knock no camera dared to close,\nagainst Zimbabwe, hope reborn—\nwhose innings saved that World Cup morn?",
+      options: ["Kapil Dev", "Sunil Gavaskar", "Mohinder Amarnath", "Yashpal Sharma"],
+      correct: 0,
+      fact: "🔥 Kapil Dev scored an unbeaten 175 against Zimbabwe at Tunbridge Wells in the 1983 World Cup after India had slipped to 17 for 5.",
+      era: "1970s-80s"
+    },
+    {
+      question: "Ten wickets fell to just one hand,\nat Kotla's pitch I took my stand,\nagainst Pakistan, history's page—\nwhose spell became a Test-match sage?",
+      options: ["Anil Kumble", "Harbhajan Singh", "Bishan Singh Bedi", "Kapil Dev"],
+      correct: 0,
+      fact: "🎳 Anil Kumble took 10/74 against Pakistan at Feroz Shah Kotla, Delhi in 1999 — only the second bowler in Test history to take all 10 in an innings.",
+      era: "1990s"
+    },
+    {
+      question: "Six balls bowled, six times I swung,\nsix sixes over the boundary flung,\nBroad's over, Durban's night—\nwhose bat lit up that famous fight?",
+      options: ["Yuvraj Singh", "Virender Sehwag", "Suresh Raina", "Rohit Sharma"],
+      correct: 0,
+      fact: "💥 Yuvraj Singh hit Stuart Broad for six sixes in one over in the 2007 T20 World Cup against England.",
+      era: "2000s"
+    },
+    {
+      question: "Two-eighty-one at Eden's ground,\nwith Dravid's bat, a fortress found,\nafter follow-on, Australia fell—\nwhose innings does this story tell?",
+      options: ["VVS Laxman", "Rahul Dravid", "Sourav Ganguly", "Sachin Tendulkar"],
+      correct: 0,
+      fact: "🌟 VVS Laxman's 281 at Eden Gardens in 2001 is one of the greatest innings ever — India won after following on against Australia.",
+      era: "2000s"
+    },
+    {
+      question: "Two hundred sixty-four I made,\nat Eden Gardens, records swayed,\nSri Lanka's bowlers, no reply—\nwhose blade sent the ball so high?",
+      options: ["Rohit Sharma", "Virender Sehwag", "Chris Gayle", "Martin Guptill"],
+      correct: 0,
+      fact: "💥 Rohit Sharma scored 264 against Sri Lanka at Eden Gardens, Kolkata in 2014 — the highest individual score in ODI history.",
+      era: "2010s"
+    },
+    {
+      question: "Not stone that stands but stone that grows,\neach session calmer, no fear he shows,\nthirteen thousand Test runs and more—\nwhich batsman built this rock-solid score?",
+      options: ["Rahul Dravid", "Sunil Gavaskar", "Cheteshwar Pujara", "VVS Laxman"],
+      correct: 0,
+      fact: "🧱 Rahul Dravid earned the nickname 'The Wall' and retired with 13,288 Test runs — the second highest by an Indian after Sachin.",
+      era: "2000s"
+    },
+    {
+      question: "A billion hearts, one final night,\nWankhede glowed with victory light,\nSri Lanka chased, the target fell—\nwhich year did India ring that bell?",
+      options: ["2011", "2007", "2015", "2023"],
+      correct: 0,
+      fact: "🏏 India won the 2011 World Cup at Wankhede Stadium, Mumbai, beating Sri Lanka by 6 wickets — their first World Cup win on home soil.",
+      era: "2010s"
+    },
+    {
+      question: "One-fifty-eight not out he blazed,\nthe very first IPL, fans amazed,\nat Chinnaswamy the sixes flew—\nwhich batsman lit that opening view?",
+      options: ["Brendon McCullum", "Chris Gayle", "AB de Villiers", "David Warner"],
+      correct: 0,
+      fact: "🏟️ Brendon McCullum smashed an unbeaten 158 for KKR against RCB in the first ever IPL match, played at M Chinnaswamy Stadium in 2008.",
+      era: "2000s"
+    },
+    {
+      question: "Three hundred nine before day's end,\nat Leeds, no bowler he'd befriend,\na hundred thrice in sessions three—\nwhich legend batted history?",
+      options: ["Don Bradman", "Sachin Tendulkar", "Brian Lara", "Virender Sehwag"],
+      correct: 0,
+      fact: "🐐 Don Bradman scored 309 runs in a single day against England at Headingley, Leeds in 1930 — a record that has never been broken.",
+      era: "Pre-1970s"
+    },
+    {
+      question: "A hundred hundreds, none before,\nMirpur's ground, the record tore,\nBangladesh watched the milestone reign—\nwhose bat wrote cricket's proudest name?",
+      options: ["Sachin Tendulkar", "Virat Kohli", "Ricky Ponting", "Kumar Sangakkara"],
+      correct: 0,
+      fact: "🏏 Sachin Tendulkar became the first batsman to score 100 international centuries, reaching the landmark against Bangladesh in the 2012 Asia Cup.",
+      era: "2010s"
+    }
   ]
 
 };
