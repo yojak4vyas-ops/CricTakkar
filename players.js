@@ -1372,11 +1372,15 @@ const wordlePlayers = [
     country: "South Africa",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium",
+    // Took 2 Test wickets — occasional bowler, not a zero-ball record — ESPNcricinfo confirmed
     debutYear: 2004,
     format: "All-format",
     // 114 Tests, 228 ODIs, 78 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 1,
+    // Day 15 Batch 4 FIX: was missing Delhi Daredevils (his first 3 IPL seasons,
+    // 2008-2010, before moving to RCB in 2011) — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils", "Royal Challengers Bangalore"],
     iccTrophies: 1
     // 1998 CT (South Africa won) — BUT AB debuted 2004, so NOT counted
     // 2025 WTC — AB retired 2018, NOT counted
@@ -1387,11 +1391,15 @@ const wordlePlayers = [
     country: "South Africa",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm fast medium",
+    // ESPNcricinfo confirmed — frontline seam bowling all-rounder
     debutYear: 1995,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 1,
+    // Day 15 Batch 4 FIX: was missing Royal Challengers Bangalore (his first 3 IPL
+    // seasons, 2008-2010, before moving to KKR in 2011) — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Kolkata Knight Riders"],
     iccTrophies: 1
     // 1998 CT — Wikipedia confirmed (Kallis debuted 1995, was in 1998 CT squad)
   },
@@ -1400,11 +1408,16 @@ const wordlePlayers = [
     country: "South Africa",
     role: "Batsman",
     battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium",
+    // Occasional part-time bowler, career bowling average 52.83 — a real (if minor)
+    // bowling record, not a confirmed zero-ball case — ESPNcricinfo confirmed
     debutYear: 2002,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Pune Warriors",
-    iplTeamsCount: 1,
+    // Day 15 Batch 4 FIX: was missing Rajasthan Royals (his first 3 IPL seasons,
+    // 2008-2010, before moving to Pune Warriors in 2011) — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals", "Pune Warriors"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed (1998 CT before his debut)
   },
@@ -1413,11 +1426,15 @@ const wordlePlayers = [
     country: "South Africa",
     role: "Batsman",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // Described as an "occasional off-break bowler" across sources — confirms he
+    // did bowl, though exact wicket tally is unclear — ESPNcricinfo confirmed
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kings XI Punjab",
-    iplTeamsCount: 1,
+    // Kings XI Punjab only, 2016-2017 — dedicated IPL-history search confirmed no other team
+    iplTeams: ["Kings XI Punjab"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1426,12 +1443,16 @@ const wordlePlayers = [
     country: "South Africa",
     role: "Bowler",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm fast",
+    // ESPNcricinfo confirmed
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 4,
-    // RCB, DD, SRH, Gujarat — ESPNcricinfo
+    // RCB (2008-10, 2019-20), Deccan Chargers (2011), Sunrisers Hyderabad (2013-15),
+    // Gujarat Lions (2016) — ESPNcricinfo confirmed. Old comment's "DD" abbreviation
+    // was ambiguous (meant Deccan Chargers, not Delhi Daredevils) — clarified here
+    iplTeams: ["Royal Challengers Bangalore", "Deccan Chargers", "Sunrisers Hyderabad", "Gujarat Lions"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1439,26 +1460,34 @@ const wordlePlayers = [
     name: "Kagiso Rabada",
     country: "South Africa",
     role: "Bowler",
-    battingStyle: "Right-hand",
+    // Day 15 Batch 4 FIX: was wrongly "Right-hand" — Rabada bats LEFT-handed despite
+    // bowling right-arm — same pattern as Zaheer Khan/Anderson/Broad — ESPNcricinfo,
+    // Cricbuzz, Wikipedia all confirm Left-hand Bat
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast",
+    // ESPNcricinfo confirmed
     debutYear: 2014,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Capitals",
-    iplTeamsCount: 2,
-    // Delhi + Punjab — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was missing Gujarat Titans (2025-present) — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Capitals", "Punjab Kings", "Gujarat Titans"],
     iccTrophies: 1
-    // 2025 WTC — Wikipedia confirmed
+    // 2025 WTC — Wikipedia confirmed, in the SA squad for the final
   },
   {
     name: "Shaun Pollock",
     country: "South Africa",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm fast medium",
+    // ESPNcricinfo confirmed
     debutYear: 1995,
     format: "All-format",
     // Tests, ODIs, T20Is (few) — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 15 Batch 4 FIX: was wrongly "Didn't play IPL" — Pollock played the 2008
+    // inaugural season for Mumbai Indians before retiring — ESPNcricinfo confirmed
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 1
     // 1998 CT — Wikipedia confirmed
   },
@@ -1467,25 +1496,36 @@ const wordlePlayers = [
     country: "South Africa",
     role: "Batsman",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm leg break",
+    // Described as an "occasional leg-break bowler" — confirms he did bowl —
+    // ESPNcricinfo confirmed
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 3,
-    // CSK, Rising Pune, RCB — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was missing Delhi Capitals (2025-present, after CSK,
+    // Rising Pune Supergiant, and RCB) — ESPNcricinfo confirmed
+    iplTeams: ["Chennai Super Kings", "Rising Pune Supergiant", "Royal Challengers Bangalore", "Delhi Capitals"],
     iccTrophies: 0
-    // No ICC trophies — Wikipedia confirmed
+    // No ICC trophies — retired from Tests in 2022, before the 2025 WTC win —
+    // Wikipedia confirmed
   },
   {
     name: "Mark Boucher",
     country: "South Africa",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium",
+    // Listed in his RCB 2008 squad profile as bowling right-arm medium pace —
+    // ESPNcricinfo confirmed
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 15 Batch 4 FIX: was wrongly "Didn't play IPL" — Boucher played for Royal
+    // Challengers Bangalore (2008-2010) then Kolkata Knight Riders (2011, as a
+    // mid-season injury replacement) before retiring in mid-2012 — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Kolkata Knight Riders"],
     iccTrophies: 1
     // 1998 CT — Wikipedia confirmed
   },
@@ -1494,12 +1534,16 @@ const wordlePlayers = [
     country: "South Africa",
     role: "Batsman",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // Part-time off-spinner, increasingly used in T20Is — ESPNcricinfo confirmed
     debutYear: 2017,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Sunrisers Hyderabad",
-    iplTeamsCount: 2,
-    // SRH + Punjab — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was missing Lucknow Super Giants (2025-26) and had the
+    // wrong order — correct chronological order is Punjab Kings (2021) first, then
+    // Sunrisers Hyderabad (2022-24), then Lucknow Super Giants — ESPNcricinfo confirmed
+    iplTeams: ["Punjab Kings", "Sunrisers Hyderabad", "Lucknow Super Giants"],
     iccTrophies: 1
     // 2025 WTC (Player of the Match in final) — Wikipedia confirmed
   },
@@ -1511,12 +1555,17 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Slow left-arm orthodox",
+    // ESPNcricinfo confirmed
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 3,
-    // KKR, SRH, Mumbai — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was wrongly including Mumbai Indians — Shakib has only ever
+    // played FOR Kolkata Knight Riders (2011-17, 2021, 2023) and Sunrisers Hyderabad
+    // (2018-19); he played AGAINST Mumbai Indians in several matches, which the old
+    // data appears to have confused for a franchise he represented — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Sunrisers Hyderabad"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1525,11 +1574,17 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "Batsman",
     battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Slow left-arm orthodox",
+    // Rarely used, but has recorded bowling figures (3 ODI innings, 0 wickets) — a
+    // real if minor bowling record, not a confirmed zero-ball case — ESPNcricinfo confirmed
     debutYear: 2007,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Signed by Pune Warriors India for 2012 but never played a match for them —
+    // per the signed-but-never-played rule (see Axar Patel precedent), this does
+    // not count — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1538,11 +1593,18 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium",
+    // UNCONFIRMED exact style — sources disagree (one lists left-arm orthodox, another
+    // right-arm fast medium); going with the ESPNcricinfo-sourced answer, but flagging
+    // this as needing a closer look, similar to KL Rahul's entry. He has bowled at
+    // least once in domestic first-class cricket (1/23 in 10 overs, 2012-13 season)
+    // so NA does not apply — his career bowling record is genuinely confirmed to exist
     debutYear: 2005,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Never played IPL — dedicated search confirmed no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1551,11 +1613,14 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "Bowler",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm fast medium",
+    // ESPNcricinfo confirmed
     debutYear: 2001,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 1,
+    // Kolkata Knight Riders only — 1 match, 2009 season — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1564,11 +1629,16 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // ESPNcricinfo confirmed
     debutYear: 2007,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Never played IPL — went unsold at auction, dedicated search confirmed no
+    // franchise history despite an extensive T20 franchise career elsewhere
+    // (Rangpur Riders, Jamaica Tallawahs, etc.) — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1577,11 +1647,16 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "Batsman",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // Sources flag both offbreak and legbreak as his variations — ESPNcricinfo lists
+    // offbreak as primary; noting the disagreement per the cross-verification rule
     debutYear: 2001,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 15 Batch 4 FIX: was wrongly "Didn't play IPL" — Ashraful was bought by
+    // Mumbai Indians for the 2009 season and played 1 match — ESPNcricinfo confirmed
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1589,13 +1664,21 @@ const wordlePlayers = [
     name: "Mustafizur Rahman",
     country: "Bangladesh",
     role: "Bowler",
-    battingStyle: "Right-hand",
+    // Day 15 Batch 4 FIX: was wrongly "Right-hand" — Mustafizur bats LEFT-handed
+    // despite bowling left-arm too — ESPNcricinfo, Cricbuzz, Wikipedia all confirm
+    // Left-hand Bat
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast medium",
+    // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Sunrisers Hyderabad",
-    iplTeamsCount: 3,
-    // SRH, Mumbai, Delhi — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was missing 2 teams — full history is Sunrisers Hyderabad
+    // (2016-17), Mumbai Indians (2018), Rajasthan Royals (2021), Delhi Capitals
+    // (2022-23), Chennai Super Kings (2024). He was bought by KKR for IPL 2026 but
+    // was released by BCCI instruction before playing a match, so per the
+    // signed-but-never-played rule that does not count — ESPNcricinfo confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Mumbai Indians", "Rajasthan Royals", "Delhi Capitals", "Chennai Super Kings"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1604,11 +1687,15 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // ESPNcricinfo confirmed
     debutYear: 2016,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Never played IPL — went unsold at the 2025 mega auction, dedicated search
+    // confirmed no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1617,11 +1704,15 @@ const wordlePlayers = [
     country: "Bangladesh",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 15 Batch 4 FIX: was wrongly "Didn't play IPL" — Das played 1 match for
+    // Kolkata Knight Riders in the 2023 season — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1629,12 +1720,17 @@ const wordlePlayers = [
     name: "Taskin Ahmed",
     country: "Bangladesh",
     role: "Bowler",
-    battingStyle: "Right-hand",
+    // Day 15 Batch 4 FIX: was wrongly "Right-hand" — Taskin bats LEFT-handed despite
+    // bowling right-arm — ESPNcricinfo, Cricbuzz, Wikipedia all confirm Left-hand Bat
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast",
+    // ESPNcricinfo confirmed
     debutYear: 2014,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Registered for IPL auctions (including 2026) but dedicated search found no
+    // record of him ever being bought or playing an actual IPL match — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1646,12 +1742,16 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Bowler",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Legbreak googly",
+    // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Gujarat Titans",
-    iplTeamsCount: 3,
-    // SRH, GT, SRH — ESPNcricinfo
+    // Day 15 Batch 4 FIX: old data wrongly showed 3 stints ("SRH, GT, SRH") — he
+    // only ever moved once, from Sunrisers Hyderabad (2017-2021) to Gujarat Titans
+    // (2022-present), no return to SRH — ESPNcricinfo confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Gujarat Titans"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1660,12 +1760,18 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // ESPNcricinfo confirmed
     debutYear: 2009,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Sunrisers Hyderabad",
-    iplTeamsCount: 2,
-    // SRH + others — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was vague ("SRH + others"). Full history: Sunrisers
+    // Hyderabad (2017-2021), then bought by Kolkata Knight Riders in the 2022
+    // auction but never got to play a match for them (excluded per the
+    // signed-but-never-played rule), then Mumbai Indians (2024-present, actually
+    // played) — ESPNcricinfo confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Mumbai Indians"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1674,11 +1780,17 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Batsman",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium fast",
+    // Used as an occasional change bowler — ESPNcricinfo confirmed
     debutYear: 2009,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Confirmed "Didn't play IPL" — an initial search hit ("6 matches, HS 164")
+    // turned out to be from Legends League Cricket (a retired-players' exhibition
+    // tournament, teams like "Toyam Hyderabad"/"Maratha Arabians"), not the actual
+    // IPL — flagging this here so it isn't mistaken for real IPL data again
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1687,12 +1799,18 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Bowler",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // Mixes offbreak with legspin/googly variations — ESPNcricinfo confirmed
     debutYear: 2017,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Punjab Kings",
-    iplTeamsCount: 3,
-    // Punjab, MI, Punjab — ESPNcricinfo
+    // Day 15 Batch 4 FIX: old data ("Punjab, MI, Punjab") didn't match his actual
+    // history at all. Full record: Kings XI Punjab (2018-2020), Sunrisers Hyderabad
+    // (2021), bought by KKR in 2024 but injury meant he never played for them
+    // (excluded per the signed-but-never-played rule), Mumbai Indians (2025-present,
+    // actually played) — ESPNcricinfo confirmed
+    iplTeams: ["Kings XI Punjab", "Sunrisers Hyderabad", "Mumbai Indians"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1701,12 +1819,18 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium",
+    // ESPNcricinfo confirmed
     debutYear: 2019,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 2,
-    // KKR + Gujarat — ESPNcricinfo
+    // Day 15 Batch 4 FIX: was wrongly including Gujarat Titans — he was named in
+    // their 2022 squad as an injury replacement but never broke into the playing
+    // XI, so per the signed-but-never-played rule that doesn't count. He was
+    // traded to Kolkata Knight Riders ahead of 2023 and has played for them since
+    // — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1715,11 +1839,15 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium fast",
+    // ESPNcricinfo confirmed
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 15 Batch 4 FIX: was wrongly "Didn't play IPL" — Naib made his IPL debut
+    // for Delhi Capitals in the 2024 season — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Capitals"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1728,11 +1856,17 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Batsman",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium fast",
+    // ESPNcricinfo confirmed
     debutYear: 2018,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Confirmed "Didn't play IPL" — one low-quality aggregator page claimed "8
+    // matches" but this could not be corroborated; dedicated searches on the
+    // 2024 and 2025 auctions found no franchise picked him (explicitly unsold
+    // in 2025 at his base price), so treating the "8 matches" claim as unreliable
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1741,11 +1875,14 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Bowler",
     battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm medium fast",
+    // ESPNcricinfo confirmed — known for his yorkers in the death overs
     debutYear: 2018,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Lucknow Super Giants",
-    iplTeamsCount: 1,
+    // Lucknow Super Giants only, since his Dec 2022 auction signing — ESPNcricinfo confirmed
+    iplTeams: ["Lucknow Super Giants"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1753,12 +1890,21 @@ const wordlePlayers = [
     name: "Fazalhaq Farooqi",
     country: "Afghanistan",
     role: "Bowler",
-    battingStyle: "Left-hand",
+    // Day 15 Batch 4 FIX: was wrongly "Left-hand" — Farooqi bats RIGHT-handed
+    // despite bowling left-arm — the old data appears to have conflated his
+    // bowling arm with his batting hand (the reverse of the Zaheer Khan pattern)
+    // — ESPNcricinfo, Cricbuzz, Wikipedia all confirm Right-hand Bat
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm fast medium",
+    // ESPNcricinfo confirmed
     debutYear: 2019,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Gujarat Titans",
-    iplTeamsCount: 1,
+    // Day 15 Batch 4 FIX: old data ("Gujarat Titans") did not match his actual
+    // history at all — he has only ever played for Sunrisers Hyderabad
+    // (2022-2024) and Rajasthan Royals (2025-present); no record of Gujarat
+    // Titans found anywhere — ESPNcricinfo confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Rajasthan Royals"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1767,11 +1913,15 @@ const wordlePlayers = [
     country: "Afghanistan",
     role: "Batsman",
     battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
+    bowlingStyle: "Right-arm offbreak",
+    // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Confirmed "Didn't play IPL" — dedicated search found no record of any IPL
+    // auction sale or franchise appearance — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
