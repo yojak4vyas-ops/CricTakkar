@@ -442,7 +442,14 @@
         currentUserId = null;
         currentUserData = null;
       }
-      loadLeaderboard('week');
+
+      // Support linking straight to the Friends tab, e.g. from the Stats Dashboard
+      var params = new URLSearchParams(window.location.search);
+      if (params.get('tab') === 'friends') {
+        switchTab('friends');
+      } else {
+        loadLeaderboard('week');
+      }
     });
 
     // ===== SWITCH TAB =====

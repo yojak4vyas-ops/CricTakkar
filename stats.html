@@ -195,6 +195,74 @@
       padding: 24px 0;
     }
 
+    /* PERCENTILE RANK */
+    .percentile-hero {
+      text-align: center;
+      padding: 6px 0 4px;
+    }
+    .percentile-number {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #f4a900;
+    }
+    .percentile-sub {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 6px;
+    }
+
+    /* FRIENDS COMPARISON */
+    .friends-mini-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+    .friends-mini-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+    .friends-mini-row.is-you {
+      background: linear-gradient(135deg, rgba(255,107,53,0.15), rgba(247,147,30,0.1));
+      border-color: rgba(255,107,53,0.4);
+    }
+    .friends-mini-rank {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: rgba(255,255,255,0.4);
+      min-width: 22px;
+    }
+    .friends-mini-name {
+      flex: 1;
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: #fff;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .friends-mini-xp {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #f4a900;
+      flex-shrink: 0;
+    }
+    .friends-manage-link {
+      display: block;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #f7931e;
+      text-decoration: none;
+      margin-top: 4px;
+    }
+
     /* ACTIVITY CALENDAR */
     .calendar-grid {
       display: grid;
@@ -356,6 +424,20 @@
       <div id="activityCalendarContent"></div>
     </div>
 
+    <!-- PERCENTILE RANK -->
+    <div class="section-card">
+      <div class="section-title">Percentile Rank</div>
+      <div class="section-subtitle">How your XP compares to every CricTakkar player</div>
+      <div id="percentileContent"></div>
+    </div>
+
+    <!-- FRIENDS COMPARISON -->
+    <div class="section-card">
+      <div class="section-title">Friends Comparison</div>
+      <div class="section-subtitle">How you stack up against the friends you've added</div>
+      <div id="friendsComparisonContent"></div>
+    </div>
+
     <!-- BADGES -->
     <div class="badges-card">
       <div class="badge-summary-row">
@@ -423,6 +505,8 @@
         document.getElementById('statsState').style.display = 'block';
         var data = doc.exists ? doc.data() : {};
         renderStats(data);
+        renderPercentile(user.uid, data);
+        renderFriendsComparison(user.uid, data);
       });
     });
 
@@ -637,6 +721,118 @@
           '<div class="calendar-legend-dot" style="background:rgba(244,169,0,1)"></div>' +
           ' More' +
         '</div>';
+    }
+
+    // ===== PERCENTILE RANK =====
+    // Ranks the player against every user's XP. The app is early-stage with a small
+    // user base, so a full collection read is fine for now — if the user base grows
+    // into the thousands this should move to a maintained counter instead.
+    function renderPercentile(myUid, data) {
+      var container = document.getElementById('percentileContent');
+
+      if (!data.xp || data.xp <= 0) {
+        container.innerHTML = '<div class="category-note">Play a quiz to earn XP and see your percentile rank here.</div>';
+        return;
+      }
+
+      db.collection('users').orderBy('xp', 'desc').get().then(function(snapshot) {
+        var players = [];
+        snapshot.forEach(function(doc) {
+          var d = doc.data();
+          if ((d.xp || 0) > 0) players.push({ uid: doc.id, xp: d.xp || 0 });
+        });
+
+        var total = players.length;
+
+        if (total < 5) {
+          container.innerHTML = '<div class="category-note">Not enough players yet to calculate a percentile — check back once more players join!</div>';
+          return;
+        }
+
+        var rank = -1;
+        for (var i = 0; i < players.length; i++) {
+          if (players[i].uid === myUid) { rank = i + 1; break; }
+        }
+
+        if (rank === -1) {
+          container.innerHTML = '<div class="category-note">Play a quiz to earn XP and see your percentile rank here.</div>';
+          return;
+        }
+
+        var topPercent = Math.max(1, Math.ceil((rank / total) * 100));
+
+        container.innerHTML =
+          '<div class="percentile-hero">' +
+            '<div class="percentile-number">Top ' + topPercent + '%</div>' +
+            '<div class="percentile-sub">Rank #' + rank + ' of ' + total + ' CricTakkar players by XP</div>' +
+          '</div>';
+      }).catch(function(err) {
+        console.error('Error loading percentile:', err);
+        container.innerHTML = '<div class="category-note">Could not load percentile rank right now.</div>';
+      });
+    }
+
+    // ===== FRIENDS COMPARISON =====
+    // Reuses the same `friends` array (friend UIDs) that leaderboard.html's Friends tab manages.
+    function renderFriendsComparison(myUid, data) {
+      var container = document.getElementById('friendsComparisonContent');
+      var friendUids = data.friends || [];
+
+      if (friendUids.length === 0) {
+        container.innerHTML =
+          '<div class="category-note">You haven\'t added any friends yet.</div>' +
+          '<a class="friends-manage-link" href="leaderboard.html?tab=friends">Add Friends →</a>';
+        return;
+      }
+
+      var uidsToFetch = [myUid].concat(friendUids);
+      var chunks = [];
+      for (var i = 0; i < uidsToFetch.length; i += 10) {
+        chunks.push(uidsToFetch.slice(i, i + 10));
+      }
+
+      var allPlayers = [];
+      var promises = chunks.map(function(chunk) {
+        return db.collection('users')
+          .where(firebase.firestore.FieldPath.documentId(), 'in', chunk)
+          .get()
+          .then(function(snap) {
+            snap.forEach(function(d) {
+              var pd = d.data();
+              allPlayers.push({
+                uid: d.id,
+                username: pd.username || 'Cricket Fan',
+                xp: pd.xp || 0,
+                isYou: d.id === myUid
+              });
+            });
+          });
+      });
+
+      Promise.all(promises).then(function() {
+        allPlayers.sort(function(a, b) { return b.xp - a.xp; });
+
+        var myRank = -1;
+        allPlayers.forEach(function(p, i) { if (p.isYou) myRank = i + 1; });
+
+        var rows = allPlayers.map(function(p, i) {
+          var rank = i + 1;
+          var rankEmoji = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '#' + rank;
+          return '<div class="friends-mini-row' + (p.isYou ? ' is-you' : '') + '">' +
+            '<div class="friends-mini-rank">' + rankEmoji + '</div>' +
+            '<div class="friends-mini-name">' + p.username + (p.isYou ? ' (You)' : '') + '</div>' +
+            '<div class="friends-mini-xp">⚡ ' + p.xp + '</div>' +
+          '</div>';
+        }).join('');
+
+        container.innerHTML =
+          '<div class="friends-mini-list">' + rows + '</div>' +
+          '<div class="category-note">You\'re #' + myRank + ' of ' + allPlayers.length + ' (including you)</div>' +
+          '<a class="friends-manage-link" href="leaderboard.html?tab=friends">Manage Friends →</a>';
+      }).catch(function(err) {
+        console.error('Error loading friends comparison:', err);
+        container.innerHTML = '<div class="category-note">Could not load friends comparison right now.</div>';
+      });
     }
 
     function renderBadges(data) {
