@@ -29,13 +29,48 @@
     <p class="page-subtitle">Verses for the game that runs through every Indian heart</p>
   </section>
 
-  <!-- POEMS -->
+  <!-- OFFICIAL POEMS -->
   <section class="poems-section">
     <div class="poems-grid" id="poemsGrid"></div>
   </section>
 
+  <!-- COMMUNITY POEMS -->
+  <section class="poems-section community-section">
+    <h2 class="community-heading">🖊️ Community Poems</h2>
+    <p class="community-subheading">Written by CricTakkar players — cricket poems only, please</p>
+
+    <!-- SUBMIT FORM (logged in) -->
+    <div class="submit-card" id="submitLoggedIn" style="display:none">
+      <div class="submit-title">Share Your Poem</div>
+      <input class="submit-input" id="submitTitleInput" type="text" maxlength="60" placeholder="Poem title" />
+      <textarea class="submit-textarea" id="submitBodyInput" maxlength="1200" rows="5" placeholder="Write your cricket poem here..."></textarea>
+      <div class="submit-row">
+        <div class="submit-hint">Keep it cricket-related — other players can report poems that aren't.</div>
+        <button class="btn-primary" id="submitBtn" onclick="submitCommunityPoem()">Post Poem 📮</button>
+      </div>
+      <div class="submit-msg" id="submitMsg"></div>
+    </div>
+
+    <!-- LOGIN PROMPT (not logged in) -->
+    <div class="login-prompt-card" id="submitLoginPrompt" style="display:none">
+      <p>Log in to share your own cricket poem with everyone.</p>
+      <a class="btn-primary" href="login.html">Log In / Sign Up</a>
+    </div>
+
+    <!-- FEED -->
+    <div class="community-feed" id="communityFeed">
+      <div class="community-loading">⏳ Loading community poems...</div>
+    </div>
+  </section>
+
+  <!-- FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
   <script src="poems.js"></script>
   <script>
+    // ===== RENDER OFFICIAL POEMS =====
     var grid = document.getElementById('poemsGrid');
 
     cricketPoems.forEach(function(poem) {
@@ -59,6 +94,294 @@
 
       grid.appendChild(card);
     });
+
+    // ===== COMMUNITY POEMS =====
+    // Auto-publish with a lightweight community-moderation safety net (agreed with
+    // user on Day 14): any poem gets 3+ reports from distinct users, it's hidden
+    // from the public feed. No admin dashboard exists yet (that's Feature 47,
+    // Phase 4) so this is the only moderation available today.
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    var REPORT_THRESHOLD = 3;
+    var currentUserId = null;
+    var currentUserName = 'Cricket Fan';
+    var openCommentPoemId = null; // which poem's comment box is currently expanded
+
+    auth.onAuthStateChanged(function(user) {
+      if (user) {
+        currentUserId = user.uid;
+        db.collection('users').doc(user.uid).get().then(function(doc) {
+          if (doc.exists) {
+            var data = doc.data();
+            currentUserName = data.username || data.name || 'Cricket Fan';
+          }
+          document.getElementById('submitLoggedIn').style.display = 'block';
+          document.getElementById('submitLoginPrompt').style.display = 'none';
+          loadCommunityPoems();
+        });
+      } else {
+        currentUserId = null;
+        document.getElementById('submitLoggedIn').style.display = 'none';
+        document.getElementById('submitLoginPrompt').style.display = 'block';
+        loadCommunityPoems();
+      }
+    });
+
+    // ===== SUBMIT A NEW POEM =====
+    function submitCommunityPoem() {
+      var titleInput = document.getElementById('submitTitleInput');
+      var bodyInput = document.getElementById('submitBodyInput');
+      var msgEl = document.getElementById('submitMsg');
+      var title = titleInput.value.trim();
+      var body = bodyInput.value.trim();
+
+      if (!currentUserId) return;
+
+      if (!title || !body) {
+        msgEl.className = 'submit-msg error';
+        msgEl.textContent = 'Please add both a title and your poem.';
+        return;
+      }
+
+      var btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = 'Posting...';
+
+      db.collection('communityPoems').add({
+        authorUid: currentUserId,
+        authorName: currentUserName,
+        title: title,
+        body: body,
+        likes: [],
+        reportedBy: [],
+        commentCount: 0,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(function() {
+        titleInput.value = '';
+        bodyInput.value = '';
+        msgEl.className = 'submit-msg success';
+        msgEl.textContent = '✅ Posted! Scroll down to see it.';
+        btn.disabled = false;
+        btn.textContent = 'Post Poem 📮';
+        loadCommunityPoems();
+      }).catch(function(err) {
+        msgEl.className = 'submit-msg error';
+        msgEl.textContent = 'Could not post — please try again.';
+        btn.disabled = false;
+        btn.textContent = 'Post Poem 📮';
+      });
+    }
+
+    // ===== LOAD COMMUNITY FEED =====
+    function loadCommunityPoems() {
+      var feed = document.getElementById('communityFeed');
+
+      db.collection('communityPoems')
+        .orderBy('createdAt', 'desc')
+        .limit(100)
+        .get()
+        .then(function(snapshot) {
+          var poems = [];
+          snapshot.forEach(function(doc) {
+            var d = doc.data();
+            var reportCount = (d.reportedBy || []).length;
+            if (reportCount >= REPORT_THRESHOLD) return; // hidden by community reports
+            poems.push({ id: doc.id, data: d });
+          });
+
+          if (poems.length === 0) {
+            feed.innerHTML = '<div class="community-empty">No community poems yet — be the first to share one! 🏏</div>';
+            return;
+          }
+
+          feed.innerHTML = '';
+          poems.forEach(function(p) { feed.appendChild(renderCommunityCard(p.id, p.data)); });
+        })
+        .catch(function(err) {
+          console.error('Error loading community poems:', err);
+          feed.innerHTML = '<div class="community-empty">Could not load community poems right now.</div>';
+        });
+    }
+
+    // ===== RENDER A SINGLE COMMUNITY POEM CARD =====
+    function renderCommunityCard(poemId, d) {
+      var card = document.createElement('div');
+      card.className = 'poem-card community-card';
+      card.id = 'poem-' + poemId;
+
+      var likes = d.likes || [];
+      var liked = currentUserId && likes.indexOf(currentUserId) !== -1;
+      var isAuthor = currentUserId && d.authorUid === currentUserId;
+
+      card.innerHTML =
+        '<div class="poem-header">' +
+          '<div class="poem-icon">🏏</div>' +
+          '<div class="poem-heading">' +
+            '<div class="poem-tag">Community</div>' +
+            '<div class="poem-title">' + escapeHtml(d.title) + '</div>' +
+            '<div class="poem-subtitle">by ' + escapeHtml(d.authorName || 'Cricket Fan') + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="poem-body"><p class="poem-stanza">' + escapeHtml(d.body) + '</p></div>' +
+        '<div class="community-actions">' +
+          '<button class="action-btn' + (liked ? ' action-active' : '') + '" onclick="toggleLike(\'' + poemId + '\')">' +
+            (liked ? '❤️' : '🤍') + ' <span>' + likes.length + '</span>' +
+          '</button>' +
+          '<button class="action-btn" onclick="toggleComments(\'' + poemId + '\')">💬 <span>' + (d.commentCount || 0) + '</span></button>' +
+          '<button class="action-btn" onclick="shareCommunityPoem(\'' + escapeAttr(d.title) + '\',\'' + escapeAttr(d.authorName || 'Cricket Fan') + '\')">📤 Share</button>' +
+          (isAuthor
+            ? '<button class="action-btn action-danger" onclick="deleteCommunityPoem(\'' + poemId + '\')">🗑️ Delete</button>'
+            : (currentUserId ? '<button class="action-btn" onclick="reportCommunityPoem(\'' + poemId + '\')">🚩 Report</button>' : '')) +
+        '</div>' +
+        '<div class="comments-section" id="comments-' + poemId + '" style="display:none"></div>';
+
+      return card;
+    }
+
+    // ===== LIKE / UNLIKE =====
+    function toggleLike(poemId) {
+      if (!currentUserId) { window.location.href = 'login.html'; return; }
+
+      var ref = db.collection('communityPoems').doc(poemId);
+      db.runTransaction(function(transaction) {
+        return transaction.get(ref).then(function(doc) {
+          if (!doc.exists) return;
+          var likes = doc.data().likes || [];
+          var idx = likes.indexOf(currentUserId);
+          if (idx === -1) likes.push(currentUserId);
+          else likes.splice(idx, 1);
+          transaction.update(ref, { likes: likes });
+        });
+      }).then(function() { loadCommunityPoems(); });
+    }
+
+    // ===== REPORT =====
+    function reportCommunityPoem(poemId) {
+      if (!currentUserId) return;
+      if (!confirm('Report this poem as not cricket-related or inappropriate?')) return;
+
+      var ref = db.collection('communityPoems').doc(poemId);
+      db.runTransaction(function(transaction) {
+        return transaction.get(ref).then(function(doc) {
+          if (!doc.exists) return;
+          var reportedBy = doc.data().reportedBy || [];
+          if (reportedBy.indexOf(currentUserId) === -1) reportedBy.push(currentUserId);
+          transaction.update(ref, { reportedBy: reportedBy });
+        });
+      }).then(function() { loadCommunityPoems(); });
+    }
+
+    // ===== DELETE (AUTHOR ONLY) =====
+    function deleteCommunityPoem(poemId) {
+      if (!confirm('Delete this poem? This cannot be undone.')) return;
+
+      var ref = db.collection('communityPoems').doc(poemId);
+      ref.collection('comments').get().then(function(snap) {
+        var batch = db.batch();
+        snap.forEach(function(d) { batch.delete(d.ref); });
+        batch.delete(ref);
+        return batch.commit();
+      }).then(function() { loadCommunityPoems(); });
+    }
+
+    // ===== SHARE =====
+    function shareCommunityPoem(title, authorName) {
+      var text = '✍️ "' + title + '" by ' + authorName +
+        ' — a cricket poem on CricTakkar!\nRead it and more at crictakkar.vercel.app 🏏';
+      window.open('https://wa.me/?text=' + encodeURIComponent(text), '_blank');
+    }
+
+    // ===== COMMENTS =====
+    function toggleComments(poemId) {
+      var section = document.getElementById('comments-' + poemId);
+      if (!section) return;
+
+      if (openCommentPoemId === poemId) {
+        section.style.display = 'none';
+        openCommentPoemId = null;
+        return;
+      }
+
+      // Close any other open comment box
+      if (openCommentPoemId) {
+        var prev = document.getElementById('comments-' + openCommentPoemId);
+        if (prev) prev.style.display = 'none';
+      }
+
+      openCommentPoemId = poemId;
+      section.style.display = 'block';
+      section.innerHTML = '<div class="comments-loading">Loading comments...</div>';
+
+      db.collection('communityPoems').doc(poemId).collection('comments')
+        .orderBy('createdAt', 'asc')
+        .get()
+        .then(function(snap) {
+          var listHtml = '';
+          snap.forEach(function(doc) {
+            var c = doc.data();
+            listHtml += '<div class="comment-row"><span class="comment-author">' +
+              escapeHtml(c.authorName || 'Cricket Fan') + ':</span> ' +
+              '<span class="comment-text">' + escapeHtml(c.text) + '</span></div>';
+          });
+          if (!listHtml) listHtml = '<div class="comments-empty">No comments yet.</div>';
+
+          var inputHtml = currentUserId
+            ? '<div class="comment-input-row">' +
+                '<input class="comment-input" id="commentInput-' + poemId + '" type="text" maxlength="300" placeholder="Add a comment..." onkeydown="if(event.key===\'Enter\') addComment(\'' + poemId + '\')" />' +
+                '<button class="comment-send-btn" onclick="addComment(\'' + poemId + '\')">Send</button>' +
+              '</div>'
+            : '<div class="comments-login-hint">Log in to comment.</div>';
+
+          section.innerHTML = '<div class="comments-list">' + listHtml + '</div>' + inputHtml;
+        });
+    }
+
+    function addComment(poemId) {
+      if (!currentUserId) return;
+      var input = document.getElementById('commentInput-' + poemId);
+      var text = input.value.trim();
+      if (!text) return;
+
+      var poemRef = db.collection('communityPoems').doc(poemId);
+      poemRef.collection('comments').add({
+        authorUid: currentUserId,
+        authorName: currentUserName,
+        text: text,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).then(function() {
+        return db.runTransaction(function(transaction) {
+          return transaction.get(poemRef).then(function(doc) {
+            if (!doc.exists) return;
+            var count = (doc.data().commentCount || 0) + 1;
+            transaction.update(poemRef, { commentCount: count });
+          });
+        });
+      }).then(function() {
+        input.value = '';
+        toggleComments(poemId); // close
+        toggleComments(poemId); // reopen refreshed
+      });
+    }
+
+    // ===== ESCAPE HELPERS (prevent HTML injection from user-submitted text) =====
+    function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.textContent = str || '';
+      return div.innerHTML;
+    }
+    function escapeAttr(str) {
+      return (str || '').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
+    }
   </script>
 
 </body>
