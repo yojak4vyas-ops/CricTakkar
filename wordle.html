@@ -208,7 +208,7 @@
     /* CLUE COLUMN HEADERS — 9 columns: name + 8 attributes, sized in fr so it always fits without horizontal scrolling */
     .clue-headers {
       display: grid;
-      grid-template-columns: 1.9fr 0.85fr 0.8fr 0.65fr 0.8fr 0.7fr 0.85fr 0.65fr 0.65fr;
+      grid-template-columns: 1.9fr 0.8fr 0.75fr 0.6fr 0.85fr 0.75fr 0.65fr 1.1fr 0.6fr;
       gap: 3px;
       margin-bottom: 8px;
       padding: 0 2px;
@@ -251,7 +251,7 @@
     }
     .guess-row {
       display: grid;
-      grid-template-columns: 1.9fr 0.85fr 0.8fr 0.65fr 0.8fr 0.7fr 0.85fr 0.65fr 0.65fr;
+      grid-template-columns: 1.9fr 0.8fr 0.75fr 0.6fr 0.85fr 0.75fr 0.65fr 1.1fr 0.6fr;
       gap: 3px;
     }
     .guess-cell {
@@ -438,7 +438,7 @@
         </div>
         <div class="colour-row">
           <div class="colour-tile yellow">🟨</div>
-          <div class="colour-desc"><strong>Yellow — Close match.</strong> Debut year within 5 years, IPL Teams or ICC Trophies off by 1, or one player is All-format while the other plays a single format.</div>
+          <div class="colour-desc"><strong>Yellow — Close match.</strong> Debut year within 5 years, ICC Trophies off by 1, shares at least one IPL team without matching exactly, or one player is All-format while the other plays a single format.</div>
         </div>
         <div class="colour-row">
           <div class="colour-tile grey">⬛</div>
@@ -462,6 +462,10 @@
           <span class="attr-example">Right-hand / Left-hand</span>
         </div>
         <div class="attr-row">
+          <span class="attr-name">Bowl Style</span>
+          <span class="attr-example">e.g. Right-arm fast — NA if they never bowl</span>
+        </div>
+        <div class="attr-row">
           <span class="attr-name">Debut Year</span>
           <span class="attr-example">e.g. 2008 — yellow if within 5 years</span>
         </div>
@@ -470,12 +474,8 @@
           <span class="attr-example">ODI / All-format</span>
         </div>
         <div class="attr-row">
-          <span class="attr-name">IPL Team</span>
-          <span class="attr-example">e.g. Mumbai Indians</span>
-        </div>
-        <div class="attr-row">
           <span class="attr-name">IPL Teams</span>
-          <span class="attr-example">How many IPL teams they've played for</span>
+          <span class="attr-example">Every team they've played for — yellow if you share at least one</span>
         </div>
         <div class="attr-row">
           <span class="attr-name">ICC Trophies</span>
@@ -517,9 +517,9 @@
           <div class="clue-header">Country</div>
           <div class="clue-header">Role</div>
           <div class="clue-header">Bat Style</div>
+          <div class="clue-header">Bowl Style</div>
           <div class="clue-header">Debut Yr</div>
           <div class="clue-header">Format</div>
-          <div class="clue-header">IPL Team</div>
           <div class="clue-header">IPL Teams</div>
           <div class="clue-header">ICC Cups</div>
         </div>

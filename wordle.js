@@ -19,11 +19,16 @@ function startWordle() {
 }
 
 // ===== PICK TODAY'S PLAYER (rotates daily, same for everyone) =====
+// Only picks from players that have been through the bowlingStyle/iplTeams data pass
+// (Day 14 — currently just India). Players from countries not yet re-verified can still
+// be guessed, they just won't come up as the secret answer until their batch is done.
 function pickTodayPlayer() {
+  var verifiedPlayers = wordlePlayers.filter(function(p) { return typeof p.bowlingStyle !== 'undefined'; });
+  var pool = verifiedPlayers.length > 0 ? verifiedPlayers : wordlePlayers;
   var today = new Date();
   var dayNumber = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-  var index = dayNumber % wordlePlayers.length;
-  wTodayPlayer = wordlePlayers[index];
+  var index = dayNumber % pool.length;
+  wTodayPlayer = pool[index];
 }
 
 // ===== BUILD 6 EMPTY GUESS ROWS =====
@@ -34,7 +39,7 @@ function buildGuessRows() {
     var row = document.createElement('div');
     row.className = 'guess-row';
     row.id = 'row-' + i;
-    var cols = ['name', 'country', 'role', 'battingStyle', 'debutYear', 'format', 'iplTeam', 'iplTeamsCount', 'iccTrophies'];
+    var cols = ['name', 'country', 'role', 'battingStyle', 'bowlingStyle', 'debutYear', 'format', 'iplTeams', 'iccTrophies'];
     cols.forEach(function(col) {
       var cell = document.createElement('div');
       cell.className = 'guess-cell' + (col === 'name' ? ' name-cell' : '');
@@ -129,6 +134,15 @@ var roleAbbr = {
   'Batsman': 'BAT', 'Bowler': 'BWL', 'All-rounder': 'AR', 'Wicketkeeper': 'WK'
 };
 var battingStyleAbbr = { 'Right-hand': 'R', 'Left-hand': 'L' };
+var bowlingStyleAbbr = {
+  'NA': 'NA',
+  'Right-arm fast': 'R-FAST', 'Right-arm fast-medium': 'R-FM', 'Right-arm medium-fast': 'R-MF',
+  'Right-arm medium': 'R-MED', 'Right-arm offbreak': 'R-OB',
+  'Right-arm legbreak': 'R-LB', 'Right-arm legbreak googly': 'R-LB',
+  'Left-arm fast': 'L-FAST', 'Left-arm fast-medium': 'L-FM', 'Left-arm medium-fast': 'L-MF',
+  'Left-arm medium': 'L-MED', 'Left-arm orthodox': 'L-ORT',
+  'Left-arm wrist-spin (chinaman)': 'L-WS'
+};
 var formatAbbr = { 'All-format': 'ALL', 'ODI': 'ODI' };
 var iplTeamAbbr = {
   'Mumbai Indians': 'MI', 'Chennai Super Kings': 'CSK', 'Royal Challengers Bangalore': 'RCB',
@@ -136,31 +150,54 @@ var iplTeamAbbr = {
   'Delhi Daredevils': 'DD', 'Delhi Capitals': 'DC', 'Punjab Kings': 'PBKS',
   'Kings XI Punjab': 'KXIP', 'Gujarat Titans': 'GT', 'Lucknow Super Giants': 'LSG',
   'Sunrisers Hyderabad': 'SRH', 'Rising Pune Supergiant': 'RPS', 'Pune Warriors': 'PWI',
-  "Didn't play IPL": '—'
+  'Kochi Tuskers Kerala': 'KTK', 'Gujarat Lions': 'GL'
 };
 
 // ===== SHORT DISPLAY TEXT FOR A CELL (comparisons still use the raw player values) =====
 function displayValue(attr, player) {
   var v = player[attr];
+  // Players from countries not yet through the Day 14 data pass won't have bowlingStyle/
+  // iplTeams — show a neutral placeholder instead of the literal word "undefined".
+  if (v === undefined || v === null) return attr === 'iplTeams' ? '—' : '?';
   if (attr === 'country') return countryAbbr[v] || v;
   if (attr === 'role') return roleAbbr[v] || v;
   if (attr === 'battingStyle') return battingStyleAbbr[v] || v;
+  if (attr === 'bowlingStyle') return bowlingStyleAbbr[v] || v;
   if (attr === 'format') return formatAbbr[v] || v;
-  if (attr === 'iplTeam') return iplTeamAbbr[v] || v;
+  if (attr === 'iplTeams') {
+    if (!v || v.length === 0) return '—';
+    return v.map(function(t) { return iplTeamAbbr[t] || t; }).join(',');
+  }
   return v;
+}
+
+// ===== COMPARE TWO IPL TEAM LISTS =====
+// green: same exact set of teams (order doesn't matter) — including both "never played IPL"
+// yellow: they share at least one team but the sets aren't identical
+// grey: no teams in common
+function compareIplTeams(guessed, target) {
+  var g = guessed || [], t = target || [];
+  var gSet = g.slice().sort().join('|');
+  var tSet = t.slice().sort().join('|');
+  if (gSet === tSet) return 'green';
+  var shared = g.some(function(team) { return t.indexOf(team) !== -1; });
+  return shared ? 'yellow' : 'grey';
 }
 
 // ===== COMPARE PLAYERS =====
 function comparePlayer(guessed, target) {
-  var attrs = ['country', 'role', 'battingStyle', 'debutYear', 'format', 'iplTeam', 'iplTeamsCount', 'iccTrophies'];
+  var attrs = ['country', 'role', 'battingStyle', 'bowlingStyle', 'debutYear', 'format', 'iplTeams', 'iccTrophies'];
   return attrs.map(function(attr) {
     var gVal = guessed[attr];
     var tVal = target[attr];
+
+    if (attr === 'iplTeams') return compareIplTeams(gVal, tVal);
+
     if (gVal === tVal) return 'green';
     if (attr === 'debutYear') {
       if (Math.abs(gVal - tVal) <= 5) return 'yellow';
     }
-    if (attr === 'iplTeamsCount' || attr === 'iccTrophies') {
+    if (attr === 'iccTrophies') {
       if (Math.abs(gVal - tVal) === 1) return 'yellow';
     }
     if (attr === 'format') {
@@ -172,14 +209,16 @@ function comparePlayer(guessed, target) {
 
 // ===== FILL ROW WITH COLOURS =====
 function fillRow(rowIndex, player, result) {
-  var attrs = ['country', 'role', 'battingStyle', 'debutYear', 'format', 'iplTeam', 'iplTeamsCount', 'iccTrophies'];
+  var attrs = ['country', 'role', 'battingStyle', 'bowlingStyle', 'debutYear', 'format', 'iplTeams', 'iccTrophies'];
   var nameCell = document.getElementById('row-' + rowIndex + '-name');
   nameCell.textContent = player.name;
   nameCell.classList.add('grey');
   attrs.forEach(function(attr, i) {
     var cell = document.getElementById('row-' + rowIndex + '-' + attr);
     cell.textContent = displayValue(attr, player);
-    cell.title = player[attr];
+    cell.title = attr === 'iplTeams'
+      ? (player[attr] && player[attr].length ? player[attr].join(', ') : "Didn't play IPL")
+      : (player[attr] === undefined ? 'Not yet verified' : player[attr]);
     cell.classList.add(result[i]);
   });
 }

@@ -17,11 +17,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1989,
     format: "All-format",
     // 200 Tests, 463 ODIs, 1 T20I — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 1,
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 2
     // 2002 CT (shared), 2011 ODI WC — Wikipedia + ESPNcricinfo
   },
@@ -30,11 +30,12 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    bowlingStyle: "NA",
     debutYear: 2004,
     format: "All-format",
     // 90 Tests, 350 ODIs, 98 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Rising Pune Supergiant (2016-17, while CSK was banned) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings", "Rising Pune Supergiant"],
     iccTrophies: 3
     // 2007 T20 WC, 2011 ODI WC, 2013 CT — Wikipedia + ESPNcricinfo
   },
@@ -43,11 +44,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 2008,
     format: "All-format",
     // 113 Tests, 292 ODIs, 125 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 1,
+    iplTeams: ["Royal Challengers Bangalore"],
     iccTrophies: 4
     // 2011 WC, 2013 CT, 2024 T20 WC, 2025 CT — Wikipedia + Cricscope
   },
@@ -56,11 +57,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2007,
     format: "All-format",
     // 67 Tests, 264 ODIs, 159 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 2,
+    iplTeams: ["Deccan Chargers", "Mumbai Indians"],
     // Deccan Chargers (2008-2010), Mumbai Indians (2011-2024) — ESPNcricinfo
     iccTrophies: 4
     // 2007 T20 WC, 2013 CT, 2024 T20 WC, 2025 CT — Cricscope confirmed
@@ -70,11 +71,12 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1992,
     format: "ODI",
     // 113 Tests, 311 ODIs, ZERO T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Pune Warriors India (2012-13) — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Pune Warriors"],
     iccTrophies: 1
     // 2002 CT (shared) — Wikipedia confirmed
   },
@@ -83,12 +85,13 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1996,
     format: "All-format",
     // 164 Tests, 344 ODIs, 1 T20I (vs England 2011) — ESPNcricinfo confirmed
-    iplTeam: "Rajasthan Royals",
-    iplTeamsCount: 2,
-    // Delhi Daredevils + Rajasthan Royals — ESPNcricinfo
+    // Day 14 FIX: was wrongly "Delhi Daredevils" — Dravid actually played for Royal Challengers
+    // Bangalore (2008-2010, captain in 2008) then Rajasthan Royals (2011-2013) — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Rajasthan Royals"],
     iccTrophies: 1
     // 2002 CT (shared) — Wikipedia confirmed
   },
@@ -97,12 +100,13 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
     debutYear: 1990,
     format: "All-format",
     // 132 Tests, 271 ODIs, 1 T20I — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 2,
-    // RCB + Delhi Daredevils — ESPNcricinfo
+    // Day 14 FIX: was wrongly listing Delhi Daredevils — Kumble only ever played IPL for RCB
+    // (2008-2010), later became RCB's mentor/coach, not a player elsewhere — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
     iccTrophies: 1
     // 2002 CT (shared) — Wikipedia confirmed
   },
@@ -111,11 +115,11 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 1978,
     format: "ODI",
     // 131 Tests, 225 ODIs — retired 1994, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 1
     // 1983 ODI WC — Wikipedia confirmed
   },
@@ -124,11 +128,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1971,
     format: "ODI",
     // 125 Tests, 108 ODIs — retired 1987, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — ESPNcricinfo confirmed
   },
@@ -137,12 +141,13 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1996,
     format: "ODI",
     // 134 Tests, 86 ODIs, ZERO T20Is — ESPNcricinfo confirmed
     // Wikipedia: "Laxman is one of the few players to have played 100 Tests without appearing in a Cricket World Cup"
-    iplTeam: "Deccan Chargers",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Kochi Tuskers Kerala (2011) — ESPNcricinfo confirmed
+    iplTeams: ["Deccan Chargers", "Kochi Tuskers Kerala"],
     iccTrophies: 1
     // 2002 CT (shared) — Wikipedia confirmed
   },
@@ -151,11 +156,12 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1999,
     format: "All-format",
     // Tests, ODIs, T20Is all played — ESPNcricinfo confirmed
-    iplTeam: "Delhi Daredevils",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Kings XI Punjab (2014-15) — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils", "Kings XI Punjab"],
     iccTrophies: 3
     // 2002 CT (shared), 2007 T20 WC, 2011 ODI WC — Wikipedia confirmed
   },
@@ -164,12 +170,11 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1998,
     format: "All-format",
     // 103 Tests, 236 ODIs, 28 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 3,
-    // MI, CSK, KKR — ESPNcricinfo
+    iplTeams: ["Mumbai Indians", "Chennai Super Kings", "Kolkata Knight Riders"],
     iccTrophies: 3
     // 2002 CT (shared), 2007 T20 WC, 2011 ODI WC — Wikipedia confirmed
   },
@@ -178,12 +183,12 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 2000,
     format: "All-format",
     // 40 Tests, 304 ODIs, 58 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Punjab Kings",
-    iplTeamsCount: 5,
-    // Kings XI, Pune, RCB, Delhi, SRH, MI — ESPNcricinfo
+    // Day 14 FIX: count was inconsistent with its own comment (said 5, listed 6 teams) — corrected to 6
+    iplTeams: ["Kings XI Punjab", "Pune Warriors", "Royal Challengers Bangalore", "Delhi Daredevils", "Sunrisers Hyderabad", "Mumbai Indians"],
     iccTrophies: 2
     // 2007 T20 WC, 2011 ODI WC — Wikipedia confirmed
   },
@@ -191,13 +196,14 @@ const wordlePlayers = [
     name: "Zaheer Khan",
     country: "India",
     role: "Bowler",
-    battingStyle: "Left-hand",
+    battingStyle: "Right-hand",
+    // Day 14 FIX: was wrongly "Left-hand" — Zaheer Khan bats right-handed, bowls left-arm.
+    // Flagged by user, confirmed via ESPNcricinfo + Wikipedia.
+    bowlingStyle: "Left-arm fast-medium",
     debutYear: 2000,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 3,
-    // MI, RCB, Delhi — ESPNcricinfo
+    iplTeams: ["Mumbai Indians", "Royal Challengers Bangalore", "Delhi Daredevils"],
     iccTrophies: 2
     // 2002 CT (shared), 2011 ODI WC — Wikipedia confirmed
   },
@@ -206,12 +212,13 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 4,
-    // CSK, Punjab, Delhi, RCB — ESPNcricinfo
+    // Day 14 FIX: was wrongly listing Punjab and RCB — Ashwin's actual IPL teams are
+    // CSK, Delhi Capitals, and Rajasthan Royals — ESPNcricinfo confirmed
+    iplTeams: ["Chennai Super Kings", "Delhi Capitals", "Rajasthan Royals"],
     iccTrophies: 2
     // 2011 ODI WC (squad), 2013 CT — Wikipedia confirmed
   },
@@ -220,12 +227,13 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 2009,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 2,
-    // CSK, Gujarat Lions (when CSK was banned) — Wikipedia confirmed
+    // Day 14 FIX: was missing Rajasthan Royals (IPL debut team, 2008-09) and Kochi Tuskers
+    // Kerala (2011) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Kochi Tuskers Kerala", "Chennai Super Kings", "Gujarat Lions"],
     iccTrophies: 4
     // 2013 CT, 2024 T20 WC, 2025 CT, 2011 WC (squad) — Wikipedia confirmed
   },
@@ -234,11 +242,11 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 2016,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 1,
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 3
     // 2024 T20 WC, 2025 CT, 2026 T20 WC — Multiple sources confirmed
   },
@@ -247,12 +255,12 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
     debutYear: 2016,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 3,
-    // MI, Gujarat Titans, MI — ESPNcricinfo
+    // Unique teams only (MI -> Gujarat Titans -> back to MI counts as 2 unique teams)
+    iplTeams: ["Mumbai Indians", "Gujarat Titans"],
     iccTrophies: 3
     // 2024 T20 WC, 2025 CT, 2026 T20 WC — Multiple sources confirmed
   },
@@ -261,12 +269,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2021,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 2,
-    // KKR + MI — ESPNcricinfo
+    iplTeams: ["Kolkata Knight Riders", "Mumbai Indians"],
     iccTrophies: 2
     // 2024 T20 WC, 2026 T20 WC — Wikipedia confirmed
   },
@@ -275,12 +282,12 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 2013,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Punjab Kings",
-    iplTeamsCount: 3,
-    // Delhi, Kolkata, Punjab — ESPNcricinfo
+    // Day 14 FIX: was missing Gujarat Titans and Lucknow Super Giants — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Delhi Daredevils", "Kings XI Punjab", "Gujarat Titans", "Lucknow Super Giants"],
     iccTrophies: 1
     // 2013 CT (squad) — Wikipedia — NOTE: Not fully confirmed in playing XI, marking conservatively
     // Actually Shami was NOT in 2013 CT squad — he debuted Nov 2013. Correcting to 0 trophies
@@ -293,12 +300,12 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 2007,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Capitals",
-    iplTeamsCount: 4,
-    // Multiple teams — ESPNcricinfo
+    // Day 14 FIX: "multiple teams" was vague and undercounted — full list per ESPNcricinfo:
+    iplTeams: ["Kolkata Knight Riders", "Delhi Capitals", "Sunrisers Hyderabad", "Kings XI Punjab", "Rising Pune Supergiant", "Gujarat Titans"],
     iccTrophies: 1
     // 2011 ODI WC (played matches) — Wikipedia confirmed
   },
@@ -307,12 +314,11 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm wrist-spin (chinaman)",
     debutYear: 2017,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 2,
-    // KKR + Delhi Capitals — ESPNcricinfo
+    iplTeams: ["Kolkata Knight Riders", "Delhi Capitals"],
     iccTrophies: 2
     // 2024 T20 WC, 2025 CT — ESPNcricinfo squad lists confirmed
   },
@@ -321,12 +327,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2019,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Gujarat Titans",
-    iplTeamsCount: 2,
-    // KKR + Gujarat Titans — ESPNcricinfo + Britannica confirmed
+    iplTeams: ["Kolkata Knight Riders", "Gujarat Titans"],
     iccTrophies: 1
     // 2025 CT — Wikipedia confirmed
   },
@@ -335,12 +340,15 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    // Bowling style shows mixed signals across sources (ESPNcricinfo lists "right-arm medium"
+    // but BCCI profile and match records show he has never bowled in international cricket) —
+    // marking NA to match how the game treats specialist batters/keepers elsewhere in this file.
+    bowlingStyle: "NA",
     debutYear: 2014,
     format: "All-format",
     // Test debut 2014 (Boxing Day vs Australia) — Wikipedia confirmed
-    iplTeam: "Lucknow Super Giants",
-    iplTeamsCount: 4,
-    // RCB, SRH, Punjab Kings, Lucknow — Wikipedia confirmed
+    // Day 14 FIX: was missing Delhi Capitals (2025 move) — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad", "Punjab Kings", "Lucknow Super Giants", "Delhi Capitals"],
     iccTrophies: 1
     // 2025 CT — ESPNcricinfo squad confirmed
   },
@@ -349,11 +357,12 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
+    bowlingStyle: "NA",
     debutYear: 2017,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Capitals",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Lucknow Super Giants (2025 move, most expensive IPL buy) — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Capitals", "Lucknow Super Giants"],
     iccTrophies: 1
     // 2024 T20 WC — ESPNcricinfo squad confirmed
   },
@@ -362,11 +371,13 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    bowlingStyle: "NA",
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Rajasthan Royals",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Chennai Super Kings — Samson was traded RR to CSK on 15 Nov 2025
+    // ahead of IPL 2026 — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals", "Chennai Super Kings"],
     iccTrophies: 2
     // 2024 T20 WC, 2026 T20 WC — Wikipedia confirmed (89 in 2026 final)
   },
@@ -375,11 +386,11 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm legbreak",
     debutYear: 2023,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Rajasthan Royals",
-    iplTeamsCount: 1,
+    iplTeams: ["Rajasthan Royals"],
     iccTrophies: 1
     // 2025 CT — ESPNcricinfo squad confirmed
   },
@@ -388,12 +399,12 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast-medium",
     debutYear: 2003,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Punjab Kings",
-    iplTeamsCount: 4,
-    // Multiple teams — ESPNcricinfo
+    // Day 14 FIX: "multiple teams" was vague and undercounted — full list per ESPNcricinfo:
+    iplTeams: ["Kings XI Punjab", "Delhi Daredevils", "Sunrisers Hyderabad", "Chennai Super Kings", "Rising Pune Supergiants", "Gujarat Lions"],
     iccTrophies: 1
     // 2007 T20 WC — Wikipedia confirmed
   },
@@ -402,12 +413,15 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Capitals",
-    iplTeamsCount: 2,
-    // Gujarat Lions + Delhi Capitals — ESPNcricinfo
+    // Day 14 FIX: was wrongly "Gujarat Lions" — that's the team he took a hat-trick AGAINST,
+    // not for. His actual IPL teams are Kings XI Punjab (2014-18) and Delhi Capitals (2019-present).
+    // He was also signed by Mumbai Indians in 2013 but never played a match for them, so that's
+    // excluded — ESPNcricinfo confirmed
+    iplTeams: ["Kings XI Punjab", "Delhi Capitals"],
     iccTrophies: 3
     // 2024 T20 WC, 2025 CT, 2026 T20 WC — Multiple sources confirmed
   },
@@ -416,11 +430,11 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm medium-fast",
     debutYear: 2022,
     format: "All-format",
     // Tests (1 match), ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Punjab Kings",
-    iplTeamsCount: 1,
+    iplTeams: ["Punjab Kings"],
     iccTrophies: 3
     // 2024 T20 WC, 2025 CT, 2026 T20 WC — Wikipedia + The Cricket Standard confirmed
   },
