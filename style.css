@@ -194,6 +194,45 @@ body {
   letter-spacing: 0.5px;
 }
 
+/* ===== ON THIS DAY ===== */
+.otd-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 32px 0;
+}
+
+.otd-card {
+  background: linear-gradient(135deg, rgba(244,169,0,0.12), rgba(224,123,0,0.06));
+  border: 1px solid rgba(244,169,0,0.3);
+  border-radius: 16px;
+  padding: 28px 32px;
+  text-align: center;
+}
+
+.otd-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #f4a900;
+  margin-bottom: 10px;
+}
+
+.otd-title {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.otd-fact {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
 /* ===== FEATURE CARDS ===== */
 .features {
   max-width: 1100px;
