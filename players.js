@@ -1,7 +1,7 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
 // 130 players across 11 countries
 // Attributes verified across ESPNcricinfo, Wikipedia, Cricbuzz
-// Last verified: June 2026
+// Last verified: July 2026
 // 
 // FORMAT RULE: "All-format" = played Tests + ODIs + T20Is internationally
 // IPL: franchise cricket only — not counted as T20 International
@@ -889,12 +889,14 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2000,
     format: "All-format",
     // 134 Tests, 404 ODIs, 56 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Deccan Chargers",
-    iplTeamsCount: 3,
-    // Deccan, Kings XI, SRH — ESPNcricinfo
+    // Day 14 Batch 3 FIX: moved off old iplTeam/iplTeamsCount schema, added bowlingStyle.
+    // Full IPL history via dedicated search: Kings XI Punjab (2008), Deccan Chargers
+    // (2011-12, captain), Sunrisers Hyderabad (2013, captain) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab", "Deccan Chargers", "Sunrisers Hyderabad"],
     iccTrophies: 2
     // 2002 CT (shared), 2014 T20 WC — Wikipedia confirmed
   },
@@ -903,12 +905,13 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1992,
     format: "All-format",
     // Tests, ODIs, T20Is (1) — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 2,
-    // CSK + Kochi Tuskers — ESPNcricinfo
+    // Day 14 Batch 3 FIX: full IPL history — CSK (2008-2010), Kochi Tuskers Kerala (2011,
+    // the franchise's only season), RCB (2012-13) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings", "Kochi Tuskers Kerala", "Royal Challengers Bangalore"],
     iccTrophies: 2
     // 1996 ODI WC, 2002 CT (shared) — Wikipedia confirmed
   },
@@ -917,29 +920,28 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Daredevils",
-    iplTeamsCount: 2,
-    // Delhi + Mumbai — ESPNcricinfo
-    iccTrophies: 3
-    // 1996 ODI WC (squad, 19 yrs), 2002 CT (shared), 2014 T20 WC — Wikipedia confirmed
-    // NOTE: Jayawardene was in 1996 WC squad — Wikipedia confirms his debut was 1997
-    // CORRECTION: 1996 WC was before his debut — removing 1996 WC
-    // Jayawardene debuted 1997, so 1996 WC not counted
-    // VERIFIED: 2002 CT (shared) + 2014 T20 WC = 2 trophies
+    // Day 14 Batch 3 FIX: full IPL history — Kings XI Punjab (2008-10, captain), Kochi
+    // Tuskers Kerala (2011, captain), Delhi Daredevils (from 2012) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab", "Kochi Tuskers Kerala", "Delhi Daredevils"],
+    iccTrophies: 2
+    // 2002 CT (shared), 2014 T20 WC — Wikipedia confirmed. Debuted 1997, so the 1996 ODI WC
+    // (which he did not play) is correctly excluded.
   },
   {
     name: "Sanath Jayasuriya",
     country: "Sri Lanka",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 1991,
     format: "All-format",
-    // Tests, ODIs, T20Is (1) — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 1,
+    // Tests, ODIs, T20Is (1) — ESPNcricinfo confirmed. 440 international wickets as a
+    // frontline spinner, far past the "even one ball bowled" bar.
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 2
     // 1996 ODI WC, 2002 CT (shared) — Wikipedia confirmed
   },
@@ -948,11 +950,14 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1982,
     format: "ODI",
-    // Tests, ODIs — retired 2000, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired 2000, T20I format did not exist. Confirmed deceptive part-time
+    // medium-pacer earlier in his career — ESPNcricinfo confirmed
+    // Day 14 Batch 3 FIX: retired 2000, 8 years before IPL existed (2008) — never played.
+    // As SLC chairman he was a vocal IPL critic — Wikipedia confirmed
+    iplTeams: [],
     iccTrophies: 1
     // 1996 ODI WC (as captain) — Wikipedia confirmed
   },
@@ -961,11 +966,13 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1984,
     format: "ODI",
-    // Tests, ODIs — retired 2003, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired 2003, T20I format did not exist. Confirmed part-time off-spinner
+    // with two 4-wicket international hauls — ESPNcricinfo confirmed
+    // Day 14 Batch 3 FIX: retired 2003, 5 years before IPL began (2008) — never played.
+    iplTeams: [],
     iccTrophies: 1
     // 1996 ODI WC — Wikipedia confirmed (Player of the Final)
   },
@@ -974,27 +981,28 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 1,
-    iccTrophies: 2
-    // 2002 CT (shared) — wait, Malinga debuted 2004 so 2002 CT not counted
-    // 2014 T20 WC — Wikipedia confirmed
-    // CORRECTION: Only 1 trophy — 2014 T20 WC
+    iplTeams: ["Mumbai Indians"],
+    // Only ever played for Mumbai Indians (2008-2019), IPL's all-time leading wicket-taker
+    // at retirement — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 1
+    // 2014 T20 WC — Wikipedia confirmed. Debuted 2004, so the 2002 CT is correctly excluded.
   },
   {
     name: "Angelo Mathews",
     country: "Sri Lanka",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 2008,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Daredevils",
-    iplTeamsCount: 2,
-    // Delhi + Pune Warriors — ESPNcricinfo
+    // Day 14 Batch 3 FIX: full IPL history — KKR (2010), Pune Warriors (2011-13), Delhi
+    // Daredevils (2015, 2017) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders", "Pune Warriors", "Delhi Daredevils"],
     iccTrophies: 1
     // 2014 T20 WC — Wikipedia confirmed
   },
@@ -1003,11 +1011,12 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm fast-medium",
     debutYear: 1994,
     format: "ODI",
     // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: ["Deccan Chargers"],
+    // Only franchise, 2008 season (4 matches) — ESPNcricinfo + Wikipedia confirmed
     iccTrophies: 2
     // 1996 ODI WC, 2002 CT (shared) — Wikipedia confirmed
   },
@@ -1016,27 +1025,33 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1999,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Delhi Daredevils",
-    iplTeamsCount: 1,
+    // Day 14 Batch 3 FIX: full IPL history — Delhi Daredevils (2008-2010), Royal
+    // Challengers Bangalore (2011-2013) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils", "Royal Challengers Bangalore"],
     iccTrophies: 2
     // 2002 CT (shared), 2014 T20 WC — Wikipedia confirmed
   },
 
   // ===== PAKISTAN (10 players) =====
+  // No Pakistani player has featured in the IPL since an informal exclusion took hold after
+  // the 2008 season, except a handful who played that first 2008 season only — ESPNcricinfo confirmed
 
   {
     name: "Wasim Akram",
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast",
     debutYear: 1984,
     format: "ODI",
     // Tests, ODIs — retired 2003, T20I format did not exist — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 14 Batch 3 FIX: retired 2003, before IPL existed — never played. Later worked as
+    // KKR's bowling coach, a coaching role, not a playing appearance — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 1
     // 1992 ODI WC — Wikipedia confirmed
   },
@@ -1045,11 +1060,12 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1971,
     format: "ODI",
     // Tests, ODIs — retired 1992, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Retired 1992, 16 years before IPL began — ESPNcricinfo confirmed
     iccTrophies: 1
     // 1992 ODI WC (as captain) — Wikipedia confirmed
   },
@@ -1058,11 +1074,12 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
     debutYear: 1975,
     format: "ODI",
-    // Tests, ODIs — retired 1996, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired 1996, T20I format did not exist. Confirmed occasional part-time
+    // leg-spinner — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 1
     // 1992 ODI WC — Wikipedia confirmed
   },
@@ -1071,11 +1088,13 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1989,
     format: "ODI",
     // Tests, ODIs — very few T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 14 Batch 3 FIX: retired 2004, before IPL existed — never played. Later worked as
+    // Sunrisers Hyderabad's bowling coach (2013), a coaching role — ESPNcricinfo confirmed
+    iplTeams: [],
     iccTrophies: 1
     // 1992 ODI WC — Wikipedia confirmed
   },
@@ -1084,11 +1103,15 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 1991,
     format: "ODI",
-    // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed. Occasional part-time
+    // slow left-arm bowler (dismissed Brian Lara with his first-ever ODI ball) — ESPNcricinfo confirmed
+    // Day 14 Batch 3 FIX: after retiring internationally in 2007 he played in the ICL (Indian
+    // Cricket League) — a separate, PCB-unsanctioned rebel T20 league, NOT the IPL — a common
+    // mix-up given the similar names. He never played IPL — Wikipedia confirmed
+    iplTeams: [],
     iccTrophies: 1
     // 1992 ODI WC — Wikipedia confirmed
   },
@@ -1097,11 +1120,14 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
     debutYear: 1996,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 14 Batch 3 FIX: was wrongly "Didn't play IPL" — Afridi played the inaugural 2008
+    // IPL season for Deccan Chargers (10 matches) before the informal exclusion took hold,
+    // and no other season or team — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Deccan Chargers"],
     iccTrophies: 1
     // 2009 T20 WC — Wikipedia confirmed
   },
@@ -1110,11 +1136,14 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is (few) — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 1,
+    // Day 14 Batch 3 RE-CHECK: confirmed correct — played for Kolkata Knight Riders in the
+    // 2008 season only (3 matches, 5 wickets, incl. a 4/11 debut vs Delhi Daredevils),
+    // before the informal exclusion took hold — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 0
     // No ICC trophies (1992 WC before debut, 2009 T20 WC — he was not in playing XI)
     // Wikipedia confirms Akhtar was NOT in Pakistan's 2009 T20 WC winning squad
@@ -1124,11 +1153,15 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 2000,
     format: "All-format",
-    // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Occasional part-time bowler (medium pace
+    // and leg breaks) — ESPNcricinfo confirmed
+    // Day 14 Batch 3 FIX: was wrongly "Didn't play IPL" — Younis Khan was drafted by
+    // Rajasthan Royals for the 2008 season only, playing 1 match, before the informal
+    // exclusion took hold — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals"],
     iccTrophies: 1
     // 2009 T20 WC (as captain) — Wikipedia confirmed
   },
@@ -1137,11 +1170,12 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Debuted 2015, after the informal exclusion of Pakistani players took hold — never played — ESPNcricinfo confirmed
     iccTrophies: 1
     // 2017 CT — Wikipedia confirmed
   },
@@ -1150,11 +1184,13 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast",
     debutYear: 2018,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Never played IPL — his large PSL (Pakistan Super League) stats for Lahore Qalandars are
+    // sometimes mislabeled as IPL by low-quality sites; confirmed not the case — Wikipedia confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1166,11 +1202,12 @@ const wordlePlayers = [
     country: "England",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 1977,
     format: "ODI",
     // Tests, ODIs — retired 1993, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Retired 1993, 16 years before IPL began — ESPNcricinfo confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed (1979 WC runner-up, 1992 WC runner-up)
   },
@@ -1179,11 +1216,13 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2012,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 14 Batch 3 FIX: was wrongly "Didn't play IPL" — Root debuted for Rajasthan
+    // Royals in 2023 (3 matches), sat out 2024, went unsold in 2026 — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals"],
     iccTrophies: 2
     // 2019 ODI WC, 2022 T20 WC — Wikipedia confirmed
   },
@@ -1192,11 +1231,14 @@ const wordlePlayers = [
     country: "England",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Rising Pune Supergiant",
-    iplTeamsCount: 1,
+    // Day 14 Batch 3 FIX: full IPL history — Rising Pune Supergiant (2017), Rajasthan
+    // Royals (2018-2021), sat out 2022, Chennai Super Kings (2023, 2 matches before injury,
+    // team won the title) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rising Pune Supergiant", "Rajasthan Royals", "Chennai Super Kings"],
     iccTrophies: 2
     // 2019 ODI WC, 2022 T20 WC — Wikipedia confirmed
   },
@@ -1205,12 +1247,15 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 2,
-    // RCB + Delhi — ESPNcricinfo
+    // Day 14 Batch 3 FIX: was missing Rising Pune Supergiants (2016) — full history: RCB
+    // (2009-10, captain), Delhi Daredevils (2012 & 2014, captain), Rising Pune Supergiants
+    // (2016). Excludes Deccan Chargers (2011, sold before playing) and Sunrisers Hyderabad
+    // (2015, released before the tournament started) since he never played for either — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Daredevils", "Rising Pune Supergiant"],
     iccTrophies: 1
     // 2010 T20 WC — Wikipedia confirmed
   },
@@ -1219,11 +1264,12 @@ const wordlePlayers = [
     country: "England",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 1998,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 1,
+    iplTeams: ["Chennai Super Kings"],
+    // Only franchise, 2009 season (3 matches, sent home injured) — ESPNcricinfo + Wikipedia confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1232,41 +1278,53 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Left-hand",
+    // Day 14 Batch 3 FIX: has a confirmed career bowling record — 18 deliveries across his
+    // Test career, 1 wicket (vs India, Trent Bridge 2014). ESPNcricinfo lists "Right-arm
+    // Slow"; other sources say "Right-arm Offbreak" — same part-time role, minor source
+    // label disagreement flagged, not NA.
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2006,
     format: "ODI",
     // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
-    iccTrophies: 1
-    // 2010 T20 WC (squad) — Wikipedia confirmed
-    // CORRECTION: Cook was NOT in 2010 T20 WC playing squad — ESPNcricinfo shows no T20I record
-    // Cook has ZERO ICC trophies — Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — confirmed via multiple sources — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No ICC trophies — Cook was NOT in the 2010 T20 WC playing squad, no confirmed T20I record — ESPNcricinfo + Wikipedia confirmed
   },
   {
     name: "James Anderson",
     country: "England",
     role: "Bowler",
-    battingStyle: "Right-hand",
+    // Day 14 Batch 3 FIX: was wrongly "Right-hand" — Anderson bats left-handed despite
+    // bowling right-arm (a genuine cross-dominant player, like Stuart Broad below) —
+    // ESPNcricinfo profile explicitly confirmed
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 2002,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Never played IPL — rejected earlier offers to focus on England, entered the 2025
+    // auction but went unsold at his reserve price — ESPNcricinfo + Wikipedia confirmed
     iccTrophies: 1
-    // 2010 T20 WC (squad) — Wikipedia
-    // CORRECTION: Anderson's T20I record to verify — ESPNcricinfo shows he played T20Is
     // 2010 T20 WC — England squad included Anderson — Wikipedia confirmed
   },
   {
     name: "Stuart Broad",
     country: "England",
     role: "Bowler",
-    battingStyle: "Right-hand",
+    // Day 14 Batch 3 FIX: was wrongly "Right-hand" — Broad bats left-handed despite bowling
+    // right-arm (scored a Test 169 vs Pakistan at Lord's in 2010) — ESPNcricinfo profile
+    // explicitly confirmed
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kings XI Punjab",
-    iplTeamsCount: 1,
+    // Day 14 Batch 3 FIX: was wrongly listing Kings XI Punjab — Broad was signed to KXIP for
+    // both 2011 and 2012 but was injured out both seasons and never played a single match
+    // for them, so per the project's signed-but-never-played rule this is an empty array — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
     iccTrophies: 1
     // 2010 T20 WC — Wikipedia confirmed
   },
@@ -1275,12 +1333,19 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Left-hand",
+    // UNCONFIRMED (Day 14 Batch 3): ESPNcricinfo's profile lists a style classification of
+    // "Right-arm medium," but no source confirms an actual delivery bowled in international
+    // cricket (0 wickets in 16 Tests confirmed; ODI/T20I/IPL overs bowled could not be
+    // confirmed either way — 0 overs bowled in IPL). Same situation as KL Rahul — marking NA
+    // as the safer call, flagged for re-check rather than presented as settled fact.
+    bowlingStyle: "NA",
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 3,
-    // Multiple teams — ESPNcricinfo
+    // Day 14 Batch 3 FIX: was undercounted at "KKR + 2 more unlisted" — full IPL history by
+    // first appearance: RCB (2010), KKR (2011-13, then again 2019+), Sunrisers Hyderabad
+    // (2015-16), Kings XI Punjab (2017). Sat out 2014 — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Kolkata Knight Riders", "Sunrisers Hyderabad", "Kings XI Punjab"],
     iccTrophies: 2
     // 2019 ODI WC (as captain), 2022 T20 WC — Wikipedia confirmed
   },
@@ -1289,11 +1354,13 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1975,
     format: "ODI",
-    // Tests, ODIs — retired 1995, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired 1995, T20I format did not exist. Over 200 first-class wickets
+    // as an occasional medium-pacer, a genuine secondary bowling record — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Retired 1995, 13 years before IPL began — ESPNcricinfo confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
