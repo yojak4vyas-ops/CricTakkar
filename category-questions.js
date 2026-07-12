@@ -14,6 +14,13 @@ const categoryQuestions = {
 
   ipl: [
     {
+      question: "Which team won the IPL 2026 title, becoming back-to-back champions?",
+      options: ["Gujarat Titans", "Mumbai Indians", "Royal Challengers Bengaluru", "Chennai Super Kings"],
+      correct: 2,
+      fact: "🏆 RCB beat Gujarat Titans by 5 wickets in the IPL 2026 final at Narendra Modi Stadium, Ahmedabad — their second straight title. Virat Kohli's unbeaten 75 off 42 balls sealed the chase.",
+      era: "2020s"
+    },
+    {
       question: "Which team won the IPL 2025 title — their first ever IPL trophy?",
       options: ["Mumbai Indians", "Punjab Kings", "Royal Challengers Bengaluru", "Kolkata Knight Riders"],
       correct: 2,
@@ -38,14 +45,14 @@ const categoryQuestions = {
       question: "Who has scored the most runs in IPL history?",
       options: ["Rohit Sharma", "David Warner", "Shikhar Dhawan", "Virat Kohli"],
       correct: 3,
-      fact: "👑 Virat Kohli is the all-time leading run-scorer in IPL history with over 8,000 runs. He also won the Orange Cap in IPL 2024 with 741 runs.",
+      fact: "👑 Virat Kohli is the all-time leading run-scorer in IPL history with over 9,000 runs (as of 2026 — Kohli is still active, so this number keeps growing). He also won the Orange Cap in IPL 2024 with 741 runs.",
       era: "2010s"
     },
     {
       question: "Who has taken the most wickets in IPL history?",
       options: ["Lasith Malinga", "Amit Mishra", "Dwayne Bravo", "Yuzvendra Chahal"],
       correct: 3,
-      fact: "🌀 Yuzvendra Chahal is the highest wicket-taker in IPL history, surpassing Dwayne Bravo's record during IPL 2024.",
+      fact: "🌀 Yuzvendra Chahal is the highest wicket-taker in IPL history, surpassing Dwayne Bravo's record during IPL 2023.",
       era: "2020s"
     },
     {
@@ -87,7 +94,7 @@ const categoryQuestions = {
       question: "Who won the Orange Cap (most runs) in IPL 2024?",
       options: ["Rohit Sharma", "Travis Head", "Virat Kohli", "KL Rahul"],
       correct: 2,
-      fact: "🧡 Virat Kohli won the Orange Cap in IPL 2024 with 741 runs — including his first ever IPL century after 17 years in the tournament.",
+      fact: "🧡 Virat Kohli won the Orange Cap in IPL 2024 with 741 runs from 15 matches.",
       era: "2020s"
     },
     {
@@ -216,7 +223,7 @@ const categoryQuestions = {
       question: "Which Indian bowler has taken the most Test wickets ever?",
       options: ["Kapil Dev", "Harbhajan Singh", "Zaheer Khan", "Anil Kumble"],
       correct: 3,
-      fact: "🌀 Anil Kumble is India's highest wicket-taker in Tests with 619 wickets — the third highest in the history of Test cricket.",
+      fact: "🌀 Anil Kumble is India's highest wicket-taker in Tests with 619 wickets — the fourth highest in the history of Test cricket (behind Muralitharan, Warne, and Anderson).",
       era: "1990s"
     },
     {
@@ -225,6 +232,13 @@ const categoryQuestions = {
       correct: 1,
       fact: "📜 Each team gets 2 innings in a Test match. That is why Tests can last up to 5 days — they are the ultimate test of skill and endurance.",
       era: "General"
+    },
+    {
+      question: "Which Indian cricketer scored a century on his Test debut at Lord's in 1996?",
+      options: ["Sachin Tendulkar", "Virat Kohli", "Sourav Ganguly", "Rahul Dravid"],
+      correct: 2,
+      fact: "🎩 Sourav Ganguly scored 131 on his Test debut at Lord's in 1996 — one of the most celebrated debut innings in Indian cricket history.",
+      era: "1990s"
     }
   ],
 
@@ -256,13 +270,6 @@ const categoryQuestions = {
       correct: 2,
       fact: "🇮🇳 India won the 1983 World Cup at Lord's under Kapil Dev — one of sport's greatest ever upsets. India beat the mighty West Indies in the final.",
       era: "1970s-80s"
-    },
-    {
-      question: "How many overs does each team face in an ODI match?",
-      options: ["40 overs", "45 overs", "50 overs", "60 overs"],
-      correct: 2,
-      fact: "🏏 Each team faces 50 overs in an ODI. ODIs were originally 60 overs per side when they began in 1971.",
-      era: "General"
     },
     {
       question: "Who scored the most runs in a single ODI World Cup tournament — 648 runs in 2019?",
@@ -326,13 +333,6 @@ const categoryQuestions = {
       correct: 3,
       fact: "🎯 MS Dhoni hit the winning six off Nuwan Kulasekara to seal India's 2011 World Cup victory. He finished unbeaten on 91.",
       era: "2010s"
-    },
-    {
-      question: "Which Indian cricketer scored a century on his Test debut at Lord's in 1996?",
-      options: ["Sachin Tendulkar", "Virat Kohli", "Sourav Ganguly", "Rahul Dravid"],
-      correct: 2,
-      fact: "🎩 Sourav Ganguly scored 131 on his Test debut at Lord's in 1996 — one of the most celebrated debut innings in Indian cricket history.",
-      era: "1990s"
     }
   ],
 

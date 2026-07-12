@@ -70,14 +70,6 @@ const questionBank = [
     fact: "⚡ AB de Villiers scored 100 off just 31 balls against West Indies on 18 January 2015 in Johannesburg.",
     era: "2010s"
   },
-  {
-    question: "Rohit Sharma has scored how many centuries in ODI World Cups — a world record?",
-    options: ["4", "5", "6", "7"],
-    correct: 3,
-    fact: "🏆 Rohit Sharma scored 7 centuries across ODI World Cups — the most by any batsman in World Cup history.",
-    era: "2020s"
-  },
-
   // ===== BOWLING RECORDS =====
   {
     question: "Who is the highest wicket-taker in Test cricket history with 800 wickets?",
@@ -93,14 +85,6 @@ const questionBank = [
     fact: "🎳 Anil Kumble took 10/74 against Pakistan in Delhi in 1999 — only the second bowler in history to take all 10 in a Test innings.",
     era: "1990s"
   },
-  {
-    question: "Which bowler dismissed Sachin Tendulkar the most times in Test cricket?",
-    options: ["Shane Warne", "Glenn McGrath", "Wasim Akram", "Curtly Ambrose"],
-    correct: 1,
-    fact: "🎯 Glenn McGrath dismissed Sachin Tendulkar 8 times in Test matches — their duels are among cricket's greatest rivalries.",
-    era: "2000s"
-  },
-
   // ===== WORLD CUPS =====
   {
     question: "Which year did India win their first Cricket World Cup?",
@@ -150,7 +134,7 @@ const questionBank = [
     question: "Who has scored the most runs in IPL history?",
     options: ["Rohit Sharma", "David Warner", "Virat Kohli", "Shikhar Dhawan"],
     correct: 2,
-    fact: "👑 Virat Kohli is the all-time leading run-scorer in IPL history with over 8,000 runs across his career.",
+    fact: "👑 Virat Kohli is the all-time leading run-scorer in IPL history with over 9,000 runs across his career (as of 2026 — Kohli is still active, so this number keeps growing).",
     era: "2010s"
   },
 
@@ -215,7 +199,7 @@ const questionBank = [
     question: "Who was the first Indian bowler to take 600 Test wickets?",
     options: ["Kapil Dev", "Harbhajan Singh", "Anil Kumble", "Zaheer Khan"],
     correct: 2,
-    fact: "🌀 Anil Kumble is India's highest wicket-taker in Tests with 619 wickets — the third highest in history.",
+    fact: "🌀 Anil Kumble is India's highest wicket-taker in Tests with 619 wickets — the fourth highest in history (behind Muralitharan, Warne, and Anderson).",
     era: "2000s"
   }
 
