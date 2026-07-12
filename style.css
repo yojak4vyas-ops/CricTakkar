@@ -201,6 +201,20 @@ body {
   padding: 40px 32px 0;
 }
 
+.otd-heading {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 16px;
+}
+
+.otd-subtext {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+}
+
 .otd-card {
   background: linear-gradient(135deg, rgba(244,169,0,0.12), rgba(224,123,0,0.06));
   border: 1px solid rgba(244,169,0,0.3);

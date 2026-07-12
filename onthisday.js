@@ -37,6 +37,10 @@ function renderOnThisDay() {
   var month = today.getMonth() + 1;
   var day = today.getDate();
 
+  var MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  var todayReadable = day + ' ' + MONTH_NAMES[month - 1];
+
   var matches = onThisDayEvents.filter(function(e) { return e.month === month && e.day === day; });
 
   if (matches.length > 0) {
@@ -47,7 +51,7 @@ function renderOnThisDay() {
 
     container.innerHTML =
       '<div class="otd-card">' +
-        '<div class="otd-eyebrow">📅 On This Day — ' + event.year + '</div>' +
+        '<div class="otd-eyebrow">📅 On This Day, ' + todayReadable + ' — ' + event.year + '</div>' +
         '<div class="otd-title">' + event.title + '</div>' +
         '<p class="otd-fact">' + event.fact + '</p>' +
       '</div>';
@@ -56,11 +60,14 @@ function renderOnThisDay() {
 
   // No historical event logged for today yet — fall back to a "Did You Know" fact
   // from the already-verified daily quiz question bank, rotating daily like Wordle does.
+  // Still names today's date so it's clear this card is part of On This Day, not a
+  // separate unrelated feature.
   if (typeof questionBank !== 'undefined' && questionBank.length > 0) {
     var dayNumber2 = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
     var q = questionBank[dayNumber2 % questionBank.length];
 
     container.innerHTML =
+      '<div class="otd-subtext">No cricket event logged for ' + todayReadable + ' yet — here\'s a fact instead:</div>' +
       '<div class="otd-card">' +
         '<div class="otd-eyebrow">💡 Did You Know</div>' +
         '<p class="otd-fact">' + q.fact + '</p>' +
