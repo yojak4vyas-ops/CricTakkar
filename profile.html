@@ -213,7 +213,11 @@
 
     <!-- HEADER CARD — shows avatar, name, team, level -->
     <div class="profile-header-card">
-      <div class="profile-avatar" id="profileAvatar">🏏</div>
+      <div class="avatar-wrap" id="avatarWrap">
+        <div class="profile-avatar" id="profileAvatar">🏏</div>
+        <div class="avatar-headgear" id="avatarHeadgear"></div>
+        <div class="avatar-bat" id="avatarBat"></div>
+      </div>
       <div class="profile-header-info">
         <h1 class="profile-username" id="profileName">Loading...</h1>
         <div class="profile-team" id="profileTeam">Loading...</div>
@@ -285,6 +289,13 @@
       </div>
     </div>
 
+    <!-- ===== AVATAR CUSTOMISATION ===== -->
+    <div class="badges-card">
+      <h3 class="badges-title">🎨 Customise Your Avatar</h3>
+      <p class="badges-subtitle">Free cosmetic unlocks — earned by playing, never bought</p>
+      <div id="avatarCustomiseContent"></div>
+    </div>
+
     <!-- LEVEL ROADMAP -->
     <div class="levels-card">
       <h3 class="levels-title">🏆 Level Roadmap</h3>
@@ -341,6 +352,98 @@
       { key: 'onFire',        icon: '🔥', name: 'On Fire',         desc: '7 day streak',                    computed: true },
       { key: 'testLegend',    icon: '👑', name: 'Test Legend',     desc: 'Reach the top level',              computed: true }
     ];
+
+    // ===== AVATAR COSMETICS (Day 14) =====
+    // Purely cosmetic, purely free — every unlock condition reads data already earned
+    // by playing (level, badges, streak, quizzes played). No currency, nothing to buy.
+    var COSMETIC_CATALOG = {
+      headgear: [
+        { id: 'none', icon: '', name: 'None', unlock: function() { return true; } },
+        { id: 'cap', icon: '🧢', name: 'Cap', hint: 'Play your first quiz', unlock: function(d) { return (d.quizzesPlayed || 0) >= 1; } },
+        { id: 'helmet', icon: '🪖', name: 'Pro Helmet', hint: 'Reach Club Cricketer', unlock: function(d) { return (d.xp || 0) >= 200; } },
+        { id: 'crown', icon: '👑', name: "Champion's Crown", hint: 'Reach Test Legend', unlock: function(d) { return d.level === 'Test Legend'; } }
+      ],
+      bat: [
+        { id: 'none', icon: '', name: 'None', unlock: function() { return true; } },
+        { id: 'classic', icon: '🏏', name: 'Classic Bat', hint: 'Always unlocked', unlock: function() { return true; } },
+        { id: 'golden', icon: '🥇', name: 'Golden Bat', hint: 'Earn the Perfectionist badge', unlock: function(d) { return (d.badges || {}).perfectionist === true; } },
+        { id: 'speedster', icon: '⚡', name: 'Speedster Bat', hint: 'Earn the Speed Demon badge', unlock: function(d) { return (d.badges || {}).speedDemon === true; } }
+      ],
+      frame: [
+        { id: 'none', icon: '⚪', name: 'None', unlock: function() { return true; } },
+        { id: 'bronze', icon: '🥉', name: 'Bronze Ring', hint: 'Play 10 quizzes', unlock: function(d) { return (d.quizzesPlayed || 0) >= 10; } },
+        { id: 'silver', icon: '🥈', name: 'Silver Ring', hint: 'Earn the On Fire badge', unlock: function(d) { return (d.bestStreak || 0) >= 7; } },
+        { id: 'gold', icon: '🥇', name: 'Gold Ring', hint: 'Reach Test Legend', unlock: function(d) { return d.level === 'Test Legend'; } }
+      ]
+    };
+    var SLOT_LABELS = { headgear: 'Headgear', bat: 'Bat', frame: 'Avatar Frame' };
+
+    // ===== RENDER AVATAR PREVIEW (header card) =====
+    function renderAvatarPreview(data) {
+      var equipped = data.equippedAvatar || {};
+
+      var headgearItem = COSMETIC_CATALOG.headgear.find(function(i) { return i.id === equipped.headgear; });
+      var batItem = COSMETIC_CATALOG.bat.find(function(i) { return i.id === equipped.bat; });
+
+      document.getElementById('avatarHeadgear').textContent = (headgearItem && headgearItem.id !== 'none') ? headgearItem.icon : '';
+      document.getElementById('avatarBat').textContent = (batItem && batItem.id !== 'none') ? batItem.icon : '';
+
+      var avatarEl = document.getElementById('profileAvatar');
+      avatarEl.classList.remove('frame-bronze', 'frame-silver', 'frame-gold');
+      if (equipped.frame && equipped.frame !== 'none') {
+        avatarEl.classList.add('frame-' + equipped.frame);
+      }
+    }
+
+    // ===== RENDER AVATAR CUSTOMISATION PICKER =====
+    function renderAvatarCustomiser(data) {
+      var container = document.getElementById('avatarCustomiseContent');
+      var equipped = data.equippedAvatar || {};
+      var html = '';
+
+      ['headgear', 'bat', 'frame'].forEach(function(slot) {
+        html += '<div class="cosmetic-group">' +
+          '<div class="cosmetic-group-label">' + SLOT_LABELS[slot] + '</div>' +
+          '<div class="cosmetic-row">';
+
+        COSMETIC_CATALOG[slot].forEach(function(item) {
+          var unlocked = item.unlock(data);
+          var isEquipped = (equipped[slot] || 'none') === item.id;
+          var cls = 'cosmetic-item' +
+            (unlocked ? ' cosmetic-unlocked' : ' cosmetic-locked') +
+            (isEquipped ? ' cosmetic-equipped' : '');
+
+          html += '<div class="' + cls + '"' +
+            (unlocked ? ' onclick="equipCosmetic(\'' + slot + '\',\'' + item.id + '\')"' : '') + '>' +
+            '<div class="cosmetic-icon">' + (unlocked ? (item.icon || '⚪') : '🔒') + '</div>' +
+            '<div class="cosmetic-name">' + item.name + '</div>' +
+            (!unlocked && item.hint ? '<div class="cosmetic-hint">' + item.hint + '</div>' : '') +
+          '</div>';
+        });
+
+        html += '</div></div>';
+      });
+
+      container.innerHTML = html;
+    }
+
+    // ===== EQUIP A COSMETIC =====
+    function equipCosmetic(slot, itemId) {
+      if (!currentUserId) return;
+
+      db.collection('users').doc(currentUserId).get().then(function(doc) {
+        if (!doc.exists) return;
+        var data = doc.data();
+        var equipped = data.equippedAvatar || {};
+        equipped[slot] = itemId;
+
+        db.collection('users').doc(currentUserId).update({ equippedAvatar: equipped }).then(function() {
+          data.equippedAvatar = equipped;
+          renderAvatarPreview(data);
+          renderAvatarCustomiser(data);
+        });
+      });
+    }
 
     // ===== LOGOUT =====
     document.getElementById('logoutBtn').addEventListener('click', function() {
@@ -483,6 +586,10 @@
 
       // Badges
       renderBadges(data);
+
+      // Avatar customisation
+      renderAvatarPreview(data);
+      renderAvatarCustomiser(data);
     }
 
     // ===== RENDER BADGES GRID =====

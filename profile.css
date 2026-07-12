@@ -30,7 +30,75 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 0 0 3px transparent;
+  transition: box-shadow 0.2s;
 }
+
+/* ===== AVATAR CUSTOMISATION (Day 14) ===== */
+.avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+}
+
+.avatar-headgear, .avatar-bat {
+  position: absolute;
+  font-size: 1.15rem;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1a1a2e;
+  border: 2px solid #0a0e1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.avatar-headgear:empty, .avatar-bat:empty { display: none; }
+
+.avatar-headgear { top: -6px; right: -6px; }
+.avatar-bat { bottom: -6px; right: -6px; }
+
+.profile-avatar.frame-bronze { box-shadow: 0 0 0 3px #cd7f32; }
+.profile-avatar.frame-silver { box-shadow: 0 0 0 3px #c0c0c0; }
+.profile-avatar.frame-gold   { box-shadow: 0 0 0 3px #f4a900; }
+
+.cosmetic-group + .cosmetic-group { margin-top: 18px; }
+.cosmetic-group-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.cosmetic-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+}
+.cosmetic-item {
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  cursor: pointer;
+  transition: transform 0.15s;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.03);
+}
+.cosmetic-item:hover { transform: translateY(-2px); }
+.cosmetic-item.cosmetic-unlocked { background: rgba(244,169,0,0.1); border-color: rgba(244,169,0,0.3); }
+.cosmetic-item.cosmetic-equipped { background: rgba(244,169,0,0.22); border-color: #f4a900; }
+.cosmetic-item.cosmetic-locked { opacity: 0.5; cursor: default; }
+.cosmetic-item.cosmetic-locked:hover { transform: none; }
+.cosmetic-icon { font-size: 1.5rem; }
+.cosmetic-name { font-size: 0.66rem; font-weight: 700; color: #fff; line-height: 1.25; }
+.cosmetic-locked .cosmetic-name { color: rgba(255,255,255,0.4); }
+.cosmetic-hint { font-size: 0.58rem; color: rgba(255,255,255,0.35); line-height: 1.25; }
 
 .profile-header-info {
   flex: 1;
