@@ -1933,11 +1933,18 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Occasional off-break/slow-medium — ESPNcricinfo confirmed
     debutYear: 1992,
-    format: "All-format",
-    // Tests, ODIs, T20Is (few) — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    format: "ODI",
+    // CORRECTED Day 15: was wrongly "All-format" — retired from international
+    // cricket after the 2003 World Cup, before T20Is existed (first T20I was
+    // Feb 2005) — zero T20Is. Same pattern as Kapil Dev/Warne/Wasim Akram/Ganguly.
+    // Tests, ODIs — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL as a player (career ended 2003, pre-IPL) — has since
+    // coached Multan Sultans, Lucknow Super Giants and RCB (2025 & 2026 titles)
+    // in the IPL, but that's coaching, not playing — ESPNcricinfo confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1946,11 +1953,14 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 1993,
     format: "ODI",
-    // Tests, ODIs — retired 2005, very few T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired October 2005, no evidence of any T20I appearance
+    // for Zimbabwe — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL as a player — was bowling coach for Gujarat Lions and
+    // Kolkata Knight Riders, but that's coaching, not playing — confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1959,11 +1969,14 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Signed by Sunrisers Hyderabad for IPL 2014 but never fielded in a
+    // match all season (per Wikipedia's 2014 SRH season squad/stats tables) —
+    // same "signed but never played" rule as Axar Patel/MI and Stuart Broad/KXIP
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1971,12 +1984,20 @@ const wordlePlayers = [
     name: "Grant Flower",
     country: "Zimbabwe",
     role: "Batsman",
-    battingStyle: "Left-hand",
+    battingStyle: "Right-hand",
+    // CORRECTED Day 15: was wrongly "Left-hand" — Grant Flower bats
+    // right-handed but bowls left-arm orthodox spin, which had been
+    // conflated into the batting field. Confirmed on Wikipedia infobox
+    // ("Batting: Right-handed") and cross-checked via search — same
+    // bowling-arm/batting-hand mix-up pattern as Zaheer Khan/Anderson/Broad
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 1992,
     format: "ODI",
-    // Tests, ODIs — retired early 2000s — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired early 2000s, T20I format did not exist — confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    // — dedicated search confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1985,11 +2006,15 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
     debutYear: 2001,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani) —
+    // other franchise team names surfaced in search (India Capitals, Rajasthan
+    // Kings etc.) are Legends League Cricket, not the real IPL — confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -1998,11 +2023,16 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Bowls a mix of offbreak and legbreak (mystery spin) — offbreak listed
+    // as primary style on ESPNcricinfo
     debutYear: 2013,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: ["Punjab Kings"],
+    // CORRECTED Day 15: was wrongly "Didn't play IPL" — played for Punjab
+    // Kings in IPL 2023 and 2024 (7 matches, incl. first-ever IPL half-century
+    // by a Zimbabwean); went unsold in the 2025 auction — dedicated search confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -2011,11 +2041,15 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Rarely used at international level — ESPNcricinfo confirmed
     debutYear: 2001,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: ["Kolkata Knight Riders"],
+    // CORRECTED Day 15: was wrongly "Didn't play IPL" — first-ever Zimbabwean
+    // to play IPL, signed by KKR in the inaugural 2008 season, played 3 matches
+    // — dedicated search confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -2024,11 +2058,14 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 2008,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani) —
+    // dedicated search confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -2037,12 +2074,14 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2022,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
     // NOTE: Scored 292 runs at average 146 at T20 WC 2026 — ICC.com confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
+    // Has not played IPL — signed by Peshawar Zalmi for PSL 2026, not IPL —
+    // dedicated search confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -2051,11 +2090,13 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Occasional bowler, primarily a batsman — ESPNcricinfo confirmed
     debutYear: 1983,
     format: "ODI",
-    // Tests, ODIs — retired mid 1990s, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired 1997, T20I format did not exist
+    iplTeams: [],
+    // Retired 1997, well before IPL began in 2008 — confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   }
