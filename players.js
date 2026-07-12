@@ -451,11 +451,12 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1995,
     format: "All-format",
-    // 168 Tests, 375 ODIs, 17 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 1,
+    // 168 Tests, 375 ODIs, 17 T20Is — ESPNcricinfo confirmed. Bowled occasionally in Tests
+    // (took a Test wicket in 2005) — recorded per the "even one ball bowled" standard.
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 4
     // 1999 WC, 2003 WC, 2006 CT, 2009 CT — Wikipedia + Cricscope confirmed
   },
@@ -464,11 +465,11 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
     debutYear: 1992,
     format: "ODI",
     // 145 Tests, 194 ODIs — retired Jan 2007, ZERO T20Is — ESPNcricinfo confirmed
-    iplTeam: "Rajasthan Royals",
-    iplTeamsCount: 1,
+    iplTeams: ["Rajasthan Royals"],
     iccTrophies: 2
     // 1999 WC, 2003 WC — Wikipedia confirmed
   },
@@ -477,11 +478,11 @@ const wordlePlayers = [
     country: "Australia",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1996,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Deccan Chargers",
-    iplTeamsCount: 1,
+    iplTeams: ["Deccan Chargers"],
     iccTrophies: 4
     // 1999 WC, 2003 WC, 2006 CT, 2007 WC — Wikipedia + Cricscope confirmed
   },
@@ -490,11 +491,13 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
     debutYear: 1993,
     format: "ODI",
     // Tests, ODIs — retired 2007, very few/no T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 14 FIX: was wrongly "Didn't play IPL" — McGrath played 14 matches for Delhi
+    // Daredevils in the inaugural 2008 IPL season — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils"],
     iccTrophies: 4
     // 1999 WC, 2003 WC, 2006 CT, 2007 WC — Wikipedia + Cricscope confirmed
   },
@@ -503,11 +506,11 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1985,
     format: "ODI",
     // Tests, ODIs — retired 2004, T20I cricket barely existed — ESPNcricinfo
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 1
     // 1999 WC (as captain) — Wikipedia confirmed
   },
@@ -516,11 +519,11 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 1,
+    iplTeams: ["Chennai Super Kings"],
     iccTrophies: 3
     // 2003 WC, 2006 CT, 2007 WC — Wikipedia confirmed
   },
@@ -529,12 +532,13 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Rajasthan Royals",
-    iplTeamsCount: 3,
-    // RR, Pune SG, Delhi — ESPNcricinfo
+    // Day 14 FIX: was undercounted at 3 teams — Smith has actually played for 6 IPL
+    // franchises — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Kochi Tuskers Kerala", "Pune Warriors", "Rajasthan Royals", "Rising Pune Supergiant", "Delhi Capitals"],
     iccTrophies: 3
     // 2021 T20 WC, 2023 ODI WC, 2023 WTC — Wikipedia confirmed
   },
@@ -543,12 +547,12 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm legbreak",
     debutYear: 2009,
     format: "All-format",
-    // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Sunrisers Hyderabad",
-    iplTeamsCount: 3,
-    // Delhi + SRH + Delhi — ESPNcricinfo
+    // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Part-time bowler who mixes medium pace
+    // with leg spin — recorded per the "even one ball bowled" standard.
+    iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad", "Delhi Capitals"],
     iccTrophies: 3
     // 2021 T20 WC, 2023 ODI WC, 2023 WTC — Wikipedia confirmed
   },
@@ -557,12 +561,12 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 3,
-    // KKR, SRH, KKR — ESPNcricinfo
+    // Day 14 FIX: was missing Delhi Capitals (brief stint between his two KKR spells) — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Delhi Capitals", "Sunrisers Hyderabad"],
     iccTrophies: 2
     // 2023 ODI WC, 2023 WTC — Wikipedia confirmed
   },
@@ -571,12 +575,12 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — retired from T20Is Sept 2025 — ESPNcricinfo
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 2,
-    // RCB + KKR — ESPNcricinfo
+    // Day 14 FIX: was missing Delhi Capitals (2025-26 move) — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Kolkata Knight Riders", "Delhi Capitals"],
     iccTrophies: 3
     // 2021 T20 WC, 2023 ODI WC, 2023 WTC — Wikipedia confirmed
   },
@@ -588,11 +592,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm legbreak googly",
     debutYear: 1990,
     format: "ODI",
     // 131 Tests, 299 ODIs — retired April 2007, ZERO T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 1
     // 2004 CT (as captain) — Wikipedia confirmed
   },
@@ -601,12 +605,14 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1999,
     format: "All-format",
-    // 103 Tests, 301 ODIs, 79 T20Is — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 5,
-    // KKR, RCB, PBKS, MI, Punjab — ESPNcricinfo
+    // 103 Tests, 301 ODIs, 79 T20Is — ESPNcricinfo confirmed. Over 200 international
+    // wickets with off-spin — well past "even one ball bowled".
+    // Day 14 FIX: was wrongly listing 5 teams including Mumbai Indians (never played for
+    // MI) — Gayle's actual IPL teams are KKR (2009-10), RCB (2011-17), Punjab (2018-21) — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Royal Challengers Bangalore", "Punjab Kings"],
     iccTrophies: 3
     // 2004 CT, 2012 T20 WC, 2016 T20 WC — Wikipedia + Cricscope confirmed
   },
@@ -615,11 +621,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 1974,
     format: "ODI",
     // Tests, ODIs — retired 1991, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 2
     // 1975 ODI WC, 1979 ODI WC — Wikipedia confirmed
   },
@@ -628,11 +634,12 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1966,
     format: "ODI",
-    // Tests, ODIs — retired 1985, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs — retired 1985, T20I format did not exist. 114 first-class wickets as a
+    // useful medium-pacer — ESPNcricinfo confirmed.
+    iplTeams: [],
     iccTrophies: 2
     // 1975 ODI WC, 1979 ODI WC — Wikipedia confirmed
   },
@@ -640,12 +647,14 @@ const wordlePlayers = [
     name: "Curtly Ambrose",
     country: "West Indies",
     role: "Bowler",
-    battingStyle: "Right-hand",
+    // Day 14 FIX: was wrongly "Right-hand" — Ambrose batted left-handed (bowled right-arm
+    // fast). Confirmed via ESPNcricinfo and Wikipedia.
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1988,
     format: "ODI",
     // Tests, ODIs — retired 2000, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -654,11 +663,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1984,
     format: "ODI",
     // Tests, ODIs — retired 2001, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -667,11 +676,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1978,
     format: "ODI",
     // Tests, ODIs — retired 1992, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 2
     // 1979 ODI WC, West Indies team member — Wikipedia confirmed
     // NOTE: Marshall debuted 1978, played in 1979 WC squad — Wikipedia confirmed
@@ -681,11 +690,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 2007,
     format: "All-format",
     // Tests (1), ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 1,
+    iplTeams: ["Mumbai Indians"],
     iccTrophies: 2
     // 2012 T20 WC, 2016 T20 WC — Wikipedia confirmed
   },
@@ -694,11 +703,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "All-rounder",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 1,
+    iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 1
     // 2012 T20 WC — Wikipedia confirmed
   },
@@ -707,11 +716,11 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm legbreak",
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -723,12 +732,11 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Sunrisers Hyderabad",
-    iplTeamsCount: 2,
-    // SRH + GT — ESPNcricinfo
+    iplTeams: ["Sunrisers Hyderabad", "Gujarat Titans"],
     iccTrophies: 1
     // 2021 WTC — Wikipedia confirmed
   },
@@ -737,12 +745,13 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 2002,
     format: "All-format",
-    // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Kolkata Knight Riders",
-    iplTeamsCount: 3,
-    // KKR, CSK, RCB — ESPNcricinfo
+    // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Bowled and took his only international
+    // wicket in a Test in Nov 2014 — recorded per the "even one ball bowled" standard.
+    // Day 14 FIX: was missing Kochi Tuskers Kerala (2011) and Gujarat Lions — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Kochi Tuskers Kerala", "Chennai Super Kings", "Gujarat Lions", "Royal Challengers Bangalore"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed (WTC won 2021 AFTER his retirement in 2016)
   },
@@ -751,11 +760,11 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1982,
     format: "ODI",
     // Tests, ODIs — retired 1995, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -763,12 +772,14 @@ const wordlePlayers = [
     name: "Richard Hadlee",
     country: "New Zealand",
     role: "All-rounder",
-    battingStyle: "Right-hand",
+    // Day 14 FIX: was wrongly "Right-hand" — Hadlee batted left-handed (bowled right-arm
+    // fast). Confirmed via ESPNcricinfo and Wikipedia.
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast",
     debutYear: 1973,
     format: "ODI",
     // Tests, ODIs — retired 1990, T20I format did not exist
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -777,11 +788,11 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
     debutYear: 1994,
     format: "All-format",
-    // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Chennai Super Kings",
-    iplTeamsCount: 1,
+    // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Occasional right-arm slow-medium bowler.
+    iplTeams: ["Chennai Super Kings"],
     iccTrophies: 1
     // 2000 Champions Trophy — Wikipedia confirmed
   },
@@ -790,11 +801,12 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "All-rounder",
     battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Royal Challengers Bangalore",
-    iplTeamsCount: 1,
+    // Day 14 FIX: was missing Delhi Daredevils (his first 3 IPL seasons, 2008-2010) — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils", "Royal Challengers Bangalore"],
     iccTrophies: 1
     // 2000 Champions Trophy — Wikipedia confirmed
   },
@@ -803,11 +815,11 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    iplTeams: [],
     iccTrophies: 1
     // 2021 WTC — Wikipedia confirmed
   },
@@ -816,12 +828,12 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm fast",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Mumbai Indians",
-    iplTeamsCount: 3,
-    // Delhi, Mumbai, Rajasthan — ESPNcricinfo
+    // Day 14 FIX: was missing Sunrisers Hyderabad and Kolkata Knight Riders — full list per ESPNcricinfo:
+    iplTeams: ["Sunrisers Hyderabad", "Kolkata Knight Riders", "Delhi Capitals", "Mumbai Indians", "Rajasthan Royals"],
     iccTrophies: 1
     // 2021 WTC — Wikipedia confirmed
   },
@@ -830,11 +842,13 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Bowler",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
     debutYear: 2008,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Day 14 FIX: was wrongly "Didn't play IPL" — Southee has played for 5 IPL franchises
+    // since his 2011 debut — ESPNcricinfo confirmed
+    iplTeams: ["Chennai Super Kings", "Rajasthan Royals", "Mumbai Indians", "Royal Challengers Bangalore", "Kolkata Knight Riders"],
     iccTrophies: 1
     // 2021 WTC — Wikipedia confirmed
   },
@@ -843,11 +857,14 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
     debutYear: 2009,
     format: "All-format",
-    // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeam: "Didn't play IPL",
-    iplTeamsCount: 0,
+    // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Bowled 4 innings across his career
+    // (0 wickets) — recorded per the "even one ball bowled" standard.
+    // Day 14 FIX: was wrongly "Didn't play IPL" — Guptill played 4 matches for Sunrisers
+    // Hyderabad in IPL 2019 — ESPNcricinfo confirmed
+    iplTeams: ["Sunrisers Hyderabad"],
     iccTrophies: 1
     // 2021 WTC (squad) — Wikipedia confirmed
   },
