@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cricket Poetry — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="poetry.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer">🏏 CricTakkar</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Daily Quiz</a>
+      <a href="categories.html" class="nav-link">Categories</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="stats.html" class="nav-link">📊 Stats</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header">
+    <h1 class="page-title">✍️ Cricket Poetry</h1>
+    <p class="page-subtitle">Verses for the game that runs through every Indian heart</p>
+  </section>
+
+  <!-- POEMS -->
+  <section class="poems-section">
+    <div class="poems-grid" id="poemsGrid"></div>
+  </section>
+
+  <script src="poems.js"></script>
+  <script>
+    var grid = document.getElementById('poemsGrid');
+
+    cricketPoems.forEach(function(poem) {
+      var card = document.createElement('div');
+      card.className = 'poem-card';
+
+      var stanzasHtml = poem.verses.map(function(stanza) {
+        return '<p class="poem-stanza">' + stanza + '</p>';
+      }).join('');
+
+      card.innerHTML =
+        '<div class="poem-header">' +
+          '<div class="poem-icon">' + poem.icon + '</div>' +
+          '<div class="poem-heading">' +
+            '<div class="poem-tag">' + poem.tag + '</div>' +
+            '<div class="poem-title">' + poem.title + '</div>' +
+            '<div class="poem-subtitle">' + poem.subtitle + '</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="poem-body">' + stanzasHtml + '</div>';
+
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
