@@ -71,11 +71,11 @@ const cricketPoems = [
     icon: '🏏',
     tag: 'Anthem',
     title: 'Aao CricTakkar Karte Hain',
-    subtitle: 'A love letter to the game, in Hinglish',
+    subtitle: 'A love letter to the game, in Hindi',
     verses: [
-      "Bat mein josh, dil mein junoon,\nhar gali mein khelta hai koi na koi noon,\nteen sau chausath din, ek hi khwaab—\nchauka, chhakka, ya phir hisaab.",
-      "Aao CricTakkar karte hain,\nsawaal poochein, records batate hain,\nhaar bhi apni, jeet bhi apni,\ncricket ke rang mein rangte hain.",
-      "No trophy needed, no stake, no bet,\njust love for the game we'll never forget,\nquiz by quiz, streak by streak,\nhar Hindustani dil bolta hai — cricket hi toh hai zindagi ki peak."
+      "बल्ले में जोश, दिल में जुनून,\nहर गली में खेलता कोई न कोई नून,\nतीन सौ चौंसठ दिन, एक ही ख़्वाब—\nचौका, छक्का, या फिर हिसाब।",
+      "आओ CricTakkar करते हैं,\nसवाल पूछें, रिकॉर्ड्स बताते हैं,\nहार भी अपनी, जीत भी अपनी,\nक्रिकेट के रंग में रंगते हैं।",
+      "न इनाम चाहिए, न दांव, न शर्त,\nबस इस खेल से इश्क़, बस यही है चाहत,\nक्विज़ दर क्विज़, स्ट्रीक दर स्ट्रीक,\nहर हिन्दुस्तानी दिल बोलता है — क्रिकेट ही तो है ज़िंदगी की पीक।"
     ]
   }
 ];
