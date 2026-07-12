@@ -456,7 +456,10 @@ const wordlePlayers = [
     format: "All-format",
     // 168 Tests, 375 ODIs, 17 T20Is — ESPNcricinfo confirmed. Bowled occasionally in Tests
     // (took a Test wicket in 2005) — recorded per the "even one ball bowled" standard.
-    iplTeams: ["Mumbai Indians"],
+    // Day 14 RE-CHECK (user flagged Guptill as incomplete, prompted a second pass on the
+    // rest of Batch 2): was missing Kolkata Knight Riders (2008, his first IPL team,
+    // present for the very first ball ever bowled in the IPL) — Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders", "Mumbai Indians"],
     iccTrophies: 4
     // 1999 WC, 2003 WC, 2006 CT, 2009 CT — Wikipedia + Cricscope confirmed
   },
@@ -482,7 +485,8 @@ const wordlePlayers = [
     debutYear: 1996,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeams: ["Deccan Chargers"],
+    // Day 14 RE-CHECK: was missing Kings XI Punjab (2011-2013, where he was captain) — Wikipedia confirmed
+    iplTeams: ["Deccan Chargers", "Kings XI Punjab"],
     iccTrophies: 4
     // 1999 WC, 2003 WC, 2006 CT, 2007 WC — Wikipedia + Cricscope confirmed
   },
@@ -707,7 +711,9 @@ const wordlePlayers = [
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeams: ["Kolkata Knight Riders"],
+    // Day 14 RE-CHECK: was missing Delhi Daredevils (2012, his IPL debut team before
+    // moving to KKR in 2014) — Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils", "Kolkata Knight Riders"],
     iccTrophies: 1
     // 2012 T20 WC — Wikipedia confirmed
   },
@@ -720,7 +726,9 @@ const wordlePlayers = [
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeams: [],
+    // Day 14 RE-CHECK: was wrongly "Didn't play IPL" — Chanderpaul played 3 matches for
+    // Royal Challengers Bangalore in the 2008 season — Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
@@ -819,7 +827,10 @@ const wordlePlayers = [
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
-    iplTeams: [],
+    // Day 14 RE-CHECK: was wrongly "Didn't play IPL" — Taylor played for 4 franchises:
+    // RCB (2008-2010), Pune Warriors India, Delhi (Capitals/Daredevils), and Rajasthan
+    // Royals (from 2011) — Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Pune Warriors", "Delhi Capitals", "Rajasthan Royals"],
     iccTrophies: 1
     // 2021 WTC — Wikipedia confirmed
   },
@@ -862,9 +873,11 @@ const wordlePlayers = [
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Bowled 4 innings across his career
     // (0 wickets) — recorded per the "even one ball bowled" standard.
-    // Day 14 FIX: was wrongly "Didn't play IPL" — Guptill played 4 matches for Sunrisers
-    // Hyderabad in IPL 2019 — ESPNcricinfo confirmed
-    iplTeams: ["Sunrisers Hyderabad"],
+    // Day 14 FIX (re-checked after user flagged the first pass as incomplete): was wrongly
+    // "Didn't play IPL", then wrongly narrowed to just Sunrisers Hyderabad. Guptill actually
+    // played for three teams: Mumbai Indians (2016, injury replacement for Lendl Simmons),
+    // Kings XI Punjab (2017), and Sunrisers Hyderabad (2019) — Wikipedia confirmed
+    iplTeams: ["Mumbai Indians", "Kings XI Punjab", "Sunrisers Hyderabad"],
     iccTrophies: 1
     // 2021 WTC (squad) — Wikipedia confirmed
   },
