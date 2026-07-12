@@ -30,7 +30,10 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    bowlingStyle: "NA",
+    // Day 14 FIX: was wrongly "NA" — Dhoni took his only international wicket bowling
+    // Travis Dowlin (West Indies) in the 2009 Champions Trophy. ESPNcricinfo lists his
+    // bowling style as Right-arm medium. Caught by re-checking after the user flagged this.
+    bowlingStyle: "Right-arm medium",
     debutYear: 2004,
     format: "All-format",
     // 90 Tests, 350 ODIs, 98 T20Is — ESPNcricinfo confirmed
@@ -340,9 +343,11 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    // Bowling style shows mixed signals across sources (ESPNcricinfo lists "right-arm medium"
-    // but BCCI profile and match records show he has never bowled in international cricket) —
-    // marking NA to match how the game treats specialist batters/keepers elsewhere in this file.
+    // UNCONFIRMED (Day 14): ESPNcricinfo's profile page lists "right-arm medium" as a
+    // classification, but repeated searches found no confirmed bowling figures or record of
+    // him ever bowling a delivery (BCCI profile shows no bowling stat at all). Unlike Rishabh
+    // Pant and Sanju Samson, whose 0-ball bowling records are explicitly confirmed, this one
+    // could not be verified either way — marking NA as the safer call, flagged for re-check.
     bowlingStyle: "NA",
     debutYear: 2014,
     format: "All-format",
