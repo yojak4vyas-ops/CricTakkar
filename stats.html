@@ -410,6 +410,13 @@
       <div id="categoryContent"></div>
     </div>
 
+    <!-- ERA STRENGTH -->
+    <div class="section-card">
+      <div class="section-title">Cricket Era Strength</div>
+      <div class="section-subtitle">Which decades of cricket history you know best</div>
+      <div id="eraContent"></div>
+    </div>
+
     <!-- ACCURACY OVER TIME -->
     <div class="section-card">
       <div class="section-title">Accuracy Over Time</div>
@@ -445,14 +452,6 @@
         <div class="badge-summary-label">Badges Unlocked</div>
       </div>
       <div class="badges-grid" id="badgesGrid"></div>
-    </div>
-
-    <!-- COMING SOON -->
-    <div class="coming-soon-card">
-      <div class="coming-soon-title">🚧 Coming soon to this dashboard</div>
-      <ul class="coming-soon-list">
-        <li>Your strongest and weakest cricket era</li>
-      </ul>
     </div>
 
     <div class="quick-links">
@@ -557,6 +556,11 @@
       renderCategoryStrength(quizHistory);
       renderAccuracyChart(quizHistory);
       renderActivityCalendar(quizHistory);
+
+      // Weakest era — built from the eraStats object Daily Quiz, Category Quiz and
+      // Speed Round each merge into (Ranking Challenge and Wordle don't draw from the
+      // era-tagged question banks, so they don't contribute here).
+      renderEraStrength(data.eraStats || {});
     }
 
     // Display names for each category value stored in quizHistory entries.
@@ -613,6 +617,52 @@
           '</div>' +
         '</div>' +
         '<div class="category-note">Most played: ' + name(mostPlayed) + ' (' + byCategory[mostPlayed].count + ' quiz' + (byCategory[mostPlayed].count === 1 ? '' : 'zes') + ')</div>';
+    }
+
+    // ===== ERA STRENGTH ("weakest era") =====
+    // Reuses the exact strongest/weakest card layout from Category Strength above.
+    // Input is data.eraStats — {era: {correct, total}} — already aggregated at
+    // save-time by quiz.js, category-quiz-v2.js and speedround.js, so no per-question
+    // history needs to be replayed here.
+    function renderEraStrength(eraStats) {
+      var container = document.getElementById('eraContent');
+      var eras = Object.keys(eraStats).filter(function(e) { return eraStats[e].total > 0; });
+
+      if (eras.length === 0) {
+        container.innerHTML = '<div class="category-note">Play a few quizzes to see which cricket decades you know best.</div>';
+        return;
+      }
+
+      var strongest = null, weakest = null, mostAnswered = null;
+      eras.forEach(function(era) {
+        var e = eraStats[era];
+        var acc = e.total > 0 ? (e.correct / e.total) : 0;
+        if (!strongest || acc > strongest.acc) strongest = { era: era, acc: acc };
+        if (!weakest || acc < weakest.acc) weakest = { era: era, acc: acc };
+        if (!mostAnswered || e.total > eraStats[mostAnswered].total) mostAnswered = era;
+      });
+
+      if (eras.length === 1) {
+        container.innerHTML =
+          '<div class="category-note">You\'ve only answered questions from the ' + eras[0] +
+          ' so far (' + Math.round(strongest.acc * 100) + '% accuracy). Play more quizzes to see a strongest-vs-weakest comparison.</div>';
+        return;
+      }
+
+      container.innerHTML =
+        '<div class="category-cards">' +
+          '<div class="category-card strongest">' +
+            '<div class="category-card-label">💪 Strongest Era</div>' +
+            '<div class="category-card-name">' + strongest.era + '</div>' +
+            '<div class="category-card-acc">' + Math.round(strongest.acc * 100) + '% accuracy</div>' +
+          '</div>' +
+          '<div class="category-card weakest">' +
+            '<div class="category-card-label">📉 Weakest Era</div>' +
+            '<div class="category-card-name">' + weakest.era + '</div>' +
+            '<div class="category-card-acc">' + Math.round(weakest.acc * 100) + '% accuracy</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="category-note">Most answered: ' + mostAnswered + ' (' + eraStats[mostAnswered].total + ' question' + (eraStats[mostAnswered].total === 1 ? '' : 's') + ')</div>';
     }
 
     // ===== ACCURACY OVER TIME =====

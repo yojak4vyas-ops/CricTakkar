@@ -232,6 +232,10 @@ function saveScoreToFirebase(finalScore, total) {
           if (quizHistory.length > 200) quizHistory = quizHistory.slice(quizHistory.length - 200);
           // ===== END QUIZ HISTORY =====
 
+          // ===== ERA STATS — powers the Stats Dashboard's "weakest era" card =====
+          var eraStats = mergeEraStats(data.eraStats || {}, currentQuestions, results);
+          // ===== END ERA STATS =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
@@ -242,7 +246,8 @@ function saveScoreToFirebase(finalScore, total) {
             bestStreak: bestStreak,
             lastPlayedDate: todayStr,
             badges: badges,
-            quizHistory: quizHistory
+            quizHistory: quizHistory,
+            eraStats: eraStats
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP. Streak: ' + currentStreak);
             showStreakMessage(currentStreak);
@@ -286,6 +291,25 @@ function showStreakMessage(streak) {
     streakDiv.textContent = message;
     scoreCard.appendChild(streakDiv);
   }
+}
+
+// ===== MERGE ERA STATS =====
+// Adds this session's per-question correct/total counts (by era) into the running
+// totals already saved on the user doc. "General" (timeless rules/definitions) is
+// skipped since it isn't a real era and shouldn't count toward strongest/weakest.
+function mergeEraStats(existing, questions, resultsArr) {
+  var merged = {};
+  for (var era in existing) merged[era] = { correct: existing[era].correct, total: existing[era].total };
+
+  questions.forEach(function(q, i) {
+    var era = q.era;
+    if (!era || era === 'General') return;
+    if (!merged[era]) merged[era] = { correct: 0, total: 0 };
+    merged[era].total++;
+    if (resultsArr[i]) merged[era].correct++;
+  });
+
+  return merged;
 }
 
 // ===== CALCULATE LEVEL =====
