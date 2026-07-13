@@ -28,7 +28,9 @@ window.onload = function() {
 
 // ===== START THE QUIZ =====
 function startCategoryQuiz() {
-  var allQuestions = categoryQuestions[crictakkarCategory];
+  var allQuestions = crictakkarCategory === 'poetry'
+    ? poetryQuizQuestions
+    : questionBank.filter(function(q) { return q.category === crictakkarCategory; });
 
   crictakkarQuestions = allQuestions.slice()
     .sort(function() { return Math.random() - 0.5; })

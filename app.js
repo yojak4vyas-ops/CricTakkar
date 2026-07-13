@@ -19,8 +19,8 @@ document.getElementById('popupOverlay').addEventListener('click', function(e) {
 });
 
 // ===== LIVE STATS STRIP =====
-// Pulls real counts from questions.js and category-questions.js instead of a
-// hardcoded number, so the home page never goes stale as the question bank grows.
+// Pulls real counts from question-bank.js and poems.js instead of a hardcoded
+// number, so the home page never goes stale as the question bank grows.
 function renderLiveStats() {
   var totalEl = document.getElementById('statTotalQuestions');
   var catEl = document.getElementById('statTotalCategories');
@@ -31,14 +31,18 @@ function renderLiveStats() {
 
   if (typeof questionBank !== 'undefined') {
     total += questionBank.length;
-    categoryCount += 1; // Daily Quiz counts as its own category
+    // Daily Quiz (draws from the whole bank) + the distinct category-quiz tags
+    // represented inside it (ipl/test/odi/t20 — "general" has no tab of its own)
+    var tags = {};
+    questionBank.forEach(function(q) {
+      if (q.category && q.category !== 'general') tags[q.category] = true;
+    });
+    categoryCount += 1 + Object.keys(tags).length;
   }
 
-  if (typeof categoryQuestions !== 'undefined') {
-    Object.keys(categoryQuestions).forEach(function(key) {
-      total += categoryQuestions[key].length;
-      categoryCount += 1;
-    });
+  if (typeof poetryQuizQuestions !== 'undefined') {
+    total += poetryQuizQuestions.length;
+    categoryCount += 1; // Poetry Quiz
   }
 
   totalEl.textContent = total > 0 ? total : '—';
