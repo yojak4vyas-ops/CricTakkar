@@ -26,7 +26,7 @@
 
 const questionBank = [
 
-  // ===== IPL (67) =====
+  // ===== IPL (83) =====
   {
     question: "Which team won the IPL 2026 title, becoming back-to-back champions?",
     options: ["Gujarat Titans", "Mumbai Indians", "Royal Challengers Bengaluru", "Chennai Super Kings"],
@@ -563,6 +563,134 @@ const questionBank = [
     correct: 0,
     fact: "🎳 Andrew Tye took 24 wickets for Kings XI Punjab to win the Purple Cap in IPL 2018.",
     era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2019 title by the narrowest margin in any IPL final — just 1 run?",
+    options: ["Chennai Super Kings", "Mumbai Indians", "Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    correct: 1,
+    fact: "🏆 Mumbai Indians beat Chennai Super Kings by 1 run in the IPL 2019 final at Hyderabad — the tightest margin of any IPL final — for their 4th title.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2019 final to Mumbai Indians by just 1 run?",
+    options: ["Royal Challengers Bangalore", "Delhi Capitals", "Chennai Super Kings", "Kolkata Knight Riders"],
+    correct: 2,
+    fact: "🥈 Chennai Super Kings fell agonisingly short in the IPL 2019 final, losing to Mumbai Indians by 1 run despite needing just 9 off the last over.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2019 with 692 runs, in his comeback season after a ball-tampering ban?",
+    options: ["Rohit Sharma", "KL Rahul", "David Warner", "Shikhar Dhawan"],
+    correct: 2,
+    fact: "🧡 David Warner scored 692 runs at an average of 69 to win the IPL 2019 Orange Cap for Sunrisers Hyderabad, returning straight to top form after his year-long ban.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2019 with 26 wickets, pipping Kagiso Rabada by a single scalp?",
+    options: ["Jasprit Bumrah", "Dwayne Bravo", "Imran Tahir", "Deepak Chahar"],
+    correct: 2,
+    fact: "🎳 Imran Tahir took 26 wickets for Chennai Super Kings to win the IPL 2019 Purple Cap, edging out Kagiso Rabada by just one wicket.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2020 title, played entirely in the UAE due to the COVID-19 pandemic?",
+    options: ["Delhi Capitals", "Mumbai Indians", "Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    correct: 1,
+    fact: "🏆 Mumbai Indians beat Delhi Capitals by 5 wickets in Dubai to win the IPL 2020 title — their 5th, making them the most successful IPL franchise. The whole tournament was moved to the UAE because of COVID-19.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team reached its first-ever IPL final in 2020 but lost to Mumbai Indians?",
+    options: ["Kings XI Punjab", "Sunrisers Hyderabad", "Delhi Capitals", "Royal Challengers Bangalore"],
+    correct: 2,
+    fact: "🥈 Delhi Capitals reached their maiden IPL final in 2020 under Shreyas Iyer but lost to Mumbai Indians by 5 wickets in Dubai.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2020 with 670 runs, including a then-record unbeaten 132 in a single innings?",
+    options: ["Shikhar Dhawan", "David Warner", "KL Rahul", "Ishan Kishan"],
+    correct: 2,
+    fact: "🧡 KL Rahul scored 670 runs for Kings XI Punjab to win the IPL 2020 Orange Cap, including a 132* against RCB that was then the highest individual score by an Indian in the IPL.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2020 with 30 wickets for Delhi Capitals?",
+    options: ["Jasprit Bumrah", "Trent Boult", "Kagiso Rabada", "Rahul Chahar"],
+    correct: 2,
+    fact: "🎳 Kagiso Rabada took 30 wickets for Delhi Capitals to win the IPL 2020 Purple Cap.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2021 title, their 4th, after the season was suspended mid-tournament and resumed months later in the UAE?",
+    options: ["Delhi Capitals", "Kolkata Knight Riders", "Chennai Super Kings", "Royal Challengers Bangalore"],
+    correct: 2,
+    fact: "🏆 Chennai Super Kings beat Kolkata Knight Riders by 27 runs in Dubai to win the IPL 2021 title, their 4th, under MS Dhoni — after the season had been suspended in May 2021 due to a COVID outbreak in the bio-bubble and resumed in the UAE that September.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2021 final to Chennai Super Kings by 27 runs?",
+    options: ["Delhi Capitals", "Royal Challengers Bangalore", "Kolkata Knight Riders", "Punjab Kings"],
+    correct: 2,
+    fact: "🥈 Kolkata Knight Riders lost the IPL 2021 final to Chennai Super Kings by 27 runs in Dubai.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2021 in his breakout season, scoring 635 runs for Chennai Super Kings?",
+    options: ["Faf du Plessis", "Shikhar Dhawan", "Ruturaj Gaikwad", "KL Rahul"],
+    correct: 2,
+    fact: "🧡 Ruturaj Gaikwad scored 635 runs to win the IPL 2021 Orange Cap in only his second IPL season, playing a key role in CSK's title win.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2021 with a then-record 32 wickets for Royal Challengers Bangalore?",
+    options: ["Yuzvendra Chahal", "Mohammed Shami", "Harshal Patel", "Rashid Khan"],
+    correct: 2,
+    fact: "🎳 Harshal Patel took 32 wickets for Royal Challengers Bangalore to win the IPL 2021 Purple Cap — the most wickets by any bowler in a single IPL season.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2022 title in their very first season in the tournament?",
+    options: ["Lucknow Super Giants", "Royal Challengers Bangalore", "Gujarat Titans", "Punjab Kings"],
+    correct: 2,
+    fact: "🏆 Gujarat Titans, led by Hardik Pandya, beat Rajasthan Royals by 7 wickets in Ahmedabad to win the IPL 2022 title in their debut season — only the second team ever to win IPL in its first year, after Rajasthan Royals in 2008.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2022 final to debutants Gujarat Titans?",
+    options: ["Royal Challengers Bangalore", "Lucknow Super Giants", "Rajasthan Royals", "Sunrisers Hyderabad"],
+    correct: 2,
+    fact: "🥈 Rajasthan Royals lost the IPL 2022 final to Gujarat Titans by 7 wickets in Ahmedabad.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2022 with 863 runs, then the second-highest single-season tally in IPL history?",
+    options: ["KL Rahul", "Shubman Gill", "Quinton de Kock", "Jos Buttler"],
+    correct: 3,
+    fact: "🧡 Jos Buttler scored 863 runs for Rajasthan Royals to win the IPL 2022 Orange Cap, including a then-record 4 centuries in a single season, level with Virat Kohli's 2016 tally.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2022 with 27 wickets for Rajasthan Royals?",
+    options: ["Prasidh Krishna", "Umran Malik", "Kagiso Rabada", "Yuzvendra Chahal"],
+    correct: 3,
+    fact: "🎳 Yuzvendra Chahal took 27 wickets for Rajasthan Royals to win the IPL 2022 Purple Cap.",
+    era: "2020s",
     category: "ipl"
   },
 
