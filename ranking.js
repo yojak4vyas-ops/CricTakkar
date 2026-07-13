@@ -90,7 +90,7 @@ const CHALLENGES = [
       { name: "Martin Guptill", flag: "🇳🇿", value: "237* vs West Indies" },
       { name: "Chris Gayle", flag: "🇯🇲", value: "215 vs Zimbabwe" },
       { name: "Virender Sehwag", flag: "🇮🇳", value: "219 vs West Indies" },
-      { name: "Fakhar Zaman", flag: "🇵🇰", value: "193 vs Zimbabwe" }
+      { name: "Fakhar Zaman", flag: "🇵🇰", value: "210* vs Zimbabwe" }
     ],
     correctOrder: [0, 1, 3, 2, 4]
     // Rohit 264 > Guptill 237 > Sehwag 219 > Gayle 215 > Fakhar 193
