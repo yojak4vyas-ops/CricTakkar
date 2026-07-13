@@ -26,7 +26,7 @@
 
 const questionBank = [
 
-  // ===== IPL (23) =====
+  // ===== IPL (47) =====
   {
     question: "Which team won the IPL 2026 title, becoming back-to-back champions?",
     options: ["Gujarat Titans", "Mumbai Indians", "Royal Challengers Bengaluru", "Chennai Super Kings"],
@@ -210,6 +210,199 @@ const questionBank = [
     correct: 1,
     fact: "🏏 8 franchises played in the inaugural IPL season in 2008, each playing every other team home and away in a round-robin league stage.",
     era: "2000s",
+    category: "ipl"
+  },
+
+  {
+    question: "Which team won the very first IPL title in 2008?",
+    options: ["Chennai Super Kings", "Rajasthan Royals", "Mumbai Indians", "Kolkata Knight Riders"],
+    correct: 1,
+    fact: "🏆 Rajasthan Royals, led by Shane Warne, won the inaugural IPL 2008 title, beating Chennai Super Kings by 3 wickets in the final.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2008 final?",
+    options: ["Chennai Super Kings", "Kings XI Punjab", "Delhi Daredevils", "Deccan Chargers"],
+    correct: 0,
+    fact: "🥈 Chennai Super Kings lost the IPL 2008 final to Rajasthan Royals by 3 wickets — their first of many final appearances.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2008, the tournament's first season?",
+    options: ["Sachin Tendulkar", "Shaun Marsh", "Gautam Gambhir", "Shane Watson"],
+    correct: 1,
+    fact: "🧡 Shaun Marsh scored 616 runs for Kings XI Punjab to win the first ever IPL Orange Cap in 2008.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2008, the tournament's first season?",
+    options: ["Sohail Tanvir", "Lasith Malinga", "Anil Kumble", "RP Singh"],
+    correct: 0,
+    fact: "🎳 Sohail Tanvir took 22 wickets for Rajasthan Royals to win the first ever IPL Purple Cap in 2008.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2009 title, held entirely in South Africa?",
+    options: ["Royal Challengers Bangalore", "Deccan Chargers", "Chennai Super Kings", "Delhi Daredevils"],
+    correct: 1,
+    fact: "🏆 Deccan Chargers won IPL 2009, beating Royal Challengers Bangalore by 6 runs in the final at Johannesburg — a remarkable turnaround after finishing last in 2008.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2009 final?",
+    options: ["Chennai Super Kings", "Royal Challengers Bangalore", "Mumbai Indians", "Rajasthan Royals"],
+    correct: 1,
+    fact: "🥈 Royal Challengers Bangalore lost the IPL 2009 final to Deccan Chargers by just 6 runs in Johannesburg.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2009?",
+    options: ["Matthew Hayden", "Sachin Tendulkar", "Adam Gilchrist", "Shane Watson"],
+    correct: 0,
+    fact: "🧡 Matthew Hayden scored 572 runs for Chennai Super Kings to win the Orange Cap in IPL 2009.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2009?",
+    options: ["RP Singh", "Anil Kumble", "Pragyan Ojha", "Lasith Malinga"],
+    correct: 0,
+    fact: "🎳 RP Singh took 23 wickets for Deccan Chargers to win the Purple Cap in IPL 2009.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2010 title?",
+    options: ["Mumbai Indians", "Chennai Super Kings", "Deccan Chargers", "Kings XI Punjab"],
+    correct: 1,
+    fact: "🏆 Chennai Super Kings won their first IPL title in 2010, beating Mumbai Indians by 22 runs in the final at Navi Mumbai.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2010 final?",
+    options: ["Royal Challengers Bangalore", "Mumbai Indians", "Deccan Chargers", "Kolkata Knight Riders"],
+    correct: 1,
+    fact: "🥈 Mumbai Indians lost the IPL 2010 final to Chennai Super Kings by 22 runs, with Sachin Tendulkar top-scoring for MI with 48.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won both the Orange Cap and the Player of the Series award in IPL 2010?",
+    options: ["MS Dhoni", "Suresh Raina", "Sachin Tendulkar", "Chris Gayle"],
+    correct: 2,
+    fact: "🧡 Sachin Tendulkar scored 618 runs for Mumbai Indians to win the Orange Cap in IPL 2010, and was also named Player of the Series.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2010?",
+    options: ["Pragyan Ojha", "Lasith Malinga", "Zaheer Khan", "R Vinay Kumar"],
+    correct: 0,
+    fact: "🎳 Pragyan Ojha took 21 wickets for Deccan Chargers to win the Purple Cap in IPL 2010.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2011 title, their second in a row?",
+    options: ["Mumbai Indians", "Chennai Super Kings", "Royal Challengers Bangalore", "Kolkata Knight Riders"],
+    correct: 1,
+    fact: "🏆 Chennai Super Kings won back-to-back IPL titles in 2011, beating Royal Challengers Bangalore by 58 runs in the final.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2011 final?",
+    options: ["Royal Challengers Bangalore", "Mumbai Indians", "Kolkata Knight Riders", "Kings XI Punjab"],
+    correct: 0,
+    fact: "🥈 Royal Challengers Bangalore lost the IPL 2011 final to Chennai Super Kings by 58 runs.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2011?",
+    options: ["Virat Kohli", "Chris Gayle", "Suresh Raina", "Gautam Gambhir"],
+    correct: 1,
+    fact: "🧡 Chris Gayle scored 608 runs for Royal Challengers Bangalore to win the Orange Cap in IPL 2011.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2011?",
+    options: ["Lasith Malinga", "Dwayne Bravo", "Sunil Narine", "Morne Morkel"],
+    correct: 0,
+    fact: "🎳 Lasith Malinga took 28 wickets for Mumbai Indians to win the Purple Cap in IPL 2011.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2012 title, their first ever?",
+    options: ["Chennai Super Kings", "Kolkata Knight Riders", "Delhi Daredevils", "Royal Challengers Bangalore"],
+    correct: 1,
+    fact: "🏆 Kolkata Knight Riders won their maiden IPL title in 2012, chasing down 191 to beat Chennai Super Kings by 5 wickets in the final, with Manvinder Bisla scoring 89.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2012 final?",
+    options: ["Chennai Super Kings", "Delhi Daredevils", "Royal Challengers Bangalore", "Mumbai Indians"],
+    correct: 0,
+    fact: "🥈 Chennai Super Kings lost the IPL 2012 final to Kolkata Knight Riders by 5 wickets in Chennai.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2012, hitting an IPL-record 59 sixes along the way?",
+    options: ["Chris Gayle", "Virat Kohli", "Gautam Gambhir", "Suresh Raina"],
+    correct: 0,
+    fact: "🧡 Chris Gayle scored 733 runs for Royal Challengers Bangalore to win the Orange Cap in IPL 2012, hitting a then-record 59 sixes in the season.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2012?",
+    options: ["Morne Morkel", "Lasith Malinga", "Sunil Narine", "Ravichandran Ashwin"],
+    correct: 0,
+    fact: "🎳 Morne Morkel took 25 wickets for Delhi Daredevils to win the Purple Cap in IPL 2012.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2013 title?",
+    options: ["Chennai Super Kings", "Mumbai Indians", "Rajasthan Royals", "Sunrisers Hyderabad"],
+    correct: 1,
+    fact: "🏆 Mumbai Indians won their first IPL title in 2013, beating Chennai Super Kings by 23 runs in the final.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2013 final?",
+    options: ["Rajasthan Royals", "Chennai Super Kings", "Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    correct: 1,
+    fact: "🥈 Chennai Super Kings lost the IPL 2013 final to Mumbai Indians by 23 runs.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2013?",
+    options: ["Michael Hussey", "Shane Watson", "Chris Gayle", "Virat Kohli"],
+    correct: 0,
+    fact: "🧡 Michael Hussey scored 733 runs for Chennai Super Kings to win the Orange Cap in IPL 2013.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2013?",
+    options: ["Dwayne Bravo", "Ravichandran Ashwin", "Bhuvneshwar Kumar", "Jaydev Unadkat"],
+    correct: 0,
+    fact: "🎳 Dwayne Bravo took 32 wickets for Chennai Super Kings to win the Purple Cap in IPL 2013.",
+    era: "2010s",
     category: "ipl"
   },
 
