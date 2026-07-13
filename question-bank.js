@@ -26,7 +26,7 @@
 
 const questionBank = [
 
-  // ===== IPL (16) =====
+  // ===== IPL (23) =====
   {
     question: "Which team won the IPL 2026 title, becoming back-to-back champions?",
     options: ["Gujarat Titans", "Mumbai Indians", "Royal Challengers Bengaluru", "Chennai Super Kings"],
@@ -156,7 +156,64 @@ const questionBank = [
     category: "ipl"
   },
 
-  // ===== TEST CRICKET (19) =====
+  {
+    question: "Who holds the record for the most sixes in IPL history?",
+    options: ["Rohit Sharma", "MS Dhoni", "Chris Gayle", "Virat Kohli"],
+    correct: 2,
+    fact: "💥 Chris Gayle hit 357 sixes in 142 IPL matches (2009–2021) — the most by any batsman in IPL history. Rohit Sharma is the closest active chaser.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who scored the fastest century in IPL history — in just 30 balls?",
+    options: ["AB de Villiers", "Chris Gayle", "Andre Russell", "David Warner"],
+    correct: 1,
+    fact: "⚡ Chris Gayle reached his century off just 30 balls during his famous 175* for RCB against Pune Warriors India in 2013 — still the fastest IPL century over a decade later.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Along with Rohit Sharma, which captain shares the record for most IPL titles won (5 each)?",
+    options: ["MS Dhoni", "Virat Kohli", "Gautam Gambhir", "Rahul Dravid"],
+    correct: 0,
+    fact: "🏆 MS Dhoni (Chennai Super Kings) and Rohit Sharma (Mumbai Indians) have each won 5 IPL titles as captain — the joint-most in IPL history.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team holds the record for the highest team total in a single IPL innings?",
+    options: ["Royal Challengers Bengaluru", "Chennai Super Kings", "Sunrisers Hyderabad", "Mumbai Indians"],
+    correct: 2,
+    fact: "🔥 Sunrisers Hyderabad scored 287/3 against RCB on 15 April 2024 — the highest team total in IPL history, built on Travis Head's 102 and Heinrich Klaasen's 67.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who took the first ever hat-trick in IPL history?",
+    options: ["Lakshmipathy Balaji", "Irfan Pathan", "Harbhajan Singh", "Zaheer Khan"],
+    correct: 0,
+    fact: "🎯 Lakshmipathy Balaji took the first IPL hat-trick in 2008, playing for Chennai Super Kings against Kings XI Punjab, finishing with figures of 5/24.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2024?",
+    options: ["Jasprit Bumrah", "Yuzvendra Chahal", "Harshal Patel", "Mohammed Shami"],
+    correct: 2,
+    fact: "🎳 Harshal Patel won the IPL 2024 Purple Cap with 24 wickets for Punjab Kings — his second Purple Cap after also winning it with RCB in 2021.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "How many teams took part in the very first IPL season in 2008?",
+    options: ["6", "8", "10", "12"],
+    correct: 1,
+    fact: "🏏 8 franchises played in the inaugural IPL season in 2008, each playing every other team home and away in a round-robin league stage.",
+    era: "2000s",
+    category: "ipl"
+  },
+
+  // ===== TEST CRICKET (26) =====
   {
     question: "Who holds the record for the highest individual score in Test cricket with 400*?",
     options: ["Sachin Tendulkar", "Matthew Hayden", "Virender Sehwag", "Brian Lara"],
@@ -310,7 +367,64 @@ const questionBank = [
     category: "test"
   },
 
-  // ===== ODI CRICKET (15) =====
+  {
+    question: "Who holds the record for the best bowling figures in a Test match — 19 wickets in one game?",
+    options: ["Muttiah Muralitharan", "Jim Laker", "Anil Kumble", "Shane Warne"],
+    correct: 1,
+    fact: "🎳 England's Jim Laker took 19 wickets for 90 runs in a single Test against Australia at Old Trafford in 1956 — a record that has never been threatened since.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "How many Test matches have ever ended in a tie?",
+    options: ["Zero", "1", "2", "5"],
+    correct: 2,
+    fact: "🤝 Only 2 Tests have ever been tied — Australia vs West Indies in 1960, and Australia vs India in 1986. Both involved Australia.",
+    era: "General",
+    category: "test"
+  },
+  {
+    question: "What is Don Bradman's career Test batting average — the most famous number in cricket?",
+    options: ["89.94", "99.94", "109.94", "94.99"],
+    correct: 1,
+    fact: "🐐 Don Bradman retired with a Test average of 99.94 — he needed just 4 more runs in his final innings to reach 100, but was bowled for a duck instead.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Who scored 319 against South Africa in 2008 — the highest Test score by an Indian batsman?",
+    options: ["Sachin Tendulkar", "Virender Sehwag", "Rahul Dravid", "VVS Laxman"],
+    correct: 1,
+    fact: "⚡ Virender Sehwag scored 319 off just 304 balls against South Africa in Chennai in 2008 — the fastest Test triple century ever and the highest individual score by an Indian in Tests.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "Who scored the fastest century in Test cricket history — off just 54 balls?",
+    options: ["Viv Richards", "Misbah-ul-Haq", "Brendon McCullum", "Ben Stokes"],
+    correct: 2,
+    fact: "⚡ Brendon McCullum reached 100 off 54 balls against Australia in his final Test, in Christchurch in 2016 — two balls faster than the previous record.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "Which team won the first ever World Test Championship final in 2021?",
+    options: ["India", "New Zealand", "Australia", "England"],
+    correct: 1,
+    fact: "🏆 New Zealand won the inaugural World Test Championship, beating India by 8 wickets at the Rose Bowl, Southampton in 2021, under captain Kane Williamson.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which team won the World Test Championship final in 2025, beating Australia at Lord's?",
+    options: ["India", "England", "South Africa", "New Zealand"],
+    correct: 2,
+    fact: "🏆 South Africa won the 2025 World Test Championship final at Lord's, defeating Australia under captain Temba Bavuma — their first WTC title.",
+    era: "2020s",
+    category: "test"
+  },
+
+  // ===== ODI CRICKET (22) =====
   {
     question: "Who scored the first ever double century (200*) in ODI cricket?",
     options: ["Rohit Sharma", "Martin Guptill", "Virender Sehwag", "Sachin Tendulkar"],
@@ -432,7 +546,64 @@ const questionBank = [
     category: "odi"
   },
 
-  // ===== T20 CRICKET (17) =====
+  {
+    question: "Where and when was the first ever ODI match played?",
+    options: ["Lord's, 1971", "Melbourne, 1971", "Melbourne, 1975", "Sydney, 1971"],
+    correct: 1,
+    fact: "🏏 The first ODI was played between Australia and England at the MCG on 5 January 1971 — a 40-over-a-side match arranged after rain washed out a Test match.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who holds the record for the most ODI centuries in history?",
+    options: ["Sachin Tendulkar", "Rohit Sharma", "Virat Kohli", "Ricky Ponting"],
+    correct: 2,
+    fact: "👑 Virat Kohli has 54 ODI centuries, surpassing Sachin Tendulkar's long-standing record of 49 (as of 2026 — Kohli is still active in ODIs, so this number keeps growing).",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2015 Cricket World Cup, held in Australia and New Zealand?",
+    options: ["New Zealand", "India", "Australia", "South Africa"],
+    correct: 2,
+    fact: "🏆 Australia won the 2015 World Cup, beating New Zealand by 7 wickets in the final at the MCG — their fifth World Cup title.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the ICC Champions Trophy 2025?",
+    options: ["New Zealand", "India", "Australia", "England"],
+    correct: 1,
+    fact: "🏆 India won the Champions Trophy 2025, beating New Zealand by 4 wickets in the final in Dubai — their third Champions Trophy title, and the only team to go through the tournament unbeaten.",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Along with Clive Lloyd, which captain has won 2 Cricket World Cups?",
+    options: ["Ricky Ponting", "Steve Waugh", "Kapil Dev", "MS Dhoni"],
+    correct: 0,
+    fact: "🏆 Ricky Ponting captained Australia to World Cup titles in 2003 and 2007 — matching Clive Lloyd's West Indies, who won in 1975 and 1979.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who holds the record for the best bowling figures in an ODI innings — 8 wickets for 19 runs?",
+    options: ["Shahid Afridi", "Chaminda Vaas", "Glenn McGrath", "Muttiah Muralitharan"],
+    correct: 1,
+    fact: "🎳 Chaminda Vaas took 8/19 for Sri Lanka against Zimbabwe in 2001 — still the best bowling figures in ODI history, and no one else has taken 8 wickets in an ODI innings since.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the dramatic 2019 Cricket World Cup final on boundary count?",
+    options: ["New Zealand", "England", "Australia", "India"],
+    correct: 1,
+    fact: "🏆 England won the 2019 World Cup final against New Zealand after the match — and the Super Over — both ended in ties, with England winning on the boundary countback rule.",
+    era: "2010s",
+    category: "odi"
+  },
+
+  // ===== T20 CRICKET (22) =====
   {
     question: "Which country has won the most T20 World Cup titles as of June 2026?",
     options: ["West Indies", "England", "India", "Australia"],
@@ -570,7 +741,48 @@ const questionBank = [
     category: "t20"
   },
 
-  // ===== GENERAL CRICKET (5) =====
+  {
+    question: "Which team won the 2021 T20 World Cup, their first ever T20 World Cup title?",
+    options: ["England", "New Zealand", "Australia", "Pakistan"],
+    correct: 2,
+    fact: "🏆 Australia won their maiden T20 World Cup title in 2021, beating New Zealand by 8 wickets in the final in Dubai.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which team won the 2022 T20 World Cup, beating Pakistan in the final at the MCG?",
+    options: ["India", "England", "New Zealand", "South Africa"],
+    correct: 1,
+    fact: "🏆 England beat Pakistan by 5 wickets in the 2022 T20 World Cup final at the MCG, becoming the first team to hold both the ODI and T20 World Cup titles at once.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which two teams played the first ever men's T20 International in 2005?",
+    options: ["India and Pakistan", "England and Australia", "New Zealand and Australia", "South Africa and England"],
+    correct: 2,
+    fact: "🏏 The first men's T20I was played between New Zealand and Australia at Eden Park, Auckland on 17 February 2005. Australia won by 44 runs.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Virat Kohli is the only player to win Player of the Tournament at the T20 World Cup twice. In which two years?",
+    options: ["2007 and 2014", "2014 and 2016", "2016 and 2022", "2012 and 2016"],
+    correct: 1,
+    fact: "🌟 Virat Kohli won Player of the Tournament at the T20 World Cup in both 2014 and 2016 — no one else has won it more than once.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Rohit Sharma retired from T20Is holding the record for most T20I centuries, tied with which Australian?",
+    options: ["David Warner", "Glenn Maxwell", "Steve Smith", "Aaron Finch"],
+    correct: 1,
+    fact: "💥 Rohit Sharma and Glenn Maxwell are tied with 5 T20I centuries each — the most by any batsman. Rohit's record is now final since he retired from T20Is after India's 2024 T20 World Cup win.",
+    era: "2020s",
+    category: "t20"
+  },
+
+  // ===== GENERAL CRICKET (9) =====
   {
     question: "What does 'LBW' stand for in cricket?",
     options: ["Leg Before Wicket", "Left Ball Wide", "Leg Ball Wide", "Left Before Wicket"],
@@ -608,6 +820,38 @@ const questionBank = [
     options: ["Eden Gardens, Kolkata", "MCG, Melbourne", "Lord's, London", "Narendra Modi Stadium, Ahmedabad"],
     correct: 3,
     fact: "🏟️ Narendra Modi Stadium in Ahmedabad has a capacity of over 1,32,000 — the largest cricket stadium in the world.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What does DRS stand for in cricket?",
+    options: ["Decision Review System", "Direct Run System", "Delivery Replay System", "Dismissal Review Standard"],
+    correct: 0,
+    fact: "📺 DRS stands for Decision Review System — technology used to review umpiring decisions. It was first trialled in Tests in 2008 and added to T20Is in 2017.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'maiden over' in cricket?",
+    options: ["An over with a wicket in every ball", "An over in which no runs are scored off the bat", "A bowler's very first over in a match", "An over bowled entirely with no-balls"],
+    correct: 1,
+    fact: "🎯 A maiden over is one in which the batting side scores no runs off the bat during all 6 legal deliveries — a sign of total bowling control.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "In T20 cricket, how many overs make up the mandatory Powerplay at the start of an innings?",
+    options: ["4 overs", "5 overs", "6 overs", "10 overs"],
+    correct: 2,
+    fact: "⚡ The first 6 overs of a T20 innings are the Powerplay, during which only 2 fielders are allowed outside the 30-yard circle — designed to encourage attacking batting early on.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What does 'ODI' stand for in cricket?",
+    options: ["One Day International", "Official Day Innings", "Over Delivery Innings", "One Delivery Inning"],
+    correct: 0,
+    fact: "🏏 ODI stands for One Day International — a limited-overs format where each team bats for a maximum of 50 overs.",
     era: "General",
     category: "general"
   }
