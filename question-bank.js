@@ -26,7 +26,7 @@
 
 const questionBank = [
 
-  // ===== IPL (47) =====
+  // ===== IPL (67) =====
   {
     question: "Which team won the IPL 2026 title, becoming back-to-back champions?",
     options: ["Gujarat Titans", "Mumbai Indians", "Royal Challengers Bengaluru", "Chennai Super Kings"],
@@ -402,6 +402,166 @@ const questionBank = [
     options: ["Dwayne Bravo", "Ravichandran Ashwin", "Bhuvneshwar Kumar", "Jaydev Unadkat"],
     correct: 0,
     fact: "🎳 Dwayne Bravo took 32 wickets for Chennai Super Kings to win the Purple Cap in IPL 2013.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2014 title, played partly in the UAE due to the Indian general elections?",
+    options: ["Kings XI Punjab", "Kolkata Knight Riders", "Chennai Super Kings", "Royal Challengers Bangalore"],
+    correct: 1,
+    fact: "🏆 Kolkata Knight Riders won their second IPL title in 2014, chasing down 199 to beat Kings XI Punjab by 3 wickets in the final at Bengaluru, with Manish Pandey named Man of the Match for his 94.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2014 final?",
+    options: ["Chennai Super Kings", "Kings XI Punjab", "Mumbai Indians", "Rajasthan Royals"],
+    correct: 1,
+    fact: "🥈 Kings XI Punjab, who topped the points table all season, lost the IPL 2014 final to Kolkata Knight Riders by 3 wickets.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2014?",
+    options: ["Robin Uthappa", "David Warner", "Virat Kohli", "Shikhar Dhawan"],
+    correct: 0,
+    fact: "🧡 Robin Uthappa scored 660 runs for Kolkata Knight Riders to win the Orange Cap in IPL 2014.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2014?",
+    options: ["Mohit Sharma", "Bhuvneshwar Kumar", "Dwayne Bravo", "Sunil Narine"],
+    correct: 0,
+    fact: "🎳 Mohit Sharma took 23 wickets for Chennai Super Kings to win the Purple Cap in IPL 2014.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2015 title?",
+    options: ["Chennai Super Kings", "Mumbai Indians", "Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    correct: 1,
+    fact: "🏆 Mumbai Indians won their second IPL title in 2015, beating Chennai Super Kings by 41 runs in the final at Eden Gardens, Kolkata.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2015 final?",
+    options: ["Royal Challengers Bangalore", "Chennai Super Kings", "Sunrisers Hyderabad", "Rajasthan Royals"],
+    correct: 1,
+    fact: "🥈 Chennai Super Kings lost the IPL 2015 final to Mumbai Indians by 41 runs.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2015?",
+    options: ["David Warner", "Virat Kohli", "AB de Villiers", "Ajinkya Rahane"],
+    correct: 0,
+    fact: "🧡 David Warner scored 562 runs for Sunrisers Hyderabad to win the Orange Cap in IPL 2015.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2015, for the second time?",
+    options: ["Dwayne Bravo", "Ashish Nehra", "Imran Tahir", "Mohit Sharma"],
+    correct: 0,
+    fact: "🎳 Dwayne Bravo took 26 wickets for Chennai Super Kings to win his second IPL Purple Cap in 2015.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won its first-ever IPL title in 2016?",
+    options: ["Gujarat Lions", "Sunrisers Hyderabad", "Royal Challengers Bangalore", "Rising Pune Supergiant"],
+    correct: 1,
+    fact: "🏆 Sunrisers Hyderabad won their maiden IPL title in 2016, beating Royal Challengers Bangalore by 8 runs in the final at Bengaluru.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2016 final?",
+    options: ["Gujarat Lions", "Kolkata Knight Riders", "Royal Challengers Bangalore", "Delhi Daredevils"],
+    correct: 2,
+    fact: "🥈 Royal Challengers Bangalore lost the IPL 2016 final to Sunrisers Hyderabad by just 8 runs, despite Virat Kohli's 54.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2016 with 973 runs — still the most by any batsman in a single IPL season?",
+    options: ["Virat Kohli", "David Warner", "AB de Villiers", "Gautam Gambhir"],
+    correct: 0,
+    fact: "🧡 Virat Kohli scored a record 973 runs for Royal Challengers Bangalore in IPL 2016 — still the most runs by any batsman in a single IPL season.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2016?",
+    options: ["Bhuvneshwar Kumar", "Adam Zampa", "Ashish Nehra", "Jaydev Unadkat"],
+    correct: 0,
+    fact: "🎳 Bhuvneshwar Kumar took 23 wickets for Sunrisers Hyderabad to win the Purple Cap in IPL 2016.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2017 title by just 1 run — the narrowest margin in IPL final history?",
+    options: ["Rising Pune Supergiant", "Mumbai Indians", "Kolkata Knight Riders", "Sunrisers Hyderabad"],
+    correct: 1,
+    fact: "🏆 Mumbai Indians won their third IPL title in 2017, beating Rising Pune Supergiant by just 1 run in the final — the closest margin in IPL final history.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2017 final, in their only season under that name?",
+    options: ["Gujarat Lions", "Rising Pune Supergiant", "Delhi Daredevils", "Kings XI Punjab"],
+    correct: 1,
+    fact: "🥈 Rising Pune Supergiant lost the IPL 2017 final to Mumbai Indians by 1 run, in what was their final season before the franchise was dissolved.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2017?",
+    options: ["David Warner", "Shikhar Dhawan", "Rohit Sharma", "Manoj Tiwary"],
+    correct: 0,
+    fact: "🧡 David Warner scored 641 runs for Sunrisers Hyderabad to win the Orange Cap in IPL 2017.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2017, becoming the only bowler to win it in back-to-back seasons?",
+    options: ["Bhuvneshwar Kumar", "Jasprit Bumrah", "Mitchell McClenaghan", "Sandeep Sharma"],
+    correct: 0,
+    fact: "🎳 Bhuvneshwar Kumar took 26 wickets for Sunrisers Hyderabad to win the IPL 2017 Purple Cap, becoming the only bowler to win it in consecutive seasons (2016 and 2017).",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the IPL 2018 title, their first since returning from a 2-year suspension?",
+    options: ["Rajasthan Royals", "Chennai Super Kings", "Sunrisers Hyderabad", "Delhi Daredevils"],
+    correct: 1,
+    fact: "🏆 Chennai Super Kings won the IPL 2018 title in their first season back after a 2-year suspension, beating Sunrisers Hyderabad by 8 wickets in the final at Mumbai.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was the runner-up in the IPL 2018 final?",
+    options: ["Kolkata Knight Riders", "Sunrisers Hyderabad", "Royal Challengers Bangalore", "Kings XI Punjab"],
+    correct: 1,
+    fact: "🥈 Sunrisers Hyderabad lost the IPL 2018 final to Chennai Super Kings by 8 wickets.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap (most runs) in IPL 2018 despite being on the losing side in the final?",
+    options: ["Kane Williamson", "Shikhar Dhawan", "Rishabh Pant", "AB de Villiers"],
+    correct: 0,
+    fact: "🧡 Kane Williamson scored 735 runs for Sunrisers Hyderabad to win the Orange Cap in IPL 2018, despite SRH losing the final.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap (most wickets) in IPL 2018?",
+    options: ["Andrew Tye", "Rashid Khan", "Siddarth Kaul", "Jasprit Bumrah"],
+    correct: 0,
+    fact: "🎳 Andrew Tye took 24 wickets for Kings XI Punjab to win the Purple Cap in IPL 2018.",
     era: "2010s",
     category: "ipl"
   },
