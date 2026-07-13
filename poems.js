@@ -38,7 +38,7 @@ const cricketPoems = [
     subtitle: 'Antigua, 12 April 2004',
     verses: [
       "Four days of sun, four days of will,\na left hand bat who would not spill\na single chance, a single beat,\ntill record fell before his feet.",
-      "Three-fifty gone, then one run more,\nthe number that stood tall before—\nhe shattered it, then kept his eye,\nand climbed until the sun climbed high.",
+      "Three-eighty gone, then one run more,\nthe number that stood tall before—\nhe shattered it, then kept his eye,\nand climbed until the sun climbed high.",
       "Four hundred runs, not out, not done,\na mountain moved by only one,\nLara stood where none had trod,\nand cricket watched, and cricket applaud."
     ]
   },
