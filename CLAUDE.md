@@ -218,6 +218,30 @@ SCOPE AT TIME OF WRITING (Day 16): ~155 existing items across Daily Quiz, Catego
 
 ---
 
+## ADDING NEW CONTENT — STANDARD OPERATING PROCEDURE (Added Day 17, session 5)
+
+This is the permanent, repeatable process Claude follows any time the user says "add questions" / "add players" / "add [X]" to any content area — the user should never need to re-explain this process. It applies to all 5 content files: `question-bank.js` (quiz questions), `players.js` (Wordle), `onthisday.js` (dated events), `ranking.js` (challenges), `poems.js` (poems + Poetry Quiz).
+
+**Step 1 — Figure out the target file and shape.** Match the request to the right file (see the field shapes documented earlier in this file for each). If the user gives a topic/player/theme rather than full content, Claude drafts the actual question/entry itself.
+
+**Step 2 — Check for duplicates.** Before writing anything, check the existing bank for the same fact already covered under different phrasing (this is what caused the Day 17 merge cleanup). Skip or merge instead of adding a near-duplicate.
+
+**Step 3 — Verify every fact.** Run the Four-Source Verification Rule above on every new fact — live web search, not training data. Cricbuzz is expected to be unreachable (standing tool limitation) — flag it every time, don't silently skip it. If a fact is a "current record" / "most X" / "reigning champion" type that can change over time (Question Quality Rule), handle it explicitly: note in the fact text if the record is still growing (an active player), confirm if the record is now closed (a retired player), and phrase dated tournament results around their specific year rather than "current champion" so the question never goes stale.
+
+**Step 4 — Tag correctly.** For `question-bank.js`: assign `category` (ipl/test/odi/t20/general) and `era` (Pre-1970s/1970s-80s/1990s/2000s/2010s/2020s/General) per the existing tagging rules. For other files, follow that file's existing field schema exactly (e.g. Wordle's 8 attributes, Ranking's 5-item ordered list).
+
+**Step 5 — Structural validation.** Before considering the content done, run a quick integrity check confirming every new entry has all required fields, exactly 4 options where applicable, and a valid correct-answer index — this catches typos/missing fields before they ever reach a user.
+
+**Step 6 — Test live in the browser.** Load the relevant page(s), confirm the new content renders correctly with no console errors, and confirm any live counts (home page stat strip, category pool sizes) updated correctly with zero manual editing needed elsewhere.
+
+**Step 7 — Report back plainly.** Give the user the full list of what was added (not just a count), any facts that needed special "growing record" handling, and explicitly confirm the verification pass ran (which sources, Cricbuzz status) rather than just asserting "verified" — this is what lets the user actually check the work, not just trust it blindly.
+
+**Step 8 — Commit, push, deploy, and update Current Build Status** — per the standing project rule, automatically, without being asked.
+
+If at any point a fact can't be confirmed clean across the reachable sources, it gets flagged to the user per the Four-Source Verification Rule's mismatch-handling process — Claude never guesses or picks a "likely" answer to keep moving.
+
+---
+
 ## CRICKET WORDLE PLAYER DATA RULE — PERMANENT (Added Day 10, updated Day 14)
 
 The Cricket Wordle game uses a player database in `players.js`. Every player entry has 8 guessable attributes: country, role, battingStyle, bowlingStyle, debutYear, format, iplTeams, iccTrophies.
