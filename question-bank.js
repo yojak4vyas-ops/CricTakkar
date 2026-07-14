@@ -1692,7 +1692,7 @@ const questionBank = [
     category: "odi"
   },
 
-  // ===== T20 CRICKET (60) =====
+  // ===== T20 CRICKET (72) =====
   {
     question: "Which country has won the most T20 World Cup titles as of June 2026?",
     options: ["West Indies", "England", "India", "Australia"],
@@ -2171,6 +2171,102 @@ const questionBank = [
     options: ["Marlon Samuels", "Ajantha Mendis", "Shane Watson", "Kieron Pollard"],
     correct: 2,
     fact: "🎯 Shane Watson of Australia was Player of the Tournament at the T20 World Cup 2012, with 249 runs and 11 wickets — the most of any player in both categories.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who won the T20 World Cup 2014?",
+    options: ["India", "Sri Lanka", "Bangladesh", "South Africa"],
+    correct: 1,
+    fact: "🏆 Sri Lanka won the T20 World Cup 2014, beating India by 6 wickets in the final — a fitting farewell tournament for retiring stars Kumar Sangakkara and Mahela Jayawardene.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which team was the runner-up in the T20 World Cup 2014 final?",
+    options: ["Pakistan", "West Indies", "India", "South Africa"],
+    correct: 2,
+    fact: "🥈 India lost the T20 World Cup 2014 final to Sri Lanka by 6 wickets in Dhaka.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which country hosted the T20 World Cup 2014?",
+    options: ["Sri Lanka", "India", "Bangladesh", "UAE"],
+    correct: 2,
+    fact: "🏏 Bangladesh hosted the T20 World Cup 2014, with matches played in Dhaka, Chittagong and Sylhet.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the T20 World Cup 2014 final between India and Sri Lanka?",
+    options: ["Zahur Ahmed Chowdhury Stadium, Chittagong", "Sher-e-Bangla National Stadium, Mirpur", "Sylhet International Cricket Stadium", "Shere Bangla Cricket Stadium, Khulna"],
+    correct: 1,
+    fact: "🏟️ The T20 World Cup 2014 final was played at the Sher-e-Bangla National Stadium in Mirpur, Dhaka on 6 April 2014.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the T20 World Cup 2014 final for his unbeaten 52?",
+    options: ["Mahela Jayawardene", "Lasith Malinga", "Kumar Sangakkara", "Angelo Mathews"],
+    correct: 2,
+    fact: "🌟 Kumar Sangakkara scored an unbeaten 52, earning Player of the Match in his final T20 international as Sri Lanka beat India in the 2014 final.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the T20 World Cup 2014?",
+    options: ["Kumar Sangakkara", "Virat Kohli", "AB de Villiers", "Ahmed Shehzad"],
+    correct: 1,
+    fact: "🎯 Virat Kohli was Player of the Tournament at the T20 World Cup 2014, scoring 319 runs in 6 matches at an average of 106.33 — despite India losing the final.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who won the T20 World Cup 2016?",
+    options: ["England", "India", "West Indies", "South Africa"],
+    correct: 2,
+    fact: "🏆 West Indies won the T20 World Cup 2016, beating England by 4 wickets in a final made famous by Carlos Brathwaite hitting four consecutive sixes off Ben Stokes in the last over. It was their second title, making them the first team to win the T20 World Cup twice.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which team was the runner-up in the T20 World Cup 2016 final?",
+    options: ["England", "India", "Australia", "New Zealand"],
+    correct: 0,
+    fact: "🥈 England lost the T20 World Cup 2016 final to West Indies by 4 wickets at Eden Gardens, Kolkata.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which country hosted the T20 World Cup 2016?",
+    options: ["Bangladesh", "Sri Lanka", "India", "UAE"],
+    correct: 2,
+    fact: "🏏 India hosted the T20 World Cup 2016 — the first time the tournament was held there.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the T20 World Cup 2016 final between England and West Indies?",
+    options: ["Wankhede Stadium, Mumbai", "Eden Gardens, Kolkata", "M. Chinnaswamy Stadium, Bengaluru", "Feroz Shah Kotla, Delhi"],
+    correct: 1,
+    fact: "🏟️ The T20 World Cup 2016 final was played at Eden Gardens in Kolkata on 3 April 2016.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the T20 World Cup 2016 final for his unbeaten 85?",
+    options: ["Carlos Brathwaite", "Chris Gayle", "Marlon Samuels", "Andre Russell"],
+    correct: 2,
+    fact: "🌟 Marlon Samuels scored an unbeaten 85 off 66 balls, earning Player of the Match — his second final Player of the Match award, after also winning it in 2012.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the T20 World Cup 2016?",
+    options: ["Marlon Samuels", "Virat Kohli", "Joe Root", "AB de Villiers"],
+    correct: 1,
+    fact: "🎯 Virat Kohli was Player of the Tournament at the T20 World Cup 2016, held in India — despite his team not making the final.",
     era: "2010s",
     category: "t20"
   },
