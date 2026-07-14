@@ -985,7 +985,7 @@ const questionBank = [
     category: "test"
   },
 
-  // ===== ODI CRICKET (70) =====
+  // ===== ODI CRICKET (88) =====
   {
     question: "Who scored the first ever double century (200*) in ODI cricket?",
     options: ["Rohit Sharma", "Martin Guptill", "Virender Sehwag", "Sachin Tendulkar"],
@@ -1545,6 +1545,150 @@ const questionBank = [
     correct: 2,
     fact: "🏟️ The 2023 World Cup final was played at the Narendra Modi Stadium, Ahmedabad on 19 November 2023 — its first ever World Cup final.",
     era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 1999 Cricket World Cup, beating Pakistan by 8 wickets at Lord's?",
+    options: ["Australia", "South Africa", "Pakistan", "New Zealand"],
+    correct: 0,
+    fact: "🏆 Australia beat Pakistan by 8 wickets in the 1999 final at Lord's — a one-sided finish after Pakistan collapsed to 132 all out.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1999 World Cup final to Australia by 8 wickets?",
+    options: ["South Africa", "Pakistan", "New Zealand", "Sri Lanka"],
+    correct: 1,
+    fact: "🥈 Pakistan were bowled out for just 132 in the 1999 final at Lord's, and Australia knocked off the target in under 21 overs.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 1999 World Cup final for his 4/33?",
+    options: ["Glenn McGrath", "Shane Warne", "Damien Fleming", "Tom Moody"],
+    correct: 1,
+    fact: "🎳 Shane Warne took 4/33, including the key wickets of Ijaz Ahmed and Inzamam-ul-Haq, to win Man of the Match in the 1999 final.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 1999 World Cup despite South Africa not reaching the final?",
+    options: ["Jacques Kallis", "Lance Klusener", "Allan Donald", "Herschelle Gibbs"],
+    correct: 1,
+    fact: "🌟 Lance Klusener was Player of the Tournament in 1999 for his explosive all-round form — despite South Africa being eliminated in the famous tied semi-final against Australia.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which country primarily hosted the 1999 World Cup, with some matches also played in Wales, Scotland, Ireland and the Netherlands?",
+    options: ["Australia", "South Africa", "England", "India"],
+    correct: 2,
+    fact: "🌏 The 1999 World Cup was primarily hosted by England, with a handful of group matches also played in Wales, Scotland, Ireland and the Netherlands.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "At which venue was the 1999 World Cup final played?",
+    options: ["The Oval", "Lord's", "Edgbaston", "Trent Bridge"],
+    correct: 1,
+    fact: "🏟️ The 1999 World Cup final was played at Lord's, London on 20 June 1999 — Australia's second title.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2003 Cricket World Cup, beating India by 125 runs in Johannesburg?",
+    options: ["Australia", "South Africa", "India", "New Zealand"],
+    correct: 0,
+    fact: "🏆 Australia beat India by 125 runs in the 2003 final at the Wanderers, Johannesburg — their third World Cup title, and still the largest margin of victory in any World Cup final.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 2003 World Cup final to Australia by 125 runs?",
+    options: ["Pakistan", "India", "Sri Lanka", "Kenya"],
+    correct: 1,
+    fact: "🥈 India were bowled out for 234 chasing Australia's 359/2 in the 2003 final — Sachin Tendulkar was out in the very first over, to Glenn McGrath.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2003 World Cup final for his unbeaten 140?",
+    options: ["Adam Gilchrist", "Ricky Ponting", "Damien Martyn", "Matthew Hayden"],
+    correct: 1,
+    fact: "🏏 Ricky Ponting scored an unbeaten 140 off 121 balls, including 8 sixes, in the 2003 final to win Man of the Match — emulating Clive Lloyd's 1975 captain's century.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 2003 World Cup with a then-record 673 runs, despite India losing the final?",
+    options: ["Rahul Dravid", "Sourav Ganguly", "Sachin Tendulkar", "Virender Sehwag"],
+    correct: 2,
+    fact: "🌟 Sachin Tendulkar scored a then-record 673 runs to win Player of the Tournament in 2003, over 200 runs clear of his nearest challenger — despite India losing the final.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which three countries co-hosted the 2003 World Cup?",
+    options: ["South Africa, Zimbabwe and Kenya", "South Africa, Zimbabwe and Namibia", "South Africa, Kenya and Namibia", "England, South Africa and Zimbabwe"],
+    correct: 0,
+    fact: "🌏 The 2003 World Cup was co-hosted by South Africa, Zimbabwe and Kenya, from 9 February to 23 March 2003.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "At which stadium was the 2003 World Cup final played?",
+    options: ["Newlands", "Wanderers Stadium", "Kingsmead", "SuperSport Park"],
+    correct: 1,
+    fact: "🏟️ The 2003 World Cup final was played at the Wanderers Stadium, Johannesburg on 23 March 2003.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2007 Cricket World Cup, their third title in a row?",
+    options: ["Australia", "Sri Lanka", "South Africa", "New Zealand"],
+    correct: 0,
+    fact: "🏆 Australia beat Sri Lanka by 53 runs (D/L method) in the chaotic, near-darkness 2007 final at Kensington Oval, Barbados — their 4th World Cup title and 3rd in a row, going through the entire tournament unbeaten.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 2007 World Cup final to Australia by 53 runs (D/L method)?",
+    options: ["South Africa", "Sri Lanka", "New Zealand", "West Indies"],
+    correct: 1,
+    fact: "🥈 Sri Lanka fell to Australia in the 2007 final, which ended in confusion in near-darkness under the Duckworth-Lewis method.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2007 World Cup final for his 149 off 104 balls?",
+    options: ["Matthew Hayden", "Adam Gilchrist", "Ricky Ponting", "Glenn McGrath"],
+    correct: 1,
+    fact: "🏏 Adam Gilchrist smashed 149 off 104 balls in the 2007 final — the fastest century ever scored in a World Cup final — to win Man of the Match.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 2007 World Cup with 26 wickets, in his final tournament before retiring?",
+    options: ["Brett Lee", "Shaun Tait", "Glenn McGrath", "Nathan Bracken"],
+    correct: 2,
+    fact: "🌟 Glenn McGrath took 26 wickets at an average of 13.73 to win Player of the Tournament in 2007, then retired from international cricket immediately after.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which region hosted the 2007 Cricket World Cup?",
+    options: ["England", "West Indies", "South Africa", "Australia and New Zealand"],
+    correct: 1,
+    fact: "🌏 The 2007 World Cup was hosted across the West Indies, from 13 March to 28 April 2007 — the first time the tournament was held in the Caribbean.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "At which venue was the 2007 World Cup final played, the first time this ground hosted a World Cup final?",
+    options: ["Sabina Park", "Kensington Oval", "Queen's Park Oval", "Bourda"],
+    correct: 1,
+    fact: "🏟️ The 2007 World Cup final was played at Kensington Oval, Barbados on 28 April 2007 — the first time Barbados hosted a World Cup final.",
+    era: "2000s",
     category: "odi"
   },
 
