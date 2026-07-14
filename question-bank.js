@@ -985,7 +985,7 @@ const questionBank = [
     category: "test"
   },
 
-  // ===== ODI CRICKET (44) =====
+  // ===== ODI CRICKET (52) =====
   {
     question: "Who scored the first ever double century (200*) in ODI cricket?",
     options: ["Rohit Sharma", "Martin Guptill", "Virender Sehwag", "Sachin Tendulkar"],
@@ -1039,6 +1039,70 @@ const questionBank = [
     options: ["Sunil Gavaskar", "Dilip Vengsarkar", "Kapil Dev", "Mohinder Amarnath"],
     correct: 2,
     fact: "🇮🇳 Kapil Dev captained India in 1983. His unbeaten 175 against Zimbabwe in the group stage is one of cricket's greatest ever innings.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1975 Cricket World Cup final to West Indies by 17 runs?",
+    options: ["England", "Australia", "India", "Pakistan"],
+    correct: 1,
+    fact: "🥈 Australia were beaten by 17 runs in the first ever World Cup final, chasing West Indies' 291/8 at Lord's on 21 June 1975.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the first ever World Cup final for his 102 off 85 balls?",
+    options: ["Viv Richards", "Clive Lloyd", "Rohan Kanhai", "Gordon Greenidge"],
+    correct: 1,
+    fact: "🏏 West Indies captain Clive Lloyd scored 102 off 85 balls in the 1975 final, including a 149-run partnership with Rohan Kanhai, and was named Man of the Match.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which country hosted the very first Cricket World Cup in 1975?",
+    options: ["Australia", "India", "England", "West Indies"],
+    correct: 2,
+    fact: "🏟️ The first Cricket World Cup was played entirely in England, across 5 venues, in June 1975.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "At which venue was the first ever Cricket World Cup final played?",
+    options: ["The Oval", "Lord's", "Old Trafford", "Headingley"],
+    correct: 1,
+    fact: "🏟️ The first ever World Cup final was played at Lord's, London on 21 June 1975.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1983 Cricket World Cup final to India by 43 runs?",
+    options: ["Australia", "West Indies", "Pakistan", "England"],
+    correct: 1,
+    fact: "🥈 Two-time defending champions West Indies were shocked by India in the 1983 final, bowled out for 140 chasing just 183 at Lord's — one of cricket's greatest upsets.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 1983 World Cup final for his 3 wickets and useful runs?",
+    options: ["Kapil Dev", "Mohinder Amarnath", "Krishnamachari Srikkanth", "Roger Binny"],
+    correct: 1,
+    fact: "🏏 Mohinder Amarnath took 3/12 and scored 26 in the 1983 final to win Man of the Match, as India bowled out West Indies for just 140.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which country hosted the 1983 Cricket World Cup, India's maiden title-winning edition?",
+    options: ["India", "England", "Australia", "West Indies"],
+    correct: 1,
+    fact: "🏟️ The 1983 World Cup was played entirely in England, the same as 1975 and 1979 — the tournament didn't move outside England until 1987.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "At which venue did India win their first ever World Cup title in 1983?",
+    options: ["The Oval", "Lord's", "Edgbaston", "Trent Bridge"],
+    correct: 1,
+    fact: "🏟️ India beat West Indies at Lord's, London on 25 June 1983 — the same venue as the first two World Cup finals in 1975 and 1979.",
     era: "1970s-80s",
     category: "odi"
   },
