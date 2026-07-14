@@ -985,7 +985,7 @@ const questionBank = [
     category: "test"
   },
 
-  // ===== ODI CRICKET (22) =====
+  // ===== ODI CRICKET (34) =====
   {
     question: "Who scored the first ever double century (200*) in ODI cricket?",
     options: ["Rohit Sharma", "Martin Guptill", "Virender Sehwag", "Sachin Tendulkar"],
@@ -1161,6 +1161,102 @@ const questionBank = [
     correct: 1,
     fact: "🏆 England won the 2019 World Cup final against New Zealand after the match — and the Super Over — both ended in ties, with England winning on the boundary countback rule.",
     era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 1979 Cricket World Cup, retaining the title they'd won in 1975?",
+    options: ["West Indies", "England", "Australia", "Pakistan"],
+    correct: 0,
+    fact: "🏆 West Indies beat England by 92 runs at Lord's on 23 June 1979 to retain their title — Viv Richards's unbeaten 138 and Joel Garner's 5/38 in the final sealed it.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1979 Cricket World Cup final to West Indies by 92 runs?",
+    options: ["Australia", "England", "Pakistan", "New Zealand"],
+    correct: 1,
+    fact: "🥈 England were bowled out for 194 chasing West Indies' 286/9 in the 1979 final at Lord's — Joel Garner's 5/38 did the damage.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Player of the Match in the 1979 World Cup final for his unbeaten 138?",
+    options: ["Clive Lloyd", "Viv Richards", "Gordon Greenidge", "Collis King"],
+    correct: 1,
+    fact: "💥 Viv Richards scored an unbeaten 138 in the 1979 final, including a 139-run stand with Collis King, to power West Indies to 286/9.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 1987 Reliance World Cup, their first ever title, beating England by 7 runs?",
+    options: ["West Indies", "Australia", "Pakistan", "India"],
+    correct: 1,
+    fact: "🏆 Australia beat England by 7 runs at Eden Gardens, Kolkata on 8 November 1987 to win their maiden World Cup title under captain Allan Border.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1987 World Cup final to Australia by 7 runs at Eden Gardens?",
+    options: ["India", "Pakistan", "England", "West Indies"],
+    correct: 2,
+    fact: "🥈 England fell 7 runs short chasing Australia's 253/5 in the 1987 final at Eden Gardens, Kolkata — their third World Cup final defeat.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which two countries co-hosted the 1987 World Cup — the first ever held outside England?",
+    options: ["Australia and New Zealand", "India and Pakistan", "Sri Lanka and Bangladesh", "South Africa and Zimbabwe"],
+    correct: 1,
+    fact: "🌍 The 1987 World Cup was co-hosted by India and Pakistan — the first edition ever held outside England, and the first with matches reduced from 60 to 50 overs a side.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team won their maiden Cricket World Cup title in 1992, beating England by 22 runs at the MCG?",
+    options: ["Pakistan", "South Africa", "New Zealand", "Sri Lanka"],
+    correct: 0,
+    fact: "🏆 Pakistan beat England by 22 runs in the 1992 final at the MCG, Melbourne — Imran Khan's last ever ODI, and Pakistan's first World Cup title.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1992 World Cup final to Pakistan by 22 runs?",
+    options: ["Australia", "England", "New Zealand", "South Africa"],
+    correct: 1,
+    fact: "🥈 England lost their third World Cup final in 1992, bowled out for 227 chasing Pakistan's 249/6 at the MCG — Wasim Akram's 3/49 broke their middle order.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 1992 World Cup with a tournament-high 456 runs for New Zealand?",
+    options: ["Mark Greatbatch", "Martin Crowe", "John Wright", "Andrew Jones"],
+    correct: 1,
+    fact: "🌟 Martin Crowe scored a tournament-high 456 runs and captained New Zealand to the semi-finals in the 1992 World Cup, winning Player of the Tournament.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team won their first ever Cricket World Cup title in 1996, becoming the first host nation to win it?",
+    options: ["Sri Lanka", "Pakistan", "India", "South Africa"],
+    correct: 0,
+    fact: "🏆 Sri Lanka beat Australia by 7 wickets in the 1996 final at Gaddafi Stadium, Lahore — the first host nation ever to win the World Cup.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 1996 World Cup final to Sri Lanka by 7 wickets?",
+    options: ["Pakistan", "Australia", "India", "West Indies"],
+    correct: 1,
+    fact: "🥈 Australia were restricted to 241/7 and then chased down by Sri Lanka's 7-wicket win in the 1996 final in Lahore — Aravinda de Silva scored an unbeaten 107 and took 3 wickets to win Player of the Match.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 1996 World Cup with 221 runs and 7 wickets, revolutionising ODI opening batting?",
+    options: ["Arjuna Ranatunga", "Sanath Jayasuriya", "Aravinda de Silva", "Romesh Kaluwitharana"],
+    correct: 1,
+    fact: "🌟 Sanath Jayasuriya's explosive opening batting (221 runs, 7 wickets) won him Player of the Tournament in 1996 and changed how ODI cricket was played, attacking the fielding restrictions from ball one.",
+    era: "1990s",
     category: "odi"
   },
 
