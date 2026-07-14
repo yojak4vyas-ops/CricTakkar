@@ -774,7 +774,7 @@ const questionBank = [
     category: "ipl"
   },
 
-  // ===== TEST CRICKET (26) =====
+  // ===== TEST CRICKET (36) =====
   {
     question: "Who holds the record for the highest individual score in Test cricket with 400*?",
     options: ["Sachin Tendulkar", "Matthew Hayden", "Virender Sehwag", "Brian Lara"],
@@ -981,6 +981,86 @@ const questionBank = [
     options: ["India", "England", "South Africa", "New Zealand"],
     correct: 2,
     fact: "🏆 South Africa won the 2025 World Test Championship final at Lord's, defeating Australia under captain Temba Bavuma — their first WTC title.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which team was runner-up in the first ever World Test Championship final in 2021?",
+    options: ["India", "England", "Australia", "South Africa"],
+    correct: 0,
+    fact: "🥈 India lost the inaugural WTC final to New Zealand by 8 wickets at Southampton in 2021 — India would go on to reach two more WTC finals (2023 and 2025's precursor cycle) without winning the title.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "At which venue was the 2021 World Test Championship final between India and New Zealand played?",
+    options: ["Lord's, London", "The Oval, London", "The Rose Bowl, Southampton", "Old Trafford, Manchester"],
+    correct: 2,
+    fact: "🏟️ The 2021 WTC final was originally scheduled for Lord's but moved to the Rose Bowl, Southampton — its on-site hotels made it easier to maintain a COVID-19 bio-bubble.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Who was Player of the Match in the 2021 WTC final for his all-round performance with the ball and bat?",
+    options: ["Tim Southee", "Kyle Jamieson", "Kane Williamson", "Ravindra Jadeja"],
+    correct: 1,
+    fact: "⭐ Kyle Jamieson took 5/31 and 2/30 with the ball and scored 21 runs in New Zealand's 8-wicket win over India in the 2021 WTC final.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which team won the 2023 World Test Championship final, beating India by 209 runs?",
+    options: ["England", "Australia", "South Africa", "New Zealand"],
+    correct: 1,
+    fact: "🏆 Australia beat India by 209 runs at The Oval in June 2023 to win their first ever WTC title — and become the first team to hold the World Test Championship, ODI World Cup, and T20 World Cup titles at once.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which team was runner-up in the 2023 World Test Championship final?",
+    options: ["New Zealand", "England", "India", "Pakistan"],
+    correct: 2,
+    fact: "🥈 India lost the 2023 WTC final to Australia by 209 runs at The Oval, having also lost the 2021 final to New Zealand — back-to-back WTC final defeats.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "At which venue was the 2023 World Test Championship final between Australia and India played?",
+    options: ["Lord's, London", "The Oval, London", "The Rose Bowl, Southampton", "Edgbaston, Birmingham"],
+    correct: 1,
+    fact: "🏟️ The 2023 WTC final was played at The Oval in London from 7-11 June 2023 — Australia's Travis Head and Steve Smith both scored centuries to set up the win.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Who was Player of the Match in the 2023 WTC final after scoring 163 in Australia's first innings?",
+    options: ["Steve Smith", "Marnus Labuschagne", "Travis Head", "Pat Cummins"],
+    correct: 2,
+    fact: "⭐ Travis Head's 163 in Australia's first innings of 469 was the platform for their 209-run win over India in the 2023 WTC final at The Oval.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which team was runner-up in the 2025 World Test Championship final at Lord's?",
+    options: ["India", "England", "New Zealand", "Australia"],
+    correct: 3,
+    fact: "🥈 Australia lost the 2025 WTC final to South Africa by 5 wickets at Lord's — South Africa's win ended a 27-year wait for an ICC title, their first since the 1998 ICC KnockOut Trophy.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Who was Player of the Match in the 2025 WTC final after scoring 136 in South Africa's second innings run chase?",
+    options: ["Temba Bavuma", "Kagiso Rabada", "Aiden Markram", "Marco Jansen"],
+    correct: 2,
+    fact: "⭐ Aiden Markram's 136 steered South Africa to a 5-wicket win over Australia at Lord's in the 2025 WTC final — Kagiso Rabada also took a 5-wicket haul in the same match.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which country has hosted all three World Test Championship finals played so far (2021, 2023, 2025)?",
+    options: ["India", "Australia", "England", "South Africa"],
+    correct: 2,
+    fact: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 Every WTC final so far has been played in England — Southampton (2021), The Oval (2023), and Lord's (2025) — since the ICC uses neutral English venues for the showpiece final.",
     era: "2020s",
     category: "test"
   },
