@@ -985,7 +985,7 @@ const questionBank = [
     category: "test"
   },
 
-  // ===== ODI CRICKET (52) =====
+  // ===== ODI CRICKET (70) =====
   {
     question: "Who scored the first ever double century (200*) in ODI cricket?",
     options: ["Rohit Sharma", "Martin Guptill", "Virender Sehwag", "Sachin Tendulkar"],
@@ -1401,6 +1401,150 @@ const questionBank = [
     correct: 2,
     fact: "🏟️ The 1996 World Cup final was played at the Gaddafi Stadium, Lahore on 17 March 1996 — Sri Lanka's maiden title, the first ever won by a host nation.",
     era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2011 ODI World Cup, their first title since 1983?",
+    options: ["Sri Lanka", "India", "Pakistan", "South Africa"],
+    correct: 1,
+    fact: "🏆 India beat Sri Lanka by 6 wickets at Wankhede Stadium, Mumbai on 2 April 2011 — their second World Cup title, and the first time any country won the tournament on home soil.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 2011 World Cup final to India by 6 wickets?",
+    options: ["Pakistan", "Sri Lanka", "Australia", "South Africa"],
+    correct: 1,
+    fact: "🥈 Sri Lanka fell 6 wickets short despite Mahela Jayawardene's unbeaten 103 — the first time two Asian teams had ever contested a World Cup final.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2011 World Cup final for his unbeaten 91?",
+    options: ["Gautam Gambhir", "Sachin Tendulkar", "MS Dhoni", "Virender Sehwag"],
+    correct: 2,
+    fact: "🏏 MS Dhoni's unbeaten 91 off 79 balls, finished off with a six over long-on, won him Man of the Match in the 2011 final.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 2015 World Cup final to Australia by 7 wickets?",
+    options: ["India", "New Zealand", "South Africa", "Pakistan"],
+    correct: 1,
+    fact: "🥈 Co-hosts New Zealand were bowled out for 183 in the 2015 final, then Australia chased it down for their 5th title.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2015 World Cup final for his 3/36?",
+    options: ["Mitchell Starc", "James Faulkner", "Mitchell Johnson", "Brad Haddin"],
+    correct: 1,
+    fact: "🎳 James Faulkner took 3/36 for Australia in the low-scoring 2015 final to win Man of the Match.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 2015 World Cup with 22 wickets for Australia?",
+    options: ["Mitchell Johnson", "Josh Hazlewood", "Mitchell Starc", "James Faulkner"],
+    correct: 2,
+    fact: "🌟 Mitchell Starc took 22 wickets at an average of 10.18 to win Player of the Tournament in the 2015 World Cup.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which two countries co-hosted the 2015 World Cup?",
+    options: ["England and Wales", "India and Sri Lanka", "Australia and New Zealand", "South Africa and Zimbabwe"],
+    correct: 2,
+    fact: "🌏 The 2015 World Cup was co-hosted by Australia and New Zealand, across 14 venues in both countries.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "At which stadium was the 2015 World Cup final played?",
+    options: ["Sydney Cricket Ground", "Melbourne Cricket Ground", "Eden Park", "The Gabba"],
+    correct: 1,
+    fact: "🏟️ The 2015 World Cup final was played at the Melbourne Cricket Ground on 29 March 2015, in front of a record Australian cricket crowd of over 93,000.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the dramatic, tied 2019 World Cup final to England on the boundary countback rule?",
+    options: ["Australia", "New Zealand", "India", "Pakistan"],
+    correct: 1,
+    fact: "🥈 New Zealand tied the 2019 final with England — and the Super Over too — but lost on the boundary countback rule, cricket's most controversial tiebreaker.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2019 World Cup final for his unbeaten 84?",
+    options: ["Jos Buttler", "Eoin Morgan", "Ben Stokes", "Jofra Archer"],
+    correct: 2,
+    fact: "🏏 Ben Stokes scored an unbeaten 84 off 98 balls, then 8 more in the Super Over, to win Man of the Match in the epic 2019 final.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 2019 World Cup despite New Zealand losing the final?",
+    options: ["Trent Boult", "Ross Taylor", "Kane Williamson", "Tom Latham"],
+    correct: 2,
+    fact: "🌟 Kane Williamson scored 578 runs and captained New Zealand to the final, winning Player of the Tournament in 2019 despite the runners-up finish.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which two countries co-hosted the 2019 World Cup?",
+    options: ["England and Scotland", "England and Wales", "England and Ireland", "England only"],
+    correct: 1,
+    fact: "🌏 The 2019 World Cup was hosted across 10 venues in England and 1 in Wales — the fifth time England had hosted the tournament.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "At which venue was the dramatic tied 2019 World Cup final played?",
+    options: ["The Oval", "Lord's", "Edgbaston", "Old Trafford"],
+    correct: 1,
+    fact: "🏟️ The 2019 World Cup final was played at Lord's, London on 14 July 2019 — England's maiden World Cup title, on the boundary countback rule.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team lost the 2023 World Cup final to Australia by 6 wickets on home soil?",
+    options: ["India", "Pakistan", "South Africa", "New Zealand"],
+    correct: 0,
+    fact: "🥈 Host nation India lost the 2023 final to Australia by 6 wickets at Ahmedabad, despite going unbeaten through the entire group stage.",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2023 World Cup final for his 137 off 120 balls?",
+    options: ["David Warner", "Travis Head", "Steve Smith", "Marnus Labuschagne"],
+    correct: 1,
+    fact: "🏏 Travis Head scored 137 off 120 balls to win Man of the Match and steer Australia to their 6th World Cup title in 2023.",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Who was Player of the Tournament in the 2023 World Cup with a record 765 runs, despite India losing the final?",
+    options: ["Rohit Sharma", "Virat Kohli", "Shubman Gill", "KL Rahul"],
+    correct: 1,
+    fact: "🌟 Virat Kohli scored a tournament-record 765 runs, including 3 centuries, to win Player of the Tournament in 2023 — 92 more than Sachin Tendulkar's previous record.",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Which country hosted the entire 2023 World Cup?",
+    options: ["Pakistan", "England", "India", "Australia"],
+    correct: 2,
+    fact: "🌏 India hosted the entire 2023 World Cup by itself, across 10 venues.",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "At which stadium was the 2023 World Cup final played?",
+    options: ["Wankhede Stadium", "Eden Gardens", "Narendra Modi Stadium", "M. Chinnaswamy Stadium"],
+    correct: 2,
+    fact: "🏟️ The 2023 World Cup final was played at the Narendra Modi Stadium, Ahmedabad on 19 November 2023 — its first ever World Cup final.",
+    era: "2020s",
     category: "odi"
   },
 
