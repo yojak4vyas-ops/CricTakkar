@@ -1692,7 +1692,7 @@ const questionBank = [
     category: "odi"
   },
 
-  // ===== T20 CRICKET (42) =====
+  // ===== T20 CRICKET (60) =====
   {
     question: "Which country has won the most T20 World Cup titles as of June 2026?",
     options: ["West Indies", "England", "India", "Australia"],
@@ -2028,6 +2028,150 @@ const questionBank = [
     correct: 1,
     fact: "🎯 Jasprit Bumrah took 4/15 in the 2026 T20 World Cup final. India's 255/5 was the first 200-plus total ever posted in a T20 World Cup final.",
     era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who won the T20 World Cup 2009?",
+    options: ["Sri Lanka", "India", "Pakistan", "England"],
+    correct: 2,
+    fact: "🏆 Pakistan won the T20 World Cup 2009, beating Sri Lanka by 8 wickets in the final.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Which team was the runner-up in the T20 World Cup 2009 final?",
+    options: ["Sri Lanka", "South Africa", "West Indies", "New Zealand"],
+    correct: 0,
+    fact: "🥈 Sri Lanka lost the T20 World Cup 2009 final to Pakistan by 8 wickets.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Which country hosted the T20 World Cup 2009?",
+    options: ["South Africa", "England", "West Indies", "India"],
+    correct: 1,
+    fact: "🏏 England hosted the T20 World Cup 2009, with the final played at Lord's.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the T20 World Cup 2009 final between Pakistan and Sri Lanka?",
+    options: ["The Oval", "Lord's", "Old Trafford", "Edgbaston"],
+    correct: 1,
+    fact: "🏟️ The T20 World Cup 2009 final was played at Lord's, London on 21 June 2009.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the T20 World Cup 2009 final for his unbeaten 54?",
+    options: ["Younis Khan", "Umar Gul", "Shahid Afridi", "Kamran Akmal"],
+    correct: 2,
+    fact: "🌟 Shahid Afridi hit an unbeaten 54 to guide Pakistan to victory in the 2009 final, earning Player of the Match.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the T20 World Cup 2009?",
+    options: ["Kevin Pietersen", "Tillakaratne Dilshan", "Shahid Afridi", "Yuvraj Singh"],
+    correct: 1,
+    fact: "🎯 Tillakaratne Dilshan of Sri Lanka was Player of the Tournament at the T20 World Cup 2009, scoring 317 runs at an average of 63.40 — despite his team losing the final.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Who won the T20 World Cup 2010?",
+    options: ["Australia", "India", "England", "Pakistan"],
+    correct: 2,
+    fact: "🏆 England won the T20 World Cup 2010, beating Australia by 7 wickets in the final — their first ever ICC world title in any format.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which team was the runner-up in the T20 World Cup 2010 final?",
+    options: ["Australia", "Sri Lanka", "Pakistan", "South Africa"],
+    correct: 0,
+    fact: "🥈 Australia lost the T20 World Cup 2010 final to England by 7 wickets in Barbados.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which region hosted the T20 World Cup 2010?",
+    options: ["South Africa", "West Indies", "Sri Lanka", "Bangladesh"],
+    correct: 1,
+    fact: "🏏 The West Indies hosted the T20 World Cup 2010, with matches played across Barbados, Guyana and St Vincent.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the T20 World Cup 2010 final between England and Australia?",
+    options: ["Providence Stadium, Guyana", "Kensington Oval, Barbados", "Sabina Park, Jamaica", "Arnos Vale, St Vincent"],
+    correct: 1,
+    fact: "🏟️ The T20 World Cup 2010 final was played at Kensington Oval in Bridgetown, Barbados on 16 May 2010.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the T20 World Cup 2010 final for his 63?",
+    options: ["Kevin Pietersen", "Craig Kieswetter", "Eoin Morgan", "Michael Lumb"],
+    correct: 1,
+    fact: "🌟 Craig Kieswetter scored 63 off 49 balls, earning Player of the Match as England beat Australia in the 2010 final.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the T20 World Cup 2010?",
+    options: ["Craig Kieswetter", "Mike Hussey", "Kevin Pietersen", "Dwayne Bravo"],
+    correct: 2,
+    fact: "🎯 Kevin Pietersen of England was Player of the Tournament at the T20 World Cup 2010, scoring 248 runs at an average of 62.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who won the T20 World Cup 2012?",
+    options: ["Sri Lanka", "West Indies", "Australia", "South Africa"],
+    correct: 1,
+    fact: "🏆 West Indies won the T20 World Cup 2012, beating hosts Sri Lanka by 36 runs in the final — their first World Twenty20 title.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which team was the runner-up in the T20 World Cup 2012 final?",
+    options: ["Sri Lanka", "Australia", "Pakistan", "India"],
+    correct: 0,
+    fact: "🥈 Sri Lanka lost the T20 World Cup 2012 final to West Indies by 36 runs on home soil in Colombo.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which country hosted the T20 World Cup 2012?",
+    options: ["Bangladesh", "Sri Lanka", "India", "UAE"],
+    correct: 1,
+    fact: "🏏 Sri Lanka hosted the T20 World Cup 2012, the second time the tournament was held there.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the T20 World Cup 2012 final between Sri Lanka and West Indies?",
+    options: ["Pallekele Stadium", "R. Premadasa Stadium, Colombo", "Galle International Stadium", "Hambantota Stadium"],
+    correct: 1,
+    fact: "🏟️ The T20 World Cup 2012 final was played at the R. Premadasa Stadium in Colombo on 7 October 2012.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the T20 World Cup 2012 final for his 78 off 56 balls?",
+    options: ["Chris Gayle", "Marlon Samuels", "Sunil Narine", "Darren Sammy"],
+    correct: 1,
+    fact: "🌟 Marlon Samuels scored 78 off 56 balls and took 1/15, earning Player of the Match as West Indies beat Sri Lanka in the 2012 final.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the T20 World Cup 2012?",
+    options: ["Marlon Samuels", "Ajantha Mendis", "Shane Watson", "Kieron Pollard"],
+    correct: 2,
+    fact: "🎯 Shane Watson of Australia was Player of the Tournament at the T20 World Cup 2012, with 249 runs and 11 wickets — the most of any player in both categories.",
+    era: "2010s",
     category: "t20"
   },
 
