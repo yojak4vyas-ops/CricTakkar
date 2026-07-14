@@ -1692,7 +1692,7 @@ const questionBank = [
     category: "odi"
   },
 
-  // ===== T20 CRICKET (22) =====
+  // ===== T20 CRICKET (42) =====
   {
     question: "Which country has won the most T20 World Cup titles as of June 2026?",
     options: ["West Indies", "England", "India", "Australia"],
@@ -1867,6 +1867,166 @@ const questionBank = [
     options: ["David Warner", "Glenn Maxwell", "Steve Smith", "Aaron Finch"],
     correct: 1,
     fact: "💥 Rohit Sharma and Glenn Maxwell are tied with 5 T20I centuries each — the most by any batsman. Rohit's record is now final since he retired from T20Is after India's 2024 T20 World Cup win.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who lost the final of the inaugural 2007 T20 World Cup to India?",
+    options: ["Pakistan", "Sri Lanka", "South Africa", "Australia"],
+    correct: 0,
+    fact: "🥈 Pakistan were runners-up in the first ever T20 World Cup, losing to India by 5 runs in a nail-biting final at the Wanderers, Johannesburg.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Which country hosted the inaugural 2007 ICC World Twenty20?",
+    options: ["India", "England", "South Africa", "West Indies"],
+    correct: 2,
+    fact: "🌍 South Africa hosted the first ever T20 World Cup in September 2007 — the tournament that launched the format's biggest global stage.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the 2007 T20 World Cup final between India and Pakistan?",
+    options: ["Newlands, Cape Town", "The Wanderers, Johannesburg", "Kingsmead, Durban", "SuperSport Park, Centurion"],
+    correct: 1,
+    fact: "🏟️ The 2007 T20 World Cup final was played at the Wanderers Stadium in Johannesburg on 24 September 2007.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the 2007 T20 World Cup final for his 3/16 against Pakistan?",
+    options: ["RP Singh", "Joginder Sharma", "Irfan Pathan", "Harbhajan Singh"],
+    correct: 2,
+    fact: "🎯 Irfan Pathan took 3/16 to win Player of the Match in the 2007 T20 World Cup final, alongside RP Singh's 3/26 in restricting Pakistan's chase.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the inaugural 2007 T20 World Cup?",
+    options: ["Yuvraj Singh", "Shahid Afridi", "Chris Gayle", "Umar Gul"],
+    correct: 1,
+    fact: "🌟 Pakistan's Shahid Afridi was the first ever Player of the Tournament at a T20 World Cup, taking 12 wickets in the 2007 edition despite his team losing the final.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Which team lost the 2021 T20 World Cup final to Australia?",
+    options: ["England", "New Zealand", "Pakistan", "South Africa"],
+    correct: 1,
+    fact: "🥈 New Zealand were runners-up at the 2021 T20 World Cup, losing to Australia by 8 wickets in the final at Dubai International Stadium.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which country was the official host of the 2021 T20 World Cup, even though it was played in the UAE and Oman?",
+    options: ["India", "England", "Sri Lanka", "Pakistan"],
+    correct: 0,
+    fact: "🇮🇳 India remained the official host of the 2021 T20 World Cup, but the BCCI moved the tournament to the UAE and Oman due to the COVID-19 situation in the country.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the 2021 T20 World Cup final between Australia and New Zealand?",
+    options: ["Sharjah Cricket Stadium", "Dubai International Cricket Stadium", "Sheikh Zayed Stadium, Abu Dhabi", "Zayed Cricket Stadium, Oman"],
+    correct: 1,
+    fact: "🏟️ The 2021 T20 World Cup final was played at Dubai International Cricket Stadium on 14 November 2021.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the 2021 T20 World Cup final for his unbeaten 77 off 50 balls?",
+    options: ["David Warner", "Mitchell Marsh", "Aaron Finch", "Glenn Maxwell"],
+    correct: 1,
+    fact: "💥 Mitchell Marsh smashed an unbeaten 77 off just 50 balls to win Player of the Match and fire Australia to their maiden T20 World Cup title in 2021.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who was named Player of the Tournament at the 2021 T20 World Cup?",
+    options: ["Mitchell Marsh", "David Warner", "Josh Hazlewood", "Adam Zampa"],
+    correct: 1,
+    fact: "🌟 David Warner was Player of the Tournament at the 2021 T20 World Cup, scoring 289 runs at an average of 48.16 during Australia's title run.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which team lost the 2022 T20 World Cup final to England at the MCG?",
+    options: ["India", "New Zealand", "Pakistan", "South Africa"],
+    correct: 2,
+    fact: "🥈 Pakistan were runners-up at the 2022 T20 World Cup, losing to England by 5 wickets in the final at the MCG.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which country hosted the 2022 T20 World Cup?",
+    options: ["England", "India", "Australia", "UAE"],
+    correct: 2,
+    fact: "🇦🇺 Australia hosted the 2022 T20 World Cup, across seven venues including Adelaide, Perth, Sydney and Melbourne.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the 2022 T20 World Cup final between England and Pakistan?",
+    options: ["Sydney Cricket Ground", "Adelaide Oval", "Melbourne Cricket Ground", "The Gabba, Brisbane"],
+    correct: 2,
+    fact: "🏟️ The 2022 T20 World Cup final was played at the Melbourne Cricket Ground on 13 November 2022, in front of over 80,000 fans.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the 2022 T20 World Cup final for his 3/12 against Pakistan?",
+    options: ["Ben Stokes", "Adil Rashid", "Sam Curran", "Chris Jordan"],
+    correct: 2,
+    fact: "🎯 Sam Curran took 3/12 to win Player of the Match in the 2022 T20 World Cup final, capping a tournament in which he also won Player of the Tournament.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who won both Player of the Match in the final and Player of the Tournament at the 2022 T20 World Cup?",
+    options: ["Ben Stokes", "Sam Curran", "Jos Buttler", "Mark Wood"],
+    correct: 1,
+    fact: "🌟 England's Sam Curran took 13 wickets across the 2022 T20 World Cup to win Player of the Tournament, then sealed the title with 3/12 in the final.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which team lost the 2024 T20 World Cup final to India by 7 runs?",
+    options: ["Australia", "England", "South Africa", "Afghanistan"],
+    correct: 2,
+    fact: "🥈 South Africa were runners-up at the 2024 T20 World Cup, losing to India by 7 runs in the final at Kensington Oval, Barbados — it was South Africa's first ever final at any men's cricket World Cup, ODI or T20.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the 2024 T20 World Cup final for his 76 off 59 balls?",
+    options: ["Rohit Sharma", "Virat Kohli", "Suryakumar Yadav", "Axar Patel"],
+    correct: 1,
+    fact: "🏏 Virat Kohli scored 76 off 59 balls to win Player of the Match in the 2024 T20 World Cup final — his 8th Player-of-the-Match award at a T20 World Cup, the most by any player.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which team lost the 2026 T20 World Cup final to India by 96 runs?",
+    options: ["Australia", "New Zealand", "England", "South Africa"],
+    correct: 1,
+    fact: "🥈 New Zealand were runners-up at the 2026 T20 World Cup, losing to India by 96 runs in the final at Ahmedabad.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "What was the venue of the 2026 T20 World Cup final between India and New Zealand?",
+    options: ["Eden Gardens, Kolkata", "Wankhede Stadium, Mumbai", "Narendra Modi Stadium, Ahmedabad", "M. Chinnaswamy Stadium, Bengaluru"],
+    correct: 2,
+    fact: "🏟️ The 2026 T20 World Cup final was played at the Narendra Modi Stadium in Ahmedabad — the world's largest cricket stadium, with a seating capacity of around 132,000.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Who was Player of the Match in the 2026 T20 World Cup final for his 4/15 against New Zealand?",
+    options: ["Varun Chakravarthy", "Jasprit Bumrah", "Arshdeep Singh", "Suryakumar Yadav"],
+    correct: 1,
+    fact: "🎯 Jasprit Bumrah took 4/15 in the 2026 T20 World Cup final. India's 255/5 was the first 200-plus total ever posted in a T20 World Cup final.",
     era: "2020s",
     category: "t20"
   },
