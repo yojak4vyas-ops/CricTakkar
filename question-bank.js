@@ -985,7 +985,7 @@ const questionBank = [
     category: "test"
   },
 
-  // ===== ODI CRICKET (34) =====
+  // ===== ODI CRICKET (44) =====
   {
     question: "Who scored the first ever double century (200*) in ODI cricket?",
     options: ["Rohit Sharma", "Martin Guptill", "Virender Sehwag", "Sachin Tendulkar"],
@@ -1256,6 +1256,86 @@ const questionBank = [
     options: ["Arjuna Ranatunga", "Sanath Jayasuriya", "Aravinda de Silva", "Romesh Kaluwitharana"],
     correct: 1,
     fact: "🌟 Sanath Jayasuriya's explosive opening batting (221 runs, 7 wickets) won him Player of the Tournament in 1996 and changed how ODI cricket was played, attacking the fielding restrictions from ball one.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which country hosted the 1979 Cricket World Cup, the tournament's second edition?",
+    options: ["India", "Australia", "England", "West Indies"],
+    correct: 2,
+    fact: "🏟️ The 1979 World Cup was held entirely in England, just like the first edition in 1975 — the tournament didn't move outside England until 1987.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "At which iconic venue was the 1979 World Cup final played?",
+    options: ["The Oval", "Lord's", "Old Trafford", "Edgbaston"],
+    correct: 1,
+    fact: "🏟️ The 1979 World Cup final was played at Lord's, London on 23 June 1979 — West Indies' second straight title, won there.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Player of the Match in the 1987 World Cup final for his 75 runs?",
+    options: ["Allan Border", "David Boon", "Mike Veletta", "Craig McDermott"],
+    correct: 1,
+    fact: "🏏 David Boon top-scored with 75 off 125 balls for Australia in the 1987 final and was named Player of the Match, as Australia won their maiden title by 7 runs. (Note: an official Player of the Tournament award for the whole event didn't exist until 1992, so 1979 and 1987 only have a final Player of the Match, not a tournament-wide one.)",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "At which stadium was the 1987 World Cup final played?",
+    options: ["Wankhede Stadium", "Eden Gardens", "Narendra Modi Stadium", "Gaddafi Stadium"],
+    correct: 1,
+    fact: "🏟️ The 1987 World Cup final was played at Eden Gardens, Kolkata on 8 November 1987 — Australia beat England by 7 runs in front of around 70,000 spectators.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Player of the Match in the 1992 World Cup final for his match-winning bowling spell?",
+    options: ["Imran Khan", "Wasim Akram", "Aaqib Javed", "Javed Miandad"],
+    correct: 1,
+    fact: "🎳 Wasim Akram's 3/49, including two wickets in two balls, broke England's middle order and won him Player of the Match in the 1992 final.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which two countries co-hosted the 1992 World Cup, the first edition with coloured clothing and day-night matches?",
+    options: ["England and Wales", "India and Pakistan", "Australia and New Zealand", "South Africa and Zimbabwe"],
+    correct: 2,
+    fact: "🌏 The 1992 World Cup was co-hosted by Australia and New Zealand — the first edition to feature coloured clothing, a white ball, and day-night matches.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "At which stadium was the 1992 World Cup final played?",
+    options: ["Sydney Cricket Ground", "Melbourne Cricket Ground", "The Gabba", "Adelaide Oval"],
+    correct: 1,
+    fact: "🏟️ The 1992 World Cup final was played at the Melbourne Cricket Ground on 25 March 1992 — Pakistan's maiden title, and Imran Khan's last ever ODI.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Player of the Match in the 1996 World Cup final for his unbeaten 107 and 3 wickets?",
+    options: ["Sanath Jayasuriya", "Arjuna Ranatunga", "Aravinda de Silva", "Romesh Kaluwitharana"],
+    correct: 2,
+    fact: "🏏 Aravinda de Silva scored an unbeaten 107 and took 3/42 in the 1996 final — the first player ever to score a century and take three wickets in a World Cup final, winning Player of the Match.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which three countries co-hosted the 1996 World Cup?",
+    options: ["India, Pakistan and Bangladesh", "India, Pakistan and Sri Lanka", "Pakistan, Sri Lanka and Bangladesh", "India, Sri Lanka and Bangladesh"],
+    correct: 1,
+    fact: "🌏 The 1996 World Cup was co-hosted by India, Pakistan and Sri Lanka — India staged 17 matches, Pakistan 16, and Sri Lanka 4.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "At which stadium was the 1996 World Cup final played?",
+    options: ["Wankhede Stadium", "Eden Gardens", "Gaddafi Stadium", "National Stadium, Karachi"],
+    correct: 2,
+    fact: "🏟️ The 1996 World Cup final was played at the Gaddafi Stadium, Lahore on 17 March 1996 — Sri Lanka's maiden title, the first ever won by a host nation.",
     era: "1990s",
     category: "odi"
   },
