@@ -26,7 +26,7 @@
 
 const questionBank = [
 
-  // ===== IPL (83) =====
+  // ===== IPL (93) =====
   {
     question: "Which team won the IPL 2026 title, becoming back-to-back champions?",
     options: ["Gujarat Titans", "Mumbai Indians", "Royal Challengers Bengaluru", "Chennai Super Kings"],
@@ -690,6 +690,86 @@ const questionBank = [
     options: ["Prasidh Krishna", "Umran Malik", "Kagiso Rabada", "Yuzvendra Chahal"],
     correct: 3,
     fact: "🎳 Yuzvendra Chahal took 27 wickets for Rajasthan Royals to win the IPL 2022 Purple Cap.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2023 final to Chennai Super Kings by 5 wickets?",
+    options: ["Rajasthan Royals", "Gujarat Titans", "Lucknow Super Giants", "Mumbai Indians"],
+    correct: 1,
+    fact: "🥈 Gujarat Titans lost the IPL 2023 final to Chennai Super Kings by 5 wickets in Ahmedabad, denying them back-to-back titles after winning in 2022.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2023 with 890 runs for Gujarat Titans?",
+    options: ["Faf du Plessis", "Shubman Gill", "Yashasvi Jaiswal", "Devon Conway"],
+    correct: 1,
+    fact: "🧡 Shubman Gill scored 890 runs for Gujarat Titans to win the IPL 2023 Orange Cap, including a knock of 129 in Qualifier 2 — the highest individual score in an IPL playoff match.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2023 with 28 wickets for Gujarat Titans?",
+    options: ["Rashid Khan", "Mohammed Shami", "Mohit Sharma", "Mohammed Siraj"],
+    correct: 1,
+    fact: "🎳 Mohammed Shami took 28 wickets for Gujarat Titans to win his first IPL Purple Cap in 2023.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2024 final to Kolkata Knight Riders by 8 wickets?",
+    options: ["Rajasthan Royals", "Sunrisers Hyderabad", "Royal Challengers Bengaluru", "Delhi Capitals"],
+    correct: 1,
+    fact: "🥈 Sunrisers Hyderabad lost the IPL 2024 final to Kolkata Knight Riders by 8 wickets at Chepauk, Chennai, despite their aggressive run-chasing style through the tournament.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2025 final to Royal Challengers Bengaluru by 6 runs?",
+    options: ["Punjab Kings", "Mumbai Indians", "Gujarat Titans", "Lucknow Super Giants"],
+    correct: 0,
+    fact: "🥈 Punjab Kings lost the IPL 2025 final to Royal Challengers Bengaluru by 6 runs in Ahmedabad, falling agonisingly short of their first ever IPL title.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2025 with 759 runs for Gujarat Titans?",
+    options: ["Shubman Gill", "B Sai Sudharsan", "Suryakumar Yadav", "Yashasvi Jaiswal"],
+    correct: 1,
+    fact: "🧡 B Sai Sudharsan scored 759 runs for Gujarat Titans to win the IPL 2025 Orange Cap, finishing 42 runs clear of Suryakumar Yadav in second place.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2025 with 25 wickets for Gujarat Titans?",
+    options: ["Josh Hazlewood", "Trent Boult", "Prasidh Krishna", "Mohammed Siraj"],
+    correct: 2,
+    fact: "🎳 Prasidh Krishna took 25 wickets for Gujarat Titans to win the IPL 2025 Purple Cap.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which team lost the IPL 2026 final to Royal Challengers Bengaluru by 5 wickets?",
+    options: ["Mumbai Indians", "Gujarat Titans", "Chennai Super Kings", "Punjab Kings"],
+    correct: 1,
+    fact: "🥈 Gujarat Titans lost the IPL 2026 final to Royal Challengers Bengaluru by 5 wickets at Ahmedabad, finishing runners-up for the second time in 3 seasons.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Orange Cap in IPL 2026 with 776 runs at just 15 years old?",
+    options: ["Yashasvi Jaiswal", "Vaibhav Sooryavanshi", "Sameer Rizvi", "Abhishek Sharma"],
+    correct: 1,
+    fact: "🧡 Vaibhav Sooryavanshi scored 776 runs for Rajasthan Royals to win the IPL 2026 Orange Cap at a strike rate over 237 — he was also named the tournament's Most Valuable Player and Emerging Player of the Season.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who won the Purple Cap in IPL 2026 with 29 wickets for Gujarat Titans?",
+    options: ["Bhuvneshwar Kumar", "Jofra Archer", "Kagiso Rabada", "Mohammed Shami"],
+    correct: 2,
+    fact: "🎳 Kagiso Rabada took 29 wickets for Gujarat Titans to win the IPL 2026 Purple Cap, edging out Bhuvneshwar Kumar of RCB by one wicket.",
     era: "2020s",
     category: "ipl"
   },
