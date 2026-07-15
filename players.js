@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 138 players across 11 countries
+// 150 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -559,6 +559,183 @@ const wordlePlayers = [
     // Named as Rishabh Pant's ODI replacement Jan 2026 but an actual ODI cap/debut could not be confirmed
     // — treated conservatively as not-yet-All-format, flagged for re-check in a future session.
     iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 0
+  },
+
+  // ===== INDIA — CAP-NUMBER EXPANSION, BATCH 2 (Test caps, added Day 24 session 5) =====
+  // Continuing backward from cap 311 (Sarfaraz Khan). Skipped already-in-database cap holders
+  // along the way: Yashasvi Jaiswal, Suryakumar Yadav, Axar Patel, Shubman Gill.
+  // This batch (12 players) completes India Test at 20/20 — see CLAUDE.md progress tracker.
+
+  {
+    name: "Sarfaraz Khan",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
+    // Occasional part-time bowler, listed on his ESPNcricinfo profile
+    debutYear: 2024,
+    format: "ODI",
+    // Test debut 15 Feb 2024 vs England (Rajkot) — ESPNcricinfo confirmed. Explicitly confirmed
+    // no ODI or T20I caps as of 2026 — Test-only, not All-format.
+    iplTeams: ["Royal Challengers Bangalore", "Kings XI Punjab", "Chennai Super Kings"],
+    // Confirmed no Delhi Capitals stint despite appearing in some squad-adjacent searches — ESPNcricinfo
+    iccTrophies: 0
+  },
+  {
+    name: "Rajat Patidar",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Occasional part-time bowler, listed on his ESPNcricinfo profile
+    debutYear: 2023,
+    format: "ODI",
+    // ODI debut 21 Dec 2023 vs South Africa (Paarl), Test debut 2 Feb 2024 vs England (Visakhapatnam) —
+    // ESPNcricinfo confirmed. No T20I debut found — not All-format.
+    iplTeams: ["Royal Challengers Bangalore"],
+    iccTrophies: 0
+  },
+  {
+    name: "Prasidh Krishna",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2021,
+    format: "All-format",
+    // ODI debut 2021 vs England (4/54 on debut), T20I + Test debut both 2023 — ESPNcricinfo confirmed
+    iplTeams: ["Kolkata Knight Riders", "Rajasthan Royals", "Gujarat Titans"],
+    iccTrophies: 0
+  },
+  {
+    name: "Mukesh Kumar",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    // One synthesis-noise catch: a search briefly returned "right arm offbreak" for a same-named
+    // player, almost certainly a different, unrelated "Mukesh Kumar" profile on ESPNcricinfo (there
+    // are several) — resolved via his well-documented fast-bowler background (Bengal, Delhi Capitals,
+    // "next in line after Bumrah and Shami"), not a genuine cross-source disagreement to flag.
+    debutYear: 2023,
+    format: "All-format",
+    // Debuted in all 3 formats within a 14-day span in the Caribbean, July 2023 — the shortest span
+    // ever for an India player — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Capitals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Ishan Kishan",
+    country: "India",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak combo, offbreak used as primary
+    debutYear: 2021,
+    format: "All-format",
+    // ODI and T20I debuts both 2021 (fifties on debut in both), Test debut 12 Jul 2023 vs West Indies —
+    // ESPNcricinfo confirmed
+    iplTeams: ["Gujarat Lions", "Mumbai Indians", "Sunrisers Hyderabad"],
+    iccTrophies: 1
+    // 2024 T20 World Cup winning squad — ESPNcricinfo confirmed
+  },
+  {
+    name: "Shreyas Iyer",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak/googly combo, offbreak used as primary
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 10 Dec 2017 vs Sri Lanka (Dharamsala), Test debut 2021 (century on debut vs New Zealand,
+    // Kanpur), long-established T20I player and now India's T20I captain — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils", "Delhi Capitals", "Kolkata Knight Riders", "Punjab Kings"],
+    iccTrophies: 1
+    // 2025 Champions Trophy winning squad — ESPNcricinfo confirmed
+  },
+  {
+    name: "Washington Sundar",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 13 Dec 2017 vs Sri Lanka (Mohali), T20I debut 24 Dec 2017 vs Sri Lanka (India's
+    // youngest ever men's T20I debutant at 18y80d), Test debut 2021 — ESPNcricinfo confirmed
+    iplTeams: ["Rising Pune Supergiant", "Royal Challengers Bangalore", "Sunrisers Hyderabad", "Gujarat Titans"],
+    iccTrophies: 1
+    // 2025 Champions Trophy winning squad — ESPNcricinfo confirmed
+  },
+  {
+    name: "Thangarasu Natarajan",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm medium",
+    debutYear: 2020,
+    format: "All-format",
+    // International debut December 2020 (Australia tour) in white-ball cricket, Test debut January 2021
+    // at Brisbane alongside Washington Sundar's own Test debut — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab", "Sunrisers Hyderabad", "Delhi Capitals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Navdeep Saini",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2019,
+    format: "All-format",
+    // Represented India in all 3 international formats between 2019 and 2021 — Wikipedia + ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Rajasthan Royals", "Kolkata Knight Riders"],
+    iccTrophies: 0
+  },
+  {
+    name: "Mohammed Siraj",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 2017 vs New Zealand, ODI debut 15 Jan 2019 vs Australia (Adelaide), Test debut 2020
+    // (Boxing Day Test) — ESPNcricinfo confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Royal Challengers Bangalore", "Gujarat Titans"],
+    iccTrophies: 0
+    // Left out of the 2025 Champions Trophy 15 — ESPNcricinfo confirmed
+  },
+  {
+    name: "Shahbaz Nadeem",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2019,
+    format: "ODI",
+    // Test debut 19 Oct 2019 vs South Africa (Ranchi) — ESPNcricinfo confirmed. No evidence of ODI or
+    // T20I caps found — Test-only, not All-format.
+    iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad"],
+    // Signed by Lucknow Super Giants for 2022 but did not play a match — excluded per the
+    // "signed but never played" rule (see Stuart Broad/Axar Patel precedent)
+    iccTrophies: 0
+  },
+  {
+    name: "Mayank Agarwal",
+    country: "India",
+    role: "Batsman",
+    // No source could confirm a bowling record either way — flagged as unconfirmed rather than
+    // proven NA, same treatment as KL Rahul (see Cricket Wordle Player Data Rule)
+    bowlingStyle: "NA",
+    battingStyle: "Right-hand",
+    debutYear: 2018,
+    format: "ODI",
+    // Test debut 2018, ODI debut 5 Feb 2020 vs New Zealand (Hamilton) — 5 ODIs total, confirmed zero
+    // T20I caps — ESPNcricinfo confirmed, not All-format.
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Daredevils", "Rising Pune Supergiant", "Kings XI Punjab", "Punjab Kings", "Sunrisers Hyderabad"],
     iccTrophies: 0
   },
 
