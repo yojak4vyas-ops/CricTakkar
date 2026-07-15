@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 171 players across 11 countries
+// 212 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -1311,6 +1311,338 @@ const wordlePlayers = [
     // (Centurion), Test debut 12 Oct 2018 vs West Indies (Hyderabad) — ESPNcricinfo confirmed
     iplTeams: ["Kings XI Punjab", "Rising Pune Supergiant", "Chennai Super Kings", "Delhi Capitals", "Kolkata Knight Riders", "Lucknow Super Giants", "Mumbai Indians"],
     iccTrophies: 0
+  },
+
+  // ===== INDIA — ROUND 1 (POPULAR PLAYERS PASS, Day 25) =====
+  // Top 15 all-time Test run-scorers + top 15 all-time Test wicket-takers for India,
+  // cross-checked against ESPNcricinfo (records + Wikipedia infobox tables) + Wikipedia +
+  // ICC official records; Cricbuzz unreachable (standing limitation, flagged per rule).
+  // 12 new names after dedup against the existing 191-player database.
+
+  {
+    name: "Cheteshwar Pujara",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Bowled 12 balls in Tests (0 wickets) — has bowled internationally, so not NA per the
+    // NA rule. ESPNcricinfo/Wikipedia confirm right-arm legbreak.
+    bowlingStyle: "Right-arm legbreak",
+    debutYear: 2010,
+    format: "ODI",
+    // Test debut 9 Oct 2010 vs Australia, 5 ODIs (2013-14), zero T20Is confirmed —
+    // ESPNcricinfo + Wikipedia infobox (no T20I row at all)
+    iplTeams: ["Kolkata Knight Riders", "Royal Challengers Bangalore", "Kings XI Punjab", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Dilip Vengsarkar",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Bowled 47 balls in Tests, 6 in ODIs (0 wickets both) — has bowled internationally,
+    // so not NA. ESPNcricinfo + Wikipedia confirm right-arm medium.
+    bowlingStyle: "Right-arm medium",
+    debutYear: 1976,
+    format: "ODI",
+    // Career 1976-1992, retired before T20I existed (2005) — same pattern as Kapil
+    // Dev/Ganguly/Wasim/Warne corrections. Never played IPL (retired 1992, before 2008).
+    iplTeams: [],
+    // 1983 World Cup winning squad (retired hurt during the WI group match but on the
+    // winning squad) — ESPNcricinfo + Wikipedia confirmed. 1985 World Championship of
+    // Cricket and 1988 Asia Cup are not ICC events, not counted.
+    iccTrophies: 1
+  },
+  {
+    name: "Mohammad Azharuddin",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // 0 wickets in 13 Test balls, but 12 wickets in 552 ODI balls — has a confirmed
+    // international bowling record, so not NA. ESPNcricinfo + Wikipedia confirm right-arm medium.
+    bowlingStyle: "Right-arm medium",
+    debutYear: 1984,
+    format: "ODI",
+    // Career 1984-2000, retired before T20I existed. Never played IPL (retired 2000).
+    iplTeams: [],
+    // Played 1992/1996/1999 World Cups, all losses (Pakistan/Sri Lanka/Australia won
+    // respectively) — 0 ICC trophies, ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Gundappa Viswanath",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // 1 wicket in 70 Test balls — has bowled internationally, so not NA. ESPNcricinfo +
+    // Wikipedia confirm legbreak.
+    bowlingStyle: "Legbreak",
+    debutYear: 1969,
+    format: "ODI",
+    // 91 Tests (1969-1983), 25 ODIs (1974-1982) including the 1975 and 1979 World Cups
+    // (neither won by India), retired before T20I existed. Never played IPL (retired 1983).
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Ajinkya Rahane",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2011,
+    format: "All-format",
+    // T20I debut 31 Aug 2011 vs England (earliest cap), ODI debut 3 Sep 2011 vs England,
+    // Test debut 22 Mar 2013 vs Australia — 85 Tests, 90 ODIs, 20 T20Is, Wikipedia infobox confirmed
+    iplTeams: ["Mumbai Indians", "Rajasthan Royals", "Rising Pune Supergiant", "Delhi Capitals", "Kolkata Knight Riders", "Chennai Super Kings"],
+    // Not part of the 2013 Champions Trophy squad (confirmed via ESPNcricinfo squad list) or
+    // any other ICC-winning squad during his career (2011-2023) — 0 trophies
+    iccTrophies: 0
+  },
+  {
+    name: "Mohinder Amarnath",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 1969,
+    format: "ODI",
+    // Career 1969-1989, retired before T20I existed. Never played IPL (retired 1989).
+    iplTeams: [],
+    // 1983 World Cup winner — Player of the Match in BOTH the semi-final (vs England) and
+    // the final (vs West Indies) — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 1
+  },
+  {
+    name: "Bishan Singh Bedi",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 1966,
+    format: "ODI",
+    // 67 Tests (1966-1979), 10 ODIs (1974-1979), retired before T20I existed. Never played
+    // IPL (retired 1979).
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "BS Chandrasekhar",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Legbreak",
+    debutYear: 1964,
+    format: "ODI",
+    // 58 Tests (1964-1979), only 1 ODI (1976, took 3 wickets) — still counts as ODI format
+    // per the "even 1 cap counts" precedent (e.g. Dravid's 1 T20I). Never played IPL.
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Javagal Srinath",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1991,
+    format: "ODI",
+    // ODI debut 18 Oct 1991 vs Pakistan (earliest), Test debut 29 Nov 1991 vs Australia,
+    // retired 2003 before T20I existed. Never played IPL (retired 2003, before 2008).
+    iplTeams: [],
+    // 2002 ICC Champions Trophy joint-winners with Sri Lanka (rain-affected final, shared
+    // title) — counted as 1 trophy per the standing joint-winner rule (see file header note),
+    // ESPNcricinfo + Wikipedia confirmed. Runner-up (not a win) at the 2003 World Cup.
+    iccTrophies: 1
+  },
+  {
+    name: "Erapalli Prasanna",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 1962,
+    format: "Test",
+    // 49 Tests (1962-1978) — Wikipedia infobox shows no ODI or T20I row at all; never
+    // played an ODI. Never played IPL (retired 1978).
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Umesh Yadav",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2010,
+    format: "All-format",
+    // ODI debut 28 May 2010 vs Zimbabwe (earliest), Test debut 6 Nov 2011 vs West Indies,
+    // T20I debut 7 Aug 2012 vs Sri Lanka — Wikipedia infobox confirmed
+    // Dedicated IPL-history search confirmed actual match appearances (not just signings)
+    // for all 5 franchises below
+    iplTeams: ["Delhi Daredevils", "Kolkata Knight Riders", "Royal Challengers Bangalore", "Delhi Capitals", "Gujarat Titans"],
+    // 2013 ICC Champions Trophy winning squad — Wikipedia confirmed
+    iccTrophies: 1
+  },
+  {
+    name: "Vinoo Mankad",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 1946,
+    format: "Test",
+    // 44 Tests (1946-1959) — retired well before ODIs (1971) or T20Is existed. Never
+    // played IPL.
+    iplTeams: [],
+    iccTrophies: 0
+  },
+
+  // ===== INDIA — ROUND 1 CONTINUED (ODI, Day 25) =====
+  // Top 15 all-time ODI run-scorers + top 15 all-time ODI wicket-takers for India,
+  // cross-checked against ESPNcricinfo (records tables) + Wikipedia infobox tables;
+  // Cricbuzz unreachable (standing limitation, flagged per rule). 9 new names after
+  // dedup against the database (6 more got added to Test Round 1 already covered them).
+
+  {
+    name: "Shikhar Dhawan",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // 0 wickets in 54 Test balls — has bowled internationally, so not NA. ESPNcricinfo +
+    // Wikipedia confirm right-arm offbreak.
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2010,
+    format: "All-format",
+    // ODI debut 20 Oct 2010 vs Australia (earliest), Test debut 14 Mar 2013 vs Australia,
+    // T20I debut 4 Jun 2011 vs West Indies — Wikipedia infobox confirmed
+    iplTeams: ["Delhi Daredevils", "Mumbai Indians", "Deccan Chargers", "Sunrisers Hyderabad", "Delhi Capitals", "Punjab Kings"],
+    // 2013 Champions Trophy winner, Player of the Tournament — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 1
+  },
+  {
+    name: "Suresh Raina",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2005,
+    format: "All-format",
+    // ODI debut 30 Jul 2005 vs Sri Lanka (earliest), T20I debut 1 Dec 2006 vs South Africa,
+    // Test debut 26 Jul 2010 vs Sri Lanka — Wikipedia infobox confirmed
+    iplTeams: ["Chennai Super Kings", "Gujarat Lions"],
+    // 2011 World Cup + 2013 Champions Trophy winner — Wikipedia confirmed
+    iccTrophies: 2
+  },
+  {
+    name: "Ajay Jadeja",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // 20 ODI wickets — confirmed bowled internationally, not NA
+    bowlingStyle: "Right-arm medium",
+    debutYear: 1992,
+    format: "ODI",
+    // 15 Tests + 196 ODIs (1992-2000), effectively career-ending match-fixing ban in 2000
+    // before T20I existed. Never played IPL (ban predates IPL).
+    iplTeams: [],
+    // 1995 Asia Cup is an ACC event, not ICC — not counted. 0 ICC trophies.
+    iccTrophies: 0
+  },
+  {
+    name: "Gautam Gambhir",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // No bowling record found on ESPNcricinfo or Wikipedia (infobox lists "right-arm leg
+    // break" as a nominal style but shows no balls-bowled/wickets row at all across any
+    // format) — could not confirm whether he ever bowled a delivery internationally either
+    // way, so marked NA with this flag rather than asserted as a proven zero-ball record,
+    // same treatment as KL Rahul's bowling style
+    bowlingStyle: "NA",
+    debutYear: 2003,
+    format: "All-format",
+    // ODI debut 11 Apr 2003 vs Bangladesh (earliest), Test debut 3 Nov 2004 vs Australia,
+    // T20I debut 13 Sep 2007 vs Scotland — Wikipedia infobox confirmed
+    iplTeams: ["Delhi Daredevils", "Kolkata Knight Riders"],
+    // 2007 T20 World Cup (final MOTM) + 2011 World Cup (top scorer in the final) — Wikipedia confirmed
+    iccTrophies: 2
+  },
+  {
+    name: "Navjot Singh Sidhu",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Wikipedia infobox lists "right-arm medium" as a nominal style but shows no
+    // balls-bowled/wickets row across any format — could not confirm whether he ever
+    // bowled internationally, so marked NA with this flag rather than asserted as proven,
+    // same treatment as KL Rahul's bowling style
+    bowlingStyle: "NA",
+    debutYear: 1983,
+    format: "ODI",
+    // 51 Tests (1983-1999), 136 ODIs (1987-1998), retired before T20I existed. Never
+    // played IPL (retired 1999).
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Kris Srikkanth",
+    country: "India",
+    role: "Batsman",
+    // 0 Test wickets but 25 ODI wickets — confirmed bowled internationally, not NA
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 1981,
+    format: "ODI",
+    // 43 Tests + 146 ODIs (1981-1992), retired before T20I existed. Never played IPL.
+    iplTeams: [],
+    // 1983 World Cup winner — top scorer for India in the final (38 runs) — ESPNcricinfo +
+    // Wikipedia confirmed. 1985 World Championship of Cricket not an ICC event, not counted.
+    iccTrophies: 1
+  },
+  {
+    name: "Venkatesh Prasad",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 1994,
+    format: "ODI",
+    // ODI debut 2 Apr 1994 vs New Zealand (earliest), Test debut 7 Jun 1996 vs England,
+    // retired 2001 before T20I existed. Never played IPL (retired 2001, before 2008).
+    iplTeams: [],
+    // Runners-up at the 2000 ICC Champions Trophy (lost final to New Zealand) — not a win,
+    // 0 ICC trophies
+    iccTrophies: 0
+  },
+  {
+    name: "Manoj Prabhakar",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 1984,
+    format: "ODI",
+    // ODI debut 8 Apr 1984 vs Sri Lanka (earliest), Test debut 12 Dec 1984 vs England,
+    // retired 1996 before T20I existed. Never played IPL.
+    iplTeams: [],
+    // 1985 World Championship of Cricket and the Asia Cups (1984/1990-91/1995) are not ICC
+    // events, not counted. 0 ICC trophies.
+    iccTrophies: 0
+  },
+  {
+    name: "Ashish Nehra",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm fast",
+    debutYear: 1999,
+    format: "All-format",
+    // Test debut 24 Feb 1999 vs Sri Lanka (earliest), ODI debut 21 Jun 2001 vs Zimbabwe,
+    // T20I debut 9 Dec 2009 vs Sri Lanka — Wikipedia infobox confirmed
+    iplTeams: ["Mumbai Indians", "Delhi Daredevils", "Pune Warriors India", "Chennai Super Kings", "Sunrisers Hyderabad"],
+    // 2002 Champions Trophy joint-winners with Sri Lanka + 2011 World Cup winner (squad
+    // member, did not play the final) — Wikipedia confirmed
+    iccTrophies: 2
   },
 
   // ===== AUSTRALIA (10 players) =====
