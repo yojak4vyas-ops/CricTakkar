@@ -2567,6 +2567,118 @@ const questionBank = [
     fact: "🏏 ODI stands for One Day International — a limited-overs format where each team bats for a maximum of 50 overs.",
     era: "General",
     category: "general"
+  },
+  {
+    question: "What is a 'hat-trick' in cricket?",
+    options: ["A batsman scoring three centuries in a row", "A bowler taking three wickets with three consecutive deliveries", "A team winning three matches in a row", "A fielder taking three catches in one over"],
+    correct: 1,
+    fact: "🎩 The term dates back to 1858, when H.H. Stephenson took 3 wickets in 3 balls and was presented with a hat — giving the feat its name.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'duck' in cricket?",
+    options: ["A batsman being dismissed without scoring any runs", "A ball that bounces twice before reaching the batsman", "A fielder dropping an easy catch", "A batsman retiring due to injury"],
+    correct: 0,
+    fact: "🦆 The term comes from 'duck's egg' — the shape of a zero on the scoreboard resembles an egg. Getting out first ball faced is called a 'golden duck.'",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "Which of these is a common reason for an umpire to call a 'no-ball'?",
+    options: ["The batsman hits the ball twice", "The bowler's front foot lands over the popping crease", "The ball bounces before reaching the pitch", "The wicketkeeper stands too close"],
+    correct: 1,
+    fact: "🚫 A no-ball is an illegal delivery — usually from overstepping the front crease — and costs the bowling side a penalty run, with the batsman protected from most dismissals off it.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'wide' in cricket?",
+    options: ["A delivery bowled too far away for the batsman to reasonably play it", "A shot hit outside the boundary rope", "A fielder positioned far from the batsman", "A ball that hits the side of the stumps"],
+    correct: 0,
+    fact: "↔️ A wide is a legally bowled delivery — unlike a no-ball — that's simply out of the batsman's reach. It costs a penalty run and doesn't count toward the over's six balls.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'yorker' in cricket?",
+    options: ["A ball bowled full and fast, aimed at the batsman's feet or the base of the stumps", "A slow, looping delivery", "A ball bowled straight down leg side", "A delivery that bounces twice"],
+    correct: 0,
+    fact: "🎯 The yorker is one of the hardest deliveries to bowl accurately, especially in the death overs of T20 cricket — get it wrong and it turns into an easy-to-hit full toss instead.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'googly' in cricket?",
+    options: ["A fast bouncer aimed at the head", "A leg-spinner's delivery that turns the opposite way to a normal leg break", "A delivery bowled underarm", "A ball that swings late in the air"],
+    correct: 1,
+    fact: "🌀 Invented by England's Bernard Bosanquet around 1900, the googly deceives batsmen by spinning the 'wrong way' — into a right-hander instead of away from them.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is the Duckworth-Lewis-Stern (DLS) method used for in cricket?",
+    options: ["Deciding who bats first", "Calculating a revised target score in a rain-affected limited-overs match", "Ranking players for team selection", "Measuring pitch conditions before a toss"],
+    correct: 1,
+    fact: "🌧️ DLS uses the 'resources' a team has left — balls remaining and wickets in hand — to fairly recalculate a target when overs are lost to weather.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What happens in a 'Super Over' in limited-overs cricket?",
+    options: ["Each team bowls an extra 10 overs", "Each team bats one extra over of 6 balls to break a tie", "The match is replayed the next day", "The team batting first automatically wins"],
+    correct: 1,
+    fact: "⚡ Since October 2019, a tied Super Over is replayed until there's a winner — before that rule change, the 2019 World Cup final between England and New Zealand was decided by a boundary count after both the match and the Super Over finished level.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'free hit' in limited-overs cricket?",
+    options: ["An extra six runs awarded for a six", "A bonus delivery awarded after a no-ball, where the batsman can't be dismissed except by run out or a couple of other rare ways", "A free entry ticket for a fan who catches a six", "An extra over bowled after the innings ends"],
+    correct: 1,
+    fact: "🎁 After any no-ball, the very next delivery is a free hit — the batsman can't be out bowled, caught, lbw, or stumped off it, only run out, hit the ball twice, or obstructing the field.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is the standard length of a cricket pitch, from stump to stump?",
+    options: ["18 yards", "20 yards", "22 yards", "24 yards"],
+    correct: 2,
+    fact: "📏 22 yards (about 20.12 metres) — a length that has stayed fixed in the Laws of Cricket for centuries, regardless of format.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'nightwatchman' in Test cricket?",
+    options: ["An umpire who officiates evening sessions", "A lower-order batsman sent in ahead of his usual position to protect a recognised batsman near the end of a day's play", "A substitute fielder used only after sunset", "A team's designated night-shift analyst"],
+    correct: 1,
+    fact: "🌙 Sent in when a wicket falls late in the day, the nightwatchman's job is to survive to stumps — usually a bowler more comfortable defending than a specialist batsman would be under pressure.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "How many runs does a batsman need to score in a single innings to complete a 'century'?",
+    options: ["50", "75", "100", "150"],
+    correct: 2,
+    fact: "💯 A century (or 'ton') is one of batting's most celebrated milestones — score 50 instead and it's called a half-century.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "How many players make up a cricket team's Playing XI on the field?",
+    options: ["9", "10", "11", "12"],
+    correct: 2,
+    fact: "🏏 Each side fields 11 players, though teams can nominate substitute fielders (including concussion replacements) under current playing conditions.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What does the '20' in 'T20' cricket refer to?",
+    options: ["20 players per team", "20 overs per side per innings", "20-minute time limit per over", "20 fielders allowed on the field"],
+    correct: 1,
+    fact: "⏱️ Twenty20 was designed by the ECB in 2003 to fit inside about three hours, with each side batting 20 overs — a deliberate answer to fans who said matches took too long.",
+    era: "General",
+    category: "general"
   }
 
 ];
