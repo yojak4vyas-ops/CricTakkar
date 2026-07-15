@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 212 players across 11 countries
+// 214 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -1643,6 +1643,50 @@ const wordlePlayers = [
     // 2002 Champions Trophy joint-winners with Sri Lanka + 2011 World Cup winner (squad
     // member, did not play the final) — Wikipedia confirmed
     iccTrophies: 2
+  },
+
+  // ===== INDIA — ROUND 1 CONTINUED (T20I, Day 25) =====
+  // Top 15 all-time T20I run-scorers + top 15 all-time T20I wicket-takers for India,
+  // cross-checked against ESPNcricinfo (records tables) + Wikipedia infobox tables;
+  // Cricbuzz unreachable (standing limitation, flagged per rule). All 15 batting names
+  // were already in the database (mostly from the Day 24 T20I cap-expansion batch and
+  // today's earlier Round 1 batches) — only 2 new names, both from the bowling top 15.
+  // This completes India's Round 1 pass across all 3 formats.
+
+  {
+    name: "Yuzvendra Chahal",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
+    debutYear: 2016,
+    format: "ODI",
+    // ODI debut 11 Jun 2016 vs Zimbabwe, T20I debut 19 Jun 2016 vs Zimbabwe (same series,
+    // 8 days apart) — no Test caps, Wikipedia infobox confirmed, not All-format
+    // Dedicated IPL-history search confirmed he played (not just signed) for Mumbai Indians
+    // — 1 match in 2011 vs KKR, plus playing in that year's Champions League T20 for MI —
+    // before his long RCB/RR/PBKS spells
+    iplTeams: ["Mumbai Indians", "Royal Challengers Bangalore", "Rajasthan Royals", "Punjab Kings"],
+    // 2024 T20 World Cup winning squad (did not feature in any match) — confirmed via
+    // Wikipedia. Explicitly NOT part of the 2025 Champions Trophy squad (confirmed via the
+    // actual ESPNcricinfo squad list) despite an initial search implying a "comeback" —
+    // resolved by checking the real squad list rather than trusting the search summary.
+    iccTrophies: 1
+  },
+  {
+    name: "Bhuvneshwar Kumar",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 25 Dec 2012 vs Pakistan (earliest), ODI debut 30 Dec 2012 vs Pakistan,
+    // Test debut 22 Feb 2013 vs Australia — Wikipedia infobox confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Pune Warriors", "Sunrisers Hyderabad"],
+    // 2013 Champions Trophy winning squad — Wikipedia confirmed. Last T20I Nov 2022, so
+    // not part of the 2024 T20 World Cup winning squad.
+    iccTrophies: 1
   },
 
   // ===== AUSTRALIA (10 players) =====
