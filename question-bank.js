@@ -1064,6 +1064,150 @@ const questionBank = [
     era: "2020s",
     category: "test"
   },
+  {
+    question: "Who held the record for the highest individual score in Test cricket (365 not out) before Brian Lara broke it in 1994?",
+    options: ["Don Bradman", "Garry Sobers", "Len Hutton", "Brian Lara"],
+    correct: 1,
+    fact: "🏏 Sobers, aged just 21, scored 365* against Pakistan at Sabina Park, Kingston in 1958 — breaking Len Hutton's 364 (1938) and holding the record for 36 years, the longest anyone has held it, until Lara's 375 in 1994.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Against which team did Garry Sobers score his then-world-record 365 not out in 1958?",
+    options: ["India", "Australia", "England", "Pakistan"],
+    correct: 3,
+    fact: "🇧🇧 Sobers turned his maiden Test century into 365* against Pakistan at Sabina Park — he added 446 for the 2nd wicket with Conrad Hunte (260), as West Indies piled up 790/3, their highest ever Test total.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which English all-rounder's unbeaten 149 famously powered England to victory over Australia at Headingley in 1981, after England had followed on?",
+    options: ["Geoffrey Boycott", "Ian Botham", "Mike Brearley", "Bob Willis"],
+    correct: 1,
+    fact: "🏏 Botham's 149* helped set Australia just 130 to win — England had trailed by 227 on first innings and were forced to follow on. The match, and the series, became known as 'Botham's Ashes.'",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "Which England bowler took 8 wickets for 43 runs to bowl Australia out for 111 and complete England's famous 18-run win at Headingley in 1981?",
+    options: ["Ian Botham", "Bob Willis", "Chris Old", "Graham Dilley"],
+    correct: 1,
+    fact: "⚡ Bob Willis's 8/43, bowling downhill with the slope, dismissed Australia for 111 in their chase of just 130 — England had been rated 500-1 outsiders to win at one stage of the match.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "The 1986 Chennai Test between India and Australia was only the second tied Test in cricket history. Which Australian batsman scored 210 in that match despite severe dehydration?",
+    options: ["Allan Border", "David Boon", "Dean Jones", "Steve Waugh"],
+    correct: 2,
+    fact: "🥵 Dean Jones batted through brutal Chennai heat to score 210, later needing hospital treatment and a saline drip for exhaustion — his captain Allan Border had needled him to stay on, saying he'd 'get a Queenslander' if Jones couldn't handle the conditions.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "At which stadium was the famous 1986 tied Test between India and Australia played?",
+    options: ["Wankhede Stadium, Mumbai", "Eden Gardens, Kolkata", "M.A. Chidambaram Stadium, Chennai", "Feroz Shah Kotla, Delhi"],
+    correct: 2,
+    fact: "🏟️ The 1986 tied Test was played at Chepauk (M.A. Chidambaram Stadium) in Chennai — Australia declared at 574/7 and 170/5, India were bowled out for 397 and then 347, with the scores level when the last wicket fell.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "Which two teams played the first ever tied Test in cricket history, at the Gabba in Brisbane in 1960?",
+    options: ["England and Australia", "Australia and West Indies", "India and Pakistan", "England and West Indies"],
+    correct: 1,
+    fact: "🏏 Australia (captained by Richie Benaud) and West Indies (captained by Frank Worrell) tied in Brisbane in December 1960 — the first tie in 498 Tests played since 1877. The Frank Worrell Trophy was created to commemorate the series.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which West Indies fast bowler took the last three Australian wickets in a dramatic final over to help seal the first ever tied Test in 1960?",
+    options: ["Charlie Griffith", "Wes Hall", "Garry Sobers", "Lance Gibbs"],
+    correct: 1,
+    fact: "🔥 Wes Hall bowled the chaotic final over with Australia needing 6 to win with 3 wickets in hand — he finished with match figures of 9/203, and the scores ended level.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which Indian bowler famously bowled 14 overs with a fractured jaw, bandaged up, to dismiss Brian Lara lbw in Antigua in 2002?",
+    options: ["Javagal Srinath", "Harbhajan Singh", "Anil Kumble", "Zaheer Khan"],
+    correct: 2,
+    fact: "🩹 Kumble's jaw was fractured by a Mervyn Dillon delivery while he was batting, but he strapped it up and came out to bowl the next day anyway, trapping Brian Lara lbw in an unforgettable show of grit.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "In which West Indian city did Anil Kumble bowl through a broken jaw to dismiss Brian Lara in 2002?",
+    options: ["Bridgetown, Barbados", "Kingston, Jamaica", "St John's, Antigua", "Port of Spain, Trinidad"],
+    correct: 2,
+    fact: "🏏 It happened in the 4th Test of India's 2001-02 tour of the West Indies, at the Antigua Recreation Ground in St John's.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "What was the exact runs total of the record-breaking 5th-wicket partnership between VVS Laxman and Rahul Dravid in the famous 2001 Kolkata Test?",
+    options: ["281", "356", "376", "410"],
+    correct: 2,
+    fact: "🤝 Laxman (281) and Dravid (180) added 376 for the 5th wicket at Eden Gardens — still India's highest ever 5th-wicket Test partnership, batting through the entire fourth day without being separated.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "The Laxman-Dravid 376-run stand in the 2001 Kolkata Test broke India's previous record for the highest 5th-wicket partnership, held by Ravi Shastri and which other batsman?",
+    options: ["Mohammad Azharuddin", "Sachin Tendulkar", "Sourav Ganguly", "Kapil Dev"],
+    correct: 0,
+    fact: "📈 The old record was 214, put together by Ravi Shastri and Mohammad Azharuddin — Laxman and Dravid nearly doubled it in one of Test cricket's greatest rearguard partnerships.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "Chasing 271 against Pakistan in the famous 1999 Chennai Test, Sachin Tendulkar scored 136 before India fell agonisingly short. By how many runs did India lose?",
+    options: ["6 runs", "12 runs", "21 runs", "34 runs"],
+    correct: 1,
+    fact: "💔 Batting with a painful back injury, Tendulkar's 136 nearly pulled off the chase alone, but India's last 3 wickets fell for just 4 runs and Pakistan won by 12 — Sachin was still named Player of the Match despite the loss.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "Which Pakistan spinner dismissed Sachin Tendulkar late in his heroic 136 during the 1999 Chennai Test, triggering India's collapse?",
+    options: ["Mushtaq Ahmed", "Saqlain Mushtaq", "Shahid Afridi", "Wasim Akram"],
+    correct: 1,
+    fact: "🎯 Saqlain Mushtaq's doosra deceived Tendulkar into a leading edge to mid-off — Pakistan's attack that day also included Wasim Akram, Waqar Younis, and a young Shahid Afridi.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "Which England all-rounder's unbeaten 135 completed a stunning one-wicket win over Australia at Headingley in the 2019 Ashes, chasing a target of 359?",
+    options: ["Joe Root", "Jonny Bairstow", "Ben Stokes", "Jos Buttler"],
+    correct: 2,
+    fact: "🏆 Stokes hit 11 fours and 8 sixes in the highest successful fourth-innings run chase in England's Test history — Wisden later rated it the greatest hundred of the 2010s.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "Who was Ben Stokes' No. 11 batting partner, scoring just 1 not out, in the famous 76-run last-wicket stand that won the 2019 Headingley Test?",
+    options: ["Jofra Archer", "Stuart Broad", "Jack Leach", "James Anderson"],
+    correct: 2,
+    fact: "🤝 Jack Leach faced 17 balls for his solitary run — England were 286/9, still needing 73 to win, when he walked out to join Stokes.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "Don Bradman needed just 4 runs in his final Test innings to finish with a career average of exactly 100. What did he actually score?",
+    options: ["0", "4", "99", "23"],
+    correct: 0,
+    fact: "😮 Bowled second ball for a duck by Eric Hollies at The Oval in 1948, Bradman's average was frozen at 99.94 — still by far the greatest batting average in Test history.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which English bowler dismissed Don Bradman for a duck in his final Test innings at The Oval in 1948, denying him a career average of 100?",
+    options: ["Alec Bedser", "Eric Hollies", "Jim Laker", "Doug Wright"],
+    correct: 1,
+    fact: "🎾 Eric Hollies bowled Bradman with a googly that beat him completely — the crowd had given Bradman a standing ovation just moments earlier as he walked out to bat.",
+    era: "Pre-1970s",
+    category: "test"
+  },
 
   // ===== ODI CRICKET (88) =====
   {
