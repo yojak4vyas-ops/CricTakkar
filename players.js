@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 151 players across 11 countries
+// 171 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -760,6 +760,273 @@ const wordlePlayers = [
     iplTeams: ["Royal Challengers Bangalore", "Delhi Capitals", "Gujarat Titans", "Kolkata Knight Riders"],
     // Signed by Delhi Daredevils for 2015 but did not play a match that season — excluded per the
     // "signed but never played" rule (see Stuart Broad/Axar Patel precedent)
+    iccTrophies: 0
+  },
+
+  // ===== INDIA — CAP-NUMBER EXPANSION (ODI caps, added Day 24 session 7) =====
+  // Sourced from India's ODI cap-number sequence, working backward from cap ~263 (Prince Yadav,
+  // debuted 17 Jun 2026, the latest confirmed cap as of 15 Jul 2026). Skipped already-in-database
+  // cap holders along the way: Nitish Kumar Reddy, Harshit Rana, Yashasvi Jaiswal, Rajat Patidar,
+  // Sai Sudharsan, Mukesh Kumar, Arshdeep Singh, Sanju Samson, Suryakumar Yadav, Ishan Kishan,
+  // Prasidh Krishna. This completes India ODI at 20/20 — see CLAUDE.md progress tracker.
+
+  {
+    name: "Prince Yadav",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut 17 Jun 2026 vs Afghanistan (Lucknow) — ESPNcricinfo confirmed. Not included in the
+    // Test squad for the Afghanistan series; no confirmed T20I debut — not All-format.
+    iplTeams: ["Lucknow Super Giants"],
+    iccTrophies: 0
+  },
+  {
+    name: "Gurnoor Brar",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut 13 Jun 2026 vs Afghanistan (Dharamsala) — ESPNcricinfo confirmed. Was named in the
+    // Test squad for the same series but Manav Suthar got the actual cap, not Brar — no Test debut,
+    // not All-format.
+    iplTeams: ["Punjab Kings"],
+    // Signed by Gujarat Titans since 2024 but yet to play a match for them as of 2026 — excluded
+    // per the "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Harsh Dubey",
+    country: "India",
+    // Batting hand could not be confirmed despite repeated searches — flagged as best-available
+    // rather than settled fact, same treatment as KL Rahul's bowling style
+    battingStyle: "Right-hand",
+    role: "All-rounder",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut 13 Jun 2026 vs Afghanistan (Dharamsala), 3 wickets on debut — ESPNcricinfo confirmed.
+    // Same as Brar — named in the Test squad but Manav Suthar got the actual cap — no Test debut.
+    iplTeams: ["Sunrisers Hyderabad"],
+    iccTrophies: 0
+  },
+  {
+    name: "Varun Chakravarthy",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak-googly",
+    debutYear: 2021,
+    format: "ODI",
+    // T20I debut 25 Jul 2021 vs Sri Lanka, ODI debut 9 Feb 2025 vs England (Cuttack) — no Test caps
+    // — ESPNcricinfo confirmed, not All-format
+    iplTeams: ["Kolkata Knight Riders"],
+    iccTrophies: 0
+  },
+  {
+    name: "Riyan Parag",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak combo, offbreak used as primary
+    debutYear: 2024,
+    format: "ODI",
+    // T20I and ODI debuts both 2024, following his IPL 2024 breakout — no Test caps, not All-format
+    iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Rinku Singh",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2023,
+    format: "ODI",
+    // T20I and ODI debuts both 2023 — explicitly confirmed yet to play red-ball cricket for India,
+    // not All-format
+    iplTeams: ["Kolkata Knight Riders"],
+    iccTrophies: 0
+  },
+  {
+    name: "Tilak Varma",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2023,
+    format: "ODI",
+    // T20I debut 3 Aug 2023 vs West Indies, ODI debut also 2023 — no Test cap as of 2026 (explicitly
+    // described as someone who "would soon be" an all-format player), not All-format yet
+    iplTeams: ["Mumbai Indians"],
+    iccTrophies: 0
+  },
+  {
+    name: "Kuldeep Sen",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2022,
+    format: "ODI",
+    // Made his only India appearance in December 2022 (1 ODI) before a back injury — no Test or
+    // T20I caps — ESPNcricinfo confirmed, not All-format
+    iplTeams: ["Rajasthan Royals"],
+    // Signed by Punjab Kings for 2025 but did not play a match for them — excluded per the
+    // "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Umran Malik",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2022,
+    format: "ODI",
+    // T20I and ODI debuts both 2022 following his breakout IPL 2022 season — no Test caps, not All-format
+    iplTeams: ["Sunrisers Hyderabad"],
+    // Signed by Kolkata Knight Riders for 2025 and 2026 but ruled out injured/no confirmed
+    // appearances found — excluded per the "signed but never played" rule, flagged for re-check
+    iccTrophies: 0
+  },
+  {
+    name: "Shahbaz Ahmed",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2022,
+    format: "ODI",
+    // ODI debut 2022 vs South Africa (Ranchi), T20I debut 2023 (Asian Games) — no Test caps, not All-format
+    iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad", "Lucknow Super Giants"],
+    iccTrophies: 0
+  },
+  {
+    name: "Ravi Bishnoi",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak-googly",
+    debutYear: 2022,
+    format: "ODI",
+    // T20I and ODI debuts both 2022 — no Test caps, not All-format
+    iplTeams: ["Punjab Kings", "Lucknow Super Giants", "Rajasthan Royals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Ruturaj Gaikwad",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2022,
+    format: "ODI",
+    // ODI debut 6 Oct 2022 vs South Africa (Lucknow) — no Test caps confirmed, not All-format
+    iplTeams: ["Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Avesh Khan",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2022,
+    format: "ODI",
+    // T20I debut 20 Feb 2022 vs West Indies (Eden Gardens), ODI debut 24 Jul 2022 vs West Indies
+    // (Port of Spain) — no Test caps, not All-format
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Capitals", "Lucknow Super Giants", "Rajasthan Royals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Deepak Hooda",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2022,
+    format: "ODI",
+    // ODI debut 6 Feb 2022 vs West Indies (Ahmedabad) — no Test caps, not All-format
+    iplTeams: ["Sunrisers Hyderabad", "Rajasthan Royals", "Punjab Kings", "Lucknow Super Giants", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Venkatesh Iyer",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2021,
+    format: "ODI",
+    // T20I cap came first, ODI debut Jan 2022 vs South Africa — no Test caps, not All-format
+    iplTeams: ["Kolkata Knight Riders", "Royal Challengers Bangalore"],
+    iccTrophies: 0
+  },
+  {
+    name: "Chetan Sakariya",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm medium-fast",
+    debutYear: 2021,
+    format: "ODI",
+    // ODI debut 2021 — no Test caps confirmed, not All-format
+    iplTeams: ["Rajasthan Royals", "Delhi Capitals", "Kolkata Knight Riders"],
+    iccTrophies: 0
+  },
+  {
+    name: "Nitish Rana",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2021,
+    format: "ODI",
+    // 1 ODI and 2 T20Is for India, all in 2021 vs Sri Lanka — no Test caps, not All-format
+    iplTeams: ["Mumbai Indians", "Kolkata Knight Riders", "Rajasthan Royals", "Delhi Capitals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Krishnappa Gowtham",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2021,
+    format: "ODI",
+    // Brief international career confined to 2021 — no Test caps, not All-format
+    iplTeams: ["Rajasthan Royals", "Kings XI Punjab", "Chennai Super Kings", "Lucknow Super Giants"],
+    iccTrophies: 0
+  },
+  {
+    name: "Rahul Chahar",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
+    debutYear: 2019,
+    format: "ODI",
+    // T20I debut 2019, 1 ODI and 6 T20Is total between 2019 and 2021 — no Test caps, not All-format
+    iplTeams: ["Mumbai Indians", "Punjab Kings", "Sunrisers Hyderabad", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Krunal Pandya",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
+    debutYear: 2018,
+    format: "ODI",
+    // T20I debut 2018 vs West Indies (Eden Gardens), ODI debut 2021 vs England (Pune) — no Test
+    // caps confirmed, not All-format
+    iplTeams: ["Mumbai Indians", "Lucknow Super Giants", "Royal Challengers Bangalore"],
     iccTrophies: 0
   },
 
