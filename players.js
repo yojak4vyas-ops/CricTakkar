@@ -1,7 +1,8 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 130 players across 11 countries
-// Attributes verified across ESPNcricinfo, Wikipedia, Cricbuzz
+// 138 players across 11 countries
+// Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
+// Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
 // 
 // FORMAT RULE: "All-format" = played Tests + ODIs + T20Is internationally
 // IPL: franchise cricket only — not counted as T20 International
@@ -442,6 +443,123 @@ const wordlePlayers = [
     iplTeams: ["Punjab Kings"],
     iccTrophies: 3
     // 2024 T20 WC, 2025 CT, 2026 T20 WC — Wikipedia + The Cricket Standard confirmed
+  },
+
+  // ===== INDIA — CAP-NUMBER EXPANSION (Test caps, added Day 24) =====
+  // Sourced from India's Test cap-number sequence (see CLAUDE.md WORDLE PLAYER
+  // CAP-NUMBER EXPANSION PROJECT), working backward from cap 319 (Manav Suthar,
+  // the latest confirmed cap as of 15 Jul 2026 — cap "320" could not be verified
+  // and was excluded, see CLAUDE.md for details).
+
+  {
+    name: "Manav Suthar",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2026,
+    format: "ODI",
+    // Test cap 319, debut June 2026 vs Afghanistan (6/33 on debut) — ESPNcricinfo confirmed.
+    // No confirmed ODI or T20I caps as of 15 Jul 2026 despite ODI squad call-ups — ESPNcricinfo.
+    iplTeams: ["Gujarat Titans"],
+    iccTrophies: 0
+  },
+  {
+    name: "Anshul Kamboj",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2025,
+    format: "ODI",
+    // Test cap 318, debut July 2025 vs England at Old Trafford — ESPNcricinfo confirmed.
+    // No confirmed ODI or T20I caps as of 15 Jul 2026 — ESPNcricinfo.
+    iplTeams: ["Mumbai Indians", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Sai Sudharsan",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm legbreak",
+    // Occasional part-time bowler — ESPNcricinfo confirmed he bowls legspin sparingly (a wicket vs Bengal, Vijay Hazare Trophy)
+    debutYear: 2023,
+    format: "All-format",
+    // ODI debut 17 Dec 2023 vs South Africa, T20I debut 7 Jul 2024 vs Zimbabwe, Test debut 20 Jun 2025 vs England — ESPNcricinfo confirmed
+    iplTeams: ["Gujarat Titans"],
+    iccTrophies: 0
+  },
+  {
+    name: "Harshit Rana",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2024,
+    format: "All-format",
+    // Test debut 22 Nov 2024 vs Australia (Perth), ODI debut 6 Feb 2025 vs England, T20I debut 31 Jan 2025 vs England —
+    // ESPNcricinfo confirmed. One of only 5 bowlers ever with 3+ wickets on debut in all 3 formats.
+    iplTeams: ["Kolkata Knight Riders"],
+    iccTrophies: 0
+  },
+  {
+    name: "Nitish Kumar Reddy",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2024,
+    format: "All-format",
+    // T20I debut Oct 2024, Test debut Nov 2024 (Perth, Border-Gavaskar Trophy), ODI debut 2025-26 season vs Afghanistan —
+    // ESPNcricinfo + Wikipedia confirmed all-format
+    iplTeams: ["Sunrisers Hyderabad"],
+    iccTrophies: 0
+  },
+  {
+    name: "Devdutt Padikkal",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2021,
+    format: "ODI",
+    // T20I debut July 2021 vs Sri Lanka, Test debut March 2024 vs England (Dharamsala) — ESPNcricinfo confirmed.
+    // Explicitly confirmed "yet to play an ODI" as of 2026 — ESPNcricinfo, not All-format.
+    iplTeams: ["Royal Challengers Bangalore", "Rajasthan Royals", "Lucknow Super Giants"],
+    iccTrophies: 0
+  },
+  {
+    name: "Akash Deep",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2024,
+    format: "ODI",
+    // Test debut 23 Feb 2024 vs England (Ranchi) — ESPNcricinfo confirmed. No ODI/T20I caps found across
+    // multiple searches despite ODI squad call-ups — treated as Test-only; flagged as best-available, not
+    // an explicit "never played" confirmation, same caution as KL Rahul's bowling-style entry.
+    // IPL: RCB (2022-24) then Lucknow Super Giants (2025). Signed by KKR for 2026 but ruled out by injury
+    // before playing a match — excluded per the "signed but never played" rule (see Stuart Broad/Axar Patel).
+    iplTeams: ["Royal Challengers Bangalore", "Lucknow Super Giants"],
+    iccTrophies: 0
+  },
+  {
+    name: "Dhruv Jurel",
+    country: "India",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    // No source could confirm a bowling record either way — flagged as unconfirmed rather than
+    // proven NA, same treatment as KL Rahul (see Cricket Wordle Player Data Rule)
+    bowlingStyle: "NA",
+    debutYear: 2024,
+    format: "ODI",
+    // Test debut 15 Feb 2024 vs England (Rajkot), T20I debut 6 Jul 2024 vs Zimbabwe — ESPNcricinfo confirmed.
+    // Named as Rishabh Pant's ODI replacement Jan 2026 but an actual ODI cap/debut could not be confirmed
+    // — treated conservatively as not-yet-All-format, flagged for re-check in a future session.
+    iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 0
   },
 
   // ===== AUSTRALIA (10 players) =====
