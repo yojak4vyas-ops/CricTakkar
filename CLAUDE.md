@@ -284,49 +284,50 @@ Started Day 24 after the Cricket Wordle roster (130 players, all 11 major Test n
 **THE METHOD:**
 - For each country, work through formats in this order: **Test → ODI → T20I**.
 - For each format, find the country's current highest cap number (i.e. the most recently debuted player in that format) as of the session date.
-- Work backward from that cap number, adding players to `players.js` (full 8-attribute profile: country, role, battingStyle, bowlingStyle, debutYear, format, iplTeams, iccTrophies) until **50 genuinely new players** have been added for that format.
-- **Dedup rule:** if a cap holder is already in the 130-player base (or added in an earlier expansion batch), skip them — they do NOT count toward the 50. Keep moving to the next-lower cap number until 50 new names are reached. The tracking log below always records the full cap-number range covered, including skips.
+- Work backward from that cap number, adding players to `players.js` (full 8-attribute profile: country, role, battingStyle, bowlingStyle, debutYear, format, iplTeams, iccTrophies) until **20 genuinely new players** have been added for that format. (Changed from an original target of 50 to 20 on Day 24, session 4 — same mechanism, smaller target.)
+- **Dedup rule:** if a cap holder is already in the 130-player base (or added in an earlier expansion batch), skip them — they do NOT count toward the 20. Keep moving to the next-lower cap number until 20 new names are reached. The tracking log below always records the full cap-number range covered, including skips.
 - **Cross-check standard is unchanged and non-negotiable:** every player, every attribute — ESPNcricinfo + ICC official records + Wikipedia + Cricbuzz (attempted every time; flag "unreachable" per the standing tool limitation) — same Four-Source Verification Rule as everywhere else in this app. IPL team history always gets its own dedicated search per the Day 15 rule.
+- **Supplementary source (added Day 24, session 4):** each country's official cricket board website (e.g. BCCI for India, Cricket Australia, ECB for England, PCB for Pakistan, CSA for South Africa, Sri Lanka Cricket, CWI for West Indies, BCB for Bangladesh, ACB for Afghanistan, Zimbabwe Cricket) may also be checked — particularly useful for exactly the kind of gap that came up in the Day 24 India batch (confirming whether a very recent debutant has actually been capped in ODI/T20I yet, which ESPNcricinfo/Wikipedia search snippets sometimes couldn't confirm cleanly). This supplements, not replaces, the 4 mandatory sources above.
 - **Cap-number data-quality caveat (found Day 24):** AI-summarized fetches of Wikipedia's "List of India Test cricketers" gave inconsistent cap numbers near the very end of the table across 3 separate fetches (off-by-one drift), and one fetch invented a player who could not be confirmed anywhere else ("Subham Kumar Bhanja", cap 320) — treated as a hallucination and excluded. Lesson: the exact cap NUMBER assigned to a borderline-latest entry is less reliable than the RELATIVE ORDER of recent debuts (which stayed consistent across fetches) and named facts that can be independently confirmed (e.g. "Anshul Kamboj is cap 318" was confirmed via a direct dedicated search). When in doubt about whether a "latest cap" entry is real, verify that specific name independently before trusting it — don't take a single AI-summarized table read as ground truth for the newest 1-2 rows.
-- Pace: roughly 8-15 fully-verified new players per session (this is much heavier research per unit than a quiz question — 8 attributes with full cross-checks, vs. 1 fact). Expect this project to run over many sessions, likely months, across 11 countries × 3 formats × 50 players.
+- Pace: roughly 8-15 fully-verified new players per session (this is much heavier research per unit than a quiz question — 8 attributes with full cross-checks, vs. 1 fact). With the 20-per-format target, expect each format to take 1-2 sessions; still a long-running project across 11 countries × 3 formats × 20 players.
 
 **PROGRESS TRACKER — update every session, this is how we know where to resume:**
 
 | Country | Format | Latest known cap (as of date) | Added down to cap # | New players added so far | Status |
 |---|---|---|---|---|---|
-| India | Test | 319 = Manav Suthar (as of 15 Jul 2026) | 312 (Dhruv Jurel) — next resume point: cap 311 (Sarfaraz Khan) | 8 / 50 | In progress |
-| India | ODI | not yet researched | — | 0 / 50 | Not started |
-| India | T20I | not yet researched | — | 0 / 50 | Not started |
-| Australia | Test | not yet researched | — | 0 / 50 | Not started |
-| Australia | ODI | not yet researched | — | 0 / 50 | Not started |
-| Australia | T20I | not yet researched | — | 0 / 50 | Not started |
-| England | Test | not yet researched | — | 0 / 50 | Not started |
-| England | ODI | not yet researched | — | 0 / 50 | Not started |
-| England | T20I | not yet researched | — | 0 / 50 | Not started |
-| New Zealand | Test | not yet researched | — | 0 / 50 | Not started |
-| New Zealand | ODI | not yet researched | — | 0 / 50 | Not started |
-| New Zealand | T20I | not yet researched | — | 0 / 50 | Not started |
-| Pakistan | Test | not yet researched | — | 0 / 50 | Not started |
-| Pakistan | ODI | not yet researched | — | 0 / 50 | Not started |
-| Pakistan | T20I | not yet researched | — | 0 / 50 | Not started |
-| South Africa | Test | not yet researched | — | 0 / 50 | Not started |
-| South Africa | ODI | not yet researched | — | 0 / 50 | Not started |
-| South Africa | T20I | not yet researched | — | 0 / 50 | Not started |
-| Sri Lanka | Test | not yet researched | — | 0 / 50 | Not started |
-| Sri Lanka | ODI | not yet researched | — | 0 / 50 | Not started |
-| Sri Lanka | T20I | not yet researched | — | 0 / 50 | Not started |
-| West Indies | Test | not yet researched | — | 0 / 50 | Not started |
-| West Indies | ODI | not yet researched | — | 0 / 50 | Not started |
-| West Indies | T20I | not yet researched | — | 0 / 50 | Not started |
-| Bangladesh | Test | not yet researched | — | 0 / 50 | Not started |
-| Bangladesh | ODI | not yet researched | — | 0 / 50 | Not started |
-| Bangladesh | T20I | not yet researched | — | 0 / 50 | Not started |
-| Afghanistan | Test | not yet researched | — | 0 / 50 | Not started |
-| Afghanistan | ODI | not yet researched | — | 0 / 50 | Not started |
-| Afghanistan | T20I | not yet researched | — | 0 / 50 | Not started |
-| Zimbabwe | Test | not yet researched | — | 0 / 50 | Not started |
-| Zimbabwe | ODI | not yet researched | — | 0 / 50 | Not started |
-| Zimbabwe | T20I | not yet researched | — | 0 / 50 | Not started |
+| India | Test | 319 = Manav Suthar (as of 15 Jul 2026) | 312 (Dhruv Jurel) — next resume point: cap 311 (Sarfaraz Khan) | 8 / 20 | In progress |
+| India | ODI | not yet researched | — | 0 / 20 | Not started |
+| India | T20I | not yet researched | — | 0 / 20 | Not started |
+| Australia | Test | not yet researched | — | 0 / 20 | Not started |
+| Australia | ODI | not yet researched | — | 0 / 20 | Not started |
+| Australia | T20I | not yet researched | — | 0 / 20 | Not started |
+| England | Test | not yet researched | — | 0 / 20 | Not started |
+| England | ODI | not yet researched | — | 0 / 20 | Not started |
+| England | T20I | not yet researched | — | 0 / 20 | Not started |
+| New Zealand | Test | not yet researched | — | 0 / 20 | Not started |
+| New Zealand | ODI | not yet researched | — | 0 / 20 | Not started |
+| New Zealand | T20I | not yet researched | — | 0 / 20 | Not started |
+| Pakistan | Test | not yet researched | — | 0 / 20 | Not started |
+| Pakistan | ODI | not yet researched | — | 0 / 20 | Not started |
+| Pakistan | T20I | not yet researched | — | 0 / 20 | Not started |
+| South Africa | Test | not yet researched | — | 0 / 20 | Not started |
+| South Africa | ODI | not yet researched | — | 0 / 20 | Not started |
+| South Africa | T20I | not yet researched | — | 0 / 20 | Not started |
+| Sri Lanka | Test | not yet researched | — | 0 / 20 | Not started |
+| Sri Lanka | ODI | not yet researched | — | 0 / 20 | Not started |
+| Sri Lanka | T20I | not yet researched | — | 0 / 20 | Not started |
+| West Indies | Test | not yet researched | — | 0 / 20 | Not started |
+| West Indies | ODI | not yet researched | — | 0 / 20 | Not started |
+| West Indies | T20I | not yet researched | — | 0 / 20 | Not started |
+| Bangladesh | Test | not yet researched | — | 0 / 20 | Not started |
+| Bangladesh | ODI | not yet researched | — | 0 / 20 | Not started |
+| Bangladesh | T20I | not yet researched | — | 0 / 20 | Not started |
+| Afghanistan | Test | not yet researched | — | 0 / 20 | Not started |
+| Afghanistan | ODI | not yet researched | — | 0 / 20 | Not started |
+| Afghanistan | T20I | not yet researched | — | 0 / 20 | Not started |
+| Zimbabwe | Test | not yet researched | — | 0 / 20 | Not started |
+| Zimbabwe | ODI | not yet researched | — | 0 / 20 | Not started |
+| Zimbabwe | T20I | not yet researched | — | 0 / 20 | Not started |
 
 ---
 
@@ -390,7 +391,8 @@ Every session must follow this structure:
   Day 24 — Test cricket content, part 2: a curated batch of 9 famous individual Test matches/milestones, agreed with the user upfront as a shortlist before researching (Test cricket has no season structure, so this was highlights-based rather than a systematic project like IPL/World Cups). 18 new questions added to `question-bank.js` (298 → 316, Test 36 → 54), 2 questions per moment: Garry Sobers' 365* (1958, Sabina Park vs Pakistan — held the world-record individual score for 36 years until Lara's 375 in 1994); Headingley 1981 "Botham's Ashes" (Botham's 149* + Willis's 8/43, England won by 18 runs after following on); the 1986 Chennai Tied Test (India vs Australia, 2nd tied Test ever, Dean Jones' dehydration-defying 210); the 1960 Brisbane Tied Test (Australia vs West Indies, the first-ever tied Test, Wes Hall's dramatic final over); Anil Kumble bowling 14 overs with a bandaged fractured jaw to dismiss Brian Lara lbw (Antigua, 2002); the Laxman-Dravid 376-run 5th-wicket partnership itself (Eden Gardens 2001, India's highest-ever 5th-wicket stand, breaking Shastri/Azharuddin's old record of 214); Sachin's defiant 136 in a losing cause vs Pakistan (Chennai 1999, India fell 12 runs short chasing 271, Sachin still Player of the Match); Ben Stokes' 135* Headingley 2019 Ashes chase (target 359, last-wicket stand of 76 with Jack Leach's unbeaten 1); and Don Bradman's final-innings duck at The Oval in 1948 (bowled by Eric Hollies, average frozen at 99.94). One process note: for the Kumble fact, ICC's official site had no article on this specific bilateral-series incident (not a source disagreement, just no coverage — same pattern as the standing IPL/ICC gap) — verified instead on ESPNcricinfo + Wikipedia, which agreed in full detail; Cricbuzz unreachable as usual across all 9 moments, flagged every time. All other facts checked cleanly across all 4 required sources with zero mismatches, nothing needed flagging to the user. Mid-session, WebSearch hit a temporary session limit after 4 of 9 moments were verified — paused and resumed cleanly once the limit reset, no facts were added while the tool was unavailable. Verified live: structural integrity check passed on all 316 questions (4 options/valid correct-index/fact/era/category on every entry, checked via browser console), home page stat strip auto-updated to 328 (316 + 12 poetry) with zero manual edits, Test category-quiz tab confirmed at 54 questions, played through a live quiz question (Bradman's final score) start-to-finish with the correct answer and fun fact rendering properly, no console errors anywhere.
   Day 24 (session 2) — General category rules/terminology: the last content area in the Category Quiz build-out, completing the project started back on Day 17. 14 new questions added to `question-bank.js` (316 → 330, General 9 → 23), each a standalone cricket rule/term definition verified against ESPNcricinfo + Wikipedia + ICC official records (Cricbuzz unreachable as usual, flagged every time): hat-trick, duck, no-ball, wide, yorker, googly, the Duckworth-Lewis-Stern (DLS) method, Super Over, free hit, pitch length (22 yards), nightwatchman, century, Playing XI (11 players), and what the "20" in T20 means. One real mismatch caught and handled without asking the user for a decision (since it wasn't used in any question): ESPNcricinfo said the DLS method was "formally adopted by the ICC... in 2001" while Wikipedia said "adopted officially by the ICC in 1999" — rather than pick one, the DLS question was written to avoid needing that year at all. Verified live: structural integrity check passed on all 330 questions (4 options/valid correct-index/fact/era/category on every entry, checked via browser console), home page stat strip auto-updated to 342 (330 + 12 poetry) with zero manual edits, General category-quiz tab confirmed at 23 questions (had to set `localStorage.selectedCategory` directly to reach it, since category-quiz.html reads the category from localStorage rather than a URL param — noted for future testing), played through a live quiz question (googly definition) start-to-finish with the correct answer and fun fact rendering properly, no console errors anywhere. **This completes the entire Category Quiz content build-out: IPL (93), Test (54), ODI (88), T20 (72), General (23), Poetry (12) — 330 tagged questions plus 12 poetry-quiz questions, 342 total, every single one individually verified against the Four-Source Verification Rule.**
   Day 24 (session 3) — User asked to grow the Cricket Wordle roster (unchanged at 130 since the Day 16 verification overhaul) using a new systematic method: for each country, work through Test → ODI → T20I cap-number sequences, adding the 50 most recent debutants per format (skipping anyone already in the database, so the target is always 50 genuinely new players). Set this up as a new permanent CLAUDE.md section, **WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT**, with a full 33-row progress tracker (11 countries × 3 formats) so any future session knows exactly where to resume — this is expected to run for months. Started with **India Test caps**. Real data-quality catch during research: three separate AI-summarized Wikipedia fetches of "List of India Test cricketers" gave inconsistent cap numbers for the newest rows, and one fetch invented a player ("Subham Kumar Bhanja", cap 320) who could not be confirmed anywhere via direct ESPNcricinfo search — treated as a hallucination and excluded; **Manav Suthar (cap 319, debuted June 2026 vs Afghanistan)** confirmed instead as the genuine latest via independent verification (cross-checked Anshul Kamboj = cap 318 directly). This wasn't a genuine cross-source disagreement to flag to the user — it was one AI summary being wrong — so handled the same way as the Day 18-21 synthesis-noise catches. Added the first 8 new players (caps 319 down to 312, all verified against ESPNcricinfo + ICC + Wikipedia + Cricbuzz-attempted-unreachable): Manav Suthar, Anshul Kamboj, Sai Sudharsan, Harshit Rana, Nitish Kumar Reddy, Devdutt Padikkal, Akash Deep, Dhruv Jurel — `players.js` 130 → 138. Format-status research surfaced real nuance requiring dedicated per-player searches (per the standing rule): Sai Sudharsan, Harshit Rana, and Nitish Kumar Reddy are confirmed All-format; Manav Suthar, Anshul Kamboj, Devdutt Padikkal, Akash Deep, and Dhruv Jurel are not (some, like Padikkal, explicitly confirmed "yet to play an ODI"; others like Akash Deep and Jurel have an unconfirmed-but-likely status, flagged in code comments rather than guessed, same treatment as KL Rahul's bowling style). One real IPL-history correction caught mid-research: Anshul Kamboj was initially assumed to have only been "signed but never played" for Mumbai Indians (matching the Axar Patel/Stuart Broad pattern) until a dedicated search found he actually debuted for MI on 6 May 2024 (took a wicket vs SRH) — corrected to include MI in his iplTeams before writing the entry, catching what would have been a real error before it shipped. Akash Deep's KKR 2026 signing, by contrast, was confirmed as genuinely "signed but ruled out by injury before playing" and correctly excluded. Verified live: structural integrity check passed on all 138 players (all 8 required fields present on every entry, checked via browser console), all 8 new names found in the loaded database, ran the actual `comparePlayer()` function on two new players (Kamboj vs Suthar) confirming correct green/yellow/grey logic on real data, and submitted a live guess for Sai Sudharsan in the actual game UI — the rendered row (IND/BAT/L/R-LB/2023/ALL/GT/0) exactly matched the verified data with no console errors. Progress tracker updated: India Test now at 8/50, resume point is cap 311 (Sarfaraz Khan) for the next session.
-- Next task: continue the Wordle India Test cap expansion (resume at cap 311, Sarfaraz Khan, working down to complete 50 for India Test) before moving to India ODI and T20I caps. Still-parked from before: the quiz-side features (Top 5 section, Cricket News Feed, Player Encyclopaedia, Match Day Alert, Push Notifications, Hindi language support) and Phase 3 groundwork (Battle Friends / multiplayer) remain available whenever the user wants to switch tracks.
+  Day 24 (session 4) — Adjusted the Wordle cap-number expansion project's per-format target from 50 down to 20 new players (India Test is now 8/20, not 8/50 — same 8 players already added still count, just need 12 more instead of 42 more to finish this format). Also added country cricket boards' official websites (BCCI, Cricket Australia, ECB, PCB, CSA, Sri Lanka Cricket, CWI, BCB, ACB, Zimbabwe Cricket) as a supplementary research source alongside the mandatory 4 (ESPNcricinfo/ICC/Wikipedia/Cricbuzz) — specifically to help with the kind of gap hit in session 3, where a very recent debutant's ODI/T20I cap status couldn't be pinned down cleanly from ESPNcricinfo/Wikipedia search snippets alone. No new players added this session — process/target adjustment only.
+- Next task: continue the Wordle India Test cap expansion (resume at cap 311, Sarfaraz Khan, working down to complete 20 for India Test) before moving to India ODI and T20I caps. Still-parked from before: the quiz-side features (Top 5 section, Cricket News Feed, Player Encyclopaedia, Match Day Alert, Push Notifications, Hindi language support) and Phase 3 groundwork (Battle Friends / multiplayer) remain available whenever the user wants to switch tracks.
 
 ---
 
