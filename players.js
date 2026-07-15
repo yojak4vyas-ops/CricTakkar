@@ -1029,6 +1029,289 @@ const wordlePlayers = [
     iplTeams: ["Mumbai Indians", "Lucknow Super Giants", "Royal Challengers Bangalore"],
     iccTrophies: 0
   },
+  {
+    name: "Vaibhav Sooryavanshi",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 4 Jul 2026 vs England (2nd T20I) at age 15, youngest ever India international debutant
+    // — Wikipedia/ESPNcricinfo confirmed. No ODI/Test caps yet, not All-format
+    iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Suryansh Shedge",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 28 Jun 2026 vs Ireland (Belfast) — ESPNcricinfo/Wikipedia confirmed. No ODI/Test
+    // caps, not All-format
+    iplTeams: ["Punjab Kings"],
+    // Signed by Lucknow Super Giants in 2023 (replacement) but never played a match for them —
+    // excluded per the "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Ramandeep Singh",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2024,
+    format: "T20",
+    // T20I debut 13 Nov 2024 vs South Africa (Centurion) — ESPNcricinfo confirmed. No ODI/Test caps,
+    // not All-format
+    iplTeams: ["Mumbai Indians", "Kolkata Knight Riders"],
+    iccTrophies: 0
+  },
+  {
+    name: "Mayank Yadav",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2024,
+    format: "T20",
+    // T20I debut 6 Oct 2024 vs Bangladesh (Gwalior) — ESPNcricinfo confirmed. No ODI/Test caps,
+    // not All-format
+    iplTeams: ["Lucknow Super Giants"],
+    iccTrophies: 0
+  },
+  {
+    name: "Tushar Deshpande",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2024,
+    format: "T20",
+    // T20I debut Jul 2024 vs Zimbabwe (Harare) — ESPNcricinfo confirmed. No ODI/Test caps, not
+    // All-format
+    iplTeams: ["Delhi Capitals", "Chennai Super Kings", "Rajasthan Royals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Abhishek Sharma",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2024,
+    format: "ODI",
+    // T20I debut 6 Jul 2024 vs Zimbabwe (Harare), ODI debut/maiden ODI century vs South Africa
+    // 2025/26 series — ESPNcricinfo confirmed. No Test caps, not All-format
+    iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad"],
+    iccTrophies: 1
+    // 2026 T20 World Cup winning squad — ESPNcricinfo confirmed
+  },
+  {
+    name: "Jitesh Sharma",
+    country: "India",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2023,
+    format: "T20",
+    // T20I debut 3 Oct 2023, Asian Games vs Nepal — ESPNcricinfo confirmed. No ODI/Test caps, not
+    // All-format
+    iplTeams: ["Mumbai Indians", "Punjab Kings", "Royal Challengers Bengaluru"],
+    // Signed by Mumbai Indians in 2016-17 but never played a match for them — excluded per the
+    // "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Ravisrinivasan Sai Kishore",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2023,
+    format: "T20",
+    // T20I debut 3 Oct 2023, Asian Games vs Nepal — ESPNcricinfo confirmed. No ODI/Test caps, not
+    // All-format
+    iplTeams: ["Gujarat Titans"],
+    // Signed by Chennai Super Kings in 2020-2021 but never played a match for them — excluded per
+    // the "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Rahul Tripathi",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2023,
+    format: "T20",
+    // T20I debut 5 Jan 2023 vs Sri Lanka (Pune) — ESPNcricinfo confirmed. No ODI/Test caps, not
+    // All-format
+    iplTeams: ["Rising Pune Supergiant", "Rajasthan Royals", "Kolkata Knight Riders", "Sunrisers Hyderabad", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Shivam Mavi",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2023,
+    format: "T20",
+    // T20I debut 3 Jan 2023 vs Sri Lanka (Wankhede) — ESPNcricinfo confirmed. No ODI/Test caps, not
+    // All-format
+    iplTeams: ["Kolkata Knight Riders", "Sunrisers Hyderabad"],
+    // Signed by Gujarat Titans (2023) and Lucknow Super Giants (2024) but never played a match for
+    // either — excluded per the "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Harshal Patel",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2021,
+    format: "T20",
+    // T20I debut 19 Nov 2021 vs New Zealand — ESPNcricinfo confirmed. No ODI/Test caps, not
+    // All-format
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Capitals", "Punjab Kings", "Sunrisers Hyderabad"],
+    // Signed by Mumbai Indians in 2011 but never played a match for them — excluded per the
+    // "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Sandeep Warrier",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2019,
+    format: "ODI",
+    // ODI debut 14 Aug 2019 vs West Indies, T20I debut 29 Jul 2021 vs Sri Lanka — ESPNcricinfo
+    // confirmed. No Test caps, not All-format
+    iplTeams: ["Kolkata Knight Riders", "Gujarat Titans"],
+    iccTrophies: 0
+  },
+  {
+    name: "Prithvi Shaw",
+    country: "India",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2018,
+    format: "All-format",
+    // Test debut 4 Oct 2018 vs West Indies (century on debut), ODI debut 5 Feb 2020 vs New Zealand,
+    // T20I debut 25 Jul 2021 vs Sri Lanka — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Capitals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Shivam Dube",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2019,
+    format: "ODI",
+    // T20I debut 3 Nov 2019 vs Bangladesh, ODI debut 15 Dec 2019 vs West Indies — ESPNcricinfo
+    // confirmed. No Test caps, not All-format
+    iplTeams: ["Royal Challengers Bangalore", "Rajasthan Royals", "Chennai Super Kings"],
+    iccTrophies: 2
+    // 2024 T20 World Cup and 2026 T20 World Cup winning squads — ESPNcricinfo confirmed
+  },
+  {
+    name: "Mayank Markande",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak-googly",
+    debutYear: 2019,
+    format: "ODI",
+    // T20I debut 24 Feb 2019 vs Australia, ODI caps (5 matches) also confirmed — ESPNcricinfo
+    // confirmed. No Test caps, not All-format
+    iplTeams: ["Mumbai Indians", "Rajasthan Royals", "Sunrisers Hyderabad"],
+    // Signed by Kolkata Knight Riders in 2025 but never played a match for them — excluded per the
+    // "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Khaleel Ahmed",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm medium-fast",
+    debutYear: 2018,
+    format: "ODI",
+    // ODI debut 18 Sep 2018 vs Hong Kong, T20I debut 4 Nov 2018 vs West Indies — ESPNcricinfo
+    // confirmed. Named as a reserve (not full squad) for the 2024 T20 World Cup winning squad, so
+    // not credited an ICC trophy. No Test caps, not All-format
+    iplTeams: ["Sunrisers Hyderabad", "Delhi Capitals", "Chennai Super Kings"],
+    // Signed by Delhi Daredevils in 2016-2017 but never played a match for them — excluded per the
+    // "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Deepak Chahar",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2018,
+    format: "ODI",
+    // T20I debut 8 Jul 2018 vs England, ODI debut 25 Sep 2018 vs Afghanistan — ESPNcricinfo
+    // confirmed. No Test caps despite an initial search synthesis error suggesting otherwise
+    // (cross-checked directly on Wikipedia and corrected) — not All-format
+    iplTeams: ["Rising Pune Supergiant", "Chennai Super Kings", "Mumbai Indians"],
+    iccTrophies: 0
+  },
+  {
+    name: "Siddarth Kaul",
+    country: "India",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2018,
+    format: "ODI",
+    // T20I debut 29 Jun 2018 vs Ireland, ODI debut 12 Jul 2018 vs England — ESPNcricinfo confirmed.
+    // No Test caps, not All-format. Retired from Indian cricket in 2024
+    iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad", "Royal Challengers Bangalore"],
+    // Drafted by Kolkata Knight Riders in the inaugural 2008 IPL but never played a match for them
+    // — excluded per the "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Vijay Shankar",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2018,
+    format: "ODI",
+    // T20I debut 6 Mar 2018, 2018 Nidahas Trophy vs Sri Lanka, ODI debut 18 Jan 2019 vs Australia
+    // (MCG) — ESPNcricinfo confirmed. No Test caps despite being called up to a Test squad in 2017
+    // (never capped), not All-format
+    iplTeams: ["Chennai Super Kings", "Sunrisers Hyderabad", "Gujarat Titans"],
+    // Signed by Delhi Daredevils in 2018 but never played a match for them — excluded per the
+    // "signed but never played" rule
+    iccTrophies: 0
+  },
+  {
+    name: "Shardul Thakur",
+    country: "India",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 31 Aug 2017 vs Sri Lanka (Colombo), T20I debut 21 Feb 2018 vs South Africa
+    // (Centurion), Test debut 12 Oct 2018 vs West Indies (Hyderabad) — ESPNcricinfo confirmed
+    iplTeams: ["Kings XI Punjab", "Rising Pune Supergiant", "Chennai Super Kings", "Delhi Capitals", "Kolkata Knight Riders", "Lucknow Super Giants", "Mumbai Indians"],
+    iccTrophies: 0
+  },
 
   // ===== AUSTRALIA (10 players) =====
 
