@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 150 players across 11 countries
+// 151 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -736,6 +736,30 @@ const wordlePlayers = [
     // Test debut 2018, ODI debut 5 Feb 2020 vs New Zealand (Hamilton) — 5 ODIs total, confirmed zero
     // T20I caps — ESPNcricinfo confirmed, not All-format.
     iplTeams: ["Royal Challengers Bangalore", "Delhi Daredevils", "Rising Pune Supergiant", "Kings XI Punjab", "Punjab Kings", "Sunrisers Hyderabad"],
+    iccTrophies: 0
+  },
+  {
+    name: "KS Bharat",
+    country: "India",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    // No source confirmed a bowling record either way — flagged as unconfirmed rather than
+    // proven NA, same treatment as KL Rahul (see Cricket Wordle Player Data Rule)
+    bowlingStyle: "NA",
+    debutYear: 2023,
+    format: "ODI",
+    // Test debut 9 Feb 2023 vs Australia (Nagpur), covering for the injured Rishabh Pant — played
+    // 7 Tests before retiring from international cricket in June 2026. Confirmed no ODI or T20I
+    // caps — Test-only, not All-format. ESPNcricinfo lists him as "Srikar Bharat" (full name Kona
+    // Srikar Bharat) — this is the same player as "KS Bharat".
+    // CORRECTION (added same session): this player was in the original cap-list research but was
+    // missed from the batch that actually got verified and written, because a later, more detailed
+    // Wikipedia table fetch used for the write-up simply didn't surface him — a concrete instance of
+    // the standing cap-number data-quality caveat. Added here as a fix once the user asked why he
+    // was missing. India Test cap expansion is now 21/20 (one over target) as a result.
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Capitals", "Gujarat Titans", "Kolkata Knight Riders"],
+    // Signed by Delhi Daredevils for 2015 but did not play a match that season — excluded per the
+    // "signed but never played" rule (see Stuart Broad/Axar Patel precedent)
     iccTrophies: 0
   },
 
