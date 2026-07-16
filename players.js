@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 214 players across 11 countries
+// 224 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -1689,7 +1689,7 @@ const wordlePlayers = [
     iccTrophies: 1
   },
 
-  // ===== AUSTRALIA (10 players) =====
+  // ===== AUSTRALIA (20 players) =====
 
   {
     name: "Ricky Ponting",
@@ -1832,6 +1832,168 @@ const wordlePlayers = [
     iplTeams: ["Royal Challengers Bangalore", "Kolkata Knight Riders", "Delhi Capitals"],
     iccTrophies: 3
     // 2021 T20 WC, 2023 ODI WC, 2023 WTC — Wikipedia confirmed
+  },
+  {
+    name: "Allan Border",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
+    debutYear: 1978,
+    format: "ODI",
+    // 156 Tests (1978-1994), 273 ODIs (1979-1994) — retired before T20Is existed (first
+    // T20I was Feb 2005) — ESPNcricinfo + Wikipedia confirmed. Genuine part-time left-arm
+    // orthodox spinner (39 Test wickets, once took 11 in a Sydney Test vs West Indies)
+    iplTeams: [],
+    iccTrophies: 1
+    // 1987 World Cup, as captain — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Michael Clarke",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm orthodox",
+    debutYear: 2003,
+    format: "All-format",
+    // Tests (2004), ODIs (2003), T20Is (2005) — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search confirmed a genuine playing appearance (stumped for 13 vs KKR,
+    // 19 May 2012), not just a signing
+    iplTeams: ["Pune Warriors India"],
+    iccTrophies: 3
+    // 2006 Champions Trophy, 2007 World Cup, 2015 World Cup (as captain) — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Mark Waugh",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    // ESPNcricinfo profile literally lists "Right arm Medium, Right arm Offbreak" — began
+    // as a medium pacer, converted to off-break later in his career after back injuries;
+    // recorded here as medium (his primary/original style) — both sources agree on both,
+    // this is not a cross-source mismatch
+    debutYear: 1988,
+    format: "ODI",
+    // Tests (1991), ODIs (1988) — retired 2002, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1999 World Cup — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Justin Langer",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 1993,
+    format: "ODI",
+    // Tests (1993), ODIs (1994) — Wikipedia infobox shows no T20I row at all, never
+    // played one — ESPNcricinfo + Wikipedia confirmed
+    // Wikipedia's "domestic team info" table lists Rajasthan Royals 2009, but Wikipedia's
+    // own "List of Rajasthan Royals cricketers" (all 73 players who've played 1+ match for
+    // RR) does NOT include Langer — a dedicated search confirmed he was retained by RR for
+    // 2009 but never played an actual IPL match (same "signed but never played" pattern as
+    // Axar Patel/Stuart Broad)
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Mark Taylor",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // FLAGGED: sources disagree on exact style — ESPNcricinfo's literal profile field says
+    // "Right arm Medium", Wikipedia's literal infobox says "Right-arm leg spin", ICC has no
+    // profile page for retired players like Taylor, Cricbuzz unreachable as usual. Checked
+    // the actual scorecard of his only Test wicket (Rashid Latif, c Bevan b Taylor, 2nd
+    // Test v Pakistan, Rawalpindi, 5 Oct 1994, figures 3-1-11-1) — confirms he genuinely
+    // bowled, but the scorecard itself doesn't specify delivery type. Marked NA per user
+    // decision rather than picking a side — note this differs from the usual NA case since
+    // he is confirmed to have bowled (not a true zero-ball record)
+    debutYear: 1989,
+    format: "ODI",
+    // Tests, ODIs (both debuted Jan 1989) — retired 1999, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Runner-up 1996 World Cup as captain, did not win — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "David Boon",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 1984,
+    format: "ODI",
+    // Tests (Nov 1984), ODIs (Feb 1984) — retired 1996, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1987 World Cup, Player of the Match in the final — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Greg Chappell",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 1970,
+    format: "ODI",
+    // Tests (1970), ODIs (1971) — retired 1984, before Australia's first World Cup win
+    // (1987) and before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Runner-up 1975 World Cup as vice-captain, did not win — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Don Bradman",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
+    debutYear: 1928,
+    format: "Test",
+    // 52 Tests (1928-1948) — ODI cricket didn't begin until 1971 and T20I until 2005, both
+    // long after his 1948 retirement — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Cricket World Cup didn't exist until 1975, decades after he retired
+  },
+  {
+    name: "Mike Hussey",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2004,
+    format: "All-format",
+    // Tests (2005), ODIs (2004), T20Is (2005) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings", "Mumbai Indians"],
+    // CSK 2008-2013 and 2015, Mumbai Indians 2014 in between — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 3
+    // 2006 Champions Trophy, 2007 World Cup, 2009 Champions Trophy — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Usman Khawaja",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // FLAGGED: sources disagree on exact style — ESPNcricinfo's literal profile field AND
+    // ICC's rankings page both say "Right-arm medium", Wikipedia's literal infobox says
+    // "Right-arm off break", Cricbuzz unreachable as usual. He has a confirmed bowling
+    // record (18 balls, 0 wickets in Tests; 174 balls, 1 wicket in FC cricket) so this is
+    // not a true zero-ball case — marked NA per user decision rather than picking a side
+    debutYear: 2011,
+    format: "All-format",
+    // Test debut 3 Jan 2011, ODI debut 11 Jan 2013, T20I debut 31 Jan 2016 (T20I career was
+    // just the 2016 calendar year) — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Rising Pune Supergiant, 2016 only — confirmed via ESPNcricinfo's
+    // own TEAMS list on his profile page and Wikipedia's domestic team table (both agree)
+    iplTeams: ["Rising Pune Supergiant"],
+    iccTrophies: 1
+    // 2021-2023 World Test Championship — ESPNcricinfo + Wikipedia confirmed
   },
 
   // ===== WEST INDIES (10 players) =====
