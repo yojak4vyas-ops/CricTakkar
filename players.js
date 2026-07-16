@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 235 players across 11 countries
+// 243 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -1689,7 +1689,7 @@ const wordlePlayers = [
     iccTrophies: 1
   },
 
-  // ===== AUSTRALIA (31 players) =====
+  // ===== AUSTRALIA (39 players) =====
 
   {
     name: "Ricky Ponting",
@@ -2171,6 +2171,141 @@ const wordlePlayers = [
     iplTeams: [],
     iccTrophies: 1
     // 2009 Champions Trophy — Wikipedia confirmed. Not part of any World Cup winning squad.
+  },
+
+  {
+    name: "Michael Bevan",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm wrist-spin",
+    debutYear: 1994,
+    format: "ODI",
+    // ODI debut 14 Apr 1994 vs Sri Lanka (Sharjah, earliest), Test debut 28 Sept 1994 vs
+    // Pakistan (Karachi) — retired 2003-04 season, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired before the IPL existed (2008)
+    iccTrophies: 2
+    // 1999 World Cup and 2003 World Cup (both confirmed via the official Australia 2003 World
+    // Cup squad list) — Wikipedia confirmed
+  },
+  {
+    name: "Dean Jones",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 1984,
+    format: "ODI",
+    // ODI debut 30 Jan 1984 vs Pakistan (Adelaide, earliest), Test debut 16 Mar 1984 vs West
+    // Indies (Port of Spain) — retired 1994, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1987 World Cup — Australia's maiden title; Jones scored 314 runs at the tournament — Wikipedia confirmed
+  },
+  {
+    name: "Shane Watson",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2002,
+    format: "All-format",
+    // ODI debut 24 Mar 2002 vs South Africa (earliest), Test debut 2 Jan 2005 vs Pakistan,
+    // T20I debut 24 Feb 2006 vs South Africa — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Rajasthan Royals (2008, 2010, 2011-2015), Royal Challengers
+    // Bangalore (2016-2017), Chennai Super Kings (2018-2020) — his St Lucia Stars/Islamabad
+    // United/Quetta Gladiators spells are CPL/PSL franchise cricket, not IPL, and excluded — Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Royal Challengers Bangalore", "Chennai Super Kings"],
+    iccTrophies: 4
+    // 2006 Champions Trophy, 2007 World Cup, 2009 Champions Trophy, 2015 World Cup — Wikipedia confirmed
+  },
+  {
+    name: "Aaron Finch",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2011,
+    format: "All-format",
+    // T20I debut 12 Jan 2011 vs England (earliest), ODI debut 11 Jan 2013 vs Sri Lanka, Test
+    // debut 7 Oct 2018 vs Pakistan — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Rajasthan Royals (2009-10), Delhi Daredevils (2011-2012), Pune
+    // Warriors India (2013), Sunrisers Hyderabad (2014), Mumbai Indians (2015), Gujarat Lions
+    // (2016-2017), Kings XI Punjab (2018), Royal Challengers Bangalore (2020), Kolkata Knight
+    // Riders (2022) — Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Delhi Daredevils", "Pune Warriors India", "Sunrisers Hyderabad", "Mumbai Indians", "Gujarat Lions", "Kings XI Punjab", "Royal Challengers Bangalore", "Kolkata Knight Riders"],
+    iccTrophies: 2
+    // 2015 World Cup (squad member) and 2021 T20 World Cup (as captain, Australia's maiden
+    // title in that format) — Wikipedia confirmed
+  },
+  {
+    name: "Adam Zampa",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
+    debutYear: 2016,
+    format: "ODI",
+    // ODI debut 6 Feb 2016 vs New Zealand (Wellington, earliest), T20I debut 7 Mar 2016 vs
+    // South Africa — no Test caps ("the Test career that never happened") — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Rising Pune Supergiant (2016, took a career-best 6/19 vs SRH),
+    // Royal Challengers Bangalore (2022) — a 2025 Sunrisers Hyderabad signing is excluded: he
+    // withdrew before the season with a shoulder injury and never played a match, same
+    // "signed but never played" pattern as Akash Deep/Brendan Taylor — Wikipedia confirmed
+    iplTeams: ["Rising Pune Supergiant", "Royal Challengers Bangalore"],
+    iccTrophies: 2
+    // 2021 T20 World Cup and 2023 ODI World Cup — Wikipedia confirmed
+  },
+  {
+    name: "Nathan Bracken",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm fast-medium",
+    debutYear: 2001,
+    format: "All-format",
+    // ODI debut 11 Jan 2001 vs West Indies (earliest), Test debut 4 Dec 2003 vs India, T20I
+    // debut 9 Jan 2006 vs South Africa — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: no evidence found of any IPL franchise appearance or signing
+    // across 2 separate searches — retired Jan 2011 due to a chronic knee injury — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 3
+    // 2003 World Cup (joined the winning squad mid-tournament as a replacement for the
+    // injured Jason Gillespie, confirmed via the official Australia 2003 squad list), 2006
+    // Champions Trophy, 2007 World Cup — Wikipedia confirmed
+  },
+  {
+    name: "Brad Hogg",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm wrist-spin",
+    debutYear: 1996,
+    format: "All-format",
+    // ODI debut 26 Aug 1996 vs Zimbabwe (earliest), Test debut 10 Oct 1996 vs India, T20I
+    // debut 24 Feb 2006 vs South Africa (later recalled to the T20I squad in 2011-12 at age
+    // 40 after a Perth Scorchers BBL stint — a comeback, not a fresh debut) — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Kolkata Knight Riders (2015) — became the oldest player ever to
+    // feature in an IPL match, aged 44 years 81 days, vs Chennai Super Kings — Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
+    iccTrophies: 3
+    // 2003 World Cup (confirmed via the official Australia 2003 squad list), 2006 Champions
+    // Trophy, 2007 World Cup (took 21 wickets at the tournament) — Wikipedia confirmed
+  },
+  {
+    name: "Damien Fleming",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 1994,
+    format: "ODI",
+    // ODI debut 16 Jan 1994 vs South Africa (earliest), Test debut 5 Oct 1994 vs Pakistan
+    // (Rawalpindi, took a hat-trick on debut) — retired 2001, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1999 World Cup — Wikipedia confirmed
   },
 
   // ===== WEST INDIES (10 players) =====
