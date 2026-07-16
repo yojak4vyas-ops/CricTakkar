@@ -143,7 +143,16 @@ var bowlingStyleAbbr = {
   'Left-arm medium': 'L-MED', 'Left-arm orthodox': 'L-ORT',
   'Left-arm wrist-spin (chinaman)': 'L-WS'
 };
-var formatAbbr = { 'All-format': 'ALL', 'ODI': 'ODI' };
+var formatAbbr = { 'All-format': 'ALL', 'ODI': 'ODI', 'Test': 'TEST', 'T20': 'T20' };
+
+// ===== FORMAT VALUE -> SET OF FORMATS PLAYED =====
+// "format" now shows the exact combination of formats a player has played, e.g. "ODI+T20"
+// (ODI + T20I, no Test) or "Test+ODI" (Test + ODI, no T20I) instead of a lossy catch-all.
+var formatTokens = {
+  'Test': ['Test'], 'ODI': ['ODI'], 'T20': ['T20'],
+  'Test+ODI': ['Test', 'ODI'], 'Test+T20': ['Test', 'T20'], 'ODI+T20': ['ODI', 'T20'],
+  'All-format': ['Test', 'ODI', 'T20']
+};
 var iplTeamAbbr = {
   'Mumbai Indians': 'MI', 'Chennai Super Kings': 'CSK', 'Royal Challengers Bangalore': 'RCB',
   'Kolkata Knight Riders': 'KKR', 'Rajasthan Royals': 'RR', 'Deccan Chargers': 'DCH',
@@ -201,7 +210,10 @@ function comparePlayer(guessed, target) {
       if (Math.abs(gVal - tVal) === 1) return 'yellow';
     }
     if (attr === 'format') {
-      if (guessed.format === 'All-format' || target.format === 'All-format') return 'yellow';
+      var gFormats = formatTokens[gVal] || [];
+      var tFormats = formatTokens[tVal] || [];
+      var overlap = gFormats.some(function(f) { return tFormats.indexOf(f) !== -1; });
+      if (overlap) return 'yellow';
     }
     return 'grey';
   });

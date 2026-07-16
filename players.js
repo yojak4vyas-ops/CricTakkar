@@ -77,7 +77,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1992,
-    format: "ODI",
+    format: "Test+ODI",
     // 113 Tests, 311 ODIs, ZERO T20Is — ESPNcricinfo confirmed
     // Day 14 FIX: was missing Pune Warriors India (2012-13) — ESPNcricinfo confirmed
     iplTeams: ["Kolkata Knight Riders", "Pune Warriors"],
@@ -121,7 +121,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast-medium",
     debutYear: 1978,
-    format: "ODI",
+    format: "Test+ODI",
     // 131 Tests, 225 ODIs — retired 1994, T20I format did not exist
     iplTeams: [],
     iccTrophies: 1
@@ -134,7 +134,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1971,
-    format: "ODI",
+    format: "Test+ODI",
     // 125 Tests, 108 ODIs — retired 1987, T20I format did not exist
     iplTeams: [],
     iccTrophies: 0
@@ -147,7 +147,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 1996,
-    format: "ODI",
+    format: "Test+ODI",
     // 134 Tests, 86 ODIs, ZERO T20Is — ESPNcricinfo confirmed
     // Wikipedia: "Laxman is one of the few players to have played 100 Tests without appearing in a Cricket World Cup"
     // Day 14 FIX: was missing Kochi Tuskers Kerala (2011) — ESPNcricinfo confirmed
@@ -458,7 +458,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Slow left-arm orthodox",
     debutYear: 2026,
-    format: "ODI",
+    format: "Test",
     // Test cap 319, debut June 2026 vs Afghanistan (6/33 on debut) — ESPNcricinfo confirmed.
     // No confirmed ODI or T20I caps as of 15 Jul 2026 despite ODI squad call-ups — ESPNcricinfo.
     iplTeams: ["Gujarat Titans"],
@@ -471,7 +471,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 2025,
-    format: "ODI",
+    format: "Test",
     // Test cap 318, debut July 2025 vs England at Old Trafford — ESPNcricinfo confirmed.
     // No confirmed ODI or T20I caps as of 15 Jul 2026 — ESPNcricinfo.
     iplTeams: ["Mumbai Indians", "Chennai Super Kings"],
@@ -523,9 +523,11 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2021,
-    format: "ODI",
+    format: "Test+T20",
     // T20I debut July 2021 vs Sri Lanka, Test debut March 2024 vs England (Dharamsala) — ESPNcricinfo confirmed.
-    // Explicitly confirmed "yet to play an ODI" as of 2026 — ESPNcricinfo, not All-format.
+    // Explicitly confirmed "yet to play an ODI" as of 2026 — ESPNcricinfo. Format corrected Day 26
+    // session 3: was previously mislabeled "ODI" despite having no ODI cap at all — Test+T20 is the
+    // accurate combination (Test + T20I, no ODI).
     iplTeams: ["Royal Challengers Bangalore", "Rajasthan Royals", "Lucknow Super Giants"],
     iccTrophies: 0
   },
@@ -536,7 +538,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 2024,
-    format: "ODI",
+    format: "Test",
     // Test debut 23 Feb 2024 vs England (Ranchi) — ESPNcricinfo confirmed. No ODI/T20I caps found across
     // multiple searches despite ODI squad call-ups — treated as Test-only; flagged as best-available, not
     // an explicit "never played" confirmation, same caution as KL Rahul's bowling-style entry.
@@ -554,10 +556,12 @@ const wordlePlayers = [
     // proven NA, same treatment as KL Rahul (see Cricket Wordle Player Data Rule)
     bowlingStyle: "NA",
     debutYear: 2024,
-    format: "ODI",
+    format: "Test+T20",
     // Test debut 15 Feb 2024 vs England (Rajkot), T20I debut 6 Jul 2024 vs Zimbabwe — ESPNcricinfo confirmed.
     // Named as Rishabh Pant's ODI replacement Jan 2026 but an actual ODI cap/debut could not be confirmed
-    // — treated conservatively as not-yet-All-format, flagged for re-check in a future session.
+    // — treated conservatively as not-yet-All-format, flagged for re-check in a future session. Format
+    // corrected Day 26 session 3: was previously mislabeled "ODI" despite having no ODI cap at all —
+    // Test+T20 is the accurate combination (Test + T20I, no ODI).
     iplTeams: ["Rajasthan Royals"],
     iccTrophies: 0
   },
@@ -575,7 +579,7 @@ const wordlePlayers = [
     bowlingStyle: "Right-arm legbreak",
     // Occasional part-time bowler, listed on his ESPNcricinfo profile
     debutYear: 2024,
-    format: "ODI",
+    format: "Test",
     // Test debut 15 Feb 2024 vs England (Rajkot) — ESPNcricinfo confirmed. Explicitly confirmed
     // no ODI or T20I caps as of 2026 — Test-only, not All-format.
     iplTeams: ["Royal Challengers Bangalore", "Kings XI Punjab", "Chennai Super Kings"],
@@ -590,7 +594,7 @@ const wordlePlayers = [
     bowlingStyle: "Right-arm offbreak",
     // Occasional part-time bowler, listed on his ESPNcricinfo profile
     debutYear: 2023,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 21 Dec 2023 vs South Africa (Paarl), Test debut 2 Feb 2024 vs England (Visakhapatnam) —
     // ESPNcricinfo confirmed. No T20I debut found — not All-format.
     iplTeams: ["Royal Challengers Bangalore"],
@@ -715,7 +719,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Slow left-arm orthodox",
     debutYear: 2019,
-    format: "ODI",
+    format: "Test",
     // Test debut 19 Oct 2019 vs South Africa (Ranchi) — ESPNcricinfo confirmed. No evidence of ODI or
     // T20I caps found — Test-only, not All-format.
     iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad"],
@@ -732,7 +736,7 @@ const wordlePlayers = [
     bowlingStyle: "NA",
     battingStyle: "Right-hand",
     debutYear: 2018,
-    format: "ODI",
+    format: "Test+ODI",
     // Test debut 2018, ODI debut 5 Feb 2020 vs New Zealand (Hamilton) — 5 ODIs total, confirmed zero
     // T20I caps — ESPNcricinfo confirmed, not All-format.
     iplTeams: ["Royal Challengers Bangalore", "Delhi Daredevils", "Rising Pune Supergiant", "Kings XI Punjab", "Punjab Kings", "Sunrisers Hyderabad"],
@@ -747,7 +751,7 @@ const wordlePlayers = [
     // proven NA, same treatment as KL Rahul (see Cricket Wordle Player Data Rule)
     bowlingStyle: "NA",
     debutYear: 2023,
-    format: "ODI",
+    format: "Test",
     // Test debut 9 Feb 2023 vs Australia (Nagpur), covering for the injured Rishabh Pant — played
     // 7 Tests before retiring from international cricket in June 2026. Confirmed no ODI or T20I
     // caps — Test-only, not All-format. ESPNcricinfo lists him as "Srikar Bharat" (full name Kona
@@ -790,7 +794,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 2026,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 13 Jun 2026 vs Afghanistan (Dharamsala) — ESPNcricinfo confirmed. Was named in the
     // Test squad for the same series but Manav Suthar got the actual cap, not Brar — no Test debut,
     // not All-format.
@@ -811,6 +815,9 @@ const wordlePlayers = [
     format: "ODI",
     // ODI debut 13 Jun 2026 vs Afghanistan (Dharamsala), 3 wickets on debut — ESPNcricinfo confirmed.
     // Same as Brar — named in the Test squad but Manav Suthar got the actual cap — no Test debut.
+    // FLAGGED Day 26 session 3: received a T20I call-up/selection for India's July 2026 Zimbabwe tour,
+    // but an actual T20I match cap could not be confirmed at time of writing — kept as "ODI" rather
+    // than asserting "ODI+T20", flagged for re-check once the tour concludes.
     iplTeams: ["Sunrisers Hyderabad"],
     iccTrophies: 0
   },
@@ -821,7 +828,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak-googly",
     debutYear: 2021,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 25 Jul 2021 vs Sri Lanka, ODI debut 9 Feb 2025 vs England (Cuttack) — no Test caps
     // — ESPNcricinfo confirmed, not All-format
     iplTeams: ["Kolkata Knight Riders"],
@@ -835,7 +842,7 @@ const wordlePlayers = [
     bowlingStyle: "Right-arm offbreak",
     // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak combo, offbreak used as primary
     debutYear: 2024,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I and ODI debuts both 2024, following his IPL 2024 breakout — no Test caps, not All-format
     iplTeams: ["Rajasthan Royals"],
     iccTrophies: 0
@@ -847,7 +854,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2023,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I and ODI debuts both 2023 — explicitly confirmed yet to play red-ball cricket for India,
     // not All-format
     iplTeams: ["Kolkata Knight Riders"],
@@ -860,7 +867,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2023,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 3 Aug 2023 vs West Indies, ODI debut also 2023 — no Test cap as of 2026 (explicitly
     // described as someone who "would soon be" an all-format player), not All-format yet
     iplTeams: ["Mumbai Indians"],
@@ -888,7 +895,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 2022,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I and ODI debuts both 2022 following his breakout IPL 2022 season — no Test caps, not All-format
     iplTeams: ["Sunrisers Hyderabad"],
     // Signed by Kolkata Knight Riders for 2025 and 2026 but ruled out injured/no confirmed
@@ -902,7 +909,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Slow left-arm orthodox",
     debutYear: 2022,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 2022 vs South Africa (Ranchi), T20I debut 2023 (Asian Games) — no Test caps, not All-format
     iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad", "Lucknow Super Giants"],
     iccTrophies: 0
@@ -914,7 +921,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak-googly",
     debutYear: 2022,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I and ODI debuts both 2022 — no Test caps, not All-format
     iplTeams: ["Punjab Kings", "Lucknow Super Giants", "Rajasthan Royals"],
     iccTrophies: 0
@@ -926,7 +933,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2022,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 6 Oct 2022 vs South Africa (Lucknow) — no Test caps confirmed, not All-format
     iplTeams: ["Chennai Super Kings"],
     iccTrophies: 0
@@ -938,7 +945,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast-medium",
     debutYear: 2022,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 20 Feb 2022 vs West Indies (Eden Gardens), ODI debut 24 Jul 2022 vs West Indies
     // (Port of Spain) — no Test caps, not All-format
     iplTeams: ["Royal Challengers Bangalore", "Delhi Capitals", "Lucknow Super Giants", "Rajasthan Royals"],
@@ -951,7 +958,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2022,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 6 Feb 2022 vs West Indies (Ahmedabad) — no Test caps, not All-format
     iplTeams: ["Sunrisers Hyderabad", "Rajasthan Royals", "Punjab Kings", "Lucknow Super Giants", "Chennai Super Kings"],
     iccTrophies: 0
@@ -963,7 +970,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 2021,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I cap came first, ODI debut Jan 2022 vs South Africa — no Test caps, not All-format
     iplTeams: ["Kolkata Knight Riders", "Royal Challengers Bangalore"],
     iccTrophies: 0
@@ -975,7 +982,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Left-arm medium-fast",
     debutYear: 2021,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 2021 — no Test caps confirmed, not All-format
     iplTeams: ["Rajasthan Royals", "Delhi Capitals", "Kolkata Knight Riders"],
     iccTrophies: 0
@@ -987,7 +994,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2021,
-    format: "ODI",
+    format: "ODI+T20",
     // 1 ODI and 2 T20Is for India, all in 2021 vs Sri Lanka — no Test caps, not All-format
     iplTeams: ["Mumbai Indians", "Kolkata Knight Riders", "Rajasthan Royals", "Delhi Capitals"],
     iccTrophies: 0
@@ -1011,7 +1018,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak",
     debutYear: 2019,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 2019, 1 ODI and 6 T20Is total between 2019 and 2021 — no Test caps, not All-format
     iplTeams: ["Mumbai Indians", "Punjab Kings", "Sunrisers Hyderabad", "Chennai Super Kings"],
     iccTrophies: 0
@@ -1023,7 +1030,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Left-arm orthodox",
     debutYear: 2018,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 2018 vs West Indies (Eden Gardens), ODI debut 2021 vs England (Pune) — no Test
     // caps confirmed, not All-format
     iplTeams: ["Mumbai Indians", "Lucknow Super Giants", "Royal Challengers Bangalore"],
@@ -1103,7 +1110,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Slow left-arm orthodox",
     debutYear: 2024,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 6 Jul 2024 vs Zimbabwe (Harare), ODI debut/maiden ODI century vs South Africa
     // 2025/26 series — ESPNcricinfo confirmed. No Test caps, not All-format
     iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad"],
@@ -1190,7 +1197,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium-fast",
     debutYear: 2019,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 14 Aug 2019 vs West Indies, T20I debut 29 Jul 2021 vs Sri Lanka — ESPNcricinfo
     // confirmed. No Test caps, not All-format
     iplTeams: ["Kolkata Knight Riders", "Gujarat Titans"],
@@ -1216,7 +1223,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm medium-fast",
     debutYear: 2019,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 3 Nov 2019 vs Bangladesh, ODI debut 15 Dec 2019 vs West Indies — ESPNcricinfo
     // confirmed. No Test caps, not All-format
     iplTeams: ["Royal Challengers Bangalore", "Rajasthan Royals", "Chennai Super Kings"],
@@ -1230,7 +1237,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak-googly",
     debutYear: 2019,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 24 Feb 2019 vs Australia, ODI caps (5 matches) also confirmed — ESPNcricinfo
     // confirmed. No Test caps, not All-format
     iplTeams: ["Mumbai Indians", "Rajasthan Royals", "Sunrisers Hyderabad"],
@@ -1245,7 +1252,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Left-arm medium-fast",
     debutYear: 2018,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 18 Sep 2018 vs Hong Kong, T20I debut 4 Nov 2018 vs West Indies — ESPNcricinfo
     // confirmed. Named as a reserve (not full squad) for the 2024 T20 World Cup winning squad, so
     // not credited an ICC trophy. No Test caps, not All-format
@@ -1261,7 +1268,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 2018,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 8 Jul 2018 vs England, ODI debut 25 Sep 2018 vs Afghanistan — ESPNcricinfo
     // confirmed. No Test caps despite an initial search synthesis error suggesting otherwise
     // (cross-checked directly on Wikipedia and corrected) — not All-format
@@ -1275,7 +1282,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium-fast",
     debutYear: 2018,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 29 Jun 2018 vs Ireland, ODI debut 12 Jul 2018 vs England — ESPNcricinfo confirmed.
     // No Test caps, not All-format. Retired from Indian cricket in 2024
     iplTeams: ["Delhi Daredevils", "Sunrisers Hyderabad", "Royal Challengers Bangalore"],
@@ -1290,7 +1297,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 2018,
-    format: "ODI",
+    format: "ODI+T20",
     // T20I debut 6 Mar 2018, 2018 Nidahas Trophy vs Sri Lanka, ODI debut 18 Jan 2019 vs Australia
     // (MCG) — ESPNcricinfo confirmed. No Test caps despite being called up to a Test squad in 2017
     // (never capped), not All-format
@@ -1328,7 +1335,7 @@ const wordlePlayers = [
     // NA rule. ESPNcricinfo/Wikipedia confirm right-arm legbreak.
     bowlingStyle: "Right-arm legbreak",
     debutYear: 2010,
-    format: "ODI",
+    format: "Test+ODI",
     // Test debut 9 Oct 2010 vs Australia, 5 ODIs (2013-14), zero T20Is confirmed —
     // ESPNcricinfo + Wikipedia infobox (no T20I row at all)
     iplTeams: ["Kolkata Knight Riders", "Royal Challengers Bangalore", "Kings XI Punjab", "Chennai Super Kings"],
@@ -1343,7 +1350,7 @@ const wordlePlayers = [
     // so not NA. ESPNcricinfo + Wikipedia confirm right-arm medium.
     bowlingStyle: "Right-arm medium",
     debutYear: 1976,
-    format: "ODI",
+    format: "Test+ODI",
     // Career 1976-1992, retired before T20I existed (2005) — same pattern as Kapil
     // Dev/Ganguly/Wasim/Warne corrections. Never played IPL (retired 1992, before 2008).
     iplTeams: [],
@@ -1361,7 +1368,7 @@ const wordlePlayers = [
     // international bowling record, so not NA. ESPNcricinfo + Wikipedia confirm right-arm medium.
     bowlingStyle: "Right-arm medium",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // Career 1984-2000, retired before T20I existed. Never played IPL (retired 2000).
     iplTeams: [],
     // Played 1992/1996/1999 World Cups, all losses (Pakistan/Sri Lanka/Australia won
@@ -1377,7 +1384,7 @@ const wordlePlayers = [
     // Wikipedia confirm legbreak.
     bowlingStyle: "Legbreak",
     debutYear: 1969,
-    format: "ODI",
+    format: "Test+ODI",
     // 91 Tests (1969-1983), 25 ODIs (1974-1982) including the 1975 and 1979 World Cups
     // (neither won by India), retired before T20I existed. Never played IPL (retired 1983).
     iplTeams: [],
@@ -1405,7 +1412,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1969,
-    format: "ODI",
+    format: "Test+ODI",
     // Career 1969-1989, retired before T20I existed. Never played IPL (retired 1989).
     iplTeams: [],
     // 1983 World Cup winner — Player of the Match in BOTH the semi-final (vs England) and
@@ -1419,7 +1426,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Slow left-arm orthodox",
     debutYear: 1966,
-    format: "ODI",
+    format: "Test+ODI",
     // 67 Tests (1966-1979), 10 ODIs (1974-1979), retired before T20I existed. Never played
     // IPL (retired 1979).
     iplTeams: [],
@@ -1432,7 +1439,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Legbreak",
     debutYear: 1964,
-    format: "ODI",
+    format: "Test+ODI",
     // 58 Tests (1964-1979), only 1 ODI (1976, took 3 wickets) — still counts as ODI format
     // per the "even 1 cap counts" precedent (e.g. Dravid's 1 T20I). Never played IPL.
     iplTeams: [],
@@ -1445,7 +1452,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1991,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 18 Oct 1991 vs Pakistan (earliest), Test debut 29 Nov 1991 vs Australia,
     // retired 2003 before T20I existed. Never played IPL (retired 2003, before 2008).
     iplTeams: [],
@@ -1541,7 +1548,7 @@ const wordlePlayers = [
     // 20 ODI wickets — confirmed bowled internationally, not NA
     bowlingStyle: "Right-arm medium",
     debutYear: 1992,
-    format: "ODI",
+    format: "Test+ODI",
     // 15 Tests + 196 ODIs (1992-2000), effectively career-ending match-fixing ban in 2000
     // before T20I existed. Never played IPL (ban predates IPL).
     iplTeams: [],
@@ -1578,7 +1585,7 @@ const wordlePlayers = [
     // same treatment as KL Rahul's bowling style
     bowlingStyle: "NA",
     debutYear: 1983,
-    format: "ODI",
+    format: "Test+ODI",
     // 51 Tests (1983-1999), 136 ODIs (1987-1998), retired before T20I existed. Never
     // played IPL (retired 1999).
     iplTeams: [],
@@ -1592,7 +1599,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 1981,
-    format: "ODI",
+    format: "Test+ODI",
     // 43 Tests + 146 ODIs (1981-1992), retired before T20I existed. Never played IPL.
     iplTeams: [],
     // 1983 World Cup winner — top scorer for India in the final (38 runs) — ESPNcricinfo +
@@ -1606,7 +1613,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium-fast",
     debutYear: 1994,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 2 Apr 1994 vs New Zealand (earliest), Test debut 7 Jun 1996 vs England,
     // retired 2001 before T20I existed. Never played IPL (retired 2001, before 2008).
     iplTeams: [],
@@ -1621,7 +1628,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium-fast",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 8 Apr 1984 vs Sri Lanka (earliest), Test debut 12 Dec 1984 vs England,
     // retired 1996 before T20I existed. Never played IPL.
     iplTeams: [],
@@ -1660,7 +1667,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak",
     debutYear: 2016,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 11 Jun 2016 vs Zimbabwe, T20I debut 19 Jun 2016 vs Zimbabwe (same series,
     // 8 days apart) — no Test caps, Wikipedia infobox confirmed, not All-format
     // Dedicated IPL-history search confirmed he played (not just signed) for Mumbai Indians
@@ -1715,7 +1722,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak",
     debutYear: 1992,
-    format: "ODI",
+    format: "Test+ODI",
     // 145 Tests, 194 ODIs — retired Jan 2007, ZERO T20Is — ESPNcricinfo confirmed
     iplTeams: ["Rajasthan Royals"],
     iccTrophies: 2
@@ -1742,7 +1749,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast-medium",
     debutYear: 1993,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2007, very few/no T20Is — ESPNcricinfo confirmed
     // Day 14 FIX: was wrongly "Didn't play IPL" — McGrath played 14 matches for Delhi
     // Daredevils in the inaugural 2008 IPL season — ESPNcricinfo confirmed
@@ -1757,7 +1764,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1985,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2004, T20I cricket barely existed — ESPNcricinfo
     iplTeams: [],
     iccTrophies: 1
@@ -1840,7 +1847,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Left-arm orthodox",
     debutYear: 1978,
-    format: "ODI",
+    format: "Test+ODI",
     // 156 Tests (1978-1994), 273 ODIs (1979-1994) — retired before T20Is existed (first
     // T20I was Feb 2005) — ESPNcricinfo + Wikipedia confirmed. Genuine part-time left-arm
     // orthodox spinner (39 Test wickets, once took 11 in a Sydney Test vs West Indies)
@@ -1874,7 +1881,7 @@ const wordlePlayers = [
     // recorded here as medium (his primary/original style) — both sources agree on both,
     // this is not a cross-source mismatch
     debutYear: 1988,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests (1991), ODIs (1988) — retired 2002, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
     iccTrophies: 1
@@ -1887,7 +1894,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1993,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests (1993), ODIs (1994) — Wikipedia infobox shows no T20I row at all, never
     // played one — ESPNcricinfo + Wikipedia confirmed
     // Wikipedia's "domestic team info" table lists Rajasthan Royals 2009, but Wikipedia's
@@ -1913,7 +1920,7 @@ const wordlePlayers = [
     // decision rather than picking a side — note this differs from the usual NA case since
     // he is confirmed to have bowled (not a true zero-ball record)
     debutYear: 1989,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs (both debuted Jan 1989) — retired 1999, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
     iccTrophies: 0
@@ -1926,7 +1933,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests (Nov 1984), ODIs (Feb 1984) — retired 1996, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
     iccTrophies: 1
@@ -1939,7 +1946,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1970,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests (1970), ODIs (1971) — retired 1984, before Australia's first World Cup win
     // (1987) and before T20Is existed — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
@@ -2017,7 +2024,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1971,
-    format: "ODI",
+    format: "Test+ODI",
     // Test debut 29 Jan 1971 (6th Test, Adelaide, 1970-71 Ashes, 5/84 on debut), ODI debut
     // 24 Aug 1972 vs England — retired 1984, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
@@ -2087,7 +2094,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // Test debut 22 Dec 1984 vs West Indies, ODI debut 6 Jan 1985 vs West Indies — retired
     // 1996, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
@@ -2134,7 +2141,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1961,
-    format: "ODI",
+    format: "Test+ODI",
     // Test debut 22 Jun 1961 vs England (5 wickets and 34 runs on debut) — ODI debut 5 Jan
     // 1971, the very first ODI ever played (Australia vs England, MCG), took 2/22 — T20I
     // format did not exist in his career — ESPNcricinfo + Wikipedia confirmed
@@ -2180,7 +2187,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Left-arm wrist-spin",
     debutYear: 1994,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 14 Apr 1994 vs Sri Lanka (Sharjah, earliest), Test debut 28 Sept 1994 vs
     // Pakistan (Karachi) — retired 2003-04 season, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
@@ -2196,7 +2203,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 30 Jan 1984 vs Pakistan (Adelaide, earliest), Test debut 16 Mar 1984 vs West
     // Indies (Port of Spain) — retired 1994, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
@@ -2246,7 +2253,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak googly",
     debutYear: 2016,
-    format: "ODI",
+    format: "ODI+T20",
     // ODI debut 6 Feb 2016 vs New Zealand (Wellington, earliest), T20I debut 7 Mar 2016 vs
     // South Africa — no Test caps ("the Test career that never happened") — ESPNcricinfo + Wikipedia confirmed
     // Dedicated IPL search: Rising Pune Supergiant (2016, took a career-best 6/19 vs SRH),
@@ -2300,7 +2307,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast-medium",
     debutYear: 1994,
-    format: "ODI",
+    format: "Test+ODI",
     // ODI debut 16 Jan 1994 vs South Africa (earliest), Test debut 5 Oct 1994 vs Pakistan
     // (Rawalpindi, took a hat-trick on debut) — retired 2001, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
     iplTeams: [],
@@ -2317,7 +2324,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm legbreak googly",
     debutYear: 1990,
-    format: "ODI",
+    format: "Test+ODI",
     // 131 Tests, 299 ODIs — retired April 2007, ZERO T20Is — ESPNcricinfo confirmed
     iplTeams: [],
     iccTrophies: 1
@@ -2346,7 +2353,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 1974,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1991, T20I format did not exist
     iplTeams: [],
     iccTrophies: 2
@@ -2359,7 +2366,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1966,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1985, T20I format did not exist. 114 first-class wickets as a
     // useful medium-pacer — ESPNcricinfo confirmed.
     iplTeams: [],
@@ -2375,7 +2382,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1988,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2000, T20I format did not exist
     iplTeams: [],
     iccTrophies: 0
@@ -2388,7 +2395,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2001, T20I format did not exist
     iplTeams: [],
     iccTrophies: 0
@@ -2401,7 +2408,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1978,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1992, T20I format did not exist
     iplTeams: [],
     iccTrophies: 2
@@ -2489,7 +2496,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1982,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1995, T20I format did not exist
     iplTeams: [],
     iccTrophies: 0
@@ -2504,7 +2511,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1973,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1990, T20I format did not exist
     iplTeams: [],
     iccTrophies: 0
@@ -2671,7 +2678,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1982,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2000, T20I format did not exist. Confirmed deceptive part-time
     // medium-pacer earlier in his career — ESPNcricinfo confirmed
     // Day 14 Batch 3 FIX: retired 2000, 8 years before IPL existed (2008) — never played.
@@ -2687,7 +2694,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm offbreak",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2003, T20I format did not exist. Confirmed part-time off-spinner
     // with two 4-wicket international hauls — ESPNcricinfo confirmed
     // Day 14 Batch 3 FIX: retired 2003, 5 years before IPL began (2008) — never played.
@@ -2732,8 +2739,10 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Left-arm fast-medium",
     debutYear: 1994,
-    format: "ODI",
-    // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed
+    format: "All-format",
+    // Tests, ODIs, and T20Is (2006/07-2007/08 season) confirmed via ESPNcricinfo Statsguru — corrected
+    // Day 26 session 3: was previously mislabeled "ODI" ("very few/no T20Is") when a T20I record
+    // actually exists for him.
     iplTeams: ["Deccan Chargers"],
     // Only franchise, 2008 season (4 matches) — ESPNcricinfo + Wikipedia confirmed
     iccTrophies: 2
@@ -2766,7 +2775,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Left-arm fast",
     debutYear: 1984,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 2003, T20I format did not exist — ESPNcricinfo confirmed
     // Day 14 Batch 3 FIX: retired 2003, before IPL existed — never played. Later worked as
     // KKR's bowling coach, a coaching role, not a playing appearance — ESPNcricinfo confirmed
@@ -2781,7 +2790,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1971,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1992, T20I format did not exist
     iplTeams: [],
     // Retired 1992, 16 years before IPL began — ESPNcricinfo confirmed
@@ -2795,7 +2804,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm legbreak googly",
     debutYear: 1975,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1996, T20I format did not exist. Confirmed occasional part-time
     // leg-spinner — ESPNcricinfo confirmed
     iplTeams: [],
@@ -2809,7 +2818,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast",
     debutYear: 1989,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — very few T20Is — ESPNcricinfo confirmed
     // Day 14 Batch 3 FIX: retired 2004, before IPL existed — never played. Later worked as
     // Sunrisers Hyderabad's bowling coach (2013), a coaching role — ESPNcricinfo confirmed
@@ -2824,9 +2833,11 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Left-arm orthodox",
     debutYear: 1991,
-    format: "ODI",
-    // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed. Occasional part-time
-    // slow left-arm bowler (dismissed Brian Lara with his first-ever ODI ball) — ESPNcricinfo confirmed
+    format: "All-format",
+    // Tests, ODIs, and 1 T20I confirmed (debut 28 Aug 2006 vs England at Bristol, last T20I 21 Mar
+    // 2007 vs Zimbabwe) — Wikipedia + ESPNcricinfo confirmed. Corrected Day 26 session 3: was
+    // previously mislabeled "ODI" ("very few/no T20Is") when he genuinely has 1 T20I cap. Occasional
+    // part-time slow left-arm bowler (dismissed Brian Lara with his first-ever ODI ball) — ESPNcricinfo confirmed
     // Day 14 Batch 3 FIX: after retiring internationally in 2007 he played in the ICL (Indian
     // Cricket League) — a separate, PCB-unsanctioned rebel T20 league, NOT the IPL — a common
     // mix-up given the similar names. He never played IPL — Wikipedia confirmed
@@ -2923,7 +2934,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast-medium",
     debutYear: 1977,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1993, T20I format did not exist
     iplTeams: [],
     // Retired 1993, 16 years before IPL began — ESPNcricinfo confirmed
@@ -3003,7 +3014,7 @@ const wordlePlayers = [
     // label disagreement flagged, not NA.
     bowlingStyle: "Right-arm offbreak",
     debutYear: 2006,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed
     iplTeams: [],
     // Never played IPL — confirmed via multiple sources — ESPNcricinfo confirmed
@@ -3075,7 +3086,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm medium",
     debutYear: 1975,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1995, T20I format did not exist. Over 200 first-class wickets
     // as an occasional medium-pacer, a genuine secondary bowling record — ESPNcricinfo confirmed
     iplTeams: [],
@@ -3655,7 +3666,7 @@ const wordlePlayers = [
     bowlingStyle: "Right-arm offbreak",
     // Occasional off-break/slow-medium — ESPNcricinfo confirmed
     debutYear: 1992,
-    format: "ODI",
+    format: "Test+ODI",
     // CORRECTED Day 15: was wrongly "All-format" — retired from international
     // cricket after the 2003 World Cup, before T20Is existed (first T20I was
     // Feb 2005) — zero T20Is. Same pattern as Kapil Dev/Warne/Wasim Akram/Ganguly.
@@ -3674,7 +3685,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     bowlingStyle: "Right-arm fast-medium",
     debutYear: 1993,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired October 2005, no evidence of any T20I appearance
     // for Zimbabwe — ESPNcricinfo/Wikipedia confirmed
     iplTeams: [],
@@ -3711,7 +3722,7 @@ const wordlePlayers = [
     // bowling-arm/batting-hand mix-up pattern as Zaheer Khan/Anderson/Broad
     bowlingStyle: "Left-arm orthodox",
     debutYear: 1992,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired early 2000s, T20I format did not exist — confirmed
     iplTeams: [],
     // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
@@ -3812,7 +3823,7 @@ const wordlePlayers = [
     bowlingStyle: "Right-arm offbreak",
     // Occasional bowler, primarily a batsman — ESPNcricinfo confirmed
     debutYear: 1983,
-    format: "ODI",
+    format: "Test+ODI",
     // Tests, ODIs — retired 1997, T20I format did not exist
     iplTeams: [],
     // Retired 1997, well before IPL began in 2008 — confirmed
