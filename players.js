@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 243 players across 11 countries
+// 255 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -1696,7 +1696,7 @@ const wordlePlayers = [
     iccTrophies: 1
   },
 
-  // ===== AUSTRALIA (39 players) =====
+  // ===== AUSTRALIA (51 players) =====
 
   {
     name: "Ricky Ponting",
@@ -2313,6 +2313,220 @@ const wordlePlayers = [
     iplTeams: [],
     iccTrophies: 1
     // 1999 World Cup — Wikipedia confirmed
+  },
+
+  {
+    name: "Liam Scott",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut 9 Jun 2026 vs Bangladesh (Mirpur) — a bowling allrounder, no Test/T20I caps
+    // found as of this writing — ESPNcricinfo confirmed
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing found
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Ollie Peake",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut May 2026 vs Pakistan (opening match of the series), age 19 — the youngest
+    // specialist batter to debut for Australia in ODIs, and the 4th-youngest Australian ODI
+    // debutant overall behind Pat Cummins, Josh Hazlewood, and Ray Bright — no T20I/Test caps
+    // found yet — ESPNcricinfo confirmed
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing found
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Matt Renshaw",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 24 Nov 2016 vs South Africa (Adelaide, earliest), ODI debut 19 Oct 2025 vs
+    // India (Perth), T20I debut 29 Jan 2026 vs Pakistan (Lahore) — ESPNcricinfo confirmed
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing found —
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Mitchell Owen",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // T20I debut 20 Jul 2025 vs West Indies (Kingston, half-century on debut, earliest), ODI
+    // debut 19 Oct 2025 vs India (Perth) — no Test caps found — ESPNcricinfo confirmed
+    // Dedicated IPL search: Punjab Kings — Wikipedia confirmed
+    iplTeams: ["Punjab Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Cooper Connolly",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm orthodox",
+    debutYear: 2024,
+    format: "All-format",
+    // T20I and ODI debuts both Sept 2024 (UK tour, earliest), Test debut Feb 2025 vs Sri
+    // Lanka — ESPNcricinfo confirmed. Took 5/22 vs South Africa in ODIs, youngest Australian
+    // to take an ODI five-wicket haul.
+    // Dedicated IPL search: Punjab Kings (debut 2026 season, scored a maiden IPL century) —
+    // Wikipedia confirmed
+    iplTeams: ["Punjab Kings"],
+    iccTrophies: 0
+    // Not part of the 5 new players added to the losing 2025 Champions Trophy squad; even if
+    // he featured, Australia lost that final to India — no trophy either way
+  },
+  {
+    name: "Ben Dwarshuis",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast-medium",
+    debutYear: 2022,
+    format: "ODI+T20",
+    // T20I debut 2022 (one-off match, end of Pakistan tour, earliest), ODI debut 19 Sep 2024
+    // vs England (Nottingham) — no Test caps found — ESPNcricinfo confirmed. Was parachuted
+    // into the 2025 Champions Trophy squad as a reinforcement and finished as Australia's
+    // leading wicket-taker there.
+    // Dedicated IPL search: bought by Kings XI Punjab in the 2018 auction but did not play
+    // for them (signed but never played, excluded per the standing rule); Delhi Capitals
+    // (2021, replacement for Chris Woakes in the UAE leg); Punjab Kings (2026, replacement
+    // for Lockie Ferguson, played 1 match vs Delhi Capitals, 1/51) — Wikipedia confirmed
+    iplTeams: ["Delhi Capitals", "Punjab Kings"],
+    iccTrophies: 0
+    // Australia lost the 2025 Champions Trophy final to India — no trophy despite featuring
+  },
+  {
+    name: "Will Sutherland",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium-fast",
+    debutYear: 2024,
+    format: "ODI",
+    // ODI debut 4 Feb 2024 vs West Indies (Sydney) — no T20I debut found across 2 dedicated
+    // searches (ESPNcricinfo + Wikipedia both confirmed no T20I record), no Test caps either
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing found —
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Jake Fraser-McGurk",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // FLAGGED: ESPNcricinfo profile lists "Legbreak googly" as his bowling style, but his
+    // playing role is explicitly listed as batter and no international bowling appearance
+    // could be confirmed — recorded as best-available per the standing KL Rahul precedent
+    // rather than asserted as a proven bowling record
+    bowlingStyle: "Right-arm legbreak googly",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // ODI debut 4 Feb 2024 vs West Indies (Sydney, earliest), T20I debut 4 Sep 2024 vs
+    // Scotland — no Test caps — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Delhi Capitals (2024 season, played and scored 55 on debut; retained
+    // for 2025 but withdrew before the season for personal reasons, never played that year —
+    // the 2024 appearance is a confirmed real team membership regardless) — Wikipedia confirmed
+    iplTeams: ["Delhi Capitals"],
+    iccTrophies: 0
+    // Was one of 5 reinforcements added to the 2025 Champions Trophy squad, which Australia
+    // lost to India in the final — no trophy
+  },
+  {
+    name: "Lance Morris",
+    country: "Australia",
+    role: "Bowler",
+    // FLAGGED: no source could confirm his batting hand either way — recorded as best-available
+    // (Right-hand, the overwhelming default for an unremarkable tailend bowler) rather than a
+    // settled fact, same treatment as the KL Rahul/Harsh Dubey precedent
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2024,
+    format: "ODI",
+    // ODI debut 2 Feb 2024 vs West Indies (Melbourne) — despite being named in multiple Test
+    // squads (South Africa 2022-23, India 2023, Pakistan 2023-24) he was released each time
+    // without ever being capped — confirmed via Wikipedia he has NOT actually played a Test.
+    // No T20I debut found either.
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing found —
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Xavier Bartlett",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // ODI debut 2 Feb 2024 vs West Indies (Melbourne, 8 wickets across his first 2 matches,
+    // earliest), T20I debut a week later in 2024 — no Test caps (a stated personal goal, not
+    // yet achieved) — ESPNcricinfo confirmed. Featured in limited matches during the 2025
+    // Champions Trophy campaign.
+    // Dedicated IPL search: Punjab Kings — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Punjab Kings"],
+    iccTrophies: 0
+    // Australia lost the 2025 Champions Trophy final to India — no trophy despite featuring
+  },
+  {
+    name: "Spencer Johnson",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast-medium",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 30 Aug 2023 vs South Africa (Durban, earliest), ODI debut 24 Sep 2023 vs
+    // India (Indore) — no Test caps — ESPNcricinfo + Wikipedia confirmed. Explicitly NOT part
+    // of the 2023 ODI World Cup winning squad (announced 6 Sept 2023, before his ODI debut).
+    // Was one of 5 reinforcements added to the 2025 Champions Trophy squad, which Australia
+    // lost to India in the final — no trophy.
+    // FLAGGED: dedicated IPL search confirmed Kolkata Knight Riders (2025, brought on as an
+    // Impact Player substitute in a live match vs Lucknow Super Giants) and a Chennai Super
+    // Kings signing (24 Mar 2026, replacement for Nathan Ellis) — the CSK stint's exact match
+    // appearances could not be independently confirmed beyond the signing itself, included
+    // per the season having fully concluded with no reported non-selection, same treatment as
+    // other season-completed replacement signings
+    iplTeams: ["Kolkata Knight Riders", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Matthew Short",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 30 Aug 2023 vs South Africa (Durban, earliest), ODI debut 22 Sep 2023 vs
+    // India (Mohali) — no Test caps — ESPNcricinfo confirmed. Explicitly confirmed NOT part of
+    // the 2023 ODI World Cup squad (announced 6 Sept 2023). Part of the 2025 Champions Trophy
+    // squad, which Australia lost to India in the final — no trophy.
+    // FLAGGED: dedicated IPL search confirmed Punjab Kings (2023, injury replacement for
+    // Jonny Bairstow) and a Chennai Super Kings signing (Dec 2025 mini-auction for the 2026
+    // season) — the CSK stint's exact match appearances could not be independently confirmed
+    // beyond the signing itself, included per the season having fully concluded with no
+    // reported non-selection, same treatment as other season-completed replacement signings
+    iplTeams: ["Punjab Kings", "Chennai Super Kings"],
+    iccTrophies: 0
   },
 
   // ===== WEST INDIES (10 players) =====
