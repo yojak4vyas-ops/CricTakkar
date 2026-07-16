@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 224 players across 11 countries
+// 235 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -1689,7 +1689,7 @@ const wordlePlayers = [
     iccTrophies: 1
   },
 
-  // ===== AUSTRALIA (20 players) =====
+  // ===== AUSTRALIA (31 players) =====
 
   {
     name: "Ricky Ponting",
@@ -1994,6 +1994,183 @@ const wordlePlayers = [
     iplTeams: ["Rising Pune Supergiant"],
     iccTrophies: 1
     // 2021-2023 World Test Championship — ESPNcricinfo + Wikipedia confirmed
+  },
+
+  {
+    name: "Nathan Lyon",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2011,
+    format: "All-format",
+    // Test debut 31 Aug 2011 (Galle), ODI debut 8 Mar 2012, T20I debut 29 Jan 2016 — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing — confirmed via Wikipedia
+    iplTeams: [],
+    iccTrophies: 1
+    // 2023 World Test Championship (took 1/19 & 4/41 in the final at The Oval) — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Dennis Lillee",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1971,
+    format: "ODI",
+    // Test debut 29 Jan 1971 (6th Test, Adelaide, 1970-71 Ashes, 5/84 on debut), ODI debut
+    // 24 Aug 1972 vs England — retired 1984, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1984, well before the IPL existed (2008)
+    iccTrophies: 0
+    // Australia lost the 1975 World Cup final to West Indies; Australia's maiden WC win (1987)
+    // came 3 years after Lillee's retirement — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Mitchell Johnson",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm fast",
+    debutYear: 2005,
+    format: "All-format",
+    // ODI debut 10 Dec 2005 (earliest), Test debut 8 Nov 2007, T20I debut 12 Sept 2007 — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Mumbai Indians (2012-2013 and again 2017), Kolkata Knight Riders
+    // (2018, played matches vs CSK/DD/RCB) — Wikipedia + ESPNcricinfo confirmed
+    iplTeams: ["Mumbai Indians", "Kolkata Knight Riders"],
+    iccTrophies: 3
+    // 2006 Champions Trophy, 2007 World Cup, 2015 World Cup (his last ODI) — Wikipedia confirmed
+  },
+  {
+    name: "Brett Lee",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1999,
+    format: "All-format",
+    // Test debut 26 Dec 1999 (5 wickets on debut), ODI debut 9 Jan 2000, T20I debut 17 Feb 2005 — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Kings XI Punjab (2008-2010), Kolkata Knight Riders (2011-2013,
+    // included in the 2012 final squad and took a wicket off the first ball of IPL 2013) —
+    // Wikipedia + ESPNcricinfo confirmed. A single ambiguous search snippet suggested a 2011
+    // Delhi Daredevils signing, but two independent sources (Wikipedia's KKR season pages +
+    // ESPNcricinfo) confirm his real 2011-2013 team was Kolkata Knight Riders — treated as
+    // synthesis noise, not a genuine mismatch, same pattern as prior sessions' catches
+    iplTeams: ["Kings XI Punjab", "Kolkata Knight Riders"],
+    iccTrophies: 2
+    // 2003 World Cup, 2006 Champions Trophy — ruled out of the 2007 World Cup squad by injury
+    // (replaced by Stuart Clark) so that title does not count — Wikipedia confirmed
+  },
+  {
+    name: "Josh Hazlewood",
+    country: "Australia",
+    role: "Bowler",
+    // FLAGGED: batting hand not found as an explicit infobox quote in any source reachable
+    // today — recorded as Right-hand (the overwhelmingly likely default for an unremarkable
+    // tailend bowler) but treated as best-available rather than fully confirmed, same
+    // treatment as the KL Rahul/Harsh Dubey precedent
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2010,
+    format: "All-format",
+    // ODI debut 22 Jun 2010 vs England (earliest), Test debut 17 Dec 2014, T20I debut 13 Feb 2013 — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: Chennai Super Kings (2020-2021), Royal Challengers Bangalore/
+    // Bengaluru (2022-present, won IPL 2025 and 2026) — Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings", "Royal Challengers Bangalore"],
+    iccTrophies: 3
+    // 2021 T20 World Cup, 2023 ODI World Cup, 2023 WTC — Wikipedia confirmed
+  },
+  {
+    name: "Craig McDermott",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1984,
+    format: "ODI",
+    // Test debut 22 Dec 1984 vs West Indies, ODI debut 6 Jan 1985 vs West Indies — retired
+    // 1996, T20I format did not exist — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1996, well before the IPL existed (2008)
+    iccTrophies: 1
+    // 1987 World Cup — Australia's maiden title; McDermott was the tournament's leading
+    // wicket-taker with 18 — Wikipedia confirmed
+  },
+  {
+    name: "Jason Gillespie",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1996,
+    format: "All-format",
+    // ODI debut Aug 1996 vs Sri Lanka (earliest), Test debut Nov 1996 vs West Indies, T20I
+    // debut 13 Jun 2005 (England's inaugural T20I, at the Rose Bowl) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired from international cricket Jan 2006, 2 years before the IPL began (2008)
+    iccTrophies: 0
+    // Was originally selected for the 2003 World Cup squad (which Australia won) but was
+    // ruled out before the tournament by a tendon injury and replaced by Nathan Bracken — so
+    // this title does not count. No other ICC trophy confirmed — Wikipedia confirmed
+  },
+  {
+    name: "Richie Benaud",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak",
+    debutYear: 1952,
+    format: "Test",
+    // Test debut 25 Jan 1952 vs West Indies — retired 1964, 7 years before ODI cricket began
+    // (1971) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Cricket World Cup didn't exist until 1975, 11 years after his retirement
+  },
+  {
+    name: "Graham McKenzie",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1961,
+    format: "ODI",
+    // Test debut 22 Jun 1961 vs England (5 wickets and 34 runs on debut) — ODI debut 5 Jan
+    // 1971, the very first ODI ever played (Australia vs England, MCG), took 2/22 — T20I
+    // format did not exist in his career — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Cricket World Cup didn't exist until 1975, 4 years after his retirement (1971)
+  },
+  {
+    name: "Ray Lindwall",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 1946,
+    format: "Test",
+    // Test debut 1946 vs New Zealand — retired 1960, 11 years before ODI cricket began
+    // (1971) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Cricket World Cup didn't exist until 1975, 15 years after his retirement
+  },
+  {
+    name: "Peter Siddle",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2008,
+    format: "All-format",
+    // Test debut 16 Oct 2008 vs India (Mohali), ODI debut 13 Feb 2009 vs New Zealand, T20I
+    // debut 15 Feb 2009 vs New Zealand (last T20I 31 Oct 2010) — ESPNcricinfo + Wikipedia confirmed
+    // Dedicated IPL search: no record of any IPL franchise appearance or signing — he was a
+    // foundation Melbourne Stars squad member (BBL, domestic) but never an IPL player — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2009 Champions Trophy — Wikipedia confirmed. Not part of any World Cup winning squad.
   },
 
   // ===== WEST INDIES (10 players) =====
