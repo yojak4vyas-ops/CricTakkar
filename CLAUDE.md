@@ -247,6 +247,25 @@ If at any point a fact can't be confirmed clean across the reachable sources, it
 
 ---
 
+## QUIZ QUESTION EXPANSION PROJECT — PERMANENT (Added Day 26, session 8)
+
+Started because the original curated curricula for `question-bank.js` (IPL season history, ODI World Cup history, T20 World Cup history, Test iconic moments, General terminology) are all complete — this defines how new questions keep getting added indefinitely from here on, by Claude or by the automation, without needing a new hand-picked project every time.
+
+**CATEGORY ROTATION — fixed sequence, not self-balancing:** `general` → `ipl` → `test` → `odi` → `t20` → back to `general`. One category per run/session, always the next one in this exact order regardless of current pool sizes. (Counts as of Day 26 session 8: ipl 93, odi 88, test 54, t20 72, general 23 — general is smallest today, but that's not why it's first; it's just next in the fixed sequence after t20 wrapped around.)
+
+**SOURCING METHOD — open research, not a fixed sub-curriculum:** for whichever category is up, search broadly for well-documented, verifiable cricket facts/records/milestones/moments in that category that aren't already covered in `question-bank.js` (check Step 2 of the Adding New Content SOP — read the existing questions in that category first so nothing gets duplicated under different phrasing). There's no preset list of sub-topics to work through; each run finds its own genuinely notable, checkable facts.
+
+**EVERY NEW QUESTION MUST ALSO PASS:**
+- The Four-Source Verification Rule (ESPNcricinfo + Wikipedia + ICC + Cricbuzz-attempted-unreachable, all agree)
+- The Question Quality Rule checklist, including the no-embedded-hints rule (Day 26 session 7) — the question wording tests the fact cleanly with no clause that tips off the answer; any rarity/comparison/context goes in the fun fact instead
+- Correct `category` and `era` tagging per the existing rules
+
+**BATCH SIZE:** 8-12 new questions per run is the normal baseline, same as Wordle players and On This Day calendar days — keep going past that if there's real capacity left in the run, stop only on an actual limit, not an arbitrary round number.
+
+**TRACKING:** the `AUTOMATION LAST QUESTION CATEGORY:` line in Current Build Status records which category was done last, so the next "questions" run advances to the next one in the fixed sequence. Create this line (defaulting to starting the sequence at `general`) if it doesn't exist yet.
+
+---
+
 ## CRICKET WORDLE PLAYER DATA RULE — PERMANENT (Added Day 10, updated Day 14)
 
 The Cricket Wordle game uses a player database in `players.js`. Every player entry has 8 guessable attributes: country, role, battingStyle, bowlingStyle, debutYear, format, iplTeams, iccTrophies.
@@ -375,6 +394,7 @@ Every session must follow this structure:
 ## CURRENT BUILD STATUS
 
 AUTOMATION LAST RUN TYPE: wordle
+AUTOMATION LAST QUESTION CATEGORY: t20
 
 - Day: 26 (session 5 — pilot run of the new content-automation system, done manually in-chat for validation before the real scheduled routine goes live; Australia ODI Round 2 completed, closing out Australia ODI entirely; Australia Test fully done; India fully done across all 3 formats)
 - Last completed:
