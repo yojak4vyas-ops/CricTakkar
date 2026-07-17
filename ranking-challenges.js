@@ -1,86 +1,137 @@
 // ===== RANKING CHALLENGE — CricTakkar =====
-// Challenge pool: every ranking challenge the game can serve.
-// Each play session randomly draws 5 distinct challenges from this pool (see ranking.js).
+// Two kinds of challenge source:
 //
-// SCHEMA:
-// id           — unique string
-// statType     — 'battingAvg' | 'bowlingAvg' | 'runs' | 'wickets' | 'highestScore' | 'debutYear' | 'titles'
-// format       — 'test' | 'odi' | 't20' | 'ipl' | 'general'
-// question     — shown to the player
-// hint         — shown to the player
-// players      — array of 5 { name, flag, value }
-// correctOrder — array of 5 player-indices, index 0 = correct rank 1 (top)
-// tiedGroups   — OPTIONAL. Array of position-groups (0-indexed positions within correctOrder)
-//                that are interchangeable, e.g. [[0,1]] means whichever of the two players
-//                assigned to correctOrder[0]/[1] the user puts in either slot, both are correct.
+// 1) RANKING_PARAMETERS — "growing leaderboard" topics (Test batting average, ODI wickets,
+//    etc.). Each has a `leaders` array sorted from BEST (index 0) to WORST. At session start,
+//    ranking.js randomly draws a 5-player WINDOW from this list (see pickWindowIndices() in
+//    ranking.js): consecutive drawn players may never be more than 3 ranks apart in the
+//    underlying leaders list, so every drawn set stays a "tight cluster" rather than jumping
+//    from #1 to #20. The correct order is just the leaders list's own sort order within that
+//    window — no separate correctOrder needs to be hand-written.
+//    Target size per parameter: 25 leaders (started Day 27) — grown gradually over many
+//    future sessions, same pace as the Wordle cap-number expansion project. While a
+//    parameter has fewer than 5 leaders it's skipped for that session (not enough data yet).
+//    While it has exactly 5-7, the window is effectively the whole list (same behaviour as
+//    the original Day 27 fixed-5 build) — the randomness only becomes visible once a
+//    parameter grows well past 5.
 //
-// STALENESS RULE (added Day 27, permanent — see CLAUDE.md RANKING CHALLENGE EXPANSION PROJECT):
-// For career-cumulative stats (battingAvg, bowlingAvg, runs, wickets) — ONLY fully retired
-// players are used, so the correct order can never silently go wrong as an active player's
-// numbers keep changing. One-off record stats (highestScore, best bowling figures) may use
-// an active current record-holder, flagged in a comment as a still-standing record.
+// 2) FIXED_CHALLENGES — one-off topics that don't fit a growing sorted leaderboard (a tie
+//    between two IPL teams, a "who debuted earliest" list, a "biggest single-innings record"
+//    list). These stay as a small hand-picked set of exactly 5, same as the whole game was
+//    built on Day 11-27. May become RANKING_PARAMETERS-style growing lists later.
 //
-// VERIFICATION NOTE (Day 11-12, original 5 challenges):
-// Challenge set 1 (Test batting average) uses Ricky Ponting instead of Steve Smith, because
-// Smith was still an active Test player at the time and his average kept changing. Ponting
-// retired in 2012, so his average (51.85) is locked forever. Kohli's final Test average
-// (46.85) confirmed Day 11 — Kohli has since retired from Tests, so this is now locked too.
-// Wicket counts/order verified via ESPNcricinfo/Britannica (July 2026).
-// IPL titles rebuilt to include RCB's 2025 and 2026 titles, and to fix Rajasthan Royals
-// (1 title, 2008 only). Verified via Wikipedia + Olympics.com (July 2026).
+// STALENESS RULE (permanent, applies to every leader added to any parameter — see CLAUDE.md
+// RANKING CHALLENGE EXPANSION PROJECT): for career-cumulative stats (battingAvg, bowlingAvg,
+// runs, wickets, strikeRate, economyRate, centuries) — only fully retired players. An active
+// player's number keeps moving, which could silently flip a ranking's correct order.
 //
-// VERIFICATION NOTE (Day 27, new batch of 4 — Four-Source Rule: ESPNcricinfo + Wikipedia +
-// ICC official records, all agreed; Cricbuzz attempted for every fact, unreachable every
-// time per the standing tool limitation):
-// - Test bowling average: Marshall 20.94 (376 wkts), Garner 20.97 (259 wkts), Ambrose 20.99
-//   (405 wkts) confirmed as the only three 200+ wicket bowlers under 21 average; McGrath
-//   21.64 (563 wkts), Steyn 22.95 (439 wkts). All five fully retired.
-// - ODI most runs: Tendulkar 18,426; Sangakkara 14,234; Ponting 13,704; Jayasuriya 13,430;
-//   Jayawardene 12,650. Virat Kohli (currently 2nd all-time with 14,255 and still active in
-//   ODIs) deliberately excluded per the staleness rule above.
-// - ODI most wickets: Muralitharan 534; Wasim Akram 502; Waqar Younis 416; Vaas 400;
-//   Pollock 393 (one ESPNcricinfo search snippet briefly returned "392" — resolved via a
-//   clean Wikipedia infobox cross-check confirming 393; not a genuine source disagreement,
-//   same self-resolution pattern used elsewhere in this project).
-// - Test most runs: Tendulkar 15,921; Ponting 13,378; Kallis 13,289; Dravid 13,288 (matches
-//   the figure already verified in this project on Day 17); Cook 12,472. Joe Root (currently
-//   2nd all-time and still active) deliberately excluded per the staleness rule above.
+// TIES: a `leaders` entry can be marked `tiedWithNext: true` if it and the very next entry
+// in the sorted list have the exact same stat value (e.g. two players tied on wicket count).
+// If both members of a tied pair land in the same drawn window, the game accepts either
+// order between just those two. FIXED_CHALLENGES use the older `tiedGroups` field directly
+// on the challenge object (positions within `correctOrder`) — see ranking.js.
 
-const RANKING_CHALLENGES = [
+const RANKING_PARAMETERS = [
   {
-    id: 'test-battingavg-1',
+    id: 'test-battingavg',
+    category: 'batting',
     statType: 'battingAvg',
     format: 'test',
     question: "Rank these batsmen by Test batting average (highest to lowest)",
-    hint: "Minimum 20 Test innings. Career averages — only retired players used so the answer never goes out of date.",
-    players: [
+    hint: "Minimum 20 Test innings. Only retired players used so the answer never goes out of date.",
+    leaders: [
       { name: "Don Bradman", flag: "🇦🇺", value: "Avg: 99.94" },
-      { name: "Ricky Ponting", flag: "🇦🇺", value: "Avg: 51.85" },
-      { name: "Virat Kohli", flag: "🇮🇳", value: "Avg: 46.85" },
+      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Avg: 53.78" },
       { name: "Brian Lara", flag: "🇹🇹", value: "Avg: 52.88" },
-      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Avg: 53.78" }
-    ],
-    correctOrder: [0, 4, 3, 1, 2]
-    // Bradman 99.94 > Tendulkar 53.78 > Lara 52.88 > Ponting 51.85 > Kohli 46.85
+      { name: "Ricky Ponting", flag: "🇦🇺", value: "Avg: 51.85" },
+      { name: "Virat Kohli", flag: "🇮🇳", value: "Avg: 46.85" }
+    ]
   },
   {
-    id: 'test-wickets-1',
+    id: 'test-bowlingavg',
+    category: 'bowling',
+    statType: 'bowlingAvg',
+    format: 'test',
+    question: "Rank these bowlers by career Test bowling average (best/lowest to worst)",
+    hint: "Minimum 200 Test wickets. Only retired players used so the answer never goes out of date.",
+    leaders: [
+      { name: "Malcolm Marshall", flag: "🇧🇧", value: "Avg: 20.94" },
+      { name: "Joel Garner", flag: "🇧🇧", value: "Avg: 20.97" },
+      { name: "Curtly Ambrose", flag: "🇦🇬", value: "Avg: 20.99" },
+      { name: "Glenn McGrath", flag: "🇦🇺", value: "Avg: 21.64" },
+      { name: "Dale Steyn", flag: "🇿🇦", value: "Avg: 22.95" }
+    ]
+  },
+  {
+    id: 'test-runs',
+    category: 'batting',
+    statType: 'runs',
+    format: 'test',
+    question: "Rank these batsmen by total career Test runs (most to least)",
+    hint: "All-time career Test runs — only retired players used so the answer never goes out of date.",
+    leaders: [
+      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "15,921 runs" },
+      { name: "Ricky Ponting", flag: "🇦🇺", value: "13,378 runs" },
+      { name: "Jacques Kallis", flag: "🇿🇦", value: "13,289 runs" },
+      { name: "Rahul Dravid", flag: "🇮🇳", value: "13,288 runs" },
+      { name: "Alastair Cook", flag: "🇬🇧", value: "12,472 runs" }
+    ]
+  },
+  {
+    id: 'test-wickets',
+    category: 'bowling',
     statType: 'wickets',
     format: 'test',
     question: "Rank these bowlers by total Test wickets (most to least)",
     hint: "All-time career Test wickets.",
-    players: [
+    leaders: [
       { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "800 wickets" },
       { name: "Shane Warne", flag: "🇦🇺", value: "708 wickets" },
-      { name: "Anil Kumble", flag: "🇮🇳", value: "619 wickets" },
       { name: "James Anderson", flag: "🇬🇧", value: "704 wickets" },
+      { name: "Anil Kumble", flag: "🇮🇳", value: "619 wickets" },
       { name: "Glenn McGrath", flag: "🇦🇺", value: "563 wickets" }
-    ],
-    correctOrder: [0, 1, 3, 2, 4]
-    // Murali 800 > Warne 708 > Anderson 704 > Kumble 619 > McGrath 563
+    ]
   },
   {
+    id: 'odi-runs',
+    category: 'batting',
+    statType: 'runs',
+    format: 'odi',
+    question: "Rank these batsmen by total career ODI runs (most to least)",
+    hint: "All-time career ODI runs — only retired players used so the answer never goes out of date.",
+    leaders: [
+      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "18,426 runs" },
+      { name: "Kumar Sangakkara", flag: "🇱🇰", value: "14,234 runs" },
+      { name: "Ricky Ponting", flag: "🇦🇺", value: "13,704 runs" },
+      { name: "Sanath Jayasuriya", flag: "🇱🇰", value: "13,430 runs" },
+      { name: "Mahela Jayawardene", flag: "🇱🇰", value: "12,650 runs" }
+    ]
+  },
+  {
+    id: 'odi-wickets',
+    category: 'bowling',
+    statType: 'wickets',
+    format: 'odi',
+    question: "Rank these bowlers by total career ODI wickets (most to least)",
+    hint: "All-time career ODI wickets — only retired players used so the answer never goes out of date.",
+    leaders: [
+      { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "534 wickets" },
+      { name: "Wasim Akram", flag: "🇵🇰", value: "502 wickets" },
+      { name: "Waqar Younis", flag: "🇵🇰", value: "416 wickets" },
+      { name: "Chaminda Vaas", flag: "🇱🇰", value: "400 wickets" },
+      { name: "Shaun Pollock", flag: "🇿🇦", value: "393 wickets" }
+    ]
+  }
+  // Every other cell in the full taxonomy (BATTING/BOWLING/FIELDING/OTHERS x Test/ODI/T20I/IPL)
+  // is still empty — see the RANKING CHALLENGE EXPANSION PROJECT section in CLAUDE.md for the
+  // full sub-parameter list and the progress tracker that says which cell to fill next.
+];
+
+// ===== FIXED ONE-OFF CHALLENGES (not windowed — small hand-picked sets) =====
+const FIXED_CHALLENGES = [
+  {
     id: 'ipl-titles-1',
+    category: 'others',
     statType: 'titles',
     format: 'ipl',
     question: "Rank these IPL teams by total IPL titles won (most to least)",
@@ -98,6 +149,7 @@ const RANKING_CHALLENGES = [
   },
   {
     id: 'test-debutyear-1',
+    category: 'others',
     statType: 'debutYear',
     format: 'test',
     question: "Rank these cricketers by the year they made their Test debut (earliest first)",
@@ -114,6 +166,7 @@ const RANKING_CHALLENGES = [
   },
   {
     id: 'odi-highestscore-1',
+    category: 'batting',
     statType: 'highestScore',
     format: 'odi',
     question: "Rank these batsmen by highest individual ODI score (highest to lowest)",
@@ -127,69 +180,5 @@ const RANKING_CHALLENGES = [
     ],
     correctOrder: [0, 1, 3, 2, 4]
     // Rohit 264 > Guptill 237* > Sehwag 219 > Gayle 215 > Fakhar 210*
-  },
-  {
-    id: 'test-bowlingavg-1',
-    statType: 'bowlingAvg',
-    format: 'test',
-    question: "Rank these bowlers by career Test bowling average (best/lowest to worst)",
-    hint: "Minimum 200 Test wickets. Career averages — only retired players used so the answer never goes out of date.",
-    players: [
-      { name: "Malcolm Marshall", flag: "🇧🇧", value: "Avg: 20.94" },
-      { name: "Joel Garner", flag: "🇧🇧", value: "Avg: 20.97" },
-      { name: "Curtly Ambrose", flag: "🇦🇬", value: "Avg: 20.99" },
-      { name: "Glenn McGrath", flag: "🇦🇺", value: "Avg: 21.64" },
-      { name: "Dale Steyn", flag: "🇿🇦", value: "Avg: 22.95" }
-    ],
-    correctOrder: [0, 1, 2, 3, 4]
-    // Marshall 20.94 < Garner 20.97 < Ambrose 20.99 < McGrath 21.64 < Steyn 22.95
-  },
-  {
-    id: 'odi-runs-1',
-    statType: 'runs',
-    format: 'odi',
-    question: "Rank these batsmen by total career ODI runs (most to least)",
-    hint: "All-time career ODI runs — only retired players used so the answer never goes out of date.",
-    players: [
-      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "18,426 runs" },
-      { name: "Kumar Sangakkara", flag: "🇱🇰", value: "14,234 runs" },
-      { name: "Ricky Ponting", flag: "🇦🇺", value: "13,704 runs" },
-      { name: "Sanath Jayasuriya", flag: "🇱🇰", value: "13,430 runs" },
-      { name: "Mahela Jayawardene", flag: "🇱🇰", value: "12,650 runs" }
-    ],
-    correctOrder: [0, 1, 2, 3, 4]
-    // Tendulkar 18426 > Sangakkara 14234 > Ponting 13704 > Jayasuriya 13430 > Jayawardene 12650
-  },
-  {
-    id: 'odi-wickets-1',
-    statType: 'wickets',
-    format: 'odi',
-    question: "Rank these bowlers by total career ODI wickets (most to least)",
-    hint: "All-time career ODI wickets — only retired players used so the answer never goes out of date.",
-    players: [
-      { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "534 wickets" },
-      { name: "Wasim Akram", flag: "🇵🇰", value: "502 wickets" },
-      { name: "Waqar Younis", flag: "🇵🇰", value: "416 wickets" },
-      { name: "Chaminda Vaas", flag: "🇱🇰", value: "400 wickets" },
-      { name: "Shaun Pollock", flag: "🇿🇦", value: "393 wickets" }
-    ],
-    correctOrder: [0, 1, 2, 3, 4]
-    // Muralitharan 534 > Akram 502 > Waqar 416 > Vaas 400 > Pollock 393
-  },
-  {
-    id: 'test-runs-1',
-    statType: 'runs',
-    format: 'test',
-    question: "Rank these batsmen by total career Test runs (most to least)",
-    hint: "All-time career Test runs — only retired players used so the answer never goes out of date.",
-    players: [
-      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "15,921 runs" },
-      { name: "Ricky Ponting", flag: "🇦🇺", value: "13,378 runs" },
-      { name: "Jacques Kallis", flag: "🇿🇦", value: "13,289 runs" },
-      { name: "Rahul Dravid", flag: "🇮🇳", value: "13,288 runs" },
-      { name: "Alastair Cook", flag: "🇬🇧", value: "12,472 runs" }
-    ],
-    correctOrder: [0, 1, 2, 3, 4]
-    // Tendulkar 15921 > Ponting 13378 > Kallis 13289 > Dravid 13288 > Cook 12472
   }
 ];

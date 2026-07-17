@@ -1,21 +1,32 @@
 // ===== RANKING CHALLENGE — CricTakkar =====
 // Player drag-and-drop ranking game
-// 5 challenges per session, randomly drawn from the RANKING_CHALLENGES pool
-// (see ranking-challenges.js), XP saved to Firebase
+// 4 challenges per session, XP saved to Firebase
 //
 // FIX NOTE (Day 12): calculateLevel() below previously used different level names
 // (National Reserve, International, Test Cricketer) than the rest of the app.
 // Now matches the standard used in profile.html, quiz.js, speedround.js and wordle.js:
 // Debutant -> Club Cricketer -> State Player -> IPL Pro -> T20 Star -> ODI Champion -> Test Legend
 //
-// FIX NOTE (Day 27): challenge data moved out to ranking-challenges.js as a growing pool
-// (see the RANKING CHALLENGE EXPANSION PROJECT in CLAUDE.md). Each session now randomly
-// draws 5 distinct challenges from the pool instead of always showing the same fixed 5.
-// The old hardcoded "challenge index === 2 is the IPL tie" special case was replaced with
-// a generic tiedGroups check so any future challenge can mark players as tied without
-// needing custom code.
+// FIX NOTE (Day 27): challenge data moved out to ranking-challenges.js. Two sources feed a
+// session — RANKING_PARAMETERS (growing "leaderboard" topics, e.g. Test batting average) and
+// FIXED_CHALLENGES (small one-off topics, e.g. IPL titles). The old hardcoded "challenge
+// index === 2 is the IPL tie" special case was replaced with a generic tiedGroups check so
+// any challenge can mark players as tied without needing custom code.
+//
+// FIX NOTE (Day 27, later same day): switched from a fixed pool of pre-built 5-player
+// challenges to on-the-fly generation for RANKING_PARAMETERS. Each parameter holds a
+// `leaders` list sorted best-to-worst; every session, generateChallengeFromParameter()
+// randomly draws a 5-player WINDOW from that list, where consecutive drawn players can never
+// be more than 3 ranks apart (pickWindowIndices()) — so the 5 shown are always a plausible,
+// tightly-clustered comparison instead of jumping from rank #1 to rank #20. The correct order
+// is just the leaders list's own sort order within that window, so no correctOrder needs to
+// be hand-written per instance. While a parameter has 5-7 leaders the window is effectively
+// the whole list (same behaviour as a fixed challenge); the randomness only becomes visible
+// once a parameter grows well past that. Session size dropped from 5 to 4 challenges.
 
-const SESSION_SIZE = 5;
+const SESSION_SIZE = 4;
+const WINDOW_SIZE = 5;   // players shown per challenge
+const MAX_RANK_GAP = 3;  // max gap between consecutive drawn ranks in a parameter's leaders list
 
 // ===== GAME STATE =====
 let activeChallenges = [];
@@ -28,9 +39,93 @@ let lastResult = null;
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
-  activeChallenges = pickRandomChallenges(RANKING_CHALLENGES, SESSION_SIZE);
+  activeChallenges = pickRandomChallenges(buildSessionPool(), SESSION_SIZE);
   loadChallenge(currentChallengeIndex);
 });
+
+// ===== BUILD THIS SESSION'S POOL =====
+// One generated instance per RANKING_PARAMETERS entry (skipped if not enough leaders yet)
+// plus every FIXED_CHALLENGES entry, normalized to the same { question, hint, players,
+// correctOrder, tiedGroups } shape so the rest of the game doesn't need to know which
+// source a challenge came from.
+function buildSessionPool() {
+  const generated = RANKING_PARAMETERS
+    .map(param => generateChallengeFromParameter(param))
+    .filter(Boolean);
+  return [...generated, ...FIXED_CHALLENGES];
+}
+
+// ===== GENERATE A CHALLENGE FROM A GROWING PARAMETER =====
+function generateChallengeFromParameter(param) {
+  const leaders = param.leaders;
+  if (!leaders || leaders.length < WINDOW_SIZE) return null; // not enough data yet
+
+  const indices = pickWindowIndices(leaders.length, WINDOW_SIZE, MAX_RANK_GAP);
+  if (!indices) return null;
+
+  const players = indices.map(i => ({
+    name: leaders[i].name,
+    flag: leaders[i].flag,
+    value: leaders[i].value
+  }));
+
+  // Detect adjacent ties that landed inside this drawn window
+  const tiedGroups = [];
+  for (let k = 0; k < indices.length - 1; k++) {
+    if (leaders[indices[k]].tiedWithNext && indices[k + 1] === indices[k] + 1) {
+      tiedGroups.push([k, k + 1]);
+    }
+  }
+
+  return {
+    id: param.id + '-' + indices.join('_'),
+    question: param.question,
+    hint: param.hint,
+    players,
+    correctOrder: [0, 1, 2, 3, 4].slice(0, WINDOW_SIZE),
+    tiedGroups: tiedGroups.length ? tiedGroups : undefined
+  };
+}
+
+// ===== PICK A RANDOM WINDOW OF INDICES =====
+// Returns `size` ascending indices into a list of length n, where each consecutive pair is
+// at most maxGap apart. Succeeds deterministically whenever n >= size (no retry/luck
+// involved) by first choosing a random total span, splitting it into `size - 1` random
+// gaps (each 1..maxGap) that add up to that span, then placing the whole window at a
+// random valid starting point.
+function pickWindowIndices(n, size, maxGap) {
+  const gapsNeeded = size - 1;
+  const minSpan = gapsNeeded; // every gap at least 1
+  const maxSpan = Math.min(gapsNeeded * maxGap, n - 1);
+  if (maxSpan < minSpan) return null; // not enough room even for the tightest window
+
+  const span = minSpan + Math.floor(Math.random() * (maxSpan - minSpan + 1));
+  const gaps = distributeGaps(span, gapsNeeded, maxGap);
+
+  const maxStart = n - 1 - span;
+  const start = Math.floor(Math.random() * (maxStart + 1));
+
+  const indices = [start];
+  let current = start;
+  gaps.forEach(g => { current += g; indices.push(current); });
+  return indices;
+}
+
+// Randomly split `span` into `count` positive integers, each between 1 and maxGap,
+// that sum to exactly `span`. Always succeeds when called with a `span` that's
+// achievable under those bounds (guaranteed by pickWindowIndices above).
+function distributeGaps(span, count, maxGap) {
+  const gaps = new Array(count).fill(1);
+  let remaining = span - count;
+  while (remaining > 0) {
+    const idx = Math.floor(Math.random() * count);
+    if (gaps[idx] < maxGap) {
+      gaps[idx]++;
+      remaining--;
+    }
+  }
+  return gaps;
+}
 
 // ===== PICK RANDOM CHALLENGES FOR THIS SESSION =====
 function pickRandomChallenges(pool, count) {
