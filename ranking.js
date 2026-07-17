@@ -1,103 +1,24 @@
 // ===== RANKING CHALLENGE — CricTakkar =====
 // Player drag-and-drop ranking game
-// 5 challenges per session, XP saved to Firebase
-
-// ===== CHALLENGE DATA =====
-// Each challenge has: a question, 5 players, their correct order (index 0 = highest/first)
-// and the stat value shown in the answer reveal
-//
-// VERIFICATION NOTE (Day 11):
-// Challenge 1 uses Ricky Ponting instead of Steve Smith, because Smith is still an
-// active Test player and his average changes every series. Ponting retired in 2012,
-// so his average (51.85) is locked forever and safe to use.
-// Kohli's final Test average: 46.85 — confirmed by user on Day 11, matches web search
-// findings. Kohli has retired from Tests, so this number is now locked and safe to use.
-// Challenge 2 wicket counts and order verified via ESPNcricinfo/Britannica (July 2026).
-// Challenge 3 IPL titles rebuilt to include RCB's 2025 and 2026 titles, and to fix
-// Rajasthan Royals (they have 1 title, 2008 only — not 2 as previously listed).
-// Verified via Wikipedia + Olympics.com (July 2026).
+// 5 challenges per session, randomly drawn from the RANKING_CHALLENGES pool
+// (see ranking-challenges.js), XP saved to Firebase
 //
 // FIX NOTE (Day 12): calculateLevel() below previously used different level names
 // (National Reserve, International, Test Cricketer) than the rest of the app.
 // Now matches the standard used in profile.html, quiz.js, speedround.js and wordle.js:
 // Debutant -> Club Cricketer -> State Player -> IPL Pro -> T20 Star -> ODI Champion -> Test Legend
+//
+// FIX NOTE (Day 27): challenge data moved out to ranking-challenges.js as a growing pool
+// (see the RANKING CHALLENGE EXPANSION PROJECT in CLAUDE.md). Each session now randomly
+// draws 5 distinct challenges from the pool instead of always showing the same fixed 5.
+// The old hardcoded "challenge index === 2 is the IPL tie" special case was replaced with
+// a generic tiedGroups check so any future challenge can mark players as tied without
+// needing custom code.
 
-const CHALLENGES = [
-  {
-    id: 1,
-    question: "Rank these batsmen by Test batting average (highest to lowest)",
-    hint: "Minimum 20 Test innings. Career averages — only retired players used so the answer never goes out of date.",
-    players: [
-      { name: "Don Bradman", flag: "🇦🇺", value: "Avg: 99.94" },
-      { name: "Ricky Ponting", flag: "🇦🇺", value: "Avg: 51.85" },
-      { name: "Virat Kohli", flag: "🇮🇳", value: "Avg: 46.85" },
-      { name: "Brian Lara", flag: "🇹🇹", value: "Avg: 52.88" },
-      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Avg: 53.78" }
-    ],
-    correctOrder: [0, 4, 3, 1, 2]
-    // Bradman 99.94 > Tendulkar 53.78 > Lara 52.88 > Ponting 51.85 > Kohli 46.85
-  },
-  {
-    id: 2,
-    question: "Rank these bowlers by total Test wickets (most to least)",
-    hint: "All-time career Test wickets.",
-    players: [
-      { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "800 wickets" },
-      { name: "Shane Warne", flag: "🇦🇺", value: "708 wickets" },
-      { name: "Anil Kumble", flag: "🇮🇳", value: "619 wickets" },
-      { name: "James Anderson", flag: "🇬🇧", value: "704 wickets" },
-      { name: "Glenn McGrath", flag: "🇦🇺", value: "563 wickets" }
-    ],
-    correctOrder: [0, 1, 3, 2, 4]
-    // Murali 800 > Warne 708 > Anderson 704 > Kumble 619 > McGrath 563
-  },
-  {
-    id: 3,
-    question: "Rank these IPL teams by total IPL titles won (most to least)",
-    hint: "IPL titles from 2008 to 2026.",
-    players: [
-      { name: "Mumbai Indians", flag: "🔵", value: "5 titles" },
-      { name: "Chennai Super Kings", flag: "🟡", value: "5 titles" },
-      { name: "Kolkata Knight Riders", flag: "🟣", value: "3 titles" },
-      { name: "Royal Challengers Bengaluru", flag: "🔴", value: "2 titles" },
-      { name: "Sunrisers Hyderabad", flag: "🟠", value: "1 title" }
-    ],
-    correctOrder: [0, 1, 2, 3, 4]
-    // MI 5 = CSK 5 > RCB 2 (won 2025 and 2026) > SRH 1
-    // MI and CSK both have 5 — positions 0 and 1 are interchangeable, handled in code below
-    // KKR sits at 3 titles (2012, 2014, 2024)
-  },
-  {
-    id: 4,
-    question: "Rank these cricketers by the year they made their Test debut (earliest first)",
-    hint: "Who played Test cricket first?",
-    players: [
-      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Debut: 1989" },
-      { name: "Ricky Ponting", flag: "🇦🇺", value: "Debut: 1995" },
-      { name: "MS Dhoni", flag: "🇮🇳", value: "Debut: 2005" },
-      { name: "Virat Kohli", flag: "🇮🇳", value: "Debut: 2011" },
-      { name: "Kapil Dev", flag: "🇮🇳", value: "Debut: 1978" }
-    ],
-    correctOrder: [4, 0, 1, 2, 3]
-    // Kapil 1978 > Tendulkar 1989 > Ponting 1995 > Dhoni 2005 > Kohli 2011
-  },
-  {
-    id: 5,
-    question: "Rank these batsmen by highest individual ODI score (highest to lowest)",
-    hint: "Single innings highest score in ODIs.",
-    players: [
-      { name: "Rohit Sharma", flag: "🇮🇳", value: "264 vs Sri Lanka" },
-      { name: "Martin Guptill", flag: "🇳🇿", value: "237* vs West Indies" },
-      { name: "Chris Gayle", flag: "🇯🇲", value: "215 vs Zimbabwe" },
-      { name: "Virender Sehwag", flag: "🇮🇳", value: "219 vs West Indies" },
-      { name: "Fakhar Zaman", flag: "🇵🇰", value: "210* vs Zimbabwe" }
-    ],
-    correctOrder: [0, 1, 3, 2, 4]
-    // Rohit 264 > Guptill 237 > Sehwag 219 > Gayle 215 > Fakhar 193
-  }
-];
+const SESSION_SIZE = 5;
 
 // ===== GAME STATE =====
+let activeChallenges = [];
 let currentChallengeIndex = 0;
 let totalCorrect = 0;
 let totalXPEarned = 0;
@@ -107,12 +28,54 @@ let lastResult = null;
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
+  activeChallenges = pickRandomChallenges(RANKING_CHALLENGES, SESSION_SIZE);
   loadChallenge(currentChallengeIndex);
 });
 
+// ===== PICK RANDOM CHALLENGES FOR THIS SESSION =====
+function pickRandomChallenges(pool, count) {
+  const indices = shuffleArray([...Array(pool.length).keys()]);
+  return indices.slice(0, count).map(i => pool[i]);
+}
+
+// ===== TIE-AWARE SCORING HELPERS =====
+// A challenge may include tiedGroups: an array of position-groups (0-indexed positions
+// within correctOrder) that are interchangeable, e.g. [[0,1]].
+function findTiedGroup(challenge, position) {
+  const groups = challenge.tiedGroups || [];
+  return groups.find(g => g.includes(position));
+}
+
+function isPositionCorrect(challenge, userOrder, position) {
+  const group = findTiedGroup(challenge, position);
+  if (group) {
+    const tiedSet = new Set(group.map(p => challenge.correctOrder[p]));
+    const userSet = new Set(group.map(p => userOrder[p]));
+    return tiedSet.size === userSet.size && [...tiedSet].every(v => userSet.has(v));
+  }
+  return challenge.correctOrder[position] === userOrder[position];
+}
+
+function scoreChallenge(challenge, userOrder) {
+  let correct = 0;
+  const countedGroups = new Set();
+  userOrder.forEach((playerIndex, position) => {
+    const group = findTiedGroup(challenge, position);
+    if (group) {
+      const groupKey = group.join(',');
+      if (countedGroups.has(groupKey)) return; // already scored this tied group
+      countedGroups.add(groupKey);
+      if (isPositionCorrect(challenge, userOrder, position)) correct += group.length;
+    } else {
+      if (challenge.correctOrder[position] === playerIndex) correct++;
+    }
+  });
+  return correct;
+}
+
 // ===== LOAD A CHALLENGE =====
 function loadChallenge(index) {
-  const challenge = CHALLENGES[index];
+  const challenge = activeChallenges[index];
 
   // Reset UI
   document.getElementById('resultPanel').classList.remove('show');
@@ -121,9 +84,9 @@ function loadChallenge(index) {
   document.getElementById('submitBtn').textContent = 'Submit My Ranking ✅';
 
   // Update progress
-  const pct = (index / CHALLENGES.length) * 100;
+  const pct = (index / activeChallenges.length) * 100;
   document.getElementById('progressFill').style.width = pct + '%';
-  document.getElementById('progressText').textContent = `Challenge ${index + 1} of ${CHALLENGES.length}`;
+  document.getElementById('progressText').textContent = `Challenge ${index + 1} of ${activeChallenges.length}`;
 
   // Update question
   document.getElementById('challengeNumber').textContent = `Challenge ${index + 1}`;
@@ -141,7 +104,7 @@ function renderDragList() {
   const list = document.getElementById('dragList');
   list.innerHTML = '';
 
-  const challenge = CHALLENGES[currentChallengeIndex];
+  const challenge = activeChallenges[currentChallengeIndex];
 
   currentUserOrder.forEach((playerIndex, position) => {
     const player = challenge.players[playerIndex];
@@ -288,31 +251,10 @@ function shuffleArray(arr) {
 
 // ===== SUBMIT ANSWER =====
 function submitAnswer() {
-  const challenge = CHALLENGES[currentChallengeIndex];
-  const correctOrder = challenge.correctOrder;
+  const challenge = activeChallenges[currentChallengeIndex];
 
-  // Count correct positions
-  let correct = 0;
-  currentUserOrder.forEach((playerIndex, position) => {
-    if (correctOrder[position] === playerIndex) correct++;
-  });
-
-  // Special case: Challenge 3 (IPL titles) — MI and CSK both have 5 titles
-  // Position 0 and 1 are interchangeable — if user puts CSK at 0 and MI at 1, also correct
-  if (currentChallengeIndex === 2) {
-    const pos0 = currentUserOrder[0];
-    const pos1 = currentUserOrder[1];
-    // MI = index 0, CSK = index 1
-    if ((pos0 === 0 && pos1 === 1) || (pos0 === 1 && pos1 === 0)) {
-      // Both top-2 are correct regardless of order — ensure we count both
-      const rest = currentUserOrder.slice(2);
-      const correctRest = correctOrder.slice(2);
-      correct = 2;
-      rest.forEach((pi, i) => {
-        if (pi === correctRest[i]) correct++;
-      });
-    }
-  }
+  // Count correct positions (tie-aware — see scoreChallenge/isPositionCorrect above)
+  const correct = scoreChallenge(challenge, currentUserOrder);
 
   // XP: 20 per correct position
   const xpEarned = correct * 20;
@@ -329,13 +271,7 @@ function submitAnswer() {
   // Color code the drag items
   const items = document.querySelectorAll('.drag-item');
   items.forEach((item, position) => {
-    const playerIndex = currentUserOrder[position];
-    let isCorrect = correctOrder[position] === playerIndex;
-    // Handle IPL tie
-    if (currentChallengeIndex === 2 && position <= 1) {
-      isCorrect = (currentUserOrder[0] === 0 || currentUserOrder[0] === 1) &&
-                  (currentUserOrder[1] === 0 || currentUserOrder[1] === 1);
-    }
+    const isCorrect = isPositionCorrect(challenge, currentUserOrder, position);
     item.classList.add(isCorrect ? 'correct' : 'wrong');
     item.setAttribute('draggable', 'false');
   });
@@ -403,7 +339,7 @@ function shareWhatsApp() {
 function nextChallenge() {
   currentChallengeIndex++;
 
-  if (currentChallengeIndex >= CHALLENGES.length) {
+  if (currentChallengeIndex >= activeChallenges.length) {
     showFinishScreen();
   } else {
     document.getElementById('resultPanel').classList.remove('show');
@@ -419,7 +355,7 @@ function showFinishScreen() {
   document.getElementById('progressFill').style.width = '100%';
   document.getElementById('progressText').textContent = 'All challenges complete!';
 
-  const maxScore = CHALLENGES.length * 5; // 5 players each
+  const maxScore = activeChallenges.length * 5; // 5 players each
   document.getElementById('finishTotal').textContent =
     `You got ${totalCorrect} out of ${maxScore} positions correct · +${totalXPEarned} XP earned`;
 
@@ -462,7 +398,7 @@ function saveRankingHistory(finalScore, total) {
 
 // ===== SHARE FINISH =====
 function shareFinish() {
-  const maxScore = CHALLENGES.length * 5;
+  const maxScore = activeChallenges.length * 5;
   const text = `🏆 CricTakkar Ranking Challenge!\n\nI completed all 5 challenges and got ${totalCorrect}/${maxScore} positions correct!\n\nCan you beat my score? Play at crictakkar.vercel.app 🏏`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
 }
