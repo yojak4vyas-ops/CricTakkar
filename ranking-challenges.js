@@ -39,12 +39,39 @@ const RANKING_PARAMETERS = [
     format: 'test',
     question: "Rank these batsmen by Test batting average (highest to lowest)",
     hint: "Minimum 20 Test innings. Only retired players used so the answer never goes out of date.",
+    // Literal real record order (min ~20 innings), curated to 25 recognizable names out of the
+    // full list per user decision Day 28 — later "Phase 2" pass will reconcile to the exact
+    // unfiltered rank order. Virat Kohli (46.85) does not rank inside the real top 40 and was
+    // dropped from this cell for that reason (still appears in other cells where he qualifies).
+    // ICC: exact figure confirmed for 23/25; Mohammad Yousuf and Michael Hussey have no page on
+    // icc-cricket.com stating a final career average explicitly (coverage gap, not a mismatch —
+    // ESPNcricinfo + Wikipedia agree exactly for both). Cricbuzz unreachable as usual.
     leaders: [
       { name: "Don Bradman", flag: "🇦🇺", value: "Avg: 99.94" },
+      { name: "Graeme Pollock", flag: "🇿🇦", value: "Avg: 60.97" },
+      { name: "George Headley", flag: "🇯🇲", value: "Avg: 60.83" },
+      { name: "Herbert Sutcliffe", flag: "🇬🇧", value: "Avg: 60.73" },
+      { name: "Ken Barrington", flag: "🇬🇧", value: "Avg: 58.67" },
+      { name: "Everton Weekes", flag: "🇧🇧", value: "Avg: 58.61" },
+      { name: "Wally Hammond", flag: "🇬🇧", value: "Avg: 58.45" },
+      { name: "Garry Sobers", flag: "🇧🇧", value: "Avg: 57.78" },
+      { name: "Kumar Sangakkara", flag: "🇱🇰", value: "Avg: 57.40" },
+      { name: "Jack Hobbs", flag: "🇬🇧", value: "Avg: 56.94" },
+      { name: "Clyde Walcott", flag: "🇧🇧", value: "Avg: 56.68" },
+      { name: "Len Hutton", flag: "🇬🇧", value: "Avg: 56.67" },
+      { name: "Jacques Kallis", flag: "🇿🇦", value: "Avg: 55.37" },
+      { name: "Greg Chappell", flag: "🇦🇺", value: "Avg: 53.86" },
       { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Avg: 53.78" },
       { name: "Brian Lara", flag: "🇹🇹", value: "Avg: 52.88" },
+      { name: "Javed Miandad", flag: "🇵🇰", value: "Avg: 52.57" },
+      { name: "Rahul Dravid", flag: "🇮🇳", value: "Avg: 52.31" },
+      { name: "Mohammad Yousuf", flag: "🇵🇰", value: "Avg: 52.29" },
+      { name: "Younis Khan", flag: "🇵🇰", value: "Avg: 52.05" },
       { name: "Ricky Ponting", flag: "🇦🇺", value: "Avg: 51.85" },
-      { name: "Virat Kohli", flag: "🇮🇳", value: "Avg: 46.85" }
+      { name: "Michael Hussey", flag: "🇦🇺", value: "Avg: 51.52" },
+      { name: "Shivnarine Chanderpaul", flag: "🇬🇾", value: "Avg: 51.37" },
+      { name: "Sunil Gavaskar", flag: "🇮🇳", value: "Avg: 51.12" },
+      { name: "Steve Waugh", flag: "🇦🇺", value: "Avg: 51.06" }
     ]
   },
   {
@@ -90,6 +117,21 @@ const RANKING_PARAMETERS = [
       { name: "James Anderson", flag: "🇬🇧", value: "704 wickets" },
       { name: "Anil Kumble", flag: "🇮🇳", value: "619 wickets" },
       { name: "Glenn McGrath", flag: "🇦🇺", value: "563 wickets" }
+    ]
+  },
+  {
+    id: 'odi-battingavg',
+    category: 'batting',
+    statType: 'battingAvg',
+    format: 'odi',
+    question: "Rank these batsmen by ODI batting average (highest to lowest)",
+    hint: "Minimum 20 ODI innings. Only retired players used so the answer never goes out of date.",
+    leaders: [
+      { name: "Michael Bevan", flag: "🇦🇺", value: "Avg: 53.58" },
+      { name: "AB de Villiers", flag: "🇿🇦", value: "Avg: 53.50" },
+      { name: "MS Dhoni", flag: "🇮🇳", value: "Avg: 50.57" },
+      { name: "Hashim Amla", flag: "🇿🇦", value: "Avg: 49.46" },
+      { name: "Viv Richards", flag: "🇦🇬", value: "Avg: 47.00" }
     ]
   },
   {
