@@ -337,6 +337,29 @@ Started Day 24 after the Cricket Wordle roster (130 players, all 11 major Test n
 
 ---
 
+## ON THIS DAY EXPANSION PROJECT — PERMANENT (Added Day 26, session 6)
+
+Started because `onthisday.js` has sat at just 18 events (scattered non-sequentially across the calendar — nothing at all in January, May, August, October, or December) since Day 14. Goal: grow it systematically, one calendar day at a time, the same "keep going until the automation runs out of runway" way the Wordle expansion works.
+
+**SOURCE RULE FOR ON THIS DAY — supersedes the generic Four-Source list for this content area only:**
+- ESPNcricinfo + ICC official records + Wikipedia + the featured player/team's own country's official cricket board website (BCCI for India, Cricket Australia, ECB for England, PCB for Pakistan, CSA for South Africa, Sri Lanka Cricket, CWI for West Indies, BCB for Bangladesh, ACB for Afghanistan, Zimbabwe Cricket) — all four must show the exact same date, score, and detail, zero-tolerance AND logic, same as everywhere else in this file.
+- For an event centered on one specific country's achievement (a player's record, a team milestone), check that country's board — e.g. Cricket Australia for an Australian batting record, BCCI for an Indian milestone. For a match between two countries, check the board of whichever team's achievement the event is actually about (the record-holder or the winning side), not automatically the host.
+- Cricbuzz is still attempted and flagged unreachable every time, per the standing tool limitation noted throughout this file — this doesn't change for On This Day, it's just not one of the 4 sources that must agree.
+- Any mismatch across the 4 required sources gets flagged to the user exactly like everywhere else — never guessed, never picked by majority.
+
+**THE PROCESS:**
+- Work FORWARD through the calendar day-by-day, starting from **18 July** (the day after this project began) and wrapping around the year (…30 Dec, 31 Dec, 1 Jan, 2 Jan…).
+- For each calendar day, first check `onthisday.js` for an existing entry at that exact month+day — if one already exists, skip to the next day (this is what lets a day that already has an event from the original 18 stay untouched rather than getting duplicated).
+- For days with no existing entry, research whether any genuinely significant cricket event (any year) happened on that calendar date. Look for up to **3** events per day if that many genuinely notable, well-documented ones exist — never pad to 3 by including a weak/trivial event just to hit a number. A day can end up with 1, 2, 3, or occasionally 0 events after honest research; 0 is fine and expected for some days (the site already falls back to a "Did You Know" quiz fact on any day with no logged event — nothing needs to be forced).
+- Every candidate event must clear the source rule above before being added. Same as the Wordle/quiz process: broad discovery search first to find candidates, then dedicated domain-restricted queries per required source to actually verify.
+- New entries follow the exact existing schema in `onthisday.js`: `{ month, day, year, title, fact }` — `fact` should include an emoji and match the tone/length of the existing 18 entries.
+- **Batch size per automated run: 8-12 new calendar-day entries** (each with up to 3 events, so potentially more than 12 individual event objects added per run — the 8-12 count is calendar DAYS covered, not raw event count).
+- **Resume pointer**: this file's own "Next task" line (or the automation's own log) should always state the next calendar day to research from, so a run picks up exactly where the last one left off without re-scanning the whole year.
+
+**PROGRESS**: as of Day 26 session 6, still at the original 18 events (Feb 7, Feb 24, Mar 15, Mar 16, Apr 2, Apr 12, Apr 18, Jun 3, Jun 18, Jun 25 ×2, Jul 11, Sep 19, Sep 24, Nov 13, Nov 14, Nov 15, Nov 19). Next research day to start from: **18 July**.
+
+---
+
 ## DAILY SESSION FORMAT
 
 Every session must follow this structure:
