@@ -183,6 +183,7 @@ CHECKLIST (all boxes must be true):
 - All 4 options are plausible (not obviously silly wrong answers)
 - The fun fact adds something new — not just repeating the answer
 - No "as of today" answers that will become outdated (e.g. "current world record holder")
+- **No hints embedded in the question wording (added Day 26, session 7):** the question text must test the fact cleanly, with no extra clause that tips off or telegraphs the answer (e.g. "...a feat matched only once before by X" inside the question itself). Any such context — the comparison, the rarity, the "why this matters" detail — belongs in the fun fact shown after the answer is revealed, not before. If a draft question reads like it's giving away its own answer, move that context into the fact field and reword the question to ask cleanly. This applies to every question added from now on, by Claude or by the automation, in every category.
 
 QUESTIONS WE WILL NEVER WRITE:
 - Anything involving "hat-trick" unless verified on ESPNcricinfo first
