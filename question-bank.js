@@ -2679,6 +2679,94 @@ const questionBank = [
     fact: "⏱️ Twenty20 was designed by the ECB in 2003 to fit inside about three hours, with each side batting 20 overs — a deliberate answer to fans who said matches took too long.",
     era: "General",
     category: "general"
+  },
+  {
+    question: "In a Test match of five days or more, by how many runs must the side that batted first lead before they can enforce the follow-on?",
+    options: ["100 runs", "150 runs", "200 runs", "250 runs"],
+    correct: 2,
+    fact: "🔄 The follow-on threshold shrinks for shorter matches — 150 runs in a 3-4 day match, 100 in a 2-day match, and just 75 in a one-day match.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "In Test cricket, when is a team's captain allowed to declare their innings closed?",
+    options: ["Only after losing at least 8 wickets", "At any time while the ball is dead", "Only on the final scheduled day", "Only if the follow-on has already been enforced"],
+    correct: 1,
+    fact: "📜 Declaring is covered under Law 15 of the Laws of Cricket, and it only applies to two-innings matches — there's no declaring in limited-overs cricket.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'leg bye' in cricket?",
+    options: ["Runs scored when the ball deflects off the batter's body while they attempt a shot", "Runs added as a penalty for an illegal delivery", "Runs scored when the batter is struck without offering a shot", "Extra runs awarded for a wide delivery"],
+    correct: 0,
+    fact: "🦵 Leg byes are capped at four runs even if the deflection somehow clears the boundary without touching the ground — unlike a genuine shot off the bat, a leg bye can never be scored as a six.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What separates a boundary four from a boundary six in cricket?",
+    options: ["A four crosses the boundary after touching the ground, a six clears it without touching the ground", "A four is hit off pace bowling, a six is hit off spin", "A four can only come off the bat, a six can come off any part of the body", "There is no rule difference — both are decided by the umpire's judgement"],
+    correct: 0,
+    fact: "🏏 If a leg bye, bye, or wide reaches the boundary, it can only ever be scored as four — never six, regardless of whether the ball touched the ground.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "Which fielder is allowed to effect a run-out dismissal?",
+    options: ["Only the wicketkeeper", "Only the bowler", "Any fielder on the field", "Only a fielder within the 30-yard circle"],
+    correct: 2,
+    fact: "🎯 A batter is run out if their wicket is broken by the fielding side while they're out of their ground — with no part of their bat or body grounded behind the crease.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What makes a stumping different from a run-out?",
+    options: ["A stumping can only be completed by the wicketkeeper, without help from another fielder, when the batter isn't attempting a run", "A stumping requires the ball to have been hit for a boundary first", "A stumping can only happen off a spin bowler by rule", "A stumping only applies at the non-striker's end"],
+    correct: 0,
+    fact: "🧤 A stumping cannot be given off a no-ball — and while it's most common against spin bowling, the law itself doesn't restrict it to any particular bowling type.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is the third umpire's role in cricket?",
+    options: ["To assist the on-field umpires using TV replays for decisions like run-outs and stumpings", "To manage the electronic scoreboard", "To act as a substitute if an on-field umpire is injured", "To decide the toss on behalf of both captains"],
+    correct: 0,
+    fact: "📺 The third umpire was first used in a Test match in November 1992, initially limited to reviewing run-outs, stumpings, and boundary calls.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What is the key difference between a batter being 'retired hurt' and 'retired out'?",
+    options: ["Retired hurt is recorded as not out and the batter can resume batting later; retired out counts as a dismissal", "Retired hurt only applies in limited-overs cricket; retired out only applies in Tests", "Retired hurt means the team forfeits the match; retired out has no such penalty", "There is no difference — both are scored identically"],
+    correct: 0,
+    fact: "🩹 The official scorecard term for an injury retirement is actually 'retired – not out' — 'retired hurt' is just the commonly used broadcast phrase for the same thing.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What happens at the coin toss before a cricket match?",
+    options: ["The winning captain chooses whether their team bats or fields first", "Both captains agree in advance on who bats first", "The home team automatically bats first", "The toss decides only the choice of playing eleven, not batting order"],
+    correct: 0,
+    fact: "🪙 There have been repeated proposals to scrap the toss in Test cricket and let the touring team choose instead, to stop home boards from tailoring pitches to their own advantage.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "Where was cricket's first-ever day-night Test match played?",
+    options: ["Adelaide Oval, Australia", "Eden Gardens, India", "Lord's, England", "Kensington Oval, Barbados"],
+    correct: 0,
+    fact: "🌗 The historic day-night Test was played with a pink ball in November 2015, with Australia beating New Zealand by 3 wickets — pink was chosen specifically because it stays visible under both natural light and floodlights.",
+    era: "2010s",
+    category: "general"
+  },
+  {
+    question: "What does it mean for a batter to 'carry the bat' in cricket?",
+    options: ["An opening batter remains not out when the team is all out", "A batter scores a century in both innings of a Test", "A batter is given a replacement bat mid-innings", "A non-striker completes the run for an injured batter"],
+    correct: 0,
+    fact: "🏏 It's a genuinely rare feat — across more than 2,500 Test matches ever played, a batter has carried their bat through a completed innings only 57 times.",
+    era: "General",
+    category: "general"
   }
 
 ];
