@@ -249,7 +249,7 @@ function onDrop(e) {
   e.preventDefault();
   const dropIndex = parseInt(this.getAttribute('data-position'));
   if (dragSrcIndex !== null && dragSrcIndex !== dropIndex) {
-    swapPositions(dragSrcIndex, dropIndex);
+    movePosition(dragSrcIndex, dropIndex);
   }
 }
 
@@ -319,19 +319,17 @@ function onTouchEnd(e) {
   if (dragItem) {
     const dropIndex = parseInt(dragItem.getAttribute('data-position'));
     if (touchDragIndex !== null && touchDragIndex !== dropIndex) {
-      swapPositions(touchDragIndex, dropIndex);
+      movePosition(touchDragIndex, dropIndex);
     }
   }
 
   touchDragIndex = null;
 }
 
-// ===== SWAP TWO POSITIONS =====
-function swapPositions(a, b) {
-  // Swap the two player indices in currentUserOrder
-  const temp = currentUserOrder[a];
-  currentUserOrder[a] = currentUserOrder[b];
-  currentUserOrder[b] = temp;
+// ===== MOVE A PLAYER TO A NEW POSITION (shifts the players in between, not a swap) =====
+function movePosition(from, to) {
+  const [moved] = currentUserOrder.splice(from, 1);
+  currentUserOrder.splice(to, 0, moved);
   renderDragList();
 }
 
