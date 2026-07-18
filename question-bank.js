@@ -2681,14 +2681,6 @@ const questionBank = [
     category: "general"
   },
   {
-    question: "In a Test match of five days or more, by how many runs must the side that batted first lead before they can enforce the follow-on?",
-    options: ["100 runs", "150 runs", "200 runs", "250 runs"],
-    correct: 2,
-    fact: "🔄 The follow-on threshold shrinks for shorter matches — 150 runs in a 3-4 day match, 100 in a 2-day match, and just 75 in a one-day match.",
-    era: "General",
-    category: "general"
-  },
-  {
     question: "In Test cricket, when is a team's captain allowed to declare their innings closed?",
     options: ["Only after losing at least 8 wickets", "At any time while the ball is dead", "Only on the final scheduled day", "Only if the follow-on has already been enforced"],
     correct: 1,
@@ -2766,6 +2758,54 @@ const questionBank = [
     correct: 0,
     fact: "🏏 It's a genuinely rare feat — across more than 2,500 Test matches ever played, a batter has carried their bat through a completed innings only 57 times.",
     era: "General",
+    category: "general"
+  },
+  {
+    question: "What is a 'bye' in cricket?",
+    options: ["Extra runs scored when the ball passes both the batter and wicketkeeper without touching the bat or body", "A batter retiring without being dismissed", "A wicket credited off a no-ball", "A fielder substituting mid-over"],
+    correct: 0,
+    fact: "🏃 Byes are added to the team's total but count against neither the batter's individual score nor the bowler's runs conceded.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "What does the cricket term 'sledging' refer to?",
+    options: ["Deliberately verbally taunting or intimidating an opposing player", "Sweeping a delivery fine down to third man", "A bowler changing pace mid-over", "Signalling for a drinks break"],
+    correct: 0,
+    fact: "😏 The ICC Code of Conduct grades sledging-type offences in tiers — general bad language sits at Level 1, sledging itself at Level 2, with racial or ethnic abuse escalating to Levels 3 and 4.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "Where is a 'slip' fielder positioned on a cricket field?",
+    options: ["Close behind the batter on the off side, next to the wicketkeeper, to catch edges", "Directly behind the bowler's arm", "On the boundary rope at deep midwicket", "Beside the non-striker's stumps"],
+    correct: 0,
+    fact: "🧤 Slip fielders are numbered outward from the wicketkeeper — first slip, second slip, third slip — and teams often stack two or three of them when the pitch offers extra bounce and carry.",
+    era: "General",
+    category: "general"
+  },
+  {
+    question: "In what year was the International Cricket Council founded?",
+    options: ["1877", "1909", "1932", "1965"],
+    correct: 1,
+    fact: "🌍 It was founded at Lord's as the Imperial Cricket Conference, with just England, Australia and South Africa as members — it took its current name, the International Cricket Council, in 1989.",
+    era: "Pre-1970s",
+    category: "general"
+  },
+  {
+    question: "Where is the International Cricket Council (ICC) headquartered today?",
+    options: ["Lord's, London", "Dubai, UAE", "Mumbai, India", "Melbourne, Australia"],
+    correct: 1,
+    fact: "🏢 The ICC left Lord's for Dubai on 1 August 2005, partly to unify operations that had been split between London and Monaco under one roof.",
+    era: "2000s",
+    category: "general"
+  },
+  {
+    question: "In what year was the Board of Control for Cricket in India (BCCI) established?",
+    options: ["1928", "1947", "1971", "1983"],
+    correct: 0,
+    fact: "🇮🇳 The BCCI was founded on 1 December 1928 in Madras (now Chennai), four years before India played its first-ever Test match in 1932.",
+    era: "Pre-1970s",
     category: "general"
   }
 
