@@ -81,12 +81,38 @@ const RANKING_PARAMETERS = [
     format: 'test',
     question: "Rank these bowlers by career Test bowling average (best/lowest to worst)",
     hint: "Minimum 200 Test wickets. Only retired players used so the answer never goes out of date.",
+    // Literal real record order (min 200 wickets, retired only), expanded 5->25 Day 28.
+    // Ravichandran Ashwin FLAGGED for user review: ESPNcricinfo shows 24.00, Wikipedia shows
+    // 23.95 (ICC's own coverage only gives a rounded "average of 24" reference, consistent with
+    // ESPNcricinfo but not a precise independent figure) - a genuine small mismatch, not
+    // resolved here per the zero-tolerance rule. Using ESPNcricinfo's 24.00 as best-available
+    // pending the user's decision.
     leaders: [
       { name: "Malcolm Marshall", flag: "🇧🇧", value: "Avg: 20.94" },
       { name: "Joel Garner", flag: "🇧🇧", value: "Avg: 20.97" },
       { name: "Curtly Ambrose", flag: "🇦🇬", value: "Avg: 20.99" },
+      { name: "Fred Trueman", flag: "🇬🇧", value: "Avg: 21.57" },
       { name: "Glenn McGrath", flag: "🇦🇺", value: "Avg: 21.64" },
-      { name: "Dale Steyn", flag: "🇿🇦", value: "Avg: 22.95" }
+      { name: "Allan Donald", flag: "🇿🇦", value: "Avg: 22.25" },
+      { name: "Richard Hadlee", flag: "🇳🇿", value: "Avg: 22.29" },
+      { name: "Vernon Philander", flag: "🇿🇦", value: "Avg: 22.32" },
+      { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "Avg: 22.72" },
+      { name: "Imran Khan", flag: "🇵🇰", value: "Avg: 22.81" },
+      { name: "Dale Steyn", flag: "🇿🇦", value: "Avg: 22.95" },
+      { name: "Ray Lindwall", flag: "🇦🇺", value: "Avg: 23.03" },
+      { name: "Shaun Pollock", flag: "🇿🇦", value: "Avg: 23.11" },
+      { name: "Waqar Younis", flag: "🇵🇰", value: "Avg: 23.56" },
+      { name: "Wasim Akram", flag: "🇵🇰", value: "Avg: 23.62" },
+      { name: "Michael Holding", flag: "🇯🇲", value: "Avg: 23.68" },
+      { name: "Dennis Lillee", flag: "🇦🇺", value: "Avg: 23.92" },
+      { name: "Ravichandran Ashwin", flag: "🇮🇳", value: "Avg: 24.00" },
+      { name: "Clarrie Grimmett", flag: "🇦🇺", value: "Avg: 24.21" },
+      { name: "Fanie de Villiers", flag: "🇿🇦", value: "Avg: 24.27" },
+      { name: "Courtney Walsh", flag: "🇯🇲", value: "Avg: 24.44" },
+      { name: "Brian Statham", flag: "🇬🇧", value: "Avg: 24.84" },
+      { name: "Alec Bedser", flag: "🇬🇧", value: "Avg: 24.89" },
+      { name: "Shane Warne", flag: "🇦🇺", value: "Avg: 25.41" },
+      { name: "James Anderson", flag: "🇬🇧", value: "Avg: 26.45" }
     ]
   },
   {
