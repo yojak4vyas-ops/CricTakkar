@@ -82,11 +82,10 @@ const RANKING_PARAMETERS = [
     question: "Rank these bowlers by career Test bowling average (best/lowest to worst)",
     hint: "Minimum 200 Test wickets. Only retired players used so the answer never goes out of date.",
     // Literal real record order (min 200 wickets, retired only), expanded 5->25 Day 28.
-    // Ravichandran Ashwin FLAGGED for user review: ESPNcricinfo shows 24.00, Wikipedia shows
-    // 23.95 (ICC's own coverage only gives a rounded "average of 24" reference, consistent with
-    // ESPNcricinfo but not a precise independent figure) - a genuine small mismatch, not
-    // resolved here per the zero-tolerance rule. Using ESPNcricinfo's 24.00 as best-available
-    // pending the user's decision.
+    // Ravichandran Ashwin: ESPNcricinfo shows 24.00, Wikipedia shows 23.95 (ICC's own coverage
+    // only gives a rounded "average of 24" reference, consistent with ESPNcricinfo but not a
+    // precise independent figure) - a genuine small mismatch. User decision (Day 28): keep
+    // 24.00.
     leaders: [
       { name: "Malcolm Marshall", flag: "🇧🇧", value: "Avg: 20.94" },
       { name: "Joel Garner", flag: "🇧🇧", value: "Avg: 20.97" },
