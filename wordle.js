@@ -8,7 +8,7 @@ var wShareLines = [];
 
 // ===== PAGE LOAD =====
 window.onload = function() {
-  pickTodayPlayer();
+  pickNewPlayer();
   buildGuessRows();
 };
 
@@ -18,17 +18,49 @@ function startWordle() {
   document.getElementById('wGameScreen').style.display = 'flex';
 }
 
-// ===== PICK TODAY'S PLAYER (rotates daily, same for everyone) =====
+// ===== PICK A NEW MYSTERY PLAYER =====
+// Unlimited plays per day — every round picks a random player, never the same twice in a
+// row. Uses a "shuffle bag" stored in localStorage: shuffle the whole pool once, hand out
+// one name per round, and only reshuffle once every player has come up. This guarantees no
+// repeats until the full pool has been seen, then the cycle starts fresh.
 // Only picks from players that have been through the bowlingStyle/iplTeams data pass
 // (Day 14 — currently just India). Players from countries not yet re-verified can still
 // be guessed, they just won't come up as the secret answer until their batch is done.
-function pickTodayPlayer() {
+function pickNewPlayer() {
   var verifiedPlayers = wordlePlayers.filter(function(p) { return typeof p.bowlingStyle !== 'undefined'; });
   var pool = verifiedPlayers.length > 0 ? verifiedPlayers : wordlePlayers;
-  var today = new Date();
-  var dayNumber = Math.floor(today.getTime() / (1000 * 60 * 60 * 24));
-  var index = dayNumber % pool.length;
-  wTodayPlayer = pool[index];
+  var poolNames = pool.map(function(p) { return p.name; });
+
+  var bag = [];
+  try { bag = JSON.parse(localStorage.getItem('wordleShuffleBag') || '[]'); } catch (e) { bag = []; }
+  bag = bag.filter(function(name) { return poolNames.indexOf(name) !== -1; });
+  if (bag.length === 0) bag = shuffleArray(poolNames.slice());
+
+  var nextName = bag.pop();
+  try { localStorage.setItem('wordleShuffleBag', JSON.stringify(bag)); } catch (e) {}
+  wTodayPlayer = pool.find(function(p) { return p.name === nextName; });
+}
+
+// ===== SHUFFLE HELPER =====
+function shuffleArray(arr) {
+  for (var i = arr.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = arr[i]; arr[i] = arr[j]; arr[j] = temp;
+  }
+  return arr;
+}
+
+// ===== PLAY AGAIN — reset the board and pick a new mystery player without reloading =====
+function playAgain() {
+  wGuesses = [];
+  wGameOver = false;
+  wShareLines = [];
+  pickNewPlayer();
+  buildGuessRows();
+  document.getElementById('inputArea').style.display = 'block';
+  document.getElementById('attemptsLeft').style.display = 'inline-block';
+  document.getElementById('attemptsLeft').textContent = wMaxGuesses + ' attempts remaining';
+  document.getElementById('resultBox').style.display = 'none';
 }
 
 // ===== BUILD 6 EMPTY GUESS ROWS =====
@@ -247,10 +279,10 @@ function showResult(won) {
       'Got it in ' + wGuesses.length + (wGuesses.length === 1 ? ' try!' : ' tries!');
   } else {
     document.getElementById('resultEmoji').textContent = '😔';
-    document.getElementById('resultTitle').textContent = 'Better luck tomorrow!';
+    document.getElementById('resultTitle').textContent = 'Better luck next time!';
   }
 
-  document.getElementById('resultAnswer').textContent = 'Today\'s player: ' + wTodayPlayer.name;
+  document.getElementById('resultAnswer').textContent = 'The mystery player was: ' + wTodayPlayer.name;
 
   var fullShare = '🏏 CricTakkar Cricket Wordle\n' +
     (won ? wGuesses.length : 'X') + '/' + wMaxGuesses + '\n\n' +
