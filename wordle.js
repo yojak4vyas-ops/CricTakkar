@@ -319,12 +319,41 @@ function wSaveToFirebase(won) {
       }
       // ===== END BADGES =====
 
+      // ===== STREAK LOGIC — playing ANY game keeps the daily streak alive =====
+      var today = new Date();
+      var todayStr = today.getFullYear() + '-' +
+        String(today.getMonth() + 1).padStart(2, '0') + '-' +
+        String(today.getDate()).padStart(2, '0');
+
+      var lastPlayed = data.lastPlayedDate || '';
+      var currentStreak = data.currentStreak || 0;
+      var bestStreak = data.bestStreak || 0;
+
+      var yesterday = new Date(today);
+      yesterday.setDate(yesterday.getDate() - 1);
+      var yesterdayStr = yesterday.getFullYear() + '-' +
+        String(yesterday.getMonth() + 1).padStart(2, '0') + '-' +
+        String(yesterday.getDate()).padStart(2, '0');
+
+      if (lastPlayed === todayStr) {
+        // already played something today — streak unchanged
+      } else if (lastPlayed === yesterdayStr) {
+        currentStreak = currentStreak + 1;
+      } else {
+        currentStreak = 1;
+      }
+      if (currentStreak > bestStreak) bestStreak = currentStreak;
+      // ===== END STREAK LOGIC =====
+
       userRef.update({
         xp: newXP,
         level: newLevel,
         wordlePlayed: (data.wordlePlayed || 0) + 1,
         wordleWins: (data.wordleWins || 0) + (won ? 1 : 0),
-        badges: badges
+        badges: badges,
+        currentStreak: currentStreak,
+        bestStreak: bestStreak,
+        lastPlayedDate: todayStr
       });
     });
   });

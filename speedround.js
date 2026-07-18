@@ -183,6 +183,27 @@ function srSaveToFirebase(finalScore) {
       var eraStats = srMergeEraStats(data.eraStats || {}, srQuestions.slice(0, srResults.length), srResults);
       // ===== END ERA STATS =====
 
+      // ===== STREAK LOGIC — playing ANY game keeps the daily streak alive =====
+      var lastPlayed = data.lastPlayedDate || '';
+      var currentStreak = data.currentStreak || 0;
+      var bestStreak = data.bestStreak || 0;
+
+      var yesterday = new Date(today);
+      yesterday.setDate(yesterday.getDate() - 1);
+      var yesterdayStr = yesterday.getFullYear() + '-' +
+        String(yesterday.getMonth() + 1).padStart(2, '0') + '-' +
+        String(yesterday.getDate()).padStart(2, '0');
+
+      if (lastPlayed === todayStr) {
+        // already played something today — streak unchanged
+      } else if (lastPlayed === yesterdayStr) {
+        currentStreak = currentStreak + 1;
+      } else {
+        currentStreak = 1;
+      }
+      if (currentStreak > bestStreak) bestStreak = currentStreak;
+      // ===== END STREAK LOGIC =====
+
       userRef.update({
         xp: newXP,
         level: newLevel,
@@ -190,7 +211,10 @@ function srSaveToFirebase(finalScore) {
         badges: badges,
         speedRoundsPlayed: (data.speedRoundsPlayed || 0) + 1,
         quizHistory: quizHistory,
-        eraStats: eraStats
+        eraStats: eraStats,
+        currentStreak: currentStreak,
+        bestStreak: bestStreak,
+        lastPlayedDate: todayStr
       }).then(function() {
         console.log('✅ Speed Round saved! Score: ' + finalScore + '/30, +' + xpEarned + ' XP');
       }).catch(function(err) {

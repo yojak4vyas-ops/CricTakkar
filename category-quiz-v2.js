@@ -225,6 +225,27 @@ function crictakkarSaveScore(finalScore, total) {
           var eraStats = crictakkarMergeEraStats(data.eraStats || {}, crictakkarQuestions, crictakkarResults);
           // ===== END ERA STATS =====
 
+          // ===== STREAK LOGIC — playing ANY game keeps the daily streak alive =====
+          var lastPlayed = data.lastPlayedDate || '';
+          var currentStreak = data.currentStreak || 0;
+          var bestStreak = data.bestStreak || 0;
+
+          var yesterday = new Date(today);
+          yesterday.setDate(yesterday.getDate() - 1);
+          var yesterdayStr = yesterday.getFullYear() + '-' +
+            String(yesterday.getMonth() + 1).padStart(2, '0') + '-' +
+            String(yesterday.getDate()).padStart(2, '0');
+
+          if (lastPlayed === todayStr) {
+            // already played something today — streak unchanged
+          } else if (lastPlayed === yesterdayStr) {
+            currentStreak = currentStreak + 1;
+          } else {
+            currentStreak = 1;
+          }
+          if (currentStreak > bestStreak) bestStreak = currentStreak;
+          // ===== END STREAK LOGIC =====
+
           userRef.update({
             quizzesPlayed: (data.quizzesPlayed || 0) + 1,
             totalScore: (data.totalScore || 0) + finalScore,
@@ -233,7 +254,10 @@ function crictakkarSaveScore(finalScore, total) {
             level: newLevel,
             badges: badges,
             quizHistory: quizHistory,
-            eraStats: eraStats
+            eraStats: eraStats,
+            currentStreak: currentStreak,
+            bestStreak: bestStreak,
+            lastPlayedDate: todayStr
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP');
           }).catch(function(error) {

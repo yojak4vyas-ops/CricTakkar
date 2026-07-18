@@ -31,7 +31,7 @@ function renderLiveStats() {
 
   if (typeof questionBank !== 'undefined') {
     total += questionBank.length;
-    // Daily Quiz (draws from the whole bank) + the distinct category-quiz tags
+    // Mixed Category Quiz (draws from the whole bank) + the distinct category-quiz tags
     // represented inside it (ipl/test/odi/t20 — "general" has no tab of its own)
     var tags = {};
     questionBank.forEach(function(q) {

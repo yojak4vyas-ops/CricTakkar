@@ -482,7 +482,33 @@ function saveRankingHistory(finalScore, total) {
       quizHistory.push({ category: 'Ranking', score: finalScore, total: total, date: todayStr });
       if (quizHistory.length > 200) quizHistory = quizHistory.slice(quizHistory.length - 200);
 
-      transaction.update(userRef, { quizHistory: quizHistory });
+      // ===== STREAK LOGIC — playing ANY game keeps the daily streak alive =====
+      var lastPlayed = data.lastPlayedDate || '';
+      var currentStreak = data.currentStreak || 0;
+      var bestStreak = data.bestStreak || 0;
+
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      var yesterdayStr = yesterday.getFullYear() + '-' +
+        String(yesterday.getMonth() + 1).padStart(2, '0') + '-' +
+        String(yesterday.getDate()).padStart(2, '0');
+
+      if (lastPlayed === todayStr) {
+        // already played something today — streak unchanged
+      } else if (lastPlayed === yesterdayStr) {
+        currentStreak = currentStreak + 1;
+      } else {
+        currentStreak = 1;
+      }
+      if (currentStreak > bestStreak) bestStreak = currentStreak;
+      // ===== END STREAK LOGIC =====
+
+      transaction.update(userRef, {
+        quizHistory: quizHistory,
+        currentStreak: currentStreak,
+        bestStreak: bestStreak,
+        lastPlayedDate: todayStr
+      });
     });
   } catch (err) {
     console.log('Ranking history not saved — user not logged in');

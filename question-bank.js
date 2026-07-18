@@ -1,7 +1,7 @@
 // ===== CRICTAKKAR CENTRAL QUESTION BANK =====
 // Single source of truth for all cricket quiz questions (poetry excluded — that
 // lives in poems.js as its own repository). Used by:
-//   - Daily Quiz (quiz.js) — draws 5 random questions from the WHOLE bank
+//   - Mixed Category Quiz (quiz.js) — draws 10 random questions from the WHOLE bank
 //   - Category Quiz (category-quiz-v2.js) — filters by `category` field, draws 10
 //   - Speed Round (speedround.js) — draws 30 random questions from the WHOLE bank
 //   - On This Day (onthisday.js) — pulls a random `fact` for the no-event fallback
@@ -18,7 +18,7 @@
 //
 // `category` field: ipl | test | odi | t20 | general
 // "general" = format-agnostic trivia (rules, terminology) with no category-quiz tab
-// of its own — these only ever surface in Daily Quiz / Speed Round.
+// of its own — these only ever surface in Mixed Category Quiz / Speed Round.
 //
 // `era` field powers the Stats Dashboard's "weakest era" card. Buckets: Pre-1970s,
 // 1970s-80s, 1990s, 2000s, 2010s, 2020s, General (timeless rules — excluded from

@@ -11,7 +11,7 @@ let generatedCardDataUrl = null; // stores the card image after generation
 
 // ===== START THE QUIZ =====
 function startQuiz() {
-  currentQuestions = getRandomQuestions(5);
+  currentQuestions = getRandomQuestions(10);
   currentIndex = 0;
   score = 0;
   results = [];
@@ -36,11 +36,11 @@ function loadQuestion() {
 
   const q = currentQuestions[currentIndex];
 
-  const progress = ((currentIndex) / 5) * 100;
+  const progress = ((currentIndex) / 10) * 100;
   document.getElementById('progressBar').style.width = progress + '%';
 
   document.getElementById('questionCounter').textContent =
-    'Question ' + (currentIndex + 1) + ' of 5';
+    'Question ' + (currentIndex + 1) + ' of 10';
 
   document.getElementById('timerNumber').textContent = timeLeft;
   document.getElementById('timerCircle').classList.remove('danger');
@@ -135,7 +135,7 @@ function disableAllOptions() {
 // ===== NEXT QUESTION =====
 function nextQuestion() {
   currentIndex++;
-  if (currentIndex >= 5) {
+  if (currentIndex >= 10) {
     showScoreScreen();
   } else {
     loadQuestion();
@@ -171,7 +171,7 @@ function showScoreScreen() {
   });
 
   // Save score to Firebase
-  saveScoreToFirebase(score, 5);
+  saveScoreToFirebase(score, 10);
 }
 
 // ===== SAVE SCORE TO FIREBASE =====
@@ -219,7 +219,7 @@ function saveScoreToFirebase(finalScore, total) {
           // ===== END STREAK LOGIC =====
 
           // ===== BADGES — Perfectionist (Day 12) =====
-          // Unlocked the moment a player scores a perfect 5/5 on the Daily Quiz.
+          // Unlocked the moment a player scores a perfect 10/10 on the Mixed Category Quiz.
           var badges = data.badges || {};
           if (finalScore === total) {
             badges.perfectionist = true;
@@ -325,30 +325,30 @@ function calculateLevel(xp) {
 
 // ===== SCORE MESSAGE DATA =====
 function getScoreData(score) {
-  if (score === 5) return {
+  if (score === 10) return {
     emoji: '🏆',
     title: 'Perfect Score! Test Legend!',
     message: 'You got every single question right. You are a true cricket genius!'
   };
-  if (score === 4) return {
+  if (score >= 8) return {
     emoji: '🌟',
     title: 'Excellent! Almost Perfect!',
-    message: 'Just one slip. Your cricket knowledge is seriously impressive!'
+    message: 'Just a couple of slips. Your cricket knowledge is seriously impressive!'
   };
-  if (score === 3) return {
+  if (score >= 6) return {
     emoji: '👏',
     title: 'Good Game!',
-    message: 'Solid performance! Keep playing daily to improve your streak.'
+    message: 'Solid performance! Keep playing to improve your streak.'
   };
-  if (score === 2) return {
+  if (score >= 4) return {
     emoji: '🏏',
     title: 'Getting There!',
-    message: 'Two right is a start. Play the daily quiz every day and improve!'
+    message: 'A decent start. Play more and improve!'
   };
-  if (score === 1) return {
+  if (score >= 2) return {
     emoji: '😅',
     title: 'Keep Practicing!',
-    message: 'One right answer! The fun facts will help you learn fast.'
+    message: 'A few right answers! The fun facts will help you learn fast.'
   };
   return {
     emoji: '😬',
@@ -381,7 +381,7 @@ function generateAndShowCard() {
 
 // ===== STEP 2A: SHARE ON WHATSAPP =====
 function shareCardToWhatsApp() {
-  var text = '🏏 I scored ' + score + '/5 on CricTakkar Daily Quiz!\n' +
+  var text = '🏏 I scored ' + score + '/10 on CricTakkar Mixed Category Quiz!\n' +
     '🔥 Test your cricket knowledge at crictakkar.in\n' +
     '#CricTakkar #Cricket #IndianCricket';
   var whatsappUrl = 'https://wa.me/?text=' + encodeURIComponent(text);
@@ -457,7 +457,7 @@ function generateScoreCard(callback) {
   scoreGrad.addColorStop(0, '#ff6b35');
   scoreGrad.addColorStop(1, '#f7931e');
   ctx.fillStyle = scoreGrad;
-  ctx.fillText(score + '/5', 540, 660);
+  ctx.fillText(score + '/10', 540, 660);
 
   // --- Score title text ---
   var scoreData = getScoreData(score);
@@ -466,9 +466,9 @@ function generateScoreCard(callback) {
   ctx.fillText(scoreData.title, 540, 730);
 
   // --- Dot breakdown (green = correct, red = wrong) ---
-  var dotRadius = 34;
-  var dotGap = 28;
-  var totalDotsWidth = (dotRadius * 2 + dotGap) * 5 - dotGap;
+  var dotRadius = 24;
+  var dotGap = 16;
+  var totalDotsWidth = (dotRadius * 2 + dotGap) * 10 - dotGap;
   var dotStartX = (1080 - totalDotsWidth) / 2 + dotRadius;
   var dotY = 800;
 
