@@ -376,7 +376,7 @@ Started because `onthisday.js` has sat at just 18 events (scattered non-sequenti
 - **NO TARGET, WORK TO THE ACTUAL LIMIT (hardened Day 28):** an earlier version of this rule said "8-12 new calendar-day entries per automated run" — that was never a target and must not be treated as one. Every run keeps working forward through the calendar for as long as real usable capacity remains, stopping ONLY on a genuine hard limit (context/tokens/turns actually running out) or the assigned day-range being fully covered — never because a round number of days was reached. ("Item" for this content type means a calendar day worked through, not an individual event — a day can yield 0-3 events after honest research.)
 - **Resume pointer**: this file's own "Next task" line (or the automation's own log) should always state the next calendar day to research from, so a run picks up exactly where the last one left off without re-scanning the whole year.
 
-**PROGRESS**: as of Day 26 session 6, still at the original 18 events (Feb 7, Feb 24, Mar 15, Mar 16, Apr 2, Apr 12, Apr 18, Jun 3, Jun 18, Jun 25 ×2, Jul 11, Sep 19, Sep 24, Nov 13, Nov 14, Nov 15, Nov 19). Next research day to start from: **18 July**.
+**PROGRESS**: as of Day 28 (first automated run under the new time-scheduled system), grown from 18 to 24 events. The 06:00 slot worked the full 18-31 July range in one continuous run (per the new no-target hardcore rule) rather than stopping at its originally-assigned 18-23 sub-range, adding 6 new dated entries: Jul 21 1981 (Botham's Ashes), Jul 22 2010 (Muralitharan's 800th wicket on his last ball), Jul 23 2017 (2017 Women's World Cup final, England beat India by 9 runs), Jul 26 1902 (Australia beat England by 3 runs at Old Trafford), Jul 28 1973 (the first-ever Cricket World Cup — Women's, England won), Jul 31 1956 (Jim Laker's 19 wickets in a Test). The other 25 of the 31 days checked in that window turned up nothing significant enough to add — expected, not an error. Next research day to start from: **1 August**. Flagged for a future session (not added, out of this run's date range): India Women won their maiden ICC Women's Cricket World Cup on 2 November 2025 (beat South Africa by 52 runs, DY Patil Stadium — Shafali Verma 87, Deepti Sharma 5-for + fifty) — excellent candidate for 2 November once the calendar rotation reaches it (that date is currently open).
 
 ---
 
@@ -433,7 +433,7 @@ Every session must follow this structure:
 
 ## CURRENT BUILD STATUS
 
-AUTOMATION LAST RUN TYPE: questions
+AUTOMATION LAST RUN TYPE: onthisday
 AUTOMATION LAST QUESTION CATEGORY: general
 
 - Day: 28 — Ranking Challenge build process revised (25-players-in-one-go instead of 5-then-grow; average-type cells use the literal real record list); found and diagnosed a platform-level bug that had been silently blocking the scheduled automation Routine's git push access, and rewrote its Instructions prompt (v9) to output paste-ready content instead of attempting to push directly.
