@@ -137,8 +137,9 @@ const wordlePlayers = [
     format: "Test+ODI",
     // 125 Tests, 108 ODIs — retired 1987, T20I format did not exist
     iplTeams: [],
-    iccTrophies: 0
-    // No ICC trophies — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1983 ODI WC — squad member, played in the final (out for 2) — ESPNcricinfo + Wikipedia confirmed.
+    // Corrected Day 32: was wrongly 0 despite Kapil Dev's entry (same squad) correctly showing 1.
   },
   {
     name: "VVS Laxman",
