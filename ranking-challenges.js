@@ -121,12 +121,43 @@ const RANKING_PARAMETERS = [
     format: 'test',
     question: "Rank these batsmen by total career Test runs (most to least)",
     hint: "All-time career Test runs — only retired players used so the answer never goes out of date.",
+    // Literal real record order, retired only, expanded 5->25 Day 30. Joe Root and Steve Smith
+    // are the only 2 active players in the real all-time top ~25 (both confirmed still playing
+    // Test cricket in 2026) - excluded per the staleness rule. Kane Williamson (retired 12 Jun
+    // 2026), Virat Kohli (retired 12 May 2025), and David Warner (retired Jan 2024) are all
+    // newly-retired and now eligible. Real order confirmed via ESPNcricinfo + Wikipedia +
+    // cross-checked against the ACS (Association of Cricket Statisticians) official records
+    // table. Two search-synthesis mismatches were caught and resolved by going to a primary
+    // source directly (not real cross-source disagreements): Michael Clarke's total was briefly
+    // misreported as 8,628 by one search summary - both ESPNcricinfo and Wikipedia confirm
+    // 8,643. Inzamam-ul-Haq's total was briefly misreported as 8,820/8,829 by other summaries -
+    // his live Wikipedia infobox confirms 8,830, matching ESPNcricinfo and ACS.
     leaders: [
       { name: "Sachin Tendulkar", flag: "🇮🇳", value: "15,921 runs" },
       { name: "Ricky Ponting", flag: "🇦🇺", value: "13,378 runs" },
       { name: "Jacques Kallis", flag: "🇿🇦", value: "13,289 runs" },
       { name: "Rahul Dravid", flag: "🇮🇳", value: "13,288 runs" },
-      { name: "Alastair Cook", flag: "🇬🇧", value: "12,472 runs" }
+      { name: "Alastair Cook", flag: "🇬🇧", value: "12,472 runs" },
+      { name: "Kumar Sangakkara", flag: "🇱🇰", value: "12,400 runs" },
+      { name: "Brian Lara", flag: "🇹🇹", value: "11,953 runs" },
+      { name: "Shivnarine Chanderpaul", flag: "🇬🇾", value: "11,867 runs" },
+      { name: "Mahela Jayawardene", flag: "🇱🇰", value: "11,814 runs" },
+      { name: "Allan Border", flag: "🇦🇺", value: "11,174 runs" },
+      { name: "Steve Waugh", flag: "🇦🇺", value: "10,927 runs" },
+      { name: "Sunil Gavaskar", flag: "🇮🇳", value: "10,122 runs" },
+      { name: "Younis Khan", flag: "🇵🇰", value: "10,099 runs" },
+      { name: "Kane Williamson", flag: "🇳🇿", value: "9,515 runs" },
+      { name: "Hashim Amla", flag: "🇿🇦", value: "9,282 runs" },
+      { name: "Graeme Smith", flag: "🇿🇦", value: "9,265 runs" },
+      { name: "Virat Kohli", flag: "🇮🇳", value: "9,230 runs" },
+      { name: "Graham Gooch", flag: "🇬🇧", value: "8,900 runs" },
+      { name: "Javed Miandad", flag: "🇵🇰", value: "8,832 runs" },
+      { name: "Inzamam-ul-Haq", flag: "🇵🇰", value: "8,830 runs" },
+      { name: "David Warner", flag: "🇦🇺", value: "8,786 runs" },
+      { name: "VVS Laxman", flag: "🇮🇳", value: "8,781 runs" },
+      { name: "AB de Villiers", flag: "🇿🇦", value: "8,765 runs" },
+      { name: "Michael Clarke", flag: "🇦🇺", value: "8,643 runs" },
+      { name: "Matthew Hayden", flag: "🇦🇺", value: "8,625 runs" }
     ]
   },
   {
