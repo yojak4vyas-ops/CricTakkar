@@ -503,6 +503,9 @@ const wordlePlayers = [
     // ESPNcricinfo confirmed. One of only 5 bowlers ever with 3+ wickets on debut in all 3 formats.
     iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 0
+    // Note added Day 32: was originally selected for the winning 2026 T20 World Cup squad but
+    // ruled out by a knee injury in the warm-up before the tournament started (replaced by
+    // Mohammed Siraj) — never played, so 0 is correct, not an oversight. ESPNcricinfo confirmed.
   },
   {
     name: "Nitish Kumar Reddy",
@@ -710,8 +713,13 @@ const wordlePlayers = [
     // T20I debut 2017 vs New Zealand, ODI debut 15 Jan 2019 vs Australia (Adelaide), Test debut 2020
     // (Boxing Day Test) — ESPNcricinfo confirmed
     iplTeams: ["Sunrisers Hyderabad", "Royal Challengers Bangalore", "Gujarat Titans"],
-    iccTrophies: 0
-    // Left out of the 2025 Champions Trophy 15 — ESPNcricinfo confirmed
+    iccTrophies: 2
+    // Left out of the 2025 Champions Trophy 15 (correct, unchanged) — ESPNcricinfo confirmed.
+    // Corrected Day 32 (2nd fix, user-caught): was actually part of TWO winning T20 World Cup
+    // squads — listed under Bowlers on ESPNcricinfo's own official 2024 squad page (30-Apr-2024),
+    // and added to the 2026 squad as a late injury replacement for Harshit Rana, playing a
+    // match-sealing wicket vs USA — both confirmed via direct ESPNcricinfo squad-page fetch
+    // (2024) and ESPNcricinfo + Wikipedia (2026).
   },
   {
     name: "Shahbaz Nadeem",
