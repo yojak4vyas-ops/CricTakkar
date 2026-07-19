@@ -4043,6 +4043,161 @@ const wordlePlayers = [
     // Retired 1997, well before IPL began in 2008 — confirmed
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Ashton Agar",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2013,
+    format: "All-format",
+    // Test debut 10 Jul 2013 vs England, Trent Bridge (scored 98 at No. 11 — highest Test score
+    // ever by a No. 11 batter), ODI debut 8 Sep 2015 vs England (Manchester), T20I debut 2013 —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Rising Pune Supergiant", "Kolkata Knight Riders"],
+    // RCB (2015), Rising Pune Supergiant (2016-17), KKR (2022-23) — dedicated IPL-history search confirmed
+    iccTrophies: 1
+    // 2021 T20 World Cup winning squad — confirmed. Named in Australia's preliminary 2023 ODI
+    // World Cup squad but ruled out by a calf injury before the tournament, replaced by Marnus
+    // Labuschagne (confirmed via ESPNcricinfo, cricket.com, SABC Sport) — does not count, same
+    // squad-but-injured-out precedent as Gillespie/Lee (Day 26)
+  },
+  {
+    name: "Glenn Maxwell",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 2012 vs Pakistan (UAE), Test debut 2013 (Hyderabad, No. 8) — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils", "Mumbai Indians", "Kings XI Punjab", "Royal Challengers Bangalore", "Punjab Kings"],
+    // Delhi Daredevils (2012, 2018), Mumbai Indians (2013), Kings XI Punjab (2014-17, 2020),
+    // RCB (2021-24), Punjab Kings (2025) — dedicated IPL-history search confirmed
+    iccTrophies: 3
+    // 2015 ODI World Cup, 2021 T20 World Cup, 2023 ODI World Cup — all confirmed winning squad
+    // member (scored the winning runs in the 2023 final) — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Andrew Tye",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2016,
+    format: "ODI+T20",
+    // T20I debut 29 Jan 2016 vs India (MCG), ODI debut 14 Jan 2018 vs England — no Test caps —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Gujarat Lions", "Kings XI Punjab", "Rajasthan Royals", "Lucknow Super Giants"],
+    // Signed by Chennai Super Kings in the 2015 auction but never played a match for them (excluded
+    // per the standing "signed but never played" rule — confirmed via Wikipedia's 2015 CSK season
+    // page: bought for the 2015 auction, did not debut in the IPL until 2017 with Gujarat Lions).
+    // Actual appearances: Gujarat Lions (2017, 5/17 on debut), Kings XI Punjab (2018-19, Purple Cap
+    // 2018 with 24 wickets), Rajasthan Royals (2020), Lucknow Super Giants (2022) — dedicated
+    // IPL-history search confirmed
+    iccTrophies: 0
+    // Confirmed NOT part of Australia's 2021 T20 World Cup winning squad (omitted from the final
+    // 15) — dedicated search confirmed. No other trophy-winning squad membership found
+  },
+  {
+    name: "Kane Richardson",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2013,
+    format: "ODI+T20",
+    // ODI debut 2013 vs Sri Lanka — no Test caps, career spanned 2013-2023 — ESPNcricinfo confirmed
+    iplTeams: ["Pune Warriors", "Rajasthan Royals", "Royal Challengers Bangalore"],
+    // Pune Warriors (2013), Rajasthan Royals (2014), RCB (2016, 2021) — dedicated IPL-history
+    // search confirmed
+    iccTrophies: 1
+    // Confirmed named in Australia's winning 2021 T20 World Cup squad — counts per the standing
+    // squad-membership precedent (same as Bracken/Hogg, Day 26) regardless of final-XI appearance,
+    // which could not be independently pinned down beyond squad confirmation. Also played at the
+    // 2019 ODI World Cup as an injury replacement, but Australia did not win that tournament
+    // (lost semi-final to England) — no trophy from that
+  },
+  {
+    name: "Marcus Stoinis",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2015,
+    format: "ODI+T20",
+    // ODI debut 11 Sep 2015 vs England (Leeds), T20I debut 2015 — no Test caps (pushed for Test
+    // contention in 2017/2019 but never capped) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab", "Royal Challengers Bangalore", "Delhi Capitals", "Lucknow Super Giants", "Punjab Kings"],
+    // Signed by Delhi Daredevils in 2015 but did not feature in a single match that season
+    // (excluded per the standing "signed but never played" rule — confirmed via direct search:
+    // signed for INR 25 lakh, no game time, actual IPL debut came with Kings XI Punjab in 2016).
+    // Actual appearances: Kings XI Punjab (2016-18), RCB (2019), Delhi Capitals (2020-21), Lucknow
+    // Super Giants (2022-24), Punjab Kings (2025) — dedicated IPL-history search confirmed
+    iccTrophies: 2
+    // 2021 T20 World Cup + 2023 ODI World Cup — both confirmed winning squad member.
+    // Retired from ODIs Feb 2025, still active in T20Is
+  },
+  {
+    name: "Nathan Ellis",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2021,
+    format: "ODI+T20",
+    // T20I debut mid-2021 vs Bangladesh (Mirpur — took a hat-trick on debut), ODI debut 29 Mar
+    // 2022 vs Pakistan (Lahore) — no Test caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Punjab Kings", "Chennai Super Kings"],
+    // Punjab Kings (2021-24), Chennai Super Kings (2025) — dedicated IPL-history search confirmed
+    iccTrophies: 0
+    // Confirmed NOT selected in Australia's final 15-man squad for the 2023 ODI World Cup — lost
+    // out to Sean Abbott for the fourth pace-bowling spot behind Cummins/Starc/Hazlewood
+    // (confirmed via cricket.com.au and Cricket Times squad-announcement coverage). Part of the
+    // 2025 Champions Trophy squad, but Australia lost that final to India — no trophy
+  },
+  {
+    name: "James Faulkner",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left-arm medium-fast",
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 2 Jan 2012, ODI debut 1 Feb 2013, Test debut 21 Aug 2013 (The Oval, 6 wickets on
+    // debut) — retired from international cricket 2017 — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Pune Warriors", "Kings XI Punjab", "Rajasthan Royals", "Gujarat Lions"],
+    // Pune Warriors, Kings XI Punjab, Rajasthan Royals (28 wickets in 2013, 3rd-most in a single
+    // IPL season), Gujarat Lions — played 2011-2017 — dedicated IPL-history search confirmed via
+    // Wikipedia's own infobox (a separate lower-quality aggregator briefly implied a 2017 Rising
+    // Pune Supergiant stint, but Wikipedia's infobox does not list it — not a genuine cross-source
+    // disagreement, resolved without flagging)
+    iccTrophies: 1
+    // 2015 ODI World Cup winning squad — Player of the Match in the final (3/36) — confirmed.
+    // CORRECTED from the drafted claim: he was dropped from Australia's 2017 Champions Trophy
+    // squad, not a "2015 Champions Trophy" — no Champions Trophy was held in 2015 (editions run
+    // 1998/2000/2002/2004/2006/2009/2013/2017/2025) — confirmed via Wikipedia/cricket.com.au. No
+    // trophy from that tournament either way, since he wasn't selected
+  },
+  {
+    name: "Sean Abbott",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast-medium",
+    debutYear: 2014,
+    format: "ODI+T20",
+    // T20I debut 5 Oct 2014 vs Pakistan (UAE), ODI debut 7 Oct 2014 vs Pakistan (UAE) — no Test
+    // caps despite multiple Test squad selections (Nov 2020, 2025-26 Ashes), always ruled out by
+    // injury before playing — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    // RCB (2015), Sunrisers Hyderabad (2022) — dedicated IPL-history search confirmed
+    iccTrophies: 1
+    // Confirmed member of Australia's winning 2023 ODI World Cup 15-man squad (won the 4th
+    // pace-bowling spot over Nathan Ellis) — ESPNcricinfo/cricket.com.au confirmed. Part of the
+    // 2025 Champions Trophy squad, but Australia lost that final to India — no trophy from that
   }
 
 ];
