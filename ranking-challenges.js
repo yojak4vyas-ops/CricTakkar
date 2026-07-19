@@ -166,13 +166,50 @@ const RANKING_PARAMETERS = [
     statType: 'wickets',
     format: 'test',
     question: "Rank these bowlers by total Test wickets (most to least)",
-    hint: "All-time career Test wickets.",
+    hint: "All-time career Test wickets — only retired players used so the answer never goes out of date.",
+    // Literal real record order, retired only, expanded 5->25 Day 31. Source: ESPNcricinfo's
+    // live "Most Wickets In Career" table and Wikipedia's "300+ Test wickets" table, both
+    // fetched directly (not search synthesis) and cross-checked figure-by-figure - exact
+    // agreement on every wicket count, zero mismatches. Both sources also explicitly flag
+    // active players (Wikipedia's "†" marker / ESPNcricinfo's open-ended career span) - used
+    // this to exclude 5 otherwise-qualifying active bowlers per the staleness rule: Nathan Lyon
+    // (567, still active per 2025-26 Ashes coverage, no retirement announced), Mitchell Starc
+    // (433, confirmed actively playing Tests as of June 2026), Ravindra Jadeja (348, active),
+    // Kagiso Rabada (340, active), Pat Cummins (315, active). Tim Southee (391) was confirmed
+    // RETIRED (bowed out of Tests after New Zealand's home series vs England, career span
+    // 2008-2024 on both sources) so he stays in. ICC official records confirm the top-3 figures
+    // directly (Murali 800, Warne 708, Anderson 704) but has no dedicated all-time leaderboard
+    // page covering the rest - a coverage gap, not a mismatch, consistent with the same gap
+    // found for other cells (see test-battingavg). Cricbuzz unreachable as usual, flagged.
+    // Minor non-blocking note: Daniel Vettori's career span shows as 1997-2014 on ESPNcricinfo
+    // vs 1997-2015 on Wikipedia - his wicket count (362) matches exactly on both and span isn't
+    // a stored field, so not treated as a real mismatch requiring a user decision.
     leaders: [
       { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "800 wickets" },
       { name: "Shane Warne", flag: "🇦🇺", value: "708 wickets" },
       { name: "James Anderson", flag: "🇬🇧", value: "704 wickets" },
       { name: "Anil Kumble", flag: "🇮🇳", value: "619 wickets" },
-      { name: "Glenn McGrath", flag: "🇦🇺", value: "563 wickets" }
+      { name: "Stuart Broad", flag: "🇬🇧", value: "604 wickets" },
+      { name: "Glenn McGrath", flag: "🇦🇺", value: "563 wickets" },
+      { name: "Ravichandran Ashwin", flag: "🇮🇳", value: "537 wickets" },
+      { name: "Courtney Walsh", flag: "🇯🇲", value: "519 wickets" },
+      { name: "Dale Steyn", flag: "🇿🇦", value: "439 wickets" },
+      { name: "Kapil Dev", flag: "🇮🇳", value: "434 wickets" },
+      { name: "Rangana Herath", flag: "🇱🇰", value: "433 wickets" },
+      { name: "Richard Hadlee", flag: "🇳🇿", value: "431 wickets" },
+      { name: "Shaun Pollock", flag: "🇿🇦", value: "421 wickets" },
+      { name: "Harbhajan Singh", flag: "🇮🇳", value: "417 wickets" },
+      { name: "Wasim Akram", flag: "🇵🇰", value: "414 wickets" },
+      { name: "Curtly Ambrose", flag: "🇦🇬", value: "405 wickets" },
+      { name: "Tim Southee", flag: "🇳🇿", value: "391 wickets" },
+      { name: "Makhaya Ntini", flag: "🇿🇦", value: "390 wickets" },
+      { name: "Ian Botham", flag: "🇬🇧", value: "383 wickets" },
+      { name: "Malcolm Marshall", flag: "🇧🇧", value: "376 wickets" },
+      { name: "Waqar Younis", flag: "🇵🇰", value: "373 wickets" },
+      { name: "Imran Khan", flag: "🇵🇰", value: "362 wickets", tiedWithNext: true },
+      { name: "Daniel Vettori", flag: "🇳🇿", value: "362 wickets" },
+      { name: "Dennis Lillee", flag: "🇦🇺", value: "355 wickets", tiedWithNext: true },
+      { name: "Chaminda Vaas", flag: "🇱🇰", value: "355 wickets" }
     ]
   },
   {
