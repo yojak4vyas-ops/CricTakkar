@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 255 players across 11 countries
+// 275 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -2526,6 +2526,119 @@ const wordlePlayers = [
     // beyond the signing itself, included per the season having fully concluded with no
     // reported non-selection, same treatment as other season-completed replacement signings
     iplTeams: ["Punjab Kings", "Chennai Super Kings"],
+    iccTrophies: 0
+  },
+  {
+    name: "Cameron White",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
+    debutYear: 2005,
+    format: "All-format",
+    // ODI debut 5 Oct 2005 vs ICC World XI (Super Series, earliest), T20I debut 9 Jan 2007
+    // vs England, Test debut 9 Oct 2008 vs India — 4 Tests, 91 ODIs, 47 T20Is — ESPNcricinfo +
+    // Wikipedia confirmed. Australia T20I captain 2011-2013. Squad member of the winning 2009
+    // ICC Champions Trophy (confirmed via the official ESPNcricinfo squad list) — 62 in the
+    // final vs New Zealand.
+    iplTeams: ["Royal Challengers Bangalore", "Deccan Chargers", "Sunrisers Hyderabad"],
+    iccTrophies: 1
+    // 2009 Champions Trophy
+  },
+  {
+    name: "David Hussey",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2008,
+    format: "ODI+T20",
+    // T20I debut 1 Feb 2008 vs India (MCG, earliest), ODI debut 4 Jul 2008 vs West Indies —
+    // never played a Test despite a first-class average over 55 — ESPNcricinfo + Wikipedia
+    // confirmed. Squad member of the winning 2009 ICC Champions Trophy (confirmed via the
+    // official ESPNcricinfo squad list, listed as an allrounder) — 1 trophy. Also toured with
+    // the 2010 WT20 (runners-up), 2011 ODI WC, and 2012 WT20 squads, none won by Australia.
+    iplTeams: ["Kolkata Knight Riders", "Kings XI Punjab", "Chennai Super Kings"],
+    iccTrophies: 1
+    // 2009 Champions Trophy
+  },
+  {
+    name: "D'Arcy Short",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left-arm wrist-spin (chinaman)",
+    debutYear: 2018,
+    format: "ODI+T20",
+    // T20I debut 3 Feb 2018 vs New Zealand (earliest), ODI debut 16 Jun 2018 vs England — never
+    // played a Test — ESPNcricinfo + Wikipedia confirmed. Career span 2018-2020, before
+    // Australia's next ICC trophy (2021 T20 WC) — 0 trophies.
+    iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 0
+  },
+  {
+    name: "Nathan Coulter-Nile",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm fast",
+    debutYear: 2013,
+    format: "ODI+T20",
+    // T20I debut 13 Feb 2013 vs West Indies (earliest), ODI debut 14 Sep 2013 vs England —
+    // never played a Test — ESPNcricinfo + Wikipedia confirmed. Squad member for the 2014 WT20
+    // (Sri Lanka won), 2016 WT20 (West Indies won), and 2019 ODI WC (England won) — ruled out of
+    // the winning 2015 ODI WC squad by injury (confirmed via dedicated search) — 0 trophies.
+    iplTeams: ["Mumbai Indians", "Delhi Daredevils", "Kolkata Knight Riders", "Royal Challengers Bangalore", "Rajasthan Royals"],
+    iccTrophies: 0
+    // Note: rejoined Mumbai Indians a second time (2020-2021) after the Delhi/KKR/RCB spells —
+    // listed once per the array's "every distinct team played for" convention, not per stint
+  },
+  {
+    // ROUND 2 (cap-number method): Australia's T20I caps 118, 117, 115 — the 3 most recent
+    // debutants not already in the database (cap 116 Matt Renshaw already present) — added to
+    // close the Round 1 shortfall (17/20) up to the 20-player Round 1+2 target.
+    name: "Joel Davies",
+    country: "Australia",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Slow left-arm orthodox",
+    debutYear: 2026,
+    format: "T20",
+    // T20I cap 118, debut 17 Jun 2026 vs Bangladesh (Chattogram) — 3/17 on debut, first
+    // Australian to take 3+ wickets on T20I debut in 3 years — ESPNcricinfo confirmed. No Test
+    // or ODI caps. Never played IPL (domestic teams only: Sydney Sixers, Sydney Thunder).
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Nikhil Chaudhary",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm legbreak googly",
+    debutYear: 2026,
+    format: "T20",
+    // T20I cap 117, debut 17 Jun 2026 vs Bangladesh (Chattogram) — India-born (Delhi), qualified
+    // for Australia via 5-year residency, called up as a replacement for the rested Travis Head —
+    // ESPNcricinfo confirmed. No Test or ODI caps. Never played IPL.
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Jack Edwards",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2026,
+    format: "T20",
+    // T20I cap 115, debut 29 Jan 2026 vs Pakistan (Lahore) — 5 runs, 0/25 — ESPNcricinfo
+    // confirmed. No Test or ODI caps.
+    // FLAGGED: signed by Sunrisers Hyderabad for IPL 2026 (INR 3 crore, only uncapped overseas
+    // player bought at that auction) but ruled out by a foot injury before playing a match — his
+    // full career stats show zero IPL-tournament rows, confirming no actual appearance — treated
+    // as "signed but never played" per the standing rule, iplTeams left empty.
+    iplTeams: [],
     iccTrophies: 0
   },
 
