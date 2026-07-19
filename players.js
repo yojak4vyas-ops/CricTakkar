@@ -4198,6 +4198,113 @@ const wordlePlayers = [
     // Confirmed member of Australia's winning 2023 ODI World Cup 15-man squad (won the 4th
     // pace-bowling spot over Nathan Ellis) — ESPNcricinfo/cricket.com.au confirmed. Part of the
     // 2025 Champions Trophy squad, but Australia lost that final to India — no trophy from that
+  },
+  {
+    name: "Mitchell Marsh",
+    country: "Australia",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm medium",
+    debutYear: 2011,
+    format: "All-format",
+    // ODI debut 19 Oct 2011 vs South Africa (Centurion), T20I debut 2011, Test debut 22 Oct 2014
+    // vs Pakistan (UAE) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Deccan Chargers", "Pune Warriors", "Rising Pune Supergiant", "Sunrisers Hyderabad", "Delhi Capitals", "Lucknow Super Giants"],
+    // Deccan Chargers (2010, 3 matches as a 19-year-old), Pune Warriors (2011 & 2013), Rising Pune
+    // Supergiant (2016, 3 matches), Sunrisers Hyderabad (2020, 1 match before injury), Delhi
+    // Capitals (2022), Lucknow Super Giants (current) — dedicated IPL-history search confirmed
+    iccTrophies: 2
+    // 2021 T20 World Cup (winning squad member, ESPNcricinfo squad list confirmed) + 2023 ODI
+    // World Cup (played throughout, including the final) — ESPNcricinfo + ICC official squad list
+    // both confirmed; independently re-verified against ESPNcricinfo's own 2023 ODI WC squad page
+  },
+  {
+    name: "Matthew Wade",
+    country: "Australia",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm medium",
+    // Bowled a single maiden over to Thilan Samaraweera as a surprise option in the Dec 2012
+    // Hobart Test vs Sri Lanka — his only recorded international bowling — confirmed via
+    // ESPNcricinfo, so not NA per the standing rule
+    debutYear: 2011,
+    format: "All-format",
+    // Played 36 Tests, 97 ODIs, 92 T20Is for Australia between 2011 and 2024, retired from
+    // international cricket in 2024 — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils", "Gujarat Titans"],
+    // Delhi Daredevils (2011, 3 matches), Gujarat Titans (2022 & 2024) — dedicated IPL-history
+    // search confirmed
+    iccTrophies: 1
+    // 2021 T20 World Cup winning squad (independently re-verified against ESPNcricinfo's own
+    // squad list, vice-captain, unbeaten 41 off 17 balls in the semi-final vs Pakistan) —
+    // ESPNcricinfo + ICC official squad list confirmed. Could not confirm squad membership either
+    // way for the 2015 ODI World Cup (Brad Haddin was the primary keeper that tournament) — not
+    // credited without confirmation
+  },
+  {
+    name: "Travis Head",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2016,
+    format: "All-format",
+    // ODI debut 13 Jun 2016 vs West Indies (Basseterre), T20I debut 2016, Test debut 7 Oct 2018 vs
+    // Pakistan (Dubai) — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    // Royal Challengers Bangalore (2016-17), Sunrisers Hyderabad (2024-2026, retained) —
+    // dedicated IPL-history search confirmed
+    iccTrophies: 2
+    // 2023 ODI World Cup (Player of the Match in the final, 137 vs India) + 2023 World Test
+    // Championship (Player of the Match in the final, 163 vs India) — ESPNcricinfo + ICC official
+    // both confirmed. Explicitly NOT part of Australia's 2021 T20 World Cup winning squad —
+    // independently re-verified against ESPNcricinfo's own squad list for that tournament
+  },
+  {
+    name: "Tim David",
+    country: "Australia",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right-arm offbreak",
+    debutYear: 2022,
+    format: "ODI+T20",
+    // Singapore-born; played T20I for Singapore first (debut 22 Jul 2019 vs Qatar — independently
+    // re-verified via direct Wikipedia infobox fetch) before switching allegiance and debuting for
+    // Australia (T20I debut Nov 2022 T20 World Cup, ODI debut 9 Sep 2023 vs South Africa), no Test
+    // caps and never played first-class cricket (confirmed — his live ESPNcricinfo/Wikipedia
+    // career stats table has no First-class column at all, only ODI/T20I/List A/T20)
+    iplTeams: ["Royal Challengers Bangalore", "Mumbai Indians"],
+    // Royal Challengers Bangalore (IPL debut, 2021), Mumbai Indians (2022-2024), returned to
+    // Royal Challengers Bangalore (2025-2026) — independently re-verified via direct Wikipedia
+    // infobox fetch, matches exactly
+    iccTrophies: 0
+    // Independently re-verified against ESPNcricinfo's own 2023 ODI World Cup squad page — Tim
+    // David is confirmed NOT among the 15 named players (only played 4 ODIs in a September 2023
+    // series before the tournament, not the tournament itself). Named in Australia's 2026 T20
+    // World Cup squad, but Australia did not win that tournament (India beat New Zealand in the
+    // final) — no trophy either way
+  },
+  {
+    name: "Josh Inglis",
+    country: "Australia",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No record of Josh Inglis bowling a single delivery anywhere in international or domestic
+    // cricket — confirmed via ESPNcricinfo + Wikipedia
+    debutYear: 2022,
+    format: "All-format",
+    // ODI and T20I debut both Feb 2022 vs Sri Lanka, Test debut early 2025 (century on debut) —
+    // ESPNcricinfo confirmed
+    iplTeams: ["Punjab Kings", "Lucknow Super Giants"],
+    // IPL debut with Punjab Kings in 2025, moved to Lucknow Super Giants in 2026 — independently
+    // re-verified via Wikipedia, matches exactly
+    iccTrophies: 2
+    // 2021 T20 World Cup (named in the winning 15-man squad, independently re-verified against
+    // ESPNcricinfo's own squad list — same "squad membership counts" precedent used elsewhere in
+    // this file, e.g. Bracken/Hogg) + 2023 ODI World Cup (independently re-verified against
+    // ESPNcricinfo's own squad page — confirmed on the 15-man list) — ESPNcricinfo + ICC official
+    // squad list confirmed
   }
 
 ];
