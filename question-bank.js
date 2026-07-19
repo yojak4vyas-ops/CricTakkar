@@ -773,6 +773,110 @@ const questionBank = [
     era: "2020s",
     category: "ipl"
   },
+  {
+    question: "Which two new franchises joined the IPL ahead of the 2022 season?",
+    options: ["Gujarat Titans and Lucknow Super Giants", "Gujarat Lions and Rising Pune Supergiant", "Kochi Tuskers Kerala and Pune Warriors India", "Deccan Chargers and Sunrisers Hyderabad"],
+    correct: 0,
+    fact: "🏏 Gujarat Titans (Ahmedabad) and Lucknow Super Giants both debuted in IPL 2022, expanding the league back to 10 teams — Gujarat Titans went on to win the title in their very first season.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "In which IPL season was the 'Impact Player' substitution rule first introduced?",
+    options: ["2021", "2022", "2023", "2024"],
+    correct: 2,
+    fact: "🔄 The Impact Player rule debuted in IPL 2023, letting each team name 5 possible substitutes and bring one on at any point in the match. Tushar Deshpande (for CSK) and Sai Sudharsan (for Gujarat Titans) were the very first Impact Players used in the tournament.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Chennai Super Kings and Rajasthan Royals were suspended from the IPL for the 2016 and 2017 seasons following what?",
+    options: ["A players' strike over pay", "The 2013 IPL spot-fixing and betting scandal", "A dispute over stadium safety", "A broadcasting rights dispute"],
+    correct: 1,
+    fact: "⚖️ Following the 2013 spot-fixing and betting scandal, an independent committee suspended the CSK and Rajasthan Royals franchises for two years. Rising Pune Supergiant and Gujarat Lions filled in as replacement teams for the 2016 and 2017 seasons before both franchises returned in 2018.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team was bowled out for just 49 — still the lowest total in IPL history?",
+    options: ["Royal Challengers Bangalore", "Kings XI Punjab", "Delhi Daredevils", "Rajasthan Royals"],
+    correct: 0,
+    fact: "📉 Royal Challengers Bangalore were skittled for 49 all out by Kolkata Knight Riders in 2017, with not a single batter reaching double figures — still the lowest completed innings total in IPL history.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who holds the record for the best bowling figures in a single IPL innings, taking 6/12 on his tournament debut?",
+    options: ["Sohail Tanvir", "Rashid Khan", "Alzarri Joseph", "Jasprit Bumrah"],
+    correct: 2,
+    fact: "🎯 Alzarri Joseph took 6 for 12 for Mumbai Indians against Sunrisers Hyderabad in 2019 — on his very first appearance in the IPL — breaking a record that had stood since the tournament's first season.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which Indian bowler controversially ran out Jos Buttler at the non-striker's end — a 'Mankad' dismissal — during a 2019 IPL match?",
+    options: ["Ravindra Jadeja", "Ravichandran Ashwin", "Yuzvendra Chahal", "Axar Patel"],
+    correct: 1,
+    fact: "🔥 R Ashwin, captaining Kings XI Punjab, ran out Rajasthan Royals' Jos Buttler (69) without completing his delivery in a March 2019 IPL match, reigniting the long-running 'spirit of cricket' debate around the Mankad dismissal.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Deccan Chargers, champions of IPL 2009, had their franchise terminated by the BCCI in which year?",
+    options: ["2010", "2011", "2012", "2013"],
+    correct: 2,
+    fact: "📋 The BCCI terminated the Deccan Chargers franchise in September 2012 over unpaid dues to players and other defaults. Their Hyderabad slot was later bought by Sun TV Network and rebranded as Sunrisers Hyderabad.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which IPL franchise played only a single season, in 2011, before its contract was terminated by the BCCI?",
+    options: ["Pune Warriors India", "Kochi Tuskers Kerala", "Gujarat Lions", "Rising Pune Supergiant"],
+    correct: 1,
+    fact: "⏳ Kochi Tuskers Kerala played just one IPL season, 2011, before the BCCI terminated their franchise agreement over a defaulted bank guarantee — the shortest-lived team in IPL history.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which IPL team, owned by the Sahara Group, withdrew mid-tournament in 2013 in a dispute over franchise fees?",
+    options: ["Pune Warriors India", "Kochi Tuskers Kerala", "Deccan Chargers", "Rising Pune Supergiant"],
+    correct: 0,
+    fact: "💸 Sahara pulled Pune Warriors India out of the IPL in May 2013 after a long-running dispute with the BCCI over franchise fees — their final match was against Delhi Daredevils. The BCCI formally terminated the franchise that October, the third team to be ousted from the league.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who holds the record for the fastest fifty in IPL history, reaching it in just 13 balls?",
+    options: ["KL Rahul", "Yashasvi Jaiswal", "Chris Gayle", "Sunil Narine"],
+    correct: 1,
+    fact: "⚡ Yashasvi Jaiswal smashed a 13-ball fifty for Rajasthan Royals in 2023, the fastest in IPL history — a mark Urvil Patel later equalled in 2026.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who became the youngest ever player to appear in the IPL, making his debut at just 14 years old with a six off his first ball?",
+    options: ["Prithvi Shaw", "Vaibhav Sooryavanshi", "Riyan Parag", "Ramandeep Singh"],
+    correct: 1,
+    fact: "🎂 Vaibhav Sooryavanshi was 14 years and 23 days old when he debuted for Rajasthan Royals in April 2025, hitting a six off his very first ball — the youngest debutant in IPL history. Just two matches later, he smashed a century off 35 balls to become the youngest centurion in men's T20 cricket.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Who holds the record for the most sixes in a single IPL innings, hitting 17 during his famous 175 not out?",
+    options: ["AB de Villiers", "Chris Gayle", "Andre Russell", "Brendon McCullum"],
+    correct: 1,
+    fact: "💥 Chris Gayle hit 17 sixes in his unbeaten 175 off just 66 balls for Royal Challengers Bangalore against Pune Warriors India in 2013 — still the most sixes in a single IPL innings.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team won the very first Super Over in IPL history, back in 2009?",
+    options: ["Kolkata Knight Riders", "Rajasthan Royals", "Chennai Super Kings", "Deccan Chargers"],
+    correct: 1,
+    fact: "🎬 After Kolkata Knight Riders and Rajasthan Royals finished level at 150 each in Cape Town in April 2009, Rajasthan Royals won cricket's first-ever IPL Super Over, sealed by Yusuf Pathan's aggressive hitting — the tournament's first-ever tied match.",
+    era: "2000s",
+    category: "ipl"
+  },
 
   // ===== TEST CRICKET (36) =====
   {
