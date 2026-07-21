@@ -18,7 +18,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1989,
     format: "All-format",
     // 200 Tests, 463 ODIs, 1 T20I — ESPNcricinfo confirmed
@@ -34,7 +34,7 @@ const wordlePlayers = [
     // Day 14 FIX: was wrongly "NA" — Dhoni took his only international wicket bowling
     // Travis Dowlin (West Indies) in the 2009 Champions Trophy. ESPNcricinfo lists his
     // bowling style as Right-arm medium. Caught by re-checking after the user flagged this.
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2004,
     format: "All-format",
     // 90 Tests, 350 ODIs, 98 T20Is — ESPNcricinfo confirmed
@@ -48,7 +48,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2008,
     format: "All-format",
     // 113 Tests, 292 ODIs, 125 T20Is — ESPNcricinfo confirmed
@@ -61,7 +61,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2007,
     format: "All-format",
     // 67 Tests, 264 ODIs, 159 T20Is — ESPNcricinfo confirmed
@@ -75,7 +75,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1992,
     format: "Test+ODI",
     // 113 Tests, 311 ODIs, ZERO T20Is — ESPNcricinfo confirmed
@@ -89,7 +89,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1996,
     format: "All-format",
     // 164 Tests, 344 ODIs, 1 T20I (vs England 2011) — ESPNcricinfo confirmed
@@ -104,7 +104,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1990,
     format: "All-format",
     // 132 Tests, 271 ODIs, 1 T20I — ESPNcricinfo confirmed
@@ -119,7 +119,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 1978,
     format: "Test+ODI",
     // 131 Tests, 225 ODIs — retired 1994, T20I format did not exist
@@ -132,7 +132,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1971,
     format: "Test+ODI",
     // 125 Tests, 108 ODIs — retired 1987, T20I format did not exist
@@ -146,7 +146,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1996,
     format: "Test+ODI",
     // 134 Tests, 86 ODIs, ZERO T20Is — ESPNcricinfo confirmed
@@ -161,7 +161,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1999,
     format: "All-format",
     // Tests, ODIs, T20Is all played — ESPNcricinfo confirmed
@@ -175,7 +175,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1998,
     format: "All-format",
     // 103 Tests, 236 ODIs, 28 T20Is — ESPNcricinfo confirmed
@@ -188,7 +188,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2000,
     format: "All-format",
     // 40 Tests, 304 ODIs, 58 T20Is — ESPNcricinfo confirmed
@@ -204,7 +204,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     // Day 14 FIX: was wrongly "Left-hand" — Zaheer Khan bats right-handed, bowls left-arm.
     // Flagged by user, confirmed via ESPNcricinfo + Wikipedia.
-    bowlingStyle: "Left-arm fast-medium",
+    bowlingStyle: "Left arm fast medium",
     debutYear: 2000,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -217,7 +217,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -232,7 +232,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2009,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -247,7 +247,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2016,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -260,7 +260,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2016,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -274,7 +274,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2021,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -287,7 +287,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2013,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -305,7 +305,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2007,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -319,7 +319,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm wrist-spin (chinaman)",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
     debutYear: 2017,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -332,7 +332,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2019,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -393,7 +393,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2023,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -406,7 +406,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast-medium",
+    bowlingStyle: "Left arm fast medium",
     debutYear: 2003,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -420,7 +420,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -437,7 +437,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm medium-fast",
+    bowlingStyle: "Left arm medium fast",
     debutYear: 2022,
     format: "All-format",
     // Tests (1 match), ODIs, T20Is — ESPNcricinfo confirmed
@@ -457,7 +457,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2026,
     format: "Test",
     // Test cap 319, debut June 2026 vs Afghanistan (6/33 on debut) — ESPNcricinfo confirmed.
@@ -470,7 +470,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2025,
     format: "Test",
     // Test cap 318, debut July 2025 vs England at Old Trafford — ESPNcricinfo confirmed.
@@ -483,7 +483,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     // Occasional part-time bowler — ESPNcricinfo confirmed he bowls legspin sparingly (a wicket vs Bengal, Vijay Hazare Trophy)
     debutYear: 2023,
     format: "All-format",
@@ -496,7 +496,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2024,
     format: "All-format",
     // Test debut 22 Nov 2024 vs Australia (Perth), ODI debut 6 Feb 2025 vs England, T20I debut 31 Jan 2025 vs England —
@@ -512,7 +512,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2024,
     format: "All-format",
     // T20I debut Oct 2024, Test debut Nov 2024 (Perth, Border-Gavaskar Trophy), ODI debut 2025-26 season vs Afghanistan —
@@ -525,7 +525,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2021,
     format: "Test+T20",
     // T20I debut July 2021 vs Sri Lanka, Test debut March 2024 vs England (Dharamsala) — ESPNcricinfo confirmed.
@@ -540,7 +540,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2024,
     format: "Test",
     // Test debut 23 Feb 2024 vs England (Ranchi) — ESPNcricinfo confirmed. No ODI/T20I caps found across
@@ -580,7 +580,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     // Occasional part-time bowler, listed on his ESPNcricinfo profile
     debutYear: 2024,
     format: "Test",
@@ -595,7 +595,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Occasional part-time bowler, listed on his ESPNcricinfo profile
     debutYear: 2023,
     format: "Test+ODI",
@@ -609,7 +609,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2021,
     format: "All-format",
     // ODI debut 2021 vs England (4/54 on debut), T20I + Test debut both 2023 — ESPNcricinfo confirmed
@@ -621,7 +621,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     // One synthesis-noise catch: a search briefly returned "right arm offbreak" for a same-named
     // player, almost certainly a different, unrelated "Mukesh Kumar" profile on ESPNcricinfo (there
     // are several) — resolved via his well-documented fast-bowler background (Bengal, Delhi Capitals,
@@ -638,7 +638,7 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak combo, offbreak used as primary
     debutYear: 2021,
     format: "All-format",
@@ -653,7 +653,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak/googly combo, offbreak used as primary
     debutYear: 2017,
     format: "All-format",
@@ -668,7 +668,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2017,
     format: "All-format",
     // ODI debut 13 Dec 2017 vs Sri Lanka (Mohali), T20I debut 24 Dec 2017 vs Sri Lanka (India's
@@ -682,7 +682,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm medium",
+    bowlingStyle: "Left arm medium",
     debutYear: 2020,
     format: "All-format",
     // International debut December 2020 (Australia tour) in white-ball cricket, Test debut January 2021
@@ -695,7 +695,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2019,
     format: "All-format",
     // Represented India in all 3 international formats between 2019 and 2021 — Wikipedia + ESPNcricinfo confirmed
@@ -707,7 +707,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2017,
     format: "All-format",
     // T20I debut 2017 vs New Zealand, ODI debut 15 Jan 2019 vs Australia (Adelaide), Test debut 2020
@@ -726,7 +726,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2019,
     format: "Test",
     // Test debut 19 Oct 2019 vs South Africa (Ranchi) — ESPNcricinfo confirmed. No evidence of ODI or
@@ -788,7 +788,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2026,
     format: "ODI",
     // ODI debut 17 Jun 2026 vs Afghanistan (Lucknow) — ESPNcricinfo confirmed. Not included in the
@@ -801,7 +801,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2026,
     format: "ODI+T20",
     // ODI debut 13 Jun 2026 vs Afghanistan (Dharamsala) — ESPNcricinfo confirmed. Was named in the
@@ -819,7 +819,7 @@ const wordlePlayers = [
     // rather than settled fact, same treatment as KL Rahul's bowling style
     battingStyle: "Right-hand",
     role: "All-rounder",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2026,
     format: "ODI",
     // ODI debut 13 Jun 2026 vs Afghanistan (Dharamsala), 3 wickets on debut — ESPNcricinfo confirmed.
@@ -835,7 +835,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak-googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2021,
     format: "ODI+T20",
     // T20I debut 25 Jul 2021 vs Sri Lanka, ODI debut 9 Feb 2025 vs England (Cuttack) — no Test caps
@@ -848,7 +848,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Occasional part-time bowler — ESPNcricinfo profile lists offbreak/legbreak combo, offbreak used as primary
     debutYear: 2024,
     format: "ODI+T20",
@@ -861,7 +861,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2023,
     format: "ODI+T20",
     // T20I and ODI debuts both 2023 — explicitly confirmed yet to play red-ball cricket for India,
@@ -874,7 +874,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2023,
     format: "ODI+T20",
     // T20I debut 3 Aug 2023 vs West Indies, ODI debut also 2023 — no Test cap as of 2026 (explicitly
@@ -887,7 +887,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2022,
     format: "ODI",
     // Made his only India appearance in December 2022 (1 ODI) before a back injury — no Test or
@@ -902,7 +902,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2022,
     format: "ODI+T20",
     // T20I and ODI debuts both 2022 following his breakout IPL 2022 season — no Test caps, not All-format
@@ -916,7 +916,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2022,
     format: "ODI+T20",
     // ODI debut 2022 vs South Africa (Ranchi), T20I debut 2023 (Asian Games) — no Test caps, not All-format
@@ -928,7 +928,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak-googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2022,
     format: "ODI+T20",
     // T20I and ODI debuts both 2022 — no Test caps, not All-format
@@ -940,7 +940,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2022,
     format: "ODI+T20",
     // ODI debut 6 Oct 2022 vs South Africa (Lucknow) — no Test caps confirmed, not All-format
@@ -952,7 +952,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2022,
     format: "ODI+T20",
     // T20I debut 20 Feb 2022 vs West Indies (Eden Gardens), ODI debut 24 Jul 2022 vs West Indies
@@ -965,7 +965,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2022,
     format: "ODI+T20",
     // ODI debut 6 Feb 2022 vs West Indies (Ahmedabad) — no Test caps, not All-format
@@ -977,7 +977,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2021,
     format: "ODI+T20",
     // T20I cap came first, ODI debut Jan 2022 vs South Africa — no Test caps, not All-format
@@ -989,7 +989,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm medium-fast",
+    bowlingStyle: "Left arm medium fast",
     debutYear: 2021,
     format: "ODI+T20",
     // ODI debut 2021 — no Test caps confirmed, not All-format
@@ -1001,7 +1001,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2021,
     format: "ODI+T20",
     // 1 ODI and 2 T20Is for India, all in 2021 vs Sri Lanka — no Test caps, not All-format
@@ -1013,7 +1013,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2021,
     format: "ODI",
     // Brief international career confined to 2021 — no Test caps, not All-format
@@ -1025,7 +1025,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2019,
     format: "ODI+T20",
     // T20I debut 2019, 1 ODI and 6 T20Is total between 2019 and 2021 — no Test caps, not All-format
@@ -1037,7 +1037,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2018,
     format: "ODI+T20",
     // T20I debut 2018 vs West Indies (Eden Gardens), ODI debut 2021 vs England (Pune) — no Test
@@ -1050,7 +1050,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2026,
     format: "T20",
     // T20I debut 4 Jul 2026 vs England (2nd T20I) at age 15, youngest ever India international debutant
@@ -1063,7 +1063,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2026,
     format: "T20",
     // T20I debut 28 Jun 2026 vs Ireland (Belfast) — ESPNcricinfo/Wikipedia confirmed. No ODI/Test
@@ -1078,7 +1078,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2024,
     format: "T20",
     // T20I debut 13 Nov 2024 vs South Africa (Centurion) — ESPNcricinfo confirmed. No ODI/Test caps,
@@ -1091,7 +1091,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2024,
     format: "T20",
     // T20I debut 6 Oct 2024 vs Bangladesh (Gwalior) — ESPNcricinfo confirmed. No ODI/Test caps,
@@ -1104,7 +1104,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2024,
     format: "T20",
     // T20I debut Jul 2024 vs Zimbabwe (Harare) — ESPNcricinfo confirmed. No ODI/Test caps, not
@@ -1117,7 +1117,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2024,
     format: "ODI+T20",
     // T20I debut 6 Jul 2024 vs Zimbabwe (Harare), ODI debut/maiden ODI century vs South Africa
@@ -1131,7 +1131,7 @@ const wordlePlayers = [
     country: "India",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2023,
     format: "T20",
     // T20I debut 3 Oct 2023, Asian Games vs Nepal — ESPNcricinfo confirmed. No ODI/Test caps, not
@@ -1146,7 +1146,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2023,
     format: "T20",
     // T20I debut 3 Oct 2023, Asian Games vs Nepal — ESPNcricinfo confirmed. No ODI/Test caps, not
@@ -1161,7 +1161,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2023,
     format: "T20",
     // T20I debut 5 Jan 2023 vs Sri Lanka (Pune) — ESPNcricinfo confirmed. No ODI/Test caps, not
@@ -1174,7 +1174,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2023,
     format: "T20",
     // T20I debut 3 Jan 2023 vs Sri Lanka (Wankhede) — ESPNcricinfo confirmed. No ODI/Test caps, not
@@ -1189,7 +1189,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2021,
     format: "T20",
     // T20I debut 19 Nov 2021 vs New Zealand — ESPNcricinfo confirmed. No ODI/Test caps, not
@@ -1204,7 +1204,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2019,
     format: "ODI+T20",
     // ODI debut 14 Aug 2019 vs West Indies, T20I debut 29 Jul 2021 vs Sri Lanka — ESPNcricinfo
@@ -1217,7 +1217,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2018,
     format: "All-format",
     // Test debut 4 Oct 2018 vs West Indies (century on debut), ODI debut 5 Feb 2020 vs New Zealand,
@@ -1230,7 +1230,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2019,
     format: "ODI+T20",
     // T20I debut 3 Nov 2019 vs Bangladesh, ODI debut 15 Dec 2019 vs West Indies — ESPNcricinfo
@@ -1244,7 +1244,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak-googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2019,
     format: "ODI+T20",
     // T20I debut 24 Feb 2019 vs Australia, ODI caps (5 matches) also confirmed — ESPNcricinfo
@@ -1259,7 +1259,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm medium-fast",
+    bowlingStyle: "Left arm medium fast",
     debutYear: 2018,
     format: "ODI+T20",
     // ODI debut 18 Sep 2018 vs Hong Kong, T20I debut 4 Nov 2018 vs West Indies — ESPNcricinfo
@@ -1275,7 +1275,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2018,
     format: "ODI+T20",
     // T20I debut 8 Jul 2018 vs England, ODI debut 25 Sep 2018 vs Afghanistan — ESPNcricinfo
@@ -1289,7 +1289,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2018,
     format: "ODI+T20",
     // T20I debut 29 Jun 2018 vs Ireland, ODI debut 12 Jul 2018 vs England — ESPNcricinfo confirmed.
@@ -1304,7 +1304,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2018,
     format: "ODI+T20",
     // T20I debut 6 Mar 2018, 2018 Nidahas Trophy vs Sri Lanka, ODI debut 18 Jan 2019 vs Australia
@@ -1320,7 +1320,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2017,
     format: "All-format",
     // ODI debut 31 Aug 2017 vs Sri Lanka (Colombo), T20I debut 21 Feb 2018 vs South Africa
@@ -1342,7 +1342,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     // Bowled 12 balls in Tests (0 wickets) — has bowled internationally, so not NA per the
     // NA rule. ESPNcricinfo/Wikipedia confirm right-arm legbreak.
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2010,
     format: "Test+ODI",
     // Test debut 9 Oct 2010 vs Australia, 5 ODIs (2013-14), zero T20Is confirmed —
@@ -1357,7 +1357,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     // Bowled 47 balls in Tests, 6 in ODIs (0 wickets both) — has bowled internationally,
     // so not NA. ESPNcricinfo + Wikipedia confirm right-arm medium.
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1976,
     format: "Test+ODI",
     // Career 1976-1992, retired before T20I existed (2005) — same pattern as Kapil
@@ -1375,7 +1375,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     // 0 wickets in 13 Test balls, but 12 wickets in 552 ODI balls — has a confirmed
     // international bowling record, so not NA. ESPNcricinfo + Wikipedia confirm right-arm medium.
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1984,
     format: "Test+ODI",
     // Career 1984-2000, retired before T20I existed. Never played IPL (retired 2000).
@@ -1391,7 +1391,7 @@ const wordlePlayers = [
     battingStyle: "Right-hand",
     // 1 wicket in 70 Test balls — has bowled internationally, so not NA. ESPNcricinfo +
     // Wikipedia confirm legbreak.
-    bowlingStyle: "Legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1969,
     format: "Test+ODI",
     // 91 Tests (1969-1983), 25 ODIs (1974-1982) including the 1975 and 1979 World Cups
@@ -1404,7 +1404,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2011,
     format: "All-format",
     // T20I debut 31 Aug 2011 vs England (earliest cap), ODI debut 3 Sep 2011 vs England,
@@ -1419,7 +1419,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1969,
     format: "Test+ODI",
     // Career 1969-1989, retired before T20I existed. Never played IPL (retired 1989).
@@ -1433,7 +1433,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1966,
     format: "Test+ODI",
     // 67 Tests (1966-1979), 10 ODIs (1974-1979), retired before T20I existed. Never played
@@ -1446,7 +1446,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1964,
     format: "Test+ODI",
     // 58 Tests (1964-1979), only 1 ODI (1976, took 3 wickets) — still counts as ODI format
@@ -1459,7 +1459,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1991,
     format: "Test+ODI",
     // ODI debut 18 Oct 1991 vs Pakistan (earliest), Test debut 29 Nov 1991 vs Australia,
@@ -1475,7 +1475,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1962,
     format: "Test",
     // 49 Tests (1962-1978) — Wikipedia infobox shows no ODI or T20I row at all; never
@@ -1488,7 +1488,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2010,
     format: "All-format",
     // ODI debut 28 May 2010 vs Zimbabwe (earliest), Test debut 6 Nov 2011 vs West Indies,
@@ -1504,7 +1504,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1946,
     format: "Test",
     // 44 Tests (1946-1959) — retired well before ODIs (1971) or T20Is existed. Never
@@ -1526,7 +1526,7 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     // 0 wickets in 54 Test balls — has bowled internationally, so not NA. ESPNcricinfo +
     // Wikipedia confirm right-arm offbreak.
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2010,
     format: "All-format",
     // ODI debut 20 Oct 2010 vs Australia (earliest), Test debut 14 Mar 2013 vs Australia,
@@ -1540,7 +1540,7 @@ const wordlePlayers = [
     country: "India",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2005,
     format: "All-format",
     // ODI debut 30 Jul 2005 vs Sri Lanka (earliest), T20I debut 1 Dec 2006 vs South Africa,
@@ -1555,7 +1555,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // 20 ODI wickets — confirmed bowled internationally, not NA
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1992,
     format: "Test+ODI",
     // 15 Tests + 196 ODIs (1992-2000), effectively career-ending match-fixing ban in 2000
@@ -1606,7 +1606,7 @@ const wordlePlayers = [
     role: "Batsman",
     // 0 Test wickets but 25 ODI wickets — confirmed bowled internationally, not NA
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1981,
     format: "Test+ODI",
     // 43 Tests + 146 ODIs (1981-1992), retired before T20I existed. Never played IPL.
@@ -1620,7 +1620,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 1994,
     format: "Test+ODI",
     // ODI debut 2 Apr 1994 vs New Zealand (earliest), Test debut 7 Jun 1996 vs England,
@@ -1635,7 +1635,7 @@ const wordlePlayers = [
     country: "India",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 1984,
     format: "Test+ODI",
     // ODI debut 8 Apr 1984 vs Sri Lanka (earliest), Test debut 12 Dec 1984 vs England,
@@ -1650,7 +1650,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm fast",
+    bowlingStyle: "Left arm fast",
     debutYear: 1999,
     format: "All-format",
     // Test debut 24 Feb 1999 vs Sri Lanka (earliest), ODI debut 21 Jun 2001 vs Zimbabwe,
@@ -1674,7 +1674,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2016,
     format: "ODI+T20",
     // ODI debut 11 Jun 2016 vs Zimbabwe, T20I debut 19 Jun 2016 vs Zimbabwe (same series,
@@ -1694,7 +1694,7 @@ const wordlePlayers = [
     country: "India",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2012,
     format: "All-format",
     // T20I debut 25 Dec 2012 vs Pakistan (earliest), ODI debut 30 Dec 2012 vs Pakistan,
@@ -1712,7 +1712,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1995,
     format: "All-format",
     // 168 Tests, 375 ODIs, 17 T20Is — ESPNcricinfo confirmed. Bowled occasionally in Tests
@@ -1729,7 +1729,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1992,
     format: "Test+ODI",
     // 145 Tests, 194 ODIs — retired Jan 2007, ZERO T20Is — ESPNcricinfo confirmed
@@ -1742,7 +1742,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1996,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -1756,7 +1756,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 1993,
     format: "Test+ODI",
     // Tests, ODIs — retired 2007, very few/no T20Is — ESPNcricinfo confirmed
@@ -1771,7 +1771,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1985,
     format: "Test+ODI",
     // Tests, ODIs — retired 2004, T20I cricket barely existed — ESPNcricinfo
@@ -1784,7 +1784,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -1797,7 +1797,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -1812,7 +1812,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2009,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Part-time bowler who mixes medium pace
@@ -1826,7 +1826,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -1840,7 +1840,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast",
+    bowlingStyle: "Left arm fast",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — retired from T20Is Sept 2025 — ESPNcricinfo
@@ -1854,7 +1854,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1978,
     format: "Test+ODI",
     // 156 Tests (1978-1994), 273 ODIs (1979-1994) — retired before T20Is existed (first
@@ -1869,7 +1869,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2003,
     format: "All-format",
     // Tests (2004), ODIs (2003), T20Is (2005) — ESPNcricinfo + Wikipedia confirmed
@@ -1884,7 +1884,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // ESPNcricinfo profile literally lists "Right arm Medium, Right arm Offbreak" — began
     // as a medium pacer, converted to off-break later in his career after back injuries;
     // recorded here as medium (his primary/original style) — both sources agree on both,
@@ -1901,7 +1901,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1993,
     format: "Test+ODI",
     // Tests (1993), ODIs (1994) — Wikipedia infobox shows no T20I row at all, never
@@ -1940,7 +1940,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1984,
     format: "Test+ODI",
     // Tests (Nov 1984), ODIs (Feb 1984) — retired 1996, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
@@ -1953,7 +1953,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1970,
     format: "Test+ODI",
     // Tests (1970), ODIs (1971) — retired 1984, before Australia's first World Cup win
@@ -1967,7 +1967,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1928,
     format: "Test",
     // 52 Tests (1928-1948) — ODI cricket didn't begin until 1971 and T20I until 2005, both
@@ -1981,7 +1981,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2004,
     format: "All-format",
     // Tests (2005), ODIs (2004), T20Is (2005) — ESPNcricinfo + Wikipedia confirmed
@@ -2017,7 +2017,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2011,
     format: "All-format",
     // Test debut 31 Aug 2011 (Galle), ODI debut 8 Mar 2012, T20I debut 29 Jan 2016 — ESPNcricinfo + Wikipedia confirmed
@@ -2031,7 +2031,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1971,
     format: "Test+ODI",
     // Test debut 29 Jan 1971 (6th Test, Adelaide, 1970-71 Ashes, 5/84 on debut), ODI debut
@@ -2047,7 +2047,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast",
+    bowlingStyle: "Left arm fast",
     debutYear: 2005,
     format: "All-format",
     // ODI debut 10 Dec 2005 (earliest), Test debut 8 Nov 2007, T20I debut 12 Sept 2007 — ESPNcricinfo + Wikipedia confirmed
@@ -2062,7 +2062,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1999,
     format: "All-format",
     // Test debut 26 Dec 1999 (5 wickets on debut), ODI debut 9 Jan 2000, T20I debut 17 Feb 2005 — ESPNcricinfo + Wikipedia confirmed
@@ -2086,7 +2086,7 @@ const wordlePlayers = [
     // tailend bowler) but treated as best-available rather than fully confirmed, same
     // treatment as the KL Rahul/Harsh Dubey precedent
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2010,
     format: "All-format",
     // ODI debut 22 Jun 2010 vs England (earliest), Test debut 17 Dec 2014, T20I debut 13 Feb 2013 — ESPNcricinfo + Wikipedia confirmed
@@ -2101,7 +2101,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1984,
     format: "Test+ODI",
     // Test debut 22 Dec 1984 vs West Indies, ODI debut 6 Jan 1985 vs West Indies — retired
@@ -2117,7 +2117,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1996,
     format: "All-format",
     // ODI debut Aug 1996 vs Sri Lanka (earliest), Test debut Nov 1996 vs West Indies, T20I
@@ -2134,7 +2134,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1952,
     format: "Test",
     // Test debut 25 Jan 1952 vs West Indies — retired 1964, 7 years before ODI cricket began
@@ -2148,7 +2148,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1961,
     format: "Test+ODI",
     // Test debut 22 Jun 1961 vs England (5 wickets and 34 runs on debut) — ODI debut 5 Jan
@@ -2163,7 +2163,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1946,
     format: "Test",
     // Test debut 1946 vs New Zealand — retired 1960, 11 years before ODI cricket began
@@ -2177,7 +2177,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2008,
     format: "All-format",
     // Test debut 16 Oct 2008 vs India (Mohali), ODI debut 13 Feb 2009 vs New Zealand, T20I
@@ -2194,7 +2194,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm wrist-spin",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
     debutYear: 1994,
     format: "Test+ODI",
     // ODI debut 14 Apr 1994 vs Sri Lanka (Sharjah, earliest), Test debut 28 Sept 1994 vs
@@ -2210,7 +2210,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1984,
     format: "Test+ODI",
     // ODI debut 30 Jan 1984 vs Pakistan (Adelaide, earliest), Test debut 16 Mar 1984 vs West
@@ -2224,7 +2224,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2002,
     format: "All-format",
     // ODI debut 24 Mar 2002 vs South Africa (earliest), Test debut 2 Jan 2005 vs Pakistan,
@@ -2241,7 +2241,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2011,
     format: "All-format",
     // T20I debut 12 Jan 2011 vs England (earliest), ODI debut 11 Jan 2013 vs Sri Lanka, Test
@@ -2260,7 +2260,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2016,
     format: "ODI+T20",
     // ODI debut 6 Feb 2016 vs New Zealand (Wellington, earliest), T20I debut 7 Mar 2016 vs
@@ -2278,7 +2278,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm fast-medium",
+    bowlingStyle: "Left arm fast medium",
     debutYear: 2001,
     format: "All-format",
     // ODI debut 11 Jan 2001 vs West Indies (earliest), Test debut 4 Dec 2003 vs India, T20I
@@ -2296,7 +2296,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm wrist-spin",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
     debutYear: 1996,
     format: "All-format",
     // ODI debut 26 Aug 1996 vs Zimbabwe (earliest), Test debut 10 Oct 1996 vs India, T20I
@@ -2314,7 +2314,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 1994,
     format: "Test+ODI",
     // ODI debut 16 Jan 1994 vs South Africa (earliest), Test debut 5 Oct 1994 vs Pakistan
@@ -2329,7 +2329,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2026,
     format: "ODI",
     // ODI debut 9 Jun 2026 vs Bangladesh (Mirpur) — a bowling allrounder, no Test/T20I caps
@@ -2343,7 +2343,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2026,
     format: "ODI",
     // ODI debut May 2026 vs Pakistan (opening match of the series), age 19 — the youngest
@@ -2359,7 +2359,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2016,
     format: "All-format",
     // Test debut 24 Nov 2016 vs South Africa (Adelaide, earliest), ODI debut 19 Oct 2025 vs
@@ -2374,7 +2374,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2025,
     format: "ODI+T20",
     // T20I debut 20 Jul 2025 vs West Indies (Kingston, half-century on debut, earliest), ODI
@@ -2388,7 +2388,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2024,
     format: "All-format",
     // T20I and ODI debuts both Sept 2024 (UK tour, earliest), Test debut Feb 2025 vs Sri
@@ -2406,7 +2406,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast-medium",
+    bowlingStyle: "Left arm fast medium",
     debutYear: 2022,
     format: "ODI+T20",
     // T20I debut 2022 (one-off match, end of Pakistan tour, earliest), ODI debut 19 Sep 2024
@@ -2426,7 +2426,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2024,
     format: "ODI",
     // ODI debut 4 Feb 2024 vs West Indies (Sydney) — no T20I debut found across 2 dedicated
@@ -2445,7 +2445,7 @@ const wordlePlayers = [
     // playing role is explicitly listed as batter and no international bowling appearance
     // could be confirmed — recorded as best-available per the standing KL Rahul precedent
     // rather than asserted as a proven bowling record
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2024,
     format: "ODI+T20",
     // ODI debut 4 Feb 2024 vs West Indies (Sydney, earliest), T20I debut 4 Sep 2024 vs
@@ -2466,7 +2466,7 @@ const wordlePlayers = [
     // (Right-hand, the overwhelming default for an unremarkable tailend bowler) rather than a
     // settled fact, same treatment as the KL Rahul/Harsh Dubey precedent
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2024,
     format: "ODI",
     // ODI debut 2 Feb 2024 vs West Indies (Melbourne) — despite being named in multiple Test
@@ -2483,7 +2483,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2024,
     format: "ODI+T20",
     // ODI debut 2 Feb 2024 vs West Indies (Melbourne, 8 wickets across his first 2 matches,
@@ -2500,7 +2500,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast-medium",
+    bowlingStyle: "Left arm fast medium",
     debutYear: 2023,
     format: "ODI+T20",
     // T20I debut 30 Aug 2023 vs South Africa (Durban, earliest), ODI debut 24 Sep 2023 vs
@@ -2522,7 +2522,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2023,
     format: "ODI+T20",
     // T20I debut 30 Aug 2023 vs South Africa (Durban, earliest), ODI debut 22 Sep 2023 vs
@@ -2542,7 +2542,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2005,
     format: "All-format",
     // ODI debut 5 Oct 2005 vs ICC World XI (Super Series, earliest), T20I debut 9 Jan 2007
@@ -2559,7 +2559,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2008,
     format: "ODI+T20",
     // T20I debut 1 Feb 2008 vs India (MCG, earliest), ODI debut 4 Jul 2008 vs West Indies —
@@ -2576,7 +2576,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm wrist-spin (chinaman)",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
     debutYear: 2018,
     format: "ODI+T20",
     // T20I debut 3 Feb 2018 vs New Zealand (earliest), ODI debut 16 Jun 2018 vs England — never
@@ -2590,7 +2590,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2013,
     format: "ODI+T20",
     // T20I debut 13 Feb 2013 vs West Indies (earliest), ODI debut 14 Sep 2013 vs England —
@@ -2610,7 +2610,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2026,
     format: "T20",
     // T20I cap 118, debut 17 Jun 2026 vs Bangladesh (Chattogram) — 3/17 on debut, first
@@ -2624,7 +2624,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2026,
     format: "T20",
     // T20I cap 117, debut 17 Jun 2026 vs Bangladesh (Chattogram) — India-born (Delhi), qualified
@@ -2638,7 +2638,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2026,
     format: "T20",
     // T20I cap 115, debut 29 Jan 2026 vs Pakistan (Lahore) — 5 runs, 0/25 — ESPNcricinfo
@@ -2658,7 +2658,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1990,
     format: "Test+ODI",
     // 131 Tests, 299 ODIs — retired April 2007, ZERO T20Is — ESPNcricinfo confirmed
@@ -2671,7 +2671,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1999,
     format: "All-format",
     // 103 Tests, 301 ODIs, 79 T20Is — ESPNcricinfo confirmed. Over 200 international
@@ -2687,7 +2687,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1974,
     format: "Test+ODI",
     // Tests, ODIs — retired 1991, T20I format did not exist
@@ -2700,7 +2700,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1966,
     format: "Test+ODI",
     // Tests, ODIs — retired 1985, T20I format did not exist. 114 first-class wickets as a
@@ -2716,7 +2716,7 @@ const wordlePlayers = [
     // Day 14 FIX: was wrongly "Right-hand" — Ambrose batted left-handed (bowled right-arm
     // fast). Confirmed via ESPNcricinfo and Wikipedia.
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1988,
     format: "Test+ODI",
     // Tests, ODIs — retired 2000, T20I format did not exist
@@ -2729,7 +2729,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1984,
     format: "Test+ODI",
     // Tests, ODIs — retired 2001, T20I format did not exist
@@ -2742,7 +2742,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1978,
     format: "Test+ODI",
     // Tests, ODIs — retired 1992, T20I format did not exist
@@ -2756,7 +2756,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2007,
     format: "All-format",
     // Tests (1), ODIs, T20Is — ESPNcricinfo confirmed
@@ -2769,7 +2769,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2784,7 +2784,7 @@ const wordlePlayers = [
     country: "West Indies",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2802,7 +2802,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2010,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2815,7 +2815,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2002,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Bowled and took his only international
@@ -2830,7 +2830,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1982,
     format: "Test+ODI",
     // Tests, ODIs — retired 1995, T20I format did not exist
@@ -2845,7 +2845,7 @@ const wordlePlayers = [
     // Day 14 FIX: was wrongly "Right-hand" — Hadlee batted left-handed (bowled right-arm
     // fast). Confirmed via ESPNcricinfo and Wikipedia.
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1973,
     format: "Test+ODI",
     // Tests, ODIs — retired 1990, T20I format did not exist
@@ -2858,7 +2858,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Occasional right-arm slow-medium bowler.
@@ -2871,7 +2871,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2885,7 +2885,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2901,7 +2901,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm fast",
+    bowlingStyle: "Left arm fast",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2915,7 +2915,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium-fast",
+    bowlingStyle: "Right arm medium fast",
     debutYear: 2008,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2930,7 +2930,7 @@ const wordlePlayers = [
     country: "New Zealand",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2009,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Bowled 4 innings across his career
@@ -2951,7 +2951,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2000,
     format: "All-format",
     // 134 Tests, 404 ODIs, 56 T20Is — ESPNcricinfo confirmed
@@ -2967,7 +2967,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1992,
     format: "All-format",
     // Tests, ODIs, T20Is (1) — ESPNcricinfo confirmed
@@ -2982,7 +2982,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -2998,7 +2998,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1991,
     format: "All-format",
     // Tests, ODIs, T20Is (1) — ESPNcricinfo confirmed. 440 international wickets as a
@@ -3012,7 +3012,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1982,
     format: "Test+ODI",
     // Tests, ODIs — retired 2000, T20I format did not exist. Confirmed deceptive part-time
@@ -3028,7 +3028,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1984,
     format: "Test+ODI",
     // Tests, ODIs — retired 2003, T20I format did not exist. Confirmed part-time off-spinner
@@ -3043,7 +3043,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3058,7 +3058,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2008,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3073,7 +3073,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm fast-medium",
+    bowlingStyle: "Left arm fast medium",
     debutYear: 1994,
     format: "All-format",
     // Tests, ODIs, and T20Is (2006/07-2007/08 season) confirmed via ESPNcricinfo Statsguru — corrected
@@ -3089,7 +3089,7 @@ const wordlePlayers = [
     country: "Sri Lanka",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 1999,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3109,7 +3109,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast",
+    bowlingStyle: "Left arm fast",
     debutYear: 1984,
     format: "Test+ODI",
     // Tests, ODIs — retired 2003, T20I format did not exist — ESPNcricinfo confirmed
@@ -3124,7 +3124,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1971,
     format: "Test+ODI",
     // Tests, ODIs — retired 1992, T20I format did not exist
@@ -3138,7 +3138,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1975,
     format: "Test+ODI",
     // Tests, ODIs — retired 1996, T20I format did not exist. Confirmed occasional part-time
@@ -3152,7 +3152,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1989,
     format: "Test+ODI",
     // Tests, ODIs — very few T20Is — ESPNcricinfo confirmed
@@ -3167,7 +3167,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1991,
     format: "All-format",
     // Tests, ODIs, and 1 T20I confirmed (debut 28 Aug 2006 vs England at Bristol, last T20I 21 Mar
@@ -3186,7 +3186,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak googly",
+    bowlingStyle: "Right arm leg break",
     debutYear: 1996,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3202,7 +3202,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     debutYear: 1997,
     format: "All-format",
     // Tests, ODIs, T20Is (few) — ESPNcricinfo confirmed
@@ -3219,7 +3219,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2000,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed. Occasional part-time bowler (medium pace
@@ -3236,7 +3236,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2015,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3250,7 +3250,7 @@ const wordlePlayers = [
     country: "Pakistan",
     role: "Bowler",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast",
+    bowlingStyle: "Left arm fast",
     debutYear: 2018,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3268,7 +3268,7 @@ const wordlePlayers = [
     country: "England",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 1977,
     format: "Test+ODI",
     // Tests, ODIs — retired 1993, T20I format did not exist
@@ -3282,7 +3282,7 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2012,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3297,7 +3297,7 @@ const wordlePlayers = [
     country: "England",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2011,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3313,7 +3313,7 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3330,7 +3330,7 @@ const wordlePlayers = [
     country: "England",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 1998,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3348,7 +3348,7 @@ const wordlePlayers = [
     // Test career, 1 wicket (vs India, Trent Bridge 2014). ESPNcricinfo lists "Right-arm
     // Slow"; other sources say "Right-arm Offbreak" — same part-time role, minor source
     // label disagreement flagged, not NA.
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2006,
     format: "Test+ODI",
     // Tests, ODIs — very few/no T20Is — ESPNcricinfo confirmed
@@ -3365,7 +3365,7 @@ const wordlePlayers = [
     // bowling right-arm (a genuine cross-dominant player, like Stuart Broad below) —
     // ESPNcricinfo profile explicitly confirmed
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2002,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3383,7 +3383,7 @@ const wordlePlayers = [
     // right-arm (scored a Test 169 vs Pakistan at Lord's in 2010) — ESPNcricinfo profile
     // explicitly confirmed
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2006,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -3420,7 +3420,7 @@ const wordlePlayers = [
     country: "England",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 1975,
     format: "Test+ODI",
     // Tests, ODIs — retired 1995, T20I format did not exist. Over 200 first-class wickets
@@ -3439,7 +3439,7 @@ const wordlePlayers = [
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // Took 2 Test wickets — occasional bowler, not a zero-ball record — ESPNcricinfo confirmed
     debutYear: 2004,
     format: "All-format",
@@ -3458,7 +3458,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm fast medium",
+    bowlingStyle: "Right arm fast medium",
     // ESPNcricinfo confirmed — frontline seam bowling all-rounder
     debutYear: 1995,
     format: "All-format",
@@ -3475,7 +3475,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Left-hand",
     // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // Occasional part-time bowler, career bowling average 52.83 — a real (if minor)
     // bowling record, not a confirmed zero-ball case — ESPNcricinfo confirmed
     debutYear: 2002,
@@ -3493,7 +3493,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Described as an "occasional off-break bowler" across sources — confirms he
     // did bowl, though exact wicket tally is unclear — ESPNcricinfo confirmed
     debutYear: 2004,
@@ -3510,7 +3510,7 @@ const wordlePlayers = [
     role: "Bowler",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     // ESPNcricinfo confirmed
     debutYear: 2004,
     format: "All-format",
@@ -3530,7 +3530,7 @@ const wordlePlayers = [
     // bowling right-arm — same pattern as Zaheer Khan/Anderson/Broad — ESPNcricinfo,
     // Cricbuzz, Wikipedia all confirm Left-hand Bat
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     // ESPNcricinfo confirmed
     debutYear: 2014,
     format: "All-format",
@@ -3546,7 +3546,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm fast medium",
+    bowlingStyle: "Right arm fast medium",
     // ESPNcricinfo confirmed
     debutYear: 1995,
     format: "All-format",
@@ -3563,7 +3563,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm leg break",
+    bowlingStyle: "Right arm leg break",
     // Described as an "occasional leg-break bowler" — confirms he did bowl —
     // ESPNcricinfo confirmed
     debutYear: 2011,
@@ -3582,7 +3582,7 @@ const wordlePlayers = [
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // Listed in his RCB 2008 squad profile as bowling right-arm medium pace —
     // ESPNcricinfo confirmed
     debutYear: 1997,
@@ -3601,7 +3601,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Part-time off-spinner, increasingly used in T20Is — ESPNcricinfo confirmed
     debutYear: 2017,
     format: "All-format",
@@ -3622,7 +3622,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Left-hand",
     // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     // ESPNcricinfo confirmed
     debutYear: 2006,
     format: "All-format",
@@ -3641,7 +3641,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Left-hand",
     // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     // Rarely used, but has recorded bowling figures (3 ODI innings, 0 wickets) — a
     // real if minor bowling record, not a confirmed zero-ball case — ESPNcricinfo confirmed
     debutYear: 2007,
@@ -3660,7 +3660,7 @@ const wordlePlayers = [
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // UNCONFIRMED exact style — sources disagree (one lists left-arm orthodox, another
     // right-arm fast medium); going with the ESPNcricinfo-sourced answer, but flagging
     // this as needing a closer look, similar to KL Rahul's entry. He has bowled at
@@ -3680,7 +3680,7 @@ const wordlePlayers = [
     role: "Bowler",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm fast medium",
+    bowlingStyle: "Right arm fast medium",
     // ESPNcricinfo confirmed
     debutYear: 2001,
     format: "All-format",
@@ -3696,7 +3696,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // ESPNcricinfo confirmed
     debutYear: 2007,
     format: "All-format",
@@ -3714,7 +3714,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Sources flag both offbreak and legbreak as his variations — ESPNcricinfo lists
     // offbreak as primary; noting the disagreement per the cross-verification rule
     debutYear: 2001,
@@ -3734,7 +3734,7 @@ const wordlePlayers = [
     // despite bowling left-arm too — ESPNcricinfo, Cricbuzz, Wikipedia all confirm
     // Left-hand Bat
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm fast medium",
+    bowlingStyle: "Left arm fast medium",
     // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
@@ -3754,7 +3754,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // ESPNcricinfo confirmed
     debutYear: 2016,
     format: "All-format",
@@ -3771,7 +3771,7 @@ const wordlePlayers = [
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
@@ -3789,7 +3789,7 @@ const wordlePlayers = [
     // Day 15 Batch 4 FIX: was wrongly "Right-hand" — Taskin bats LEFT-handed despite
     // bowling right-arm — ESPNcricinfo, Cricbuzz, Wikipedia all confirm Left-hand Bat
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm fast",
+    bowlingStyle: "Right arm fast",
     // ESPNcricinfo confirmed
     debutYear: 2014,
     format: "All-format",
@@ -3809,7 +3809,7 @@ const wordlePlayers = [
     role: "Bowler",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Legbreak googly",
+    bowlingStyle: "Right arm leg break",
     // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
@@ -3827,7 +3827,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // ESPNcricinfo confirmed
     debutYear: 2009,
     format: "All-format",
@@ -3847,7 +3847,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium fast",
+    bowlingStyle: "Right arm medium fast",
     // Used as an occasional change bowler — ESPNcricinfo confirmed
     debutYear: 2009,
     format: "All-format",
@@ -3866,7 +3866,7 @@ const wordlePlayers = [
     role: "Bowler",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Mixes offbreak with legspin/googly variations — ESPNcricinfo confirmed
     debutYear: 2017,
     format: "All-format",
@@ -3886,7 +3886,7 @@ const wordlePlayers = [
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // ESPNcricinfo confirmed
     debutYear: 2019,
     format: "All-format",
@@ -3906,7 +3906,7 @@ const wordlePlayers = [
     role: "All-rounder",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium fast",
+    bowlingStyle: "Right arm medium fast",
     // ESPNcricinfo confirmed
     debutYear: 2010,
     format: "All-format",
@@ -3923,7 +3923,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium fast",
+    bowlingStyle: "Right arm medium fast",
     // ESPNcricinfo confirmed
     debutYear: 2018,
     format: "All-format",
@@ -3942,7 +3942,7 @@ const wordlePlayers = [
     role: "Bowler",
     battingStyle: "Right-hand",
     // Right-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm medium fast",
+    bowlingStyle: "Right arm medium fast",
     // ESPNcricinfo confirmed — known for his yorkers in the death overs
     debutYear: 2018,
     format: "All-format",
@@ -3961,7 +3961,7 @@ const wordlePlayers = [
     // bowling arm with his batting hand (the reverse of the Zaheer Khan pattern)
     // — ESPNcricinfo, Cricbuzz, Wikipedia all confirm Right-hand Bat
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm fast medium",
+    bowlingStyle: "Left arm fast medium",
     // ESPNcricinfo confirmed
     debutYear: 2019,
     format: "All-format",
@@ -3980,7 +3980,7 @@ const wordlePlayers = [
     role: "Batsman",
     battingStyle: "Left-hand",
     // Left-hand bat — ESPNcricinfo, Cricbuzz, Wikipedia agree
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // ESPNcricinfo confirmed
     debutYear: 2015,
     format: "All-format",
@@ -3999,7 +3999,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Occasional off-break/slow-medium — ESPNcricinfo confirmed
     debutYear: 1992,
     format: "Test+ODI",
@@ -4019,7 +4019,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 1993,
     format: "Test+ODI",
     // Tests, ODIs — retired October 2005, no evidence of any T20I appearance
@@ -4035,7 +4035,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2004,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -4056,7 +4056,7 @@ const wordlePlayers = [
     // conflated into the batting field. Confirmed on Wikipedia infobox
     // ("Batting: Right-handed") and cross-checked via search — same
     // bowling-arm/batting-hand mix-up pattern as Zaheer Khan/Anderson/Broad
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 1992,
     format: "Test+ODI",
     // Tests, ODIs — retired early 2000s, T20I format did not exist — confirmed
@@ -4072,7 +4072,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm legbreak",
+    bowlingStyle: "Right arm leg break",
     debutYear: 2001,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -4089,7 +4089,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Bowls a mix of offbreak and legbreak (mystery spin) — offbreak listed
     // as primary style on ESPNcricinfo
     debutYear: 2013,
@@ -4107,7 +4107,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Rarely used at international level — ESPNcricinfo confirmed
     debutYear: 2001,
     format: "All-format",
@@ -4124,7 +4124,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2008,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -4140,7 +4140,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2022,
     format: "All-format",
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
@@ -4156,7 +4156,7 @@ const wordlePlayers = [
     country: "Zimbabwe",
     role: "Wicketkeeper",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     // Occasional bowler, primarily a batsman — ESPNcricinfo confirmed
     debutYear: 1983,
     format: "Test+ODI",
@@ -4171,7 +4171,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Slow left-arm orthodox",
+    bowlingStyle: "Left arm orthodox",
     debutYear: 2013,
     format: "All-format",
     // Test debut 10 Jul 2013 vs England, Trent Bridge (scored 98 at No. 11 — highest Test score
@@ -4190,7 +4190,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2012,
     format: "All-format",
     // T20I debut 2012 vs Pakistan (UAE), Test debut 2013 (Hyderabad, No. 8) — ESPNcricinfo +
@@ -4207,7 +4207,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2016,
     format: "ODI+T20",
     // T20I debut 29 Jan 2016 vs India (MCG), ODI debut 14 Jan 2018 vs England — no Test caps —
@@ -4228,7 +4228,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2013,
     format: "ODI+T20",
     // ODI debut 2013 vs Sri Lanka — no Test caps, career spanned 2013-2023 — ESPNcricinfo confirmed
@@ -4247,7 +4247,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2015,
     format: "ODI+T20",
     // ODI debut 11 Sep 2015 vs England (Leeds), T20I debut 2015 — no Test caps (pushed for Test
@@ -4267,7 +4267,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Bowler",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2021,
     format: "ODI+T20",
     // T20I debut mid-2021 vs Bangladesh (Mirpur — took a hat-trick on debut), ODI debut 29 Mar
@@ -4285,7 +4285,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Left-arm medium-fast",
+    bowlingStyle: "Left arm medium fast",
     debutYear: 2012,
     format: "All-format",
     // T20I debut 2 Jan 2012, ODI debut 1 Feb 2013, Test debut 21 Aug 2013 (The Oval, 6 wickets on
@@ -4308,7 +4308,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm fast-medium",
+    bowlingStyle: "Right arm fast medium",
     debutYear: 2014,
     format: "ODI+T20",
     // T20I debut 5 Oct 2014 vs Pakistan (UAE), ODI debut 7 Oct 2014 vs Pakistan (UAE) — no Test
@@ -4326,7 +4326,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "All-rounder",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     debutYear: 2011,
     format: "All-format",
     // ODI debut 19 Oct 2011 vs South Africa (Centurion), T20I debut 2011, Test debut 22 Oct 2014
@@ -4345,7 +4345,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Wicketkeeper",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm medium",
+    bowlingStyle: "Right arm medium",
     // Bowled a single maiden over to Thilan Samaraweera as a surprise option in the Dec 2012
     // Hobart Test vs Sri Lanka — his only recorded international bowling — confirmed via
     // ESPNcricinfo, so not NA per the standing rule
@@ -4368,7 +4368,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2016,
     format: "All-format",
     // ODI debut 13 Jun 2016 vs West Indies (Basseterre), T20I debut 2016, Test debut 7 Oct 2018 vs
@@ -4387,7 +4387,7 @@ const wordlePlayers = [
     country: "Australia",
     role: "Batsman",
     battingStyle: "Right-hand",
-    bowlingStyle: "Right-arm offbreak",
+    bowlingStyle: "Right arm offbreak",
     debutYear: 2022,
     format: "ODI+T20",
     // Singapore-born; played T20I for Singapore first (debut 22 Jul 2019 vs Qatar — independently

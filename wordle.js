@@ -168,12 +168,12 @@ var roleAbbr = {
 var battingStyleAbbr = { 'Right-hand': 'R', 'Left-hand': 'L' };
 var bowlingStyleAbbr = {
   'NA': 'NA',
-  'Right-arm fast': 'R-FAST', 'Right-arm fast-medium': 'R-FM', 'Right-arm medium-fast': 'R-MF',
-  'Right-arm medium': 'R-MED', 'Right-arm offbreak': 'R-OB',
-  'Right-arm legbreak': 'R-LB', 'Right-arm legbreak googly': 'R-LB',
-  'Left-arm fast': 'L-FAST', 'Left-arm fast-medium': 'L-FM', 'Left-arm medium-fast': 'L-MF',
-  'Left-arm medium': 'L-MED', 'Left-arm orthodox': 'L-ORT',
-  'Left-arm wrist-spin (chinaman)': 'L-WS'
+  'Right arm fast': 'R-FAST', 'Right arm fast medium': 'R-FM', 'Right arm medium fast': 'R-MF',
+  'Right arm medium': 'R-MED', 'Right arm offbreak': 'R-OB',
+  'Right arm leg break': 'R-LB',
+  'Left arm fast': 'L-FAST', 'Left arm fast medium': 'L-FM', 'Left arm medium fast': 'L-MF',
+  'Left arm medium': 'L-MED', 'Left arm orthodox': 'L-ORT',
+  'Left Arm Wrist Spin (Chinaman)': 'L-WS'
 };
 var formatAbbr = { 'All-format': 'ALL', 'ODI': 'ODI', 'Test': 'TEST', 'T20': 'T20' };
 
