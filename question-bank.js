@@ -877,6 +877,86 @@ const questionBank = [
     era: "2000s",
     category: "ipl"
   },
+  {
+    question: "Which IPL team holds the record for the highest successful run chase in the tournament's history?",
+    options: ["Punjab Kings", "Rajasthan Royals", "Kolkata Knight Riders", "Chennai Super Kings"],
+    correct: 0,
+    fact: "🏃 Punjab Kings chased down 265 against Delhi Capitals at the Arun Jaitley Stadium in IPL 2026 (KL Rahul's unbeaten 152 for Delhi Capitals wasn't enough) — the highest successful run chase in T20 cricket history, beating their own previous record of 262 set against KKR in 2024.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Which pair holds the record for the highest partnership for any wicket in IPL history?",
+    options: ["Virat Kohli & AB de Villiers", "Rohit Sharma & Ishan Kishan", "David Warner & Jonny Bairstow", "KL Rahul & Quinton de Kock"],
+    correct: 0,
+    fact: "🤝 Kohli and de Villiers added 229 for RCB's second wicket against Gujarat Lions on 14 May 2016 at the M Chinnaswamy Stadium — still the highest partnership for any wicket in IPL and T20 history, beating their own earlier record of 215 set the previous year.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Which team recorded the biggest winning margin by runs in IPL history?",
+    options: ["Mumbai Indians", "Kolkata Knight Riders", "Royal Challengers Bengaluru", "Chennai Super Kings"],
+    correct: 0,
+    fact: "💥 Mumbai Indians beat Delhi Daredevils by 146 runs on 6 May 2017 (MI 212/3, DD bowled out for 66) — still the biggest winning margin by runs in IPL history, ahead of RCB's 144-run win over Gujarat Lions in 2016.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "Who is the oldest player to ever appear in an IPL match?",
+    options: ["Brad Hogg", "Pravin Tambe", "MS Dhoni", "Sachin Tendulkar"],
+    correct: 0,
+    fact: "👴 Australian spinner Brad Hogg was 45 years and 92 days old when he played his final IPL game, for Kolkata Knight Riders against Gujarat Lions at Eden Gardens in 2016 — the oldest man ever to feature in the tournament.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "In which year did the BCCI officially announce the launch of the Indian Premier League?",
+    options: ["2005", "2006", "2007", "2008"],
+    correct: 2,
+    fact: "📜 The BCCI announced the launch of the IPL on 13 September 2007, with Lalit Modi — then a BCCI vice-president — as its founder and first chairman. The tournament's first ball was bowled seven months later, on 18 April 2008.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "In which IPL season was the current four-match playoff format (Qualifier 1, Eliminator, Qualifier 2, Final) first introduced?",
+    options: ["2008", "2010", "2011", "2014"],
+    correct: 2,
+    fact: "🏆 Before 2011, the IPL used a straight semi-final-and-final knockout. From the 2011 season onward, the tournament adopted the four-game playoff stage — Qualifier 1, Eliminator, Qualifier 2, and the Final — still in use today.",
+    era: "2010s",
+    category: "ipl"
+  },
+  {
+    question: "What is the most consecutive IPL titles any single franchise has ever won?",
+    options: ["2", "3", "4", "5"],
+    correct: 0,
+    fact: "🔁 No IPL team has ever won three titles in a row — the record is two straight titles, achieved by Chennai Super Kings (2010-11), Mumbai Indians (2019-20), and Royal Challengers Bengaluru (2025-26).",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "In which city was the very first IPL final (2008) played?",
+    options: ["Mumbai", "Chennai", "Bengaluru", "Kolkata"],
+    correct: 0,
+    fact: "🏟️ The 2008 IPL final was played at the DY Patil Stadium in Navi Mumbai, where Rajasthan Royals beat Chennai Super Kings by 3 wickets off the very last ball. Yusuf Pathan's all-round show (3/22 and 56 off 39 balls) was later rated by ESPNcricinfo as one of the greatest individual performances in IPL history.",
+    era: "2000s",
+    category: "ipl"
+  },
+  {
+    question: "Who is the most expensive player ever bought at an IPL auction?",
+    options: ["Rishabh Pant", "Shreyas Iyer", "Cameron Green", "Mitchell Starc"],
+    correct: 0,
+    fact: "💰 Rishabh Pant became the most expensive player in IPL history when Lucknow Super Giants bought him for ₹27 crore at the 2025 mega auction, edging out Shreyas Iyer's ₹26.75 crore sale to Punjab Kings in the very same auction. As of the 2026 auction, this is still the record.",
+    era: "2020s",
+    category: "ipl"
+  },
+  {
+    question: "Delhi Capitals was known by which name before its December 2018 rebrand?",
+    options: ["Delhi Daredevils", "Delhi Dynamos", "Delhi Dashers", "Delhi Dragons"],
+    correct: 0,
+    fact: "🔄 The Delhi Daredevils were rebranded as Delhi Capitals in December 2018, complete with a new logo. Kings XI Punjab went through a similar rebrand in February 2021, becoming Punjab Kings.",
+    era: "2010s",
+    category: "ipl"
+  },
 
   // ===== TEST CRICKET (36) =====
   {
