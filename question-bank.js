@@ -2991,6 +2991,326 @@ const questionBank = [
     fact: "🇮🇳 The BCCI was founded on 1 December 1928 in Madras (now Chennai), four years before India played its first-ever Test match in 1932.",
     era: "Pre-1970s",
     category: "general"
+  },
+  {
+    question: "At which venue was cricket's first-ever Test match played in March 1877?",
+    options: ["Melbourne Cricket Ground", "The Oval, London", "Sydney Cricket Ground", "Lord's, London"],
+    correct: 0,
+    fact: "🏟️ Australia won this historic match, and remain the only country to have won its very first-ever Test.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "By what margin did Australia beat England in the first-ever Test match, played at Melbourne in March 1877?",
+    options: ["45 runs", "10 wickets", "92 runs", "An innings and 13 runs"],
+    correct: 0,
+    fact: "🎯 Almost exactly 100 years later, the 1977 Centenary Test at the same ground — held to mark the anniversary — produced the identical result: Australia won by 45 runs again.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which England captain devised the 'leg theory' fast-bowling tactic — later nicknamed Bodyline — during the 1932-33 Ashes tour of Australia?",
+    options: ["Douglas Jardine", "Percy Chapman", "Bob Wyatt", "Arthur Carr"],
+    correct: 0,
+    fact: "⚡ Jardine's tactic was designed specifically to curb Don Bradman, who still averaged 56.57 in the series — a mark that, remarkably, remains the worst of his entire Test career.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Who was the fast bowler who spearheaded England's Bodyline attack, taking 33 wickets in the 1932-33 series?",
+    options: ["Harold Larwood", "Bill Voce", "Gubby Allen", "Maurice Tate"],
+    correct: 0,
+    fact: "🔥 The Bodyline series ended 4-1 to England, but the fallout was so severe it strained diplomatic relations between England and Australia and led to cricket's laws being changed to outlaw the tactic.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "In which South African city was the famous 1939 'Timeless Test' against England played — the longest Test match ever staged?",
+    options: ["Durban", "Cape Town", "Johannesburg", "Port Elizabeth"],
+    correct: 0,
+    fact: "⏳ The match ran from 3 to 14 March 1939 with no time limit, before finally being abandoned as a draw.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Why was the 1939 Timeless Test between South Africa and England ultimately abandoned as a draw rather than played to a finish?",
+    options: ["England's touring party had to leave to catch their ship home", "Persistent rain made the outfield unplayable", "The stadium's lease with the ground ran out", "Both boards agreed to a time limit after all"],
+    correct: 0,
+    fact: "🚢 England were chasing 696 to win and had reached 654 for 5 — agonisingly close — when the match was called off so the team could catch their train and sail home on the mailship.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which newspaper published the mock obituary for 'English cricket' after Australia's 1882 win at The Oval, giving birth to the term 'The Ashes'?",
+    options: ["The Sporting Times", "The Times", "Wisden Cricketers' Almanack", "The Daily Telegraph"],
+    correct: 0,
+    fact: "📰 The obituary joked that English cricket's body would be cremated and 'the ashes taken to Australia' — written by Reginald Shirley Brooks and published just days after Australia's shock 7-run win.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which England captain led the side that toured Australia in 1882-83 vowing to 'regain the Ashes', after which a small urn was presented to him?",
+    options: ["Ivo Bligh", "W.G. Grace", "Lord Harris", "A.N. Hornby"],
+    correct: 0,
+    fact: "🏺 The urn, reputed to contain the ashes of a cricket bail, was presented to Bligh by a group of Melbourne women and today sits permanently in the MCC Museum at Lord's.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "At which ground did Hanif Mohammad bat for 970 minutes to score 337 for Pakistan against West Indies in January 1958?",
+    options: ["Kensington Oval, Bridgetown", "Sabina Park, Kingston", "Queen's Park Oval, Port of Spain", "Bourda, Georgetown"],
+    correct: 0,
+    fact: "⏱️ At 970 minutes — around 16 hours 10 minutes at the crease — it remains the longest single innings in Test cricket history.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "What did Hanif Mohammad's marathon 337 achieve for Pakistan in the 1958 Bridgetown Test, after they had been forced to follow on?",
+    options: ["It saved the match, ending in a draw", "It won the match for Pakistan", "It forced West Indies to bat again and lose", "It tied the match"],
+    correct: 0,
+    fact: "🛡️ Pakistan had been bowled out for just 106 in reply to West Indies' 579 for 9 declared, but Hanif's innings — then the second-highest individual score in Test history behind Len Hutton's 364 — batted them to safety.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "Which Indian batsman became the first from his country to score a Test triple century, hitting 309 against Pakistan at Multan in April 2004?",
+    options: ["Virender Sehwag", "Sachin Tendulkar", "Rahul Dravid", "VVS Laxman"],
+    correct: 0,
+    fact: "🏏 Sehwag was eventually out for 309 off 375 balls — the innings earned him the nickname 'The Sultan of Multan' and helped India declare at 675/5, their highest Test total against Pakistan at the time.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "How many balls did Virender Sehwag take to bring up his triple century (300) during the famous Multan Test in April 2004?",
+    options: ["304", "340", "364", "400"],
+    correct: 2,
+    fact: "⚡ He reached the landmark with a six off Saqlain Mushtaq, sharing a 336-run third-wicket stand with Sachin Tendulkar (194*) on the way to India's innings win.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "Which New Zealand batsman scored the fastest double century in Test cricket history, reaching 200 off just 153 balls against England at Christchurch in March 2002?",
+    options: ["Nathan Astle", "Martin Crowe", "Brendon McCullum", "Ross Taylor"],
+    correct: 0,
+    fact: "🚀 Astle's innings included 11 sixes and ended on 222 off 168 balls — his second hundred alone came off just 39 deliveries.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "Nathan Astle's world-record 153-ball Test double century broke a mark set only weeks earlier by which wicketkeeper-batsman?",
+    options: ["Adam Gilchrist", "Kumar Sangakkara", "MS Dhoni", "Andy Flower"],
+    correct: 0,
+    fact: "🏏 Gilchrist had made 204* off 212 balls for Australia at Johannesburg in February 2002 — Astle beat that mark by 59 balls the very next month.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "Whose 36-year-old world record for the highest individual score in Test cricket did Brian Lara break with his innings of 375 not out in Antigua in April 1994?",
+    options: ["Garry Sobers", "Don Bradman", "Len Hutton", "Wally Hammond"],
+    correct: 0,
+    fact: "🏏 Sobers had held the record with 365* since 1958 (against Pakistan in Kingston) and was present at the Antigua Recreation Ground to congratulate Lara in person.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "Against which touring team did Brian Lara score his then world-record 375 not out at the Antigua Recreation Ground in April 1994?",
+    options: ["England", "Australia", "South Africa", "Pakistan"],
+    correct: 0,
+    fact: "🔢 Lara's marathon innings lasted 766 minutes off 538 balls with 45 fours — the record-breaking shot was a pulled boundary off Chris Lewis, though the match itself ended in a draw.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "Which former England captain retired from Test cricket in September 2018 as his country's all-time leading run-scorer?",
+    options: ["Alastair Cook", "Andrew Strauss", "Kevin Pietersen", "Ian Bell"],
+    correct: 0,
+    fact: "🏴 Cook finished with 12,472 Test runs and 33 centuries — both England records at the time, since surpassed by Joe Root in October 2024.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "How many Test centuries did Alastair Cook score during his England career, retiring in 2018?",
+    options: ["29", "33", "36", "41"],
+    correct: 1,
+    fact: "💯 His 33rd and final Test century came in his very last innings, at The Oval against India — a perfect send-off to his career.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "Which Indian batsman retired from Test cricket in 2012 having taken 210 catches as a fielder — a world record for a non-wicketkeeper at the time?",
+    options: ["Rahul Dravid", "Sourav Ganguly", "VVS Laxman", "Mohammad Azharuddin"],
+    correct: 0,
+    fact: "🧤 Dravid's tally of 210 Test catches, mostly taken at slip, stood as the all-time record for over a decade until England's Joe Root passed it in July 2025.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "How many catches did Rahul Dravid take across his Test career as a fielder — a tally that stood as the format's all-time record for over a decade?",
+    options: ["180", "195", "210", "225"],
+    correct: 2,
+    fact: "📊 Most of Dravid's catches came in the slip cordon, where his renowned concentration made him one of the finest close-in fielders in the game's history.",
+    era: "2000s",
+    category: "test"
+  },
+  {
+    question: "Whose wicket did Shane Warne take with his very first ball in Ashes Test cricket — a delivery later dubbed the 'Ball of the Century'?",
+    options: ["Mike Gatting", "Graham Gooch", "David Gower", "Robin Smith"],
+    correct: 0,
+    fact: "🌀 The leg-break drifted down the leg side before spinning sharply back to clip the top of off stump — the delivery is widely credited with reviving leg-spin bowling worldwide.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "At which England venue did Shane Warne bowl his famous 'Ball of the Century' to dismiss Mike Gatting in June 1993?",
+    options: ["Old Trafford", "Lord's", "The Oval", "Headingley"],
+    correct: 0,
+    fact: "🏏 It was the opening delivery of the entire 1993 Ashes series — Warne went on to take 8 wickets in the match and was named Player of the Match.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "Kapil Dev is the only cricketer in Test history to complete which unique double?",
+    options: ["5,000 runs and 400 wickets", "5,000 runs and 300 wickets", "4,000 runs and 400 wickets", "6,000 runs and 400 wickets"],
+    correct: 0,
+    fact: "🏏 Kapil Dev finished his Test career with exactly 5,248 runs and 434 wickets — no other player in history has combined both figures.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "What was Kapil Dev's final Test batting aggregate, achieved alongside his 434 wickets to complete cricket's most exclusive all-rounder double?",
+    options: ["5,248 runs", "5,200 runs", "4,999 runs", "5,334 runs"],
+    correct: 0,
+    fact: "🎯 He also captained India to their maiden World Cup title in 1983, the same period this landmark double was building up.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "Which England all-rounder remains the fastest player in Test cricket history to complete the double of 3,000 runs and 300 wickets, reaching it in just 72 Test matches?",
+    options: ["Ian Botham", "Andrew Flintoff", "Fred Trueman", "Ben Stokes"],
+    correct: 0,
+    fact: "⚡ Ravindra Jadeja became the second-fastest player ever to reach the same double, doing it in 74 Tests — just two more than Botham needed.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "When Ian Botham took his 300th Test wicket in 1986 to complete his famous double in the fewest Tests ever, how many Test runs had he already scored?",
+    options: ["4,153", "3,000", "5,200", "2,800"],
+    correct: 0,
+    fact: "🏏 By the end of his career Botham had extended those figures to 5,200 runs and 383 wickets, a tally England's James Anderson later passed.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "Which team holds the record for the highest team total in Test cricket history, with 952 for 6 declared?",
+    options: ["Sri Lanka", "India", "England", "Australia"],
+    correct: 0,
+    fact: "📊 The innings came against India at the R. Premadasa Stadium, Colombo, in August 1997, built around a Test-record 576-run second-wicket stand.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "In Sri Lanka's world-record 952 for 6 declared against India in August 1997, which batsman scored 340 — the country's first-ever Test triple-century?",
+    options: ["Sanath Jayasuriya", "Roshan Mahanama", "Aravinda de Silva", "Mahela Jayawardene"],
+    correct: 0,
+    fact: "🏏 Jayasuriya's 340 remains the fourth-highest individual score in Test history, part of a 576-run stand with Roshan Mahanama (225) that broke off only when Mahanama fell on the fifth morning.",
+    era: "1990s",
+    category: "test"
+  },
+  {
+    question: "Which team was dismissed for 26 all out against England in 1955, still the lowest completed innings total in Test cricket history as of 2026?",
+    options: ["New Zealand", "South Africa", "Ireland", "India"],
+    correct: 0,
+    fact: "📉 The innings included four ducks and a top score of just 11, and handed England victory by an innings and 20 runs.",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "At which ground did New Zealand collapse to 26 all out against England in March 1955?",
+    options: ["Eden Park, Auckland", "Basin Reserve, Wellington", "Lancaster Park, Christchurch", "Seddon Park, Hamilton"],
+    correct: 0,
+    fact: "🔢 The previous lowest Test total was South Africa's 30 all out (against England, in both 1896 and 1924) — New Zealand's 26 beat that by just 4 runs, and the closest any side has come since is Ireland's 38 (2019) and Australia bowling India out for 36 (2020).",
+    era: "Pre-1970s",
+    category: "test"
+  },
+  {
+    question: "What was the margin of victory when India won the 2021 Gabba Test against Australia, sealing the series?",
+    options: ["3 wickets", "5 wickets", "8 wickets", "10 wickets"],
+    correct: 0,
+    fact: "🔥 This was Australia's first Test defeat at the Gabba in 32 years — the ground was unbeaten by any team there since 1988, and India won it with a squad depleted by injuries and missing several first-choice players.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which Indian wicketkeeper-batsman played an unbeaten 89 to guide India to their historic win at the Gabba in January 2021?",
+    options: ["Rishabh Pant", "MS Dhoni", "KL Rahul", "Wriddhiman Saha"],
+    correct: 0,
+    fact: "🏏 India finished on 329 for 7, the highest total ever chased down in the fourth innings at the Gabba, sealing a 2-1 series win over Australia.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "England beat India in July 2022 by successfully chasing down a target on the final day at Edgbaston. What was the target?",
+    options: ["378", "359", "401", "342"],
+    correct: 0,
+    fact: "🏴 This remains England's highest-ever successful run chase in Test cricket, though the all-time world record for any team is still West Indies' 418 for 7 against Australia in 2003.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Which two England batsmen both scored unbeaten centuries to complete the run chase against India at Edgbaston in July 2022?",
+    options: ["Joe Root and Jonny Bairstow", "Ben Stokes and Joe Root", "Jonny Bairstow and Ben Stokes", "Joe Root and Ben Foakes"],
+    correct: 0,
+    fact: "💯 Root (142*) and Bairstow (114*) added an unbroken 269 together — the fourth-highest partnership for any wicket in the fourth innings of a Test match.",
+    era: "2020s",
+    category: "test"
+  },
+  {
+    question: "Under which India captain did the team win their first-ever Test series in Australia, in 2018-19?",
+    options: ["Virat Kohli", "MS Dhoni", "Sourav Ganguly", "Ajinkya Rahane"],
+    correct: 0,
+    fact: "🇮🇳 The win came 71 years after India's first tour of Australia and made them only the fifth team ever — after England, West Indies, New Zealand and South Africa — to win a Test series there.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "What was the final series scoreline when India won their first-ever Test series in Australia in 2018-19?",
+    options: ["2-1", "3-0", "2-0", "3-1"],
+    correct: 0,
+    fact: "📊 India won the 1st Test in Adelaide by 31 runs and the 3rd in Melbourne by 137 runs, lost the 2nd in Perth, and drew the 4th in Sydney to seal the series.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "Ashton Agar's 98 at Trent Bridge in 2013 is the highest score in Test cricket history by a batsman in which position?",
+    options: ["No. 11", "No. 10", "No. 9", "No. 8"],
+    correct: 0,
+    fact: "🤝 Agar added 163 with Phillip Hughes for the 10th wicket — still the highest 10th-wicket partnership in Test history — and the innings came on his own Test debut.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "At which ground did Ashton Agar score his record-breaking 98 as a No. 11 batsman on Test debut in 2013?",
+    options: ["Trent Bridge", "Lord's", "The Oval", "Edgbaston"],
+    correct: 0,
+    fact: "📈 The previous highest score by a No. 11 was 95, by West Indies' Tino Best against England at Edgbaston in 2012.",
+    era: "2010s",
+    category: "test"
+  },
+  {
+    question: "Sachin Tendulkar made his Test debut against Pakistan in Karachi on 15 November 1989. How old was he at the time?",
+    options: ["16 years 205 days", "15 years 300 days", "17 years 50 days", "16 years 90 days"],
+    correct: 0,
+    fact: "👦 He remains India's youngest-ever Test debutant, and was dismissed for 15 in that first innings by a fellow debutant.",
+    era: "1970s-80s",
+    category: "test"
+  },
+  {
+    question: "Which fast bowler, also making his own Test debut in the same Karachi match, dismissed a 16-year-old Sachin Tendulkar in his first Test innings?",
+    options: ["Waqar Younis", "Wasim Akram", "Imran Khan", "Abdul Qadir"],
+    correct: 0,
+    fact: "💪 Tendulkar hit back in his very next innings with a gritty half-century against an attack featuring Imran Khan, Wasim Akram and Abdul Qadir.",
+    era: "1970s-80s",
+    category: "test"
   }
 
 ];
