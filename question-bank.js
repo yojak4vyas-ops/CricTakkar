@@ -2099,6 +2099,174 @@ const questionBank = [
     era: "2000s",
     category: "odi"
   },
+  {
+    question: "Which team won the inaugural ICC KnockOut Trophy in 1998, beating West Indies by 4 wickets in Dhaka?",
+    options: ["South Africa", "Pakistan", "Australia", "Sri Lanka"],
+    correct: 0,
+    fact: "🏆 South Africa beat West Indies by 4 wickets in Dhaka to win the first-ever ICC KnockOut Trophy (later renamed the Champions Trophy) — still their only major ICC one-day title to date.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 1998 ICC KnockOut Trophy final for taking 5/30 with the ball and scoring 37 with the bat?",
+    options: ["Jacques Kallis", "Allan Donald", "Lance Klusener", "Hansie Cronje"],
+    correct: 0,
+    fact: "🎳 Jacques Kallis took a career-best 5/30 and scored 37 in the 1998 final — he was also named Player of the Tournament for his all-round form across the whole event.",
+    era: "1990s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2000 ICC KnockOut Trophy, beating India by 4 wickets in Nairobi?",
+    options: ["New Zealand", "Australia", "South Africa", "Sri Lanka"],
+    correct: 0,
+    fact: "🏆 New Zealand chased down 265 to beat India by 4 wickets at the Gymkhana Club Ground, Nairobi — their first ICC KnockOut Trophy title, and still their only Champions Trophy win.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who scored an unbeaten 102 to win Man of the Match in the 2000 ICC KnockOut Trophy final?",
+    options: ["Chris Cairns", "Stephen Fleming", "Nathan Astle", "Roger Twose"],
+    correct: 0,
+    fact: "💥 Chris Cairns' unbeaten 102 off 113 balls, overcoming a knee injury, guided New Zealand to their maiden ICC KnockOut Trophy title against India in Nairobi.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which two teams were declared joint winners of the 2002 ICC Champions Trophy after the final was washed out on both of its scheduled days?",
+    options: ["India and Sri Lanka", "India and Pakistan", "Sri Lanka and Australia", "Pakistan and Sri Lanka"],
+    correct: 0,
+    fact: "🌧️ Persistent rain washed out the 2002 Champions Trophy final in Colombo on both 29 and 30 September — India and Sri Lanka were declared joint champions, sharing the trophy and prize money.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2004 ICC Champions Trophy, beating England by 2 wickets at The Oval?",
+    options: ["West Indies", "South Africa", "Pakistan", "Sri Lanka"],
+    correct: 0,
+    fact: "🏆 West Indies chased down 218 with 2 wickets and 7 balls to spare at The Oval to win their first ICC Champions Trophy title in 2004.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who was named Man of the Match in the 2004 Champions Trophy final after an unbeaten 34 helped West Indies chase down England's total at The Oval?",
+    options: ["Ian Bradshaw", "Courtney Browne", "Wavell Hinds", "Ramnaresh Sarwan"],
+    correct: 0,
+    fact: "🎯 Ian Bradshaw's unbeaten 34, in an match-winning stand with Courtney Browne plus 2 wickets with the ball, won him Man of the Match; Ramnaresh Sarwan was named Player of the Tournament.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2006 ICC Champions Trophy, beating West Indies by 8 wickets (D/L method) in Mumbai?",
+    options: ["Australia", "South Africa", "India", "Sri Lanka"],
+    correct: 0,
+    fact: "🏆 Australia won their first Champions Trophy title, chasing down a rain-revised target to beat West Indies by 8 wickets at the Brabourne Stadium, Mumbai in 2006.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Who scored an unbeaten 57 to win Man of the Match in the 2006 Champions Trophy final?",
+    options: ["Shane Watson", "Damien Martyn", "Ricky Ponting", "Adam Gilchrist"],
+    correct: 0,
+    fact: "🏏 Shane Watson's unbeaten 57 sealed Australia's win over West Indies in the 2006 final — the first of two Champions Trophy final Man-of-the-Match awards he'd go on to win in a row.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2009 ICC Champions Trophy, beating New Zealand by 6 wickets at Centurion?",
+    options: ["Australia", "South Africa", "India", "England"],
+    correct: 0,
+    fact: "🏆 Australia successfully defended their Champions Trophy title, beating New Zealand by 6 wickets at SuperSport Park, Centurion in 2009.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which Australian all-rounder scored a century to win the Champions Trophy final Man-of-the-Match award in both 2006 and 2009?",
+    options: ["Shane Watson", "Cameron White", "Brad Haddin", "Michael Clarke"],
+    correct: 0,
+    fact: "💯 Shane Watson scored an unbeaten 105 in the 2009 final against New Zealand, making him the only player to win the Champions Trophy final Man-of-the-Match award in consecutive editions.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the 2013 ICC Champions Trophy, beating England by 5 runs in a rain-reduced final at Edgbaston?",
+    options: ["India", "Australia", "South Africa", "Sri Lanka"],
+    correct: 0,
+    fact: "🏆 India beat England by 5 runs in a match reduced to 20 overs a side by rain — the win made MS Dhoni the only captain to lift all three global ICC white-ball trophies.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Who won Man of the Match in the 2013 Champions Trophy final for an unbeaten 33 with the bat and 2 wickets with the ball?",
+    options: ["Ravindra Jadeja", "R Ashwin", "Virat Kohli", "Bhuvneshwar Kumar"],
+    correct: 0,
+    fact: "🌟 Ravindra Jadeja's all-round display — 33* and 2/24 — won him Man of the Match in the rain-shortened 2013 final; he also picked up the tournament's Golden Ball for taking the most wickets.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which India captain is the only cricketer to lead a team to all three global ICC white-ball trophies — the T20 World Cup, the ODI World Cup, and the Champions Trophy?",
+    options: ["MS Dhoni", "Virat Kohli", "Sourav Ganguly", "Rohit Sharma"],
+    correct: 0,
+    fact: "👑 MS Dhoni captained India to the 2007 T20 World Cup, the 2011 ODI World Cup, and the 2013 Champions Trophy — a treble no other captain in history has completed.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team holds the record for the highest team total in ODI history, with 498/4?",
+    options: ["England", "India", "South Africa", "Australia"],
+    correct: 0,
+    fact: "💥 England posted 498/4 against Netherlands in Amstelveen in 2022 — three centurions in one innings (Salt, Malan and Buttler) and 26 sixes, the most ever hit in a single ODI innings.",
+    era: "2020s",
+    category: "odi"
+  },
+  {
+    question: "Who holds the record for the most wickets taken in ODI history, with 534?",
+    options: ["Muttiah Muralitharan", "Wasim Akram", "Waqar Younis", "Chaminda Vaas"],
+    correct: 0,
+    fact: "🎳 Muttiah Muralitharan took 534 ODI wickets across his career, passing Wasim Akram's previous record of 502 in February 2009 — still the all-time record.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "In which year was the first-ever tied One Day International played, between Australia and West Indies at the MCG?",
+    options: ["1984", "1979", "1989", "1975"],
+    correct: 0,
+    fact: "🤝 The February 1984 Benson & Hedges World Series Cup final between Australia and West Indies at the MCG ended in cricket's first-ever tied ODI, after Carl Rackemann was run out attempting the winning run.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Which team completed the highest successful run chase in ODI history, scoring 438/9 to beat Australia's 434?",
+    options: ["South Africa", "India", "England", "New Zealand"],
+    correct: 0,
+    fact: "🔥 South Africa chased down Australia's then-world-record 434/4 with 438/9, winning by 1 wicket off the very last ball in Johannesburg in 2006 — still cricket's highest successful ODI run chase, often called the greatest ODI ever played.",
+    era: "2000s",
+    category: "odi"
+  },
+  {
+    question: "Which batsman is the only player to have scored three double centuries (200+) in ODI cricket?",
+    options: ["Rohit Sharma", "Virender Sehwag", "Chris Gayle", "Sachin Tendulkar"],
+    correct: 0,
+    fact: "💯 Rohit Sharma has three ODI double centuries (208*, 209 and a record 264) — every other double century in ODI history has been scored by a different batsman. As an active player, his tally could still grow further.",
+    era: "2010s",
+    category: "odi"
+  },
+  {
+    question: "Which team won the first-ever Asia Cup in 1984, held in Sharjah?",
+    options: ["India", "Pakistan", "Sri Lanka", "Bangladesh"],
+    correct: 0,
+    fact: "🏆 India won both its round-robin matches to claim the inaugural 1984 Asia Cup in Sharjah, a three-team tournament also featuring Pakistan and Sri Lanka.",
+    era: "1970s-80s",
+    category: "odi"
+  },
+  {
+    question: "Who holds the record for the most catches by a fielder (non-wicketkeeper) in ODI history, with 218?",
+    options: ["Mahela Jayawardene", "Ricky Ponting", "Virat Kohli", "Mohammad Azharuddin"],
+    correct: 0,
+    fact: "🧤 Mahela Jayawardene took 218 catches in his ODI career — the only fielder in ODI history to reach 200 catches, well clear of Ricky Ponting and Virat Kohli, who are tied for second on 160.",
+    era: "2000s",
+    category: "odi"
+  },
 
   // ===== T20 CRICKET (72) =====
   {
