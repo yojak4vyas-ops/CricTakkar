@@ -3793,6 +3793,57 @@ const wordlePlayers = [
     // WC)
   },
 
+  // England Test Round 1 completion, Day 38 — after Day 37's 19 additions, direct ESPNcricinfo
+  // stats-table checks (batting-most-runs-career and bowling-most-wickets-career, England/Tests)
+  // showed the real top-15 batting list was already fully covered, but the real top-15 bowling
+  // list had 2 genuine gaps neither the automation nor Day 37 had caught: Andy Caddick (234
+  // wickets, rank 12) and Steve Harmison (222 wickets, rank 14). John Snow (added Day 37, 202
+  // wickets) turns out to rank 17th — a reasonable near-miss, not a strict top-15 member.
+  {
+    name: "Andy Caddick",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-arm fast-medium bowler, right-hand bat
+    debutYear: 1993,
+    // ODI debut 19 May 1993 vs Australia, Test debut 3 Jun 1993 vs Australia (same series) —
+    // both confirmed via Wikipedia
+    format: "Test+ODI",
+    // 62 Tests (1993-2003) — retired 2003, before England's first-ever T20I (Jun 2005), so zero
+    // T20Is by career-span logic, independently confirmed via Wikipedia (no T20I appearances
+    // listed)
+    iplTeams: [],
+    // Retired 2003, 5 years before the IPL began (2008) — no IPL history found via Wikipedia
+    iccTrophies: 0
+    // Named in England's 2003 World Cup squad, but Australia won that tournament, not England.
+    // Retired 2003 — 7 years before England's first-ever ICC trophy (2010 World T20). Zero,
+    // confirmed not assumed.
+  },
+  {
+    name: "Steve Harmison",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: genuinely fast bowler (bowled at 90mph+), right-hand bat
+    debutYear: 2002,
+    // Test debut 8 Aug 2002 vs India, ODI debut 17 Dec 2002 vs Sri Lanka — earliest international
+    // debut per this DB's convention, confirmed via Wikipedia
+    format: "All-format",
+    // Tests (2002-2009), ODIs (2002-2009, retired from the format after the 2009 Champions
+    // Trophy), and 2 T20Is (debut 13 Jun 2005 vs Australia) — all 3 formats confirmed via
+    // Wikipedia
+    iplTeams: [],
+    // No IPL history found via Wikipedia — international career (2002-2009) overlapped with the
+    // IPL's first 2 seasons (2008-2009) but no evidence of any signing or appearance
+    iccTrophies: 0
+    // Named in England's 2003 World Cup squad but did not play a match, and Australia won that
+    // tournament anyway. Retired from ODIs after the 2009 Champions Trophy (England did not reach
+    // the final) and from Tests the same year — before England's first-ever ICC trophy (2010
+    // World T20). Zero, confirmed not assumed.
+  },
+
   // ===== SOUTH AFRICA (10 players) =====
 
   {
