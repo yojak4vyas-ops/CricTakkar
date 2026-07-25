@@ -251,6 +251,12 @@ function saveScoreToFirebase(finalScore, total) {
           }).then(function() {
             console.log('✅ Score saved! +' + xpEarned + ' XP. Streak: ' + currentStreak);
             showStreakMessage(currentStreak);
+
+            // First-ever quiz completion (quizzesPlayed was 0 before this save) —
+            // the best moment to ask about notifications, per the Day 36 decision.
+            if ((data.quizzesPlayed || 0) === 0 && typeof maybeShowFirstQuizNotifPrompt === 'function') {
+              maybeShowFirstQuizNotifPrompt(data);
+            }
           }).catch(function(error) {
             console.error('❌ Error updating score:', error);
           });
