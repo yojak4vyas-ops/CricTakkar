@@ -1,0 +1,61 @@
+name: CricTakkar Push Notifications
+
+# Runs automation/send-notifications.js on a schedule. All times below are UTC because
+# GitHub Actions cron only understands UTC — IST is UTC+5:30, so each comment shows the
+# real IST send time. Agreed content/timing for all 4 types: see CLAUDE.md Current Build
+# Status (Day 35/36 session).
+on:
+  schedule:
+    - cron: '30 2 * * *'   # 8:00 AM IST daily  -> On This Day
+    - cron: '0 15 * * *'   # 8:30 PM IST daily  -> Streak reminder
+    - cron: '0 4 * * 1'    # 9:30 AM IST Monday -> Weekly leaderboard reset
+    - cron: '30 4 * * 1'   # 10:00 AM IST Monday -> We miss you
+  workflow_dispatch:
+    inputs:
+      type:
+        description: 'Notification type to send (manual test run)'
+        required: true
+        type: choice
+        options:
+          - streak
+          - onthisday
+          - weekly-leaderboard
+          - we-miss-you
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: automation
+        run: npm install
+
+      - name: Determine notification type from which schedule fired
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "type=${{ inputs.type }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 2 * * *" ]; then
+            echo "type=onthisday" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 15 * * *" ]; then
+            echo "type=streak" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "0 4 * * 1" ]; then
+            echo "type=weekly-leaderboard" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 4 * * 1" ]; then
+            echo "type=we-miss-you" >> "$GITHUB_OUTPUT"
+          else
+            echo "Unrecognized trigger — no notification type matched." >&2
+            exit 1
+          fi
+
+      - name: Send notification
+        working-directory: automation
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node send-notifications.js ${{ steps.pick.outputs.type }}

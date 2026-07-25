@@ -301,4 +301,12 @@ function renderOnThisDay() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', renderOnThisDay);
+if (typeof document !== 'undefined') {
+  document.addEventListener('DOMContentLoaded', renderOnThisDay);
+}
+
+// Lets the notification automation script (automation/send-notifications.js) reuse this
+// same verified event list via require() instead of duplicating it. No effect in the browser.
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = onThisDayEvents;
+}

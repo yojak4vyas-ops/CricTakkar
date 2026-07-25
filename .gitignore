@@ -1,0 +1,9 @@
+node_modules/
+automation/node_modules/
+*.log
+
+# Safety net: if the downloaded Firebase service-account key ever gets dropped into this
+# folder by mistake, git will refuse to track it rather than silently committing a secret.
+*firebase-adminsdk*.json
+serviceAccountKey.json
+*service-account*.json

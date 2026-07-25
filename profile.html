@@ -226,6 +226,19 @@
       <button class="logout-btn" id="logoutBtn">Log Out</button>
     </div>
 
+    <!-- ===== NOTIFICATIONS CARD ===== -->
+    <div class="identity-card" id="notificationsCard">
+      <div class="identity-row" style="align-items:center; justify-content:space-between;">
+        <div>
+          <div class="identity-label">🔔 Push Notifications</div>
+          <div class="identity-value" id="notifStatusText" style="font-size:0.85rem; font-weight:400; color:rgba(255,255,255,0.55);">
+            Get a nudge for your streak, On This Day stories, and weekly leaderboard updates.
+          </div>
+        </div>
+        <button class="btn-secondary" id="notifToggleBtn" style="white-space:nowrap;">Enable</button>
+      </div>
+    </div>
+
     <!-- ===== NAME + USERNAME IDENTITY CARD ===== -->
     <div class="identity-card">
 
@@ -328,6 +341,7 @@
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-messaging-compat.js"></script>
 
   <script>
     const firebaseConfig = {
@@ -627,6 +641,8 @@
         ? Math.round((data.totalScore / data.totalQuestions) * 100) : 0;
       document.getElementById('statAccuracy').textContent = accuracy + '%';
 
+      renderNotifStatus(!!(data.notificationsEnabled && data.fcmToken));
+
       // Avatar
       var avatars = {
         'Mumbai Indians':'💙','Chennai Super Kings':'💛',
@@ -664,6 +680,54 @@
       // Avatar customisation
       renderAvatarPreview(data);
       renderAvatarCustomiser(data);
+    }
+
+    // ===== PUSH NOTIFICATIONS TOGGLE =====
+    function renderNotifStatus(isEnabled) {
+      var btn = document.getElementById('notifToggleBtn');
+      var statusText = document.getElementById('notifStatusText');
+      if (!btn) return;
+
+      if (!notificationsSupported()) {
+        btn.textContent = 'Not supported';
+        btn.disabled = true;
+        return;
+      }
+
+      if (getNotificationPermissionState() === 'denied') {
+        btn.textContent = 'Blocked';
+        btn.disabled = true;
+        statusText.textContent = 'You blocked notifications in your browser settings — turn them back on there to enable.';
+        return;
+      }
+
+      if (isEnabled) {
+        btn.textContent = 'Disable';
+        statusText.textContent = 'You\'ll get a nudge for your streak, On This Day stories, and weekly leaderboard updates.';
+      } else {
+        btn.textContent = 'Enable';
+        statusText.textContent = 'Get a nudge for your streak, On This Day stories, and weekly leaderboard updates.';
+      }
+
+      btn.onclick = function() {
+        btn.disabled = true;
+        if (isEnabled) {
+          disableNotifications(function(ok) {
+            btn.disabled = false;
+            renderNotifStatus(false);
+          });
+        } else {
+          enableNotifications(function(ok, message) {
+            btn.disabled = false;
+            if (ok) {
+              renderNotifStatus(true);
+            } else {
+              alert(message || 'Could not enable notifications.');
+              renderNotifStatus(false);
+            }
+          });
+        }
+      };
     }
 
     // ===== RENDER BADGES GRID =====
@@ -810,6 +874,8 @@
     }
 
   </script>
+
+  <script src="notifications.js"></script>
 
 </body>
 </html>
