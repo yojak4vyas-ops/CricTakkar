@@ -140,6 +140,25 @@ Goal: Turn the app into an earning platform.
 
 ---
 
+## APP DISTRIBUTION STRATEGY — PERMANENT (Added Day 36)
+
+CricTakkar will be distributed as a **PWA (Progressive Web App) for now**, with **Google Play Store (Android) and Apple App Store (iOS) planned for later**, once there's real user traction to justify the cost and complexity. This was decided after the user asked about native apps and we worked through the tradeoffs together — see the Day 36 log entry in Current Build Status for the full discussion.
+
+WHAT A PWA IS: the same website, made installable. Two small additions — a manifest file (name/icon/colours) and a service worker (offline caching) — let a user's browser offer "Add to Home Screen," giving CricTakkar a real home-screen icon that opens full-screen with no browser address bar. Feels like a native app, supports push notifications on modern phones, and is still exactly the same website underneath — no code duplication, no rewrite, deploys exactly the same way (push to GitHub → Vercel auto-deploys).
+
+WHY THIS ORDER:
+- PWA is free and needs almost no extra work on top of what's already built.
+- Google Play ($25 one-time) and Apple App Store ($99/year, recurring) are real costs that conflict with the standing zero-budget rule until there's a specific decision to spend on it.
+- The stores bring real trust/discoverability advantages for a general Indian audience that a PWA can't match on its own — worth paying for once the app has real traction, not before.
+
+WHEN WE MOVE TO THE STORES: cheapest realistic path is wrapping the *existing* website via Capacitor or a Trusted Web Activity, with the wrapper set to load the live Vercel site (not a bundled copy) — reuses all existing code, and every future content update (quiz questions, Wordle players, On This Day events, etc.) keeps showing up in the app instantly, exactly like it does now, without needing a new store submission each time.
+
+IMPORTANT CATCH TO REMEMBER WHEN THAT DAY COMES: Phase 4's Premium subscription plan (₹99-199/month via Razorpay) will likely need to change specifically for the native app — Google Play and Apple both require using their own in-app billing systems for digital subscriptions sold inside an app (not Razorpay directly), taking a 15-30% cut. A common workaround is having Premium purchases happen on the website rather than inside the app's own UI. Revisit this specifically when Phase 4 and the native app timelines actually meet — don't just wire up Razorpay inside a native app shell without re-checking store policy first.
+
+STATUS: PWA not yet built (next step, whenever the user is ready to build it). Play Store/App Store not started, no cost committed yet.
+
+---
+
 ## BUILD RULES — FOLLOW EVERY SINGLE SESSION
 
 1. Start every session by telling me what we completed last time and what today's goal is.
