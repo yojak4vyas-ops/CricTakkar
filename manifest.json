@@ -1,0 +1,17 @@
+{
+  "name": "CricTakkar — Cricket. Quiz. Battle.",
+  "short_name": "CricTakkar",
+  "description": "India's cricket quiz and trivia platform — quizzes, Wordle, rankings, On This Day, and more.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0e1a",
+  "theme_color": "#0a0e1a",
+  "orientation": "portrait-primary",
+  "lang": "en-IN",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

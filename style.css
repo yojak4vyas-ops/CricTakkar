@@ -442,3 +442,42 @@ body {
     max-width: none;
   }
 }
+
+/* ===== PWA INSTALL BUTTON ===== */
+.ct-install-btn {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  background: linear-gradient(135deg, #f4a900, #e07b00);
+  color: #0a0e1a;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(244, 169, 0, 0.35);
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: ctToastIn 0.25s ease-out;
+}
+
+.ct-install-close {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  padding: 2px 4px;
+}
+
+.ct-install-close:hover {
+  opacity: 1;
+}
+
+@media (max-width: 480px) {
+  .ct-install-btn {
+    left: 16px;
+    bottom: 16px;
+  }
+}
