@@ -3431,6 +3431,368 @@ const wordlePlayers = [
     // No ICC trophies — Wikipedia confirmed
   },
 
+  // England Wordle cap/round expansion, Day 37 — Round 1 (top-15 all-time run-scorers +
+  // top-15 all-time wicket-takers), applied from a scheduled automation output, independently
+  // re-verified (WebSearch + a direct WebFetch of the 2010 World T20 squads Wikipedia page)
+  // before being written to this file
+  {
+    name: "Alec Stewart",
+    country: "England",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Verified ESPNcricinfo + Wikipedia (right-handed wicketkeeper-batsman; genuinely bowled in
+    // Tests, 2 innings/3.2 overs, best 0/5 — real ball-bowling record, not NA)
+    debutYear: 1989,
+    format: "Test+ODI",
+    // 133 Tests (debut 24 Feb 1990 vs West Indies), 170 ODIs (debut 15 Oct 1989 vs Sri Lanka),
+    // retired 2003 — before England's first T20I (13 Jun 2005), so zero T20Is by career-span logic
+    iplTeams: [],
+    iccTrophies: 0
+    // England reached the 1992 World Cup final (Stewart played) but lost to Pakistan by 22 runs.
+    // No Champions Trophy existed until 1998. Zero England ICC titles across his 1990-2003 career.
+  },
+  {
+    name: "David Gower",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo + Wikipedia agree: right-arm offbreak despite batting left-handed, 1 Test wicket
+    debutYear: 1978,
+    format: "Test+ODI",
+    // Test debut 1978 vs Pakistan, 114 ODIs, retired 1992/93 — before England's first T20I (2005)
+    iplTeams: [],
+    iccTrophies: 0
+    // England World Cup runners-up 1979/1987 (never won) — his career (1978-1993) predates the
+    // Champions Trophy (1998) entirely. Zero England ICC titles in his career span.
+  },
+  {
+    name: "Geoffrey Boycott",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: occasional right-arm medium/inswing bowler, 7 Test wickets
+    debutYear: 1964,
+    format: "Test+ODI",
+    // 108 Tests (debut Jun 1964), 36 ODIs (debut 5 Jan 1971 — the very first ODI ever played),
+    // Test career ended 1982 — before England's first T20I (2005)
+    iplTeams: [],
+    iccTrophies: 0
+    // Career (1964-1982) covers England's 1979 WC final loss; Champions Trophy didn't exist until
+    // 1998, 16 years after he retired. Zero England ICC titles in his career span.
+  },
+  {
+    name: "Michael Atherton",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: occasional leg-break bowler — a genuine playing skill, not NA
+    debutYear: 1989,
+    format: "Test+ODI",
+    // 115 Tests (debut 1989 vs Australia, retired 2001), 54 ODIs (debut 18 Jul 1990, last 20 Aug
+    // 1998) — retired 2001, before England's first T20I (Feb 2005)
+    iplTeams: [],
+    iccTrophies: 0
+    // England were 1992 World Cup runners-up (lost final to Pakistan) during his career (1989-2001)
+    // — no Champions Trophy win either (1998 SA, 2000 NZ). Zero England ICC titles in this window.
+  },
+  {
+    name: "Ian Bell",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: part-time medium pace, 1 Test wicket + a 5/41 ODI return
+    debutYear: 2004,
+    format: "All-format",
+    // Test debut 19 Aug 2004, 118 Tests; ODI debut 28 Nov 2004, 161 ODIs; T20I debut 28 Aug 2006,
+    // 8 T20Is (last 20 May 2014) — all 3 formats confirmed genuinely played
+    iplTeams: [],
+    // Confirmed via 3 independent sources: never played a single IPL match (unsold at 2012 and
+    // 2014 auctions) — only entered the league in 2026 as Delhi Capitals' assistant COACH, not
+    // as a player. Empty array is correct, not just unresearched.
+    iccTrophies: 0
+    // Independently re-verified by fetching the actual official 2010 World T20 winning squad
+    // directly (Wikipedia): Collingwood(c), Anderson, Bopara, Bresnan, Broad, Kieswetter, Lumb,
+    // Morgan, Pietersen, Shahzad, Sidebottom, Swann, Tredwell, Wright, Yardy — Bell is NOT on it,
+    // confirming the automation's original flag (a broad search had wrongly implied he was) was
+    // correctly resolved. No other ICC trophy overlaps his 2004-2015 career.
+  },
+  {
+    name: "Colin Cowdrey",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: occasional right-arm leg spin, 88 balls bowled in Tests
+    // (best 0/1) — real deliveries bowled, so per the "even one ball = record it" rule, not NA
+    debutYear: 1954,
+    format: "Test+ODI",
+    // 114 Tests (debut Dec 1954, career to Feb 1975). Played in the very first-ever ODI, 5 Jan
+    // 1971 at the MCG (scored 1 run, independently re-verified via Wikipedia) — confirmed as his
+    // ONLY ODI cap (1 match). Career effectively ended Feb 1975, before the first-ever T20I
+    // (2005) — Test+ODI, not All-format.
+    iplTeams: [],
+    iccTrophies: 0
+    // First-ever Cricket World Cup wasn't held until Jun 1975, months after his final Test (Feb
+    // 1975) — he was not part of that squad, and West Indies won it anyway. Zero by elimination.
+  },
+  {
+    name: "Wally Hammond",
+    country: "England",
+    role: "All-rounder",
+    // CORRECTED from the automation's drafted "Batsman" to "All-rounder" — independently confirmed
+    // 83 Test wickets in 85 Tests (Wikipedia), the same bar this database already uses elsewhere
+    // for a genuine batting+bowling contributor (see Ian Botham, Andrew Flintoff, both tagged
+    // "All-rounder" for a comparable profile) rather than "Batsman"
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: fast-medium cutter/swing bowler, 83 Test wickets at 37.80
+    // (best 5/36 on Test debut) — a real, substantial bowling record, not NA
+    debutYear: 1927,
+    format: "Test",
+    // Career 1927-1947 (85 Tests), entirely before ODIs existed (1971) or T20Is (2005)
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1947 — no ICC trophy of any kind existed yet (first ODI World Cup was 1975)
+  },
+  {
+    name: "Andrew Strauss",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // FLAGGED (unconfirmed, not proven — same treatment as KL Rahul): some lower-quality
+    // aggregator sites list a nominal "Left arm medium" style, but dedicated checks (including an
+    // independent re-check this session) found no confirmed overs bowled in any format and no
+    // Test bowling record either way — marked NA per the "unconfirmed" precedent rather than
+    // asserting an unevidenced style
+    debutYear: 2004,
+    format: "All-format",
+    // Test debut 20 May 2004 vs New Zealand; ODI debut 2003; T20I — played exactly 1 (vs Pakistan,
+    // Bristol, 28 Aug 2006, out for a duck) — confirmed via scorecard, all 3 formats genuinely
+    // played despite the minimal T20I sample
+    iplTeams: [],
+    iccTrophies: 0
+    // Never played IPL as a player (his later IPL involvement was purely as ECB Director of
+    // Cricket, post-retirement, unrelated to playing). Independently re-verified by fetching the
+    // actual 2010 World T20 winning squad directly (Wikipedia): Strauss is NOT on it. Only ICC
+    // final reached was the 2004 Champions Trophy (lost to West Indies). Zero, confirmed not
+    // assumed.
+  },
+  {
+    name: "Len Hutton",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: useful leg-break bowler, genuinely bowled and took wickets
+    // late into his career (documented clean-bowling Richie Benaud with his literal last Test ball)
+    debutYear: 1937,
+    format: "Test",
+    // Career 1937-1955 (79 Tests), entirely before ODIs existed (1971)
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1955 — 16 years before the first ODI, 20 years before the first ICC trophy (1975)
+  },
+  {
+    name: "Ken Barrington",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: slow leg-breaks and googlies, 29 Test wickets at 44.82
+    debutYear: 1955,
+    format: "Test",
+    // Career 1955-1968 (82 Tests), entirely before ODIs existed (1971)
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1968 — 3 years before the first ODI, 7 years before the first ICC trophy (1975)
+  },
+  {
+    name: "Bob Willis",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Verified explicitly (not assumed from bowling arm): right-hand lower-order bat, Test average
+    // 11.50
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo: genuinely fast pace with steep bounce, not fast-medium
+    debutYear: 1971,
+    // Test debut 9 Jan 1971 (Sydney, Ashes tour)
+    format: "Test+ODI",
+    // 90 Tests (1971-1984), 64 ODIs (debut Sep 1973) — career ended 1984, before T20I existed
+    iplTeams: [],
+    iccTrophies: 0
+    // Career ended 1984 — before England's first ICC white-ball trophy (2010 T20 World Cup)
+  },
+  {
+    name: "Fred Trueman",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // ESPNcricinfo explicit: right-hand bat; useful late-order batsman, 3 first-class centuries
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: genuinely fast pace ("Fiery Fred")
+    debutYear: 1952,
+    // Test debut 1952 vs India (8/31 on debut)
+    format: "Test",
+    // Retired from Tests Jun 1965 — ODIs didn't begin until Jan 1971, zero ODI/T20I caps by
+    // definition
+    iplTeams: [],
+    iccTrophies: 0
+    // Career predates any ICC trophy (first ODI World Cup wasn't until 1975, a decade after he
+    // retired)
+  },
+  {
+    name: "Derek Underwood",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Confirmed explicitly, not assumed from bowling arm: batted and wrote right-handed despite
+    // bowling left-arm (same trap as Zaheer Khan/Anderson/Broad — checked individually)
+    bowlingStyle: "Left arm orthodox",
+    // ESPNcricinfo + Wikipedia agree: "slow left-arm orthodox" (bowled brisker than typical, but
+    // classification is orthodox) — this DB's naming standard folds "slow left-arm orthodox" into
+    // "Left arm orthodox," no genuine mismatch
+    debutYear: 1966,
+    // Test debut 30 Jun 1966 vs West Indies, Trent Bridge
+    format: "Test+ODI",
+    // 86 Tests (1966-1982), 26 ODIs (debut 18 Jul 1973, last 14 Feb 1982) — retired 1982, before
+    // T20I existed
+    iplTeams: [],
+    iccTrophies: 0
+    // Career ended 1982 — 28 years before England's first ICC white-ball trophy (2010 T20 WC)
+  },
+  {
+    name: "Graeme Swann",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // ESPNcricinfo explicit: right-hand bat and right-arm offbreak bowler
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo + Wikipedia agree: traditional right-arm off-spin finger-spinner
+    debutYear: 2000,
+    // CORRECTED to match this DB's established debutYear convention (earliest international
+    // debut across any format, not Test-specific — see Dhoni/Ishan Kishan precedent): Swann's
+    // actual first England cap was an ODI in 2000 vs South Africa, several years before he was
+    // recalled and made his Test debut in 2008. His Test debut alone (2008) would understate his
+    // real international career start.
+    format: "All-format",
+    // Test debut Dec 2008 vs India (60 Tests, 2008-2013); ODI debut 2000 (79 ODIs); T20I — 39
+    // caps (2008-2013), including the winning 2010 World T20 campaign — all 3 confirmed
+    iplTeams: [],
+    // Dedicated search confirmed: entered the IPL auction three times (2010, 2011, 2012) and went
+    // unsold every year — never played a single IPL match. Empty array is correct, not unresearched.
+    iccTrophies: 1
+    // Independently re-verified by fetching the actual official 2010 World T20 winning squad
+    // directly (Wikipedia): Swann IS on it. No other ICC trophy falls within his 2008-2013
+    // international career (England lost the 2013 Champions Trophy final to India).
+  },
+  {
+    name: "Brian Statham",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // ESPNcricinfo explicit: left-hand bat (occasionally effective tailender) — verified
+    // explicitly, not assumed from bowling arm
+    bowlingStyle: "Right arm fast medium",
+    // FLAGGED — minor cross-source pace-category disagreement: ESPNcricinfo's structured profile
+    // field says "right-arm fast-medium," while Wikipedia's prose just says "right arm fast
+    // bowler" with no finer subcategory. Went with ESPNcricinfo's structured field per this
+    // project's usual tie-break precedent, but flagging as a genuine (if minor) mismatch not
+    // resolved by re-query, per the Four-Source Verification Rule.
+    debutYear: 1951,
+    format: "Test",
+    // Career 1951-1965 — ODIs began 1971, T20Is began 2005, both well after his retirement
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1965 — England's first ICC trophy (2010 T20 WC) came 45 years later
+  },
+  {
+    name: "Matthew Hoggard",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Confirmed right-hand bat via Wikipedia, consistent with ESPNcricinfo role listing
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-arm fast-medium bowler, clean agreement
+    debutYear: 2000,
+    format: "Test+ODI",
+    // Test cap (29 Jun 2000 vs West Indies), ODI cap (3 Oct 2001 vs Zimbabwe, 26 ODIs) — no T20I
+    // cap found anywhere despite England playing T20I since Jun 2005 and Hoggard remaining active
+    // through 2008; independently re-checked this session, still no evidence of a T20I cap found
+    iplTeams: [],
+    // FLAGGED: one low-quality aggregator (cricclubs.com) claimed 2 IPL matches for Kolkata
+    // Knight Riders, but neither ESPNcricinfo nor Wikipedia shows any IPL history for him at all —
+    // independently re-checked this session (Wikipedia), still no IPL history found — treated as
+    // an unreliable-source false positive (same pattern as the Day 15 Asghar Afghan/Legends
+    // League Cricket case), empty array used
+    iccTrophies: 0
+    // Career 2000-2008, ended just before England's first ICC trophy (2010 T20 WC)
+  },
+  {
+    name: "Alec Bedser",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // ESPNcricinfo explicit: right-hand bat, no disagreement with Wikipedia
+    bowlingStyle: "Right arm medium fast",
+    // ESPNcricinfo + Wikipedia agree: "right-arm medium-fast" / "primarily a medium-fast bowler" —
+    // clean agreement, kept distinct from "fast medium" per this DB's standing convention
+    debutYear: 1946,
+    format: "Test",
+    // Career 1946-1955, well before ODIs began (1971)
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1955 — 55 years before England's first ICC trophy (2010 T20 WC)
+  },
+  {
+    name: "Darren Gough",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // ESPNcricinfo explicit: right-hand bat
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo explicit: right-arm fast-medium bowler, no disagreement found with Wikipedia
+    debutYear: 1994,
+    format: "All-format",
+    // Wikipedia confirms explicitly: Gough played 2 T20Is (vs Australia 2005, vs Pakistan 2006)
+    // alongside his 58-Test and 159-ODI career — checked explicitly rather than assumed, genuine
+    // All-format international
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired end of 2008 — England's first ICC trophy (2010 T20 WC) came after his retirement.
+    // No evidence found of any IPL involvement despite a dedicated search.
+  },
+  {
+    name: "John Snow",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Wikipedia explicit: batted right-handed as a useful tail-ender
+    bowlingStyle: "Right arm fast medium",
+    // FLAGGED — minor cross-source pace-category disagreement: his early career is described as
+    // fast-medium, but sources note he developed genuine extra pace mid-career after an action
+    // change in 1965-66 ("a bowler of genuine pace"), while Wikipedia's plain prose just says
+    // "right-arm fast bowler." Went with the fast-medium profile designation per the same
+    // tie-break precedent as Statham, but flagging as a real classification tension, not resolved
+    // by re-query.
+    debutYear: 1965,
+    // Test debut 1965 vs New Zealand at Lord's
+    format: "Test+ODI",
+    // Played in the first-ever official ODI, 5 Jan 1971 at the MCG (England vs Australia), ODI
+    // cap 11 — confirmed via scorecard, a real ODI credit rather than the naive "career ended
+    // 1976 = Test-only" assumption
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired from Tests 1976 — decades before IPL (2008) or England's first ICC trophy (2010 T20
+    // WC)
+  },
+
   // ===== SOUTH AFRICA (10 players) =====
 
   {
