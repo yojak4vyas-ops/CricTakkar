@@ -159,6 +159,63 @@ STATUS: **PWA built Day 36** — manifest.json, app icons, service worker offlin
 
 ---
 
+## PHASE 3 MULTIPLAYER ARCHITECTURE — PERMANENT (Added Day 41)
+
+The tech stack section above says "Real-time multiplayer: Socket.io + Node.js" hosted on "Railway.app (free tier)". **That plan was written before Railway removed its genuine free tier and is no longer buildable at zero cost.** Verified Day 41: Railway now gives a one-time $5 trial credit and then $1/month of credits, while a minimal always-on service costs roughly $0.80–1.00/month — permanently scraping the ceiling with no headroom. Render's free tier does not support WebSockets at all (paid plans only), so it isn't a fallback. Vercel and Netlify can't host WebSockets either (serverless functions only).
+
+**DECISION (user's call, Day 41): build Phase 3 on Option A — Firestore-only, no separate server. Option B (a real Socket.io server) is documented below as a deliberate future upgrade path to revisit AFTER all of Phase 3 is built, not as an abandoned idea.**
+
+### OPTION A — FIRESTORE-ONLY MULTIPLAYER (what we are building)
+
+Firestore's real-time listeners already push changes to every connected client within roughly 0.3 seconds. With a 15-second timer per question, that lag is imperceptible. No server to host, no monthly cost, no cold starts, and it reuses the Firebase project already in use for auth/profiles/leaderboards.
+
+**Data model:**
+```
+matches/{matchId}
+  roomCode         "ABC123" — 6 chars, uppercase, shareable
+  hostUid          who controls question advancement
+  mode             "classic" | "speed" | "elimination" | "duel"
+  status           "lobby" | "playing" | "finished"
+  questionIds      fixed array chosen at start so every client agrees
+  currentQuestion  0-based index
+  questionStartedAt  server timestamp — the sync anchor
+  players          MAP of uid -> {name, joinedAt}
+  leaderboard      aggregated array, written by host only
+  isPublic         boolean (matchmaking vs private room)
+
+matches/{matchId}/answers/{uid}_{questionIndex}
+  uid, questionIndex, selectedOption, isCorrect, timeTaken, answeredAt
+```
+
+**Why this exact shape — the quota is the constraint.** Firebase's free Spark plan allows 50,000 document reads and 20,000 writes per day. The naive design (one document per player, everyone listening to everyone) costs ~100,000 reads for a single 100-player match and blows the daily quota in one game. The design above instead has **the host's browser act as the server**: only the host reads the answers subcollection and computes standings, then writes one aggregated `leaderboard` field; all other players listen to just the single match document. That brings a 100-player, 10-question match down to roughly **2,000 reads and 1,010 writes** — about 20 full tournaments a day within the free tier. Any future change to this data model must preserve that "one aggregated doc, not N docs" property or the free tier breaks.
+
+**`players` as a map, not a subcollection:** makes the lobby list one document read for everyone and joining one write. Correct for private rooms (2–10 friends). Note the limit: Firestore sustains only about 1 write/second to a single document, so 100 people joining a public tournament at once would contend. Tournament-scale joins will need a different path (staggered joins or a subcollection) when Feature 34 is built.
+
+**Timer sync:** the host writes `currentQuestion` and `questionStartedAt` together; each client starts its own 15-second countdown when that update arrives. Network jitter between clients is ~100–300ms against a 15-second window — negligible.
+
+**KNOWN LIMITATIONS OF OPTION A — these are accepted tradeoffs, not bugs to fix:**
+1. **Cheating is possible by design.** `question-bank.js` is a public file, so the correct answers are already readable by anyone who opens the browser console — that's true of the existing single-player games too. With no server, the client also reports its own `isCorrect` and `timeTaken`. Security rules make answers immutable once written and stop a player writing another player's answer, but a determined cheater can still fake a score. Acceptable for free casual play with no cash prizes (see LEGAL BOUNDARIES — there is no money at stake, which is exactly why this is tolerable).
+2. **If the host closes their browser, the match stalls.** v1 will end the match honestly with a "host left" message. Host migration (lowest remaining uid takes over via a heartbeat field) is a later improvement.
+3. **Scheduled tournaments have no natural human host** (Feature 39, the daily 8pm event). Likely free solution when we get there: reuse the GitHub Actions setup already built for push notifications on Day 36 — a scheduled Action can run a Node script that acts as the tournament host using the existing Firebase service-account secret. No new cost, no new platform.
+
+### OPTION B — SOCKET.IO + NODE SERVER (documented upgrade path, revisit after Phase 3 is complete)
+
+Do NOT treat this as dead. Revisit it once all 14 Phase 3 features are built and there are real users, and re-evaluate against actual traffic.
+
+**What Option B genuinely fixes, in order of how much it matters:**
+1. **Real anti-cheat — the strongest reason, stronger than speed.** A server can hold the correct answers and never send them to the client until after the question closes, and can time answers itself instead of trusting the client. This is the only way to make competitive/ranked multiplayer trustworthy. If CricTakkar ever runs sponsored contests with real prizes (see REVENUE MODEL — brand sponsorships providing merch/vouchers), this stops being optional, because a prize creates a real incentive to cheat.
+2. **No host-dependency.** The server is always the authority, so nobody's browser closing can stall a match, and scheduled tournaments need no host workaround.
+3. **True instant sync** (~50ms vs ~300ms). Only actually matters for a future real-time buzzer mode where milliseconds decide a winner — irrelevant for 15-second questions.
+4. **No per-read/write quota.** Firestore's free tier caps total daily traffic; a server's cost scales with uptime, not message count. At high volume this inverts the economics in the server's favour.
+
+**What it costs:** roughly ₹450/month ongoing for a minimal always-on host (Railway or similar), forever. This breaks the standing zero-budget rule, so it needs an explicit decision to spend — same gate as the Play Store decision in the section above.
+
+**Migration path if we take it:** the Firestore data model above maps almost directly onto server-held room state, so the UI, game screens, and match flow built in Phase 3 would largely survive. The realistic work is replacing the Firestore listener layer with Socket.io events and moving scoring/answer-checking from the client into the server. Build the client so match state flows through one clearly-separated module rather than being scattered across screens, so this swap stays cheap later.
+
+**Trigger conditions to actually revisit:** any one of — (a) a sponsored contest with real prizes goes live, (b) Firestore free-tier quota starts being hit on normal traffic, (c) cheating becomes a visible complaint from real users, (d) a real-time buzzer mode is wanted.
+
+---
+
 ## BUILD RULES — FOLLOW EVERY SINGLE SESSION
 
 1. Start every session by telling me what we completed last time and what today's goal is.
