@@ -4840,6 +4840,182 @@ const wordlePlayers = [
     // this file, e.g. Bracken/Hogg) + 2023 ODI World Cup (independently re-verified against
     // ESPNcricinfo's own squad page — confirmed on the 15-man list) — ESPNcricinfo + ICC official
     // squad list confirmed
+  },
+  {
+    name: "Adil Rashid",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm leg break googly bowler
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 27 Aug 2009 vs Ireland (earliest), T20I debut also 2009, Test debut 2015 —
+    // still an active white-ball international as of 2026 — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Punjab Kings", "Sunrisers Hyderabad"],
+    // Punjab Kings (2021) and Sunrisers Hyderabad (2023) — genuine playing appearances,
+    // independently re-verified via a dedicated IPL-history search. Went unsold in the IPL 2026
+    // mega auction
+    iccTrophies: 2
+    // 2019 ODI World Cup + 2022 T20 World Cup — both independently re-verified against the actual
+    // 15-man winning squad lists (Wikipedia 2019 squads page / ESPNcricinfo 2022 squad), not
+    // assumed from career-span proximity
+  },
+  {
+    name: "Chris Woakes",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowling all-rounder
+    debutYear: 2011,
+    format: "All-format",
+    // T20I debut 12 Jan 2011 vs Australia (earliest), ODI debut 21 Jan 2011, Test debut 21 Aug
+    // 2013 vs Australia — retired from international cricket September 2025 — Wikipedia infobox
+    // confirmed
+    iplTeams: ["Kolkata Knight Riders", "Royal Challengers Bangalore", "Delhi Capitals"],
+    // Kolkata Knight Riders (2017, 13 matches, 17 wickets), Royal Challengers Bangalore (2018,
+    // 5 matches), Delhi Capitals (2021 — he was also signed for 2020 but pulled out before that
+    // season). CORRECTION applied on entry: the drafted data also listed Punjab Kings (2024), but
+    // he was bought at that auction and never appeared in a single match, withdrawing during the
+    // season — excluded per the standing "signed but never played" rule (Axar Patel / Stuart
+    // Broad precedent). Wikipedia's own team list shows no Punjab Kings entry at all. Also
+    // confirmed NOT a Rajasthan Royals player in 2026 (his 2026 franchise team is Sylhet Titans
+    // in the BPL, not an IPL side)
+    iccTrophies: 2
+    // 2019 ODI World Cup + 2022 T20 World Cup — both independently re-verified against the actual
+    // 15-man winning squad lists
+  },
+  {
+    name: "Liam Plunkett",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast medium bowler
+    debutYear: 2005,
+    format: "All-format",
+    // Test and ODI debut both Nov-Dec 2005 vs Pakistan (earliest), T20I debut 15 Jun 2006 vs
+    // Sri Lanka — international career until 2019 — Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils"],
+    // Delhi Daredevils (2018) — signed as an injury replacement for Kagiso Rabada and genuinely
+    // played: 7 matches, 4 wickets, including 3/17 on debut vs Kings XI Punjab. Independently
+    // re-verified via a dedicated IPL-history search (iplt20.com + Sky Sports both confirm the
+    // signing, match reports confirm the appearances). Franchise name is correct for 2018 — the
+    // Delhi Capitals rename came in 2019
+    iccTrophies: 1
+    // 2019 ODI World Cup — independently re-verified, confirmed on the 15-man winning squad list.
+    // Not in the 2010 World Twenty20 squad (he was out of the England side in that period)
+  },
+  {
+    name: "Phillip DeFreitas",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — genuine
+    // bowling all-rounder (10,000+ first-class runs and 1,000 first-class wickets)
+    debutYear: 1986,
+    format: "Test+ODI",
+    // Test debut 14 Nov 1986 vs Australia, ODI debut 1 Jan 1987 vs Australia, last ODI 24 May
+    // 1997 — 44 Tests and 103 ODIs. Retired from international cricket well before T20Is existed
+    // (first T20I was Feb 2005), so no T20I caps are possible — Wikipedia infobox confirmed
+    iplTeams: [],
+    // Retired 1997, over a decade before the IPL began in 2008 — no IPL history possible
+    iccTrophies: 0
+    // Confirmed squad member of England's 1987 and 1992 World Cup teams, but both were
+    // runners-up finishes — no ICC trophy — Wikipedia confirmed
+  },
+  {
+    name: "Paul Collingwood",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm medium — a batting all-rounder
+    // whose medium pace was a genuine part-time option
+    debutYear: 2001,
+    format: "All-format",
+    // ODI debut Jun 2001 vs Pakistan (earliest), Test debut late 2003 vs Sri Lanka, and he was
+    // England's first-ever T20I captain — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils"],
+    // Delhi Daredevils (2010) — genuine playing appearances independently re-verified, including
+    // 50 off 43 balls vs Kolkata Knight Riders on 29 Mar 2010 (ESPNcricinfo scorecard). Franchise
+    // name is correct for 2010 — the Delhi Capitals rename came in 2019, after his IPL career
+    iccTrophies: 1
+    // Captained England to the 2010 World Twenty20 — their first-ever ICC trophy — and hit the
+    // winning runs himself in the final vs Australia. Wikipedia confirmed
+  },
+  {
+    name: "Moeen Ali",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Wikipedia: left-handed batsman, right-arm off-spin bowler (first English spinner to bowl a
+    // doosra in international cricket, 2014 vs Sri Lanka)
+    debutYear: 2014,
+    format: "All-format",
+    // Debuted in all 3 formats in 2014 — retired from international cricket 8 September 2024 —
+    // Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Chennai Super Kings", "Kolkata Knight Riders"],
+    // Royal Challengers Bangalore (2018-2020), Chennai Super Kings (2021-2024, part of both the
+    // 2021 and 2023 title-winning squads), Kolkata Knight Riders (2025) — independently
+    // re-verified via a dedicated IPL-history search: 1,167 runs and 41 wickets in 73 matches,
+    // all three stints genuine playing spells
+    iccTrophies: 2
+    // 2019 ODI World Cup + 2022 T20 World Cup — both independently re-verified against the actual
+    // 15-man winning squad lists
+  },
+  {
+    name: "Steven Finn",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // CORRECTION applied on entry: the drafted data said "Right arm fast", but both ESPNcricinfo
+    // and Wikipedia describe him as right-arm FAST MEDIUM — the two sources agree with each
+    // other, so this was a drafting error rather than a genuine cross-source mismatch
+    debutYear: 2010,
+    format: "All-format",
+    // Test debut 2010 vs Bangladesh (earliest), ODI debut 2011 vs Australia, T20I debut 2011 vs
+    // West Indies (last T20I Aug 2015) — retired from all cricket 14 Aug 2023 — Wikipedia
+    // infobox confirmed
+    iplTeams: [],
+    // Never played in the IPL despite being an active England international through the 2010s —
+    // Wikipedia lists no IPL franchise at all (his overseas franchise cricket was elsewhere), and
+    // he was widely expected to go unsold at the 2018 auction
+    iccTrophies: 0
+    // Was in England's 2015 ODI World Cup squad (took a hat-trick, but England exited early with
+    // no trophy) and is confirmed NOT on the winning 2019 squad list — independently re-verified
+    // against the actual 15-man 2019 squad. His international career also started after the 2010
+    // World Twenty20 win, so no trophy from that either
+  },
+  {
+    name: "David Willey",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: left-hand bat, left-arm fast-medium bowler and useful
+    // lower-order hitter — son of former England all-rounder Peter Willey
+    debutYear: 2015,
+    format: "ODI+T20",
+    // ODI debut 8 May 2015 vs Ireland, T20I debut 23 Jun 2015 vs New Zealand — explicitly
+    // confirmed he never received a Test cap. Retired from international cricket 1 Nov 2023 after
+    // the 2023 World Cup, finishing on exactly 100 ODI wickets
+    iplTeams: ["Chennai Super Kings", "Royal Challengers Bangalore"],
+    // Chennai Super Kings (2018 — genuine debut appearances, 3 matches and 2 wickets) and Royal
+    // Challengers Bangalore (2022-2023). Two "signed but never played" exclusions applied per the
+    // standing rule: retained by CSK for 2019 without playing a match that season (2018 already
+    // counts the team), and signed by Lucknow Super Giants at the 2024 auction but withdrew
+    // before the tournament and was replaced by Matt Henry — independently re-verified
+    iccTrophies: 1
+    // 2022 T20 World Cup — confirmed on the 15-man winning squad list. Deliberately NOT credited
+    // with 2019: he was in England's original 2019 World Cup squad but was REPLACED by Jofra
+    // Archer before the tournament and took no part in the win — independently re-verified
+    // against Wikipedia's 2019 squads page, same injury/replacement precedent already applied to
+    // Jason Gillespie and Brett Lee elsewhere in this file
   }
 
 ];
