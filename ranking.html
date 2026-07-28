@@ -408,6 +408,42 @@
       opacity: 0.85;
       transform: scale(1.04);
     }
+
+    /* CHALLENGE HEADER ROW (title + timer) */
+    .challenge-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .timer-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(244, 169, 0, 0.15);
+      border: 2px solid #f4a900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #f4a900;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+
+    .timer-circle.danger {
+      background: rgba(255, 59, 59, 0.15);
+      border-color: #ff3b3b;
+      color: #ff3b3b;
+      animation: pulse 0.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
   </style>
 </head>
 <body>
@@ -440,9 +476,16 @@
 
     <!-- CHALLENGE BOX -->
     <div class="challenge-box" id="challengeBox">
-      <div class="challenge-number" id="challengeNumber">Challenge 1</div>
-      <div class="challenge-question" id="challengeQuestion">Loading...</div>
-      <div class="challenge-hint" id="challengeHint"></div>
+      <div class="challenge-header-row">
+        <div>
+          <div class="challenge-number" id="challengeNumber">Challenge 1</div>
+          <div class="challenge-question" id="challengeQuestion">Loading...</div>
+          <div class="challenge-hint" id="challengeHint"></div>
+        </div>
+        <div class="timer-circle" id="timerCircle">
+          <span id="timerNumber">10</span>
+        </div>
+      </div>
 
       <div class="instruction-banner">
         ☝️ Drag the cards to reorder them — #1 at top is your highest

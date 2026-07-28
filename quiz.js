@@ -4,7 +4,7 @@ let currentQuestions = [];
 let currentIndex = 0;
 let score = 0;
 let timerInterval = null;
-let timeLeft = 15;
+let timeLeft = 10;
 let answered = false;
 let results = [];
 let generatedCardDataUrl = null; // stores the card image after generation
@@ -32,7 +32,7 @@ function getRandomQuestions(count) {
 // ===== LOAD A QUESTION =====
 function loadQuestion() {
   answered = false;
-  timeLeft = 15;
+  timeLeft = 10;
 
   const q = currentQuestions[currentIndex];
 

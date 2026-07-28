@@ -28,6 +28,8 @@ const SESSION_SIZE = 4;
 const WINDOW_SIZE = 5;   // players shown per challenge
 const MAX_RANK_GAP = 3;  // max gap between consecutive drawn ranks in a parameter's leaders list
 
+const SECONDS_PER_CHALLENGE = 10;
+
 // ===== GAME STATE =====
 let activeChallenges = [];
 let currentChallengeIndex = 0;
@@ -36,6 +38,9 @@ let totalXPEarned = 0;
 let dragSrcIndex = null;
 let currentUserOrder = []; // tracks current positions of players
 let lastResult = null;
+let challengeAnswered = false;
+let rankingTimer = null;
+let rankingTimeLeft = SECONDS_PER_CHALLENGE;
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
@@ -192,6 +197,31 @@ function loadChallenge(index) {
   currentUserOrder = shuffleArray([...Array(challenge.players.length).keys()]);
 
   renderDragList();
+  startRankingTimer();
+}
+
+// ===== COUNTDOWN TIMER — auto-submits whatever order is currently set when time runs out =====
+function startRankingTimer() {
+  challengeAnswered = false;
+  rankingTimeLeft = SECONDS_PER_CHALLENGE;
+  clearInterval(rankingTimer);
+
+  document.getElementById('timerNumber').textContent = rankingTimeLeft;
+  document.getElementById('timerCircle').classList.remove('danger');
+
+  rankingTimer = setInterval(() => {
+    rankingTimeLeft--;
+    document.getElementById('timerNumber').textContent = rankingTimeLeft;
+
+    if (rankingTimeLeft <= 5) {
+      document.getElementById('timerCircle').classList.add('danger');
+    }
+
+    if (rankingTimeLeft <= 0) {
+      clearInterval(rankingTimer);
+      if (!challengeAnswered) submitAnswer();
+    }
+  }, 1000);
 }
 
 // ===== RENDER DRAG LIST =====
@@ -344,6 +374,10 @@ function shuffleArray(arr) {
 
 // ===== SUBMIT ANSWER =====
 function submitAnswer() {
+  if (challengeAnswered) return;
+  challengeAnswered = true;
+  clearInterval(rankingTimer);
+
   const challenge = activeChallenges[currentChallengeIndex];
 
   // Count correct positions (tie-aware — see scoreChallenge/isPositionCorrect above)

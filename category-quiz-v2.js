@@ -14,7 +14,7 @@ var crictakkarQuestions = [];
 var crictakkarIndex = 0;
 var crictakkarScore = 0;
 var crictakkarTimer = null;
-var crictakkarTimeLeft = 15;
+var crictakkarTimeLeft = 10;
 var crictakkarAnswered = false;
 var crictakkarResults = [];
 var crictakkarTotal = 10;
@@ -49,7 +49,7 @@ function startCategoryQuiz() {
 // ===== LOAD A QUESTION =====
 function crictakkarLoadQuestion() {
   crictakkarAnswered = false;
-  crictakkarTimeLeft = 15;
+  crictakkarTimeLeft = 10;
 
   var q = crictakkarQuestions[crictakkarIndex];
 
