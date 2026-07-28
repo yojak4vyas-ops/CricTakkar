@@ -59,7 +59,17 @@ service cloud.firestore {
         allow create: if signedIn()
                       && request.resource.data.authorUid == request.auth.uid;
         allow update: if false;
-        allow delete: if signedIn() && resource.data.authorUid == request.auth.uid;
+
+        // Two people can legitimately delete a comment: whoever wrote it,
+        // and the author of the poem it sits under — because deleting a
+        // poem batch-deletes its comments, and those were written by other
+        // people. The previously live rules granted neither, which meant
+        // deleting a poem that had any comments failed silently.
+        allow delete: if signedIn() && (
+                        resource.data.authorUid == request.auth.uid
+                        || get(/databases/$(database)/documents/communityPoems/$(poemId))
+                             .data.authorUid == request.auth.uid
+                      );
       }
     }
 
