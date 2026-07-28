@@ -87,9 +87,14 @@ service cloud.firestore {
       // by its code before you are a member of it.
       allow read: if signedIn();
 
+      // The document ID IS the room code, so a room is found with a direct
+      // get() instead of a query — no composite index, and nobody can
+      // squat a code that is already live, because create only succeeds
+      // on a document that does not exist yet.
       allow create: if signedIn()
                     && request.resource.data.hostUid == request.auth.uid
-                    && request.resource.data.status == 'lobby';
+                    && request.resource.data.status == 'lobby'
+                    && request.resource.data.roomCode == matchId;
 
       // The host drives the match. Everyone else may only join or leave.
       allow update: if isHost() || (signedIn() && onlyChangedOwnPlayerEntry());

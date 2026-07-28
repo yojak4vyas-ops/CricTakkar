@@ -110,33 +110,67 @@ function pickQuestionIndexes() {
   return all.slice(0, QUESTIONS_PER_MATCH);
 }
 
-function createRoom() {
+// Turns a raw Firebase error into something a player can actually act on.
+// The generic "check your connection" message this replaces was actively
+// misleading — the most common real cause is that the security rules were
+// never published to the Firebase console, which has nothing to do with
+// the player's connection.
+function explainFirebaseError(err) {
+  var code = (err && err.code) || '';
+
+  if (code === 'permission-denied') {
+    return "The server rejected this request. The app's Firestore security " +
+           "rules probably haven't been published yet — multiplayer can't " +
+           "work until they are.";
+  }
+  if (code === 'failed-precondition') {
+    return "This query needs a database index that doesn't exist yet. " +
+           "Open the browser console — Firebase puts a one-click link there " +
+           "to create it.";
+  }
+  if (code === 'unavailable') {
+    return "Couldn't reach the server. Check your internet connection and try again.";
+  }
+  if (code === 'unauthenticated') {
+    return "You've been signed out. Please log in again.";
+  }
+  return "Something went wrong: " + (err && err.message ? err.message : 'unknown error');
+}
+
+// The room code IS the document ID.
+//
+// The earlier version stored the code as a field and looked rooms up with
+// a two-filter query. That was worse in three ways: it needed a composite
+// index in Firestore, joining cost a query instead of a single document
+// read, and the security rules had to reason about queries. Using the code
+// as the ID makes every lookup a direct get() and every rule trivial.
+function createRoom(attempt) {
   if (!me) return;
+  attempt = attempt || 1;
 
   var btn = document.getElementById('createRoomBtn');
   btn.disabled = true;
   btn.textContent = 'Creating…';
 
   var code = generateRoomCode();
+  var ref = db.collection('matches').doc(code);
 
-  // Make sure the code isn't already in use by a room that's still alive.
-  db.collection('matches')
-    .where('roomCode', '==', code)
-    .where('status', 'in', ['lobby', 'playing'])
-    .get()
-    .then(function(snap) {
-      if (!snap.empty) {
-        // Astronomically unlikely (31^6 codes) but cheap to handle: try again.
-        btn.disabled = false;
-        btn.textContent = 'Create a Room';
-        createRoom();
+  ref.get()
+    .then(function(existing) {
+      if (existing.exists) {
+        // 31^6 is about 887 million codes, so this is vanishingly rare —
+        // but old finished rooms keep their ID, so it isn't impossible.
+        if (attempt >= 5) {
+          throw new Error('Could not find a free room code. Please try again.');
+        }
+        createRoom(attempt + 1);
         return null;
       }
 
       var players = {};
       players[me.uid] = { name: me.name, joinedAt: Date.now() };
 
-      return db.collection('matches').add({
+      return ref.set({
         roomCode: code,
         hostUid: me.uid,
         mode: 'classic',
@@ -150,16 +184,16 @@ function createRoom() {
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     })
-    .then(function(ref) {
-      if (!ref) return; // retry path already handled above
-      matchId = ref.id;
+    .then(function(written) {
+      if (written === null) return; // a retry is already in flight
+      matchId = code;
       listenToMatch();
     })
     .catch(function(err) {
       console.error('Create room failed:', err);
       btn.disabled = false;
       btn.textContent = 'Create a Room';
-      alert('Could not create the room. Please check your connection and try again.');
+      alert(explainFirebaseError(err));
     });
 }
 
@@ -183,17 +217,22 @@ function joinRoom() {
   btn.textContent = 'Joining…';
   errorEl.textContent = '';
 
-  db.collection('matches')
-    .where('roomCode', '==', code)
-    .where('status', '==', 'lobby')
-    .get()
-    .then(function(snap) {
-      if (snap.empty) {
+  // The code is the document ID, so this is one direct read — no query,
+  // and no composite index needed.
+  var ref = db.collection('matches').doc(code);
+
+  ref.get()
+    .then(function(docSnap) {
+      if (!docSnap.exists) {
         throw new Error('NOT_FOUND');
       }
 
-      var docSnap = snap.docs[0];
       var data = docSnap.data();
+
+      if (data.status !== 'lobby') {
+        throw new Error(data.status === 'playing' ? 'STARTED' : 'CLOSED');
+      }
+
       var players = data.players || {};
 
       // Rejoining your own room is always allowed, even if it's full.
@@ -201,13 +240,13 @@ function joinRoom() {
         throw new Error('FULL');
       }
 
-      matchId = docSnap.id;
+      matchId = code;
 
       // Dot-path update writes ONLY this player's key, so two people
       // joining at the same moment can't overwrite each other.
       var update = {};
       update['players.' + me.uid] = { name: me.name, joinedAt: Date.now() };
-      return docSnap.ref.update(update);
+      return ref.update(update);
     })
     .then(function() {
       listenToMatch();
@@ -217,12 +256,16 @@ function joinRoom() {
       btn.textContent = 'Join Room';
 
       if (err.message === 'NOT_FOUND') {
-        errorEl.textContent = "No open room with that code. Check the code, or the match may have already started.";
+        errorEl.textContent = 'No room with that code. Double-check the 6 characters.';
+      } else if (err.message === 'STARTED') {
+        errorEl.textContent = 'That match has already started. Ask the host for a new room.';
+      } else if (err.message === 'CLOSED') {
+        errorEl.textContent = 'That room is already finished.';
       } else if (err.message === 'FULL') {
         errorEl.textContent = 'That room is full (' + MAX_PLAYERS + ' players max).';
       } else {
         console.error('Join failed:', err);
-        errorEl.textContent = 'Could not join. Please check your connection.';
+        errorEl.textContent = explainFirebaseError(err);
       }
     });
 }
