@@ -13,7 +13,7 @@
 
 // ===== CONFIG =====
 var QUESTIONS_PER_MATCH = 10;
-var SECONDS_PER_QUESTION = 15;
+var SECONDS_PER_QUESTION = 10;
 var REVEAL_MS = 4000;      // how long the correct answer stays up
 var STANDINGS_MS = 4000;   // how long the between-question table stays up
 var POINTS_PER_CORRECT = 10;
