@@ -17,7 +17,8 @@ var SECONDS_PER_QUESTION = 10;
 var REVEAL_MS = 4000;      // how long the correct answer stays up
 var STANDINGS_MS = 4000;   // how long the between-question table stays up
 var POINTS_PER_CORRECT = 10;
-var MAX_PLAYERS = 10;
+var MAX_PLAYERS = 10;       // private rooms + public matchmaking
+var DUEL_MAX_PLAYERS = 2;   // 1v1 duel rooms
 var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no O/0, I/1/L lookalikes
 
 // ===== STATE =====
@@ -31,6 +32,7 @@ var lastRenderedPhase = '';
 var hasAnsweredThisQuestion = false;
 var questionShownAt = 0;    // for Speed Mode later — time taken per answer
 var isLeaving = false;      // suppresses the host-left handler during a clean exit
+var duelAutoStartFired = false; // stops a duel's 2nd-player-joins auto-start firing twice
 
 // =====================================================================
 // BOOT
@@ -144,16 +146,33 @@ function explainFirebaseError(err) {
 // index in Firestore, joining cost a query instead of a single document
 // read, and the security rules had to reason about queries. Using the code
 // as the ID makes every lookup a direct get() and every rule trivial.
-function createRoom(attempt) {
+// roomType controls how the room behaves, layered on top of the same
+// lobby/question/scoring engine every room type shares:
+//   'private' — Battle Friends. 10 max, manual host start. (default)
+//   'duel'    — 1v1. 2 max, starts itself the instant the 2nd player joins.
+//   'public'  — matchmaking. 10 max, isPublic so findPublicMatch() can find
+//               it; manual host start (there's no guarantee a 2nd stranger
+//               shows up immediately, so it waits like a private room).
+function createRoom(roomType, attempt) {
   if (!me) return;
+  roomType = roomType || 'private';
   attempt = attempt || 1;
 
-  var btn = document.getElementById('createRoomBtn');
-  btn.disabled = true;
-  btn.textContent = 'Creating…';
+  // 'public' rooms are usually created as a fallback from inside
+  // findPublicMatch(), which already owns the findMatchBtn's state — so
+  // only 'private'/'duel' touch a button here.
+  var btn = null;
+  if (roomType === 'duel') btn = document.getElementById('duelBtn');
+  else if (roomType === 'private') btn = document.getElementById('createRoomBtn');
+
+  if (attempt === 1 && btn) {
+    btn.disabled = true;
+    btn.textContent = 'Creating…';
+  }
 
   var code = generateRoomCode();
   var ref = db.collection('matches').doc(code);
+  var maxPlayers = (roomType === 'duel') ? DUEL_MAX_PLAYERS : MAX_PLAYERS;
 
   ref.get()
     .then(function(existing) {
@@ -163,7 +182,7 @@ function createRoom(attempt) {
         if (attempt >= 5) {
           throw new Error('Could not find a free room code. Please try again.');
         }
-        createRoom(attempt + 1);
+        createRoom(roomType, attempt + 1);
         return null;
       }
 
@@ -174,13 +193,15 @@ function createRoom(attempt) {
         roomCode: code,
         hostUid: me.uid,
         mode: 'classic',
+        roomType: roomType,
         status: 'lobby',
         phase: 'waiting',
         questionIds: pickQuestionIndexes(),
         currentQuestion: -1,
         players: players,
         leaderboard: [],
-        isPublic: false,
+        isPublic: (roomType === 'public'),
+        maxPlayers: maxPlayers,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
       });
     })
@@ -191,8 +212,17 @@ function createRoom(attempt) {
     })
     .catch(function(err) {
       console.error('Create room failed:', err);
-      btn.disabled = false;
-      btn.textContent = 'Create a Room';
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = (roomType === 'duel') ? '⚔️ 1v1 Duel a Friend' : 'Create a Room';
+      }
+      if (roomType === 'public') {
+        var findBtn = document.getElementById('findMatchBtn');
+        if (findBtn) {
+          findBtn.disabled = false;
+          findBtn.textContent = '🎲 Find a Random Match';
+        }
+      }
       alert(explainFirebaseError(err));
     });
 }
@@ -200,6 +230,45 @@ function createRoom(attempt) {
 // =====================================================================
 // JOINING A ROOM
 // =====================================================================
+// The shared join logic — used by both the manual "enter a code" screen
+// and public matchmaking. Returns a Promise. On failure it rejects with
+// an Error whose .message is one of NOT_FOUND / STARTED / CLOSED / FULL,
+// or a raw Firebase error for anything else (permission-denied etc.) so
+// callers can still route it through explainFirebaseError().
+function joinRoomByCode(code) {
+  // The code is the document ID, so this is one direct read — no query,
+  // and no composite index needed.
+  var ref = db.collection('matches').doc(code);
+
+  return ref.get().then(function(docSnap) {
+    if (!docSnap.exists) {
+      throw new Error('NOT_FOUND');
+    }
+
+    var data = docSnap.data();
+
+    if (data.status !== 'lobby') {
+      throw new Error(data.status === 'playing' ? 'STARTED' : 'CLOSED');
+    }
+
+    var players = data.players || {};
+    var cap = data.maxPlayers || MAX_PLAYERS;
+
+    // Rejoining your own room is always allowed, even if it's full.
+    if (!players[me.uid] && Object.keys(players).length >= cap) {
+      throw new Error('FULL');
+    }
+
+    matchId = code;
+
+    // Dot-path update writes ONLY this player's key, so two people
+    // joining at the same moment can't overwrite each other.
+    var update = {};
+    update['players.' + me.uid] = { name: me.name, joinedAt: Date.now() };
+    return ref.update(update);
+  });
+}
+
 function joinRoom() {
   if (!me) return;
 
@@ -217,37 +286,7 @@ function joinRoom() {
   btn.textContent = 'Joining…';
   errorEl.textContent = '';
 
-  // The code is the document ID, so this is one direct read — no query,
-  // and no composite index needed.
-  var ref = db.collection('matches').doc(code);
-
-  ref.get()
-    .then(function(docSnap) {
-      if (!docSnap.exists) {
-        throw new Error('NOT_FOUND');
-      }
-
-      var data = docSnap.data();
-
-      if (data.status !== 'lobby') {
-        throw new Error(data.status === 'playing' ? 'STARTED' : 'CLOSED');
-      }
-
-      var players = data.players || {};
-
-      // Rejoining your own room is always allowed, even if it's full.
-      if (!players[me.uid] && Object.keys(players).length >= MAX_PLAYERS) {
-        throw new Error('FULL');
-      }
-
-      matchId = code;
-
-      // Dot-path update writes ONLY this player's key, so two people
-      // joining at the same moment can't overwrite each other.
-      var update = {};
-      update['players.' + me.uid] = { name: me.name, joinedAt: Date.now() };
-      return ref.update(update);
-    })
+  joinRoomByCode(code)
     .then(function() {
       listenToMatch();
     })
@@ -262,11 +301,88 @@ function joinRoom() {
       } else if (err.message === 'CLOSED') {
         errorEl.textContent = 'That room is already finished.';
       } else if (err.message === 'FULL') {
-        errorEl.textContent = 'That room is full (' + MAX_PLAYERS + ' players max).';
+        errorEl.textContent = 'That room is full.';
       } else {
         console.error('Join failed:', err);
         errorEl.textContent = explainFirebaseError(err);
       }
+    });
+}
+
+// =====================================================================
+// PUBLIC MATCHMAKING
+// =====================================================================
+// Looks for an open public lobby (isPublic, still in 'lobby', not full,
+// not our own). If one exists, joins it. If not, becomes the host of a
+// new public lobby and waits — the next person to hit "Find a Random
+// Match" discovers it the same way.
+//
+// Both filters below are plain equality (==), so this needs no composite
+// index — Firestore serves multi-equality queries off the automatic
+// per-field indexes. Sorting by createdAt happens client-side instead of
+// via orderBy, since combining orderBy with equality filters on other
+// fields WOULD need a manual composite index (a real ask for a
+// non-technical solo builder to set up in the Firebase console).
+function findPublicMatch() {
+  if (!me) return;
+
+  var btn = document.getElementById('findMatchBtn');
+  btn.disabled = true;
+  btn.textContent = 'Searching…';
+
+  db.collection('matches')
+    .where('isPublic', '==', true)
+    .where('status', '==', 'lobby')
+    .get()
+    .then(function(snap) {
+      var candidates = [];
+
+      snap.forEach(function(doc) {
+        var data = doc.data();
+        if (data.hostUid === me.uid) return;
+
+        var players = data.players || {};
+        if (players[me.uid]) return;
+
+        var cap = data.maxPlayers || MAX_PLAYERS;
+        if (Object.keys(players).length >= cap) return;
+
+        candidates.push({
+          code: doc.id,
+          createdAtMs: (data.createdAt && data.createdAt.toMillis) ? data.createdAt.toMillis() : 0
+        });
+      });
+
+      if (candidates.length === 0) {
+        // Nobody waiting right now — start a public lobby of our own.
+        createRoom('public');
+        return;
+      }
+
+      candidates.sort(function(a, b) { return a.createdAtMs - b.createdAtMs; });
+
+      return joinRoomByCode(candidates[0].code)
+        .then(function() {
+          listenToMatch();
+        })
+        .catch(function(err) {
+          // Someone else joined that exact lobby a moment before us (or the
+          // host just left it) — don't show an error for a normal race,
+          // just fall back to starting our own lobby instead.
+          var lostRace = (err.message === 'FULL' || err.message === 'STARTED' ||
+                          err.message === 'CLOSED' || err.message === 'NOT_FOUND');
+          if (lostRace) {
+            createRoom('public');
+            return;
+          }
+          throw err;
+        });
+    })
+    .catch(function(err) {
+      console.error('Matchmaking search failed:', err);
+      btn.disabled = false;
+      btn.textContent = '🎲 Find a Random Match';
+      alert(explainFirebaseError(err));
     });
 }
 
@@ -282,6 +398,7 @@ document.addEventListener('keydown', function(e) {
 // =====================================================================
 function listenToMatch() {
   if (matchUnsub) matchUnsub();
+  duelAutoStartFired = false; // this is a freshly entered room, not the last one
 
   matchUnsub = db.collection('matches').doc(matchId)
     .onSnapshot(function(doc) {
@@ -329,6 +446,7 @@ function renderLobby(match) {
 
   var players = match.players || {};
   var uids = Object.keys(players);
+  var cap = match.maxPlayers || MAX_PLAYERS;
 
   // Stable order — whoever joined first sits at the top, so the list
   // doesn't jump around as people arrive.
@@ -337,7 +455,7 @@ function renderLobby(match) {
   });
 
   document.getElementById('playerCount').textContent =
-    '(' + uids.length + '/' + MAX_PLAYERS + ')';
+    '(' + uids.length + '/' + cap + ')';
 
   var listEl = document.getElementById('playerList');
   listEl.innerHTML = '';
@@ -380,21 +498,39 @@ function renderLobby(match) {
   var isHost = (match.hostUid === me.uid);
   var startBtn = document.getElementById('startMatchBtn');
   var note = document.getElementById('waitingNote');
+  var isDuel = (match.roomType === 'duel');
+  var isPublicLobby = (match.roomType === 'public');
+
+  // Duels start themselves the instant the 2nd player joins — there's
+  // nothing to wait on beyond that, so there's no Start button at all.
+  if (isDuel && isHost && uids.length >= cap && !duelAutoStartFired) {
+    duelAutoStartFired = true;
+    startBtn.style.display = 'none';
+    note.textContent = 'Opponent joined — starting the duel…';
+    startMatch();
+    return;
+  }
 
   if (isHost) {
-    startBtn.style.display = 'block';
-    if (uids.length < 2) {
+    if (isDuel) {
+      startBtn.style.display = 'none';
+      note.textContent = 'Waiting for an opponent to join with the code…';
+    } else if (uids.length < 2) {
+      startBtn.style.display = 'block';
       startBtn.disabled = true;
       startBtn.textContent = 'Waiting for players…';
-      note.textContent = 'Share the code above — you need at least 2 players.';
+      note.textContent = isPublicLobby
+        ? 'Waiting for opponents to join — anyone can find this match.'
+        : 'Share the code above — you need at least 2 players.';
     } else {
+      startBtn.style.display = 'block';
       startBtn.disabled = false;
       startBtn.textContent = 'Start Match (' + uids.length + ' players)';
       note.textContent = 'Everyone in? Start when ready.';
     }
   } else {
     startBtn.style.display = 'none';
-    note.textContent = 'Waiting for the host to start…';
+    note.textContent = isDuel ? 'Waiting for the duel to start…' : 'Waiting for the host to start…';
   }
 }
 
@@ -759,7 +895,29 @@ function renderFinal(match) {
   var titleEl = document.getElementById('finalTitle');
   var subEl = document.getElementById('finalSub');
 
-  if (!myEntry) {
+  // Duels get head-to-head framing ("You beat X!") instead of a rank
+  // number, since #1/#2 reads oddly when there are only ever 2 players.
+  var isDuel = (match.roomType === 'duel' && board.length === 2);
+  var opponent = isDuel ? board.filter(function(e) { return e.uid !== me.uid; })[0] : null;
+
+  if (isDuel && myEntry && opponent) {
+    var scoreLine = myEntry.correct + ' of ' + QUESTIONS_PER_MATCH +
+      ' correct · ' + myEntry.score + ' points';
+
+    if (myEntry.score > opponent.score) {
+      emojiEl.textContent = '🏆';
+      titleEl.textContent = 'You beat ' + opponent.name + '!';
+      subEl.textContent = scoreLine;
+    } else if (myEntry.score < opponent.score) {
+      emojiEl.textContent = '🏏';
+      titleEl.textContent = opponent.name + ' won this one';
+      subEl.textContent = scoreLine;
+    } else {
+      emojiEl.textContent = '🤝';
+      titleEl.textContent = "It's a tie!";
+      subEl.textContent = scoreLine;
+    }
+  } else if (!myEntry) {
     emojiEl.textContent = '🏏';
     titleEl.textContent = 'Match Over';
     subEl.textContent = '';

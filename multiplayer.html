@@ -58,8 +58,15 @@
         <div class="rule-item">⏱️ 10 seconds per question</div>
         <div class="rule-item">🏆 Live standings after every question</div>
       </div>
-      <button class="btn-primary" onclick="createRoom()" id="createRoomBtn">Create a Room</button>
+      <button class="btn-primary" onclick="createRoom('private')" id="createRoomBtn">Create a Room</button>
       <button class="btn-secondary mp-gap-top" onclick="showJoinScreen()">Join with a Code</button>
+
+      <div class="mp-divider">or</div>
+
+      <button class="btn-secondary" onclick="createRoom('duel')" id="duelBtn">⚔️ 1v1 Duel a Friend</button>
+      <p class="mp-option-note">A private 2-player match — starts the moment your friend joins with the code.</p>
+      <button class="btn-secondary mp-gap-top" onclick="findPublicMatch()" id="findMatchBtn">🎲 Find a Random Match</button>
+      <p class="mp-option-note">Get paired with another CricTakkar player looking for a game right now.</p>
     </div>
   </div>
 
