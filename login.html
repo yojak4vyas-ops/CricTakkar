@@ -158,10 +158,12 @@
             var randomNum = Math.floor(1000 + Math.random() * 9000);
             var autoUsername = baseName + randomNum;
 
-            db.collection('users').doc(user.uid).set({
-              name: user.displayName || '',
+            // Email and real name are private (audit item S1 — see
+            // firestore.rules) and live in a separate subcollection doc
+            // that only this user can read, not the public profile doc.
+            var batch = db.batch();
+            batch.set(db.collection('users').doc(user.uid), {
               username: autoUsername,
-              email: user.email,
               favouriteTeam: '',
               quizzesPlayed: 0,
               totalScore: 0,
@@ -174,6 +176,11 @@
               loginMethod: 'google',
               joinedDate: new Date().toISOString()
             });
+            batch.set(db.collection('users').doc(user.uid).collection('private').doc('data'), {
+              name: user.displayName || '',
+              email: user.email
+            });
+            batch.commit();
           }
           showSuccess('Welcome! Taking you to your profile...');
           setTimeout(function() { window.location.href = 'profile.html'; }, 1000);
@@ -303,10 +310,12 @@
             .then(function(result) {
               var user = result.user;
               user.sendEmailVerification();
-              return db.collection('users').doc(user.uid).set({
-                name: name,
+              // Email and real name are private (audit item S1 — see
+              // firestore.rules) and live in a separate subcollection doc
+              // that only this user can read, not the public profile doc.
+              var batch = db.batch();
+              batch.set(db.collection('users').doc(user.uid), {
                 username: username,
-                email: email,
                 favouriteTeam: team,
                 quizzesPlayed: 0,
                 totalScore: 0,
@@ -319,6 +328,11 @@
                 loginMethod: 'email',
                 joinedDate: new Date().toISOString()
               });
+              batch.set(db.collection('users').doc(user.uid).collection('private').doc('data'), {
+                name: name,
+                email: email
+              });
+              return batch.commit();
             })
             .then(function() {
               showSuccess('Account created! Verification email sent. 🏏');

@@ -555,6 +555,41 @@
       }).catch(function() { alert('Your username is: ' + username); });
     }
 
+    // ===== PRIVATE-FIELD MIGRATION (audit item S1) =====
+    // Older accounts still have name/email/fcmToken sitting on the PUBLIC
+    // doc, readable by any signed-in user. The first time such an account
+    // opens its own profile, copy those fields into the private
+    // subcollection (only this uid can read it) and then delete them from
+    // the public doc — copy first, delete only on confirmed success, so a
+    // failed write (e.g. the updated firestore.rules haven't been
+    // published to the Firebase console yet) never loses data, just
+    // leaves it to retry on the next visit.
+    function migrateLegacyPrivateFields(uid, publicData, privateData) {
+      var legacy = {};
+      var hasLegacy = false;
+      ['name', 'email', 'fcmToken'].forEach(function(f) {
+        if (publicData[f] !== undefined) { legacy[f] = publicData[f]; hasLegacy = true; }
+      });
+      if (!hasLegacy) return Promise.resolve(privateData);
+
+      var merged = Object.assign({}, privateData, legacy);
+
+      return db.collection('users').doc(uid).collection('private').doc('data')
+        .set(legacy, { merge: true })
+        .then(function() {
+          var clearFields = {};
+          Object.keys(legacy).forEach(function(f) {
+            clearFields[f] = firebase.firestore.FieldValue.delete();
+          });
+          return db.collection('users').doc(uid).update(clearFields);
+        })
+        .then(function() { return merged; })
+        .catch(function(err) {
+          console.warn('Could not migrate private fields yet (will retry next visit):', err);
+          return merged; // still fine to use for rendering this page load
+        });
+    }
+
     // ===== WATCH AUTH =====
     auth.onAuthStateChanged(function(user) {
       document.getElementById('loadingState').style.display = 'none';
@@ -563,43 +598,56 @@
         currentUserId = user.uid;
         document.getElementById('profileState').style.display = 'block';
 
-        db.collection('users').doc(user.uid).get().then(function(doc) {
-          if (doc.exists) {
-            var data = doc.data();
+        var publicRef = db.collection('users').doc(user.uid);
+        var privateRef = publicRef.collection('private').doc('data');
 
-            // Show setup popup if name OR username is missing/invalid
-            var needsName     = !data.name || data.name.trim().length < 2;
-            var needsUsername = !isValidUsername(data.username || '');
+        Promise.all([publicRef.get(), privateRef.get()]).then(function(results) {
+          var publicDoc = results[0];
+          var privateDoc = results[1];
 
-            if (needsName || needsUsername) {
-              // Pre-fill whatever we already have
-              if (data.name && data.name.trim().length >= 2) {
-                document.getElementById('setupNameInput').value = data.name;
-              }
-              if (isValidUsername(data.username || '')) {
-                document.getElementById('setupUsernameInput').value = data.username;
-                // Trigger availability check for pre-filled username
-                onSetupUsernameType();
-              } else if (data.username) {
-                // Clean the existing invalid username as a suggestion
-                var suggestion = data.username.replace(/[^a-zA-Z0-9_]/g, '');
-                if (suggestion.length >= 3) {
-                  document.getElementById('setupUsernameInput').value = suggestion;
-                  onSetupUsernameType();
+          if (publicDoc.exists) {
+            var data = publicDoc.data();
+            var privateData = privateDoc.exists ? privateDoc.data() : {};
+
+            migrateLegacyPrivateFields(user.uid, data, privateData).then(function(mergedPrivate) {
+              // Private fields (name, email, fcmToken) are merged back in
+              // purely for rendering THIS user's own page — they are never
+              // written back to the public doc.
+              var displayData = Object.assign({}, data, mergedPrivate);
+
+              // Show setup popup if name OR username is missing/invalid
+              var needsName     = !displayData.name || displayData.name.trim().length < 2;
+              var needsUsername = !isValidUsername(displayData.username || '');
+
+              if (needsName || needsUsername) {
+                // Pre-fill whatever we already have
+                if (displayData.name && displayData.name.trim().length >= 2) {
+                  document.getElementById('setupNameInput').value = displayData.name;
                 }
+                if (isValidUsername(displayData.username || '')) {
+                  document.getElementById('setupUsernameInput').value = displayData.username;
+                  // Trigger availability check for pre-filled username
+                  onSetupUsernameType();
+                } else if (displayData.username) {
+                  // Clean the existing invalid username as a suggestion
+                  var suggestion = displayData.username.replace(/[^a-zA-Z0-9_]/g, '');
+                  if (suggestion.length >= 3) {
+                    document.getElementById('setupUsernameInput').value = suggestion;
+                    onSetupUsernameType();
+                  }
+                }
+                document.getElementById('setupOverlay').style.display = 'flex';
               }
-              document.getElementById('setupOverlay').style.display = 'flex';
-            }
 
-            loadProfileData(data);
-            renderMyPoems(user.uid);
+              loadProfileData(displayData);
+              renderMyPoems(user.uid);
+            });
 
           } else {
-            // No record — create blank and show setup
-            db.collection('users').doc(user.uid).set({
-              name: '',
+            // No record — create blank public + private docs and show setup
+            var batch = db.batch();
+            batch.set(publicRef, {
               username: '',
-              email: user.email || '',
               favouriteTeam: '',
               quizzesPlayed: 0,
               totalScore: 0,
@@ -610,7 +658,12 @@
               level: 'Debutant',
               badges: {},
               joinedDate: new Date().toISOString()
-            }).then(function() {
+            });
+            batch.set(privateRef, {
+              name: '',
+              email: user.email || ''
+            });
+            batch.commit().then(function() {
               document.getElementById('setupOverlay').style.display = 'flex';
             });
           }
@@ -850,11 +903,17 @@
             return;
           }
 
-          // Save both name and username to Firebase
-          db.collection('users').doc(currentUserId).update({
-            name: name,
+          // username is public (leaderboards etc.); name is private (audit
+          // item S1) and lives in the subcollection only this user can read.
+          var batch = db.batch();
+          batch.update(db.collection('users').doc(currentUserId), {
             username: username
-          }).then(function() {
+          });
+          batch.set(db.collection('users').doc(currentUserId).collection('private').doc('data'), {
+            name: name
+          }, { merge: true });
+
+          batch.commit().then(function() {
             // Hide overlay
             document.getElementById('setupOverlay').style.display = 'none';
 

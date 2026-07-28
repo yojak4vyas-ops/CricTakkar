@@ -72,10 +72,11 @@ async function sendToUsers(users, title, body) {
       var code = err && err.code;
       if (code === 'messaging/registration-token-not-registered' ||
           code === 'messaging/invalid-registration-token') {
-        await db.collection('users').doc(u.uid).update({
-          notificationsEnabled: false,
-          fcmToken: admin.firestore.FieldValue.delete()
-        });
+        // fcmToken lives in the private subcollection (audit item S1);
+        // notificationsEnabled stays on the public doc.
+        await db.collection('users').doc(u.uid).update({ notificationsEnabled: false });
+        await db.collection('users').doc(u.uid).collection('private').doc('data')
+          .update({ fcmToken: admin.firestore.FieldValue.delete() });
         cleared++;
       } else {
         console.error('Send failed for ' + u.uid + ':', code || err.message);
@@ -87,23 +88,41 @@ async function sendToUsers(users, title, body) {
 }
 
 // ===== FETCH ALL NOTIFICATION-ENABLED USERS =====
-// One read per run regardless of type — cheap even at thousands of users, since this
-// only fires a handful of times per day/week, not per page view (unlike the Stats
-// Dashboard's Percentile Rank card, which is a separate, already-flagged scaling note).
+// One query for the opted-in list, plus one read per opted-in user for their
+// private fcmToken (audit item S1 moved it off the public doc it used to
+// share with lastPlayedDate/currentStreak). This runs with the Admin SDK,
+// which bypasses security rules entirely, so the extra reads are just a
+// quota cost, not a permissions concern — and at only a handful of runs per
+// day against a small user base, that cost is negligible either way.
 async function fetchOptedInUsers() {
   var snap = await db.collection('users').where('notificationsEnabled', '==', true).get();
-  var users = [];
+
+  var candidates = [];
   snap.forEach(function(doc) {
     var d = doc.data();
-    if (d.fcmToken) {
+    candidates.push({
+      uid: doc.id,
+      lastPlayedDate: d.lastPlayedDate || '',
+      currentStreak: d.currentStreak || 0
+    });
+  });
+
+  var privateDocs = await Promise.all(candidates.map(function(c) {
+    return db.collection('users').doc(c.uid).collection('private').doc('data').get();
+  }));
+
+  var users = [];
+  for (var i = 0; i < candidates.length; i++) {
+    var privateData = privateDocs[i].exists ? privateDocs[i].data() : {};
+    if (privateData.fcmToken) {
       users.push({
-        uid: doc.id,
-        fcmToken: d.fcmToken,
-        lastPlayedDate: d.lastPlayedDate || '',
-        currentStreak: d.currentStreak || 0
+        uid: candidates[i].uid,
+        fcmToken: privateData.fcmToken,
+        lastPlayedDate: candidates[i].lastPlayedDate,
+        currentStreak: candidates[i].currentStreak
       });
     }
-  });
+  }
   return users;
 }
 

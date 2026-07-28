@@ -49,10 +49,18 @@ function enableNotifications(onDone) {
         onDone && onDone(false, 'Could not get a notification token.');
         return;
       }
-      db.collection('users').doc(user.uid).update({
-        fcmToken: token,
+      // fcmToken is private (audit item S1) — it lives in the subcollection
+      // only this user can read; notificationsEnabled is just a boolean
+      // flag with nothing identifying in it, so it stays on the public doc.
+      var batch = db.batch();
+      batch.set(db.collection('users').doc(user.uid).collection('private').doc('data'), {
+        fcmToken: token
+      }, { merge: true });
+      batch.update(db.collection('users').doc(user.uid), {
         notificationsEnabled: true
-      }).then(function() {
+      });
+
+      batch.commit().then(function() {
         onDone && onDone(true, 'Notifications enabled!');
       }).catch(function(err) {
         console.error('Failed to save FCM token:', err);

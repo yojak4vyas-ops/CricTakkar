@@ -35,6 +35,20 @@ service cloud.firestore {
       allow read: if signedIn();
       allow create, update: if signedIn() && request.auth.uid == userId;
       allow delete: if false;
+
+      // ===================================================================
+      // PRIVATE — email, real name, FCM push token
+      // ===================================================================
+      // Split out from the public doc above (audit item S1): the public doc
+      // is readable by any signed-in user because the leaderboard, friends
+      // comparison and percentile rank all need to rank you against others
+      // — but that meant your email address, real name and push token were
+      // readable by anyone with a free account too. Firestore has no
+      // field-level read security, so hiding these fields from other users
+      // requires physically storing them somewhere else — here.
+      match /private/{docId} {
+        allow read, write: if signedIn() && request.auth.uid == userId;
+      }
     }
 
     // ===================================================================
