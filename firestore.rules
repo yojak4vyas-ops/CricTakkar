@@ -1,0 +1,130 @@
+rules_version = '2';
+
+// ===== CRICTAKKAR FIRESTORE SECURITY RULES =====
+//
+// These matter more than usual for this app. Phase 3 multiplayer has NO
+// game server (see CLAUDE.md "PHASE 3 MULTIPLAYER ARCHITECTURE") — the
+// host's browser is the authority. That means these rules are the only
+// thing standing between a player and a faked scoreboard.
+//
+// They cannot stop every kind of cheating: question-bank.js is a public
+// file, so the correct answers are readable by anyone who opens the
+// browser console, and the client is the one reporting isCorrect. That is
+// a known, accepted limitation of the no-server design. What these rules
+// DO guarantee is the structural stuff a determined cheater would
+// otherwise get for free:
+//   - you cannot write an answer as somebody else
+//   - you cannot answer the same question twice to inflate your score
+//   - you cannot change your answer after seeing the correct one
+//   - you cannot promote yourself to host or rewrite the leaderboard
+//   - you cannot read what other players answered before the reveal
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    // ===================================================================
+    // USERS — profiles, XP, streaks, badges
+    // ===================================================================
+    // Readable by any signed-in user because the global leaderboard,
+    // friends comparison and percentile rank all rank you against others.
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && request.auth.uid == userId;
+      allow delete: if false;
+    }
+
+    // ===================================================================
+    // COMMUNITY POEMS
+    // ===================================================================
+    match /communityPoems/{poemId} {
+      allow read: if true;
+      allow create: if signedIn()
+                    && request.resource.data.authorUid == request.auth.uid;
+
+      // Anyone signed in can update, because likes / reports / commentCount
+      // are all other people acting on someone else's poem. The author
+      // fields are pinned so an editor cannot rewrite authorship.
+      allow update: if signedIn()
+                    && request.resource.data.authorUid == resource.data.authorUid
+                    && request.resource.data.authorName == resource.data.authorName;
+
+      allow delete: if signedIn() && resource.data.authorUid == request.auth.uid;
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if signedIn()
+                      && request.resource.data.authorUid == request.auth.uid;
+        allow update: if false;
+        allow delete: if signedIn() && resource.data.authorUid == request.auth.uid;
+      }
+    }
+
+    // ===================================================================
+    // MATCHES — Phase 3 multiplayer
+    // ===================================================================
+    match /matches/{matchId} {
+
+      function isHost() {
+        return signedIn() && resource.data.hostUid == request.auth.uid;
+      }
+
+      // Only the players map changed, and only this player's own entry
+      // inside it. This is what lets someone join or leave a room without
+      // also letting them touch the score, the phase, or the host.
+      function onlyChangedOwnPlayerEntry() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['players'])
+               && request.resource.data.players
+                 .diff(resource.data.players)
+                 .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      // Any signed-in user can read: you have to be able to look a room up
+      // by its code before you are a member of it.
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+                    && request.resource.data.hostUid == request.auth.uid
+                    && request.resource.data.status == 'lobby';
+
+      // The host drives the match. Everyone else may only join or leave.
+      allow update: if isHost() || (signedIn() && onlyChangedOwnPlayerEntry());
+
+      allow delete: if isHost();
+
+      // =================================================================
+      // ANSWERS — one immutable document per player, per question
+      // =================================================================
+      match /answers/{answerId} {
+
+        // Only the host reads these, and only to compute the leaderboard.
+        // Restricting it stops a player from watching what everyone else
+        // picked before the answer is revealed and copying the crowd.
+        // Costs one extra document read per aggregation query, which is
+        // negligible against the daily quota.
+        allow read: if signedIn()
+                    && get(/databases/$(database)/documents/matches/$(matchId))
+                         .data.hostUid == request.auth.uid;
+
+        // The document ID is pinned to "{uid}_{questionIndex}". Without
+        // this, a player could write many answer documents for the same
+        // question under different IDs and inflate their own score, since
+        // the host aggregates by questionIndex.
+        allow create: if signedIn()
+                      && request.resource.data.uid == request.auth.uid
+                      && answerId == request.auth.uid + '_' +
+                                     string(request.resource.data.questionIndex);
+
+        // Immutable once written — this is what stops a player changing
+        // their answer after the correct one is revealed.
+        allow update, delete: if false;
+      }
+    }
+
+    // Anything not named above is denied by default.
+  }
+}

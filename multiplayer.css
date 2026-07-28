@@ -1,0 +1,258 @@
+/* ===== CRICTAKKAR MULTIPLAYER (BATTLE FRIENDS) ===== */
+/* Only loaded on multiplayer.html, so scoped rules here are safe. */
+
+/* Buttons fill the card on this page — quiz.html does this with inline
+   styles, but there are far more buttons here so a rule is cleaner. */
+.quiz-card .btn-primary,
+.quiz-card .btn-secondary {
+  width: 100%;
+  font-size: 1.05rem;
+  padding: 16px;
+}
+
+.mp-gap-top {
+  margin-top: 12px;
+}
+
+/* ===== JOIN BY CODE ===== */
+.mp-code-input {
+  width: 100%;
+  padding: 18px;
+  margin-bottom: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.mp-code-input:focus {
+  outline: none;
+  border-color: #f4a900;
+}
+
+.mp-code-input::placeholder {
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 8px;
+}
+
+.mp-error {
+  color: #ff6b6b;
+  font-size: 0.85rem;
+  text-align: center;
+  min-height: 22px;
+  margin-bottom: 8px;
+}
+
+/* ===== LOBBY ===== */
+.mp-lobby-eyebrow {
+  text-align: center;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mp-room-code {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #f4a900;
+  letter-spacing: 10px;
+  margin-bottom: 18px;
+  /* letter-spacing adds a trailing gap after the last character,
+     which visually shifts the code left of centre — this cancels it */
+  text-indent: 10px;
+}
+
+.mp-share-btn,
+.mp-copy-btn {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.08);
+  color: #ffffff;
+  transition: background 0.15s;
+}
+
+.mp-share-btn {
+  background: rgba(37, 211, 102, 0.15);
+  border-color: rgba(37, 211, 102, 0.4);
+  margin-bottom: 10px;
+}
+
+.mp-share-btn:hover { background: rgba(37, 211, 102, 0.25); }
+.mp-copy-btn:hover  { background: rgba(255,255,255,0.14); }
+
+.mp-players-heading {
+  margin-top: 26px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+}
+
+.mp-player-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.mp-player-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+
+.mp-player-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f4a900, #e07b00);
+  color: #0a0e1a;
+  font-weight: 900;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mp-player-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  flex: 1;
+  /* long usernames shouldn't push the host badge off the row */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mp-host-badge {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #f4a900;
+  background: rgba(244, 169, 0, 0.15);
+  border: 1px solid rgba(244, 169, 0, 0.35);
+  padding: 3px 9px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+
+.mp-you-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+.mp-waiting-note {
+  text-align: center;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.88rem;
+  margin-bottom: 14px;
+  font-style: italic;
+}
+
+/* ===== IN-MATCH ===== */
+/* quiz.css has .correct / .wrong / .reveal, but not a "you picked this,
+   result not in yet" state — multiplayer needs one because the answer
+   isn't revealed until every player's timer has run out. */
+.option-btn.selected {
+  border-color: #f4a900;
+  background: rgba(244, 169, 0, 0.12);
+}
+
+.mp-answered-count {
+  text-align: center;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.85rem;
+  margin-top: 14px;
+  font-weight: 600;
+}
+
+/* ===== LEADERBOARD (standings + final) ===== */
+.mp-leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.mp-lb-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+}
+
+/* the current player's own row, so they can find themselves instantly */
+.mp-lb-row.mp-is-me {
+  background: rgba(244, 169, 0, 0.1);
+  border-color: rgba(244, 169, 0, 0.35);
+}
+
+.mp-lb-rank {
+  font-weight: 900;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  width: 30px;
+  flex-shrink: 0;
+}
+
+.mp-lb-row:nth-child(1) .mp-lb-rank { color: #f4a900; }
+
+.mp-lb-name {
+  flex: 1;
+  font-weight: 600;
+  font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mp-lb-score {
+  font-weight: 800;
+  font-size: 1rem;
+  color: #f4a900;
+  flex-shrink: 0;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 480px) {
+  .mp-room-code {
+    font-size: 2.1rem;
+    letter-spacing: 7px;
+    text-indent: 7px;
+  }
+
+  .mp-code-input {
+    font-size: 1.5rem;
+    letter-spacing: 6px;
+  }
+
+  .mp-code-input::placeholder {
+    letter-spacing: 6px;
+  }
+}
