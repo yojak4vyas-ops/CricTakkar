@@ -26,16 +26,40 @@ var QUESTIONS_PER_MATCH = 10;
 var BRACKET_SIZES = [4, 8, 16];
 var TCODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no O/0, I/1/L lookalikes
 
+// ===== LEAGUE + KNOCKOUT PLAYOFFS CONFIG =====
+// A second tournament type ("league"), alongside the knockout bracket above.
+// 20 players split into 2 groups of 10, each group plays a full round-robin
+// (every player faces every other player in their group once), then the
+// top 4 from each group (8 total) feed into the EXACT SAME knockout bracket
+// engine already built above — buildInitialBracket/nextRoundPairings/
+// isRoundComplete/hostWatchCurrentRound/maybeAdvanceRound are all reused
+// completely unchanged once the 8 qualifiers are known. This file only adds
+// what's genuinely new: the round-robin schedule, live standings, and the
+// group-stage screen that lets a player work through their own 9 matches.
+var LEAGUE_TOTAL_PLAYERS = 20;
+var LEAGUE_GROUP_SIZE = 10;
+var LEAGUE_QUALIFIERS_PER_GROUP = 4;
+var POINTS_WIN = 3;
+var POINTS_DRAW = 1;
+var POINTS_LOSS = 0;
+
 // ===== STATE =====
 var me = null;
 var tournamentId = null;         // = tournamentCode = the doc ID
 var tournamentUnsub = null;
 var isLeaving = false;
+var lastT = null;                // most recent snapshot data, so UI callbacks (tab switches) can re-render without a fresh read
 var watchersForRound = -1;       // which round attachRoundWatchers() last ran for
 var matchWatchUnsubs = [];       // this round's per-pairing match listeners
 var advancedPastRound = -1;      // guards against writing the same round-advance twice
 var myPendingWaitUnsub = null;   // joiner-side "wait for opponent to create the match" listener
-var myCurrentPairingInfo = null; // { matchId, opponentUid, opponentName, amCreator } for the Play button
+var myCurrentPairingInfo = null; // { matchId, opponentUid, opponentName, amCreator } for the knockout Play button
+
+// League-only state
+var viewingGroup = null;            // 'A' | 'B' — which group's standings the player is currently looking at
+var groupWatchersAttached = false;  // host-only: have the (up to 90) group-match listeners been attached yet
+var groupMatchWatchUnsubs = [];
+var knockoutTransitionAttempted = false; // guards against writing the group->knockout transition twice
 
 // =====================================================================
 // BOOT
@@ -84,7 +108,7 @@ function enterAfterLogin() {
 // =====================================================================
 var ALL_SCREENS = [
   'loadingScreen', 'loginGateScreen', 'entryScreen', 'joinScreen',
-  'lobbyScreen', 'bracketScreen', 'finalScreen', 'abortScreen'
+  'lobbyScreen', 'groupStageScreen', 'bracketScreen', 'finalScreen', 'abortScreen'
 ];
 
 function showScreen(id) {
@@ -205,6 +229,133 @@ function pickQuestionIndexes() {
 }
 
 // =====================================================================
+// LEAGUE — PURE HELPERS (no Firestore/DOM, same reasoning as the knockout
+// helpers above)
+// =====================================================================
+
+// Standard "circle method" round-robin scheduler. Only supports an even
+// player count (LEAGUE_GROUP_SIZE is always 10, so no bye/odd handling is
+// needed) — fixes the first player, rotates everyone else one seat per
+// round. Produces (n-1) rounds of n/2 matches each; every pair of players
+// appears exactly once across the whole schedule.
+function generateRoundRobinSchedule(players) {
+  var n = players.length;
+  var fixed = players[0];
+  var rotating = players.slice(1);
+  var rounds = [];
+
+  for (var r = 0; r < n - 1; r++) {
+    var current = [fixed].concat(rotating);
+    var round = [];
+    for (var i = 0; i < n / 2; i++) {
+      round.push([current[i], current[n - 1 - i]]);
+    }
+    rounds.push(round);
+    rotating.unshift(rotating.pop()); // rotate one seat for the next round
+  }
+
+  return rounds;
+}
+
+function matchIdForGroupPairing(tournamentCode, group, round, pairIdx) {
+  return tournamentCode + '-G' + group + '-R' + round + '-P' + pairIdx;
+}
+
+function groupTotalPairings(t) {
+  var total = 0;
+  ['A', 'B'].forEach(function(g) {
+    (t.groupSchedule[g] || []).forEach(function(round) { total += round.length; });
+  });
+  return total;
+}
+
+function isGroupStageComplete(t) {
+  var results = t.groupResults || {};
+  return Object.keys(results).length >= groupTotalPairings(t);
+}
+
+// Computes one group's live standings from groupResults — everything needed
+// is already sitting in the tournament doc, no extra reads. Sorted by
+// points, then cumulative quiz score (tiebreak), then name (final fallback).
+function computeGroupStandings(t, g) {
+  var uids = t.groups[g];
+  var stats = {};
+  uids.forEach(function(uid) {
+    stats[uid] = {
+      uid: uid, name: playerName(t, uid) || 'Player',
+      played: 0, won: 0, drawn: 0, lost: 0, points: 0, totalScore: 0
+    };
+  });
+
+  var results = t.groupResults || {};
+  Object.keys(results).forEach(function(key) {
+    if (key.charAt(0) !== g) return; // keys look like "A_r0_p0" / "B_r3_p2"
+    var res = results[key];
+    var s1 = stats[res.player1Uid];
+    var s2 = stats[res.player2Uid];
+    if (!s1 || !s2) return;
+
+    s1.played++; s2.played++;
+    s1.totalScore += res.score1; s2.totalScore += res.score2;
+
+    if (res.winnerUid === null) {
+      s1.drawn++; s2.drawn++;
+      s1.points += POINTS_DRAW; s2.points += POINTS_DRAW;
+    } else if (res.winnerUid === res.player1Uid) {
+      s1.won++; s1.points += POINTS_WIN;
+      s2.lost++; s2.points += POINTS_LOSS;
+    } else {
+      s2.won++; s2.points += POINTS_WIN;
+      s1.lost++; s1.points += POINTS_LOSS;
+    }
+  });
+
+  var arr = uids.map(function(uid) { return stats[uid]; });
+  arr.sort(function(a, b) {
+    if (b.points !== a.points) return b.points - a.points;
+    if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
+    return a.name.localeCompare(b.name);
+  });
+  return arr;
+}
+
+// Cross-group Quarterfinal draw so the top 2 finishers from the SAME group
+// can't meet before the Semifinal at the earliest: A1-B4, A2-B3, B1-A4, B2-A3.
+// Purely a function of final standings order — deterministic, so even if
+// this ever got called from two places at once it would compute the exact
+// same bracket both times.
+function seedKnockoutBracket(standingsA, standingsB) {
+  var A = standingsA.slice(0, LEAGUE_QUALIFIERS_PER_GROUP).map(function(s) { return s.uid; });
+  var B = standingsB.slice(0, LEAGUE_QUALIFIERS_PER_GROUP).map(function(s) { return s.uid; });
+  return [A[0], B[3], A[1], B[2], B[0], A[3], B[1], A[2]];
+}
+
+// Every pairing in my own group, in schedule order — the "Your Matches"
+// list. Always exactly 9 entries (one per round) since a round-robin
+// schedule guarantees each player appears in exactly one pairing per round.
+function buildMyGroupPairings(t, myGroup) {
+  var schedule = t.groupSchedule[myGroup];
+  var results = t.groupResults || {};
+  var list = [];
+
+  schedule.forEach(function(round, r) {
+    round.forEach(function(pair, p) {
+      if (pair.indexOf(me.uid) === -1) return;
+      var opponentUid = (pair[0] === me.uid) ? pair[1] : pair[0];
+      var key = myGroup + '_r' + r + '_p' + p;
+      list.push({
+        matchId: matchIdForGroupPairing(t.tournamentCode, myGroup, r, p),
+        opponentUid: opponentUid,
+        opponentName: playerName(t, opponentUid),
+        result: results[key] || null
+      });
+    });
+  });
+
+  return list;
+}
+
+// =====================================================================
 // CREATING / JOINING A TOURNAMENT
 // =====================================================================
 function generateTournamentCode() {
@@ -268,6 +419,64 @@ function createTournament(bracketSize, attempt) {
   });
 }
 
+function createLeagueTournament(attempt) {
+  if (!me) return;
+  attempt = attempt || 1;
+
+  var leagueBtn = document.getElementById('sizeBtnLeague');
+  if (attempt === 1) {
+    BRACKET_SIZES.forEach(function(size) {
+      var b = document.getElementById('sizeBtn' + size);
+      if (b) b.disabled = true;
+    });
+    if (leagueBtn) { leagueBtn.disabled = true; leagueBtn.innerHTML = '…'; }
+  }
+
+  var code = generateTournamentCode();
+  var ref = db.collection('tournaments').doc(code);
+
+  ref.get().then(function(existing) {
+    if (existing.exists) {
+      if (attempt >= 5) throw new Error('Could not find a free tournament code. Please try again.');
+      createLeagueTournament(attempt + 1);
+      return null;
+    }
+
+    var players = {};
+    players[me.uid] = { name: me.name, joinedAt: Date.now() };
+
+    return ref.set({
+      tournamentCode: code,
+      hostUid: me.uid,
+      type: 'league',
+      status: 'lobby',
+      totalPlayers: LEAGUE_TOTAL_PLAYERS,
+      players: players,
+      groups: null,
+      groupSchedule: null,
+      groupResults: {},
+      bracket: {},
+      bracketSize: null,
+      totalRounds: null,
+      currentRound: 0,
+      championUid: null,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }).then(function(written) {
+    if (written === null) return;
+    tournamentId = code;
+    listenToTournament();
+  }).catch(function(err) {
+    console.error('Create league tournament failed:', err);
+    BRACKET_SIZES.forEach(function(size) {
+      var b = document.getElementById('sizeBtn' + size);
+      if (b) { b.disabled = false; b.innerHTML = size + '<br/><span>players</span>'; }
+    });
+    if (leagueBtn) { leagueBtn.disabled = false; leagueBtn.innerHTML = 'League + Playoffs<br/><span>20 players — 2 groups of 10 → knockout</span>'; }
+    alert(explainFirebaseError(err));
+  });
+}
+
 // Also doubles as "resume my tournament" — a player already in this
 // tournament (rejoining after a refresh, or after finishing a bracket
 // match and coming back) is let straight in with no write at all, even
@@ -286,7 +495,8 @@ function joinTournamentByCode(code) {
     if (data.status !== 'lobby') {
       throw new Error(data.status === 'playing' ? 'STARTED' : 'CLOSED');
     }
-    if (Object.keys(players).length >= data.bracketSize) {
+    var requiredCount = (data.type === 'league') ? data.totalPlayers : data.bracketSize;
+    if (Object.keys(players).length >= requiredCount) {
       throw new Error('FULL');
     }
 
@@ -363,6 +573,8 @@ function listenToTournament() {
 }
 
 function render(t) {
+  lastT = t;
+
   if (t.status === 'aborted') {
     endWithMessage(t.abortReason || 'The organiser ended the tournament.');
     return;
@@ -372,7 +584,16 @@ function render(t) {
     renderLobby(t);
     return;
   }
-  if (t.status === 'playing') {
+  // League tournaments have a group stage before the bracket even exists.
+  if (t.status === 'group') {
+    renderGroupStage(t);
+    return;
+  }
+  // 'playing' = a pure knockout tournament's only in-progress state.
+  // 'knockout' = a league tournament's playoff stage, once qualifiers are
+  // decided — from here on it's the exact same bracket engine as knockout.
+  if (t.status === 'playing' || t.status === 'knockout') {
+    clearGroupMatchWatchers(); // group stage (if any) is done — stop watching its 90 matches
     renderBracket(t);
     if (t.hostUid === me.uid) hostWatchCurrentRound(t);
     return;
@@ -390,8 +611,13 @@ function renderLobby(t) {
   showScreen('lobbyScreen');
   document.getElementById('tournamentCodeDisplay').textContent = t.tournamentCode;
 
+  var isLeague = (t.type === 'league');
+  var requiredCount = isLeague ? t.totalPlayers : t.bracketSize;
+
   var badge = document.getElementById('tnSizeBadge');
-  badge.textContent = '🏆 ' + t.bracketSize + '-player knockout bracket';
+  badge.textContent = isLeague
+    ? '🏏 20-player league — 2 groups of 10, top 4 each advance to knockout'
+    : '🏆 ' + t.bracketSize + '-player knockout bracket';
   badge.style.display = 'block';
 
   var players = t.players || {};
@@ -399,7 +625,7 @@ function renderLobby(t) {
 
   uids.sort(function(a, b) { return (players[a].joinedAt || 0) - (players[b].joinedAt || 0); });
 
-  document.getElementById('tnPlayerCount').textContent = '(' + uids.length + '/' + t.bracketSize + ')';
+  document.getElementById('tnPlayerCount').textContent = '(' + uids.length + '/' + requiredCount + ')';
 
   var listEl = document.getElementById('tnPlayerList');
   listEl.innerHTML = '';
@@ -442,14 +668,16 @@ function renderLobby(t) {
 
   if (isHost) {
     startBtn.style.display = 'block';
-    if (uids.length < t.bracketSize) {
+    if (uids.length < requiredCount) {
       startBtn.disabled = true;
       startBtn.textContent = 'Waiting for players…';
-      note.textContent = 'Share the code above — needs exactly ' + t.bracketSize + ' players to start.';
+      note.textContent = 'Share the code above — needs exactly ' + requiredCount + ' players to start.';
     } else {
       startBtn.disabled = false;
-      startBtn.textContent = 'Start Tournament (' + uids.length + '/' + t.bracketSize + ')';
-      note.textContent = 'Bracket is full — start whenever ready.';
+      startBtn.textContent = 'Start Tournament (' + uids.length + '/' + requiredCount + ')';
+      note.textContent = isLeague
+        ? 'All 20 are in — starting will randomly split everyone into 2 groups of 10.'
+        : 'Bracket is full — start whenever ready.';
     }
   } else {
     startBtn.style.display = 'none';
@@ -512,7 +740,15 @@ function leaveTournament() {
 // =====================================================================
 // STARTING THE TOURNAMENT (host only)
 // =====================================================================
+// One button in the lobby HTML calls this regardless of type — dispatches
+// to whichever start flow matches the tournament actually in lastT.
 function startTournament() {
+  if (!lastT) return;
+  if (lastT.type === 'league') startLeagueTournament();
+  else startKnockoutTournament();
+}
+
+function startKnockoutTournament() {
   var btn = document.getElementById('startTournamentBtn');
   btn.disabled = true;
   btn.textContent = 'Starting…';
@@ -544,6 +780,48 @@ function startTournament() {
   });
 }
 
+// Splits the 20 lobby players into 2 random groups of 10 and generates each
+// group's full round-robin schedule. Doesn't touch the bracket at all yet —
+// that only gets built once the group stage actually finishes (see
+// maybeTransitionToKnockout below).
+function startLeagueTournament() {
+  var btn = document.getElementById('startTournamentBtn');
+  btn.disabled = true;
+  btn.textContent = 'Starting…';
+
+  db.collection('tournaments').doc(tournamentId).get().then(function(doc) {
+    var t = doc.data();
+    var uids = Object.keys(t.players || {});
+
+    var shuffled = uids.slice();
+    for (var i = shuffled.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var tmp = shuffled[i]; shuffled[i] = shuffled[j]; shuffled[j] = tmp;
+    }
+
+    var groups = {
+      A: shuffled.slice(0, LEAGUE_GROUP_SIZE),
+      B: shuffled.slice(LEAGUE_GROUP_SIZE)
+    };
+    var groupSchedule = {
+      A: generateRoundRobinSchedule(groups.A),
+      B: generateRoundRobinSchedule(groups.B)
+    };
+
+    return db.collection('tournaments').doc(tournamentId).update({
+      status: 'group',
+      groups: groups,
+      groupSchedule: groupSchedule,
+      groupResults: {}
+    });
+  }).catch(function(err) {
+    console.error('Start league failed:', err);
+    btn.disabled = false;
+    btn.textContent = 'Start Tournament';
+    alert(explainFirebaseError(err));
+  });
+}
+
 // =====================================================================
 // LIVE BRACKET VIEW
 // =====================================================================
@@ -556,7 +834,9 @@ function playerName(t, uid) {
 function renderBracket(t) {
   showScreen('bracketScreen');
 
-  document.getElementById('bracketTitle').textContent = t.bracketSize + '-Player Knockout';
+  document.getElementById('bracketTitle').textContent = (t.type === 'league')
+    ? 'Knockout Playoffs'
+    : t.bracketSize + '-Player Knockout';
   document.getElementById('bracketSub').textContent =
     roundLabel(t.totalRounds, t.currentRound, numSlotsInRound(t.bracketSize, t.currentRound)) + ' underway';
 
@@ -650,12 +930,262 @@ function renderMyMatchBox(t) {
 }
 
 // =====================================================================
+// GROUP STAGE (league only)
+// =====================================================================
+function renderGroupStage(t) {
+  showScreen('groupStageScreen');
+  document.getElementById('groupCodeDisplay').textContent = t.tournamentCode;
+
+  var myGroup = (t.groups.A.indexOf(me.uid) !== -1) ? 'A' : 'B';
+  if (viewingGroup !== 'A' && viewingGroup !== 'B') viewingGroup = myGroup;
+
+  document.getElementById('groupTabA').classList.toggle('tn-tab-active', viewingGroup === 'A');
+  document.getElementById('groupTabB').classList.toggle('tn-tab-active', viewingGroup === 'B');
+
+  var standings = computeGroupStandings(t, viewingGroup);
+  var standingsContainer = document.getElementById('groupStandingsContainer');
+  standingsContainer.innerHTML = '';
+  standingsContainer.appendChild(buildStandingsTable(standings, LEAGUE_QUALIFIERS_PER_GROUP));
+
+  var myMatchesContainer = document.getElementById('groupMyMatchesContainer');
+  myMatchesContainer.innerHTML = '';
+  if (viewingGroup === myGroup) {
+    var heading = document.createElement('div');
+    heading.className = 'mp-players-heading';
+    heading.textContent = 'Your Matches';
+    myMatchesContainer.appendChild(heading);
+    myMatchesContainer.appendChild(buildMyMatchesListElement(t, myGroup));
+  }
+
+  var total = groupTotalPairings(t);
+  var recorded = Object.keys(t.groupResults || {}).length;
+  document.getElementById('groupProgressNote').textContent =
+    recorded + ' of ' + total + ' group matches played across both groups — ' +
+    'top ' + LEAGUE_QUALIFIERS_PER_GROUP + ' from each group advance to the knockout playoffs.';
+
+  if (t.hostUid === me.uid) hostWatchAllGroupMatches(t);
+}
+
+function switchGroupTab(g) {
+  viewingGroup = g;
+  if (lastT) renderGroupStage(lastT);
+}
+
+// Builds a plain HTML table via DOM APIs (not innerHTML) since player names
+// are user-supplied — same textContent-based safety already used by
+// renderLobby's player rows.
+function buildStandingsTable(standings, qualifyCount) {
+  var table = document.createElement('table');
+  table.className = 'tn-standings-table';
+
+  var thead = document.createElement('thead');
+  var headRow = document.createElement('tr');
+  ['#', 'Player', 'P', 'W', 'D', 'L', 'Pts'].forEach(function(label) {
+    var th = document.createElement('th');
+    th.textContent = label;
+    headRow.appendChild(th);
+  });
+  thead.appendChild(headRow);
+  table.appendChild(thead);
+
+  var tbody = document.createElement('tbody');
+  standings.forEach(function(s, i) {
+    var tr = document.createElement('tr');
+    if (i < qualifyCount) tr.className = 'tn-qualifying-row';
+    if (s.uid === me.uid) tr.classList.add('tn-my-row');
+
+    var cells = [String(i + 1), s.name, String(s.played), String(s.won), String(s.drawn), String(s.lost), String(s.points)];
+    cells.forEach(function(text) {
+      var td = document.createElement('td');
+      td.textContent = text;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+  });
+  table.appendChild(tbody);
+
+  return table;
+}
+
+// The "Your Matches" list — one row per group opponent, a Play button for
+// unplayed pairings, a result line for finished ones.
+function buildMyMatchesListElement(t, myGroup) {
+  var wrap = document.createElement('div');
+  wrap.className = 'tn-my-matches-list';
+
+  buildMyGroupPairings(t, myGroup).forEach(function(p) {
+    var row = document.createElement('div');
+    row.className = 'tn-match-row';
+
+    var nameEl = document.createElement('span');
+    nameEl.className = 'tn-match-opponent';
+    nameEl.textContent = 'vs ' + (p.opponentName || 'Player');
+    row.appendChild(nameEl);
+
+    if (!p.result) {
+      var btn = document.createElement('button');
+      btn.className = 'btn-primary tn-match-play-btn';
+      btn.textContent = '▶️ Play';
+      btn.onclick = function() { playLeagueMatch(p.matchId, p.opponentUid, p.opponentName, btn); };
+      row.appendChild(btn);
+    } else {
+      var myScore = (p.result.player1Uid === me.uid) ? p.result.score1 : p.result.score2;
+      var theirScore = (p.result.player1Uid === me.uid) ? p.result.score2 : p.result.score1;
+
+      var statusEl = document.createElement('span');
+      statusEl.className = 'tn-match-status';
+      if (p.result.winnerUid === null) {
+        statusEl.textContent = 'Draw ' + myScore + '-' + theirScore;
+        statusEl.classList.add('tn-status-draw');
+      } else if (p.result.winnerUid === me.uid) {
+        statusEl.textContent = 'Won ' + myScore + '-' + theirScore;
+        statusEl.classList.add('tn-status-won');
+      } else {
+        statusEl.textContent = 'Lost ' + myScore + '-' + theirScore;
+        statusEl.classList.add('tn-status-lost');
+      }
+      row.appendChild(statusEl);
+    }
+
+    wrap.appendChild(row);
+  });
+
+  return wrap;
+}
+
+// =====================================================================
+// HOST: WATCHING GROUP MATCHES, RECORDING RESULTS, TRANSITIONING TO
+// KNOCKOUT (league only)
+// =====================================================================
+// Unlike the knockout bracket's round-gated hostWatchCurrentRound, a league
+// group stage has no rounds to gate on — all 90 pairings can be played in
+// any order the moment the group stage starts, so every pairing's match is
+// watched from the start in one pass. This does mean the host's tab needs
+// to be reopened occasionally until the whole group stage wraps up (it can
+// realistically take longer than one sitting with 20 real players) — but
+// NOT continuously: Firestore's onSnapshot delivers the current state the
+// moment a listener attaches, so reopening the tab after being away
+// catches up on everything that finished while it was closed.
+function hostWatchAllGroupMatches(t) {
+  if (groupWatchersAttached) return;
+  groupWatchersAttached = true;
+
+  ['A', 'B'].forEach(function(g) {
+    t.groupSchedule[g].forEach(function(round, r) {
+      round.forEach(function(pair, p) {
+        var key = g + '_r' + r + '_p' + p;
+        if ((t.groupResults || {})[key]) return; // already recorded
+
+        var matchId = matchIdForGroupPairing(t.tournamentCode, g, r, p);
+        var unsub = db.collection('matches').doc(matchId).onSnapshot(function(matchDoc) {
+          if (!matchDoc.exists) return;
+          var match = matchDoc.data();
+          if (match.status !== 'finished') return;
+
+          var board = match.leaderboard || [];
+          if (board.length < 2) return;
+
+          recordGroupResult(g, r, p, pair, board);
+        }, function(err) {
+          console.error('Group match watcher error:', err);
+        });
+
+        groupMatchWatchUnsubs.push(unsub);
+      });
+    });
+  });
+}
+
+function clearGroupMatchWatchers() {
+  groupMatchWatchUnsubs.forEach(function(u) { u(); });
+  groupMatchWatchUnsubs = [];
+  groupWatchersAttached = false;
+}
+
+function recordGroupResult(g, r, p, pair, leaderboard) {
+  var uidX = pair[0], uidY = pair[1];
+  var scoreOf = {};
+  leaderboard.forEach(function(row) { scoreOf[row.uid] = row.score; });
+  var scoreX = scoreOf[uidX] || 0;
+  var scoreY = scoreOf[uidY] || 0;
+  var winnerUid = (scoreX === scoreY) ? null : (scoreX > scoreY ? uidX : uidY);
+
+  var key = 'groupResults.' + g + '_r' + r + '_p' + p;
+  var update = {};
+  update[key] = { player1Uid: uidX, player2Uid: uidY, winnerUid: winnerUid, score1: scoreX, score2: scoreY };
+
+  db.collection('tournaments').doc(tournamentId).update(update)
+    .then(function() {
+      return db.collection('tournaments').doc(tournamentId).get();
+    })
+    .then(function(doc) {
+      maybeTransitionToKnockout(doc.data());
+    })
+    .catch(function(err) {
+      console.error('Recording group result failed:', err);
+    });
+}
+
+// Once every one of the 90 group pairings has a result, compute final
+// standings, take the top 4 from each group, seed them into a fresh
+// knockout bracket (reusing buildInitialBracket completely unchanged) and
+// switch the tournament into its playoff stage.
+function maybeTransitionToKnockout(t) {
+  if (t.status !== 'group') return;
+  if (knockoutTransitionAttempted) return;
+  if (!isGroupStageComplete(t)) return;
+
+  knockoutTransitionAttempted = true;
+
+  var standingsA = computeGroupStandings(t, 'A');
+  var standingsB = computeGroupStandings(t, 'B');
+  var seeds = seedKnockoutBracket(standingsA, standingsB);
+  var bracketSize = seeds.length; // 8
+  var totalRounds = Math.log2(bracketSize);
+  var bracket = buildInitialBracket(seeds, bracketSize, totalRounds);
+
+  db.collection('tournaments').doc(tournamentId).update({
+    status: 'knockout',
+    bracketSize: bracketSize,
+    totalRounds: totalRounds,
+    currentRound: 0,
+    bracket: bracket,
+    qualifiers: seeds
+  }).catch(function(err) {
+    console.error('Transitioning to knockout failed:', err);
+    knockoutTransitionAttempted = false; // let a later snapshot retry
+  });
+}
+
+// =====================================================================
 // PLAYING MY MATCH
 // =====================================================================
 function playMyMatch() {
   if (!myCurrentPairingInfo) return;
-  var info = myCurrentPairingInfo;
-  var playBtn = document.getElementById('playMatchBtn');
+  goPlayMatch(myCurrentPairingInfo, document.getElementById('playMatchBtn'));
+}
+
+// League equivalent of playMyMatch — the group stage has up to 9 concurrent
+// playable opponents (not one "current" pairing like a knockout round), so
+// each row in the "Your Matches" list builds its own info object and passes
+// its own button in, rather than going through the single shared
+// myCurrentPairingInfo/playMatchBtn pair the knockout bracket view uses.
+function playLeagueMatch(matchId, opponentUid, opponentName, btnEl) {
+  var amCreator = (pickCreatorUid(me.uid, opponentUid) === me.uid);
+  goPlayMatch({
+    matchId: matchId,
+    opponentUid: opponentUid,
+    opponentName: opponentName,
+    amCreator: amCreator
+  }, btnEl);
+}
+
+// Shared by playMyMatch (knockout) and playLeagueMatch (league group stage):
+// creates the duel match if I'm the deterministic creator, or waits for my
+// opponent to create it if I'm the joiner, then redirects into the actual
+// quiz. btnEl is whichever Play button triggered this — updated in place
+// while waiting so its own row doesn't need its own polling logic.
+function goPlayMatch(info, btnEl) {
   var ref = db.collection('matches').doc(info.matchId);
 
   if (info.amCreator) {
@@ -701,8 +1231,10 @@ function playMyMatch() {
       return;
     }
 
-    playBtn.disabled = true;
-    playBtn.textContent = 'Waiting for ' + info.opponentName + ' to open the match…';
+    if (btnEl) {
+      btnEl.disabled = true;
+      btnEl.textContent = 'Waiting for ' + info.opponentName + '…';
+    }
 
     if (myPendingWaitUnsub) myPendingWaitUnsub();
     myPendingWaitUnsub = ref.onSnapshot(function(waitDoc) {
@@ -819,6 +1351,7 @@ function maybeAdvanceRound(t) {
 function renderFinal(t) {
   showScreen('finalScreen');
   clearMatchWatchers();
+  clearGroupMatchWatchers();
 
   var isChampion = (t.championUid === me.uid);
   var championName = playerName(t, t.championUid);
@@ -827,8 +1360,10 @@ function renderFinal(t) {
   document.getElementById('finalTitle').textContent = isChampion
     ? 'You won the tournament!'
     : championName + ' won the tournament';
-  document.getElementById('finalSub').textContent =
-    t.bracketSize + '-player knockout — every round decided.';
+  document.getElementById('finalSub').textContent = (t.type === 'league')
+    ? '20-player league (2 groups of 10) → top ' + LEAGUE_QUALIFIERS_PER_GROUP +
+      ' each → 8-player knockout playoffs. Champion decided!'
+    : t.bracketSize + '-player knockout — every round decided.';
 
   document.getElementById('tnFinalBracket').innerHTML = buildBracketHTML(t);
 
@@ -842,10 +1377,13 @@ function renderFinal(t) {
 function teardown() {
   teardownListenerOnly();
   clearMatchWatchers();
+  clearGroupMatchWatchers();
   if (myPendingWaitUnsub) { myPendingWaitUnsub(); myPendingWaitUnsub = null; }
   watchersForRound = -1;
   advancedPastRound = -1;
   myCurrentPairingInfo = null;
+  viewingGroup = null;
+  knockoutTransitionAttempted = false;
 }
 
 function teardownListenerOnly() {
@@ -863,10 +1401,20 @@ function endWithMessage(msg) {
 // Best-effort: if the organiser closes the tab mid-tournament, try to tell
 // everyone rather than leaving the bracket frozen forever. Same accepted
 // limitation as multiplayer.js's matches — not guaranteed to fire.
+// Deliberately does NOT include 'group' — a 90-match, 20-player group stage
+// is expected to span far more than one sitting, so the host closing their
+// tab between check-ins must not blow up the whole tournament. onSnapshot
+// naturally catches up on everything that finished while the host was away
+// the next time they reopen this page (see hostWatchAllGroupMatches above).
+// 'playing' (pure knockout) and 'knockout' (a league's playoff stage, small
+// enough to expect in one sitting, same as a standalone knockout) still
+// abort on host tab-close, same as before.
+var ABORT_ON_HOST_LEAVE_STATUSES = ['playing', 'knockout'];
 window.addEventListener('beforeunload', function() {
   if (!tournamentId || !me || isLeaving) return;
   db.collection('tournaments').doc(tournamentId).get().then(function(doc) {
-    if (doc.exists && doc.data().hostUid === me.uid && doc.data().status === 'playing') {
+    if (doc.exists && doc.data().hostUid === me.uid &&
+        ABORT_ON_HOST_LEAVE_STATUSES.indexOf(doc.data().status) !== -1) {
       db.collection('tournaments').doc(tournamentId).update({
         status: 'aborted',
         abortReason: 'The organiser left the tournament.'

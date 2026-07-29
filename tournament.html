@@ -63,6 +63,12 @@
 
       <div class="mp-divider">or</div>
 
+      <div class="tn-size-heading">Run a full league</div>
+      <button class="tn-league-btn" onclick="createLeagueTournament()" id="sizeBtnLeague">League + Playoffs<br/><span>20 players — 2 groups of 10 → knockout</span></button>
+      <p class="mp-option-note">Everyone in your group plays everyone else once. Top 4 from each group go on to an 8-player knockout for the title.</p>
+
+      <div class="mp-divider">or</div>
+
       <button class="btn-secondary" onclick="showJoinScreen()">Join with a Code</button>
     </div>
   </div>
@@ -97,6 +103,27 @@
 
       <div class="mp-waiting-note" id="tnWaitingNote">Waiting for the bracket to fill up…</div>
       <button class="btn-primary" id="startTournamentBtn" style="display:none" onclick="startTournament()">Start Tournament</button>
+      <button class="btn-secondary mp-gap-top" onclick="leaveTournament()">Leave</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 3b: GROUP STAGE (league only) ===== -->
+  <div class="quiz-wrapper tn-bracket-wrapper" id="groupStageScreen" style="display:none">
+    <div class="quiz-card tn-bracket-card">
+      <div class="quiz-start-icon">🏏</div>
+      <h1 class="quiz-start-title">League Stage</h1>
+      <p class="quiz-start-sub">Code: <span id="groupCodeDisplay">------</span></p>
+
+      <div class="tn-group-tabs">
+        <button class="tn-group-tab" id="groupTabA" onclick="switchGroupTab('A')">Group A</button>
+        <button class="tn-group-tab" id="groupTabB" onclick="switchGroupTab('B')">Group B</button>
+      </div>
+
+      <div id="groupStandingsContainer"></div>
+      <div id="groupMyMatchesContainer"></div>
+
+      <p class="mp-waiting-note" id="groupProgressNote"></p>
+
       <button class="btn-secondary mp-gap-top" onclick="leaveTournament()">Leave</button>
     </div>
   </div>
