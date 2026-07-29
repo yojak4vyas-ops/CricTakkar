@@ -9,7 +9,11 @@ on:
   schedule:
     - cron: '30 2 * * *'   # 8:00 AM IST daily  -> On This Day
     - cron: '30 3 * * *'   # 9:00 AM IST daily  -> Tournament sign-up open
+    - cron: '30 9 * * *'   # 3:00 PM IST daily  -> Tournament sign-up open (2nd reminder)
+    - cron: '30 12 * * *'  # 6:00 PM IST daily  -> Tournament sign-up open (3rd reminder)
+    - cron: '15 14 * * *'  # 7:45 PM IST daily  -> Knockout starting soon (15 min before 8pm)
     - cron: '0 15 * * *'   # 8:30 PM IST daily  -> Streak reminder
+    - cron: '15 16 * * *'  # 9:45 PM IST daily  -> League starting soon (15 min before 10pm)
     - cron: '0 4 * * 1'    # 9:30 AM IST Monday -> Weekly leaderboard reset
     - cron: '30 4 * * 1'   # 10:00 AM IST Monday -> We miss you
   workflow_dispatch:
@@ -24,6 +28,8 @@ on:
           - weekly-leaderboard
           - we-miss-you
           - tournament-signup
+          - knockout-starting-soon
+          - league-starting-soon
 
 jobs:
   send:
@@ -48,8 +54,16 @@ jobs:
             echo "type=onthisday" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "30 3 * * *" ]; then
             echo "type=tournament-signup" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 9 * * *" ]; then
+            echo "type=tournament-signup" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 12 * * *" ]; then
+            echo "type=tournament-signup" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "15 14 * * *" ]; then
+            echo "type=knockout-starting-soon" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "0 15 * * *" ]; then
             echo "type=streak" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "15 16 * * *" ]; then
+            echo "type=league-starting-soon" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "0 4 * * 1" ]; then
             echo "type=weekly-leaderboard" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "30 4 * * 1" ]; then

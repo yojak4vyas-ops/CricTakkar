@@ -4,22 +4,26 @@
 // user's browser, because it needs the private Firebase service-account key.
 //
 // Usage: node send-notifications.js <type>
-//   type is one of: streak | onthisday | weekly-leaderboard | we-miss-you | tournament-signup
+//   type is one of: streak | onthisday | weekly-leaderboard | we-miss-you |
+//                    tournament-signup | knockout-starting-soon | league-starting-soon
 //
 // The first 4 notification types were agreed with the user on Day 35/36 — see
 // CLAUDE.md's Current Build Status for the reasoning behind each one's content
-// and timing. tournament-signup was added Day 47 alongside the host-less
-// scheduled Knockout/League (see CLAUDE.md "HOST-LESS SCHEDULED TOURNAMENTS") —
-// cancellation notices for a specific tonight's event are NOT sent from here,
-// since only the scheduled-tournament bot (run-scheduled-tournaments.js) knows
-// at lock time whether an event actually got cancelled; this type is only the
-// generic daily "sign-ups are open" reminder.
+// and timing. The 3 tournament-related types were added Day 47 alongside the
+// host-less scheduled Knockout/League (see CLAUDE.md "HOST-LESS SCHEDULED
+// TOURNAMENTS"), all going to the SAME broad opted-in audience as everything
+// else in this file, on purpose — the -starting-soon types are a last chance
+// for anyone who hasn't signed up yet to still join, not just a nudge for
+// people already in. (Cancellation notices are different — only the
+// scheduled-tournament bot, run-scheduled-tournaments.js, knows at lock time
+// whether tonight's event actually got cancelled, and only sends that notice
+// to the small list of people who did sign up — that one isn't in this file.)
 
 const admin = require('firebase-admin');
 const path = require('path');
 
 const NOTIFICATION_TYPE = process.argv[2];
-const VALID_TYPES = ['streak', 'onthisday', 'weekly-leaderboard', 'we-miss-you', 'tournament-signup'];
+const VALID_TYPES = ['streak', 'onthisday', 'weekly-leaderboard', 'we-miss-you', 'tournament-signup', 'knockout-starting-soon', 'league-starting-soon'];
 
 if (!VALID_TYPES.includes(NOTIFICATION_TYPE)) {
   console.error('Usage: node send-notifications.js <' + VALID_TYPES.join('|') + '>');
@@ -222,6 +226,28 @@ async function runTournamentSignup() {
   );
 }
 
+// ===== TYPE 6/7: TOURNAMENT STARTING SOON (daily, 7:45 PM / 9:45 PM IST) =====
+// 15 minutes before each scheduled tournament locks. Deliberately sent to
+// everyone opted in, not just today's signed-up players — the point is a
+// last chance for someone who hasn't joined yet to still get in before it's
+// too late, not just a "don't forget" for people already registered.
+async function runKnockoutStartingSoon() {
+  var all = await fetchOptedInUsers();
+  await sendToUsers(
+    all,
+    '⏰ Knockout starts in 15 minutes!',
+    "Sign up now on the Tournaments page — it's not too late."
+  );
+}
+async function runLeagueStartingSoon() {
+  var all = await fetchOptedInUsers();
+  await sendToUsers(
+    all,
+    '⏰ League + Playoffs starts in 15 minutes!',
+    "Sign up now on the Tournaments page — it's not too late."
+  );
+}
+
 // ===== RUN =====
 (async function() {
   try {
@@ -230,6 +256,8 @@ async function runTournamentSignup() {
     else if (NOTIFICATION_TYPE === 'weekly-leaderboard') await runWeeklyLeaderboard();
     else if (NOTIFICATION_TYPE === 'we-miss-you') await runWeMissYou();
     else if (NOTIFICATION_TYPE === 'tournament-signup') await runTournamentSignup();
+    else if (NOTIFICATION_TYPE === 'knockout-starting-soon') await runKnockoutStartingSoon();
+    else if (NOTIFICATION_TYPE === 'league-starting-soon') await runLeagueStartingSoon();
     process.exit(0);
   } catch (err) {
     console.error('Notification run failed:', err);
