@@ -53,6 +53,24 @@
       <h1 class="quiz-start-title">Tournaments</h1>
       <p class="quiz-start-sub">Run a knockout bracket with your friends — win your match, advance, and see who's the last one left.</p>
 
+      <div class="tn-size-heading">Tonight's Scheduled Tournaments</div>
+
+      <div class="tn-scheduled-card">
+        <div class="tn-scheduled-card-title">🏆 Knockout — 8:00 PM IST</div>
+        <div class="tn-scheduled-card-status" id="schedKnockoutStatus">Loading…</div>
+        <button class="btn-primary tn-scheduled-join-btn" id="schedKnockoutBtn" onclick="scheduledJoinToggle('knockout')">Join</button>
+      </div>
+
+      <div class="tn-scheduled-card">
+        <div class="tn-scheduled-card-title">🏏 League + Playoffs — 10:00 PM IST</div>
+        <div class="tn-scheduled-card-status" id="schedLeagueStatus">Loading…</div>
+        <button class="btn-primary tn-scheduled-join-btn" id="schedLeagueBtn" onclick="scheduledJoinToggle('league')">Join</button>
+      </div>
+
+      <p class="mp-option-note">Sign up anytime today — no need to gather everyone first. Byes fill any gap so everyone who signs up gets in, even if the count isn't a clean bracket size.</p>
+
+      <div class="mp-divider">or make your own</div>
+
       <div class="tn-size-heading">Create a knockout bracket</div>
       <div class="tn-size-row">
         <button class="tn-size-btn" onclick="createTournament(4)" id="sizeBtn4">4<br/><span>players</span></button>

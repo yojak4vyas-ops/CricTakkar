@@ -43,6 +43,22 @@ var POINTS_WIN = 3;
 var POINTS_DRAW = 1;
 var POINTS_LOSS = 0;
 
+// ===== SCHEDULED TOURNAMENTS CONFIG (Day 47) =====
+// The host-less daily 8pm Knockout / 10pm League — see CLAUDE.md
+// "HOST-LESS SCHEDULED TOURNAMENTS" for the full design. Sign-up is a
+// separate /scheduledSignups doc (open all day, no player cap); a GitHub
+// Actions bot locks it at start time, builds a bye-aware bracket or an
+// uneven-split league via tournament-logic.js, and creates the real
+// /tournaments doc that the code below already knows how to render and
+// play through unchanged.
+var SCHED_MIN_KNOCKOUT = 4;
+var SCHED_MIN_LEAGUE = 10;
+var SCHED_UI = {
+  knockout: { statusId: 'schedKnockoutStatus', btnId: 'schedKnockoutBtn', startsAtIst: '20:00', label: '8:00 PM', min: SCHED_MIN_KNOCKOUT },
+  league:   { statusId: 'schedLeagueStatus',   btnId: 'schedLeagueBtn',   startsAtIst: '22:00', label: '10:00 PM', min: SCHED_MIN_LEAGUE }
+};
+var schedUnsubs = { knockout: null, league: null };
+
 // ===== STATE =====
 var me = null;
 var tournamentId = null;         // = tournamentCode = the doc ID
@@ -89,6 +105,8 @@ auth.onAuthStateChanged(function(user) {
 // multiplayer.html) drops them straight back into the live bracket instead
 // of a dead end at the entry screen.
 function enterAfterLogin() {
+  startScheduledListeners(); // independent of which screen we land on below
+
   var saved = localStorage.getItem(RESUME_KEY);
   if (!saved) {
     showScreen('entryScreen');
@@ -101,6 +119,143 @@ function enterAfterLogin() {
       localStorage.removeItem(RESUME_KEY);
       showScreen('entryScreen');
     });
+}
+
+// =====================================================================
+// SCHEDULED SIGN-UP (Day 47) — the entry screen's two cards live-update
+// from /scheduledSignups the whole time this page is open, regardless of
+// which screen is actually showing, so they're already current the moment
+// a player navigates back to the entry screen.
+// =====================================================================
+function istTodayStr() {
+  var ist = new Date(Date.now() + 5.5 * 60 * 60 * 1000); // same IST-shift technique as automation/send-notifications.js
+  return ist.getUTCFullYear() + '-' +
+    String(ist.getUTCMonth() + 1).padStart(2, '0') + '-' +
+    String(ist.getUTCDate()).padStart(2, '0');
+}
+
+function scheduledEventId(type) {
+  return istTodayStr() + '-' + type;
+}
+
+function startScheduledListeners() {
+  ['knockout', 'league'].forEach(function(type) {
+    if (schedUnsubs[type]) schedUnsubs[type]();
+    schedUnsubs[type] = db.collection('scheduledSignups').doc(scheduledEventId(type))
+      .onSnapshot(function(doc) {
+        renderScheduledCard(type, doc.exists ? doc.data() : null);
+      }, function(err) {
+        console.error('Scheduled signup listener error (' + type + '):', err);
+      });
+  });
+}
+
+function renderScheduledCard(type, data) {
+  var ui = SCHED_UI[type];
+  var statusEl = document.getElementById(ui.statusId);
+  var btn = document.getElementById(ui.btnId);
+  if (!statusEl || !btn) return; // page not on the entry screen's DOM yet
+
+  statusEl.className = 'tn-scheduled-card-status';
+
+  if (!data || data.status === 'open') {
+    var players = data ? (data.players || {}) : {};
+    var count = Object.keys(players).length;
+    var amIn = !!(me && players[me.uid]);
+    statusEl.textContent = count + ' signed up so far — needs ' + ui.min + ' to run tonight at ' + ui.label + '.';
+    btn.disabled = false;
+    btn.textContent = amIn ? "You're in — Leave" : 'Join';
+    btn.onclick = function() { scheduledJoinToggle(type); };
+    return;
+  }
+
+  if (data.status === 'started') {
+    var amPlaying = !!(me && (data.players || {})[me.uid]);
+    statusEl.textContent = '🔴 Live now!';
+    statusEl.classList.add('tn-scheduled-live');
+    if (amPlaying) {
+      btn.disabled = false;
+      btn.textContent = 'Enter Live Tournament →';
+      btn.onclick = function() { enterScheduledTournament(type); };
+    } else {
+      btn.disabled = true;
+      btn.textContent = 'Already started';
+      btn.onclick = null;
+    }
+    return;
+  }
+
+  if (data.status === 'cancelled') {
+    statusEl.textContent = 'Cancelled tonight — only ' + Object.keys(data.players || {}).length +
+      ' signed up, needed ' + ui.min + '.';
+    statusEl.classList.add('tn-scheduled-cancelled');
+    btn.disabled = true;
+    btn.textContent = 'Cancelled';
+    btn.onclick = null;
+  }
+}
+
+function scheduledJoinToggle(type) {
+  if (!me) return;
+  var ui = SCHED_UI[type];
+  var btn = document.getElementById(ui.btnId);
+  if (btn) btn.disabled = true;
+
+  var ref = db.collection('scheduledSignups').doc(scheduledEventId(type));
+
+  ref.get().then(function(doc) {
+    if (!doc.exists) {
+      var players = {};
+      players[me.uid] = { name: me.name, joinedAt: Date.now() };
+      return ref.set({
+        eventId: scheduledEventId(type),
+        type: type,
+        eventDate: istTodayStr(),
+        startsAtIst: ui.startsAtIst,
+        status: 'open',
+        minPlayers: ui.min,
+        players: players,
+        tournamentCode: null,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+      });
+    }
+
+    var data = doc.data();
+    if (data.status !== 'open') return null; // locked/started/cancelled — nothing to toggle
+
+    var already = !!(data.players || {})[me.uid];
+    var update = {};
+    if (already) {
+      update['players.' + me.uid] = firebase.firestore.FieldValue.delete();
+    } else {
+      update['players.' + me.uid] = { name: me.name, joinedAt: Date.now() };
+    }
+    return ref.update(update);
+  }).catch(function(err) {
+    console.error('Scheduled signup toggle failed (' + type + '):', err);
+    alert(explainFirebaseError(err));
+  }).then(function() {
+    if (btn) btn.disabled = false;
+  });
+}
+
+// The bot already added this uid to the real tournament's players map when
+// it built the bracket — this is a pure resume, same joinTournamentByCode
+// "already in" branch a page-refresh mid-tournament goes through.
+function enterScheduledTournament(type) {
+  db.collection('scheduledSignups').doc(scheduledEventId(type)).get().then(function(doc) {
+    if (!doc.exists || !doc.data().tournamentCode) return;
+    var code = doc.data().tournamentCode;
+    return joinTournamentByCode(code).then(function() {
+      ['knockout', 'league'].forEach(function(t) {
+        if (schedUnsubs[t]) { schedUnsubs[t](); schedUnsubs[t] = null; }
+      });
+      listenToTournament();
+    });
+  }).catch(function(err) {
+    console.error('Could not enter scheduled tournament:', err);
+    alert(explainFirebaseError(err));
+  });
 }
 
 // =====================================================================

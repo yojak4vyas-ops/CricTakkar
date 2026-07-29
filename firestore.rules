@@ -196,6 +196,50 @@ service cloud.firestore {
       allow delete: if isTournamentHost();
     }
 
+    // ===================================================================
+    // SCHEDULED SIGNUPS — Day 47: the host-less 8pm Knockout / 10pm League
+    // (see CLAUDE.md "HOST-LESS SCHEDULED TOURNAMENTS"). This is only ever
+    // an open, no-cap sign-up sheet — the real bracket lives in /tournaments
+    // above once the scheduled bot builds it. There is no client-side path
+    // for locking, cancelling, or building the bracket: only the bot (using
+    // the Admin SDK, which bypasses these rules entirely) can do that, so
+    // "status" only ever moves from 'open' via a server credential nothing
+    // here needs to authorize.
+    // ===================================================================
+    match /scheduledSignups/{eventId} {
+
+      function onlyChangedOwnSignupEntry() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['players'])
+               && request.resource.data.players
+                 .diff(resource.data.players)
+                 .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      allow read: if signedIn();
+
+      // Whoever is first to try to join today's event creates its sign-up
+      // sheet, already containing themselves — same collision-check pattern
+      // tournament.js's own createTournament() already uses. Pinned to a
+      // fresh, just-opened shape so a client can't create a doc that's
+      // already "started" or already has someone else's tournamentCode.
+      allow create: if signedIn()
+                    && request.resource.data.eventId == eventId
+                    && request.resource.data.type in ['knockout', 'league']
+                    && request.resource.data.status == 'open'
+                    && request.resource.data.tournamentCode == null
+                    && request.resource.data.players.size() == 1
+                    && request.resource.data.players.keys().hasOnly([request.auth.uid]);
+
+      // Players may only add or remove their OWN entry, and only while
+      // sign-ups are still open. Locking, cancelling, and writing the real
+      // tournamentCode all happen after this — bot-only, no rule for it.
+      allow update: if signedIn() && resource.data.status == 'open'
+                    && onlyChangedOwnSignupEntry();
+
+      allow delete: if false;
+    }
+
     // Anything not named above is denied by default.
   }
 }
