@@ -28,7 +28,7 @@ var CREATE_BTN_LABELS = {
   createRoomBtn: 'Create a Room',
   duelBtn: '⚔️ 1v1 Duel a Friend',
   speedModeBtn: '⚡ Speed Mode',
-  eliminationModeBtn: '💀 Elimination Mode'
+  eliminationModeBtn: '💀 Last One Standing'
 };
 
 // ===== STATE =====
@@ -448,7 +448,7 @@ function render(match) {
   }
 
   if (match.status === 'playing') {
-    // Elimination Mode: once you're out, you stop seeing questions — you
+    // Last One Standing: once you're out, you stop seeing questions — you
     // just watch the player count shrink until the match ends.
     if (isEliminated(match, me.uid)) {
       renderEliminatedWaiting(match);
@@ -496,7 +496,7 @@ function renderLobby(match) {
     modeBadge.textContent = '⚡ Speed Mode — 5 seconds per question, faster = more points';
     modeBadge.style.display = 'block';
   } else if (match.mode === 'elimination') {
-    modeBadge.textContent = '💀 Elimination Mode — lowest score is out after every question';
+    modeBadge.textContent = '💀 Last One Standing — lowest score is out after every question';
     modeBadge.style.display = 'block';
   } else {
     modeBadge.style.display = 'none';
@@ -687,8 +687,8 @@ function scheduleHostPhases(qIndex) {
       .catch(function(e) { console.error('Standings write failed:', e); });
   }, seconds * 1000 + REVEAL_MS));
 
-  // 3. Then either the next question, or the end of the match. Elimination
-  // Mode can end early — the moment only one player is still standing,
+  // 3. Then either the next question, or the end of the match. Last One
+  // Standing can end early — the moment only one player is still standing,
   // there's no point asking the remaining questions.
   hostTimeouts.push(setTimeout(function() {
     var next = qIndex + 1;
@@ -773,7 +773,7 @@ function computeLeaderboard(match, answers) {
 }
 
 // PURE, same reasoning as computeLeaderboard above — no Firestore/DOM.
-// Elimination Mode's rule: anyone still active who got this question wrong
+// Last One Standing's rule: anyone still active who got this question wrong
 // (or never answered) is "at risk." Among the at-risk, the one with the
 // lowest cumulative score goes home — exactly one elimination per question,
 // and never down to zero players (a round where everyone gets it right
@@ -896,7 +896,7 @@ function startQuestion(match, qIndex) {
     modeTagEl.textContent = '⚡ Speed';
     modeTagEl.style.display = 'inline-block';
   } else if (match.mode === 'elimination') {
-    modeTagEl.textContent = '💀 Elimination';
+    modeTagEl.textContent = '💀 Last One Standing';
     modeTagEl.style.display = 'inline-block';
   } else {
     modeTagEl.style.display = 'none';
@@ -907,7 +907,7 @@ function startQuestion(match, qIndex) {
 
 // Purely visual. The host's write is what actually ends the question —
 // this just shows the player how long they have left. Mode-aware, since
-// Speed Mode runs a shorter clock than Classic/Elimination.
+// Speed Mode runs a shorter clock than Classic/Last One Standing.
 function startLocalCountdown() {
   clearInterval(localTimer);
 
@@ -1014,7 +1014,7 @@ function renderStandings(match) {
     isLast ? 'Final results coming up…' : 'Next question coming up…';
 }
 
-// Elimination Mode's own board order: still-active players always rank
+// Last One Standing's own board order: still-active players always rank
 // above eliminated ones (there's normally exactly one active player left —
 // the winner — by the time the match ends), and among the eliminated, the
 // one knocked out last ranks higher than one knocked out earlier.
