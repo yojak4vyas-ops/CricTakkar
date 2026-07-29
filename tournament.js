@@ -143,80 +143,17 @@ function explainFirebaseError(err) {
 }
 
 // =====================================================================
-// PURE HELPERS (no Firestore/DOM — the same reasoning as multiplayer.js's
-// computeLeaderboard: this is bracket logic, testable on its own)
+// PURE BRACKET HELPERS — moved to tournament-logic.js on Day 47 so the
+// host-less scheduled-tournament bot (Node) can use the EXACT SAME
+// bracket/round-robin/bye math as this browser code, from one source
+// instead of two copies that could drift apart. That file is loaded via
+// <script> before this one in tournament.html, so matchIdForSlot,
+// pickCreatorUid, roundLabel, numSlotsInRound, buildInitialBracket,
+// nextRoundPairings, isRoundComplete, buildInitialBracketWithByes,
+// generateRoundRobinSchedule, matchIdForGroupPairing, groupTotalPairings,
+// isGroupStageComplete, computeGroupStandings, seedKnockoutBracket, and
+// splitIntoTwoGroups are all already global by the time this file runs.
 // =====================================================================
-function matchIdForSlot(tournamentCode, round, slot) {
-  return tournamentCode + '-R' + round + '-S' + slot;
-}
-
-// Deterministic so both paired players agree on who creates the match
-// without any coordination — whoever's uid sorts first.
-function pickCreatorUid(uidA, uidB) {
-  return (uidA < uidB) ? uidA : uidB;
-}
-
-function roundLabel(totalRounds, round, numSlots) {
-  var fromEnd = totalRounds - 1 - round;
-  if (fromEnd === 0) return 'Final';
-  if (fromEnd === 1) return 'Semifinal';
-  if (fromEnd === 2) return 'Quarterfinal';
-  return 'Round of ' + (numSlots * 2);
-}
-
-function numSlotsInRound(bracketSize, round) {
-  return bracketSize / Math.pow(2, round + 1);
-}
-
-// Builds the full bracket shape up front — every round's slots, not just
-// round 0 — so the bracket view can show the whole shape from the start
-// ("Quarterfinal → Semifinal → Final") with TBD slots filling in as rounds
-// resolve, rather than only revealing one round at a time.
-function buildInitialBracket(seeds, bracketSize, totalRounds) {
-  var bracket = {};
-
-  for (var slot = 0; slot < bracketSize / 2; slot++) {
-    bracket['r0_s' + slot] = {
-      player1Uid: seeds[slot * 2],
-      player2Uid: seeds[slot * 2 + 1],
-      winnerUid: null
-    };
-  }
-
-  for (var round = 1; round < totalRounds; round++) {
-    var slots = numSlotsInRound(bracketSize, round);
-    for (var s = 0; s < slots; s++) {
-      bracket['r' + round + '_s' + s] = { player1Uid: null, player2Uid: null, winnerUid: null };
-    }
-  }
-
-  return bracket;
-}
-
-// Given a fully-resolved round, computes the next round's pairings —
-// winner of slot 2i plays winner of slot 2i+1. Pure: returns the update
-// object to write, doesn't touch Firestore itself.
-function nextRoundPairings(bracket, round, numSlotsThisRound) {
-  var updates = {};
-  var nextRound = round + 1;
-
-  for (var i = 0; i < numSlotsThisRound / 2; i++) {
-    var a = bracket['r' + round + '_s' + (i * 2)];
-    var b = bracket['r' + round + '_s' + (i * 2 + 1)];
-    updates['bracket.r' + nextRound + '_s' + i + '.player1Uid'] = a.winnerUid;
-    updates['bracket.r' + nextRound + '_s' + i + '.player2Uid'] = b.winnerUid;
-  }
-
-  return updates;
-}
-
-function isRoundComplete(bracket, round, numSlotsThisRound) {
-  for (var i = 0; i < numSlotsThisRound; i++) {
-    var entry = bracket['r' + round + '_s' + i];
-    if (!entry || !entry.winnerUid) return false;
-  }
-  return true;
-}
 
 function pickQuestionIndexes() {
   var all = [];
@@ -229,106 +166,12 @@ function pickQuestionIndexes() {
 }
 
 // =====================================================================
-// LEAGUE — PURE HELPERS (no Firestore/DOM, same reasoning as the knockout
-// helpers above)
+// LEAGUE — generateRoundRobinSchedule, matchIdForGroupPairing,
+// groupTotalPairings, isGroupStageComplete, computeGroupStandings, and
+// seedKnockoutBracket all moved to tournament-logic.js on Day 47 (see the
+// note above) — buildMyGroupPairings below is the one that stayed, since
+// it needs `me` and the browser-only playerName() helper.
 // =====================================================================
-
-// Standard "circle method" round-robin scheduler. Only supports an even
-// player count (LEAGUE_GROUP_SIZE is always 10, so no bye/odd handling is
-// needed) — fixes the first player, rotates everyone else one seat per
-// round. Produces (n-1) rounds of n/2 matches each; every pair of players
-// appears exactly once across the whole schedule.
-function generateRoundRobinSchedule(players) {
-  var n = players.length;
-  var fixed = players[0];
-  var rotating = players.slice(1);
-  var rounds = [];
-
-  for (var r = 0; r < n - 1; r++) {
-    var current = [fixed].concat(rotating);
-    var round = [];
-    for (var i = 0; i < n / 2; i++) {
-      round.push([current[i], current[n - 1 - i]]);
-    }
-    rounds.push(round);
-    rotating.unshift(rotating.pop()); // rotate one seat for the next round
-  }
-
-  return rounds;
-}
-
-function matchIdForGroupPairing(tournamentCode, group, round, pairIdx) {
-  return tournamentCode + '-G' + group + '-R' + round + '-P' + pairIdx;
-}
-
-function groupTotalPairings(t) {
-  var total = 0;
-  ['A', 'B'].forEach(function(g) {
-    (t.groupSchedule[g] || []).forEach(function(round) { total += round.length; });
-  });
-  return total;
-}
-
-function isGroupStageComplete(t) {
-  var results = t.groupResults || {};
-  return Object.keys(results).length >= groupTotalPairings(t);
-}
-
-// Computes one group's live standings from groupResults — everything needed
-// is already sitting in the tournament doc, no extra reads. Sorted by
-// points, then cumulative quiz score (tiebreak), then name (final fallback).
-function computeGroupStandings(t, g) {
-  var uids = t.groups[g];
-  var stats = {};
-  uids.forEach(function(uid) {
-    stats[uid] = {
-      uid: uid, name: playerName(t, uid) || 'Player',
-      played: 0, won: 0, drawn: 0, lost: 0, points: 0, totalScore: 0
-    };
-  });
-
-  var results = t.groupResults || {};
-  Object.keys(results).forEach(function(key) {
-    if (key.charAt(0) !== g) return; // keys look like "A_r0_p0" / "B_r3_p2"
-    var res = results[key];
-    var s1 = stats[res.player1Uid];
-    var s2 = stats[res.player2Uid];
-    if (!s1 || !s2) return;
-
-    s1.played++; s2.played++;
-    s1.totalScore += res.score1; s2.totalScore += res.score2;
-
-    if (res.winnerUid === null) {
-      s1.drawn++; s2.drawn++;
-      s1.points += POINTS_DRAW; s2.points += POINTS_DRAW;
-    } else if (res.winnerUid === res.player1Uid) {
-      s1.won++; s1.points += POINTS_WIN;
-      s2.lost++; s2.points += POINTS_LOSS;
-    } else {
-      s2.won++; s2.points += POINTS_WIN;
-      s1.lost++; s1.points += POINTS_LOSS;
-    }
-  });
-
-  var arr = uids.map(function(uid) { return stats[uid]; });
-  arr.sort(function(a, b) {
-    if (b.points !== a.points) return b.points - a.points;
-    if (b.totalScore !== a.totalScore) return b.totalScore - a.totalScore;
-    return a.name.localeCompare(b.name);
-  });
-  return arr;
-}
-
-// Cross-group Quarterfinal draw so the top 2 finishers from the SAME group
-// can't meet before the Semifinal at the earliest: A1-B4, A2-B3, B1-A4, B2-A3.
-// Purely a function of final standings order — deterministic, so even if
-// this ever got called from two places at once it would compute the exact
-// same bracket both times.
-function seedKnockoutBracket(standingsA, standingsB) {
-  var A = standingsA.slice(0, LEAGUE_QUALIFIERS_PER_GROUP).map(function(s) { return s.uid; });
-  var B = standingsB.slice(0, LEAGUE_QUALIFIERS_PER_GROUP).map(function(s) { return s.uid; });
-  return [A[0], B[3], A[1], B[2], B[0], A[3], B[1], A[2]];
-}
 
 // Every pairing in my own group, in schedule order — the "Your Matches"
 // list. Always exactly 9 entries (one per round) since a round-robin
@@ -859,6 +702,13 @@ function buildBracketHTML(t) {
 
       if (!entry.player1Uid || !entry.player2Uid) {
         html += '<span class="tn-pairing-tbd">To be decided</span>';
+      } else if (entry.player2Uid === 'BYE') {
+        // Only ever produced by the scheduled bot's buildInitialBracketWithByes
+        // (see tournament-logic.js) — the manual create-a-bracket flow always
+        // fills the bracket exactly, so this never appears there.
+        var byeName = escapeHtml(playerName(t, entry.player1Uid));
+        html += '<span class="tn-pairing-player tn-winner">' + byeName + '</span>';
+        html += '<span class="tn-pairing-vs">bye — advances automatically</span>';
       } else {
         var n1 = escapeHtml(playerName(t, entry.player1Uid));
         var n2 = escapeHtml(playerName(t, entry.player2Uid));
@@ -942,7 +792,7 @@ function renderGroupStage(t) {
   document.getElementById('groupTabA').classList.toggle('tn-tab-active', viewingGroup === 'A');
   document.getElementById('groupTabB').classList.toggle('tn-tab-active', viewingGroup === 'B');
 
-  var standings = computeGroupStandings(t, viewingGroup);
+  var standings = computeGroupStandings(t.players, t.groups[viewingGroup], viewingGroup, t.groupResults, POINTS_WIN, POINTS_DRAW, POINTS_LOSS);
   var standingsContainer = document.getElementById('groupStandingsContainer');
   standingsContainer.innerHTML = '';
   standingsContainer.appendChild(buildStandingsTable(standings, LEAGUE_QUALIFIERS_PER_GROUP));
@@ -957,7 +807,7 @@ function renderGroupStage(t) {
     myMatchesContainer.appendChild(buildMyMatchesListElement(t, myGroup));
   }
 
-  var total = groupTotalPairings(t);
+  var total = groupTotalPairings(t.groupSchedule);
   var recorded = Object.keys(t.groupResults || {}).length;
   document.getElementById('groupProgressNote').textContent =
     recorded + ' of ' + total + ' group matches played across both groups — ' +
@@ -1133,13 +983,13 @@ function recordGroupResult(g, r, p, pair, leaderboard) {
 function maybeTransitionToKnockout(t) {
   if (t.status !== 'group') return;
   if (knockoutTransitionAttempted) return;
-  if (!isGroupStageComplete(t)) return;
+  if (!isGroupStageComplete(t.groupSchedule, t.groupResults)) return;
 
   knockoutTransitionAttempted = true;
 
-  var standingsA = computeGroupStandings(t, 'A');
-  var standingsB = computeGroupStandings(t, 'B');
-  var seeds = seedKnockoutBracket(standingsA, standingsB);
+  var standingsA = computeGroupStandings(t.players, t.groups.A, 'A', t.groupResults, POINTS_WIN, POINTS_DRAW, POINTS_LOSS);
+  var standingsB = computeGroupStandings(t.players, t.groups.B, 'B', t.groupResults, POINTS_WIN, POINTS_DRAW, POINTS_LOSS);
+  var seeds = seedKnockoutBracket(standingsA, standingsB, LEAGUE_QUALIFIERS_PER_GROUP);
   var bracketSize = seeds.length; // 8
   var totalRounds = Math.log2(bracketSize);
   var bracket = buildInitialBracket(seeds, bracketSize, totalRounds);
