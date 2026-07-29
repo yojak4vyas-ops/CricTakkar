@@ -5270,6 +5270,425 @@ const wordlePlayers = [
     iccTrophies: 0
     // International career began Sep 2024, after England's last ICC trophy (the 2022 T20 World Cup)
     // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Alex Hales",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand opening batsman, right-arm medium part-time bowler
+    // — England T20I Round 1 (top-15 run-scorers)
+    debutYear: 2011,
+    format: "All-format",
+    // T20I debut 31 Aug 2011 vs India (earliest), ODI debut 27 Aug 2014 vs India, Test debut 26 Dec
+    // 2015 vs South Africa — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad"],
+    // Two "signed but never played" exclusions applied per the standing rule: Mumbai Indians (2015,
+    // signed for the playoffs/final but made no appearances) and Kolkata Knight Riders (2022,
+    // purchased in auction but withdrew for personal reasons) — only Sunrisers Hyderabad (2018,
+    // debuted as David Warner's replacement) is a genuine playing spell, independently re-verified
+    iccTrophies: 1
+    // Deliberately NOT credited with 2019: he was dropped from the World Cup squad shortly before
+    // the tournament following a failed drugs test, replaced by James Vince — independently
+    // re-verified against the actual 15-man squad list. Credited with 2022 instead: recalled as a
+    // late replacement for the injured Jonny Bairstow and played a starring role, including a
+    // record 170-run opening stand with Jos Buttler in the semi-final
+  },
+  {
+    name: "Dawid Malan",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: left-hand bat, right-arm legbreak part-time bowler
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 25 Jun 2017 vs South Africa (earliest, 78 off 44 on debut), Test debut 27 Jul 2017
+    // vs South Africa, ODI debut 3 May 2019 vs Ireland — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Punjab Kings"],
+    // Punjab Kings (2021) — bought in the auction, genuinely played 1 match that season
+    iccTrophies: 1
+    // Confirmed NOT on the winning 2019 World Cup squad (independently re-verified against the
+    // actual 15-man list). Credited with 2022 instead: named in the winning T20 World Cup squad,
+    // scored 56 runs in the group stage before an injury ruled him out of the semi-final and final
+  },
+  {
+    name: "Phil Salt",
+    country: "England",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat wicketkeeper who occasionally bowls offbreak
+    debutYear: 2021,
+    format: "ODI+T20",
+    // ODI debut 8 Jul 2021 vs Pakistan (earliest), T20I debut 26 Jan 2022 vs West Indies —
+    // explicitly confirmed no Test caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Delhi Capitals", "Kolkata Knight Riders", "Royal Challengers Bangalore"],
+    // Delhi Capitals (2023), Kolkata Knight Riders (2024, a title-winning campaign — 435 runs at a
+    // strike rate of 182), Royal Challengers Bangalore (2025-present, another title-winning
+    // campaign in 2025) — all genuine playing spells confirmed via a dedicated IPL-history search.
+    // (His Abu Dhabi Knight Riders spell is ILT20, not the IPL, and is excluded)
+    iccTrophies: 1
+    // Part of England's winning 2022 T20 World Cup squad — independently re-verified
+  },
+  {
+    name: "Liam Livingstone",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree he genuinely bowls both legbreak (his primary stock ball) and
+    // offbreak (used almost exclusively to left-handers) — no single source lists one as his sole
+    // style, so legbreak was chosen as the closest fit to this app's single-value schema, per the
+    // "primary style" judgment call precedent used elsewhere in this file (e.g. Ashwin)
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 23 Jun 2017 vs South Africa (earliest), ODI debut 26 Mar 2021 vs India, Test debut
+    // 1 Dec 2022 vs Pakistan — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Punjab Kings"],
+    // Rajasthan Royals (2019-2021), Punjab Kings (2022-2024) — both genuine playing spells
+    iccTrophies: 1
+    // Named in England's winning 2022 T20 World Cup squad and played all 6 matches (55 runs, 3
+    // wickets) — independently re-verified
+  },
+  {
+    name: "Harry Brook",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm medium part-time bowler — England's
+    // current white-ball captain
+    debutYear: 2022,
+    format: "All-format",
+    // T20I debut 26 Jan 2022 vs West Indies (earliest), Test debut 8 Sep 2022 vs South Africa, ODI
+    // debut 27 Jan 2023 vs South Africa — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad"],
+    // A real correction caught during a dedicated IPL-history search: Wikipedia's infobox lists
+    // Delhi Capitals (2024) as if it were a genuine stint, but ESPNcricinfo's fuller account shows
+    // he withdrew from DC before ever playing a match (a family bereavement, then a second
+    // consecutive withdrawal in 2025 that triggered a two-year IPL ban until 2027) — excluded per
+    // the standing "signed but never played" rule. Only Sunrisers Hyderabad (2023, 190 runs in 11
+    // matches including a memorable 100* vs KKR) is a genuine playing spell
+    iccTrophies: 1
+    // Named in England's winning 2022 T20 World Cup squad — independently re-verified against the
+    // actual 15-man squad list
+  },
+  {
+    name: "Luke Wright",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand opening batsman, right-arm medium part-time bowler
+    debutYear: 2007,
+    format: "ODI+T20",
+    // ODI debut 5 Sep 2007 vs India (earliest), T20I debut 13 Sep 2007 vs Zimbabwe — explicitly
+    // confirmed no Test caps, retired from all cricket Nov 2022 and became an England selector —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Pune Warriors India"],
+    // A real correction caught during a dedicated IPL-history search: one AI-summarized source
+    // claimed he "never played in the IPL specifically" despite listing Pune Warriors India in the
+    // same breath — independently re-verified via ESPNcricinfo match reports confirming genuine
+    // appearances in both 2012 and 2013, including a Player-of-the-Match 44 off 23 vs Delhi
+    // Daredevils in 2013
+    iccTrophies: 1
+    // Named in England's winning 2010 World Twenty20 squad — bowled only 1 over in the whole
+    // tournament, but it accounted for the wicket of Cameron White in the final vs Australia —
+    // independently re-verified against the actual 15-man squad list
+  },
+  {
+    name: "Ravi Bopara",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm medium bowler
+    debutYear: 2007,
+    format: "All-format",
+    // ODI debut 2 Feb 2007 vs Australia (earliest), Test debut 1 Dec 2007 vs Sri Lanka, T20I debut
+    // 13 Jun 2008 vs New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab"],
+    // Kings XI Punjab (2009-2010) — genuine playing spells across both seasons
+    iccTrophies: 1
+    // Named in England's winning 2010 World Twenty20 squad — independently re-verified against the
+    // actual 15-man squad list
+  },
+  {
+    name: "Chris Jordan",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — Barbados-born
+    // (Christ Church), qualified for and represented England internationally — England T20I Round 1
+    // (top-15 wicket-takers)
+    debutYear: 2013,
+    format: "All-format",
+    // ODI debut 16 Sep 2013 vs Australia (earliest), T20I debut 2 Feb 2014 vs Australia, Test debut
+    // 12 Jun 2014 vs Sri Lanka — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad", "Punjab Kings", "Chennai Super Kings"],
+    // Royal Challengers Bangalore (2016, signed as Mitchell Starc's injury replacement — played
+    // multiple matches including a 4/11 vs Gujarat Lions and the final), Sunrisers Hyderabad (2017,
+    // 1 genuine match), Punjab Kings (2020-2021), Chennai Super Kings (2022) — all genuine playing
+    // spells confirmed via a dedicated IPL-history search
+    iccTrophies: 1
+    // Confirmed NOT on the winning 2019 World Cup squad (independently re-verified against the
+    // actual 15-man list). Credited with 2022 instead: came into the winning T20 World Cup squad as
+    // injury cover for Mark Wood, took 3/43 in the semi-final and 2/27 in the final
+  },
+  {
+    name: "Mark Wood",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast bowler — one of the fastest
+    // bowlers in the world, averaging 89mph in Tests since 2020
+    debutYear: 2015,
+    format: "All-format",
+    // ODI debut 8 May 2015 vs Ireland (earliest), Test debut 21 May 2015 vs New Zealand, T20I debut
+    // 23 Jun 2015 vs New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings", "Lucknow Super Giants"],
+    // Chennai Super Kings (2018, 1 match), Lucknow Super Giants (2023, 4 matches including a
+    // stand-out 5/14 on debut vs Delhi Capitals) — both genuine playing spells confirmed via a
+    // dedicated IPL-history search. A 2022 LSG signing ended in injury before he played that season
+    // — moot since his genuine 2023 LSG stint already counts the same franchise
+    iccTrophies: 2
+    // 2019 ODI World Cup (3/40 vs Sri Lanka, 3/18 vs West Indies) + 2022 T20 World Cup (played every
+    // Super 12 match before an injury ruled him out of the semi-final and final) — one of only 6
+    // players to win both tournaments, independently re-verified against both squad lists
+  },
+  {
+    name: "Sam Curran",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm medium fast",
+    // ESPNcricinfo + Wikipedia agree: left-hand bat, left-arm medium-fast bowler
+    debutYear: 2018,
+    format: "All-format",
+    // Test debut 1 Jun 2018 vs India (earliest), ODI debut 24 Jun 2018 vs Australia, T20I debut 1
+    // Nov 2019 vs New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab", "Chennai Super Kings", "Punjab Kings"],
+    // Kings XI Punjab (2019), Chennai Super Kings (2020-2021, 2025), Punjab Kings (2023-2024, the
+    // league's most expensive player that auction at ₹18.5cr) — all genuine playing spells. A 2026
+    // trade to Rajasthan Royals is deliberately excluded: he missed the entire season with a groin
+    // injury and never played a match for them, confirmed via a dedicated IPL-history search
+    iccTrophies: 1
+    // Confirmed NOT on the winning 2019 World Cup squad (independently re-verified). Credited with
+    // 2022 instead: Player of the Match AND Player of the Tournament in the winning T20 World Cup
+    // campaign, 3/12 in the final
+  },
+  {
+    name: "Jofra Archer",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast bowler — Barbados-born
+    // (Bridgetown), qualified for and represented England internationally
+    debutYear: 2019,
+    format: "All-format",
+    // ODI debut 3 May 2019 vs Ireland (earliest), T20I debut 5 May 2019 vs Pakistan, Test debut 14
+    // Aug 2019 vs Australia — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Mumbai Indians"],
+    // Rajasthan Royals (2018-2020, 2025-present), Mumbai Indians (2022-2023, though 2022 itself was
+    // missed to injury — his genuine 2023 appearances, 5 matches, confirm the franchise regardless)
+    // — both genuine playing spells confirmed via a dedicated IPL-history search
+    iccTrophies: 1
+    // Part of England's winning 2019 World Cup squad — bowled the Super Over in the final.
+    // Confirmed NOT on the 2022 T20 World Cup squad (out injured all year) — independently
+    // re-verified against the actual 15-man squad list
+  },
+  {
+    name: "Jade Dernbach",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — South
+    // African-born (Johannesburg), qualified for and represented England internationally
+    debutYear: 2011,
+    format: "ODI+T20",
+    // T20I debut 25 Jun 2011 vs Sri Lanka (earliest), ODI debut 28 Jun 2011 vs Sri Lanka —
+    // explicitly confirmed no Test caps, international career ran 2011-2014 — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — his franchise cricket (Melbourne Stars, Wellington, Quetta Gladiators,
+    // Jamaica Tallawahs) is all outside the IPL
+    iccTrophies: 0
+    // International career (2011-2014) fell entirely between England's ICC trophies — after the
+    // 2010 World Twenty20, before the 2019 World Cup
+  },
+  {
+    name: "Reece Topley",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, left-arm fast-medium bowler
+    debutYear: 2015,
+    format: "ODI+T20",
+    // T20I debut 31 Aug 2015 vs Australia (earliest), ODI debut 13 Sep 2015 vs Australia —
+    // explicitly confirmed no Test caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Mumbai Indians"],
+    // Royal Challengers Bangalore (2023, 1 wicket on debut before a shoulder injury ended his
+    // season; retained and played on into 2024), Mumbai Indians (2025) — both genuine playing
+    // spells. (His Melbourne Renegades spell is BBL, not the IPL, and is excluded)
+    iccTrophies: 0
+    // A repeated near-miss rather than a genuine mismatch: named in England's squad for both the
+    // winning 2022 T20 World Cup and the 2023 ODI World Cup (which England did not win anyway), but
+    // ruled out by injury before playing a match in either — independently re-verified. No mention
+    // found anywhere of a 2019 World Cup squad call-up either
+  },
+  {
+    name: "Tom Curran",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — South
+    // African-born (Cape Town), qualified for and represented England internationally — Sam
+    // Curran's older brother
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 23 Jun 2017 vs South Africa (earliest), ODI debut 29 Sep 2017 vs West Indies, Test
+    // debut 26 Dec 2017 vs Australia — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders", "Rajasthan Royals", "Delhi Capitals"],
+    // Kolkata Knight Riders (2018, signed as a Mitchell Starc replacement), Rajasthan Royals (2020),
+    // Delhi Capitals (2021) — all genuine playing spells as a back-up seam-bowling all-rounder,
+    // confirmed via a dedicated IPL-history search
+    iccTrophies: 1
+    // Part of England's winning 2019 World Cup squad as an unused member. Also named in the 2021 T20
+    // World Cup squad (won by Australia, not England) but fell out of favour before the winning 2022
+    // squad was picked — independently re-verified, no double-count
+  },
+  {
+    name: "Matthew Potts",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — cap 108,
+    // England T20I Round 2 (cap-number method)
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 2 Jun 2022 vs New Zealand (earliest), ODI debut 19 Jul 2022 vs South Africa, T20I
+    // debut 6 Jun 2025 vs West Indies — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — his MI Cape Town (2025) spell is South Africa's SA20 league, not the
+    // IPL
+    iccTrophies: 0
+    // International career began Jun 2022, before that year's T20 World Cup but he had no white-ball
+    // caps until 2025, so not part of that squad. England did not win the 2025 Champions Trophy or
+    // the 2026 T20 World Cup either
+  },
+  {
+    name: "Jamie Smith",
+    country: "England",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No source could confirm a bowling record either way (bowled or never bowled) — marked NA per
+    // the standing rule for genuinely unconfirmed cases, flagged here rather than presented as
+    // settled fact, same treatment as KL Rahul/Eoin Morgan/Navjot Singh Sidhu elsewhere in this file
+    debutYear: 2023,
+    format: "All-format",
+    // ODI debut 23 Sep 2023 vs Ireland (earliest), Test debut 10 Jul 2024 vs West Indies at Lord's
+    // (took over as England's Test wicketkeeper, highest score by an England Test 'keeper: 184),
+    // T20I debut 25 Jan 2025 vs India — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Nominated himself for the IPL 2026 auction but went unsold, despite reported interest from
+    // KKR/DC/PBKS — independently re-verified
+    iccTrophies: 0
+    // International career began Sep 2023, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Jacob Bethell",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    // ESPNcricinfo + Wikipedia agree: left-hand bat, slow left-arm orthodox bowler — Barbados-born,
+    // captained England Under-19s — cap 102
+    debutYear: 2024,
+    format: "All-format",
+    // T20I debut 11 Sep 2024 vs Australia (earliest), ODI debut 19 Sep 2024 vs Australia, Test debut
+    // 28 Nov 2024 vs New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
+    // Royal Challengers Bangalore (2025-present) — genuine playing appearances confirmed via a
+    // dedicated IPL-history search (2 matches in 2025 including a 33-ball 55 vs CSK; multiple
+    // matches in 2026 opening with Kohli before a finger injury ended his season). (His Melbourne
+    // Renegades spell is BBL, not the IPL, and is excluded)
+    iccTrophies: 0
+    // International career began Sep 2024, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Gus Atkinson",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — cap 101
+    debutYear: 2023,
+    format: "All-format",
+    // T20I debut 1 Sep 2023 vs New Zealand (earliest), ODI debut 8 Sep 2023 vs New Zealand, Test
+    // debut 10 Jul 2024 vs West Indies at Lord's — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // "Signed but never played" exclusion applied per the standing rule: signed by Kolkata Knight
+    // Riders for IPL 2024 (₹1cr) but withdrew before playing a match, citing workload management
+    // after a long winter of England cricket — replaced by Dushmantha Chameera, independently
+    // re-verified via a dedicated IPL-history search
+    iccTrophies: 0
+    // International career began Sep 2023, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Brydon Carse",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast bowler — South African-born
+    // (Port Elizabeth), qualified for England through a British passport in 2019 — cap 100
+    debutYear: 2021,
+    format: "All-format",
+    // ODI debut 8 Jul 2021 vs Pakistan (earliest), T20I debut 30 Aug 2023 vs New Zealand, Test debut
+    // 7 Oct 2024 vs Pakistan at Multan — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // A real catch during a dedicated IPL-history search: signed by Sunrisers Hyderabad for BOTH
+    // IPL 2025 and IPL 2026, but never played a single match in either season — ruled out by a toe
+    // injury before the 2025 season even started, then injured his hand in a pre-tournament net
+    // session before IPL 2026's opener and was replaced (first by Wiaan Mulder in 2025, then by
+    // Dilshan Madushanka in 2026) without ever taking the field. Excluded entirely per the standing
+    // "signed but never played" rule
+    iccTrophies: 0
+    // Ruled out of the 2025 Champions Trophy with a toe injury (England did not win it anyway).
+    // International white-ball career began too late for the 2022 T20 World Cup, and England did not
+    // win the 2023 or 2025 ODI-format events he was near either
+  },
+  {
+    name: "Rehan Ahmed",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm legbreak bowler — became England's
+    // youngest-ever Test debutant (18 years 126 days) with a 5-wicket haul on debut — cap 99
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 17 Dec 2022 vs Pakistan (earliest), ODI debut 6 Mar 2023 vs Bangladesh, T20I debut
+    // 12 Mar 2023 vs Bangladesh — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — withdrew himself from IPL auction contention to focus on England
+    // commitments, confirmed via a dedicated search; never signed by any franchise
+    iccTrophies: 0
+    // International career began Dec 2022, weeks after that year's T20 World Cup final (13 Nov
+    // 2022) — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
   }
 
 ];
