@@ -5016,6 +5016,260 @@ const wordlePlayers = [
     // Archer before the tournament and took no part in the win — independently re-verified
     // against Wikipedia's 2019 squads page, same injury/replacement precedent already applied to
     // Jason Gillespie and Brett Lee elsewhere in this file
+  },
+  {
+    name: "Jos Buttler",
+    country: "England",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat wicketkeeper, no bowling style — never bowls
+    debutYear: 2011,
+    format: "All-format",
+    // T20I debut 31 Aug 2011 vs India (earliest), ODI debut 21 Feb 2012 vs Pakistan, Test debut 27
+    // Jul 2014 vs India — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Mumbai Indians", "Rajasthan Royals", "Gujarat Titans"],
+    // Mumbai Indians (2016-2017), Rajasthan Royals (2018-2024, his most successful stint — leading
+    // run-getter with 3,000+ runs), Gujarat Titans (2025-present, most expensive overseas buy in the
+    // 2025 auction) — dedicated IPL-history search confirmed via ESPNcricinfo + Wikipedia
+    iccTrophies: 2
+    // 2019 ODI World Cup (ran out Martin Guptill on the final ball of the Super Over) + 2022 T20
+    // World Cup as captain — both independently re-verified against the actual winning squad lists
+  },
+  {
+    name: "Marcus Trescothick",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: left-hand opening batsman, right-arm medium part-time bowler
+    debutYear: 2000,
+    format: "All-format",
+    // ODI debut 8 Jul 2000 vs Zimbabwe (earliest), Test debut 3 Aug 2000 vs West Indies, T20I debut
+    // 13 Jun 2005 vs Australia — England's first-ever T20I. Forced into early retirement by a
+    // stress-related illness in 2006 (international career), fully retired 2008 — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — international career ended in 2006, two years before the IPL began in
+    // 2008
+    iccTrophies: 0
+    // His international career (2000-2006) ended before England's first-ever ICC trophy (the 2010
+    // World Twenty20)
+  },
+  {
+    name: "Jason Roy",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand opening batsman, right-arm medium part-time bowler
+    debutYear: 2014,
+    format: "All-format",
+    // T20I debut 7 Sep 2014 vs India (earliest), ODI debut 8 May 2015 vs Ireland, Test debut 24 Jul
+    // 2019 vs Ireland — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Gujarat Lions", "Delhi Daredevils", "Sunrisers Hyderabad", "Kolkata Knight Riders"],
+    // Gujarat Lions (2017), Delhi Daredevils (2018, half-century on debut), Sunrisers Hyderabad
+    // (2021), Kolkata Knight Riders (2023) — all genuine playing spells, independently re-verified
+    // via a dedicated IPL-history search. Two "signed but never played" exclusions applied per the
+    // standing rule: Delhi Capitals 2020 (opted out for personal reasons — same franchise as his
+    // 2018 Delhi Daredevils stint, so already counted) and Gujarat Titans 2022 (pulled out before
+    // the tournament, took an indefinite break from cricket)
+    iccTrophies: 1
+    // 2019 ODI World Cup (scored the tournament's highest individual score at one point, helped run
+    // out Martin Guptill in the Super Over) — confirmed NOT on the winning 2022 T20 World Cup squad,
+    // independently re-verified against the actual 15-man squad list
+  },
+  {
+    name: "Allan Lamb",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm medium bowler — South African-born
+    // (Langebaanweg, Cape Town), qualified for and represented England internationally
+    debutYear: 1982,
+    format: "Test+ODI",
+    // ODI debut 2 Jun 1982 vs India (earliest), Test debut 10 Jun 1982 vs India — retired from
+    // international cricket in 1995, a decade before T20Is existed (first T20I Feb 2005) —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — retired in 1995, 13 years before the IPL began in 2008
+    iccTrophies: 0
+    // Reached two Cricket World Cup finals with England (1987, 1992) and lost both — his career
+    // ended before England won their first-ever ICC trophy (the 2010 World Twenty20)
+  },
+  {
+    name: "Jonny Bairstow",
+    country: "England",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirms right-arm medium with a genuine (if tiny) bowling record — 2
+    // international innings bowled, 0 wickets, 7 runs conceded — so per the standing rule this is
+    // recorded as his actual bowling style rather than NA, even though Wikipedia's infobox omits it
+    // entirely
+    debutYear: 2011,
+    format: "All-format",
+    // ODI debut 16 Sep 2011 vs India (earliest), T20I debut 23 Sep 2011 vs West Indies, Test debut
+    // 17 May 2012 vs West Indies — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Punjab Kings", "Mumbai Indians"],
+    // Sunrisers Hyderabad (2019-2021), Punjab Kings (2022 and 2024, ruled out injured for the 2023
+    // season in between), Mumbai Indians (2025, a temporary playoff-replacement signing) — all
+    // genuine playing spells, independently re-verified via a dedicated IPL-history search
+    iccTrophies: 1
+    // 2019 ODI World Cup, confirmed on the winning squad list. Deliberately NOT credited with 2022:
+    // he was originally selected for the T20 World Cup squad but broke his leg playing golf before
+    // the tournament and was replaced by Alex Hales, taking no part in the win — independently
+    // re-verified against Wikipedia, same injury/replacement precedent already applied to Jason
+    // Gillespie, Brett Lee, and David Willey elsewhere in this file
+  },
+  {
+    name: "Jonathan Trott",
+    country: "England",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm medium bowler — South African-born
+    // (Cape Town), qualified for and represented England internationally
+    debutYear: 2007,
+    format: "All-format",
+    // T20I debut 28 Jun 2007 vs West Indies (earliest, only 2 T20I caps total, last one Feb 2010),
+    // Test debut 20 Aug 2009 vs Australia, ODI debut 27 Aug 2009 vs Ireland — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL
+    iccTrophies: 0
+    // Confirmed NOT on England's winning 2010 World Twenty20 squad (his T20I career had already
+    // ended by then) — reached the 2013 Champions Trophy final (Team of the Tournament, 82* in the
+    // semi-final) but England lost that final to India
+  },
+  {
+    name: "Josh Tongue",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler, cap 281 —
+    // Round 2 (cap-number method) for England ODI. Verified directly rather than trusted from the
+    // stale Wikipedia cap table (which still showed cap 280/2025 as the latest): his real ODI debut
+    // (14 Jul 2026 vs India) was independently confirmed via a dedicated ESPNcricinfo search and
+    // cross-checked against the actual match scorecard/playing XI, per the standing Day 24
+    // data-quality caveat about not trusting a table's newest rows at face value
+    debutYear: 2023,
+    format: "All-format",
+    // Test debut 1 Jun 2023 vs Ireland (earliest, 3/27 and 5/66 on debut), T20I debut 4 Jul 2026 vs
+    // India, ODI debut 14 Jul 2026 vs India — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — Wikipedia's domestic-career listing shows no IPL franchise at all
+    iccTrophies: 0
+    // International career began 2023, after England's last ICC trophy (the 2022 T20 World Cup,
+    // Nov 2022) — not yet capped for that squad. England did not win the 2025 Champions Trophy or
+    // the 2026 T20 World Cup either
+  },
+  {
+    name: "Sonny Baker",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast bowler — cap 280, confirmed as
+    // England's most recent ODI cap as of this database's cutoff, independently re-verified against
+    // the actual July 2026 India ODI series playing XIs (no debutant appeared after him)
+    debutYear: 2025,
+    format: "All-format",
+    // ODI debut 2 Sep 2025 vs South Africa (earliest — his 0/76 in 7 overs is the most expensive ODI
+    // debut figures by an England bowler on record), T20I debut 21 Sep 2025 vs Ireland, Test debut
+    // 17 Jun 2026 vs New Zealand at The Oval — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — Wikipedia's franchise-career listing (Trent Rockets, Southern Brave,
+    // Manchester Originals, Hampshire) shows no IPL involvement
+    iccTrophies: 0
+    // International career began Sep 2025, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "John Turner",
+    country: "England",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast-medium bowler — cap 279,
+    // South African-born (Johannesburg), qualified for England via a British passport through his
+    // mother
+    debutYear: 2024,
+    format: "ODI+T20",
+    // ODI debut 31 Oct 2024 vs West Indies (earliest), T20I debut 16 Nov 2024 vs West Indies —
+    // explicitly confirmed no Test caps yet — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — his franchise history (Trent Rockets, Paarl Royals, a 2025 Lancashire
+    // loan) is all outside the IPL
+    iccTrophies: 0
+    // International career began Oct 2024, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Jamie Overton",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm fast bowler, a genuine batting
+    // all-rounder — cap 278
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 23 Jun 2022 vs New Zealand (earliest), T20I debut 11 Sep 2024 vs Australia, ODI
+    // debut 31 Oct 2024 vs West Indies — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings"],
+    // Chennai Super Kings (2025-present) — signed for the 2025 Mega Auction as a replacement for Sam
+    // Curran, genuine playing appearances confirmed via a dedicated IPL-history search (3 matches in
+    // 2025, a bigger middle-overs role with 10 wickets in 2026 before a mid-season thigh injury)
+    iccTrophies: 0
+    // Test debut came before England's 2022 T20 World Cup win but he had no white-ball caps at that
+    // point (T20I debut not until Sep 2024), so not part of that squad — England did not win the
+    // 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Dan Mousley",
+    country: "England",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo + Wikipedia agree: left-hand bat, right-arm offbreak bowler with an unusually
+    // fast 109kph average pace (per CricViz, the fastest spinner on record since 2006) — cap 277
+    debutYear: 2024,
+    format: "ODI+T20",
+    // ODI debut 31 Oct 2024 vs West Indies (earliest), T20I debut 9 Nov 2024 vs West Indies —
+    // explicitly confirmed no Test caps yet, replaced Moeen Ali in the squad for this tour —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played the IPL — his franchise history (MI Emirates, Birmingham Phoenix, Peshawar
+    // Zalmi) is all outside the IPL
+    iccTrophies: 0
+    // International career began Oct 2024, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+  {
+    name: "Jordan Cox",
+    country: "England",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, wicketkeeper who grew up developing an offbreak
+    // as a secondary skill — cap 276, named the 2025 PCA Men's Player of the Year
+    debutYear: 2024,
+    format: "All-format",
+    // T20I debut 11 Sep 2024 vs Australia (earliest), ODI debut 31 Oct 2024 vs West Indies, Test
+    // debut 17 Jun 2026 vs New Zealand at The Oval — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // "Signed but never played" exclusion applied per the standing rule: bought by Royal Challengers
+    // Bengaluru for the 2026 auction and part of their title-winning squad, but a dedicated
+    // IPL-history search confirmed he did not play a single match all season — his only on-field
+    // involvement was as a substitute fielder. His real franchise history (Dubai Capitals, Gulf
+    // Giants, Melbourne Renegades, Sunrisers Eastern Cape, Dambulla Aura, Hobart Hurricanes, Oval
+    // Invincibles) is all outside the IPL anyway
+    iccTrophies: 0
+    // International career began Sep 2024, after England's last ICC trophy (the 2022 T20 World Cup)
+    // — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
   }
 
 ];
