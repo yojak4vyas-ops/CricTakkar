@@ -154,6 +154,48 @@ service cloud.firestore {
       }
     }
 
+    // ===================================================================
+    // TOURNAMENTS — Phase 3 knockout brackets
+    // ===================================================================
+    // Mirrors the matches rules above almost exactly: the tournament host
+    // is the sole authority over round advancement and results, and
+    // everyone else may only add or remove themselves from the lobby's
+    // players map. A tournament never needs any special match-creation
+    // permission — each bracket pairing is just a normal document in the
+    // /matches collection above, created by one of its own two players
+    // exactly like a manual 1v1 duel, using a deterministic ID
+    // ("{tournamentCode}-R{round}-S{slot}") that both players and the
+    // tournament host can independently compute without any doc ever
+    // needing to hand it to them.
+    match /tournaments/{tournamentId} {
+
+      function isTournamentHost() {
+        return signedIn() && resource.data.hostUid == request.auth.uid;
+      }
+
+      function onlyChangedOwnTournamentPlayerEntry() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['players'])
+               && request.resource.data.players
+                 .diff(resource.data.players)
+                 .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+                    && request.resource.data.hostUid == request.auth.uid
+                    && request.resource.data.status == 'lobby'
+                    && request.resource.data.tournamentCode == tournamentId;
+
+      // The host drives round advancement and writes results. Everyone
+      // else may only join or leave the lobby before it starts.
+      allow update: if isTournamentHost() ||
+                    (signedIn() && onlyChangedOwnTournamentPlayerEntry());
+
+      allow delete: if isTournamentHost();
+    }
+
     // Anything not named above is denied by default.
   }
 }

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
+  <link rel="icon" type="image/png" href="icon-192.png" />
+  <title>Tournaments — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="multiplayer.css" />
+  <link rel="stylesheet" href="tournament.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer"><img src="logo-navbar.png" class="nav-logo-img" alt="CricTakkar" /></div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Quiz</a>
+      <a href="multiplayer.html" class="nav-link">Battle Friends</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <!-- ===== SCREEN 0: LOADING ===== -->
+  <div class="quiz-wrapper" id="loadingScreen">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">⏳</div>
+      <h1 class="quiz-start-title">Loading…</h1>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 0b: NOT LOGGED IN ===== -->
+  <div class="quiz-wrapper" id="loginGateScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">🔒</div>
+      <h1 class="quiz-start-title">Log in to enter</h1>
+      <p class="quiz-start-sub">Tournaments need an account so everyone can see the bracket and who they're facing.</p>
+      <button class="btn-primary" onclick="window.location.href='login.html'">Log In / Sign Up</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 1: ENTRY ===== -->
+  <div class="quiz-wrapper" id="entryScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">🏆</div>
+      <h1 class="quiz-start-title">Tournaments</h1>
+      <p class="quiz-start-sub">Run a knockout bracket with your friends — win your match, advance, and see who's the last one left.</p>
+
+      <div class="tn-size-heading">Create a knockout bracket</div>
+      <div class="tn-size-row">
+        <button class="tn-size-btn" onclick="createTournament(4)" id="sizeBtn4">4<br/><span>players</span></button>
+        <button class="tn-size-btn" onclick="createTournament(8)" id="sizeBtn8">8<br/><span>players</span></button>
+        <button class="tn-size-btn" onclick="createTournament(16)" id="sizeBtn16">16<br/><span>players</span></button>
+      </div>
+      <p class="mp-option-note">Everyone plays a normal 10-question quiz duel each round. Lose once and you're out — win and you advance.</p>
+
+      <div class="mp-divider">or</div>
+
+      <button class="btn-secondary" onclick="showJoinScreen()">Join with a Code</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 2: JOIN BY CODE ===== -->
+  <div class="quiz-wrapper" id="joinScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">🔑</div>
+      <h1 class="quiz-start-title">Enter Tournament Code</h1>
+      <p class="quiz-start-sub">Ask the organiser for the 6-character code they see on their screen.</p>
+      <input type="text" id="joinCodeInput" class="mp-code-input" maxlength="6"
+             placeholder="ABC123" autocomplete="off" autocapitalize="characters" />
+      <div class="mp-error" id="joinError"></div>
+      <button class="btn-primary" onclick="joinTournament()" id="joinTournamentBtn">Join Tournament</button>
+      <button class="btn-secondary mp-gap-top" onclick="showEntryScreen()">Back</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 3: LOBBY ===== -->
+  <div class="quiz-wrapper" id="lobbyScreen" style="display:none">
+    <div class="quiz-card">
+      <p class="mp-lobby-eyebrow">Tournament Code</p>
+      <div class="mp-room-code" id="tournamentCodeDisplay">------</div>
+      <div class="mp-mode-badge" id="tnSizeBadge" style="display:none"></div>
+      <button class="mp-share-btn" onclick="shareTournamentCode()">📲 Share on WhatsApp</button>
+      <button class="mp-copy-btn" onclick="copyTournamentCode()" id="copyTnCodeBtn">📋 Copy Code</button>
+
+      <div class="mp-players-heading">
+        Players <span id="tnPlayerCount">(0)</span>
+      </div>
+      <div class="mp-player-list" id="tnPlayerList"></div>
+
+      <div class="mp-waiting-note" id="tnWaitingNote">Waiting for the bracket to fill up…</div>
+      <button class="btn-primary" id="startTournamentBtn" style="display:none" onclick="startTournament()">Start Tournament</button>
+      <button class="btn-secondary mp-gap-top" onclick="leaveTournament()">Leave</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 4: LIVE BRACKET ===== -->
+  <div class="quiz-wrapper tn-bracket-wrapper" id="bracketScreen" style="display:none">
+    <div class="quiz-card tn-bracket-card">
+      <div class="quiz-start-icon">🏆</div>
+      <h1 class="quiz-start-title" id="bracketTitle">Tournament</h1>
+      <p class="quiz-start-sub" id="bracketSub"></p>
+
+      <div class="tn-my-match" id="tnMyMatch" style="display:none">
+        <p id="tnMyMatchText"></p>
+        <button class="btn-primary" onclick="playMyMatch()" id="playMatchBtn">▶️ Play Your Match</button>
+      </div>
+
+      <div id="tnRoundsContainer"></div>
+
+      <button class="btn-secondary mp-gap-top" onclick="leaveTournament()">Leave</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 5: CHAMPION / FINAL ===== -->
+  <div class="quiz-wrapper" id="finalScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon" id="finalEmoji">🏆</div>
+      <h1 class="quiz-start-title" id="finalTitle">Tournament Over</h1>
+      <p class="quiz-start-sub" id="finalSub"></p>
+      <div id="tnFinalBracket"></div>
+      <button class="btn-primary" onclick="window.location.href='tournament.html'">Back to Tournaments</button>
+      <button class="btn-secondary mp-gap-top" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 6: ENDED EARLY / NOT FOUND ===== -->
+  <div class="quiz-wrapper" id="abortScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">😕</div>
+      <h1 class="quiz-start-title">Tournament Ended</h1>
+      <p class="quiz-start-sub" id="abortReason">This tournament is no longer available.</p>
+      <button class="btn-primary" onclick="window.location.href='tournament.html'">Back to Tournaments</button>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ===== FIREBASE SETUP =====
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+
+  <script src="question-bank.js"></script>
+  <script src="tournament.js"></script>
+  <script src="pwa.js"></script>
+</body>
+</html>

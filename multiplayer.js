@@ -67,14 +67,56 @@ auth.onAuthStateChanged(function(user) {
       uid: user.uid,
       name: data.username || data.name || 'Player'
     };
-    showScreen('entryScreen');
+    enterAfterLogin();
   }).catch(function(err) {
     console.error('Could not load profile:', err);
     // Still playable without a profile doc — just falls back to a generic name.
     me = { uid: user.uid, name: 'Player' };
-    showScreen('entryScreen');
+    enterAfterLogin();
   });
 });
+
+// A ?matchId= in the URL means we were sent here by something that already
+// knows which match to play (currently: Tournament pairings, see
+// tournament.js). It skips the entry/join screens entirely. If we're not
+// already a player in that match and it's still in its lobby, we join it
+// automatically — this one branch covers both the tournament pairing's
+// "creator" (already a player, just resuming) and its "joiner" (not yet a
+// player) without needing a separate flag for which one we are.
+function enterAfterLogin() {
+  var deepLinkMatchId = new URLSearchParams(window.location.search).get('matchId');
+  if (!deepLinkMatchId) {
+    showScreen('entryScreen');
+    return;
+  }
+
+  db.collection('matches').doc(deepLinkMatchId).get().then(function(doc) {
+    if (!doc.exists) {
+      matchId = deepLinkMatchId;
+      listenToMatch(); // lets render() show the normal "no longer exists" message
+      return;
+    }
+
+    var data = doc.data();
+    var alreadyIn = data.players && data.players[me.uid];
+
+    if (!alreadyIn && data.status === 'lobby') {
+      joinRoomByCode(deepLinkMatchId)
+        .then(function() { listenToMatch(); })
+        .catch(function(err) {
+          console.error('Auto-join via deep link failed:', err);
+          matchId = deepLinkMatchId;
+          listenToMatch(); // let render() surface whatever's actually wrong
+        });
+    } else {
+      matchId = deepLinkMatchId;
+      listenToMatch();
+    }
+  }).catch(function(err) {
+    console.error('Deep-link match lookup failed:', err);
+    showScreen('entryScreen');
+  });
+}
 
 // =====================================================================
 // SCREENS
@@ -1091,6 +1133,12 @@ function renderFinal(match) {
       ' correct · ' + myEntry.score + ' points' +
       (eliminatedAtQ !== undefined ? ' · out after Q' + (eliminatedAtQ + 1) : '');
   }
+
+  // A tournament pairing carries the tournament's own code so the loser
+  // and winner both have a real way back to the bracket — tournament.js's
+  // own "resume my tournament" localStorage check handles getting them
+  // straight back into the live view rather than the entry screen.
+  document.getElementById('backToTournamentBtn').style.display = match.tournamentId ? 'block' : 'none';
 
   saveMatchResult(myEntry, myRank, board.length);
   teardownListenerOnly();

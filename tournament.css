@@ -1,0 +1,139 @@
+/* ===== CRICTAKKAR TOURNAMENTS ===== */
+/* Only loaded on tournament.html. Reuses multiplayer.css's lobby/leaderboard
+   classes (mp-room-code, mp-player-list, mp-mode-badge, etc.) — this file
+   only adds what's genuinely new: bracket size picker + the bracket view. */
+
+.tn-size-heading {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin: 22px 0 12px;
+}
+
+.tn-size-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.tn-size-btn {
+  flex: 1;
+  padding: 16px 8px;
+  border-radius: 14px;
+  border: 2px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  line-height: 1.3;
+}
+
+.tn-size-btn span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tn-size-btn:hover {
+  border-color: #f4a900;
+  background: rgba(244, 169, 0, 0.1);
+}
+
+.tn-size-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ===== BRACKET VIEW ===== */
+.tn-bracket-card {
+  max-width: 640px;
+}
+
+.tn-my-match {
+  background: rgba(244, 169, 0, 0.1);
+  border: 1px solid rgba(244, 169, 0, 0.35);
+  border-radius: 14px;
+  padding: 16px;
+  margin: 16px 0 20px;
+  text-align: center;
+}
+
+.tn-my-match p {
+  font-size: 0.95rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.tn-round-block {
+  margin-bottom: 22px;
+}
+
+.tn-round-heading {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.tn-pairing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  margin-bottom: 8px;
+}
+
+.tn-pairing-player {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tn-pairing-player.tn-winner {
+  color: #f4a900;
+  font-weight: 800;
+}
+
+.tn-pairing-player.tn-loser {
+  opacity: 0.4;
+  text-decoration: line-through;
+}
+
+.tn-pairing-vs {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
+.tn-pairing-tbd {
+  font-style: italic;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ===== CHAMPION SCREEN'S BRACKET RECAP ===== */
+#tnFinalBracket {
+  margin: 12px 0 20px;
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .tn-size-btn {
+    font-size: 1.15rem;
+    padding: 14px 6px;
+  }
+}
