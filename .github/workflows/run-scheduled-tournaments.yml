@@ -1,0 +1,40 @@
+name: CricTakkar Scheduled Tournaments
+
+# Runs automation/run-scheduled-tournaments.js every 5 minutes through the
+# evening window, both to lock/start tonight's 8pm Knockout and 10pm
+# League (see CLAUDE.md "HOST-LESS SCHEDULED TOURNAMENTS") and to poll any
+# already-started bot-hosted tournament forward as its matches finish —
+# there's no persistent listener here (this is a one-shot cron job, not a
+# server), so "poll frequently" stands in for the human host's open
+# browser tab in every other Phase 3 tournament.
+#
+# UTC 14:00-19:55 = IST 19:30-01:25 (next day) — comfortably covers both
+# lock times (8pm/10pm IST) plus several hours afterward for players still
+# finishing their matches. If a tournament is STILL unfinished after that
+# window closes, it simply resumes advancing at the next evening's first
+# run — nothing is lost, same accepted "host's tab needs reopening"
+# tradeoff already documented for every human-hosted Phase 3 tournament.
+on:
+  schedule:
+    - cron: '*/5 14-19 * * *'
+  workflow_dispatch: {}
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: automation
+        run: npm install
+
+      - name: Run scheduled-tournament bot
+        working-directory: automation
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: node run-scheduled-tournaments.js

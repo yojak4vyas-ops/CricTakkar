@@ -4,16 +4,22 @@
 // user's browser, because it needs the private Firebase service-account key.
 //
 // Usage: node send-notifications.js <type>
-//   type is one of: streak | onthisday | weekly-leaderboard | we-miss-you
+//   type is one of: streak | onthisday | weekly-leaderboard | we-miss-you | tournament-signup
 //
-// All 4 notification types were agreed with the user on Day 35/36 — see CLAUDE.md's
-// Current Build Status for the reasoning behind each one's content and timing.
+// The first 4 notification types were agreed with the user on Day 35/36 — see
+// CLAUDE.md's Current Build Status for the reasoning behind each one's content
+// and timing. tournament-signup was added Day 47 alongside the host-less
+// scheduled Knockout/League (see CLAUDE.md "HOST-LESS SCHEDULED TOURNAMENTS") —
+// cancellation notices for a specific tonight's event are NOT sent from here,
+// since only the scheduled-tournament bot (run-scheduled-tournaments.js) knows
+// at lock time whether an event actually got cancelled; this type is only the
+// generic daily "sign-ups are open" reminder.
 
 const admin = require('firebase-admin');
 const path = require('path');
 
 const NOTIFICATION_TYPE = process.argv[2];
-const VALID_TYPES = ['streak', 'onthisday', 'weekly-leaderboard', 'we-miss-you'];
+const VALID_TYPES = ['streak', 'onthisday', 'weekly-leaderboard', 'we-miss-you', 'tournament-signup'];
 
 if (!VALID_TYPES.includes(NOTIFICATION_TYPE)) {
   console.error('Usage: node send-notifications.js <' + VALID_TYPES.join('|') + '>');
@@ -202,6 +208,20 @@ async function runWeMissYou() {
   );
 }
 
+// ===== TYPE 5: TOURNAMENT SIGN-UP OPEN (daily, 9:00 AM IST) =====
+// Generic daily reminder that tonight's Knockout (8 PM) and League (10 PM)
+// are open to join — sign-up runs all day, so this goes out early enough to
+// give people the whole day's notice. Sent to everyone opted in, not
+// filtered by activity, since it's a standing daily event, not personalized.
+async function runTournamentSignup() {
+  var all = await fetchOptedInUsers();
+  await sendToUsers(
+    all,
+    "🏆 Tonight's tournaments are open!",
+    'Sign up for the 8 PM Knockout or the 10 PM League + Playoffs — anyone can join, all day.'
+  );
+}
+
 // ===== RUN =====
 (async function() {
   try {
@@ -209,6 +229,7 @@ async function runWeMissYou() {
     else if (NOTIFICATION_TYPE === 'onthisday') await runOnThisDay();
     else if (NOTIFICATION_TYPE === 'weekly-leaderboard') await runWeeklyLeaderboard();
     else if (NOTIFICATION_TYPE === 'we-miss-you') await runWeMissYou();
+    else if (NOTIFICATION_TYPE === 'tournament-signup') await runTournamentSignup();
     process.exit(0);
   } catch (err) {
     console.error('Notification run failed:', err);

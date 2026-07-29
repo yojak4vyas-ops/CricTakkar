@@ -2,11 +2,13 @@ name: CricTakkar Push Notifications
 
 # Runs automation/send-notifications.js on a schedule. All times below are UTC because
 # GitHub Actions cron only understands UTC — IST is UTC+5:30, so each comment shows the
-# real IST send time. Agreed content/timing for all 4 types: see CLAUDE.md Current Build
-# Status (Day 35/36 session).
+# real IST send time. Agreed content/timing for the first 4 types: see CLAUDE.md Current
+# Build Status (Day 35/36 session). tournament-signup added Day 47 alongside the
+# host-less scheduled Knockout/League (see CLAUDE.md "HOST-LESS SCHEDULED TOURNAMENTS").
 on:
   schedule:
     - cron: '30 2 * * *'   # 8:00 AM IST daily  -> On This Day
+    - cron: '30 3 * * *'   # 9:00 AM IST daily  -> Tournament sign-up open
     - cron: '0 15 * * *'   # 8:30 PM IST daily  -> Streak reminder
     - cron: '0 4 * * 1'    # 9:30 AM IST Monday -> Weekly leaderboard reset
     - cron: '30 4 * * 1'   # 10:00 AM IST Monday -> We miss you
@@ -21,6 +23,7 @@ on:
           - onthisday
           - weekly-leaderboard
           - we-miss-you
+          - tournament-signup
 
 jobs:
   send:
@@ -43,6 +46,8 @@ jobs:
             echo "type=${{ inputs.type }}" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "30 2 * * *" ]; then
             echo "type=onthisday" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "30 3 * * *" ]; then
+            echo "type=tournament-signup" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "0 15 * * *" ]; then
             echo "type=streak" >> "$GITHUB_OUTPUT"
           elif [ "${{ github.event.schedule }}" = "0 4 * * 1" ]; then
