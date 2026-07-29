@@ -14,12 +14,22 @@
 // ===== CONFIG =====
 var QUESTIONS_PER_MATCH = 10;
 var SECONDS_PER_QUESTION = 10;
+var SPEED_SECONDS_PER_QUESTION = 5;  // Speed Mode's shorter clock
+var SPEED_MIN_POINTS = 5;            // a correct answer at the buzzer still scores this
+var SPEED_MAX_POINTS = 20;           // an instant correct answer scores this
+var ELIMINATION_MIN_PLAYERS = 3;     // fewer than this and there's no one to eliminate
 var REVEAL_MS = 4000;      // how long the correct answer stays up
 var STANDINGS_MS = 4000;   // how long the between-question table stays up
 var POINTS_PER_CORRECT = 10;
 var MAX_PLAYERS = 10;       // private rooms + public matchmaking
 var DUEL_MAX_PLAYERS = 2;   // 1v1 duel rooms
 var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no O/0, I/1/L lookalikes
+var CREATE_BTN_LABELS = {
+  createRoomBtn: 'Create a Room',
+  duelBtn: '⚔️ 1v1 Duel a Friend',
+  speedModeBtn: '⚡ Speed Mode',
+  eliminationModeBtn: '💀 Elimination Mode'
+};
 
 // ===== STATE =====
 var me = null;              // { uid, name }
@@ -30,9 +40,15 @@ var hostTimeouts = [];      // host-only phase timers, cleared on teardown
 var lastRenderedQuestion = -1;
 var lastRenderedPhase = '';
 var hasAnsweredThisQuestion = false;
-var questionShownAt = 0;    // for Speed Mode later — time taken per answer
+var questionShownAt = 0;    // Speed Mode's per-answer scoring reads this via timeTaken
 var isLeaving = false;      // suppresses the host-left handler during a clean exit
 var duelAutoStartFired = false; // stops a duel's 2nd-player-joins auto-start firing twice
+var activeMatchMode = 'classic'; // refreshed from every snapshot — 'classic' | 'speed' | 'elimination'
+
+// Both modes' clocks read this instead of the flat SECONDS_PER_QUESTION.
+function secondsForMode() {
+  return (activeMatchMode === 'speed') ? SPEED_SECONDS_PER_QUESTION : SECONDS_PER_QUESTION;
+}
 
 // =====================================================================
 // BOOT
@@ -66,7 +82,7 @@ auth.onAuthStateChanged(function(user) {
 var ALL_SCREENS = [
   'loadingScreen', 'loginGateScreen', 'entryScreen', 'joinScreen',
   'lobbyScreen', 'questionScreen', 'standingsScreen', 'finalScreen',
-  'abortScreen'
+  'abortScreen', 'eliminatedScreen'
 ];
 
 function showScreen(id) {
@@ -153,16 +169,19 @@ function explainFirebaseError(err) {
 //   'public'  — matchmaking. 10 max, isPublic so findPublicMatch() can find
 //               it; manual host start (there's no guarantee a 2nd stranger
 //               shows up immediately, so it waits like a private room).
-function createRoom(roomType, attempt) {
+function createRoom(roomType, mode, attempt) {
   if (!me) return;
   roomType = roomType || 'private';
+  mode = mode || 'classic';
   attempt = attempt || 1;
 
   // 'public' rooms are usually created as a fallback from inside
   // findPublicMatch(), which already owns the findMatchBtn's state — so
-  // only 'private'/'duel' touch a button here.
+  // only 'private'/'duel'/'speed'/'elimination' touch a button here.
   var btn = null;
   if (roomType === 'duel') btn = document.getElementById('duelBtn');
+  else if (mode === 'speed') btn = document.getElementById('speedModeBtn');
+  else if (mode === 'elimination') btn = document.getElementById('eliminationModeBtn');
   else if (roomType === 'private') btn = document.getElementById('createRoomBtn');
 
   if (attempt === 1 && btn) {
@@ -182,7 +201,7 @@ function createRoom(roomType, attempt) {
         if (attempt >= 5) {
           throw new Error('Could not find a free room code. Please try again.');
         }
-        createRoom(roomType, attempt + 1);
+        createRoom(roomType, mode, attempt + 1);
         return null;
       }
 
@@ -192,7 +211,7 @@ function createRoom(roomType, attempt) {
       return ref.set({
         roomCode: code,
         hostUid: me.uid,
-        mode: 'classic',
+        mode: mode,
         roomType: roomType,
         status: 'lobby',
         phase: 'waiting',
@@ -200,6 +219,7 @@ function createRoom(roomType, attempt) {
         currentQuestion: -1,
         players: players,
         leaderboard: [],
+        eliminated: {},
         isPublic: (roomType === 'public'),
         maxPlayers: maxPlayers,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -214,7 +234,7 @@ function createRoom(roomType, attempt) {
       console.error('Create room failed:', err);
       if (btn) {
         btn.disabled = false;
-        btn.textContent = (roomType === 'duel') ? '⚔️ 1v1 Duel a Friend' : 'Create a Room';
+        btn.textContent = CREATE_BTN_LABELS[btn.id] || 'Create a Room';
       }
       if (roomType === 'public') {
         var findBtn = document.getElementById('findMatchBtn');
@@ -414,6 +434,8 @@ function listenToMatch() {
 }
 
 function render(match) {
+  activeMatchMode = match.mode || 'classic';
+
   // A player who was removed (or whose host ended the room) gets told why.
   if (match.status === 'aborted') {
     endWithMessage(match.abortReason || 'The host ended the match.');
@@ -426,6 +448,12 @@ function render(match) {
   }
 
   if (match.status === 'playing') {
+    // Elimination Mode: once you're out, you stop seeing questions — you
+    // just watch the player count shrink until the match ends.
+    if (isEliminated(match, me.uid)) {
+      renderEliminatedWaiting(match);
+      return;
+    }
     renderPlaying(match);
     return;
   }
@@ -436,6 +464,25 @@ function render(match) {
   }
 }
 
+function isEliminated(match, uid) {
+  return !!(match.mode === 'elimination' && match.eliminated &&
+    Object.prototype.hasOwnProperty.call(match.eliminated, uid));
+}
+
+function renderEliminatedWaiting(match) {
+  showScreen('eliminatedScreen');
+  clearInterval(localTimer);
+
+  var total = Object.keys(match.players || {}).length;
+  var stillIn = total - Object.keys(match.eliminated || {}).length;
+  var outAtQ = match.eliminated[me.uid];
+
+  document.getElementById('eliminatedRoundNote').textContent =
+    'Out after Question ' + (outAtQ + 1) + '.';
+  document.getElementById('eliminatedRemaining').textContent =
+    stillIn + ' of ' + total + ' player' + (total === 1 ? '' : 's') + ' still battling…';
+}
+
 // =====================================================================
 // LOBBY
 // =====================================================================
@@ -443,6 +490,17 @@ function renderLobby(match) {
   showScreen('lobbyScreen');
 
   document.getElementById('roomCodeDisplay').textContent = match.roomCode;
+
+  var modeBadge = document.getElementById('modeBadge');
+  if (match.mode === 'speed') {
+    modeBadge.textContent = '⚡ Speed Mode — 5 seconds per question, faster = more points';
+    modeBadge.style.display = 'block';
+  } else if (match.mode === 'elimination') {
+    modeBadge.textContent = '💀 Elimination Mode — lowest score is out after every question';
+    modeBadge.style.display = 'block';
+  } else {
+    modeBadge.style.display = 'none';
+  }
 
   var players = match.players || {};
   var uids = Object.keys(players);
@@ -500,6 +558,7 @@ function renderLobby(match) {
   var note = document.getElementById('waitingNote');
   var isDuel = (match.roomType === 'duel');
   var isPublicLobby = (match.roomType === 'public');
+  var minPlayers = (match.mode === 'elimination') ? ELIMINATION_MIN_PLAYERS : 2;
 
   // Duels start themselves the instant the 2nd player joins — there's
   // nothing to wait on beyond that, so there's no Start button at all.
@@ -515,13 +574,13 @@ function renderLobby(match) {
     if (isDuel) {
       startBtn.style.display = 'none';
       note.textContent = 'Waiting for an opponent to join with the code…';
-    } else if (uids.length < 2) {
+    } else if (uids.length < minPlayers) {
       startBtn.style.display = 'block';
       startBtn.disabled = true;
       startBtn.textContent = 'Waiting for players…';
       note.textContent = isPublicLobby
         ? 'Waiting for opponents to join — anyone can find this match.'
-        : 'Share the code above — you need at least 2 players.';
+        : ('Share the code above — you need at least ' + minPlayers + ' players.');
     } else {
       startBtn.style.display = 'block';
       startBtn.disabled = false;
@@ -611,35 +670,50 @@ function startMatch() {
 
 // The host's clock. Each question runs: answer → reveal → standings → next.
 // Only the host runs this; everyone else just renders whatever it writes.
+// The clock length itself is mode-aware (Speed Mode runs a shorter one).
 function scheduleHostPhases(qIndex) {
   clearHostTimeouts();
+  var seconds = secondsForMode();
 
   // 1. After the answering window closes, score it and reveal.
   hostTimeouts.push(setTimeout(function() {
     aggregateAndReveal(qIndex);
-  }, SECONDS_PER_QUESTION * 1000));
+  }, seconds * 1000));
 
   // 2. Then show the standings table.
   hostTimeouts.push(setTimeout(function() {
     db.collection('matches').doc(matchId)
       .update({ phase: 'standings' })
       .catch(function(e) { console.error('Standings write failed:', e); });
-  }, SECONDS_PER_QUESTION * 1000 + REVEAL_MS));
+  }, seconds * 1000 + REVEAL_MS));
 
-  // 3. Then either the next question, or the end of the match.
+  // 3. Then either the next question, or the end of the match. Elimination
+  // Mode can end early — the moment only one player is still standing,
+  // there's no point asking the remaining questions.
   hostTimeouts.push(setTimeout(function() {
     var next = qIndex + 1;
-    if (next >= QUESTIONS_PER_MATCH) {
-      db.collection('matches').doc(matchId)
-        .update({ status: 'finished', phase: 'done' })
-        .catch(function(e) { console.error('Finish write failed:', e); });
-    } else {
-      db.collection('matches').doc(matchId)
-        .update({ currentQuestion: next, phase: 'answering' })
-        .then(function() { scheduleHostPhases(next); })
-        .catch(function(e) { console.error('Next question write failed:', e); });
-    }
-  }, SECONDS_PER_QUESTION * 1000 + REVEAL_MS + STANDINGS_MS));
+    var matchRef = db.collection('matches').doc(matchId);
+
+    matchRef.get().then(function(doc) {
+      var match = doc.data();
+      if (!match) return;
+
+      var outOfQuestions = (next >= QUESTIONS_PER_MATCH);
+      var oneStandingLeft = (match.mode === 'elimination' && countActivePlayers(match) <= 1);
+
+      if (outOfQuestions || oneStandingLeft) {
+        return matchRef.update({ status: 'finished', phase: 'done' });
+      }
+      return matchRef.update({ currentQuestion: next, phase: 'answering' })
+        .then(function() { scheduleHostPhases(next); });
+    }).catch(function(e) { console.error('Next-phase write failed:', e); });
+  }, seconds * 1000 + REVEAL_MS + STANDINGS_MS));
+}
+
+function countActivePlayers(match) {
+  var total = Object.keys(match.players || {}).length;
+  var eliminatedCount = Object.keys(match.eliminated || {}).length;
+  return total - eliminatedCount;
 }
 
 // PURE scoring. No Firestore, no DOM — just (previous standings + this
@@ -648,7 +722,22 @@ function scheduleHostPhases(qIndex) {
 //     testable without a database
 //   - under Option B (see CLAUDE.md) this is precisely the function that
 //     moves onto the server, so the seam is already cut
-// `answers` is a plain array of { uid, isCorrect }.
+// Classic Mode scores every correct answer flat. Speed Mode scores it on a
+// sliding scale using the `timeTaken` field every answer already carries
+// (captured for every mode, used only by this one) — instant answers score
+// SPEED_MAX_POINTS, an answer at the very last moment still scores the
+// SPEED_MIN_POINTS floor, so slower players are never shut out entirely.
+function pointsForAnswer(match, answer) {
+  if (!answer.isCorrect) return 0;
+  if (match.mode !== 'speed') return POINTS_PER_CORRECT;
+
+  var seconds = SPEED_SECONDS_PER_QUESTION;
+  var taken = Math.min(Math.max(answer.timeTaken || 0, 0), seconds);
+  var speedFraction = 1 - (taken / seconds); // 1 = instant, 0 = used the whole clock
+  return Math.round(SPEED_MIN_POINTS + (SPEED_MAX_POINTS - SPEED_MIN_POINTS) * speedFraction);
+}
+
+// `answers` is a plain array of { uid, isCorrect, timeTaken }.
 function computeLeaderboard(match, answers) {
   var players = match.players || {};
 
@@ -662,7 +751,7 @@ function computeLeaderboard(match, answers) {
   answers.forEach(function(a) {
     if (!scoreByUid[a.uid]) scoreByUid[a.uid] = { score: 0, correct: 0 };
     if (a.isCorrect) {
-      scoreByUid[a.uid].score += POINTS_PER_CORRECT;
+      scoreByUid[a.uid].score += pointsForAnswer(match, a);
       scoreByUid[a.uid].correct += 1;
     }
   });
@@ -683,6 +772,34 @@ function computeLeaderboard(match, answers) {
   return leaderboard;
 }
 
+// PURE, same reasoning as computeLeaderboard above — no Firestore/DOM.
+// Elimination Mode's rule: anyone still active who got this question wrong
+// (or never answered) is "at risk." Among the at-risk, the one with the
+// lowest cumulative score goes home — exactly one elimination per question,
+// and never down to zero players (a round where everyone gets it right
+// eliminates nobody). `leaderboard` is already this question's freshly
+// scored, score-descending list, so the last at-risk entry in that order
+// is always the lowest-scoring one.
+function computeEliminations(match, leaderboard, answers, qIndex) {
+  var eliminated = Object.assign({}, match.eliminated || {});
+  var active = leaderboard.filter(function(e) {
+    return !Object.prototype.hasOwnProperty.call(eliminated, e.uid);
+  });
+  if (active.length <= 1) return eliminated; // already down to a winner
+
+  var correctUids = {};
+  answers.forEach(function(a) { if (a.isCorrect) correctUids[a.uid] = true; });
+
+  var atRisk = active.filter(function(e) {
+    return !Object.prototype.hasOwnProperty.call(correctUids, e.uid);
+  });
+  if (atRisk.length === 0) return eliminated; // everyone active survived this round
+
+  var goingHome = atRisk[atRisk.length - 1];
+  eliminated[goingHome.uid] = qIndex;
+  return eliminated;
+}
+
 // Host-only: read this question's answers, score them, and write the
 // result back as ONE aggregated field. This is the read-cost trick the
 // whole design rests on — only the host pays to read the answers, and
@@ -700,11 +817,18 @@ function aggregateAndReveal(qIndex) {
     var answers = [];
     results[1].forEach(function(ansDoc) { answers.push(ansDoc.data()); });
 
-    return matchRef.update({
+    var leaderboard = computeLeaderboard(match, answers);
+    var update = {
       phase: 'reveal',
-      leaderboard: computeLeaderboard(match, answers),
+      leaderboard: leaderboard,
       answeredCount: answers.length
-    });
+    };
+
+    if (match.mode === 'elimination') {
+      update.eliminated = computeEliminations(match, leaderboard, answers, qIndex);
+    }
+
+    return matchRef.update(update);
   }).catch(function(err) {
     console.error('Aggregation failed:', err);
   });
@@ -767,15 +891,27 @@ function startQuestion(match, qIndex) {
   document.getElementById('factBox').style.display = 'none';
   document.getElementById('answeredCount').textContent = '';
 
+  var modeTagEl = document.getElementById('modeTag');
+  if (match.mode === 'speed') {
+    modeTagEl.textContent = '⚡ Speed';
+    modeTagEl.style.display = 'inline-block';
+  } else if (match.mode === 'elimination') {
+    modeTagEl.textContent = '💀 Elimination';
+    modeTagEl.style.display = 'inline-block';
+  } else {
+    modeTagEl.style.display = 'none';
+  }
+
   startLocalCountdown();
 }
 
 // Purely visual. The host's write is what actually ends the question —
-// this just shows the player how long they have left.
+// this just shows the player how long they have left. Mode-aware, since
+// Speed Mode runs a shorter clock than Classic/Elimination.
 function startLocalCountdown() {
   clearInterval(localTimer);
 
-  var timeLeft = SECONDS_PER_QUESTION;
+  var timeLeft = secondsForMode();
   var numEl = document.getElementById('timerNumber');
   var circleEl = document.getElementById('timerCircle');
 
@@ -872,9 +1008,29 @@ function renderStandings(match) {
 
   drawLeaderboard('standingsList', match.leaderboard || []);
 
-  var isLast = (match.currentQuestion + 1) >= QUESTIONS_PER_MATCH;
+  var isLast = ((match.currentQuestion + 1) >= QUESTIONS_PER_MATCH) ||
+    (match.mode === 'elimination' && countActivePlayers(match) <= 1);
   document.getElementById('nextQuestionNote').textContent =
     isLast ? 'Final results coming up…' : 'Next question coming up…';
+}
+
+// Elimination Mode's own board order: still-active players always rank
+// above eliminated ones (there's normally exactly one active player left —
+// the winner — by the time the match ends), and among the eliminated, the
+// one knocked out last ranks higher than one knocked out earlier.
+function eliminationOrderedBoard(match) {
+  var board = (match.leaderboard || []).slice();
+  var eliminated = match.eliminated || {};
+
+  board.sort(function(a, b) {
+    var aOut = Object.prototype.hasOwnProperty.call(eliminated, a.uid);
+    var bOut = Object.prototype.hasOwnProperty.call(eliminated, b.uid);
+    if (aOut !== bOut) return aOut ? 1 : -1;
+    if (!aOut) return b.score - a.score;
+    return eliminated[b.uid] - eliminated[a.uid];
+  });
+
+  return board;
 }
 
 function renderFinal(match) {
@@ -882,7 +1038,8 @@ function renderFinal(match) {
   clearHostTimeouts();
   showScreen('finalScreen');
 
-  var board = match.leaderboard || [];
+  var isElimination = (match.mode === 'elimination');
+  var board = isElimination ? eliminationOrderedBoard(match) : (match.leaderboard || []);
   drawLeaderboard('finalList', board);
 
   var myEntry = null;
@@ -923,14 +1080,16 @@ function renderFinal(match) {
     subEl.textContent = '';
   } else if (myRank === 1) {
     emojiEl.textContent = '🏆';
-    titleEl.textContent = 'You won!';
+    titleEl.textContent = isElimination ? 'You survived — you won!' : 'You won!';
     subEl.textContent = myEntry.correct + ' of ' + QUESTIONS_PER_MATCH +
       ' correct · ' + myEntry.score + ' points';
   } else {
-    emojiEl.textContent = myRank === 2 ? '🥈' : (myRank === 3 ? '🥉' : '🏏');
-    titleEl.textContent = 'You finished #' + myRank;
+    var eliminatedAtQ = (isElimination && match.eliminated) ? match.eliminated[me.uid] : undefined;
+    emojiEl.textContent = isElimination ? '💀' : (myRank === 2 ? '🥈' : (myRank === 3 ? '🥉' : '🏏'));
+    titleEl.textContent = isElimination ? 'Eliminated — finished #' + myRank : 'You finished #' + myRank;
     subEl.textContent = myEntry.correct + ' of ' + QUESTIONS_PER_MATCH +
-      ' correct · ' + myEntry.score + ' points';
+      ' correct · ' + myEntry.score + ' points' +
+      (eliminatedAtQ !== undefined ? ' · out after Q' + (eliminatedAtQ + 1) : '');
   }
 
   saveMatchResult(myEntry, myRank, board.length);

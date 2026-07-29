@@ -67,6 +67,13 @@
       <p class="mp-option-note">A private 2-player match — starts the moment your friend joins with the code.</p>
       <button class="btn-secondary mp-gap-top" onclick="findPublicMatch()" id="findMatchBtn">🎲 Find a Random Match</button>
       <p class="mp-option-note">Get paired with another CricTakkar player looking for a game right now.</p>
+
+      <div class="mp-divider">or try a twist</div>
+
+      <button class="btn-secondary" onclick="createRoom('private','speed')" id="speedModeBtn">⚡ Speed Mode</button>
+      <p class="mp-option-note">Same 10 questions, only 5 seconds each — answer fast for bonus points.</p>
+      <button class="btn-secondary mp-gap-top" onclick="createRoom('private','elimination')" id="eliminationModeBtn">💀 Elimination Mode</button>
+      <p class="mp-option-note">Get a question wrong and you're at risk — one player is knocked out after every question. Needs 3+ players.</p>
     </div>
   </div>
 
@@ -89,6 +96,7 @@
     <div class="quiz-card">
       <p class="mp-lobby-eyebrow">Room Code</p>
       <div class="mp-room-code" id="roomCodeDisplay">------</div>
+      <div class="mp-mode-badge" id="modeBadge" style="display:none"></div>
       <button class="mp-share-btn" onclick="shareRoomCode()">📲 Share on WhatsApp</button>
       <button class="mp-copy-btn" onclick="copyRoomCode()" id="copyCodeBtn">📋 Copy Code</button>
 
@@ -111,6 +119,7 @@
       </div>
       <div class="quiz-meta">
         <span class="question-counter" id="questionCounter">Question 1 of 10</span>
+        <span class="mp-mode-tag" id="modeTag" style="display:none"></span>
         <div class="timer-circle" id="timerCircle">
           <span id="timerNumber">10</span>
         </div>
@@ -159,6 +168,17 @@
       <h1 class="quiz-start-title">Match Ended</h1>
       <p class="quiz-start-sub" id="abortReason">The host left the room.</p>
       <button class="btn-primary" onclick="window.location.href='multiplayer.html'">Back to Battle Friends</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 8: ELIMINATED (Elimination Mode, match still going) ===== -->
+  <div class="quiz-wrapper" id="eliminatedScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">💀</div>
+      <h1 class="quiz-start-title">You're Out!</h1>
+      <p class="quiz-start-sub" id="eliminatedRoundNote"></p>
+      <div class="mp-waiting-note" id="eliminatedRemaining">Hang tight for the final results…</div>
+      <button class="btn-secondary" onclick="leaveRoom()">Leave</button>
     </div>
   </div>
 
