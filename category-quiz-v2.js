@@ -330,7 +330,7 @@ function shareScore() {
   var shareText =
     '🏏 I scored ' + crictakkarScore + '/' + crictakkarTotal +
     ' on the CricTakkar ' + info.title + '!\n' +
-    'Can you beat me? Play free at crictakkar.in\n' +
+    'Can you beat me? Play free at cric-takkar.vercel.app\n' +
     '#CricTakkar #Cricket #CricketQuiz';
 
   if (navigator.share) {

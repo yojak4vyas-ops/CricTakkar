@@ -388,7 +388,7 @@ function generateAndShowCard() {
 // ===== STEP 2A: SHARE ON WHATSAPP =====
 function shareCardToWhatsApp() {
   var text = '🏏 I scored ' + score + '/10 on CricTakkar Mixed Category Quiz!\n' +
-    '🔥 Test your cricket knowledge at crictakkar.in\n' +
+    '🔥 Test your cricket knowledge at cric-takkar.vercel.app\n' +
     '#CricTakkar #Cricket #IndianCricket';
   var whatsappUrl = 'https://wa.me/?text=' + encodeURIComponent(text);
   window.open(whatsappUrl, '_blank');

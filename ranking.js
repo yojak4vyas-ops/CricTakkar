@@ -458,7 +458,7 @@ function shareWhatsApp() {
   if (!lastResult) return;
   const { correct, total, challenge } = lastResult;
   const emoji = correct === total ? '🏆' : correct >= 3 ? '⭐' : '💪';
-  const text = `${emoji} CricTakkar Ranking Challenge!\n\n"${challenge.question}"\n\nI got ${correct}/${total} correct!\n\nCan you beat me? Play at crictakkar.vercel.app 🏏`;
+  const text = `${emoji} CricTakkar Ranking Challenge!\n\n"${challenge.question}"\n\nI got ${correct}/${total} correct!\n\nCan you beat me? Play at cric-takkar.vercel.app 🏏`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -552,7 +552,7 @@ function saveRankingHistory(finalScore, total) {
 // ===== SHARE FINISH =====
 function shareFinish() {
   const maxScore = activeChallenges.length * 5;
-  const text = `🏆 CricTakkar Ranking Challenge!\n\nI completed all 5 challenges and got ${totalCorrect}/${maxScore} positions correct!\n\nCan you beat my score? Play at crictakkar.vercel.app 🏏`;
+  const text = `🏆 CricTakkar Ranking Challenge!\n\nI completed all 5 challenges and got ${totalCorrect}/${maxScore} positions correct!\n\nCan you beat my score? Play at cric-takkar.vercel.app 🏏`;
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank');
 }
 
