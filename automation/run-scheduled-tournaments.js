@@ -146,6 +146,7 @@ async function maybeLockAndStart(type, dateStr, nowTimeStr) {
       bracket: built.bracket,
       currentRound: 0,
       championUid: null,
+      roundStartedAt: FieldValue.serverTimestamp(),
       createdAt: FieldValue.serverTimestamp()
     });
   } else {
@@ -209,6 +210,30 @@ async function advanceKnockoutTournament(doc) {
     anyChanged = true;
   }
 
+  // No-show pairings (nobody, or only one side, ever showed up to create
+  // or join their match) never reach 'finished' on their own — the loop
+  // above only ever resolves a pairing that a real match doc exists for.
+  // Same underlying problem HOST MIGRATION solves for a vanished host,
+  // just applied to "did either player show up at all" — see CLAUDE.md
+  // "HOST MIGRATION & GRACEFUL LEAVING". This bot has no browser tab of
+  // its own, but it can still read the real presence data the PLAYERS'
+  // own browsers wrote while viewing tournament.html for this event.
+  const roundStartedAtMs = (t.roundStartedAt && t.roundStartedAt.toMillis) ? t.roundStartedAt.toMillis() : null;
+  const walkovers = logic.computeWalkovers(
+    bracket, t.currentRound, slots, t.presence || {}, t.leftPlayers || {},
+    Date.now(), logic.PRESENCE_STALE_MS, roundStartedAtMs
+  );
+  const walkoverKeys = Object.keys(walkovers);
+  if (walkoverKeys.length > 0) {
+    walkoverKeys.forEach(function (key) {
+      updates['bracket.' + key + '.winnerUid'] = walkovers[key];
+      updates['bracket.' + key + '.walkover'] = true;
+      bracket[key].winnerUid = walkovers[key];
+    });
+    anyChanged = true;
+    console.log(code + ': applied ' + walkoverKeys.length + ' walkover(s) in round ' + t.currentRound + '.');
+  }
+
   if (anyChanged) {
     await doc.ref.update(updates);
     console.log(code + ': recorded ' + Object.keys(updates).length + ' round-' + t.currentRound + ' result(s).');
@@ -226,6 +251,7 @@ async function advanceKnockoutTournament(doc) {
 
   const nextUpdates = logic.nextRoundPairings(bracket, t.currentRound, slots);
   nextUpdates.currentRound = t.currentRound + 1;
+  nextUpdates.roundStartedAt = FieldValue.serverTimestamp();
   await doc.ref.update(nextUpdates);
   console.log(code + ': advanced to round ' + (t.currentRound + 1) + '.');
 }
@@ -288,7 +314,8 @@ async function advanceLeagueGroupStage(doc) {
     totalRounds: totalRounds,
     currentRound: 0,
     bracket: bracket,
-    qualifiers: seeds
+    qualifiers: seeds,
+    roundStartedAt: FieldValue.serverTimestamp()
   });
   console.log(code + ': group stage complete — moved to knockout playoffs.');
 }

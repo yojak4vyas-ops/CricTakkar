@@ -18,8 +18,11 @@
 // match host plays for a single match: it watches the current round's
 // pairing matches for a winner, writes results into the tournament doc,
 // and advances to the next round once every pairing in the round is
-// decided. This means the host needs to keep this tab open for the whole
-// tournament — same accepted limitation as a match host leaving mid-match.
+// decided. If that browser's tab closes or crashes mid-tournament, another
+// present player's browser automatically takes over — see "HOST MIGRATION
+// & WALKOVERS" below and CLAUDE.md "HOST MIGRATION & GRACEFUL LEAVING" for
+// the full design (added Day 48; this used to just abort the whole
+// tournament for everyone, which is no longer what happens).
 
 // ===== CONFIG =====
 var QUESTIONS_PER_MATCH = 10;
@@ -53,6 +56,14 @@ var POINTS_LOSS = 0;
 // play through unchanged.
 var SCHED_MIN_KNOCKOUT = 4;
 var SCHED_MIN_LEAGUE = 10;
+
+// ===== HOST MIGRATION CONFIG (Day 48) =====
+// How often THIS browser checks in while a tournament is actually in
+// progress. PRESENCE_STALE_MS/WALKOVER_WAIT_MS themselves live in
+// tournament-logic.js (already loaded as globals by the time this file
+// runs) since the scheduled bot needs those exact same numbers too — this
+// one is purely a local write-cadence choice, not shared bracket math.
+var PRESENCE_INTERVAL_MS = 20000;
 var SCHED_UI = {
   knockout: { statusId: 'schedKnockoutStatus', btnId: 'schedKnockoutBtn', startsAtIst: '20:00', label: '8:00 PM', min: SCHED_MIN_KNOCKOUT },
   league:   { statusId: 'schedLeagueStatus',   btnId: 'schedLeagueBtn',   startsAtIst: '22:00', label: '10:00 PM', min: SCHED_MIN_LEAGUE }
@@ -68,6 +79,7 @@ var lastT = null;                // most recent snapshot data, so UI callbacks (
 var watchersForRound = -1;       // which round attachRoundWatchers() last ran for
 var matchWatchUnsubs = [];       // this round's per-pairing match listeners
 var advancedPastRound = -1;      // guards against writing the same round-advance twice
+var tournamentPresenceTimer = null; // heartbeat interval, running only while status is playing/knockout/group
 var myPendingWaitUnsub = null;   // joiner-side "wait for opponent to create the match" listener
 var myCurrentPairingInfo = null; // { matchId, opponentUid, opponentName, amCreator } for the knockout Play button
 
@@ -295,6 +307,96 @@ function explainFirebaseError(err) {
     return "You've been signed out. Please log in again.";
   }
   return "Something went wrong: " + (err && err.message ? err.message : 'unknown error');
+}
+
+// =====================================================================
+// HOST MIGRATION & WALKOVERS (Day 48) — see CLAUDE.md "HOST MIGRATION &
+// GRACEFUL LEAVING". Same mechanism as multiplayer.js's matches: every
+// player checks in while a tournament is actively in progress (playing,
+// knockout, or group), and effectiveHostUid() — from tournament-logic.js,
+// shared with the scheduled bot — decides who should currently be running
+// it. Unlike a match's phase clock, hostWatchCurrentRound/
+// hostWatchAllGroupMatches are already event-driven (onSnapshot listeners,
+// not a client-local timeout chain), so a migrated host doesn't need to
+// reconstruct any elapsed time — it just needs to attach the same
+// listeners a moment later than the original host would have, which their
+// own existing idempotency guards (watchersForRound/groupWatchersAttached)
+// already make safe to call on every snapshot.
+// =====================================================================
+function startTournamentPresenceHeartbeat() {
+  if (tournamentPresenceTimer || !tournamentId || !me) return;
+  var write = function() {
+    var update = {};
+    update['presence.' + me.uid] = firebase.firestore.FieldValue.serverTimestamp();
+    db.collection('tournaments').doc(tournamentId).update(update)
+      .catch(function(e) { console.error('Tournament presence heartbeat failed:', e); });
+  };
+  write();
+  tournamentPresenceTimer = setInterval(write, PRESENCE_INTERVAL_MS);
+}
+
+function stopTournamentPresenceHeartbeat() {
+  if (tournamentPresenceTimer) { clearInterval(tournamentPresenceTimer); tournamentPresenceTimer = null; }
+}
+
+// Narrow, unconditional "I'm taking over" write — see firestore.rules'
+// onlyClaimedTournamentHost for the matching permission.
+function claimTournamentHostIfNeeded(t) {
+  if (t.hostUid === me.uid) return Promise.resolve();
+  return db.collection('tournaments').doc(tournamentId).update({ hostUid: me.uid });
+}
+
+// Called from render() on every snapshot while the tournament is active.
+function maybeActAsTournamentHost(t) {
+  if (!me || !tournamentId) return;
+  if (effectiveHostUid(t, Date.now(), PRESENCE_STALE_MS) !== me.uid) return;
+
+  claimTournamentHostIfNeeded(t).then(function() {
+    if (t.status === 'group') {
+      hostWatchAllGroupMatches(t);
+    } else {
+      hostWatchCurrentRound(t);
+      maybeApplyWalkovers(t);
+    }
+  }).catch(function(err) {
+    console.error('Claiming tournament host failed:', err);
+  });
+}
+
+// Only applies to round-gated stages — a standalone Knockout, or a
+// League's own knockout playoffs once qualifiers are decided (status
+// 'knockout' shares the exact same round machinery as 'playing'). League's
+// GROUP stage is deliberately excluded: it's designed to let 20 players
+// work through up to 9 matches each at their own pace over hours or days
+// (see the group-stage host-watching comment above), so a 4-minute clock
+// since the stage began doesn't mean the same thing there it does for a
+// live round everyone's expected to be actively playing right now.
+// computeWalkovers() only ever returns still-undecided slots, so calling
+// this on every snapshot is safe — nothing to double-write once a slot
+// has a winner.
+function maybeApplyWalkovers(t) {
+  if (t.status !== 'playing' && t.status !== 'knockout') return;
+
+  var roundStartedAtMs = (t.roundStartedAt && t.roundStartedAt.toMillis) ? t.roundStartedAt.toMillis() : null;
+  var slots = numSlotsInRound(t.bracketSize, t.currentRound);
+  var winners = computeWalkovers(
+    t.bracket, t.currentRound, slots, t.presence || {}, t.leftPlayers || {},
+    Date.now(), PRESENCE_STALE_MS, roundStartedAtMs
+  );
+
+  var keys = Object.keys(winners);
+  if (keys.length === 0) return;
+
+  var updates = {};
+  keys.forEach(function(key) {
+    updates['bracket.' + key + '.winnerUid'] = winners[key];
+    updates['bracket.' + key + '.walkover'] = true;
+  });
+
+  db.collection('tournaments').doc(tournamentId).update(updates)
+    .then(function() { return db.collection('tournaments').doc(tournamentId).get(); })
+    .then(function(doc) { maybeAdvanceRound(doc.data()); })
+    .catch(function(err) { console.error('Applying walkover failed:', err); });
 }
 
 // =====================================================================
@@ -570,8 +672,20 @@ function listenToTournament() {
     });
 }
 
+var TOURNAMENT_ACTIVE_STATUSES = ['playing', 'knockout', 'group'];
+
 function render(t) {
   lastT = t;
+
+  // Presence + host migration/walkovers only matter while something is
+  // actually in progress — a lobby has no host-driven process running yet,
+  // and a finished tournament has nothing left to drive.
+  if (TOURNAMENT_ACTIVE_STATUSES.indexOf(t.status) !== -1) {
+    startTournamentPresenceHeartbeat();
+    maybeActAsTournamentHost(t);
+  } else {
+    stopTournamentPresenceHeartbeat();
+  }
 
   if (t.status === 'aborted') {
     endWithMessage(t.abortReason || 'The organiser ended the tournament.');
@@ -593,7 +707,6 @@ function render(t) {
   if (t.status === 'playing' || t.status === 'knockout') {
     clearGroupMatchWatchers(); // group stage (if any) is done — stop watching its 90 matches
     renderBracket(t);
-    if (t.hostUid === me.uid) hostWatchCurrentRound(t);
     return;
   }
   if (t.status === 'finished') {
@@ -711,19 +824,25 @@ function leaveTournament() {
     if (!doc.exists) return null;
     var t = doc.data();
 
-    if (t.hostUid === me.uid) {
-      if (t.status === 'lobby') {
-        return ref.delete(); // nothing worth preserving before it's started
-      }
-      return ref.update({ status: 'aborted', abortReason: 'The organiser left the tournament.' });
-    }
-
     if (t.status === 'lobby') {
+      if (t.hostUid === me.uid) return ref.delete(); // nothing worth preserving before it's started
       var update = {};
       update['players.' + me.uid] = firebase.firestore.FieldValue.delete();
       return ref.update(update);
     }
-    return null; // mid-tournament: just leave locally, see the header comment on this file
+
+    // Mid-tournament: mark yourself left instead of ending the whole event
+    // for everyone else. If that was the organiser, another present
+    // player's browser takes over automatically (see HOST MIGRATION
+    // above); if you were mid-pairing, your opponent's match still runs
+    // to completion on schedule the same way it already does for a
+    // non-host leaving a regular match, and any FUTURE pairing you were
+    // supposed to play instead resolves by walkover once it's been live
+    // long enough (see maybeApplyWalkovers).
+    var liveUpdate = {};
+    liveUpdate['leftPlayers.' + me.uid] = true;
+    liveUpdate['presence.' + me.uid] = firebase.firestore.FieldValue.delete();
+    return ref.update(liveUpdate);
   }).catch(function(err) {
     console.error('Leave failed:', err);
   }).then(function() {
@@ -768,7 +887,8 @@ function startKnockoutTournament() {
     return db.collection('tournaments').doc(tournamentId).update({
       status: 'playing',
       currentRound: 0,
-      bracket: bracket
+      bracket: bracket,
+      roundStartedAt: firebase.firestore.FieldValue.serverTimestamp()
     });
   }).catch(function(err) {
     console.error('Start tournament failed:', err);
@@ -872,7 +992,7 @@ function buildBracketHTML(t) {
         if (entry.winnerUid === entry.player1Uid) { c1 += ' tn-winner'; c2 += ' tn-loser'; }
         else if (entry.winnerUid === entry.player2Uid) { c2 += ' tn-winner'; c1 += ' tn-loser'; }
         html += '<span class="' + c1 + '">' + n1 + '</span>';
-        html += '<span class="tn-pairing-vs">vs</span>';
+        html += '<span class="tn-pairing-vs">' + (entry.walkover ? 'walkover' : 'vs') + '</span>';
         html += '<span class="' + c2 + '">' + n2 + '</span>';
       }
 
@@ -968,7 +1088,9 @@ function renderGroupStage(t) {
     recorded + ' of ' + total + ' group matches played across both groups — ' +
     'top ' + LEAGUE_QUALIFIERS_PER_GROUP + ' from each group advance to the knockout playoffs.';
 
-  if (t.hostUid === me.uid) hostWatchAllGroupMatches(t);
+  // Host-watching is now driven centrally from render() -> maybeActAsTournamentHost()
+  // so it works the same way whether this is the original organiser or a
+  // migrated one, see HOST MIGRATION above.
 }
 
 function switchGroupTab(g) {
@@ -1155,7 +1277,8 @@ function maybeTransitionToKnockout(t) {
     totalRounds: totalRounds,
     currentRound: 0,
     bracket: bracket,
-    qualifiers: seeds
+    qualifiers: seeds,
+    roundStartedAt: firebase.firestore.FieldValue.serverTimestamp()
   }).catch(function(err) {
     console.error('Transitioning to knockout failed:', err);
     knockoutTransitionAttempted = false; // let a later snapshot retry
@@ -1343,6 +1466,7 @@ function maybeAdvanceRound(t) {
 
   var updates = nextRoundPairings(t.bracket, t.currentRound, slots);
   updates.currentRound = t.currentRound + 1;
+  updates.roundStartedAt = firebase.firestore.FieldValue.serverTimestamp();
 
   ref.update(updates).catch(function(err) {
     console.error('Advancing round failed:', err);
@@ -1383,6 +1507,7 @@ function teardown() {
   teardownListenerOnly();
   clearMatchWatchers();
   clearGroupMatchWatchers();
+  stopTournamentPresenceHeartbeat();
   if (myPendingWaitUnsub) { myPendingWaitUnsub(); myPendingWaitUnsub = null; }
   watchersForRound = -1;
   advancedPastRound = -1;
@@ -1403,23 +1528,30 @@ function endWithMessage(msg) {
   tournamentId = null;
 }
 
-// Best-effort: if the organiser closes the tab mid-tournament, try to tell
-// everyone rather than leaving the bracket frozen forever. Same accepted
-// limitation as multiplayer.js's matches — not guaranteed to fire.
-// Deliberately does NOT include 'group' — a 90-match, 20-player group stage
-// is expected to span far more than one sitting, so the host closing their
-// tab between check-ins must not blow up the whole tournament. onSnapshot
-// naturally catches up on everything that finished while the host was away
-// the next time they reopen this page (see hostWatchAllGroupMatches above).
-// 'playing' (pure knockout) and 'knockout' (a league's playoff stage, small
-// enough to expect in one sitting, same as a standalone knockout) still
-// abort on host tab-close, same as before.
-var ABORT_ON_HOST_LEAVE_STATUSES = ['playing', 'knockout'];
+// Best-effort: not guaranteed to fire (browsers cut network on unload) —
+// but when it does, it's now a graceful "mark yourself left" for ANY
+// in-progress tournament (playing/knockout/group), not just an organiser
+// tab-close, and it no longer ends the tournament for everyone else. If
+// this never fires at all (a genuine crash), the presence heartbeat's own
+// staleness timeout is the real safety net (see HOST MIGRATION above) —
+// this handler is purely a faster path for the common case of an actual
+// clean tab close. Leaving a still-in-lobby tournament as the organiser is
+// unchanged — nothing's running yet to hand off.
 window.addEventListener('beforeunload', function() {
   if (!tournamentId || !me || isLeaving) return;
   db.collection('tournaments').doc(tournamentId).get().then(function(doc) {
-    if (doc.exists && doc.data().hostUid === me.uid &&
-        ABORT_ON_HOST_LEAVE_STATUSES.indexOf(doc.data().status) !== -1) {
+    if (!doc.exists) return;
+    var t = doc.data();
+
+    if (TOURNAMENT_ACTIVE_STATUSES.indexOf(t.status) !== -1) {
+      var update = {};
+      update['leftPlayers.' + me.uid] = true;
+      update['presence.' + me.uid] = firebase.firestore.FieldValue.delete();
+      db.collection('tournaments').doc(tournamentId).update(update);
+      return;
+    }
+
+    if (t.hostUid === me.uid && t.status === 'lobby') {
       db.collection('tournaments').doc(tournamentId).update({
         status: 'aborted',
         abortReason: 'The organiser left the tournament.'

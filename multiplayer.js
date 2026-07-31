@@ -21,6 +21,16 @@ var ELIMINATION_MIN_PLAYERS = 3;     // fewer than this and there's no one to el
 var REVEAL_MS = 4000;      // how long the correct answer stays up
 var STANDINGS_MS = 4000;   // how long the between-question table stays up
 var POINTS_PER_CORRECT = 10;
+// HOST MIGRATION (see CLAUDE.md "HOST MIGRATION & GRACEFUL LEAVING"). Every
+// player checks in this often while a match is in progress; if the current
+// host goes quiet for longer than this, another present player's browser
+// takes over running the clock automatically. Tuned as a compromise: often
+// enough that a real crash recovers in well under a minute, rare enough
+// that it stays a small fraction of a match's existing per-question write
+// cost (a 3-minute duel adds ~9 heartbeat writes per player at this rate,
+// against ~30-40 the host already makes running the clock).
+var PRESENCE_INTERVAL_MS = 20000;
+var PRESENCE_STALE_MS = 45000;
 var MAX_PLAYERS = 10;       // private rooms + public matchmaking
 var DUEL_MAX_PLAYERS = 2;   // 1v1 duel rooms
 var CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no O/0, I/1/L lookalikes
@@ -41,13 +51,79 @@ var lastRenderedQuestion = -1;
 var lastRenderedPhase = '';
 var hasAnsweredThisQuestion = false;
 var questionShownAt = 0;    // Speed Mode's per-answer scoring reads this via timeTaken
-var isLeaving = false;      // suppresses the host-left handler during a clean exit
+var isLeaving = false;      // suppresses the beforeunload handler during a clean exit
 var duelAutoStartFired = false; // stops a duel's 2nd-player-joins auto-start firing twice
 var activeMatchMode = 'classic'; // refreshed from every snapshot — 'classic' | 'speed' | 'elimination'
+var presenceTimer = null;   // heartbeat interval, running only while status === 'playing'
+var isDrivingHost = false;  // am I (this browser) currently the one running the phase clock?
+var hostDrivingKey = '';    // qIndex:phase we last scheduled for — stops re-scheduling on every snapshot
 
 // Both modes' clocks read this instead of the flat SECONDS_PER_QUESTION.
 function secondsForMode() {
   return (activeMatchMode === 'speed') ? SPEED_SECONDS_PER_QUESTION : SECONDS_PER_QUESTION;
+}
+
+// =====================================================================
+// HOST MIGRATION — presence, and "who should be running this match?"
+// PURE (no Firestore/DOM), same reasoning as computeLeaderboard: it's the
+// one piece of real logic here, so it should be testable without a
+// database, and every client evaluates it independently off the same
+// document to reach the same answer with no separate "election" write.
+// See CLAUDE.md "HOST MIGRATION & GRACEFUL LEAVING" for the full design.
+// =====================================================================
+function isPresenceFresh(presence, uid, nowMs) {
+  if (!presence || !presence[uid]) return false;
+  var ts = presence[uid];
+  var tsMs = (ts && typeof ts.toMillis === 'function') ? ts.toMillis() : null;
+  if (tsMs === null) return false;
+  return (nowMs - tsMs) < PRESENCE_STALE_MS;
+}
+
+function effectiveHostUid(match, nowMs) {
+  var players = match.players || {};
+  var leftPlayers = match.leftPlayers || {};
+  var presence = match.presence || {};
+
+  // No heartbeats have landed at all yet (a brand-new match) — defer to
+  // the recorded host rather than racing the very first snapshot.
+  if (Object.keys(presence).length === 0) return match.hostUid;
+
+  var candidates = Object.keys(players).filter(function(uid) {
+    if (Object.prototype.hasOwnProperty.call(leftPlayers, uid)) return false;
+    return isPresenceFresh(presence, uid, nowMs);
+  });
+
+  if (candidates.length === 0) return null; // nobody present right now
+  if (candidates.indexOf(match.hostUid) !== -1) return match.hostUid;
+
+  candidates.sort();
+  return candidates[0];
+}
+
+function startPresenceHeartbeat() {
+  if (presenceTimer || !matchId || !me) return;
+  var write = function() {
+    var update = {};
+    update['presence.' + me.uid] = firebase.firestore.FieldValue.serverTimestamp();
+    db.collection('matches').doc(matchId).update(update)
+      .catch(function(e) { console.error('Presence heartbeat failed:', e); });
+  };
+  write(); // don't wait a full interval for the first check-in
+  presenceTimer = setInterval(write, PRESENCE_INTERVAL_MS);
+}
+
+function stopPresenceHeartbeat() {
+  if (presenceTimer) { clearInterval(presenceTimer); presenceTimer = null; }
+}
+
+// A player about to act as host but not currently recorded as hostUid
+// claims the role first — a narrowly-scoped write the security rules
+// allow any current player to make (see firestore.rules' onlyClaimedHost),
+// so their SUBSEQUENT host-only writes (phase/leaderboard/etc, still gated
+// on actually holding hostUid) go through cleanly.
+function claimHostIfNeeded(match) {
+  if (match.hostUid === me.uid) return Promise.resolve();
+  return db.collection('matches').doc(matchId).update({ hostUid: me.uid });
 }
 
 // =====================================================================
@@ -478,7 +554,20 @@ function listenToMatch() {
 function render(match) {
   activeMatchMode = match.mode || 'classic';
 
-  // A player who was removed (or whose host ended the room) gets told why.
+  // Presence + host migration only matter once a match is actually in
+  // progress — a lobby has no clock running to hand off, and a finished
+  // match has nothing left to drive.
+  if (match.status === 'playing') {
+    startPresenceHeartbeat();
+    maybeActAsHost(match);
+  } else {
+    stopPresenceHeartbeat();
+    if (isDrivingHost) { clearHostTimeouts(); isDrivingHost = false; hostDrivingKey = ''; }
+  }
+
+  // A player who was removed (or whose host ended the room WHILE STILL IN
+  // THE LOBBY — an in-progress match no longer does this, see leaveRoom())
+  // gets told why.
   if (match.status === 'aborted') {
     endWithMessage(match.abortReason || 'The host ended the match.');
     return;
@@ -665,10 +754,22 @@ function leaveRoom() {
 
   db.collection('matches').doc(matchId).get().then(function(doc) {
     if (!doc.exists) return null;
+    var match = doc.data();
 
-    // The host leaving ends the room for everyone — there is no server to
-    // keep it alive, and no host migration yet (see CLAUDE.md limitations).
-    if (doc.data().hostUid === me.uid) {
+    // A live match keeps going without you: you're marked left (which also
+    // hands hosting duties to someone else if that was you — see
+    // effectiveHostUid/HOST MIGRATION above), everyone else's game is
+    // untouched. Leaving a still-in-lobby room is unchanged — there's
+    // nothing running yet to hand off, so the host leaving pre-start still
+    // just ends the room.
+    if (match.status === 'playing') {
+      var liveUpdate = {};
+      liveUpdate['leftPlayers.' + me.uid] = true;
+      liveUpdate['presence.' + me.uid] = firebase.firestore.FieldValue.delete();
+      return ref.update(liveUpdate);
+    }
+
+    if (match.hostUid === me.uid) {
       return ref.update({
         status: 'aborted',
         abortReason: 'The host left the room.'
@@ -699,63 +800,117 @@ function startMatch() {
   db.collection('matches').doc(matchId).update({
     status: 'playing',
     phase: 'answering',
+    phaseAt: firebase.firestore.FieldValue.serverTimestamp(),
     currentQuestion: 0,
     leaderboard: []
-  }).then(function() {
-    scheduleHostPhases(0);
   }).catch(function(err) {
     console.error('Start failed:', err);
     btn.disabled = false;
     btn.textContent = 'Start Match';
   });
+  // No direct scheduling call here — the snapshot this write triggers
+  // flows through render() -> maybeActAsHost() -> driveHostPhase() just
+  // like every later phase transition does, including ones driven by a
+  // host who took over mid-match. One mechanism for both "starting" and
+  // "migrating," not two.
 }
 
-// The host's clock. Each question runs: answer → reveal → standings → next.
-// Only the host runs this; everyone else just renders whatever it writes.
-// The clock length itself is mode-aware (Speed Mode runs a shorter one).
-function scheduleHostPhases(qIndex) {
+// Called on every snapshot. Decides whether THIS browser should currently
+// be running the phase clock, and (re)schedules the ONE next transition if
+// so — never all three at once like the old design, because a migrated
+// host needs to pick up wherever the match actually is, not restart from
+// the top. Each transition write's own resulting snapshot re-triggers this
+// and schedules the next one, so the whole match self-heals continuously
+// rather than depending on one client's timeout chain surviving start to
+// finish.
+function maybeActAsHost(match) {
+  if (!me || !matchId) return;
+
+  var iAmEffectiveHost = (effectiveHostUid(match, Date.now()) === me.uid);
+
+  if (!iAmEffectiveHost || match.status !== 'playing') {
+    if (isDrivingHost) { clearHostTimeouts(); isDrivingHost = false; hostDrivingKey = ''; }
+    return;
+  }
+
+  var key = match.currentQuestion + ':' + match.phase;
+  if (isDrivingHost && hostDrivingKey === key) return; // already scheduled for this exact state
+
   clearHostTimeouts();
-  var seconds = secondsForMode();
+  isDrivingHost = true;
+  hostDrivingKey = key;
 
-  // 1. After the answering window closes, score it and reveal.
-  hostTimeouts.push(setTimeout(function() {
-    aggregateAndReveal(qIndex);
-  }, seconds * 1000));
-
-  // 2. Then show the standings table.
-  hostTimeouts.push(setTimeout(function() {
-    db.collection('matches').doc(matchId)
-      .update({ phase: 'standings' })
-      .catch(function(e) { console.error('Standings write failed:', e); });
-  }, seconds * 1000 + REVEAL_MS));
-
-  // 3. Then either the next question, or the end of the match. Last One
-  // Standing can end early — the moment only one player is still standing,
-  // there's no point asking the remaining questions.
-  hostTimeouts.push(setTimeout(function() {
-    var next = qIndex + 1;
-    var matchRef = db.collection('matches').doc(matchId);
-
-    matchRef.get().then(function(doc) {
-      var match = doc.data();
-      if (!match) return;
-
-      var outOfQuestions = (next >= QUESTIONS_PER_MATCH);
-      var oneStandingLeft = (match.mode === 'elimination' && countActivePlayers(match) <= 1);
-
-      if (outOfQuestions || oneStandingLeft) {
-        return matchRef.update({ status: 'finished', phase: 'done' });
-      }
-      return matchRef.update({ currentQuestion: next, phase: 'answering' })
-        .then(function() { scheduleHostPhases(next); });
-    }).catch(function(e) { console.error('Next-phase write failed:', e); });
-  }, seconds * 1000 + REVEAL_MS + STANDINGS_MS));
+  claimHostIfNeeded(match).then(function() {
+    driveHostPhase(match);
+  }).catch(function(err) {
+    console.error('Claiming host failed:', err);
+    isDrivingHost = false;
+    hostDrivingKey = '';
+  });
 }
 
+// Schedules exactly the next transition, timed off `phaseAt` rather than
+// "however long it's been since I personally last ran" — this is what
+// makes it safe for a newly-promoted host to pick up mid-phase instead of
+// unfairly giving players a fresh full countdown.
+function driveHostPhase(match) {
+  var phaseAtMs = (match.phaseAt && match.phaseAt.toMillis) ? match.phaseAt.toMillis() : Date.now();
+  var elapsed = Math.max(0, Date.now() - phaseAtMs);
+  var qIndex = match.currentQuestion;
+
+  if (match.phase === 'answering') {
+    var remaining = Math.max(0, secondsForMode() * 1000 - elapsed);
+    hostTimeouts.push(setTimeout(function() { aggregateAndReveal(qIndex); }, remaining));
+  } else if (match.phase === 'reveal') {
+    var remaining2 = Math.max(0, REVEAL_MS - elapsed);
+    hostTimeouts.push(setTimeout(function() {
+      db.collection('matches').doc(matchId).update({
+        phase: 'standings',
+        phaseAt: firebase.firestore.FieldValue.serverTimestamp()
+      }).catch(function(e) { console.error('Standings write failed:', e); });
+    }, remaining2));
+  } else if (match.phase === 'standings') {
+    var remaining3 = Math.max(0, STANDINGS_MS - elapsed);
+    hostTimeouts.push(setTimeout(function() { advanceAfterStandings(qIndex); }, remaining3));
+  }
+}
+
+// Either the next question, or the end of the match. Last One Standing can
+// end early — the moment only one player is still standing, there's no
+// point asking the remaining questions.
+function advanceAfterStandings(qIndex) {
+  var next = qIndex + 1;
+  var matchRef = db.collection('matches').doc(matchId);
+
+  matchRef.get().then(function(doc) {
+    var match = doc.data();
+    if (!match) return;
+
+    var outOfQuestions = (next >= QUESTIONS_PER_MATCH);
+    var oneStandingLeft = (match.mode === 'elimination' && countActivePlayers(match) <= 1);
+
+    if (outOfQuestions || oneStandingLeft) {
+      return matchRef.update({ status: 'finished', phase: 'done' });
+    }
+    return matchRef.update({
+      currentQuestion: next,
+      phase: 'answering',
+      phaseAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }).catch(function(e) { console.error('Next-phase write failed:', e); });
+}
+
+// A "left" player counts the same as an eliminated one for "how many are
+// still standing" — otherwise Last One Standing could sit waiting forever
+// on someone who's already gone.
 function countActivePlayers(match) {
   var total = Object.keys(match.players || {}).length;
-  var eliminatedCount = Object.keys(match.eliminated || {}).length;
-  return total - eliminatedCount;
+  var eliminated = match.eliminated || {};
+  var leftPlayers = match.leftPlayers || {};
+  var goneUids = {};
+  Object.keys(eliminated).forEach(function(uid) { goneUids[uid] = true; });
+  Object.keys(leftPlayers).forEach(function(uid) { goneUids[uid] = true; });
+  return total - Object.keys(goneUids).length;
 }
 
 // PURE scoring. No Firestore, no DOM — just (previous standings + this
@@ -824,6 +979,17 @@ function computeLeaderboard(match, answers) {
 // is always the lowest-scoring one.
 function computeEliminations(match, leaderboard, answers, qIndex) {
   var eliminated = Object.assign({}, match.eliminated || {});
+
+  // A player who explicitly left (or whose presence went stale) is folded
+  // into `eliminated` here too, so every downstream consumer of that one
+  // field (countActivePlayers, the "still standing" count, the final
+  // board's ordering) already handles them uniformly with no separate
+  // leftPlayers check needed anywhere else in Last One Standing.
+  var leftPlayers = match.leftPlayers || {};
+  Object.keys(leftPlayers).forEach(function(uid) {
+    if (!Object.prototype.hasOwnProperty.call(eliminated, uid)) eliminated[uid] = qIndex;
+  });
+
   var active = leaderboard.filter(function(e) {
     return !Object.prototype.hasOwnProperty.call(eliminated, e.uid);
   });
@@ -862,6 +1028,7 @@ function aggregateAndReveal(qIndex) {
     var leaderboard = computeLeaderboard(match, answers);
     var update = {
       phase: 'reveal',
+      phaseAt: firebase.firestore.FieldValue.serverTimestamp(),
       leaderboard: leaderboard,
       answeredCount: answers.length
     };
@@ -1048,7 +1215,7 @@ function renderStandings(match) {
   document.getElementById('standingsSub').textContent =
     'After question ' + (match.currentQuestion + 1) + ' of ' + QUESTIONS_PER_MATCH;
 
-  drawLeaderboard('standingsList', match.leaderboard || []);
+  drawLeaderboard('standingsList', match.leaderboard || [], match.leftPlayers || {});
 
   var isLast = ((match.currentQuestion + 1) >= QUESTIONS_PER_MATCH) ||
     (match.mode === 'elimination' && countActivePlayers(match) <= 1);
@@ -1082,7 +1249,7 @@ function renderFinal(match) {
 
   var isElimination = (match.mode === 'elimination');
   var board = isElimination ? eliminationOrderedBoard(match) : (match.leaderboard || []);
-  drawLeaderboard('finalList', board);
+  drawLeaderboard('finalList', board, match.leftPlayers || {});
 
   var myEntry = null;
   var myRank = 0;
@@ -1144,9 +1311,10 @@ function renderFinal(match) {
   teardownListenerOnly();
 }
 
-function drawLeaderboard(elementId, board) {
+function drawLeaderboard(elementId, board, leftPlayers) {
   var el = document.getElementById(elementId);
   el.innerHTML = '';
+  leftPlayers = leftPlayers || {};
 
   board.forEach(function(entry, i) {
     var row = document.createElement('div');
@@ -1159,6 +1327,13 @@ function drawLeaderboard(elementId, board) {
     var name = document.createElement('div');
     name.className = 'mp-lb-name';
     name.textContent = entry.name || 'Player'; // textContent — user-supplied
+
+    if (Object.prototype.hasOwnProperty.call(leftPlayers, entry.uid)) {
+      var leftTag = document.createElement('span');
+      leftTag.className = 'mp-left-badge';
+      leftTag.textContent = 'left';
+      name.appendChild(leftTag);
+    }
 
     var score = document.createElement('div');
     score.className = 'mp-lb-score';
@@ -1243,6 +1418,9 @@ function teardown() {
   teardownListenerOnly();
   clearInterval(localTimer);
   clearHostTimeouts();
+  stopPresenceHeartbeat();
+  isDrivingHost = false;
+  hostDrivingKey = '';
   lastRenderedQuestion = -1;
   lastRenderedPhase = '';
 }
@@ -1261,14 +1439,27 @@ function endWithMessage(msg) {
   matchId = null;
 }
 
-// Best-effort: if the host closes the tab mid-match, try to tell everyone
-// rather than leaving them staring at a frozen question. This is not
-// guaranteed to land (browsers cut network on unload), which is exactly
-// why host migration is listed as a known limitation in CLAUDE.md.
+// Best-effort: not guaranteed to land (browsers cut network on unload) —
+// but when it does, it's now a graceful "mark yourself left" rather than
+// the old "kill the whole match" behavior. If a genuine crash means this
+// never fires at all, the presence heartbeat's staleness timeout is the
+// real safety net (see HOST MIGRATION above) — this handler is purely a
+// faster path for the common case of an actual clean tab close.
 window.addEventListener('beforeunload', function() {
   if (!matchId || !me || isLeaving) return;
   db.collection('matches').doc(matchId).get().then(function(doc) {
-    if (doc.exists && doc.data().hostUid === me.uid && doc.data().status !== 'finished') {
+    if (!doc.exists) return;
+    var match = doc.data();
+
+    if (match.status === 'playing') {
+      var update = {};
+      update['leftPlayers.' + me.uid] = true;
+      update['presence.' + me.uid] = firebase.firestore.FieldValue.delete();
+      db.collection('matches').doc(matchId).update(update);
+      return;
+    }
+
+    if (match.hostUid === me.uid && match.status !== 'finished') {
       db.collection('matches').doc(matchId).update({
         status: 'aborted',
         abortReason: 'The host left the room.'

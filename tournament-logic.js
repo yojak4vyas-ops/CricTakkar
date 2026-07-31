@@ -262,6 +262,92 @@
   }
 
   // =====================================================================
+  // HOST MIGRATION & WALKOVERS — added Day 48, see CLAUDE.md "HOST
+  // MIGRATION & GRACEFUL LEAVING". Every player's browser writes a
+  // `presence.{uid}` heartbeat (a Firestore serverTimestamp) while a
+  // tournament is actively in progress. These two pure functions are what
+  // both tournament.js (a real browser tab) and the scheduled bot
+  // (automation/run-scheduled-tournaments.js — no browser tab of its own,
+  // but it can still read the real presence data players' own browsers
+  // wrote) use to make the exact same walkover decision from the exact
+  // same rule, so a bot-hosted tournament isn't left permanently unable to
+  // recover from a no-show the way a browser-hosted one briefly used to be
+  // before this file existed.
+  // =====================================================================
+  var PRESENCE_STALE_MS = 45000;        // ~2 missed heartbeats before someone's considered gone
+  var WALKOVER_WAIT_MS = 4 * 60 * 1000; // how long a round waits before a no-show pairing gets walked over
+
+  // presence[uid] is expected to be a Firestore Timestamp (from either the
+  // client SDK or the Admin SDK — both expose .toMillis()). Missing,
+  // still-pending (server hasn't resolved the write yet), or malformed
+  // entries all read as "not fresh" rather than throwing.
+  function isPresenceFresh(presence, uid, nowMs, staleMs) {
+    if (!presence || !presence[uid]) return false;
+    var ts = presence[uid];
+    var tsMs = (ts && typeof ts.toMillis === 'function') ? ts.toMillis() : null;
+    if (tsMs === null) return false;
+    return (nowMs - tsMs) < staleMs;
+  }
+
+  // Deterministic "who should be running this doc right now" — the
+  // recorded hostUid stays host for as long as they're still fresh; only
+  // once they go stale (or explicitly leave) does anyone else take over,
+  // and then it's always the lexicographically smallest fresh, non-left
+  // uid, so every client that reads the same doc computes the same answer
+  // independently with no separate "election" write needed. A doc with no
+  // presence data at all yet (brand new, before anyone's first heartbeat
+  // lands) defers to the recorded host unconditionally, so there's no
+  // chicken-and-egg race at the very start of a match/tournament.
+  function effectiveHostUid(doc, nowMs, staleMs) {
+    var players = doc.players || {};
+    var leftPlayers = doc.leftPlayers || {};
+    var presence = doc.presence || {};
+
+    if (Object.keys(presence).length === 0) return doc.hostUid;
+
+    var candidates = Object.keys(players).filter(function (uid) {
+      if (Object.prototype.hasOwnProperty.call(leftPlayers, uid)) return false;
+      return isPresenceFresh(presence, uid, nowMs, staleMs);
+    });
+
+    if (candidates.length === 0) return null; // nobody present right now — idles until someone reconnects
+    if (candidates.indexOf(doc.hostUid) !== -1) return doc.hostUid;
+
+    candidates.sort();
+    return candidates[0];
+  }
+
+  // A pairing only gets decided by walkover if the round has been live for
+  // at least WALKOVER_WAIT_MS AND exactly one of its two players currently
+  // has fresh presence while the other doesn't (missing, stale, or
+  // explicitly left) — if neither or both are around, nothing is decided;
+  // the normal match-result path (or a later re-check) still gets first
+  // chance to resolve it honestly. Byes and already-decided/TBD slots are
+  // skipped. Returns a plain { 'r{round}_s{slot}': winnerUid } map for the
+  // caller to write — never writes anything itself.
+  function computeWalkovers(bracket, round, numSlotsThisRound, presence, leftPlayers, nowMs, staleMs, roundStartedAtMs) {
+    var winners = {};
+    if (roundStartedAtMs === null || roundStartedAtMs === undefined) return winners;
+    if (nowMs - roundStartedAtMs < WALKOVER_WAIT_MS) return winners;
+
+    for (var s = 0; s < numSlotsThisRound; s++) {
+      var key = 'r' + round + '_s' + s;
+      var entry = bracket[key];
+      if (!entry || entry.winnerUid) continue;
+      if (!entry.player1Uid || !entry.player2Uid || entry.player2Uid === 'BYE') continue;
+
+      var p1Fresh = isPresenceFresh(presence, entry.player1Uid, nowMs, staleMs) &&
+        !(leftPlayers && leftPlayers[entry.player1Uid]);
+      var p2Fresh = isPresenceFresh(presence, entry.player2Uid, nowMs, staleMs) &&
+        !(leftPlayers && leftPlayers[entry.player2Uid]);
+
+      if (p1Fresh && !p2Fresh) winners[key] = entry.player1Uid;
+      else if (p2Fresh && !p1Fresh) winners[key] = entry.player2Uid;
+    }
+    return winners;
+  }
+
+  // =====================================================================
   var exportsObj = {
     matchIdForSlot: matchIdForSlot,
     pickCreatorUid: pickCreatorUid,
@@ -278,7 +364,12 @@
     isGroupStageComplete: isGroupStageComplete,
     computeGroupStandings: computeGroupStandings,
     seedKnockoutBracket: seedKnockoutBracket,
-    splitIntoTwoGroups: splitIntoTwoGroups
+    splitIntoTwoGroups: splitIntoTwoGroups,
+    PRESENCE_STALE_MS: PRESENCE_STALE_MS,
+    WALKOVER_WAIT_MS: WALKOVER_WAIT_MS,
+    isPresenceFresh: isPresenceFresh,
+    effectiveHostUid: effectiveHostUid,
+    computeWalkovers: computeWalkovers
   };
 
   if (typeof module !== 'undefined' && module.exports) {

@@ -206,6 +206,21 @@
   flex-shrink: 0;
 }
 
+/* HOST MIGRATION — flags a player who left mid-match on the leaderboard,
+   so it's clear their score is frozen rather than just stuck (see CLAUDE.md
+   "HOST MIGRATION & GRACEFUL LEAVING"). */
+.mp-left-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 1px 7px;
+  border-radius: 20px;
+  margin-left: 8px;
+  letter-spacing: 0.3px;
+}
+
 .mp-waiting-note {
   text-align: center;
   color: rgba(255,255,255,0.45);

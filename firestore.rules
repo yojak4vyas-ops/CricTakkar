@@ -16,7 +16,11 @@ rules_version = '2';
 //   - you cannot write an answer as somebody else
 //   - you cannot answer the same question twice to inflate your score
 //   - you cannot change your answer after seeing the correct one
-//   - you cannot promote yourself to host or rewrite the leaderboard
+//   - you cannot rewrite the leaderboard/bracket unless you actually hold
+//     hostUid (the one deliberate exception: any current player may claim
+//     an abandoned hostUid for themselves — see "HOST MIGRATION" comments
+//     below and CLAUDE.md — but that single-field claim still gates every
+//     other host-only write behind actually holding the role afterward)
 //   - you cannot read what other players answered before the reveal
 
 service cloud.firestore {
@@ -96,6 +100,10 @@ service cloud.firestore {
         return signedIn() && resource.data.hostUid == request.auth.uid;
       }
 
+      function isPlayer() {
+        return signedIn() && request.auth.uid in resource.data.players;
+      }
+
       // Only the players map changed, and only this player's own entry
       // inside it. This is what lets someone join or leave a room without
       // also letting them touch the score, the phase, or the host.
@@ -105,6 +113,45 @@ service cloud.firestore {
                && request.resource.data.players
                  .diff(resource.data.players)
                  .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      // HOST MIGRATION (see CLAUDE.md "HOST MIGRATION & GRACEFUL LEAVING"):
+      // if the recorded host's browser vanishes mid-match, another present
+      // player's client can take over. Claiming the role is writing ONLY
+      // this one field to your own uid — deliberately unconditional here,
+      // since the rule can't itself verify "the old host actually went
+      // quiet." That judgment lives entirely in the client's own staleness
+      // check; this rule only guarantees a genuine current player did it,
+      // not an outsider. Everything else about running the match (phase,
+      // leaderboard, eliminated, status) still requires actually holding
+      // hostUid via isHost() above, completely unchanged. Given this app
+      // already has no money at stake and an already-self-writable-XP
+      // trust model (see CLAUDE.md's Scale & Safety Audit S3), this is a
+      // small extension of an already-accepted risk, not a new one.
+      function onlyClaimedHost() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['hostUid'])
+               && request.resource.data.hostUid == request.auth.uid;
+      }
+
+      // A player may check in (presence heartbeat) or mark themselves as
+      // having left, at any time while they're in the room — this is what
+      // lets a match keep running instead of being killed outright the
+      // moment somebody's browser closes, and what lets host migration
+      // above actually detect that the old host is gone. Scoped exactly
+      // like onlyChangedOwnPlayerEntry: only your own key, in only these
+      // two maps.
+      function touchedOnlyOwnKeyIn(fieldName) {
+        return !(fieldName in request.resource.data.diff(resource.data).affectedKeys())
+               || request.resource.data[fieldName]
+                    .diff(resource.data.get(fieldName, {}))
+                    .affectedKeys().hasOnly([request.auth.uid]);
+      }
+      function onlyChangedOwnPresenceOrLeft() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['presence', 'leftPlayers'])
+               && touchedOnlyOwnKeyIn('presence')
+               && touchedOnlyOwnKeyIn('leftPlayers');
       }
 
       // Any signed-in user can read: you have to be able to look a room up
@@ -120,8 +167,13 @@ service cloud.firestore {
                     && request.resource.data.status == 'lobby'
                     && request.resource.data.roomCode == matchId;
 
-      // The host drives the match. Everyone else may only join or leave.
-      allow update: if isHost() || (signedIn() && onlyChangedOwnPlayerEntry());
+      // The host drives the match. Everyone else may only join/leave the
+      // lobby, check in, mark themselves left, or claim an abandoned host
+      // role.
+      allow update: if isHost()
+                    || (signedIn() && onlyChangedOwnPlayerEntry())
+                    || (isPlayer() && onlyClaimedHost())
+                    || (isPlayer() && onlyChangedOwnPresenceOrLeft());
 
       allow delete: if isHost();
 
@@ -173,12 +225,40 @@ service cloud.firestore {
         return signedIn() && resource.data.hostUid == request.auth.uid;
       }
 
+      function isTournamentPlayer() {
+        return signedIn() && request.auth.uid in resource.data.players;
+      }
+
       function onlyChangedOwnTournamentPlayerEntry() {
         return request.resource.data.diff(resource.data)
                  .affectedKeys().hasOnly(['players'])
                && request.resource.data.players
                  .diff(resource.data.players)
                  .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      // HOST MIGRATION — same mechanism and same reasoning as /matches
+      // above (see that block's comments, and CLAUDE.md "HOST MIGRATION &
+      // GRACEFUL LEAVING"): if the organiser's browser vanishes mid-
+      // tournament, another present player can claim the role by writing
+      // ONLY this field, unconditionally as far as this rule is concerned.
+      function onlyClaimedTournamentHost() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['hostUid'])
+               && request.resource.data.hostUid == request.auth.uid;
+      }
+
+      function touchedOnlyOwnTournamentKeyIn(fieldName) {
+        return !(fieldName in request.resource.data.diff(resource.data).affectedKeys())
+               || request.resource.data[fieldName]
+                    .diff(resource.data.get(fieldName, {}))
+                    .affectedKeys().hasOnly([request.auth.uid]);
+      }
+      function onlyChangedOwnTournamentPresenceOrLeft() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['presence', 'leftPlayers'])
+               && touchedOnlyOwnTournamentKeyIn('presence')
+               && touchedOnlyOwnTournamentKeyIn('leftPlayers');
       }
 
       allow read: if signedIn();
@@ -189,9 +269,12 @@ service cloud.firestore {
                     && request.resource.data.tournamentCode == tournamentId;
 
       // The host drives round advancement and writes results. Everyone
-      // else may only join or leave the lobby before it starts.
-      allow update: if isTournamentHost() ||
-                    (signedIn() && onlyChangedOwnTournamentPlayerEntry());
+      // else may only join/leave the lobby, check in, mark themselves
+      // left, or claim an abandoned host role.
+      allow update: if isTournamentHost()
+                    || (signedIn() && onlyChangedOwnTournamentPlayerEntry())
+                    || (isTournamentPlayer() && onlyClaimedTournamentHost())
+                    || (isTournamentPlayer() && onlyChangedOwnTournamentPresenceOrLeft());
 
       allow delete: if isTournamentHost();
     }
