@@ -2943,6 +2943,301 @@ const wordlePlayers = [
     iccTrophies: 1
     // 2021 WTC (squad) — Wikipedia confirmed
   },
+  {
+    name: "Tom Latham",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2012,
+    format: "All-format",
+    // ODI debut Feb 2012, T20I debut Jun 2012, Test debut Feb 2014 — ESPNcricinfo + Wikipedia confirmed
+    // Went unsold at multiple IPL auctions (2023, 2025) — has never played in the IPL —
+    // Wikipedia + press reports confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2021 WTC — named in the official 15-man final squad — Wikipedia confirmed
+  },
+  {
+    name: "John Wright",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1978,
+    format: "Test+ODI",
+    // Test and ODI debut both 1978, retired 1993 — before T20Is existed (Feb 2005) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1993, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Nathan Astle",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1995,
+    format: "All-format",
+    // ODI debut Jan 1995, Test debut 1996, played 4 T20Is 2005-2006 — ESPNcricinfo + Wikipedia confirmed
+    // Retired 2006, before the IPL began (2008) — no IPL history
+    iplTeams: [],
+    iccTrophies: 1
+    // 2000 ICC KnockOut Trophy (Champions Trophy) — named in the actual winning squad —
+    // Wikipedia squad list confirmed
+  },
+  {
+    name: "BJ Watling",
+    country: "New Zealand",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2009,
+    format: "All-format",
+    // T20I debut Nov 2009, Test debut Dec 2009, ODI debut Aug 2010 — Wikipedia confirmed.
+    // Most dismissals by a New Zealand wicketkeeper (265) — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2021 WTC — named in the official 15-man final squad, his last international match
+    // before retiring — Wikipedia confirmed
+  },
+  {
+    name: "Bevan Congdon",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1965,
+    format: "Test+ODI",
+    // 61 Tests, 11 ODIs, 1965-1978 — before T20Is existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1978, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "John Reid",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // UNCONFIRMED PRECISELY: Wikipedia describes his bowling as evolving from genuinely quick
+    // early in his career to off-cutters and spin later — recorded as best-available rather
+    // than one exact settled style, same treatment as other flagged/uncertain entries
+    debutYear: 1949,
+    format: "Test",
+    // Test debut 1949, career ended 1965 — before ODI cricket existed (first ODI was Jan 1971) —
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Career ended 1965, decades before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Henry Nicholls",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2015,
+    format: "All-format",
+    // ODI debut Dec 2015, Test debut Feb 2016, T20I debut Mar 2016 — Wikipedia confirmed
+    // Played BBL for Sydney Thunder but has 0 IPL matches — no evidence of any IPL auction
+    // signing found — Wikipedia + search confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2021 WTC — named in the official 15-man final squad — Wikipedia confirmed
+  },
+  {
+    name: "Chris Cairns",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1989,
+    format: "All-format",
+    // Test debut 1989, ODI debut 1991, T20I debut Feb 2005 (played in cricket's first-ever
+    // T20I, vs Australia) — ESPNcricinfo + Wikipedia confirmed
+    // Captained the Chandigarh Lions in the rival Indian Cricket League (ICL), NOT the IPL —
+    // he never played actual IPL cricket — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2000 ICC KnockOut Trophy (Champions Trophy) — named in the actual winning squad —
+    // Wikipedia squad list confirmed
+  },
+  {
+    name: "Neil Wagner",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2012,
+    format: "Test",
+    // Test debut 2012, retired 2024 — was named in ODI squads (e.g. 2017 tri-series) but never
+    // actually played an ODI or T20I match — Wikipedia + ESPNcricinfo confirmed
+    // No evidence of any IPL history found — Wikipedia's domestic-career section lists South
+    // African domestic sides, Otago, Northern Districts and English county teams, no IPL
+    iplTeams: [],
+    iccTrophies: 1
+    // 2021 WTC — named in the official 15-man final squad — Wikipedia confirmed
+  },
+  {
+    name: "Chris Martin",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2000,
+    format: "All-format",
+    // Test debut 2000, ODI 2001-2008, T20I Sep 2007-Feb 2008 — Wikipedia confirmed.
+    // NOT in the 2000 ICC KnockOut Trophy winning squad (14-man list checked directly) — Wikipedia confirmed
+    // No evidence of any IPL history found despite his career (2000-2013) overlapping the IPL era —
+    // famous for being one of very few cricketers whose international wickets exceed his runs scored
+    iplTeams: [],
+    iccTrophies: 0
+    // Called up to the 2007 World Cup squad only as an injury replacement, not part of any
+    // trophy-winning squad — Wikipedia confirmed
+  },
+  {
+    name: "Danny Morrison",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1987,
+    format: "Test+ODI",
+    // Test and ODI debut both 1987, retired 1997 — before T20Is existed — Wikipedia confirmed.
+    // One of only 3 New Zealanders to take an ODI hat-trick (vs India, 25 Mar 1994) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1997, before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Matt Henry",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2014,
+    format: "All-format",
+    // ODI debut Jan 2014, T20I debut Dec 2014, Test debut 2015 — ESPNcricinfo + Wikipedia confirmed
+    // Signed by Chennai Super Kings 2014-2015 but never played a match for them (excluded per the
+    // signed-but-never-played rule) — genuine playing stints were Kings XI Punjab (2017),
+    // Lucknow Super Giants (2024), and a real return to Chennai Super Kings in 2026 (played
+    // vs Rajasthan Royals, 30 Mar 2026) — Wikipedia + match reports confirmed
+    iplTeams: ["Kings XI Punjab", "Lucknow Super Giants", "Chennai Super Kings"],
+    iccTrophies: 1
+    // 2021 WTC — named in the official 15-man final squad — Wikipedia confirmed
+  },
+  {
+    name: "Lance Cairns",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 1974,
+    format: "Test+ODI",
+    // Test and ODI debut both 1974, retired 1985 — before T20Is existed — Wikipedia confirmed.
+    // Father of Chris Cairns; famous for hitting 6 sixes in an over at the 1983 World Series Cup
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1985, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Ewen Chatfield",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 1975,
+    format: "Test+ODI",
+    // Test debut Feb 1975, ODI debut Jun 1979 — before T20Is existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1989, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Richard Collinge",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 1965,
+    format: "Test+ODI",
+    // Test debut Jan 1965, ODI debut Feb 1973 — before T20Is existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1978, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Bruce Taylor",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1965,
+    format: "Test+ODI",
+    // 30 Tests, 2 ODIs, 1965-1973 — before T20Is existed — Wikipedia confirmed.
+    // Only cricketer to score a century and take a 5-wicket haul on Test debut (105 and 5/86
+    // vs India, Calcutta, 1964-65) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1973, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "John Bracewell",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1980,
+    format: "Test+ODI",
+    // Test debut Nov 1980, ODI debut Jun 1983 — before T20Is existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1990, well before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Richard Motz",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1961,
+    format: "Test",
+    // Test debut Dec 1961, retired 1969 — career ended before ODI cricket began (first ODI was
+    // Jan 1971) — Wikipedia confirmed. First New Zealander to take 100 Test wickets
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1969, decades before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Dean Foxcroft",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2023,
+    format: "All-format",
+    // T20I debut 20 Aug 2023, ODI debut 26 Sep 2023, Test debut 27 May 2026 (cap 294, the most
+    // recent New Zealand Test cap as of this session) vs Ireland — Wikipedia + ESPN confirmed.
+    // South African-born; played PSL for Lahore Qalandars (2022) but no IPL history found
+    iplTeams: [],
+    iccTrophies: 0
+    // International debut (2023) came after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Michael Rae",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2025,
+    format: "Test",
+    // Test debut 10 Dec 2025 vs West Indies (cap 293), called up as injury cover straight from
+    // domestic Plunket Shield cricket — no ODI or T20I caps found — Wikipedia + NZ Herald confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted after New Zealand's most recent ICC trophy (2021 WTC)
+  },
 
   // ===== SRI LANKA (10 players) =====
 

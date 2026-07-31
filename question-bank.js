@@ -2846,6 +2846,70 @@ const questionBank = [
     era: "2010s",
     category: "t20"
   },
+  {
+    question: "Who took the first-ever hat-trick in men's Twenty20 International cricket?",
+    options: ["Brett Lee", "Lasith Malinga", "Shahid Afridi", "Umar Gul"],
+    correct: 0,
+    fact: "🎩 Brett Lee claimed the first-ever T20I hat-trick for Australia against Bangladesh at Cape Town in the inaugural 2007 World Twenty20, dismissing Shakib Al Hasan, Mashrafe Mortaza and Alok Kapali off consecutive balls.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Whose 6 for 7 against Bangladesh in 2019 are the best bowling figures in men's T20I history?",
+    options: ["Deepak Chahar", "Yuzvendra Chahal", "Jasprit Bumrah", "Bhuvneshwar Kumar"],
+    correct: 0,
+    fact: "🔥 Deepak Chahar took 6/7 at Nagpur on 10 November 2019, breaking Ajantha Mendis' previous record of 6/8 — and became the first Indian ever to take a T20I hat-trick in the same spell.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who holds the record for the highest individual score in men's T20I history?",
+    options: ["Aaron Finch", "Chris Gayle", "Rohit Sharma", "Glenn Maxwell"],
+    correct: 0,
+    fact: "💥 Aaron Finch smashed an unbeaten 172 off 76 balls for Australia against Zimbabwe in Harare in July 2018, adding a world-record 223-run opening stand with D'Arcy Short.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which batter hit a last-ball six to win India the 2018 Nidahas Trophy final against Bangladesh?",
+    options: ["Dinesh Karthik", "MS Dhoni", "Rishabh Pant", "Manish Pandey"],
+    correct: 0,
+    fact: "🎯 Chasing 167 in Colombo, Dinesh Karthik smashed an unbeaten 29 off just 8 balls, finishing with a six off the final delivery — and was named Player of the Match.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Which team's shock win over South Africa at the 2022 T20 World Cup knocked the Proteas out of the tournament?",
+    options: ["Netherlands", "Ireland", "Zimbabwe", "Scotland"],
+    correct: 0,
+    fact: "😲 The Netherlands beat South Africa by 13 runs in Adelaide in November 2022 — their first-ever win over the Proteas in any format — eliminating a South African side many had fancied for the title.",
+    era: "2020s",
+    category: "t20"
+  },
+  {
+    question: "Which two teams played the first-ever Super Over in T20 International history?",
+    options: ["New Zealand and West Indies", "India and Pakistan", "Australia and England", "Sri Lanka and India"],
+    correct: 0,
+    fact: "⚡ After the match finished tied on 26 December 2008 in Auckland, West Indies won cricket's first-ever Super Over, scoring 25/1 to New Zealand's 15/2.",
+    era: "2000s",
+    category: "t20"
+  },
+  {
+    question: "Which associate nation stunned England by 45 runs at the 2014 T20 World Cup in Chittagong?",
+    options: ["Netherlands", "Ireland", "Afghanistan", "Hong Kong"],
+    correct: 0,
+    fact: "🇳🇱 The Netherlands bowled England out for just 88 after posting 133/5, sealing a famous upset at the Super 10 stage on 31 March 2014.",
+    era: "2010s",
+    category: "t20"
+  },
+  {
+    question: "Who holds the record for the fastest fifty in men's T20I history, reaching it off just 9 balls?",
+    options: ["Dipendra Singh Airee", "Yuvraj Singh", "David Miller", "Glenn Maxwell"],
+    correct: 0,
+    fact: "🚀 Nepal's Dipendra Singh Airee blitzed a 9-ball fifty against Mongolia at the 2023 Asian Games, smashing eight sixes to break Yuvraj Singh's 16-year-old record of a 12-ball fifty from the 2007 T20 World Cup.",
+    era: "2020s",
+    category: "t20"
+  },
 
   // ===== GENERAL CRICKET (9) =====
   {
