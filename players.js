@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 275 players across 11 countries
+// 376 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -2795,7 +2795,7 @@ const wordlePlayers = [
     // No ICC trophies — Wikipedia confirmed
   },
 
-  // ===== NEW ZEALAND (10 players) =====
+  // ===== NEW ZEALAND (50 players) =====
 
   {
     name: "Kane Williamson",
@@ -3237,6 +3237,338 @@ const wordlePlayers = [
     iplTeams: [],
     iccTrophies: 0
     // Debuted after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Craig McMillan",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1997,
+    format: "All-format",
+    // ODI debut 20 May 1997, Test debut 7 Nov 1997, T20I debut 17 Feb 2005 (cricket's first-ever
+    // T20I) — Wikipedia + ESPNcricinfo confirmed. 28 Test + 37 ODI wickets as a genuine change bowler.
+    iplTeams: [],
+    // Retired 2007, before the IPL began (2008) — no IPL history
+    iccTrophies: 1
+    // 2000 ICC KnockOut Trophy (Champions Trophy) — named in the actual winning squad, scored
+    // 52 and 51* in the quarter-final and semi-final — Wikipedia squad list confirmed
+  },
+  {
+    name: "Scott Styris",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1999,
+    format: "All-format",
+    // ODI debut 5 Nov 1999, Test debut 28 Jun 2002, T20I debut 17 Feb 2005 (cricket's first-ever
+    // T20I) — Wikipedia + ESPNcricinfo confirmed. Scored a century and fifty on Test debut vs
+    // West Indies, same tour set the NZ ODI bowling record with 6/25
+    iplTeams: ["Deccan Chargers", "Chennai Super Kings"],
+    // Deccan Chargers 2008-2010, Chennai Super Kings 2011 (won IPL title, then retired from IPL) —
+    // Wikipedia + IPL match reports confirmed
+    iccTrophies: 1
+    // 2000 ICC KnockOut Trophy (Champions Trophy) — named in the actual winning squad — Wikipedia
+    // squad list confirmed
+  },
+  {
+    name: "Chris Harris",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1990,
+    format: "Test+ODI",
+    // ODI debut 29 Nov 1990, Test debut 27 Nov 1992, retired Dec 2004 — before the first-ever T20I
+    // (Feb 2005) — Wikipedia + ESPNcricinfo confirmed. First NZ player to play 250 ODIs
+    iplTeams: [],
+    // Retired 2004, before the IPL began (2008) — no IPL history
+    iccTrophies: 1
+    // 2000 ICC KnockOut Trophy (Champions Trophy) — named in the actual winning squad — Wikipedia
+    // squad list confirmed
+  },
+  {
+    name: "Adam Parore",
+    country: "New Zealand",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // Genuinely confirmed zero-ball bowling record — 0 wickets, 0 overs across his entire career —
+    // ESPNcricinfo confirmed
+    debutYear: 1990,
+    format: "Test+ODI",
+    // Test debut 5 Jul 1990, ODI debut 31 Oct 1992, retired 2002 — before the first-ever T20I
+    // (Feb 2005) — Wikipedia confirmed. New Zealand record 204 dismissals (197 catches, 7 stumpings)
+    iplTeams: [],
+    // Retired 2002, before the IPL began (2008) — no IPL history
+    iccTrophies: 1
+    // 2000 ICC KnockOut Trophy (Champions Trophy) — named in the actual winning squad — Wikipedia
+    // squad list confirmed
+  },
+  {
+    name: "Ken Rutherford",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Bowled at least 1 confirmed Test wicket — recorded per the "even one ball bowled" standard
+    debutYear: 1985,
+    format: "Test+ODI",
+    // ODI debut 27 Mar 1985, Test debut 29 Mar 1985 (same West Indies tour, age 19), dropped from
+    // the NZ team in 1995 — before the first-ever T20I (Feb 2005) — Wikipedia confirmed
+    iplTeams: [],
+    // Dropped from the NZ team 1995, well before the IPL began (2008) — no IPL history
+    iccTrophies: 0
+    // Dropped from the NZ team in 1995, before New Zealand's first ICC trophy (2000 CT)
+  },
+  {
+    name: "Kyle Mills",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2001,
+    format: "All-format",
+    // ODI debut 2001 vs Pakistan, Test debut 2004 vs England, part of the first-ever T20I (Feb 2005,
+    // 3/44) — ESPNcricinfo + Wikipedia confirmed. New Zealand's 2nd-highest ODI wicket-taker (240)
+    // behind Vettori
+    iplTeams: [],
+    // Signed by Kings XI Punjab (2008) and Mumbai Indians (2009, net bowler only) but never played
+    // an actual match for either franchise — excluded per the signed-but-never-played rule —
+    // Wikipedia + CricketCountry confirmed
+    iccTrophies: 0
+    // Debuted 2001, after the 2000 CT and well before the 2021 WTC — no ICC trophy
+  },
+  {
+    name: "Jacob Oram",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2001,
+    format: "All-format",
+    // ODI debut 4 Jan 2001, Test debut 12 Dec 2002, T20I debut 21 Oct 2005 — Wikipedia confirmed.
+    // One of only 6 New Zealanders to reach 1,000 ODI runs and 100 ODI wickets
+    iplTeams: ["Chennai Super Kings", "Rajasthan Royals", "Mumbai Indians"],
+    // Chennai Super Kings 2008-2010, Rajasthan Royals 2011 (genuine appearances, not just signed),
+    // Mumbai Indians 2013 (won the IPL title) — Wikipedia + Sportskeeda confirmed. His Chittagong
+    // Kings stint (2013) was BPL, a separate league, not IPL
+    iccTrophies: 0
+    // Debuted Jan 2001, after the Oct 2000 CT and well before the 2021 WTC — no ICC trophy
+  },
+  {
+    name: "Shane Bond",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2001,
+    format: "All-format",
+    // Test debut 22 Nov 2001, ODI debut 11 Jan 2002, T20I debut 21 Oct 2005 — Wikipedia confirmed.
+    // Regularly bowled above 145 km/h, reaching 156.4 km/h
+    iplTeams: ["Kolkata Knight Riders"],
+    // Barred from the IPL 2008-2009 after joining the rebel Indian Cricket League; restored
+    // eligibility Oct 2009, bought by Kolkata Knight Riders for the 2010 auction, played 8 genuine
+    // matches (9 wickets) before retiring May 2010 — Wikipedia confirmed
+    iccTrophies: 0
+    // Debuted Nov 2001, after the Oct 2000 CT and well before the 2021 WTC — not in the 2000 CT
+    // squad — no ICC trophy
+  },
+  {
+    name: "Rhys Mariu",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2025,
+    format: "ODI",
+    // ODI debut 2 Apr 2025 vs Pakistan (cap 223) — no Test or T20I caps found — ESPNcricinfo +
+    // Wikipedia confirmed. Maiden ODI fifty (58 off 61) in his 3rd match, Bay Oval
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2025, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Muhammad Abbas",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium fast",
+    debutYear: 2025,
+    format: "ODI",
+    // ODI debut 29 Mar 2025 vs Pakistan — no Test or T20I caps found — ESPNcricinfo + Wikipedia
+    // confirmed. Fastest fifty on ODI debut ever (26 balls), born Lahore, moved to Wellington 2022
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2025, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Ben Sears",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2021,
+    format: "All-format",
+    // T20I debut 3 Sep 2021 (earliest), Test debut 8 Mar 2024, ODI debut 8 Feb 2025 — Wikipedia
+    // confirmed
+    iplTeams: [],
+    // In the IPL 2026 auction pool (late addition) but went UNSOLD — an earlier search briefly
+    // misattributed Tim Seifert's ₹1.5cr sale price to Sears (both NZ players, similar names);
+    // resolved via a clean sold-players list confirming Sears was not among the sold — Sportskeeda
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2021, well after New Zealand's most recent ICC trophy (2021 WTC — his debut came
+    // after that year's WTC final in June)
+  },
+  {
+    name: "Zak Foulkes",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2024,
+    format: "All-format",
+    // T20I debut Apr 2024 (injury replacement for Adam Milne), ODI debut Nov 2024, Test debut
+    // Aug 2025 (9 wickets on debut incl. a 5-for, best-ever by a NZ Test debutant) — Wikipedia
+    // confirmed
+    iplTeams: ["Chennai Super Kings"],
+    // Signed by CSK for IPL 2026 (₹75 lakh) and confirmed to have genuinely played (debut vs Delhi
+    // Capitals) — Sportskeeda + match reports confirmed
+    iccTrophies: 0
+    // Debuted 2024, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Nathan Smith",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2024,
+    format: "All-format",
+    // ODI debut 13 Nov 2024 (earliest), Test debut 28 Nov 2024 (80 runs + 7 wickets across his
+    // first 2 Tests), T20I debut 27 Apr 2026 — Wikipedia + ESPNcricinfo confirmed
+    iplTeams: [],
+    // In the IPL 2026 auction pool but not among the confirmed sold players — Sportskeeda confirmed
+    iccTrophies: 0
+    // Debuted 2024, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Tim Robinson",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // T20I debut 18 Apr 2024 vs Pakistan (cap 101, earliest), ODI debut 13 Nov 2024 vs Sri Lanka
+    // (cap 217) — no Test caps found — ESPNcricinfo confirmed
+    iplTeams: [],
+    // In the IPL 2026 auction pool but not among the confirmed sold players — Sportskeeda confirmed
+    iccTrophies: 0
+    // Debuted 2024, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Mitchell Hay",
+    country: "New Zealand",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No bowling record found in any source (wicketkeeper) — recorded as best-available rather
+    // than a fully proven zero-ball record, same treatment as other flagged/unconfirmed entries
+    debutYear: 2024,
+    format: "All-format",
+    // T20I debut 9 Nov 2024 (earliest, 6 dismissals — most ever by a keeper in a T20I), ODI debut
+    // 13 Nov 2024, Test debut 10 Dec 2025 — Wikipedia confirmed
+    iplTeams: [],
+    // Not among the confirmed sold players in the IPL 2026 auction — no IPL history found
+    iccTrophies: 0
+    // Debuted 2024, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Adithya Ashok",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 20 Aug 2023 vs UAE (earliest, his only T20I so far), ODI debut 20 Dec 2023 vs
+    // Bangladesh — no Test caps found — ESPNcricinfo + Wikipedia confirmed. Born Vellore, Tamil
+    // Nadu, moved to Auckland aged 4
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2023, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Kristian Clarke",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2026,
+    format: "ODI+T20",
+    // ODI debut 11 Jan 2026 vs India (cap 224, earliest), T20I debut 21 Jan 2026 vs India — no
+    // Test caps found — Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2026, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Jayden Lennox",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2026,
+    format: "ODI+T20",
+    // ODI debut 14 Jan 2026 vs India (cap 225, earliest), T20I debut 2 May 2026 vs Bangladesh —
+    // no Test caps found — Wikipedia confirmed. ODI debut aged 31, career List A player; 22 ODI
+    // wickets at 17.86 including a 5-for, negligible batting record (avg 1.50)
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2026, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Matthew Fisher",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2025,
+    format: "All-format",
+    // Test debut 7 Aug 2025 vs Zimbabwe (cap 290, earliest), T20I debut 27 Apr 2026 vs Bangladesh,
+    // ODI debut 11 Jul 2026 vs West Indies (cap 226, the most recent NZ ODI cap as of this session) —
+    // took 3/40 in the 4th ODI of that series (Bridgetown), which NZ won by 1 wicket — Wikipedia +
+    // ESPNcricinfo + match reports confirmed. Not to be confused with the English cricketer of the
+    // same name
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2025, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+  {
+    name: "Nick Kelly",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // ODI debut 29 Mar 2025 vs Pakistan (earliest), T20I debut 15 Mar 2026 vs South Africa — no
+    // Test caps found — Wikipedia confirmed. Born Melbourne, Australia; debuted same match as
+    // Muhammad Abbas — sources differ slightly on the exact cap-number order between the two (a
+    // known cap-list precision limitation, does not affect either player's actual data)
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
+    // Debuted 2025, well after New Zealand's most recent ICC trophy (2021 WTC)
   },
 
   // ===== SRI LANKA (10 players) =====
