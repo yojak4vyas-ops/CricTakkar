@@ -1,5 +1,5 @@
 // ===== CRICTAKKAR CRICKET WORDLE — PLAYER DATABASE =====
-// 376 players across 11 countries
+// 397 players across 11 countries
 // Attributes verified across ESPNcricinfo, ICC official records, Wikipedia, Cricbuzz (unreachable — standing limitation)
 // Last verified: July 2026
 // Growing via the cap-number expansion project — see CLAUDE.md WORDLE PLAYER CAP-NUMBER EXPANSION PROJECT for progress tracking
@@ -3569,6 +3569,367 @@ const wordlePlayers = [
     // No IPL history found — dedicated search confirmed
     iccTrophies: 0
     // Debuted 2025, well after New Zealand's most recent ICC trophy (2021 WTC)
+  },
+
+  // ===== NEW ZEALAND — T20I ROUND 1 (POPULAR PLAYERS PASS, Day 51) =====
+  // Top-15 all-time NZ T20I run-scorers + top-15 all-time NZ T20I wicket-takers (ESPNcricinfo
+  // live tables), deduped against the existing 50-player NZ roster. 17 genuinely new names —
+  // short of the 20 threshold, so Round 2 (cap-number method) follows below.
+  // ICC trophy note: the only NZ ICC trophy in this era is the 2021 WTC Final (2000 KnockOut
+  // Trophy predates every player below). The official 15-man WTC final squad (Wikipedia
+  // confirmed) is: Williamson, Latham, Blundell, Boult, Conway, de Grandhomme, Henry, Jamieson,
+  // Nicholls, Ajaz Patel, Southee, Ross Taylor, Wagner, Watling, Young. Daryl Mitchell, Rachin
+  // Ravindra, Mitchell Santner and Jacob Duffy were all part of NZ's broader squad but explicitly
+  // NOT in the final 15 — so despite being current-era regulars, none of them get a trophy credit
+  // here; only Devon Conway among this batch was actually in the winning 15.
+
+  {
+    name: "Glenn Phillips",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 17 Feb 2017 vs South Africa (earliest), Test debut 3 Jan 2020 vs Australia, ODI
+    // debut 10 Jul 2022 vs Ireland — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals", "Sunrisers Hyderabad"],
+    // RR (2021), SRH (2022-2023) both genuine playing appearances — dedicated search confirmed.
+    // Gujarat Titans (2025 auction pick, 2026 retention) excluded: injured as a substitute
+    // fielder before ever playing a match in 2025, and did not play in 2026 either — "signed but
+    // never played" per the standing rule
+    iccTrophies: 0
+    // Not in the 2021 WTC final 15 (hadn't debuted in Tests yet at the time)
+  },
+  {
+    name: "Tim Seifert",
+    country: "New Zealand",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2019,
+    format: "ODI+T20",
+    // ODI debut 3 Jan 2019 vs Sri Lanka (earliest), T20I debut Mar 2019 — no Test caps —
+    // ESPNcricinfo confirmed. Does not bowl at international level
+    iplTeams: ["Kolkata Knight Riders", "Delhi Capitals", "Royal Challengers Bangalore"],
+    // KKR (2021, 1 match) -> Delhi Capitals (2022, 2 matches) -> RCB (2025, Impact Player
+    // sub for Jacob Bethell vs LSG) -> returned to KKR for 2026 (same franchise, already
+    // counted) — all confirmed genuine playing appearances via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Daryl Mitchell",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2019,
+    format: "All-format",
+    // Test and T20I debuts both late 2019 (Test vs England at Hamilton; T20I vs India), ODI
+    // debut 2021 — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals", "Chennai Super Kings"],
+    // RR (2022), CSK (2024-present) — both genuine playing appearances, dedicated search confirmed
+    iccTrophies: 0
+    // Part of NZ's broader 2021 WTC squad but explicitly NOT included in the final 15 —
+    // Wikipedia confirmed. No trophy credit
+  },
+  {
+    name: "Devon Conway",
+    country: "New Zealand",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2020,
+    format: "All-format",
+    // T20I debut 27 Nov 2020 vs West Indies (earliest), ODI debut 20 Mar 2021 vs Bangladesh,
+    // Test debut 2 Jun 2021 vs England (200 on debut) — ESPNcricinfo confirmed
+    iplTeams: ["Chennai Super Kings"],
+    // CSK only, every season 2022-2026 (missed 2024 through injury) — dedicated search confirmed
+    iccTrophies: 1
+    // 2021 WTC — confirmed a genuine member of the winning 15-man final squad (Wikipedia),
+    // scored 54 in the final's first innings
+  },
+  {
+    name: "Colin Munro",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 21 Dec 2012 vs South Africa (earliest), Test debut 11 Jan 2013, ODI debut 22 Jan
+    // 2013 — ESPNcricinfo confirmed. 1 Test, 57 ODIs, 65 T20Is — clearly a white-ball specialist
+    // despite the All-format tag
+    iplTeams: ["Mumbai Indians", "Kolkata Knight Riders", "Delhi Daredevils"],
+    // MI (2015, confirmed via Wikipedia's own "List of Mumbai Indians cricketers" page, which
+    // lists only genuine playing appearances) -> KKR (2016 debut) -> Delhi Daredevils (2019) —
+    // dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Mark Chapman",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2018,
+    format: "ODI+T20",
+    // NZ T20I and ODI debuts both Feb 2018 — no Test caps for NZ — ESPNcricinfo confirmed. Also
+    // played for Hong Kong (T20I debut 2014, ODI debut 2015) before switching to NZ; per the
+    // established precedent for dual-nation players in this database (Ross Taylor/Samoa, Corey
+    // Anderson/USA, etc.), only his New Zealand career is recorded here
+    iplTeams: [],
+    // Confirmed never played IPL — Wikipedia's full domestic-team list (Hong Kong Cricket Club,
+    // Auckland, St Lucia Stars, Manchester Originals) has no IPL entry
+    iccTrophies: 0
+  },
+  {
+    name: "Finn Allen",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2021,
+    format: "ODI+T20",
+    // T20I debut 28 Mar 2021 vs Bangladesh (earliest), ODI debut 10 Jul 2022 vs Ireland — no Test
+    // caps — ESPNcricinfo confirmed. Does not bowl at international level
+    iplTeams: ["Kolkata Knight Riders"],
+    // Royal Challengers Bangalore (2021-2022 signing, never played a single match) excluded per
+    // the standing "signed but never played" rule. KKR (2026 debut, 11 matches) is his only
+    // genuine IPL team — dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Mitchell Santner",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2015,
+    format: "All-format",
+    // T20I debut 23 Jun 2015 vs England (earliest), ODI debut same England tour, Test debut 27
+    // Nov 2015 vs Australia (Adelaide day-night Test) — ESPNcricinfo confirmed. Now captains NZ's
+    // ODI and T20I sides
+    iplTeams: ["Chennai Super Kings", "Mumbai Indians"],
+    // CSK (2019-2024, 2 titles), Mumbai Indians (2025-present) — dedicated search confirmed
+    iccTrophies: 0
+    // Part of NZ's broader 2021 WTC squad but explicitly NOT included in the final 15 —
+    // Wikipedia confirmed. No trophy credit
+  },
+  {
+    name: "Jimmy Neesham",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 21 Dec 2012 vs South Africa (earliest), Test and ODI debuts both 19 Jan 2013 vs
+    // South Africa — ESPNcricinfo confirmed
+    iplTeams: ["Delhi Daredevils", "Kolkata Knight Riders", "Kings XI Punjab", "Mumbai Indians"],
+    // DD (2014, 4 matches) -> KKR (2015) -> Kings XI Punjab (2020, 5 matches) -> Mumbai Indians
+    // (2021) — dedicated search confirmed, each a genuine playing stint
+    iccTrophies: 0
+  },
+  {
+    name: "Rachin Ravindra",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2021,
+    format: "All-format",
+    // Test debut 25 Nov 2021 vs India (Kanpur, earliest), ODI debut 2023 (breakout 2023 World Cup
+    // campaign), T20I debut 2024 — ESPNcricinfo confirmed
+    iplTeams: ["Chennai Super Kings"],
+    // CSK (2024-2025, genuine playing appearances, top-scorer in his debut season). Kolkata
+    // Knight Riders (signed for IPL 2026 after release by CSK, but confirmed he did not feature
+    // in a single match before leaving the camp early for Test duty) excluded — "signed but never
+    // played" per the standing rule
+    iccTrophies: 0
+    // Part of NZ's broader 2021 WTC squad (as a uncapped ODI/T20I player at the time) but
+    // explicitly NOT included in the final 15 — Wikipedia confirmed. No trophy credit
+  },
+  {
+    name: "Ish Sodhi",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2013,
+    format: "All-format",
+    // Test debut 9 Oct 2013 vs Bangladesh (earliest), T20I debut 5 Jul 2014, ODI debut 2 Aug 2015
+    // — ESPNcricinfo confirmed. Indian-origin legspinner, moved to Auckland as a child
+    iplTeams: ["Rajasthan Royals"],
+    // RR (2018-2019, 8 matches, 9 wickets) — later became a non-playing spin consultant for the
+    // same franchise, not counted as a second stint — dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Lockie Ferguson",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2016,
+    format: "All-format",
+    // ODI debut 2016 vs Australia at Sydney (earliest, dismissed Warner in his first over), Test
+    // debut late 2019 vs Australia (Perth) — ESPNcricinfo confirmed
+    iplTeams: ["Rising Pune Supergiant", "Kolkata Knight Riders", "Gujarat Titans", "Royal Challengers Bangalore", "Punjab Kings"],
+    // RPS (2017) -> KKR (2019-2021, 2023) -> Gujarat Titans (2022, title win) -> RCB (2024) ->
+    // Punjab Kings (2025-2026) — dedicated search confirmed, all genuine playing stints
+    iccTrophies: 0
+    // Debuted after the 2000 KnockOut Trophy and was not part of the 2021 WTC squad
+  },
+  {
+    name: "Adam Milne",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2010,
+    format: "ODI+T20",
+    // T20I debut 26 Dec 2010 vs Pakistan (earliest), ODI debut 10 Nov 2012 vs Sri Lanka — no Test
+    // caps confirmed — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Mumbai Indians", "Chennai Super Kings", "Rajasthan Royals"],
+    // RCB (2016-2017) -> Mumbai Indians (2021, after an unused 2018 signing) -> Chennai Super
+    // Kings (2022) -> Rajasthan Royals (2026) — dedicated search confirmed, all genuine playing
+    // stints; career badly interrupted by injuries throughout
+    iccTrophies: 0
+  },
+  {
+    name: "Jacob Duffy",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2020,
+    format: "All-format",
+    // T20I debut 18 Dec 2020 vs Pakistan (earliest), ODI debut 12 Jul 2022 vs Ireland, Test debut
+    // 7 Aug 2025 vs Zimbabwe — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
+    // RCB (2026, his first-ever IPL contract, 4 matches) — dedicated search confirmed
+    iccTrophies: 0
+    // Part of NZ's broader 2021 WTC squad but explicitly NOT included in the final 15 —
+    // Wikipedia confirmed. No trophy credit
+  },
+  {
+    name: "Nathan McCullum",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2007,
+    format: "ODI+T20",
+    // T20I debut 19 Sep 2007 vs South Africa (earliest), ODI debut 8 Sep 2009 vs Sri Lanka — never
+    // played a Test, confirmed directly by the player himself ("I always wanted to be a Test
+    // cricketer, but things didn't work out that way") — ESPNcricinfo confirmed. Older brother of
+    // Brendon McCullum
+    iplTeams: ["Pune Warriors"],
+    // Pune Warriors India (2011, 2 matches) — dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Michael Bracewell",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 10 Jun 2022 vs England (Nottingham), ODI and T20I debuts both later that same
+    // year — ESPNcricinfo confirmed. Keeper-batter-turned-offspinner; now leads NZ in ODIs
+    iplTeams: ["Royal Challengers Bangalore"],
+    // RCB (2023, joined as injury replacement for Will Jacks, 5 matches) — dedicated search
+    // confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Mitchell McClenaghan",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast",
+    debutYear: 2012,
+    format: "ODI+T20",
+    // T20I debut 21 Dec 2012 vs South Africa (earliest), ODI debut 19 Jan 2013 (4/20 on debut) —
+    // no Test caps found — ESPNcricinfo confirmed
+    iplTeams: ["Mumbai Indians"],
+    // MI only (2015-2020, 56 matches, 71 wickets, 4 titles). "Gujarat Giants" appearing in some
+    // sources refers to Legends League Cricket, a retired-players' exhibition tournament, not a
+    // real IPL/T10 team — excluded per the same non-IPL-league precedent already used elsewhere
+    // in this file (e.g. Chris Cairns' ICL captaincy)
+    iccTrophies: 0
+  },
+
+  // ===== NEW ZEALAND — T20I ROUND 2 (CAP-NUMBER EXPANSION, Day 51) =====
+  // Round 1 landed at 17, short of the 20 threshold. Worked backward from NZ's real latest T20I
+  // cap (111 = Jayden Lennox, already in the database from the ODI batch) through the Wikipedia
+  // cap-number list, skipping every cap holder already present, until 4 new names were found —
+  // taking the cell to 21/20 total, over target which is fine per the standing precedent.
+  {
+    name: "Josh Clarkson",
+    country: "New Zealand",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // ODI debut 17 Dec 2023 vs Bangladesh (Dunedin, earliest, took 2/24), T20I debut Feb 2024 — no
+    // Test caps — ESPNcricinfo confirmed. T20I cap 100
+    iplTeams: [],
+    // Never played IPL — has played CPL (St Kitts and Nevis Patriots, 2024) but not the IPL —
+    // dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Will O'Rourke",
+    country: "New Zealand",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2023,
+    format: "All-format",
+    // ODI debut 17 Dec 2023 vs Bangladesh (Dunedin, earliest, same match as Josh Clarkson), Test
+    // debut 13 Feb 2024 vs South Africa (9/93 match figures on debut), T20I debut 21 Apr 2024 vs
+    // Pakistan — ESPNcricinfo confirmed. T20I cap 103
+    iplTeams: ["Lucknow Super Giants"],
+    // Went unsold at the IPL 2025 mega auction, then signed mid-season by LSG as a replacement
+    // for the injured Mayank Yadav — genuine debut 19 May 2025 vs SRH — dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Bevon Jacobs",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2025,
+    format: "T20",
+    // T20I debut 16 Jul 2025 vs South Africa (Harare tri-series) — no ODI or Test caps found —
+    // ESPNcricinfo confirmed. Born in Pretoria, South Africa; moved to New Zealand aged 3. T20I
+    // cap 105. No confirmed international bowling record either way — flagged as unconfirmed
+    // rather than asserted, same treatment as other similar cases in this file
+    iplTeams: [],
+    // Signed by Mumbai Indians for IPL 2025 (₹30 lakh) but never took the field — "signed but
+    // never played" per the standing rule — dedicated search confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Katene Clarke",
+    country: "New Zealand",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 21 Mar 2026 vs South Africa — no ODI or Test caps found — ESPNcricinfo confirmed.
+    // T20I cap 108. Bowling style per Wisden's profile description; no international bowling
+    // figures on record yet to independently confirm against, flagged as unconfirmed rather than
+    // asserted, same treatment as other similar cases in this file
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed
+    iccTrophies: 0
   },
 
   // ===== SRI LANKA (10 players) =====
