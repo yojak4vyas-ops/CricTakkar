@@ -7361,6 +7361,346 @@ const wordlePlayers = [
     // ESPNcricinfo confirmed
     iccTrophies: 0
     // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Mohammad Rizwan",
+    country: "Pakistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2015,
+    format: "All-format",
+    // ODI debut 17 Apr 2015 vs Bangladesh (earliest), T20I debut 24 Apr 2015 vs Bangladesh, Test
+    // debut 25 Nov 2016 vs New Zealand — ESPNcricinfo confirmed. ESPNcricinfo's own bowling stats
+    // page shows no bowling record at all — genuine wicketkeeper-batter, never bowled internationally
+    iplTeams: [],
+    // Never played IPL — dedicated search confirmed, debuted 2015, well after the informal
+    // exclusion of Pakistani players took hold — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 0
+    // Not part of Pakistan's 2017 Champions Trophy squad (confirmed via the official squad list) —
+    // no other Pakistan ICC trophy during his career — ESPNcricinfo confirmed
+  },
+  {
+    name: "Fakhar Zaman",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 30 Mar 2017 vs West Indies (earliest), ODI debut 7 Jun 2017 vs South Africa, Test
+    // debut 16 Oct 2018 vs Australia — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2017, well after the informal exclusion of Pakistani players took
+    // hold — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — scored 114 in the final vs India, Pakistan's first-ever centurion in
+    // a World Cup/Champions Trophy final — official squad list + match scorecard confirmed
+  },
+  {
+    name: "Umar Akmal",
+    country: "Pakistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 1 Aug 2009 vs Sri Lanka (earliest), T20I debut 12 Aug 2009 vs Sri Lanka, Test debut
+    // 23 Nov 2009 vs New Zealand — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — CPL (Trinbago Knight Riders) and PSL only — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 0
+    // Debuted Aug 2009, after the 2009 T20 World Cup (won Jun 2009). Originally named in Pakistan's
+    // 2017 Champions Trophy squad but withdrawn over fitness concerns a week before the tournament
+    // began and replaced by Haris Sohail — never played a match, so no credit, same as the
+    // Gillespie/Brett Lee pre-tournament-replacement precedent — ESPNcricinfo confirmed
+  },
+  {
+    name: "Ahmed Shehzad",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 24 Apr 2009 vs Australia (earliest), T20I debut 7 May 2009 vs Australia, Test debut
+    // 31 Dec 2013 vs Sri Lanka — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2009, right at the start of the informal exclusion of Pakistani
+    // players — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 2
+    // 2009 T20 World Cup (winning squad, confirmed) and 2017 Champions Trophy (winning squad,
+    // confirmed via the official squad template) — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Saim Ayub",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2023,
+    format: "All-format",
+    // T20I debut 24 Mar 2023 vs Afghanistan (earliest), Test debut 3 Jan 2024 vs Australia, ODI
+    // debut 4 Nov 2024 vs Australia — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — PSL (Quetta Gladiators, Peshawar Zalmi), CPL only — debuted 2023, well
+    // after the informal exclusion took hold — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 0
+    // Debuted 2023, after Pakistan's last ICC trophy (2017); Pakistan did not win the 2025
+    // Champions Trophy — ESPNcricinfo confirmed
+  },
+  {
+    name: "Shadab Khan",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2017,
+    format: "All-format",
+    // T20I debut 26 Mar 2017 vs West Indies (earliest), ODI debut 7 Apr 2017 vs West Indies, Test
+    // debut 30 Apr 2017 vs West Indies — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — PSL (Islamabad United, captain), CPL, BBL, and multiple other T20 leagues
+    // only — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — confirmed member of the winning squad via the official squad
+    // template — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Iftikhar Ahmed",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2015,
+    format: "All-format",
+    // ODI debut 13 Nov 2015 vs England (earliest), T20I debut 4 Mar 2016 vs Sri Lanka, Test debut
+    // 11 Aug 2016 vs England — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — PSL only (Karachi Kings, Peshawar Zalmi, Islamabad United, Quetta
+    // Gladiators, Multan Sultans) — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 0
+    // Not part of Pakistan's 2017 Champions Trophy squad (confirmed via the official squad list) —
+    // ESPNcricinfo confirmed
+  },
+  {
+    name: "Kamran Akmal",
+    country: "Pakistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2002,
+    format: "All-format",
+    // Test debut 9 Nov 2002 vs Zimbabwe (earliest), ODI debut 23 Nov 2002 vs Zimbabwe, T20I debut
+    // 28 Aug 2006 vs England — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals"],
+    // Rajasthan Royals, 2008 (inaugural IPL season) — played 5 matches as wicketkeeper/top-order
+    // batsman, including the final vs Chennai Super Kings — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 1
+    // 2009 T20 World Cup — confirmed member of the winning squad — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Salman Agha",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 16 Jul 2022 vs Sri Lanka (earliest), ODI debut 16 Aug 2022 vs Netherlands, T20I
+    // debut Nov 2024 vs Australia — ESPNcricinfo confirmed. Full name Salman Ali Agha, current
+    // Pakistan T20I/ODI captain
+    iplTeams: [],
+    // Never played IPL — debuted 2022, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2022, after Pakistan's last ICC trophy (2017) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Mohammad Nawaz",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2016,
+    format: "All-format",
+    // T20I debut 29 Feb 2016 vs UAE, Asia Cup (earliest), ODI debut 18 Aug 2016 vs Ireland, Test
+    // debut 13 Oct 2016 vs West Indies — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2016, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Not part of Pakistan's 2017 Champions Trophy squad (confirmed via the official squad list) —
+    // ESPNcricinfo confirmed
+  },
+  {
+    name: "Haris Rauf",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2020,
+    format: "All-format",
+    // T20I debut 24 Jan 2020 vs Bangladesh (earliest), ODI debut 30 Oct 2020 vs Zimbabwe, Test
+    // debut 1 Dec 2022 vs England — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2020, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2020, after Pakistan's last ICC trophy (2017) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Imad Wasim",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2015,
+    format: "ODI+T20",
+    // T20I debut 24 May 2015 vs Zimbabwe (earliest), ODI debut 19 Jul 2015 vs Sri Lanka, no Test
+    // cap — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2015, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — confirmed member of the winning squad via the official squad
+    // template — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Hasan Ali",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2016,
+    format: "All-format",
+    // ODI debut 18 Aug 2016 vs Ireland (earliest), T20I debut 7 Sep 2016 vs England, Test debut 10
+    // May 2017 vs West Indies — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2016, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — confirmed member of the winning squad via the official squad
+    // template — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Mohammad Amir",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast",
+    debutYear: 2009,
+    format: "All-format",
+    // T20I debut 7 Jun 2009 vs England (earliest), Test debut 4 Jul 2009 vs Sri Lanka, ODI debut 30
+    // Jul 2009 vs Sri Lanka — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — banned as a Pakistani player since the informal exclusion took hold in
+    // 2009; recently granted British citizenship and eligible from IPL 2027 but has not yet played
+    // — ESPNcricinfo confirmed
+    iccTrophies: 2
+    // 2009 T20 World Cup and 2017 Champions Trophy — confirmed member of both winning squads (took
+    // 3 wickets in the 2017 CT final vs India) — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Faheem Ashraf",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 12 Jun 2017 vs Sri Lanka, during the Champions Trophy (earliest), T20I debut 12 Sep
+    // 2017 vs World XI, Test debut 11 May 2018 vs Ireland — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Never played IPL — debuted 2017, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — confirmed member of the winning squad via the official squad
+    // template (bench player, did not play the final, but was part of the winning squad, same
+    // credited-unused-squad-member precedent as Tom Curran's 2019 World Cup credit) — ESPNcricinfo/
+    // Wikipedia confirmed
+  },
+  {
+    name: "Sohail Tanvir",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm medium fast",
+    debutYear: 2007,
+    format: "All-format",
+    // T20I debut 14 Sep 2007 vs India (earliest), ODI debut 18 Oct 2007 vs South Africa, Test debut
+    // 22 Nov 2007 vs India — ESPNcricinfo confirmed
+    iplTeams: ["Rajasthan Royals"],
+    // Rajasthan Royals, 2008 (inaugural IPL season) — leading wicket-taker (22 wickets, Purple Cap),
+    // including a then-record 6/14 vs Chennai Super Kings — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 1
+    // 2009 T20 World Cup — confirmed member of the winning squad — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Abrar Ahmed",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 9 Dec 2022 vs England (earliest, took a 10-wicket match haul on debut), T20I debut
+    // 18 Apr 2024 vs New Zealand, ODI debut 26 Nov 2024 vs Zimbabwe — ESPNcricinfo confirmed.
+    // Bowls legbreak and googly variations, mapped to the standard "Right arm leg break" string
+    iplTeams: [],
+    // Never played IPL — debuted 2022, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2022, after Pakistan's last ICC trophy (2017) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Mohammad Wasim",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2021,
+    format: "All-format",
+    // T20I debut 28 Jul 2021 vs West Indies (earliest), ODI debut 29 Mar 2022 vs Australia, Test
+    // debut 17 Dec 2022 vs England — ESPNcricinfo confirmed. Popularly known as "Mohammad Wasim Jr"
+    // to distinguish from an earlier 1990s Pakistan batsman of the same name (not in this database)
+    iplTeams: [],
+    // Never played IPL — debuted 2021, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2021, after Pakistan's last ICC trophy (2017) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Usman Tariq",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2025,
+    format: "T20",
+    // T20I debut Nov 2025 vs South Africa, no Test or ODI cap — ESPNcricinfo/Wikipedia confirmed.
+    // Cap 124 — a "mystery spinner" with an unorthodox off-break release
+    iplTeams: [],
+    // Never played IPL — debuted 2025, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2025, after Pakistan's last ICC trophy (2017) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Khawaja Nafay",
+    country: "Pakistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 11 Jan 2026 vs Sri Lanka, no Test or ODI cap — ESPNcricinfo/Wikipedia confirmed.
+    // Cap 125 — Pakistan's newest T20I cap as of this database update
+    iplTeams: [],
+    // Never played IPL — debuted 2026, well after the informal exclusion took hold — ESPNcricinfo
+    // confirmed
+    iccTrophies: 0
+    // Debuted 2026, after Pakistan's last ICC trophy (2017) — ESPNcricinfo confirmed
   }
 
 ];
