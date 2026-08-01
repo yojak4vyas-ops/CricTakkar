@@ -5015,6 +5015,286 @@ const wordlePlayers = [
     // 2025 WTC (Player of the Match in final) — Wikipedia confirmed
   },
 
+  // Day 55 — South Africa Test Wordle cap expansion (Round 1: top-15 all-time run-scorers +
+  // top-15 all-time wicket-takers, 19 new players; Round 2: cap-number method, 1 new player).
+  // Every attribute checked against ESPNcricinfo + Wikipedia + ICC official records
+  // (Cricbuzz attempted, unreachable as usual — standing tool limitation, flagged here once for the batch).
+  {
+    name: "Gary Kirsten",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // Occasional off-break bowler — Wikipedia confirmed
+    debutYear: 1993,
+    format: "Test+ODI",
+    // Test debut 26 Dec 1993, ODI debut 14 Dec 1993 — retired 2004, before T20Is existed (Feb 2005)
+    iplTeams: [],
+    // Coached RCB (2018-19) and Gujarat Titans (2022-24) but never played IPL as a player
+    iccTrophies: 1
+    // 1998 ICC KnockOut Trophy — confirmed in South Africa's official winning 14-man squad (Wikipedia)
+  },
+  {
+    name: "Herschelle Gibbs",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1996,
+    format: "All-format",
+    // Test debut Nov 1996, ODI debut Oct 1996, T20I debut Oct 2005 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Deccan Chargers", "Mumbai Indians"],
+    // Deccan Chargers 2008-2010 (unbeaten 53 in the 2009 final), Mumbai Indians 2012 — Wikipedia confirmed
+    iccTrophies: 0
+    // NOT in South Africa's official 1998 ICC KnockOut Trophy winning squad (Wikipedia's squad list);
+    // every other ICC event during his career (1999/2003/2007 CWC, 2007/2009/2010 WT20) was lost by SA
+  },
+  {
+    name: "Dean Elgar",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2012,
+    format: "Test+ODI",
+    // Test debut Nov 2012, ODI debut Aug 2012 (8 caps, last 2018) — no T20I — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired from Tests 3 Jan 2024, before South Africa's 2025 WTC win — Wikipedia confirmed
+  },
+  {
+    name: "Daryll Cullinan",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1993,
+    format: "Test+ODI",
+    // Test debut 2 Jan 1993, ODI debut 9 Feb 1993 — retired 2001, before T20Is existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1998 ICC KnockOut Trophy — confirmed in South Africa's official winning 14-man squad (Wikipedia)
+  },
+  {
+    name: "Temba Bavuma",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2014,
+    format: "All-format",
+    // Test debut 2014, ODI debut 2016, T20I debut 2019 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Went unsold at multiple SA20 (domestic) auctions — no IPL history found on any source
+    iccTrophies: 1
+    // 2025 WTC winner as captain — Wikipedia confirmed ("Winners, 1st title")
+  },
+  {
+    name: "Hansie Cronje",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1992,
+    format: "Test+ODI",
+    // Test debut 18 Apr 1992, ODI debut 26 Feb 1992 — career ended 2000, died 2002, before T20Is/IPL existed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1998 ICC KnockOut Trophy — captained the winning squad — Wikipedia confirmed
+  },
+  {
+    name: "Ashwell Prince",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2002,
+    format: "All-format",
+    // Test debut Feb 2002, ODI debut Oct 2002, T20I: 1 match Oct 2005 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // 2007 CWC squad member but Australia won the tournament — Wikipedia confirmed
+  },
+  {
+    name: "Bruce Mitchell",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1929,
+    format: "Test",
+    // Test debut 15 Jun 1929 — career ended 1949, decades before ODI cricket began (1971) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Makhaya Ntini",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1998,
+    format: "All-format",
+    // Test debut 19 Mar 1998, ODI debut 16 Jan 1998, T20I debut 21 Oct 2005 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings"],
+    // 2008 inaugural season — hat-trick vs KKR, Man of the Match twice — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1998 ICC KnockOut Trophy — confirmed in South Africa's official winning 14-man squad (Wikipedia)
+  },
+  {
+    name: "Allan Donald",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1992,
+    format: "Test+ODI",
+    // Test debut 18 Apr 1992, ODI debut 10 Nov 1991 — his ESPNcricinfo match-history page has no T20I
+    // section at all (only a domestic "T20 MATCHES" entry, Dolphins v Eagles 2004) — confirmed no T20I caps
+    iplTeams: [],
+    iccTrophies: 0
+    // Rested/absent from the 1998 ICC KnockOut Trophy squad (not in the official winning 14) — every other
+    // World Cup during his career (1992/1996/1999/2003) was lost by South Africa
+  },
+  {
+    name: "Morne Morkel",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2006,
+    format: "All-format",
+    // Test debut Boxing Day 2006, ODI debut 2007, T20I debut 2007 — Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Delhi Daredevils", "Kolkata Knight Riders"],
+    // Rajasthan Royals (2009-2010), Delhi Daredevils (2011-2013), Kolkata Knight Riders (2014-2016) — Wikipedia confirmed
+    iccTrophies: 0
+    // 2007 WT20 (India won), 2011 CWC (India won), 2015 CWC (Australia won) — South Africa lost all three
+  },
+  {
+    name: "Vernon Philander",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2007,
+    format: "All-format",
+    // ODI debut Jun 2007, T20I debut Sep 2007, Test debut Nov 2011 — Wikipedia confirmed
+    iplTeams: [],
+    // Went unsold at the 2012 IPL auction; his Wikipedia article makes zero mention of the IPL anywhere,
+    // and an ESPNcricinfo story is titled "Philander happy not to be in IPL" — confirmed no IPL history
+    iccTrophies: 0
+    // 2007 WT20 (India won), 2015 CWC (Australia won) — South Africa lost both
+  },
+  {
+    name: "Keshav Maharaj",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 3 Nov 2016, ODI debut 27 May 2017, T20I debut 10 Sep 2021 — Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals"],
+    // 2 genuine matches for Rajasthan Royals in 2024 — ESPNcricinfo confirmed. Signed by Mumbai Indians as
+    // a 2026 injury replacement for Mitchell Santner but did not appear in MI's official 2026 stats tables —
+    // "signed but never played," same pattern as several other entries in this file
+    iccTrophies: 1
+    // 2025 WTC winner — confirmed in South Africa's official final squad (ESPNcricinfo)
+  },
+  {
+    name: "Hugh Tayfield",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1949,
+    format: "Test",
+    // Test debut 24 Dec 1949 — career ended 1960, well before ODI cricket began (1971) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Paul Adams",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
+    debutYear: 1995,
+    format: "Test+ODI",
+    // Test 1995-2004, ODI 1996-2003 — no T20I, retired before the format existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // 1996 CWC (Sri Lanka won); NOT in South Africa's official 1998 ICC KnockOut Trophy winning squad
+  },
+  {
+    name: "Trevor Goddard",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm medium",
+    debutYear: 1955,
+    format: "Test",
+    // Test debut 9 Jun 1955 — career ended 1970, before ODI cricket began (1971) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Andre Nel",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2001,
+    format: "All-format",
+    // Test/ODI debut 2001, T20I debut 2005 — Wikipedia confirmed
+    iplTeams: ["Mumbai Indians"],
+    // 2008 — signed as a mid-season replacement for Dwayne Bravo; confirmed a genuine playing appearance
+    // via Wikipedia's own "List of Mumbai Indians cricketers" page
+    iccTrophies: 0
+    // 2007 CWC (Australia won), 2007 WT20 (India won) — South Africa lost both
+  },
+  {
+    name: "Peter Pollock",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1961,
+    format: "Test",
+    // Test debut 8 Dec 1961 — career ended 1970, before ODI cricket began (1971) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Neil Adcock",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1953,
+    format: "Test",
+    // Test debut 1953 — career ended 1962, before ODI cricket began (1971) — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Prenelan Subrayen",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2025,
+    format: "All-format",
+    // Round 2 (cap-number method): South Africa's latest Test cap (374) as of this session — ESPNcricinfo
+    // confirmed. Test debut 6 Jul 2025 vs Zimbabwe, ODI debut 19 Aug 2025, T20I debut 22 Mar 2026
+    iplTeams: [],
+    // Entered the IPL 2023 auction (base price INR 20 lakh) but went unsold; plays only SA20
+    // (Durban's Super Giants) domestically — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // International debut (Jul 2025) came after South Africa's 2025 WTC win (Jun 2025) — not part of that squad
+  },
+
   // ===== BANGLADESH (10 players) =====
 
   {
