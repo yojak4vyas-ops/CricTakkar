@@ -6677,6 +6677,347 @@ const wordlePlayers = [
     iccTrophies: 0
     // International career began Dec 2022, weeks after that year's T20 World Cup final (13 Nov
     // 2022) — England did not win the 2025 Champions Trophy or the 2026 T20 World Cup either
+  },
+
+  // ===== PAKISTAN TEST — Round 1 (top-15 all-time run-scorers + top-15 wicket-takers, zero
+  // overlap, 20/20 reached in Round 1 alone — Round 2 not needed, same as Australia/England Test) =====
+
+  {
+    name: "Mohammad Yousuf",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo + Wikipedia agree: right-hand bat, right-arm medium bowler (0 international
+    // wickets from 6 Test + 2 ODI balls bowled, but did bowl — recorded per the standing rule)
+    debutYear: 1998,
+    format: "All-format",
+    // Test debut 26 Feb 1998 vs South Africa, ODI debut 28 Mar 1998 vs Zimbabwe, T20I debut 28 Aug
+    // 2006 vs England — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — his international career (1998-2010) ran entirely through the informal
+    // exclusion-of-Pakistani-players era; Wikipedia's domestic team list shows no IPL entry
+    iccTrophies: 0
+    // NOT in Pakistan's winning 2009 T20 World Cup squad — confirmed via the official squad list
+    // (Younis Khan c, Abdul Razzaq, Ahmed Shehzad, Fawad Alam, Iftikhar Anjum, Misbah-ul-Haq, Kamran
+    // Akmal, Mohammad Amir, Saeed Ajmal, Salman Butt, Shahid Afridi, Shahzaib Hasan, Shoaib Malik,
+    // Umar Gul, Yasir Arafat/Sohail Tanvir) — Wikipedia confirmed
+  },
+  {
+    name: "Azhar Ali",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2010,
+    format: "Test+ODI",
+    // Test debut 13 Jul 2010 vs Australia, ODI debut 30 May 2011 vs Ireland, never played a T20I —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — international career ran entirely through the exclusion era; domestic teams
+    // are all Pakistan/county sides (Khan Research Labs, Lahore Eagles/Lions/Qalandars, Somerset,
+    // Central Punjab, Worcestershire) — Wikipedia confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — confirmed a genuine member of the official winning squad (Sarfaraz
+    // Ahmed c) via Wikipedia's squad list
+  },
+  {
+    name: "Saleem Malik",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo + Wikipedia list both "right arm off break" and "slow right-arm medium" — off
+    // break is the primary style (89 ODI wickets, 5 Test) — confirmed via the 1992 World Cup squad
+    // table which lists his bowling as "Right arm off-break / Slow right-arm medium"
+    debutYear: 1982,
+    format: "Test+ODI",
+    // Test debut 5 Mar 1982 vs Sri Lanka, ODI debut 12 Jan 1982 vs West Indies, retired 1999 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1999, 9 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1992 World Cup — confirmed a genuine member of the official winning squad (Imran Khan c) via
+    // Wikipedia's squad list
+  },
+  {
+    name: "Misbah-ul-Haq",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2001,
+    format: "All-format",
+    // Test debut 8 Mar 2001 vs New Zealand, ODI debut 27 Apr 2002 vs New Zealand, T20I debut 2 Sep
+    // 2007 vs Bangladesh — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
+    // Signed in the 2008 auction and played a genuine match for RCB (scored 47 vs Delhi Daredevils,
+    // 19 May 2008) before the informal exclusion of Pakistani players took hold — ESPNcricinfo +
+    // Wikipedia confirmed
+    iccTrophies: 1
+    // 2009 T20 World Cup — confirmed a genuine member of the official winning squad via Wikipedia's
+    // squad list
+  },
+  {
+    name: "Zaheer Abbas",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1969,
+    format: "Test+ODI",
+    // Test debut 24 Oct 1969 vs New Zealand, ODI debut 31 Aug 1974 vs England, retired 1985 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1985, 23 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1985, before Pakistan's first ICC trophy (the 1992 World Cup) — Wikipedia confirmed
+  },
+  {
+    name: "Asad Shafiq",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2010,
+    format: "All-format",
+    // Test debut 20 Nov 2010 vs South Africa, ODI debut 21 Jun 2010 vs Bangladesh, T20I debut 28 Dec
+    // 2010 vs New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — international career ran entirely through the exclusion era; domestic teams
+    // are all Pakistan sides plus PSL's Quetta Gladiators/Multan Sultans — Wikipedia confirmed
+    iccTrophies: 0
+    // NOT in the 2017 Champions Trophy winning squad — confirmed via Wikipedia's squad list
+  },
+  {
+    name: "Mudassar Nazar",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1976,
+    format: "Test+ODI",
+    // Test debut 24 Dec 1976 vs Australia, ODI debut 23 Dec 1977 vs England, retired 1989 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed. Genuine all-rounder: 66 Test wickets, 111
+    // ODI wickets alongside 4,114 Test runs
+    iplTeams: [],
+    // Retired 1989, 19 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1989, before Pakistan's first ICC trophy (the 1992 World Cup) — Wikipedia confirmed
+  },
+  {
+    name: "Saeed Anwar",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 1989,
+    format: "Test+ODI",
+    // ODI debut 1 Jan 1989 vs West Indies (earliest), Test debut 23 Nov 1990 vs West Indies, retired
+    // 2003 before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2003, 5 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // NOT in the 1992 World Cup winning squad — confirmed via Wikipedia's squad list; retired 2003,
+    // before Pakistan's next ICC trophy (the 2009 T20 World Cup)
+  },
+  {
+    name: "Majid Khan",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // A genuine career-long evolution, not a source disagreement: started as a genuine pace bowler,
+    // but a back injury and a bouncer-legality dispute with Bobby Simpson led him to switch to
+    // off-spin for the rest of his career — off break recorded as the settled, later-career style,
+    // same handling as John Reid's entry (NZ Test batch, Day 49) — ESPNcricinfo + Wikipedia confirmed
+    debutYear: 1964,
+    format: "Test+ODI",
+    // Test debut 24 Oct 1964 vs Australia, ODI debut 11 Feb 1973 vs New Zealand (ODIs didn't exist
+    // until 1971), retired 1983 before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1983, 25 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1983, before Pakistan's first ICC trophy (the 1992 World Cup) — Wikipedia confirmed
+  },
+  {
+    name: "Hanif Mohammad",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // 1 genuine Test wicket from 206 balls bowled — recorded per the standing rule rather than NA
+    debutYear: 1952,
+    format: "Test",
+    // Test debut 16 Oct 1952 vs India, retired 1969 before ODIs existed (1971) — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1969, 39 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1969, before the first-ever World Cup (1975) — Wikipedia confirmed
+  },
+  {
+    name: "Danish Kaneria",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // A right-arm leg spinner who also bowled a googly — covered under this single string per the
+    // standing naming standard — ESPNcricinfo + Wikipedia confirmed
+    debutYear: 2000,
+    format: "Test+ODI",
+    // Test debut 29 Nov 2000 vs England, ODI debut 31 Oct 2001 vs Zimbabwe, never played a T20I —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — domestic teams are all Pakistan sides plus Essex county cricket, no IPL
+    // entry — Wikipedia confirmed
+    iccTrophies: 0
+    // NOT in the 2009 T20 World Cup winning squad — confirmed via Wikipedia's squad list
+  },
+  {
+    name: "Yasir Shah",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2011,
+    format: "All-format",
+    // ODI debut 14 Sep 2011 vs Zimbabwe (earliest), T20I debut 16 Sep 2011 vs Zimbabwe, Test debut 22
+    // Oct 2014 vs Australia — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — his Trinbago Knight Riders (CPL) and Brisbane Heat (BBL) stints are
+    // sometimes confused with IPL by low-quality sources; confirmed not the case — Wikipedia
+    // confirmed
+    iccTrophies: 0
+    // NOT in the 2017 Champions Trophy winning squad — confirmed via Wikipedia's squad list
+  },
+  {
+    name: "Abdul Qadir",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1977,
+    format: "Test+ODI",
+    // Test debut 14 Dec 1977 vs England, ODI debut 11 Jun 1983 vs West Indies, retired 1993 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1993, 15 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // NOT in the 1992 World Cup winning squad — confirmed via Wikipedia's squad list
+  },
+  {
+    name: "Saqlain Mushtaq",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Pioneer of the "doosra" — an off-break action bowler — ESPNcricinfo + Wikipedia confirmed
+    debutYear: 1995,
+    format: "Test+ODI",
+    // Test debut 8 Sep 1995 vs Sri Lanka, ODI debut 29 Sep 1995 vs Sri Lanka, retired 2004 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2004, 4 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 2004, before Pakistan's next ICC trophy (the 2009 T20 World Cup) — Wikipedia confirmed
+  },
+  {
+    name: "Mushtaq Ahmed",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1989,
+    format: "Test+ODI",
+    // ODI debut 23 Mar 1989 vs Sri Lanka (earliest), Test debut 19 Jan 1990 vs Australia, retired
+    // 2003 before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2003, 5 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1992 World Cup — confirmed a genuine member of the official winning squad (Imran Khan c) via
+    // Wikipedia's squad list
+  },
+  {
+    name: "Saeed Ajmal",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2008,
+    format: "All-format",
+    // ODI debut 2 Jul 2008 vs India (earliest), T20I debut 7 May 2009 vs Australia, Test debut 4 Jul
+    // 2009 vs Sri Lanka — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Never played IPL — domestic teams include Worcestershire, Dhaka Gladiators (BPL), Adelaide
+    // Strikers (BBL), Barisal Burners (BPL), Islamabad United/Chittagong Vikings (PSL/BPL), no IPL
+    // entry — Wikipedia confirmed
+    iccTrophies: 1
+    // 2009 T20 World Cup — confirmed a genuine member of the official winning squad via Wikipedia's
+    // squad list
+  },
+  {
+    name: "Sarfraz Nawaz",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1969,
+    format: "Test+ODI",
+    // Test debut 6 Mar 1969 vs England, ODI debut 11 Feb 1973 vs New Zealand, retired 1984 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1984, 24 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1984, before Pakistan's first ICC trophy (the 1992 World Cup) — Wikipedia confirmed
+  },
+  {
+    name: "Iqbal Qasim",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 1976,
+    format: "Test+ODI",
+    // Test debut 24 Dec 1976 vs Australia, ODI debut 30 Dec 1977 vs England, retired 1988 before
+    // T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1988, 20 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1988, before Pakistan's first ICC trophy (the 1992 World Cup) — Wikipedia confirmed
+  },
+  {
+    name: "Umar Gul",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2003,
+    format: "All-format",
+    // ODI debut 3 Apr 2003 vs Zimbabwe (earliest), Test debut 20 Aug 2003 vs Bangladesh, T20I debut 4
+    // Sep 2007 vs Kenya — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
+    // Signed in the 2008 auction and played a genuine match-winning spell for KKR (4/23 in the
+    // season-closing win over Kings XI Punjab, 25 May 2008) before the informal exclusion of
+    // Pakistani players took hold — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 1
+    // 2009 T20 World Cup — confirmed a genuine member of the official winning squad via Wikipedia's
+    // squad list
+  },
+  {
+    name: "Fazal Mahmood",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1952,
+    format: "Test",
+    // Test debut 16 Oct 1952 vs India, retired 1962 before ODIs existed (1971) — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1962, 46 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 0
+    // Retired 1962, before the first-ever World Cup (1975) — Wikipedia confirmed
   }
 
 ];
