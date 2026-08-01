@@ -7018,6 +7018,349 @@ const wordlePlayers = [
     // Retired 1962, 46 years before IPL began — ESPNcricinfo confirmed
     iccTrophies: 0
     // Retired 1962, before the first-ever World Cup (1975) — Wikipedia confirmed
+  },
+
+  // ===== Pakistan ODI Wordle expansion, Day 53 =====
+  // Round 1 (top-15 all-time ODI run-scorers + top-15 all-time ODI wicket-takers): 7 new names
+  // (mykhel.com ranked lists, cross-checked ESPNcricinfo + Wikipedia). Round 2 (cap-number method,
+  // caps 249-261, the most recent ODI debutants — ESPNcricinfo's live "ODI Caps" list) fills the
+  // remaining 13 to reach 20. Cricbuzz attempted and unreachable every time, per the standing
+  // tool limitation.
+  {
+    name: "Shoaib Malik",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1999,
+    format: "All-format",
+    // ODI debut 14 Oct 1999 vs West Indies (earliest), Test debut 29 Aug 2001 vs Bangladesh, T20I
+    // debut 28 Aug 2006 vs England — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils"],
+    // 2008 inaugural season only (7 matches, 52 runs, 2 wickets) — did not return in later editions
+    // due to security concerns after the 2008 Mumbai attacks — Wikipedia confirmed
+    iccTrophies: 2
+    // 2009 T20 World Cup + 2017 Champions Trophy — confirmed a genuine squad member of both via
+    // Wikipedia's official squad lists
+  },
+  {
+    name: "Mohammad Hafeez",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2003,
+    format: "All-format",
+    // ODI debut 3 Apr 2003 vs Zimbabwe (earliest), Test debut 20 Aug 2003 vs Bangladesh, T20I
+    // debut 1 Sep 2006 vs England — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
+    // 2008 inaugural season only (8 matches, 64 runs, 1 wicket) — did not return in later editions —
+    // Wikipedia confirmed
+    iccTrophies: 1
+    // 2017 Champions Trophy — confirmed a genuine squad member via Wikipedia's official squad list
+    // (not in the 2009 T20 World Cup squad)
+  },
+  {
+    name: "Ijaz Ahmed",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium",
+    debutYear: 1986,
+    format: "Test+ODI",
+    // ODI debut 14 Nov 1986 vs West Indies (earliest), Test debut 3 Feb 1987 vs India, retired 2001
+    // before T20Is existed — ESPNcricinfo + Wikipedia confirmed. NOTE: a broad synthesis search
+    // initially returned "right-arm offbreak" — traced to a different, unrelated ESPNcricinfo
+    // profile (a domestic all-rounder of the same name, intl career 1995-97 only); the correct
+    // profile (intl career 1986-2001, Pakistan No.3) confirms left-arm medium directly
+    iplTeams: [],
+    // Retired 2001, 7 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1992 World Cup — confirmed a genuine squad member via Wikipedia's official squad list
+  },
+  {
+    name: "Ramiz Raja",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1984,
+    format: "Test+ODI",
+    // Test debut 2 Mar 1984 vs England (earliest), ODI debut 6 Feb 1985 vs New Zealand, retired
+    // 1997 before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 1997, 11 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1992 World Cup — confirmed a genuine squad member via Wikipedia's official squad list; took
+    // the catch that won Pakistan the final
+  },
+  {
+    name: "Abdul Razzaq",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1996,
+    format: "All-format",
+    // ODI debut 1 Nov 1996 vs Zimbabwe (earliest), Test debut 5 Nov 1999 vs Australia, T20I debut
+    // 28 Aug 2006 vs England — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Played the Indian Cricket League (ICL, 2007-08, Hyderabad Heroes) instead — a separate,
+    // unofficial rival league, not the IPL — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 1
+    // 2009 T20 World Cup — called up as an injury replacement for Yasir Arafat mid-tournament
+    // (10 Jun 2009) after an ICL amnesty, and was part of the winning campaign from that point —
+    // Wikipedia confirmed (same mid-tournament-replacement precedent as Nathan Bracken's 2003 WC
+    // credit elsewhere in this file)
+  },
+  {
+    name: "Aamir Sohail",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 1990,
+    format: "Test+ODI",
+    // ODI debut 21 Dec 1990 vs Sri Lanka (earliest), Test debut 4 Jun 1992 vs England, retired 2000
+    // before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2000, 8 years before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1992 World Cup — confirmed a genuine squad member via Wikipedia's official squad list
+  },
+  {
+    name: "Aaqib Javed",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1988,
+    format: "Test+ODI",
+    // ODI debut 10 Dec 1988 vs West Indies (earliest), Test debut 10 Feb 1989 vs New Zealand,
+    // career ended in the late-1990s match-fixing crisis, before T20Is existed — ESPNcricinfo
+    // confirmed
+    iplTeams: [],
+    // Career ended in the late 1990s, before IPL began — ESPNcricinfo confirmed
+    iccTrophies: 1
+    // 1992 World Cup — confirmed a genuine squad member via Wikipedia's official squad list; opened
+    // the bowling in place of an injured Waqar Younis during the campaign
+  },
+  {
+    name: "Arafat Minhas",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 3 Oct 2023 vs Hong Kong (earliest), ODI debut 30 May 2026 vs Australia (5/32, the
+    // first Pakistan bowler ever to take a 5-for on ODI debut), no Test cap — ESPNcricinfo
+    // confirmed. Cap 261, the latest Pakistan ODI cap as of this writing
+    iplTeams: [],
+    // Debuted 2023, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Saad Masood",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut vs Bangladesh at Mirpur, 2025/26 series, no Test or T20I cap yet — ESPNcricinfo
+    // confirmed. Cap 260
+    iplTeams: [],
+    // Debuted 2026, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Ghazi Ghori",
+    country: "Pakistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut vs Bangladesh at Mirpur, 2025/26 series, no Test or T20I cap yet — ESPNcricinfo
+    // confirmed. Cap 259. No bowling style listed at all on his ESPNcricinfo profile (skips
+    // straight from batting style to fielding position) — a wicketkeeper with no bowling record
+    iplTeams: [],
+    // Debuted 2026, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Shamyl Hussain",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut vs Bangladesh at Mirpur, 11 Mar 2026, no Test or T20I cap yet — ESPNcricinfo
+    // confirmed. Cap 258. No bowling style listed on his ESPNcricinfo profile
+    iplTeams: [],
+    // Debuted 2026, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Sahibzada Farhan",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2018,
+    format: "ODI+T20",
+    // T20I debut 2018 vs Australia (Harare tri-series, earliest — dropped after 3 games, didn't
+    // return to the side until 2024), ODI debut vs Bangladesh at Mirpur, 2025/26 series (cap 257),
+    // no Test cap — ESPNcricinfo confirmed. No bowling style listed on his ESPNcricinfo profile
+    iplTeams: [],
+    // Debuted 2018, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 — ESPNcricinfo + Wikipedia confirmed
+  },
+  {
+    name: "Maaz Sadaqat",
+    country: "Pakistan",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut vs Bangladesh, 2025/26 series (Player of the Match on his 2nd ODI: 75 off 46 balls
+    // plus 3/23), no Test or T20I cap yet — ESPNcricinfo confirmed. Cap 256
+    iplTeams: [],
+    // Debuted 2026, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Abdul Samad",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // T20I debut 16 Mar 2025 vs New Zealand (earliest), ODI debut vs Bangladesh at Mirpur, 11 Mar
+    // 2026 (cap 255), no Test cap — ESPNcricinfo confirmed. No bowling style listed at all on his
+    // ESPNcricinfo profile (skips straight from batting style to playing role) — a genuinely
+    // confirmed non-bowler, not just an unconfirmed zero-ball record
+    iplTeams: [],
+    // Debuted 2025, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Hasan Nawaz",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // ODI debut vs West Indies at Tarouba, 2025 (cap 254), T20I debut in a 2025 New Zealand tour
+    // (fastest T20I century by a Pakistani, on his 3rd international innings), no Test cap —
+    // ESPNcricinfo confirmed. ESPNcricinfo's own infobox lists a dual bowling style ("Right arm
+    // Medium, Right arm Offbreak") — recorded the first-listed style per the app's single-value
+    // schema; zero balls bowled internationally so far, but he has bowled domestically (FC and
+    // T20 wickets on record), so per the standing NA rule this is a real style, not NA
+    iplTeams: [],
+    // Debuted 2025, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Usman Khan",
+    country: "Pakistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // T20I debut 18 Apr 2024 vs New Zealand (earliest), ODI debut 29 Mar 2025 vs New Zealand at
+    // Napier (cap 253), no Test cap — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Debuted 2024, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Mohammad Ali",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut Dec 2022 vs England at Rawalpindi (earliest), T20I and ODI caps both since
+    // followed (ODI cap 252, vs New Zealand at Napier, 2024/25) — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Debuted 2022, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Akif Javed",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium fast",
+    debutYear: 2025,
+    format: "ODI",
+    // ODI debut 2025 vs New Zealand at Napier (cap 251), no Test or T20I cap yet — ESPNcricinfo
+    // confirmed
+    iplTeams: [],
+    // Debuted 2025, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Sufyan Moqim",
+    country: "Pakistan",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 2023 (earliest), ODI debut vs South Africa at Johannesburg, 2024/25 (cap 250), no
+    // Test cap — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Debuted 2023, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
+  },
+  {
+    name: "Tayyab Tahir",
+    country: "Pakistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 24 Mar 2023 vs Afghanistan at Sharjah (earliest), ODI debut 26 Nov 2024 vs
+    // Zimbabwe at Bulawayo (cap 249), no Test cap — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Debuted 2023, after the informal exclusion of Pakistani players took hold — never played —
+    // ESPNcricinfo confirmed
+    iccTrophies: 0
+    // No Pakistan ICC trophy since 2017 (before his debut) — ESPNcricinfo confirmed
   }
 
 ];
