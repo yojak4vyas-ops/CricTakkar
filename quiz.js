@@ -219,7 +219,7 @@ function saveScoreToFirebase(finalScore, total) {
           // ===== END STREAK LOGIC =====
 
           // ===== BADGES — Perfectionist (Day 12) =====
-          // Unlocked the moment a player scores a perfect 10/10 on the Mixed Category Quiz.
+          // Unlocked the moment a player scores a perfect 10/10 on the Master Quiz.
           var badges = data.badges || {};
           if (finalScore === total) {
             badges.perfectionist = true;
@@ -387,7 +387,7 @@ function generateAndShowCard() {
 
 // ===== STEP 2A: SHARE ON WHATSAPP =====
 function shareCardToWhatsApp() {
-  var text = '🏏 I scored ' + score + '/10 on CricTakkar Mixed Category Quiz!\n' +
+  var text = '🏏 I scored ' + score + '/10 on CricTakkar Master Quiz!\n' +
     '🔥 Test your cricket knowledge at cric-takkar.vercel.app\n' +
     '#CricTakkar #Cricket #IndianCricket';
   var whatsappUrl = 'https://wa.me/?text=' + encodeURIComponent(text);

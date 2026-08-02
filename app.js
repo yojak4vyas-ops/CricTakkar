@@ -19,19 +19,16 @@ document.getElementById('popupOverlay').addEventListener('click', function(e) {
 });
 
 // ===== LIVE STATS STRIP =====
-// Pulls real counts from question-bank.js and poems.js instead of a hardcoded
-// number, so the home page never goes stale as the question bank grows.
+// Pulls the real category count from question-bank.js and poems.js instead of a
+// hardcoded number, so the home page never goes stale as the question bank grows.
 function renderLiveStats() {
-  var totalEl = document.getElementById('statTotalQuestions');
   var catEl = document.getElementById('statTotalCategories');
-  if (!totalEl || !catEl) return;
+  if (!catEl) return;
 
-  var total = 0;
   var categoryCount = 0;
 
   if (typeof questionBank !== 'undefined') {
-    total += questionBank.length;
-    // Mixed Category Quiz (draws from the whole bank) + the distinct category-quiz tags
+    // Master Quiz (draws from the whole bank) + the distinct category-quiz tags
     // represented inside it (ipl/test/odi/t20 — "general" has no tab of its own)
     var tags = {};
     questionBank.forEach(function(q) {
@@ -41,11 +38,9 @@ function renderLiveStats() {
   }
 
   if (typeof poetryQuizQuestions !== 'undefined') {
-    total += poetryQuizQuestions.length;
     categoryCount += 1; // Poetry Quiz
   }
 
-  totalEl.textContent = total > 0 ? total : '—';
   catEl.textContent = categoryCount > 0 ? categoryCount : '—';
 }
 
