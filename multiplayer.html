@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="quiz.css" />
   <link rel="stylesheet" href="multiplayer.css" />
+  <link rel="stylesheet" href="tournament.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -46,12 +47,42 @@
     </div>
   </div>
 
+  <!-- ===== SCREEN 0c: PICKER — "what do you want to play?" ===== -->
+  <div class="quiz-wrapper" id="pickerScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">⚔️</div>
+      <h1 class="quiz-start-title">Battle Friends</h1>
+      <p class="quiz-start-sub">What do you want to battle over?</p>
+
+      <div class="tn-size-heading">Quiz Format</div>
+      <div class="mp-picker-grid">
+        <button class="tn-size-btn" onclick="pickBattleType(null,'classic','🎯 Mixed Quiz')">🎯<br/><span>Mixed</span></button>
+        <button class="tn-size-btn" onclick="pickBattleType('ipl','classic','🏏 IPL Quiz')">🏏<br/><span>IPL</span></button>
+        <button class="tn-size-btn" onclick="pickBattleType('test','classic','🎩 Test Quiz')">🎩<br/><span>Test</span></button>
+        <button class="tn-size-btn" onclick="pickBattleType('odi','classic','🌍 ODI Quiz')">🌍<br/><span>ODI</span></button>
+        <button class="tn-size-btn" onclick="pickBattleType('t20','classic','⚡ T20 Quiz')">⚡<br/><span>T20</span></button>
+      </div>
+
+      <div class="tn-size-heading">Other Games</div>
+      <button class="btn-secondary" onclick="window.location.href='wordle-multiplayer.html'">🟩 Wordle Battle</button>
+      <button class="btn-secondary mp-gap-top" onclick="window.location.href='ranking-multiplayer.html'">📊 Ranking Battle</button>
+      <button class="btn-secondary mp-gap-top" onclick="pickBattleType(null,'speed','⚡ Speed Mode')">⚡ Speed Mode</button>
+      <button class="btn-secondary mp-gap-top" onclick="pickBattleType(null,'elimination','💀 Last One Standing')">💀 Last One Standing</button>
+
+      <div class="mp-divider">or</div>
+      <button class="btn-secondary" onclick="showJoinScreen()">Have a Code? Join Directly</button>
+    </div>
+  </div>
+
   <!-- ===== SCREEN 1: ENTRY ===== -->
   <div class="quiz-wrapper" id="entryScreen" style="display:none">
     <div class="quiz-card">
       <div class="quiz-start-icon">⚔️</div>
       <h1 class="quiz-start-title">Battle Friends</h1>
-      <p class="quiz-start-sub">Create a room, share the code, and see who really knows their cricket.</p>
+      <p class="quiz-start-sub">
+        Playing: <strong id="battlePickedLabel">🎯 Mixed Quiz</strong>
+        · <a href="#" onclick="showPickerScreen(); return false;" style="color:#f4a900;">Change</a>
+      </p>
       <div class="quiz-rules">
         <div class="rule-item">👥 2 to 10 players in a room</div>
         <div class="rule-item">🎯 10 questions, everyone gets the same ones</div>
@@ -66,14 +97,7 @@
       <button class="btn-secondary" onclick="createRoom('duel')" id="duelBtn">⚔️ 1v1 Duel a Friend</button>
       <p class="mp-option-note">A private 2-player match — starts the moment your friend joins with the code.</p>
       <button class="btn-secondary mp-gap-top" onclick="findPublicMatch()" id="findMatchBtn">🎲 Find a Random Match</button>
-      <p class="mp-option-note">Get paired with another CricTakkar player looking for a game right now.</p>
-
-      <div class="mp-divider">or try a twist</div>
-
-      <button class="btn-secondary" onclick="createRoom('private','speed')" id="speedModeBtn">⚡ Speed Mode</button>
-      <p class="mp-option-note">Same 10 questions, only 5 seconds each — answer fast for bonus points.</p>
-      <button class="btn-secondary mp-gap-top" onclick="createRoom('private','elimination')" id="eliminationModeBtn">💀 Last One Standing</button>
-      <p class="mp-option-note">Get a question wrong and you're at risk — one player is knocked out after every question. Needs 3+ players.</p>
+      <p class="mp-option-note">Get paired with another CricTakkar player looking for the same thing right now.</p>
     </div>
   </div>
 

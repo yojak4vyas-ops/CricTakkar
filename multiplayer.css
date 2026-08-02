@@ -14,6 +14,14 @@
   margin-top: 12px;
 }
 
+/* ===== BATTLE PICKER (Day 56) ===== */
+.mp-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
 .mp-divider {
   text-align: center;
   color: rgba(255,255,255,0.35);

@@ -58,6 +58,16 @@ var presenceTimer = null;   // heartbeat interval, running only while status ===
 var isDrivingHost = false;  // am I (this browser) currently the one running the phase clock?
 var hostDrivingKey = '';    // qIndex:phase we last scheduled for — stops re-scheduling on every snapshot
 
+// ===== BATTLE PICKER (Day 56) =====
+// Set by the new "what do you want to play?" screen before entryScreen —
+// createRoom()/findPublicMatch() read these instead of every caller having
+// to thread them through. null category = the whole mixed bank (unchanged
+// default behaviour); 'general' is treated the same, since question-bank.js
+// already uses that tag for format-agnostic trivia with no category-quiz
+// tab of its own.
+var chosenCategory = null;  // null | 'ipl' | 'test' | 'odi' | 't20'
+var chosenMode = 'classic'; // 'classic' | 'speed' | 'elimination'
+
 // Both modes' clocks read this instead of the flat SECONDS_PER_QUESTION.
 function secondsForMode() {
   return (activeMatchMode === 'speed') ? SPEED_SECONDS_PER_QUESTION : SECONDS_PER_QUESTION;
@@ -162,7 +172,7 @@ auth.onAuthStateChanged(function(user) {
 function enterAfterLogin() {
   var deepLinkMatchId = new URLSearchParams(window.location.search).get('matchId');
   if (!deepLinkMatchId) {
-    showScreen('entryScreen');
+    showScreen('pickerScreen');
     return;
   }
 
@@ -198,10 +208,25 @@ function enterAfterLogin() {
 // SCREENS
 // =====================================================================
 var ALL_SCREENS = [
-  'loadingScreen', 'loginGateScreen', 'entryScreen', 'joinScreen',
+  'loadingScreen', 'loginGateScreen', 'pickerScreen', 'entryScreen', 'joinScreen',
   'lobbyScreen', 'questionScreen', 'standingsScreen', 'finalScreen',
   'abortScreen', 'eliminatedScreen'
 ];
+
+// ===== BATTLE PICKER — "what do you want to play?" =====
+// Wordle/Ranking are entirely different games with their own dedicated
+// engines (see wordle-multiplayer.js / ranking-multiplayer.js) — picking
+// either just leaves this page. Everything else stays a quiz battle here,
+// with chosenCategory/chosenMode read by createRoom()/findPublicMatch().
+function pickBattleType(category, mode, label) {
+  chosenCategory = category;
+  chosenMode = mode;
+  var labelEl = document.getElementById('battlePickedLabel');
+  if (labelEl) labelEl.textContent = label;
+  showScreen('entryScreen');
+}
+
+function showPickerScreen() { showScreen('pickerScreen'); }
 
 function showScreen(id) {
   ALL_SCREENS.forEach(function(s) {
@@ -234,9 +259,21 @@ function generateRoomCode() {
 // Storing indexes rather than whole question objects keeps the match doc
 // small, and question-bank.js is a static file so every client resolves
 // the same index to the same question.
-function pickQuestionIndexes() {
+// category: null/'general'/omitted = whole mixed bank (unchanged default).
+// Any other value filters to just that category's questions first — falls
+// back to the whole bank if that category somehow doesn't have enough
+// questions to fill a match, rather than erroring.
+function pickQuestionIndexes(category) {
   var all = [];
-  for (var i = 0; i < questionBank.length; i++) all.push(i);
+  if (category && category !== 'general') {
+    for (var i = 0; i < questionBank.length; i++) {
+      if (questionBank[i].category === category) all.push(i);
+    }
+    if (all.length < QUESTIONS_PER_MATCH) all = [];
+  }
+  if (all.length === 0) {
+    for (var i2 = 0; i2 < questionBank.length; i2++) all.push(i2);
+  }
 
   // Fisher-Yates — an unbiased shuffle, unlike sort(() => Math.random() - 0.5)
   for (var j = all.length - 1; j > 0; j--) {
@@ -290,7 +327,7 @@ function explainFirebaseError(err) {
 function createRoom(roomType, mode, attempt) {
   if (!me) return;
   roomType = roomType || 'private';
-  mode = mode || 'classic';
+  mode = mode || chosenMode || 'classic';
   attempt = attempt || 1;
 
   // 'public' rooms are usually created as a fallback from inside
@@ -331,9 +368,10 @@ function createRoom(roomType, mode, attempt) {
         hostUid: me.uid,
         mode: mode,
         roomType: roomType,
+        category: chosenCategory || null,
         status: 'lobby',
         phase: 'waiting',
-        questionIds: pickQuestionIndexes(),
+        questionIds: pickQuestionIndexes(chosenCategory),
         currentQuestion: -1,
         players: players,
         leaderboard: [],
@@ -478,6 +516,13 @@ function findPublicMatch() {
       snap.forEach(function(doc) {
         var data = doc.data();
         if (data.hostUid === me.uid) return;
+
+        // Match on the same content, not just any open public lobby —
+        // client-side filter (not a query .where()) so this stays a plain
+        // 2-filter query needing no composite index, same reasoning as
+        // the existing isPublic/status filters above.
+        if ((data.mode || 'classic') !== chosenMode) return;
+        if ((data.category || null) !== (chosenCategory || null)) return;
 
         var players = data.players || {};
         if (players[me.uid]) return;
