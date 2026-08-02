@@ -33,7 +33,7 @@
       <h1 class="hero-title">Aao CricTakkar<br/>Karte Hain! 🏏</h1>
       <p class="hero-subtitle">Cricket. Quiz. Battle. — Test your cricket knowledge, beat your friends, and climb the leaderboard.</p>
       <div class="hero-buttons">
-        <button class="btn-primary" onclick="window.location.href='quiz.html'">Play Master Quiz 🎯</button>
+        <button class="btn-primary" onclick="document.getElementById('allGames').scrollIntoView({behavior:'smooth'})">Explore All Games 👇</button>
         <button class="btn-secondary" onclick="window.location.href='tournament.html'">Enter Tournament 🏆</button>
         <button class="btn-secondary" onclick="window.location.href='multiplayer.html'">Challenge a Friend ⚔️</button>
       </div>
@@ -53,7 +53,7 @@
     </div>
     <div class="stat-item">
       <span class="stat-number">2</span>
-      <span class="stat-label">🏆 Tournaments Nightly</span>
+      <span class="stat-label">🏆 Daily Night Tournaments</span>
     </div>
   </section>
 
@@ -64,7 +64,7 @@
   </section>
 
   <!-- FEATURE CARDS -->
-  <section class="features">
+  <section class="features" id="allGames">
     <h2 class="section-title">What Can You Do on CricTakkar?</h2>
     <div class="cards-grid">
 
@@ -99,7 +99,7 @@
       <div class="card">
         <div class="card-icon">🏆</div>
         <h3 class="card-title">Tournaments</h3>
-        <p class="card-desc">Run a 4, 8 or 16-player knockout bracket, or a full League + Playoffs with 20 players.</p>
+        <p class="card-desc">Knockout Cup and Round Robin Cup.</p>
         <button class="card-btn" onclick="window.location.href='tournament.html'">Enter a Tournament</button>
       </div>
 
