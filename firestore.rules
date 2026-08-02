@@ -207,6 +207,82 @@ service cloud.firestore {
     }
 
     // ===================================================================
+    // WORDLE MATCHES — Day 56: multiplayer Cricket Wordle
+    // ===================================================================
+    // Same lobby/host/presence shape as /matches above, in its own
+    // collection since a Wordle round (one shared mystery player, up to 6
+    // private guesses each over a shared clock) doesn't fit the quiz
+    // engine's per-question phase model. See wordle-multiplayer.js.
+    match /wordleMatches/{matchId} {
+
+      function isWmHost() {
+        return signedIn() && resource.data.hostUid == request.auth.uid;
+      }
+
+      function isWmPlayer() {
+        return signedIn() && request.auth.uid in resource.data.players;
+      }
+
+      function onlyChangedOwnWmPlayerEntry() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['players'])
+               && request.resource.data.players
+                 .diff(resource.data.players)
+                 .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      // HOST MIGRATION — same mechanism as /matches and /tournaments above.
+      function onlyClaimedWmHost() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['hostUid'])
+               && request.resource.data.hostUid == request.auth.uid;
+      }
+
+      function touchedOnlyOwnWmKeyIn(fieldName) {
+        return !(fieldName in request.resource.data.diff(resource.data).affectedKeys())
+               || request.resource.data[fieldName]
+                    .diff(resource.data.get(fieldName, {}))
+                    .affectedKeys().hasOnly([request.auth.uid]);
+      }
+      function onlyChangedOwnWmPresenceOrLeft() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['presence', 'leftPlayers'])
+               && touchedOnlyOwnWmKeyIn('presence')
+               && touchedOnlyOwnWmKeyIn('leftPlayers');
+      }
+
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+                    && request.resource.data.hostUid == request.auth.uid
+                    && request.resource.data.status == 'lobby'
+                    && request.resource.data.roomCode == matchId;
+
+      // The host starts the match and writes the final leaderboard.
+      // Everyone else may only join/leave the lobby, check in, mark
+      // themselves left, or claim an abandoned host role.
+      allow update: if isWmHost()
+                    || (signedIn() && onlyChangedOwnWmPlayerEntry())
+                    || (isWmPlayer() && onlyClaimedWmHost())
+                    || (isWmPlayer() && onlyChangedOwnWmPresenceOrLeft());
+
+      allow delete: if isWmHost();
+
+      // =================================================================
+      // GUESSES — one doc per player, holding their own guess list so far.
+      // Readable only by the guesser themselves and the host (who needs
+      // to read everyone's to score the round) — this is what stops a
+      // player seeing how far along anyone else is before the reveal.
+      // =================================================================
+      match /guesses/{uid} {
+        allow read: if signedIn()
+                    && (request.auth.uid == uid
+                        || get(/databases/$(database)/documents/wordleMatches/$(matchId)).data.hostUid == request.auth.uid);
+        allow write: if signedIn() && request.auth.uid == uid;
+      }
+    }
+
+    // ===================================================================
     // TOURNAMENTS — Phase 3 knockout brackets
     // ===================================================================
     // Mirrors the matches rules above almost exactly: the tournament host
