@@ -120,7 +120,7 @@ async function maybeLockAndStart(type, dateStr, nowTimeStr) {
   if (uids.length < cfg.min) {
     await ref.update({ status: 'cancelled' });
     console.log(type + ' (' + eventId + '): cancelled — only ' + uids.length + ' signed up, needed ' + cfg.min + '.');
-    const label = (type === 'knockout') ? 'Knockout' : 'League + Playoffs';
+    const label = (type === 'knockout') ? 'Knockout Tournament' : 'Round Robin Tournament';
     await notifySignedUpUids(
       uids,
       "😕 Tonight's " + label + " is cancelled",

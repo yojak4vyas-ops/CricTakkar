@@ -54,41 +54,59 @@
       <h1 class="quiz-start-title">Tournaments</h1>
       <p class="quiz-start-sub">Run a knockout bracket with your friends — win your match, advance, and see who's the last one left.</p>
 
-      <div class="tn-size-heading">Tonight's Scheduled Tournaments</div>
+      <!-- PART 1: DAILY TOURNAMENT -->
+      <div class="tn-section">
+        <div class="tn-section-heading">🌙 Daily Tournament</div>
+        <p class="tn-section-sub">8 PM &amp; 10 PM IST — sign up anytime today</p>
 
-      <div class="tn-scheduled-card">
-        <div class="tn-scheduled-card-title">🏆 Knockout — 8:00 PM IST</div>
-        <div class="tn-scheduled-card-status" id="schedKnockoutStatus">Loading…</div>
-        <button class="btn-primary tn-scheduled-join-btn" id="schedKnockoutBtn" onclick="scheduledJoinToggle('knockout')">Join</button>
+        <div class="tn-scheduled-card">
+          <div class="tn-scheduled-card-title">🏆 Knockout Tournament — 8:00 PM</div>
+          <div class="tn-scheduled-card-status" id="schedKnockoutStatus">Loading…</div>
+          <button class="btn-primary tn-scheduled-join-btn" id="schedKnockoutBtn" onclick="scheduledJoinToggle('knockout')">Join</button>
+        </div>
+
+        <div class="tn-scheduled-card">
+          <div class="tn-scheduled-card-title">🏏 Round Robin Tournament — 10:00 PM</div>
+          <div class="tn-scheduled-card-status" id="schedLeagueStatus">Loading…</div>
+          <button class="btn-primary tn-scheduled-join-btn" id="schedLeagueBtn" onclick="scheduledJoinToggle('league')">Join</button>
+        </div>
+
+        <p class="mp-option-note">Byes fill any gap so everyone who signs up gets in, even if the count isn't a clean bracket size.</p>
       </div>
 
-      <div class="tn-scheduled-card">
-        <div class="tn-scheduled-card-title">🏏 League + Playoffs — 10:00 PM IST</div>
-        <div class="tn-scheduled-card-status" id="schedLeagueStatus">Loading…</div>
-        <button class="btn-primary tn-scheduled-join-btn" id="schedLeagueBtn" onclick="scheduledJoinToggle('league')">Join</button>
+      <!-- PART 2: AUTO-MATCH -->
+      <div class="tn-section">
+        <div class="tn-section-heading">⚡ Auto-Match</div>
+        <p class="tn-section-sub">Get matched with other players who want to play right now</p>
+
+        <div class="tn-size-heading">Knockout Tournament</div>
+        <div class="tn-size-row">
+          <button class="tn-size-btn" onclick="autoMatchKnockout(4)" id="amSizeBtn4">4<br/><span>players</span></button>
+          <button class="tn-size-btn" onclick="autoMatchKnockout(8)" id="amSizeBtn8">8<br/><span>players</span></button>
+          <button class="tn-size-btn" onclick="autoMatchKnockout(16)" id="amSizeBtn16">16<br/><span>players</span></button>
+        </div>
+
+        <div class="tn-size-heading">Round Robin Tournament</div>
+        <button class="tn-league-btn" onclick="autoMatchLeague()" id="amLeagueBtn">Round Robin Tournament<br/><span>20 players — 2 groups of 10 → knockout</span></button>
       </div>
 
-      <p class="mp-option-note">Sign up anytime today — no need to gather everyone first. Byes fill any gap so everyone who signs up gets in, even if the count isn't a clean bracket size.</p>
+      <!-- PART 3: INVITE FRIENDS -->
+      <div class="tn-section">
+        <div class="tn-section-heading">👥 Invite Friends</div>
+        <p class="tn-section-sub">Create a private tournament and share the code</p>
 
-      <div class="mp-divider">or make your own</div>
+        <div class="tn-size-heading">Knockout Tournament</div>
+        <div class="tn-size-row">
+          <button class="tn-size-btn" onclick="createTournament(4)" id="sizeBtn4">4<br/><span>players</span></button>
+          <button class="tn-size-btn" onclick="createTournament(8)" id="sizeBtn8">8<br/><span>players</span></button>
+          <button class="tn-size-btn" onclick="createTournament(16)" id="sizeBtn16">16<br/><span>players</span></button>
+        </div>
 
-      <div class="tn-size-heading">Create a knockout bracket</div>
-      <div class="tn-size-row">
-        <button class="tn-size-btn" onclick="createTournament(4)" id="sizeBtn4">4<br/><span>players</span></button>
-        <button class="tn-size-btn" onclick="createTournament(8)" id="sizeBtn8">8<br/><span>players</span></button>
-        <button class="tn-size-btn" onclick="createTournament(16)" id="sizeBtn16">16<br/><span>players</span></button>
+        <div class="tn-size-heading">Round Robin Tournament</div>
+        <button class="tn-league-btn" onclick="createLeagueTournament()" id="sizeBtnLeague">Round Robin Tournament<br/><span>20 players — 2 groups of 10 → knockout</span></button>
+
+        <button class="btn-secondary mp-gap-top" onclick="showJoinScreen()">Join with a Code</button>
       </div>
-      <p class="mp-option-note">Everyone plays a normal 10-question quiz duel each round. Lose once and you're out — win and you advance.</p>
-
-      <div class="mp-divider">or</div>
-
-      <div class="tn-size-heading">Run a full league</div>
-      <button class="tn-league-btn" onclick="createLeagueTournament()" id="sizeBtnLeague">League + Playoffs<br/><span>20 players — 2 groups of 10 → knockout</span></button>
-      <p class="mp-option-note">Everyone in your group plays everyone else once. Top 4 from each group go on to an 8-player knockout for the title.</p>
-
-      <div class="mp-divider">or</div>
-
-      <button class="btn-secondary" onclick="showJoinScreen()">Join with a Code</button>
     </div>
   </div>
 
@@ -130,7 +148,7 @@
   <div class="quiz-wrapper tn-bracket-wrapper" id="groupStageScreen" style="display:none">
     <div class="quiz-card tn-bracket-card">
       <div class="quiz-start-icon">🏏</div>
-      <h1 class="quiz-start-title">League Stage</h1>
+      <h1 class="quiz-start-title">Round Robin Stage</h1>
       <p class="quiz-start-sub">Code: <span id="groupCodeDisplay">------</span></p>
 
       <div class="tn-group-tabs">

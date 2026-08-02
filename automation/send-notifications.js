@@ -222,7 +222,7 @@ async function runTournamentSignup() {
   await sendToUsers(
     all,
     "🏆 Tonight's tournaments are open!",
-    'Sign up for the 8 PM Knockout or the 10 PM League + Playoffs — anyone can join, all day.'
+    'Sign up for the 8 PM Knockout Tournament or the 10 PM Round Robin Tournament — anyone can join, all day.'
   );
 }
 
@@ -243,7 +243,7 @@ async function runLeagueStartingSoon() {
   var all = await fetchOptedInUsers();
   await sendToUsers(
     all,
-    '⏰ League + Playoffs starts in 15 minutes!',
+    '⏰ Round Robin Tournament starts in 15 minutes!',
     "Sign up now on the Tournaments page — it's not too late."
   );
 }

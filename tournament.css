@@ -3,6 +3,30 @@
    classes (mp-room-code, mp-player-list, mp-mode-badge, etc.) — this file
    only adds what's genuinely new: bracket size picker + the bracket view. */
 
+/* ===== 3-PART ENTRY SCREEN GROUPING (Day 56) ===== */
+.tn-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 18px 16px 14px;
+  margin: 20px 0;
+}
+
+.tn-section-heading {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #f4a900;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.tn-section-sub {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
 .tn-size-heading {
   text-align: center;
   font-size: 0.85rem;

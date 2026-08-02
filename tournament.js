@@ -466,14 +466,21 @@ function generateTournamentCode() {
   return code;
 }
 
-function createTournament(bracketSize, attempt) {
+// isPublicRoom (Day 56): when true, this creates an AUTO-MATCH tournament
+// instead of a private "Invite Friends" one — same doc shape, just
+// isPublic:true and the button state lives on the amSizeBtn* buttons
+// instead of sizeBtn*. See findPublicTournament() below for the matching
+// half of this (join an existing public one instead of always creating).
+function createTournament(bracketSize, attempt, isPublicRoom) {
   if (!me) return;
   attempt = attempt || 1;
+  isPublicRoom = !!isPublicRoom;
+  var prefix = isPublicRoom ? 'am' : '';
 
-  var btn = document.getElementById('sizeBtn' + bracketSize);
+  var btn = document.getElementById(prefix + 'sizeBtn' + bracketSize);
   if (attempt === 1) {
     BRACKET_SIZES.forEach(function(size) {
-      var b = document.getElementById('sizeBtn' + size);
+      var b = document.getElementById(prefix + 'sizeBtn' + size);
       if (b) b.disabled = true;
     });
     if (btn) btn.textContent = '…';
@@ -485,7 +492,7 @@ function createTournament(bracketSize, attempt) {
   ref.get().then(function(existing) {
     if (existing.exists) {
       if (attempt >= 5) throw new Error('Could not find a free tournament code. Please try again.');
-      createTournament(bracketSize, attempt + 1);
+      createTournament(bracketSize, attempt + 1, isPublicRoom);
       return null;
     }
 
@@ -503,6 +510,7 @@ function createTournament(bracketSize, attempt) {
       bracket: {},
       currentRound: 0,
       championUid: null,
+      isPublic: isPublicRoom,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
   }).then(function(written) {
@@ -512,25 +520,25 @@ function createTournament(bracketSize, attempt) {
   }).catch(function(err) {
     console.error('Create tournament failed:', err);
     BRACKET_SIZES.forEach(function(size) {
-      var b = document.getElementById('sizeBtn' + size);
+      var b = document.getElementById(prefix + 'sizeBtn' + size);
       if (b) { b.disabled = false; b.innerHTML = size + '<br/><span>players</span>'; }
     });
     alert(explainFirebaseError(err));
   });
 }
 
-function createLeagueTournament(attempt) {
+var ROUND_ROBIN_BTN_HTML = 'Round Robin Tournament<br/><span>20 players — 2 groups of 10 → knockout</span>';
+
+// isPublicRoom (Day 56): same idea as createTournament() above — true makes
+// this an AUTO-MATCH round robin (isPublic:true, amLeagueBtn) instead of a
+// private "Invite Friends" one (sizeBtnLeague).
+function createLeagueTournament(attempt, isPublicRoom) {
   if (!me) return;
   attempt = attempt || 1;
+  isPublicRoom = !!isPublicRoom;
+  var leagueBtn = document.getElementById(isPublicRoom ? 'amLeagueBtn' : 'sizeBtnLeague');
 
-  var leagueBtn = document.getElementById('sizeBtnLeague');
-  if (attempt === 1) {
-    BRACKET_SIZES.forEach(function(size) {
-      var b = document.getElementById('sizeBtn' + size);
-      if (b) b.disabled = true;
-    });
-    if (leagueBtn) { leagueBtn.disabled = true; leagueBtn.innerHTML = '…'; }
-  }
+  if (attempt === 1 && leagueBtn) { leagueBtn.disabled = true; leagueBtn.innerHTML = '…'; }
 
   var code = generateTournamentCode();
   var ref = db.collection('tournaments').doc(code);
@@ -538,7 +546,7 @@ function createLeagueTournament(attempt) {
   ref.get().then(function(existing) {
     if (existing.exists) {
       if (attempt >= 5) throw new Error('Could not find a free tournament code. Please try again.');
-      createLeagueTournament(attempt + 1);
+      createLeagueTournament(attempt + 1, isPublicRoom);
       return null;
     }
 
@@ -560,6 +568,7 @@ function createLeagueTournament(attempt) {
       totalRounds: null,
       currentRound: 0,
       championUid: null,
+      isPublic: isPublicRoom,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
     });
   }).then(function(written) {
@@ -568,13 +577,99 @@ function createLeagueTournament(attempt) {
     listenToTournament();
   }).catch(function(err) {
     console.error('Create league tournament failed:', err);
-    BRACKET_SIZES.forEach(function(size) {
-      var b = document.getElementById('sizeBtn' + size);
-      if (b) { b.disabled = false; b.innerHTML = size + '<br/><span>players</span>'; }
-    });
-    if (leagueBtn) { leagueBtn.disabled = false; leagueBtn.innerHTML = 'League + Playoffs<br/><span>20 players — 2 groups of 10 → knockout</span>'; }
+    if (leagueBtn) { leagueBtn.disabled = false; leagueBtn.innerHTML = ROUND_ROBIN_BTN_HTML; }
     alert(explainFirebaseError(err));
   });
+}
+
+// =====================================================================
+// AUTO-MATCH (Day 56) — mirrors multiplayer.js's findPublicMatch()/
+// createRoom('public'), applied to tournaments. Looks for an open public
+// tournament of the matching type (and, for knockout, the matching bracket
+// size) with a spot free; if none exists, becomes the host of a new public
+// tournament and waits for the next person auto-matching to find it the
+// same way. Both filters below are plain equality, so — same reasoning as
+// findPublicMatch() — this needs no composite index.
+// =====================================================================
+function autoMatchKnockout(bracketSize) {
+  findPublicTournament('knockout', bracketSize);
+}
+
+function autoMatchLeague() {
+  findPublicTournament('league', null);
+}
+
+function findPublicTournament(type, bracketSize) {
+  if (!me) return;
+
+  var btn = document.getElementById(type === 'knockout' ? ('amSizeBtn' + bracketSize) : 'amLeagueBtn');
+  if (btn) btn.textContent = 'Searching…';
+  if (type === 'knockout') {
+    BRACKET_SIZES.forEach(function(size) {
+      var b = document.getElementById('amSizeBtn' + size);
+      if (b) b.disabled = true;
+    });
+  } else if (btn) {
+    btn.disabled = true;
+  }
+
+  db.collection('tournaments')
+    .where('isPublic', '==', true)
+    .where('status', '==', 'lobby')
+    .where('type', '==', type)
+    .get()
+    .then(function(snap) {
+      var candidates = [];
+      snap.forEach(function(doc) {
+        var data = doc.data();
+        if (data.hostUid === me.uid) return;
+        if (type === 'knockout' && data.bracketSize !== bracketSize) return;
+
+        var players = data.players || {};
+        if (players[me.uid]) return;
+
+        var cap = (type === 'league') ? data.totalPlayers : data.bracketSize;
+        if (Object.keys(players).length >= cap) return;
+
+        candidates.push({
+          code: doc.id,
+          createdAtMs: (data.createdAt && data.createdAt.toMillis) ? data.createdAt.toMillis() : 0
+        });
+      });
+
+      if (candidates.length === 0) {
+        if (type === 'knockout') createTournament(bracketSize, 1, true);
+        else createLeagueTournament(1, true);
+        return;
+      }
+
+      candidates.sort(function(a, b) { return a.createdAtMs - b.createdAtMs; });
+
+      joinTournamentByCode(candidates[0].code).then(function() {
+        listenToTournament();
+      }).catch(function(err) {
+        console.error('Join public tournament failed, creating one instead:', err);
+        if (type === 'knockout') createTournament(bracketSize, 1, true);
+        else createLeagueTournament(1, true);
+      });
+    })
+    .catch(function(err) {
+      console.error('Find public tournament failed:', err);
+      restoreAutoMatchButtons(type);
+      alert(explainFirebaseError(err));
+    });
+}
+
+function restoreAutoMatchButtons(type) {
+  if (type === 'knockout') {
+    BRACKET_SIZES.forEach(function(size) {
+      var b = document.getElementById('amSizeBtn' + size);
+      if (b) { b.disabled = false; b.innerHTML = size + '<br/><span>players</span>'; }
+    });
+  } else {
+    var b = document.getElementById('amLeagueBtn');
+    if (b) { b.disabled = false; b.innerHTML = ROUND_ROBIN_BTN_HTML; }
+  }
 }
 
 // Also doubles as "resume my tournament" — a player already in this
@@ -727,8 +822,8 @@ function renderLobby(t) {
 
   var badge = document.getElementById('tnSizeBadge');
   badge.textContent = isLeague
-    ? '🏏 20-player league — 2 groups of 10, top 4 each advance to knockout'
-    : '🏆 ' + t.bracketSize + '-player knockout bracket';
+    ? '🏏 20-player Round Robin — 2 groups of 10, top 4 each advance to knockout'
+    : '🏆 ' + t.bracketSize + '-player Knockout bracket';
   badge.style.display = 'block';
 
   var players = t.players || {};
@@ -1490,9 +1585,9 @@ function renderFinal(t) {
     ? 'You won the tournament!'
     : championName + ' won the tournament';
   document.getElementById('finalSub').textContent = (t.type === 'league')
-    ? '20-player league (2 groups of 10) → top ' + LEAGUE_QUALIFIERS_PER_GROUP +
+    ? '20-player Round Robin (2 groups of 10) → top ' + LEAGUE_QUALIFIERS_PER_GROUP +
       ' each → 8-player knockout playoffs. Champion decided!'
-    : t.bracketSize + '-player knockout — every round decided.';
+    : t.bracketSize + '-player Knockout — every round decided.';
 
   document.getElementById('tnFinalBracket').innerHTML = buildBracketHTML(t);
 
