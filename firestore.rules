@@ -92,6 +92,48 @@ service cloud.firestore {
     }
 
     // ===================================================================
+    // CURATED POEM ENGAGEMENT — Day 57: likes/comments on the 6 official
+    // poems (poems.js), which stay static data — this is just the social
+    // layer bolted on, same shape as communityPoems' likes/comments but
+    // with no author field to protect (there's no author, it's official
+    // content) and no delete of the doc itself (only individual comments).
+    // ===================================================================
+    match /curatedPoemEngagement/{poemId} {
+      allow read: if true;
+      allow create, update: if signedIn();
+      allow delete: if false;
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if signedIn()
+                      && request.resource.data.authorUid == request.auth.uid;
+        allow update: if false;
+        allow delete: if signedIn() && resource.data.authorUid == request.auth.uid;
+      }
+    }
+
+    // ===================================================================
+    // SHARED POEMS — Day 57: in-app "send this poem to a friend". Only
+    // the sender and recipient can ever see a given share; only the
+    // sender can create it (as themselves); either side can delete it
+    // (recipient dismissing it from their inbox, or sender undoing a
+    // send). No update permission at all — nothing in the app ever edits
+    // a share after it's sent.
+    // ===================================================================
+    match /sharedPoems/{shareId} {
+      allow read: if signedIn()
+                  && (resource.data.fromUid == request.auth.uid
+                      || resource.data.toUid == request.auth.uid);
+
+      allow create: if signedIn()
+                    && request.resource.data.fromUid == request.auth.uid;
+
+      allow delete: if signedIn()
+                    && (resource.data.fromUid == request.auth.uid
+                        || resource.data.toUid == request.auth.uid);
+    }
+
+    // ===================================================================
     // MATCHES — Phase 3 multiplayer
     // ===================================================================
     match /matches/{matchId} {
