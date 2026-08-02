@@ -283,6 +283,84 @@ service cloud.firestore {
     }
 
     // ===================================================================
+    // RANKING MATCHES — Day 56: multiplayer Ranking Challenge
+    // ===================================================================
+    // Same lobby/host/presence shape as /matches and /wordleMatches above.
+    // See ranking-multiplayer.js.
+    match /rankingMatches/{matchId} {
+
+      function isRmHost() {
+        return signedIn() && resource.data.hostUid == request.auth.uid;
+      }
+
+      function isRmPlayer() {
+        return signedIn() && request.auth.uid in resource.data.players;
+      }
+
+      function onlyChangedOwnRmPlayerEntry() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['players'])
+               && request.resource.data.players
+                 .diff(resource.data.players)
+                 .affectedKeys().hasOnly([request.auth.uid]);
+      }
+
+      function onlyClaimedRmHost() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['hostUid'])
+               && request.resource.data.hostUid == request.auth.uid;
+      }
+
+      function touchedOnlyOwnRmKeyIn(fieldName) {
+        return !(fieldName in request.resource.data.diff(resource.data).affectedKeys())
+               || request.resource.data[fieldName]
+                    .diff(resource.data.get(fieldName, {}))
+                    .affectedKeys().hasOnly([request.auth.uid]);
+      }
+      function onlyChangedOwnRmPresenceOrLeft() {
+        return request.resource.data.diff(resource.data)
+                 .affectedKeys().hasOnly(['presence', 'leftPlayers'])
+               && touchedOnlyOwnRmKeyIn('presence')
+               && touchedOnlyOwnRmKeyIn('leftPlayers');
+      }
+
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+                    && request.resource.data.hostUid == request.auth.uid
+                    && request.resource.data.status == 'lobby'
+                    && request.resource.data.roomCode == matchId;
+
+      allow update: if isRmHost()
+                    || (signedIn() && onlyChangedOwnRmPlayerEntry())
+                    || (isRmPlayer() && onlyClaimedRmHost())
+                    || (isRmPlayer() && onlyChangedOwnRmPresenceOrLeft());
+
+      allow delete: if isRmHost();
+
+      // =================================================================
+      // ANSWERS — one immutable document per player, per challenge round.
+      // Same "{uid}_{index}" ID-pinning as /matches/answers, so a player
+      // can't write duplicate answers for the same round to inflate their
+      // score, and can't change their submitted order after seeing the
+      // reveal. Read is host-only, same reasoning as /matches/answers:
+      // stops a player copying another live player's submitted order
+      // before the round ends.
+      // =================================================================
+      match /answers/{answerId} {
+        allow read: if signedIn()
+                    && get(/databases/$(database)/documents/rankingMatches/$(matchId)).data.hostUid == request.auth.uid;
+
+        allow create: if signedIn()
+                      && request.resource.data.uid == request.auth.uid
+                      && answerId == request.auth.uid + '_' +
+                                     string(request.resource.data.challengeIndex);
+
+        allow update, delete: if false;
+      }
+    }
+
+    // ===================================================================
     // TOURNAMENTS — Phase 3 knockout brackets
     // ===================================================================
     // Mirrors the matches rules above almost exactly: the tournament host

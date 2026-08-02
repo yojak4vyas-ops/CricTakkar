@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0a0e1a" />
+  <link rel="apple-touch-icon" href="icon-180.png" />
+  <link rel="icon" type="image/png" href="icon-192.png" />
+  <title>Ranking Battle — CricTakkar</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="quiz.css" />
+  <link rel="stylesheet" href="multiplayer.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <!-- Ranking Challenge has no separate ranking.css — ranking.html keeps these
+       rules inline in its own <head>, so they're copied here rather than
+       linking a file that doesn't exist. .timer-circle/.danger are skipped —
+       quiz.css (linked above) already defines those, and ranking.html's own
+       copy of them is a duplicate of that same file's original. -->
+  <style>
+    .ranking-wrapper { max-width: 600px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .challenge-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+    .challenge-header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .challenge-number { font-size: 0.75rem; font-weight: 700; color: #f4a900; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+    .challenge-question { font-size: 1.1rem; font-weight: 700; color: #ffffff; margin-bottom: 6px; line-height: 1.4; }
+    .challenge-hint { font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 24px; }
+
+    .drag-list { display: flex; flex-direction: column; gap: 10px; min-height: 60px; }
+    .drag-item {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: grab;
+      transition: background 0.15s, border-color 0.15s, transform 0.15s;
+      user-select: none;
+      touch-action: none;
+    }
+    .drag-item:active { cursor: grabbing; }
+    .drag-item.dragging { opacity: 0.4; transform: scale(0.98); }
+    .drag-item.drag-over { border-color: #f4a900; background: rgba(244, 169, 0, 0.1); }
+    .drag-handle { color: rgba(255,255,255,0.3); font-size: 1.1rem; flex-shrink: 0; }
+    .drag-rank {
+      width: 28px; height: 28px;
+      background: rgba(244,169,0,0.15);
+      border: 1px solid rgba(244,169,0,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 700; color: #f4a900; flex-shrink: 0;
+    }
+    .drag-name { font-size: 0.95rem; font-weight: 600; color: #ffffff; flex: 1; }
+    .drag-flag { font-size: 1.2rem; }
+    .drag-item.correct { border-color: #22c55e; background: rgba(34, 197, 94, 0.1); }
+    .drag-item.wrong { border-color: #ef4444; background: rgba(239, 68, 68, 0.08); }
+    .drag-item.correct .drag-rank { background: rgba(34,197,94,0.2); border-color: #22c55e; color: #22c55e; }
+    .drag-item.wrong .drag-rank { background: rgba(239,68,68,0.2); border-color: #ef4444; color: #ef4444; }
+    .drag-ghost { position: fixed; pointer-events: none; z-index: 9999; opacity: 0.85; transform: scale(1.04); }
+
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #f4a900, #e07b00);
+      color: #0a0e1a;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      margin-top: 20px;
+    }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .correct-order-list { text-align: left; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .correct-order-item {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+    }
+    .correct-order-num {
+      width: 24px; height: 24px;
+      background: rgba(34,197,94,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 700; color: #22c55e; flex-shrink: 0;
+    }
+    .correct-order-name { font-size: 0.9rem; font-weight: 600; color: #ffffff; flex: 1; }
+    .correct-order-value { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+
+    .progress-bar-wrap { background: rgba(255,255,255,0.08); border-radius: 999px; height: 6px; margin-bottom: 28px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; background: linear-gradient(90deg, #f4a900, #e07b00); border-radius: 999px; transition: width 0.4s ease; }
+    .progress-text { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-align: right; margin-top: 6px; margin-bottom: 20px; }
+
+    .instruction-banner {
+      background: rgba(244,169,0,0.08);
+      border: 1px solid rgba(244,169,0,0.2);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAVIGATION BAR -->
+  <nav class="navbar">
+    <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor:pointer"><img src="logo-navbar.png" class="nav-logo-img" alt="CricTakkar" /></div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="quiz.html" class="nav-link">Master Quiz</a>
+      <a href="poetry.html" class="nav-link">Add Your Poetry</a>
+      <a href="leaderboard.html" class="nav-link">Leaderboard</a>
+      <a href="stats.html" class="nav-link">📊 Stats</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+    </div>
+  </nav>
+
+  <!-- ===== SCREEN 0: LOADING ===== -->
+  <div class="quiz-wrapper" id="loadingScreen">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">⏳</div>
+      <h1 class="quiz-start-title">Loading…</h1>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 0b: NOT LOGGED IN ===== -->
+  <div class="quiz-wrapper" id="loginGateScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">🔒</div>
+      <h1 class="quiz-start-title">Log in to battle</h1>
+      <p class="quiz-start-sub">Multiplayer needs an account so your friends can see who they're playing against.</p>
+      <button class="btn-primary" onclick="window.location.href='login.html'">Log In / Sign Up</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 1: ENTRY ===== -->
+  <div class="quiz-wrapper" id="entryScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">📊</div>
+      <h1 class="quiz-start-title">Ranking Battle</h1>
+      <p class="quiz-start-sub">Same 4 challenges for everyone — most correct positions wins.</p>
+      <div class="quiz-rules">
+        <div class="rule-item">👥 2 to 10 players in a room</div>
+        <div class="rule-item">📊 4 ranking challenges, one at a time</div>
+        <div class="rule-item">⏱️ 10 seconds per challenge</div>
+        <div class="rule-item">🏆 Live standings after every round</div>
+      </div>
+      <button class="btn-primary" onclick="createRoom()" id="createRoomBtn">Create a Room</button>
+      <button class="btn-secondary mp-gap-top" onclick="showJoinScreen()">Join with a Code</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 2: JOIN BY CODE ===== -->
+  <div class="quiz-wrapper" id="joinScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">🔑</div>
+      <h1 class="quiz-start-title">Enter Room Code</h1>
+      <p class="quiz-start-sub">Ask your friend for the 6-character code they see on their screen.</p>
+      <input type="text" id="joinCodeInput" class="mp-code-input" maxlength="6"
+             placeholder="ABC123" autocomplete="off" autocapitalize="characters" />
+      <div class="mp-error" id="joinError"></div>
+      <button class="btn-primary" onclick="joinRoom()" id="joinRoomBtn">Join Room</button>
+      <button class="btn-secondary mp-gap-top" onclick="showEntryScreen()">Back</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 3: LOBBY ===== -->
+  <div class="quiz-wrapper" id="lobbyScreen" style="display:none">
+    <div class="quiz-card">
+      <p class="mp-lobby-eyebrow">Room Code</p>
+      <div class="mp-room-code" id="roomCodeDisplay">------</div>
+      <button class="mp-share-btn" onclick="shareRoomCode()">📲 Share on WhatsApp</button>
+      <button class="mp-copy-btn" onclick="copyRoomCode()" id="copyCodeBtn">📋 Copy Code</button>
+
+      <div class="mp-players-heading">
+        Players <span id="playerCount">(0)</span>
+      </div>
+      <div class="mp-player-list" id="playerList"></div>
+
+      <div class="mp-waiting-note" id="waitingNote">Waiting for the host to start…</div>
+      <button class="btn-primary" id="startMatchBtn" style="display:none" onclick="startMatch()">Start Match</button>
+      <button class="btn-secondary mp-gap-top" onclick="leaveRoom()">Leave Room</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 4: PLAYING (adapted from ranking.html's challenge box) ===== -->
+  <div class="ranking-wrapper" id="playingScreen" style="display:none">
+
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+    <div class="progress-text" id="progressText">Challenge 1 of 4</div>
+
+    <div class="challenge-box" id="challengeBox">
+      <div class="challenge-header-row">
+        <div>
+          <div class="challenge-number" id="challengeNumber">Challenge 1</div>
+          <div class="challenge-question" id="challengeQuestion">Loading...</div>
+          <div class="challenge-hint" id="challengeHint"></div>
+        </div>
+        <div class="timer-circle" id="timerCircle">
+          <span id="wmTimer">10</span>
+        </div>
+      </div>
+
+      <div class="instruction-banner">
+        ☝️ Drag the cards to reorder them — #1 at top is your highest
+      </div>
+
+      <div class="drag-list" id="dragList"></div>
+
+      <button class="submit-btn" id="submitBtn" onclick="submitAnswer()">
+        Submit My Ranking ✅
+      </button>
+    </div>
+
+    <button class="btn-secondary mp-gap-top" onclick="leaveRoom()" style="max-width:600px; margin:0 auto; display:block;">Leave</button>
+  </div>
+
+  <!-- ===== SCREEN 5: STANDINGS (between rounds) ===== -->
+  <div class="quiz-wrapper" id="standingsScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">📊</div>
+      <p class="quiz-start-sub" id="rmCorrectOrderTitle">✅ Correct order was:</p>
+      <div class="correct-order-list" id="correctOrderList"></div>
+
+      <div class="mp-mode-badge" id="wmStandingsTimer" style="display:inline-block;">4</div>
+
+      <div class="mp-players-heading">Standings</div>
+      <div class="mp-player-list" id="rmStandingsList"></div>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 6: FINAL ===== -->
+  <div class="quiz-wrapper" id="finalScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">🏆</div>
+      <h1 class="quiz-start-title">Battle Over!</h1>
+
+      <div class="mp-players-heading">Final Standings</div>
+      <div class="mp-player-list" id="rmFinalList"></div>
+
+      <button class="btn-primary mp-gap-top" onclick="window.location.href='ranking-multiplayer.html'">Play Again</button>
+      <button class="btn-secondary mp-gap-top" onclick="window.location.href='index.html'">Back to Home</button>
+    </div>
+  </div>
+
+  <!-- ===== SCREEN 7: ENDED EARLY / NOT FOUND ===== -->
+  <div class="quiz-wrapper" id="abortScreen" style="display:none">
+    <div class="quiz-card">
+      <div class="quiz-start-icon">😕</div>
+      <h1 class="quiz-start-title">Room Ended</h1>
+      <p class="quiz-start-sub" id="abortReason">This room is no longer available.</p>
+      <button class="btn-primary" onclick="window.location.href='ranking-multiplayer.html'">Back to Ranking Battle</button>
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+  <script>
+    // ===== FIREBASE SETUP =====
+    const firebaseConfig = {
+      apiKey: "AIzaSyBYOs-GNvpmbp6gGM5A5N2A4nPT2wvMfbE",
+      authDomain: "crictakkar-44c10.firebaseapp.com",
+      projectId: "crictakkar-44c10",
+      storageBucket: "crictakkar-44c10.firebasestorage.app",
+      messagingSenderId: "96883177573",
+      appId: "1:96883177573:web:215aba6e651fbac6086e8c"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+  </script>
+
+  <script src="ranking-challenges.js"></script>
+  <script src="tournament-logic.js"></script>
+  <script src="ranking-multiplayer.js"></script>
+  <script src="pwa.js"></script>
+</body>
+</html>
