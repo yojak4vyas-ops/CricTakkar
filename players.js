@@ -5603,6 +5603,304 @@ const wordlePlayers = [
     iccTrophies: 0
   },
 
+  // Day 58 — South Africa T20I Wordle cap expansion (Round 1: top-15 all-time run-scorers +
+  // top-15 all-time wicket-takers, 13 new players; Round 2: cap-number method, 7 new players).
+  // Every attribute checked against ESPNcricinfo + Wikipedia (Cricbuzz attempted, unreachable
+  // as usual — standing tool limitation, flagged here once for the batch). iccTrophies verified
+  // against the ACTUAL official South Africa 2025 WTC final 15-man squad (Bavuma, Bedingham,
+  // Bosch, de Zorzi, Jansen, Maharaj, Markram, Mulder, Muthusamy, Ngidi, Paterson, Rabada,
+  // Rickelton, Stubbs, Verreynne) — the only ICC trophy relevant to any player in this batch,
+  // since the 1998 KnockOut Trophy predates all of them (earliest debut here is 2005).
+  {
+    name: "Reeza Hendricks",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2014,
+    format: "ODI+T20",
+    // T20I debut 5 Nov 2014 (cap 61), ODI debut 5 Aug 2018, no Test caps — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Entered the IPL 2026 auction (base price INR 1 crore) but went unsold — ESPNcricinfo/Sportskeeda confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Rassie van der Dussen",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // Listed as "Right arm leg break" on Wikipedia but his career stats table shows no bowling
+    // record at any level (Test/ODI/T20I/FC) — unconfirmed either way, same treatment as KL Rahul
+    debutYear: 2018,
+    format: "All-format",
+    // T20I debut 9 Oct 2018 (cap 78), ODI debut 19 Jan 2019, Test debut 26 Dec 2019 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals"],
+    // 2022 season, 3 genuine matches — Sportskeeda/Wikipedia confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Heinrich Klaasen",
+    country: "South Africa",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2018,
+    format: "All-format",
+    // ODI debut 7 Feb 2018 (cap 125), T20I debut 17 Feb 2018, Test debut 19 Oct 2019 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Royal Challengers Bangalore", "Sunrisers Hyderabad"],
+    // 2018 RR, 2019 RCB, 2023-present SRH — all genuine playing appearances, Wikipedia/Sportskeeda confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Tristan Stubbs",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2022,
+    format: "All-format",
+    // T20I debut 9 Jun 2022 (cap 95), ODI debut 18 Mar 2023, Test debut 3 Jan 2024 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Mumbai Indians", "Delhi Capitals"],
+    // 2022-2023 MI, 2024-present DC — both genuine, Sportskeeda confirmed
+    iccTrophies: 1
+    // 2025 WTC final winning squad — Wikipedia confirmed (explicitly named in the article's squad list)
+  },
+  {
+    name: "Rilee Rossouw",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2014,
+    format: "ODI+T20",
+    // ODI debut 21 Aug 2014 (cap 112), T20I debut 5 Nov 2014, no Test caps — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Daredevils", "Punjab Kings"],
+    // 2014-2015 RCB (5 matches), 2023 DC (9 matches), 2024 PBKS — all genuine, Sportskeeda confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Ryan Rickelton",
+    country: "South Africa",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // Listed as "Slow left-arm orthodox" on Wikipedia but zero bowling record shown at any level
+    // (Test/ODI/T20I/FC) — unconfirmed either way, same treatment as KL Rahul
+    debutYear: 2022,
+    format: "All-format",
+    // Test debut 31 Mar 2022 (cap 352), ODI debut 18 Mar 2023, T20I debut 23 May 2024 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Mumbai Indians"],
+    // 2025-present, star opener — Wikipedia/Sportskeeda confirmed
+    iccTrophies: 1
+    // 2025 WTC final winning squad — Wikipedia confirmed (explicitly named in the article's squad list)
+  },
+  {
+    name: "Tabraiz Shamsi",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
+    debutYear: 2016,
+    format: "All-format",
+    // ODI debut 7 Jun 2016, Test debut 24 Nov 2016, T20I debut 21 Jun 2017 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
+    // 2016 only (replaced injured Samuel Badree, 4 genuine matches) — 2017 signing was bench-only, never
+    // played a match all season, excluded per the standing "signed but never played" rule — Sportskeeda confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Anrich Nortje",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2019,
+    format: "All-format",
+    // ODI debut 3 Mar 2019 (cap 133), Test debut 10 Oct 2019, T20I debut 18 Sep 2019 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Delhi Capitals", "Kolkata Knight Riders", "Lucknow Super Giants"],
+    // 2020-2024 DC (his 2019 KKR auction signing was never played due to injury — excluded), 2025 KKR, 2026 LSG
+    // — all genuine, Wikipedia/Sportskeeda confirmed
+    // NOT in South Africa's official 2025 WTC final squad (Wikipedia) despite being a regular Test bowler
+    iccTrophies: 0
+  },
+  {
+    name: "Johan Botha",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2005,
+    format: "All-format",
+    // ODI debut 16 Nov 2005 (cap 80), Test debut 2 Jan 2006, T20I debut 9 Jan 2006 (cap 13) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Delhi Daredevils", "Kolkata Knight Riders"],
+    // 2009-2012 RR, 2013 Delhi (Daredevils era), 2015 KKR — all genuine, Sportskeeda confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "George Linde",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2019,
+    format: "All-format",
+    // Test debut 19 Oct 2019 (cap 340), T20I debut 27 Nov 2020, ODI debut 4 Sep 2021 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Lucknow Super Giants"],
+    // 2026, replaced injured Wanindu Hasaranga, 4 genuine matches — ESPNcricinfo/Sportskeeda confirmed
+    // NOT in South Africa's official 2025 WTC final squad (Wikipedia)
+    iccTrophies: 0
+  },
+  {
+    name: "Dwaine Pretorius",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2016,
+    format: "All-format",
+    // ODI debut 25 Sep 2016 (cap 119), T20I debut 21 Jun 2017, Test debut 26 Dec 2019 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings"],
+    // 2022-2023, 7 genuine matches — Sportskeeda confirmed. Retired from international cricket Jan 2023,
+    // before South Africa's 2025 WTC win
+    iccTrophies: 0
+  },
+  {
+    name: "Chris Morris",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 21 Dec 2012 (cap 55), ODI debut 10 Jun 2013, Test debut 2 Jan 2016 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Chennai Super Kings", "Rajasthan Royals", "Delhi Capitals", "Royal Challengers Bangalore"],
+    // 2013 CSK, 2015 & 2021 RR (his 2021 buy was a then-record INR 16.25cr), 2016-2019 Delhi (Daredevils era),
+    // 2020 RCB — all genuine, Wikipedia/Sportskeeda confirmed. Retired 2022, before South Africa's 2025 WTC win
+    iccTrophies: 0
+  },
+  {
+    name: "Corbin Bosch",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2024,
+    format: "All-format",
+    // ODI debut 22 Dec 2024 (cap 154), Test debut 26 Dec 2024 (cap 368), T20I debut 14 Jul 2025 (cap 110)
+    // — ESPNcricinfo/Wikipedia confirmed. Round 2 cap-number entry — South Africa's real latest T20I
+    // cap (119, Subrayen) confirmed via ESPNcricinfo's live caps list
+    iplTeams: ["Mumbai Indians"],
+    // 2025-present, 8 genuine matches across both seasons — Sportskeeda confirmed
+    iccTrophies: 1
+    // 2025 WTC final winning squad — Wikipedia confirmed (explicitly named in the article's squad list)
+  },
+  {
+    name: "Nqobani Mokoena",
+    country: "South Africa",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2026,
+    format: "T20",
+    // Only T20I so far, cap 118, debut 15 Mar 2026 vs New Zealand — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — brand-new 2026 debutant, SA20-only franchise career so far
+    iccTrophies: 0
+  },
+  {
+    name: "Jordan Hermann",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Confirmed bowler — 6 wickets FC, 5 wickets List A, despite 0 balls bowled in his only T20I so far
+    debutYear: 2026,
+    format: "T20",
+    // Only T20I so far, cap 117, debut 15 Mar 2026 vs New Zealand — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Entered the IPL 2023 auction (base price INR 20 lakh) but went unsold — FirstSportz confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Dian Forrester",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 15 Mar 2026 vs New Zealand (cap 116) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Signed by Chennai Super Kings in May 2026 as an injury replacement for Jamie Overton, but no source
+    // could confirm he actually featured in a match all season (CSK finished 8th, missed the playoffs) —
+    // treated as "signed but never played" per the standing rule, flagged as the less-certain case it is
+    iccTrophies: 0
+  },
+  {
+    name: "Connor Esterhuizen",
+    country: "South Africa",
+    role: "Wicketkeeper",
+    // Wikipedia's infobox lists "Top order batsman", but multiple 2026 sources (his Gujarat Titans
+    // signing coverage) describe him specifically as a wicketkeeper-batter and backup keeper —
+    // went with the more specific, more current description
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No bowling style listed anywhere and zero bowling record at any level — confirmed non-bowler
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 15 Mar 2026 vs New Zealand (cap 115) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Signed by Gujarat Titans in April 2026 as an injury replacement for Tom Banton (backup keeper
+    // behind Jos Buttler), but no source could confirm an actual playing appearance — treated as
+    // "signed but never played" per the standing rule, flagged as the less-certain case it is
+    iccTrophies: 0
+  },
+  {
+    name: "Tony de Zorzi",
+    country: "South Africa",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // Listed as "Right-arm Offbreak" on Wikipedia but zero bowling record shown at any level
+    // (Test/ODI/FC/LA) — unconfirmed either way, same treatment as KL Rahul
+    debutYear: 2023,
+    format: "All-format",
+    // Test debut 28 Feb 2023 (cap 356), ODI debut 18 Mar 2023, T20I debut 28 Oct 2025 (cap 114)
+    // — ESPNcricinfo/Wikipedia confirmed. Round 2 cap-number entry
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search, has never been part of an IPL auction
+    iccTrophies: 1
+    // 2025 WTC final winning squad — Wikipedia confirmed (explicitly named in the article's squad list)
+  },
+  {
+    name: "Dayyaan Galiem",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2024,
+    format: "T20",
+    // Only T20I so far, cap 109, debut 13 Dec 2024 vs Pakistan (replaced injured Anrich Nortje)
+    // — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — SA20-only franchise career (Durban's Super Giants, Joburg Super Kings, Paarl Royals)
+    iccTrophies: 0
+  },
+  {
+    name: "Andile Simelane",
+    country: "South Africa",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2024,
+    format: "T20",
+    // Only T20I so far, cap 108, debut 8 Nov 2024 vs India (six off his first ball) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — SA20-only franchise career
+    iccTrophies: 0
+  },
+
   // ===== BANGLADESH (10 players) =====
 
   {
