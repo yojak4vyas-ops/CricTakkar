@@ -4088,6 +4088,381 @@ const wordlePlayers = [
     // 2002 CT (shared), 2014 T20 WC — Wikipedia confirmed
   },
 
+  // ===== SRI LANKA T20I — Round 1 (top-15 all-time run-scorers + top-15 wicket-takers,
+  // Day 58 session 2, pulled directly from ESPNcricinfo — 21 genuinely new players, over
+  // the 20-player target in Round 1 alone, so Round 2 not needed, same as Australia/England/
+  // Pakistan Test) =====
+  {
+    name: "Pathum Nissanka",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // Confirmed non-bowler — top order batter, no bowling role at any level. ESPNcricinfo confirmed.
+    debutYear: 2021,
+    format: "All-format",
+    // Test debut 21 Mar 2021 v West Indies, ODI debut 10 Mar 2021 v West Indies, T20I debut
+    // 3 Mar 2021 v West Indies — ESPNcricinfo matches page confirmed
+    // IPL: Delhi Capitals (2026, bought for INR 4cr, genuine playing appearances incl. fifties
+    // vs GT and KKR) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Delhi Capitals"],
+    iccTrophies: 0
+    // Debuted 2021, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Kusal Mendis",
+    country: "Sri Lanka",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2015,
+    format: "All-format",
+    // Test debut 22 Oct 2015 v West Indies, ODI debut 16 Jun 2016 v Ireland, T20I debut
+    // 8 Jul 2016 v England — ESPNcricinfo + Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2015, not in the 2014 T20 WC squad. 2022 Asia Cup win excluded — Asia Cup is
+    // an ACC event, not an ICC trophy, per this file's standing scope.
+  },
+  {
+    name: "Kusal Perera",
+    country: "Sri Lanka",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // Confirmed non-bowler — no bowling style/record at any level. ESPNcricinfo + Wikipedia confirmed
+    debutYear: 2013,
+    format: "All-format",
+    // ODI debut 13 Jan 2013 v Australia, T20I debut 26 Jan 2013 v Australia, Test debut
+    // 28 Aug 2015 v India — ESPNcricinfo matches page directly confirmed (an earlier broad
+    // search wrongly implied a Jan/Feb 2012 debut — corrected via the primary ESPNcricinfo source)
+    // IPL: Rajasthan Royals (2013) — Wikipedia confirmed, no other IPL team found
+    iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — confirmed genuine squad member (Wikipedia official squad list)
+  },
+  {
+    name: "Dasun Shanaka",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2015,
+    format: "All-format",
+    // T20I debut 1 Aug 2015 v Pakistan, Test debut 19 May 2016 v England, ODI debut
+    // 16 Jun 2016 v Ireland (5-for on ODI debut) — Wikipedia confirmed
+    // IPL: Gujarat Titans (2023), Rajasthan Royals (2026) — Wikipedia confirmed
+    iplTeams: ["Gujarat Titans", "Rajasthan Royals"],
+    iccTrophies: 0
+    // 2022 Asia Cup win (as captain) excluded — ACC event, not an ICC trophy
+  },
+  {
+    name: "Charith Asalanka",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2021,
+    format: "All-format",
+    // ODI debut 29 Jun 2021 v England, T20I debut 25 Jul 2021 v India, Test debut
+    // 29 Nov 2021 v West Indies — all 3 formats in 4 months — ESPNcricinfo + Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // 2022 Asia Cup win excluded — ACC event, not an ICC trophy
+  },
+  {
+    name: "Dinesh Chandimal",
+    country: "Sri Lanka",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2010,
+    format: "All-format",
+    // T20I debut 30 Apr 2010 v New Zealand, ODI debut 1 Jun 2010 v Zimbabwe, Test debut
+    // 26 Dec 2011 v South Africa — ESPNcricinfo + Wikipedia confirmed
+    // IPL: bought by Rajasthan Royals for the 2012 auction, but confirmed NEVER PLAYED a
+    // match that season (an ESPNcricinfo article title itself reads "Chandimal rules
+    // himself out of IPL"; the 2012 RR season's own match log shows no appearance) —
+    // "signed but never played," per the standing Axar Patel/Stuart Broad precedent
+    iplTeams: [],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — confirmed genuine squad member, led SL in the group stage
+    // (Wikipedia official squad list)
+  },
+  {
+    name: "Thisara Perera",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 24 Dec 2009 v India, T20I debut 3 May 2010 v Zimbabwe, Test debut
+    // 26 May 2011 v England — ESPNcricinfo + Wikipedia confirmed
+    // IPL: full 6-team history confirmed via dedicated search with real match/wicket counts
+    // per season — Chennai Super Kings (2010, 1 match, title-winning squad), Kochi Tuskers
+    // Kerala (2011, 4 matches), Mumbai Indians (2012, 2 matches), Sunrisers Hyderabad
+    // (2013, 16 matches), Kings XI Punjab (2014-15), Rising Pune Supergiant (2016)
+    iplTeams: ["Chennai Super Kings", "Kochi Tuskers Kerala", "Mumbai Indians", "Sunrisers Hyderabad", "Kings XI Punjab", "Rising Pune Supergiant"],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — scored the winning boundary in the final (Wikipedia confirmed)
+  },
+  {
+    name: "Dhananjaya de Silva",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2015,
+    format: "All-format",
+    // T20I debut 30 Jul 2015 v Pakistan, Test debut 26 Jul 2016 v Australia, ODI debut
+    // 16 Jun 2016 v Ireland — ESPNcricinfo + Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2015, not in the 2014 T20 WC squad
+  },
+  {
+    name: "Wanindu Hasaranga",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 2 Jul 2017 v Zimbabwe, T20I debut 1 Sep 2019 v New Zealand, Test debut
+    // 26 Dec 2020 v South Africa — ESPNcricinfo + Wikipedia confirmed
+    // IPL: Royal Challengers Bangalore (2021-2023, played), Sunrisers Hyderabad (2024,
+    // played), Rajasthan Royals (2025, played — 11 wickets that season) — all confirmed
+    // genuine appearances. Lucknow Super Giants' 2026 signing EXCLUDED — confirmed ruled
+    // out before the season by a hamstring injury, never joined the squad, "signed but
+    // never played" per the standing rule
+    iplTeams: ["Royal Challengers Bangalore", "Sunrisers Hyderabad", "Rajasthan Royals"],
+    iccTrophies: 0
+    // 2022 Asia Cup win excluded — ACC event, not an ICC trophy
+  },
+  {
+    name: "Kamindu Mendis",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    // Genuinely ambidextrous bowler — confirmed via dedicated search to bowl BOTH right-arm
+    // off break and slow left-arm orthodox, switching arms mid-over/mid-match (a real,
+    // rare skill, not a data error). Left-arm orthodox recorded as primary since sources
+    // describe it as marginally his stronger stock delivery, off-break used as a strategic
+    // variation vs left-handers — flagged transparently since the app's schema only allows
+    // one bowlingStyle value.
+    debutYear: 2018,
+    format: "All-format",
+    // T20I debut 27 Oct 2018 v England, ODI debut 10 Mar 2019 v South Africa, Test debut
+    // 8 Jul 2022 v Australia — ESPNcricinfo + Wikipedia confirmed
+    // IPL: Sunrisers Hyderabad (2025-2026, genuine playing appearances — 5 matches, 92
+    // runs, 2 wickets in 2025, retained for 2026) — confirmed via dedicated search
+    iplTeams: ["Sunrisers Hyderabad"],
+    iccTrophies: 0
+    // Debuted 2018, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Bhanuka Rajapaksa",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2019,
+    format: "ODI+T20",
+    // T20I debut 5 Oct 2019 v Pakistan, ODI debut 18 Jul 2021 v India, no Test caps —
+    // ESPNcricinfo + Wikipedia confirmed
+    // IPL: Punjab Kings (2022-2023, confirmed genuine playing appearances — 13 matches
+    // total, including a match-winning fifty vs KKR in 2023) — dedicated search confirmed
+    iplTeams: ["Punjab Kings"],
+    iccTrophies: 0
+    // 2022 Asia Cup win excluded — ACC event, not an ICC trophy
+  },
+  {
+    name: "Dushmantha Chameera",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2015,
+    format: "All-format",
+    // ODI debut 29 Jan 2015 v New Zealand, Test debut 25 Jun 2015 v Pakistan, T20I debut
+    // 9 Nov 2015 v West Indies — ESPNcricinfo + Wikipedia confirmed
+    // IPL: full history per the official IPL.com career-teams listing — Rajasthan Royals
+    // (2018, injury-hit season), Royal Challengers Bangalore (2021, UAE leg), Lucknow
+    // Super Giants (2022, 9 wickets in 12 games), Kolkata Knight Riders (2024, 1 match,
+    // part of the title-winning squad), Delhi Capitals (2025-present). NOTE: sources gave
+    // some conflicting detail on whether he actually took the field for RR 2018/RCB 2021
+    // specifically (both are confirmed signings, playing time less clearly documented than
+    // the other 3) — included per the official IPL.com team list, flagged here for a
+    // future re-check if this entry is touched again
+    iplTeams: ["Rajasthan Royals", "Royal Challengers Bangalore", "Lucknow Super Giants", "Kolkata Knight Riders", "Delhi Capitals"],
+    iccTrophies: 0
+    // Debuted 2015, not in the 2014 T20 WC squad
+  },
+  {
+    name: "Maheesh Theekshana",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2021,
+    format: "All-format",
+    // ODI debut 7 Sep 2021 v South Africa, T20I debut 10 Sep 2021 v South Africa, Test
+    // debut 8 Jul 2022 v Australia — ESPNcricinfo + Wikipedia confirmed
+    // IPL: Chennai Super Kings (2022-2024, played), Rajasthan Royals (2025, genuine
+    // playing appearances — 11 wickets that season, joint-leading wicket-taker) — confirmed
+    iplTeams: ["Chennai Super Kings", "Rajasthan Royals"],
+    iccTrophies: 0
+    // 2022 Asia Cup win excluded — ACC event, not an ICC trophy
+  },
+  {
+    name: "Nuwan Kulasekara",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    // Primarily an inswing bowler who developed an outswinger later — Wikipedia confirmed
+    debutYear: 2003,
+    format: "All-format",
+    // ODI debut 18 Nov 2003 v England, Test debut 4 Apr 2005 v New Zealand, T20I debut
+    // 11 Oct 2008 v Pakistan — Wikipedia confirmed
+    // IPL: Kings XI Punjab (2009, called up mid-tournament as an emergency injury
+    // replacement for Shaun Marsh — brought in specifically to play, not a bench signing),
+    // Chennai Super Kings (2011-2012, bought at the mega auction)
+    iplTeams: ["Kings XI Punjab", "Chennai Super Kings"],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — confirmed genuine squad member (Wikipedia official squad
+    // list); 2007/2011 World Cup and 2009/2012 World T20 were all runner-up finishes, not wins
+  },
+  {
+    name: "Ajantha Mendis",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Famous "mystery spinner" — bowls off breaks plus googlies/top-spinners/flippers/leg
+    // breaks via the carrom-ball grip, but his base classification is off spin — ESPNcricinfo confirmed
+    debutYear: 2008,
+    format: "All-format",
+    // ODI debut 10 Apr 2008 v West Indies, Test debut 23 Jul 2008 v India, T20I debut
+    // 10 Oct 2008 v Zimbabwe — Wikipedia confirmed
+    // IPL: Kolkata Knight Riders (2008-2010, played), Pune Warriors India (2013, confirmed
+    // genuine playing appearance — took wickets across 3 games that season, his last IPL
+    // appearance) — dedicated search confirmed
+    iplTeams: ["Kolkata Knight Riders", "Pune Warriors India"],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — confirmed genuine squad member (Wikipedia official squad list)
+  },
+  {
+    name: "Matheesha Pathirana",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    // Nicknamed "Baby Malinga" for his slingy action, modelled on Lasith Malinga — Wikipedia confirmed
+    debutYear: 2022,
+    format: "ODI+T20",
+    // T20I debut 27 Aug 2022 v Afghanistan, ODI debut 2 Jun 2023 v Afghanistan, no Test
+    // caps — ESPNcricinfo + Wikipedia confirmed
+    // IPL: Chennai Super Kings (2022-2025, key part of the 2023 title-winning squad, 19
+    // wickets that season), Kolkata Knight Riders (2026-present, per Wikipedia's current-squad
+    // listing following his move from CSK)
+    iplTeams: ["Chennai Super Kings", "Kolkata Knight Riders"],
+    iccTrophies: 0
+    // Debuted 2022, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Nuwan Thushara",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2022,
+    format: "T20",
+    // T20I debut 13 Feb 2022 v Australia (cap 92). Named in a 2022 ODI squad but never
+    // capped, and no Test caps — Wikipedia + dedicated search confirmed, T20I-only
+    // IPL: Mumbai Indians (2024, genuine playing appearances — 7 matches, 8 wickets),
+    // Royal Challengers Bangalore (2025, genuine playing appearances — 8 matches, 1 wicket)
+    iplTeams: ["Mumbai Indians", "Royal Challengers Bangalore"],
+    iccTrophies: 0
+    // Debuted 2022, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Lahiru Kumara",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 29 Oct 2016 v Zimbabwe, ODI debut 4 Feb 2017 v South Africa, T20I debut
+    // 11 Jan 2019 v New Zealand — Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed (only appears in Lanka Premier
+    // League auctions, a domestic SL league, not the IPL)
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2016, not in the 2014 T20 WC squad
+  },
+  {
+    name: "Akila Dananjaya",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Mystery spinner who bowls both off break and leg break/googly variations — off break
+    // recorded as primary per Wikipedia; his one confirmed IPL wicket-taking match (2018)
+    // used off-spin as the stock delivery
+    debutYear: 2012,
+    format: "All-format",
+    // T20I debut 27 Sep 2012 v New Zealand, ODI debut 12 Nov 2012 v New Zealand, Test debut
+    // 8 Feb 2018 v Bangladesh — Wikipedia confirmed
+    // IPL: Chennai Super Kings (2013, signed at auction but confirmed NEVER PLAYED a
+    // single match that season) EXCLUDED per the standing "signed but never played" rule.
+    // Mumbai Indians (2018, confirmed genuine playing appearance — 1 match vs Delhi
+    // Capitals, 16 Apr 2018, his only IPL match to date)
+    iplTeams: ["Mumbai Indians"],
+    iccTrophies: 0
+    // Debuted 2012, not in the 2014 T20 WC squad
+  },
+  {
+    name: "Isuru Udana",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium",
+    debutYear: 2009,
+    format: "ODI+T20",
+    // T20I debut 8 Jun 2009 v Australia, ODI debut 24 Jul 2012 v India, no Test caps —
+    // Wikipedia confirmed
+    // IPL: Royal Challengers Bangalore (2020, confirmed genuine playing appearances —
+    // took wickets vs Mumbai Indians and Chennai Super Kings that season), released ahead
+    // of the 2021 auction — dedicated search confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
+    iccTrophies: 0
+    // Runner-up at the 2009 ICC World Twenty20 (lost the final) — not a win. Debuted 2009,
+    // not in the 2014 T20 WC squad
+  },
+  {
+    name: "Sachithra Senanayake",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2012,
+    format: "All-format",
+    // ODI debut Jan 2012 v South Africa, T20I debut 2012 v Pakistan, Test debut (cap 125)
+    // 31 Dec 2013 v Pakistan — his only Test cap — Wikipedia + dedicated search confirmed
+    // IPL: Kolkata Knight Riders (2013, confirmed genuine playing appearances — 8 matches,
+    // 9 wickets that season)
+    iplTeams: ["Kolkata Knight Riders"],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — confirmed genuine squad member (Wikipedia official squad list)
+  },
+
   // ===== PAKISTAN (10 players) =====
   // No Pakistani player has featured in the IPL since an informal exclusion took hold after
   // the 2008 season, except a handful who played that first 2008 season only — ESPNcricinfo confirmed
