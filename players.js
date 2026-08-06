@@ -4196,23 +4196,6 @@ const wordlePlayers = [
     // Debuted 2017, after Sri Lanka's most recent ICC trophy (2014 WT20)
   },
   {
-    name: "Pramodya Wickramasinghe",
-    country: "Sri Lanka",
-    role: "Bowler",
-    battingStyle: "Right-hand",
-    bowlingStyle: "Right arm fast",
-    debutYear: 1990,
-    format: "Test+ODI",
-    // ODI debut 31 Dec 1990, Test debut 12 Dec 1991, confirmed zero T20I caps (retired 2002,
-    // before T20Is began Feb 2005) — ESPNcricinfo/Wikipedia confirmed
-    iplTeams: [],
-    // No IPL history found — retired 2002, before the IPL existed
-    iccTrophies: 1
-    // 1996 World Cup winner (explicit Wikipedia confirmation: "member of 1996 Cricket World Cup
-    // winning team") — last ODI was Jul 2002, before that year's September Champions Trophy, and
-    // confirmed absent from that official squad list
-  },
-  {
     name: "Vishwa Fernando",
     country: "Sri Lanka",
     role: "Bowler",
@@ -4336,19 +4319,100 @@ const wordlePlayers = [
     // No IPL history found — confirmed via dedicated search
     iccTrophies: 0
   },
+  // 6 replacement Round 2 players, added after removing the 6 duplicates noted above — continued
+  // working down the same real Test cap list (cap 165 down to 154), skipping caps 163 (KNM
+  // Fernando = Nishan Madushka, already in the database via the concurrent T20I batch) and 155
+  // (Pathum Nissanka, likewise already present), 153/152/151 (Asitha Fernando/Bhanuka
+  // Rajapaksa/Wanindu Hasaranga, all already present) along the way.
   {
-    name: "Milan Rathnayake",
+    name: "Dilshan Madushanka",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2022,
+    format: "All-format",
+    // Round 2 cap-number entry (cap 164). T20I debut 27 Aug 2022 (earliest), ODI debut 10 Jan
+    // 2023, only Test 24 Jul 2023 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad"],
+    // Genuine 2026 SRH debut (injury replacement for Brydon Carse). His 2024 Mumbai Indians
+    // signing never resulted in a match — ruled out by a hamstring injury before the season even
+    // began and replaced by Kwena Maphaka before a ball was bowled — excluded per the standing
+    // "signed but never played" rule
+    iccTrophies: 0
+    // Debuted 2022, after Sri Lanka's most recent ICC trophy (2014 WT20)
+  },
+  {
+    name: "Dunith Wellalage",
     country: "Sri Lanka",
     role: "All-rounder",
     battingStyle: "Left-hand",
-    bowlingStyle: "Right arm medium fast",
-    debutYear: 2024,
-    format: "Test+ODI",
-    // Round 2 cap-number entry (cap 166). Test debut 21 Aug 2024 v England, ODI debut 2 Jul 2025,
-    // confirmed zero T20I caps — ESPNcricinfo/Wikipedia confirmed
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2022,
+    format: "All-format",
+    // Round 2 cap-number entry (cap 162). ODI debut 14 Jun 2022 (earliest), only Test 24 Jul
+    // 2022, T20I debut 15 Oct 2024 — ESPNcricinfo/Wikipedia confirmed
     iplTeams: [],
-    // No confirmed IPL playing appearance found — has a generic IPL.com profile page (which exists
-    // for most contemporary cricketers) but no source confirms an actual auction pick or match
+    // Went unsold at both the 2023 and 2025 IPL auctions — confirmed via dedicated search
+    iccTrophies: 0
+    // Debuted 2022, after Sri Lanka's most recent ICC trophy (2014 WT20)
+  },
+  {
+    name: "Jeffrey Vandersay",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2015,
+    format: "All-format",
+    // T20I debut 30 Jul 2015 (earliest), ODI debut 28 Dec 2015, Test debut 29 Jun 2022 —
+    // ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+    // T20I debut (Jul 2015) came after the 2014 WT20; no SL ICC trophy since
+  },
+  {
+    name: "Chamika Gunasekara",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2022,
+    format: "Test+ODI",
+    // Round 2 cap-number entry (cap 165). Only ODI debut 16 Jan 2022 (earliest), only Test 2 Feb
+    // 2024, confirmed zero T20I caps — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Praveen Jayawickrama",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2021,
+    format: "All-format",
+    // Round 2 cap-number entry (cap 156). Test debut 29 Apr 2021 (earliest, took a 10-wicket haul
+    // on debut), ODI debut 29 Jun 2021, T20I debut 12 Sep 2021 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Ramesh Mendis",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2021,
+    format: "All-format",
+    // Round 2 cap-number entry (cap 154). Test debut 22 Jan 2021 (earliest), ODI debut 28 May
+    // 2021, T20I debut 28 Jul 2021 — ESPNcricinfo/Wikipedia confirmed. Not to be confused with
+    // Kusal Mendis or Kamindu Mendis, both already in the database via other batches
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
     iccTrophies: 0
   },
 
