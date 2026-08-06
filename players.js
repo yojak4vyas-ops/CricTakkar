@@ -4088,6 +4088,270 @@ const wordlePlayers = [
     // 2002 CT (shared), 2014 T20 WC — Wikipedia confirmed
   },
 
+  // Day 58 — Sri Lanka Test Wordle cap expansion (Round 1: top-15 all-time run-scorers +
+  // top-15 all-time wicket-takers, pulled directly from ESPNcricinfo). Note: Round 1 originally
+  // produced 18 new names (7 batting + 11 bowling), but 4 of them — Dinesh Chandimal, Kusal
+  // Mendis, Dhananjaya de Silva, Lahiru Kumara — turned out to have already been added to the
+  // database moments earlier in this same session by a separate, concurrently-running session
+  // that independently worked the Sri Lanka T20I cell (see the "SRI LANKA T20I" block just
+  // below). Those 4 were dropped from this batch to avoid duplicate entries, dropping Round 1's
+  // effective count to 14 — so Round 2 (cap-number method) contributed 6 players instead of the
+  // usual 2-3, to still close the cell at exactly 20. Every attribute checked against
+  // ESPNcricinfo + Wikipedia (Cricbuzz attempted, unreachable as usual — standing tool
+  // limitation, flagged here once for the batch). iccTrophies verified against the actual
+  // official squad lists for all 3 of Sri Lanka's relevant ICC trophies — 1996 World Cup,
+  // 2002 Champions Trophy (joint win with India), 2014 World Twenty20 — fetched directly from
+  // Wikipedia rather than assumed from era proximity.
+  {
+    name: "Dimuth Karunaratne",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    // Wikipedia's infobox dual-lists "Right-arm medium" and "Right-arm off break" with no stated
+    // primary — went with the first-listed, flagged transparently (2 Test wickets total, not
+    // enough evidence either way)
+    debutYear: 2011,
+    format: "Test+ODI",
+    // ODI debut 9 Jul 2011, Test debut 17 Nov 2012, confirmed zero T20I caps — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+    // No T20I caps at all, so never eligible for the 2014 WT20 squad regardless of era; debuted
+    // after the 2002 CT
+  },
+  {
+    name: "Thilan Samaraweera",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1998,
+    format: "Test+ODI",
+    // ODI debut 6 Nov 1998, Test debut 29 Aug 2001, confirmed zero T20I caps (retired 2013) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — later a KKR fielding coach (2018), never a player there
+    iccTrophies: 0
+    // NOT in the 2002 CT squad (confirmed absent from the official list) — debuted after 1996 WC,
+    // retired before 2014 WT20; runner-up (not winner) at the 2011 World Cup
+  },
+  {
+    name: "Rangana Herath",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 1999,
+    format: "All-format",
+    // Test debut 22 Sep 1999, ODI debut 25 Apr 2004, T20I debut 6 Aug 2011 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Registered for the IPL auction 5 separate years (2010-2014) but never fetched a single bid —
+    // Sportskeeda confirmed
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 winner (explicit Wikipedia confirmation, official squad list also confirmed)
+  },
+  {
+    name: "Dilruwan Perera",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2007,
+    format: "All-format",
+    // ODI debut 13 Oct 2007, T20I debut 6 Aug 2011 (last T20I Nov 2011), Test debut 17 Jan 2014
+    // — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+    // T20I career ended Nov 2011, well before the 2014 WT20 squad — confirmed absent from that
+    // official squad list; debuted after 2002 CT, retired (2022) before any later SL ICC trophy
+  },
+  {
+    name: "Prabath Jayasuriya",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2018,
+    format: "Test+ODI",
+    // ODI debut 1 Aug 2018 (only 2 ODI caps), Test debut 8 Jul 2022, confirmed zero T20I caps
+    // — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+    // Debuted 2018, after Sri Lanka's most recent ICC trophy (2014 WT20)
+  },
+  {
+    name: "Asitha Fernando",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 8 Jul 2017, Test debut 3 Jan 2021, T20I debut 1 Sep 2022 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+    // Debuted 2017, after Sri Lanka's most recent ICC trophy (2014 WT20)
+  },
+  {
+    name: "Pramodya Wickramasinghe",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1990,
+    format: "Test+ODI",
+    // ODI debut 31 Dec 1990, Test debut 12 Dec 1991, confirmed zero T20I caps (retired 2002,
+    // before T20Is began Feb 2005) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — retired 2002, before the IPL existed
+    iccTrophies: 1
+    // 1996 World Cup winner (explicit Wikipedia confirmation: "member of 1996 Cricket World Cup
+    // winning team") — last ODI was Jul 2002, before that year's September Champions Trophy, and
+    // confirmed absent from that official squad list
+  },
+  {
+    name: "Vishwa Fernando",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium fast",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 4 Aug 2016, ODI debut 20 Aug 2017, only T20I 20 Dec 2017 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search, not on the 2026 shortlisted-auction list either
+    iccTrophies: 0
+    // Debuted 2016, after Sri Lanka's most recent ICC trophy (2014 WT20)
+  },
+  {
+    name: "Dhammika Prasad",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2006,
+    format: "All-format",
+    // ODI debut 25 Feb 2006, Test debut 8 Aug 2008, only T20I 6 Aug 2011 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+    // Confirmed absent from the 2014 WT20 official squad list despite still being an active
+    // international at the time (retired from all cricket 2015/announced 2021)
+  },
+  {
+    name: "Rumesh Ratnayake",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1982,
+    format: "Test+ODI",
+    // ODI debut 26 Sep 1982, Test debut 4 Mar 1983, retired 1993, before T20Is existed
+    // — ESPNcricinfo/Wikipedia confirmed. Not to be confused with the similarly-named Ravi
+    // Ratnayeke (JR Ratnayeke, cap 12, a different, lower-ranked Sri Lankan all-rounder of the
+    // same era) — double-checked against the real career-wicket figures (73) to confirm the
+    // correct player before writing this entry
+    iplTeams: [],
+    // Retired 1993, well before the IPL existed — no domestic franchise history recorded at all
+    iccTrophies: 0
+    // Retired 1993, before Sri Lanka's first ICC trophy (1996 World Cup)
+  },
+  {
+    name: "Isitha Wijesundara",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2026,
+    format: "Test",
+    // Round 2 (cap-number method): Sri Lanka's real latest Test cap (171) as of this session —
+    // ESPNcricinfo's live caps list confirmed. Only Test so far, debut 3 Jul 2026 v West Indies
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Sonal Dinusha",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2025,
+    format: "Test",
+    // Round 2 cap-number entry (cap 170). Only Test so far, debut 25 Jun 2025 v Bangladesh —
+    // ESPNcricinfo/Wikipedia confirmed. Took 2 wickets (Litton Das, Mushfiqur Rahim) in his
+    // opening spell on debut, including 3 consecutive maiden overs
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Tharindu Rathnayake",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Wikipedia's infobox genuinely dual-lists "Right-arm off break, Slow left-arm" — a rare
+    // ambidextrous bowler — went with the first-listed, flagged transparently
+    debutYear: 2025,
+    format: "Test",
+    // Round 2 cap-number entry (cap 169). Only Test so far, debut 17 Jun 2025 v Bangladesh —
+    // ESPNcricinfo/Wikipedia confirmed. Leading wicket-taker in that series with 9 wickets
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Lahiru Udara Igalagamage",
+    country: "Sri Lanka",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Not listed in his Wikipedia infobox at all (batting-only style shown), but he has a real
+    // bowling record (9 FC wickets, 3 List A wickets) — a secondary source (cricket.com.au)
+    // confirms right-arm medium, flagged as coming from a source outside the primary 4
+    debutYear: 2023,
+    format: "Test+T20",
+    // Round 2 cap-number entry (cap 168 for Test). T20I debut 4 Oct 2023 (only 1 cap), Test debut
+    // 17 Jun 2025, confirmed zero ODI caps — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Nishan Peiris",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2024,
+    format: "Test",
+    // Round 2 cap-number entry (cap 167). Only Test so far, debut 26 Sep 2024 v New Zealand —
+    // ESPNcricinfo/Wikipedia confirmed. Took 6 wickets on debut, sealing a series win over New
+    // Zealand by an innings and 154 runs
+    iplTeams: [],
+    // No IPL history found — confirmed via dedicated search
+    iccTrophies: 0
+  },
+  {
+    name: "Milan Rathnayake",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2024,
+    format: "Test+ODI",
+    // Round 2 cap-number entry (cap 166). Test debut 21 Aug 2024 v England, ODI debut 2 Jul 2025,
+    // confirmed zero T20I caps — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // No confirmed IPL playing appearance found — has a generic IPL.com profile page (which exists
+    // for most contemporary cricketers) but no source confirms an actual auction pick or match
+    iccTrophies: 0
+  },
+
   // ===== SRI LANKA T20I — Round 1 (top-15 all-time run-scorers + top-15 wicket-takers,
   // Day 58 session 2, pulled directly from ESPNcricinfo — 21 genuinely new players, over
   // the 20-player target in Round 1 alone, so Round 2 not needed, same as Australia/England/
@@ -4461,6 +4725,348 @@ const wordlePlayers = [
     iplTeams: ["Kolkata Knight Riders"],
     iccTrophies: 1
     // 2014 ICC World Twenty20 — confirmed genuine squad member (Wikipedia official squad list)
+  },
+
+  // ===== SRI LANKA ODI — Round 1 (top-15 all-time run-scorers + top-15 wicket-takers,
+  // Day 58 session 3, deduped against the 31-player Sri Lanka roster which already
+  // includes the T20I Round 1 batch above) + Round 2 (cap-number method, caps 212-219,
+  // via ESPNcricinfo's live ODI caps list). Round 1 alone produced only 12 new players
+  // (6 batting: Atapattu/Tharanga/Mahanama/Arnold/Gurusinha/Tillakaratne; 6 bowling:
+  // Dilhara Fernando/Chandana/Dharmasena/Maharoof/Lakmal/Pramodya Wickramasinghe) after
+  // Kusal Mendis, Chandimal, Thisara Perera, Hasaranga, Ajantha Mendis and Kulasekara
+  // turned out already present via the T20I batch — so Round 2 filled the remaining 8. =====
+  {
+    name: "Marvan Atapattu",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1990,
+    format: "All-format",
+    // Test debut 23 Nov 1990 v India, ODI debut 1 Dec 1990 v India, T20I debut 22 Dec 2006
+    // v New Zealand — ESPNcricinfo matches page confirmed
+    // No IPL history — the "Delhi Giants" team on his Wikipedia infobox is an Indian
+    // Cricket League (ICL) side, not IPL, per the standing non-IPL-league precedent
+    iplTeams: [],
+    iccTrophies: 2
+    // 1996 World Cup, 2002 Champions Trophy (shared) — Wikipedia official squad lists confirmed
+  },
+  {
+    name: "Upul Tharanga",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // Confirmed non-bowler — ESPNcricinfo's own stats page shows no bowling section at all
+    // across any format, and he is explicitly listed "Is Not Keeper" too
+    debutYear: 2005,
+    format: "All-format",
+    // Test debut 18 Dec 2005 v India, ODI debut 2 Aug 2005 v West Indies, T20I debut
+    // 15 Jun 2006 v England — ESPNcricinfo + Wikipedia confirmed
+    // No IPL history — confirmed unsold at both the IPL 3 (2010) and IPL 5 (2012) auctions;
+    // his other T20 league appearances (Sylhet Sixers, Dhaka Dynamites etc.) are BPL, not IPL
+    iplTeams: [],
+    iccTrophies: 0
+    // Not part of the official 2014 ICC World Twenty20 winning squad (Wikipedia squad list
+    // checked directly) — no other SL ICC trophy during his career
+  },
+  {
+    name: "Roshan Mahanama",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // Confirmed non-bowler and never a wicketkeeper — purely a specialist opening batsman
+    // and fielder throughout his career, per ESPNcricinfo/Wikipedia
+    debutYear: 1986,
+    format: "Test+ODI",
+    // Test debut 14 Mar 1986 v Pakistan, ODI debut 2 Mar 1986 v Pakistan, retired 1999 —
+    // before T20Is existed (Feb 2005)
+    iplTeams: [],
+    iccTrophies: 1
+    // 1996 World Cup — official winning squad, Wikipedia confirmed
+  },
+  {
+    name: "Russel Arnold",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1997,
+    format: "All-format",
+    // Test debut 19 Apr 1997 v Pakistan, ODI debut 6 Nov 1997 v South Africa, T20I debut
+    // 15 Jun 2006 v England — Sri Lanka's first-ever T20I, his only T20I cap — Wikipedia confirmed
+    // No IPL history as a player — he later became Deccan Chargers' assistant coach, a
+    // coaching role, not a playing signing
+    iplTeams: [],
+    iccTrophies: 1
+    // 2002 ICC Champions Trophy (shared) — official winning squad, Wikipedia confirmed.
+    // Not part of the 1996 World Cup squad (debuted the following year)
+  },
+  {
+    name: "Asanka Gurusinha",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1985,
+    format: "Test+ODI",
+    // Test debut 7 Nov 1985 v Pakistan, ODI debut 3 Nov 1985 v Pakistan, retired 1996 —
+    // before T20Is existed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1996 World Cup — official winning squad, Wikipedia confirmed (scored 65 in the final)
+  },
+  {
+    name: "Hashan Tillakaratne",
+    country: "Sri Lanka",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    debutYear: 1986,
+    format: "Test+ODI",
+    // ODI debut 27 Nov 1986 v India, Test debut 16 Dec 1989 v Australia, retired 2003 —
+    // before T20Is existed. Wicketkeeper for the early part of his career, moved to
+    // specialist batsman from Dec 1992 — "Wicketkeeper" role kept per the same convention
+    // already used for Kumar Sangakkara elsewhere in this file
+    iplTeams: [],
+    iccTrophies: 1
+    // 1996 World Cup — official winning squad, Wikipedia confirmed
+  },
+  {
+    name: "Dilhara Fernando",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2000,
+    format: "All-format",
+    // Test debut 14 Jun 2000 v Pakistan, ODI debut 9 Jan 2001 v South Africa, T20I debut
+    // 15 Jun 2006 v England — Wikipedia confirmed
+    // IPL: Mumbai Indians (2008-2011, genuine playing appearances) — Wikipedia confirmed
+    iplTeams: ["Mumbai Indians"],
+    iccTrophies: 1
+    // 2002 ICC Champions Trophy (shared) — listed as player #11 in the official winning
+    // squad, Wikipedia confirmed. Retired 2012, before the 2014 T20 WC
+  },
+  {
+    name: "Upul Chandana",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1994,
+    format: "Test+ODI",
+    // ODI debut 14 Apr 1994 v Australia, Test debut 12 Mar 1999 v Pakistan — his own
+    // ESPNcricinfo matches page lists no T20I section at all despite his career running to
+    // 2007 (after T20Is began), confirming he never played one
+    // No IPL history — he played in the rival Indian Cricket League (ICL) for Kolkata
+    // Tigers, not the IPL
+    iplTeams: [],
+    iccTrophies: 2
+    // 1996 World Cup (squad member, did not play in the tournament) + 2002 ICC Champions
+    // Trophy (shared, played, squad #11) — both official winning squads, Wikipedia confirmed
+  },
+  {
+    name: "Kumar Dharmasena",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1993,
+    format: "Test+ODI",
+    // Test debut 6 Sep 1993 v South Africa, ODI debut 24 Aug 1994 v Pakistan, retired
+    // 2004 — before T20Is existed. Playing career only — now a well-known ICC umpire, a
+    // separate later career not reflected in this data
+    iplTeams: [],
+    iccTrophies: 2
+    // 1996 World Cup (squad #5) + 2002 ICC Champions Trophy (shared, squad #13) — both
+    // official winning squads, Wikipedia confirmed
+  },
+  {
+    name: "Farveez Maharoof",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2004,
+    format: "All-format",
+    // Test debut 6 May 2004 v Zimbabwe, ODI debut 25 Apr 2004 v Zimbabwe, T20I debut
+    // 15 Jun 2006 v England — Wikipedia confirmed
+    // IPL: Delhi Daredevils (2007/08-2009/10, genuine playing appearances — 15 wickets in
+    // 2008 alone) — Wikipedia confirmed
+    iplTeams: ["Delhi Daredevils"],
+    iccTrophies: 0
+    // Debuted 2004, after the 2002 CT; not part of the official 2014 T20 WC winning squad
+    // (Wikipedia squad list checked directly)
+  },
+  {
+    name: "Suranga Lakmal",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 18 Dec 2009 v India, Test debut 23 Nov 2010 v West Indies, T20I debut
+    // 25 Jun 2011 v England — Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2014 ICC World Twenty20 — confirmed genuine squad member (player #82) though he did
+    // not play in any of the matches, per the same non-playing-squad-member precedent used
+    // elsewhere in this file — Wikipedia official squad list confirmed
+  },
+  {
+    name: "Pramodya Wickramasinghe",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1990,
+    format: "Test+ODI",
+    // ODI debut 31 Dec 1990 v Bangladesh, Test debut 12 Dec 1991 v Pakistan, retired
+    // 2002 — before T20Is existed and before the IPL existed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1996 World Cup — official winning squad (player #14), Wikipedia confirmed
+  },
+
+  // ===== SRI LANKA ODI — Round 2 (cap-number method, working back from the real latest
+  // ODI cap 219 = Pavan Rathnayake, confirmed via ESPNcricinfo's live ODI caps list rather
+  // than a possibly-stale Wikipedia snapshot) =====
+  {
+    name: "Pavan Rathnayake",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // Cap 219 (ODI). ODI debut 16 Nov 2025 v Pakistan (Rawalpindi), T20I debut 25 Nov 2025
+    // v Zimbabwe, no Test caps — ESPNcricinfo + Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed (very recent debutant)
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2025, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Kamil Mishara",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2022,
+    format: "ODI+T20",
+    // Cap 218 (ODI). T20I debut 20 Feb 2022 v Australia, ODI debut 11 Nov 2025 v Pakistan
+    // (Rawalpindi), no Test caps — ESPNcricinfo's own "Opening Batter" playing-role field
+    // confirmed directly (an "occasional keeper" mention elsewhere was not treated as his
+    // primary role)
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2022, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Milan Rathnayake",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2024,
+    format: "Test+ODI",
+    // Cap 217 (ODI, listed as "RMMP Rathnayaka" — full name Rathnayake Mudiyanselage
+    // Milan Priyanath Rathnayake). Test debut 21 Aug 2024 v England, ODI debut 2 Jul 2025
+    // v Bangladesh, no T20I caps — Wikipedia confirmed
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2024, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Eshan Malinga",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // Cap 216 (ODI). ODI debut 5 Jan 2025 v New Zealand (Wellington), T20I debut 20 Nov
+    // 2025 v Zimbabwe, no Test caps — ESPNcricinfo + Wikipedia confirmed. Not related to
+    // Lasith Malinga
+    // IPL: Sunrisers Hyderabad (2025-2026, genuine playing appearances — 13 wickets in 7
+    // matches 2025, 20 wickets in 15 matches 2026) — Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad"],
+    iccTrophies: 0
+    // Debuted 2025, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Chamindu Wickramasinghe",
+    country: "Sri Lanka",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // Cap 215 (ODI). T20I debut 30 Jul 2024 v India, ODI debut 19 Nov 2024 v New Zealand
+    // (Pallekele), no Test caps — Wikipedia confirmed. Not related to Pramodya
+    // Wickramasinghe elsewhere in this file — a different, much more recent player
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2024, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Nishan Madushka",
+    country: "Sri Lanka",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // Confirmed non-bowler — no bowling section on his ESPNcricinfo stats page
+    debutYear: 2023,
+    format: "Test+ODI",
+    // Cap 214 (ODI, listed as "KNM Fernando" — full birth name Kottasinghakkarage Nishan
+    // Madushka Fernando; ESPNcricinfo's profile page is currently titled "Nishan Fernando",
+    // Wikipedia's is titled "Nishan Madushka" — same player, "Madushka" used here as the
+    // better-known cricket name). Test debut 17 Mar 2023 v New Zealand, ODI debut 20 Oct
+    // 2024 v West Indies, his own ESPNcricinfo matches page lists no T20I section at all
+    // — ESPNcricinfo confirmed
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2023, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Mohamed Shiraz",
+    country: "Sri Lanka",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2024,
+    format: "ODI",
+    // Cap 213. ODI debut 2 Aug 2024 v India — called up as injury cover for Matheesha
+    // Pathirana. Named in a Test squad in Feb 2019 but never capped, and no T20I caps —
+    // Wikipedia confirmed, ODI-only
+    // No IPL history found — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2024, no SL ICC trophy since 2014 T20 WC
+  },
+  {
+    name: "Shevon Daniel",
+    country: "Sri Lanka",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // Cap 212. T20I debut 4 Oct 2023 v Afghanistan, ODI debut 11 Jan 2024 v Zimbabwe, no
+    // Test caps — Wikipedia confirmed
+    // No IPL history — invited to a Rajasthan Royals training camp ahead of IPL 2023 but
+    // never signed or played — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Debuted 2023, no SL ICC trophy since 2014 T20 WC
   },
 
   // ===== PAKISTAN (10 players) =====
