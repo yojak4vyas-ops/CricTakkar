@@ -3124,6 +3124,332 @@ const wordlePlayers = [
     iccTrophies: 0
     // No ICC trophy — retired long before the first World Cup (1975)
   },
+  {
+    name: "Shai Hope",
+    country: "West Indies",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium",
+    debutYear: 2015,
+    format: "All-format",
+    // Test debut 1 May 2015, ODI debut 16 Nov 2016, T20I debut 29 Dec 2017 — ESPNcricinfo
+    // confirmed. Current ODI & T20I captain.
+    iplTeams: ["Delhi Capitals"],
+    // 2024 season, 9 matches — dedicated IPL-history search confirmed (unsold at the 2025
+    // and 2026 auctions)
+    iccTrophies: 0
+    // No ICC trophy — debut (2015) came after West Indies' last trophy (2016 T20 WC was won
+    // before his T20I debut in Dec 2017)
+  },
+  {
+    name: "Marlon Samuels",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2000,
+    format: "All-format",
+    // Test debut 15 Dec 2000, ODI debut 4 Oct 2000, T20I debut 28 Jun 2007 — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: ["Pune Warriors India", "Delhi Daredevils"],
+    // Pune Warriors India (2012-2013, genuine matches), Delhi Daredevils (2017, replacement
+    // for an injured Quinton de Kock) — dedicated IPL-history search confirmed
+    iccTrophies: 2
+    // 2012 T20 World Cup + 2016 T20 World Cup — confirmed genuine member of both official
+    // winning squads via Wikipedia; the only player besides Dwayne Bravo to win Man of the
+    // Match in both finals
+  },
+  {
+    name: "Phil Simmons",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1987,
+    format: "Test+ODI",
+    // ODI debut 16 Oct 1987, Test debut 11 Jan 1988 — retired 1999, before T20Is existed —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — retired 1999, before the 2004 Champions Trophy
+  },
+  {
+    name: "Darren Bravo",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 26 Jun 2009, Test debut 15 Nov 2010, T20I debut 28 Feb 2010 — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
+    // 2017 season, a single genuine appearance (6* off 5 balls) — dedicated IPL-history
+    // search confirmed a 2012 Deccan Chargers signing and a Sunrisers Hyderabad spell were
+    // both "signed but never played," correctly excluded per the standing rule
+    iccTrophies: 1
+    // 2012 T20 World Cup — confirmed genuine member of the official winning squad via
+    // Wikipedia; withdrew from the 2016 squad, so not credited for that one
+  },
+  {
+    name: "Dwayne Bravo",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2004,
+    format: "All-format",
+    // ODI debut 18 Apr 2004, Test debut 22 Jul 2004, T20I debut 16 Feb 2006 — ESPNcricinfo
+    // confirmed
+    iplTeams: ["Mumbai Indians", "Chennai Super Kings"],
+    // Mumbai Indians (2008-2010), Chennai Super Kings (2011-2015, 2018-2022) — dedicated
+    // IPL-history search confirmed; Trinbago Knight Riders/Melbourne Renegades/Dolphins/
+    // Gujarat Lions are CPL/BBL/other-league franchises, not IPL, and correctly excluded
+    iccTrophies: 2
+    // 2012 T20 World Cup + 2016 T20 World Cup — confirmed genuine member of both official
+    // winning squads via Wikipedia
+  },
+  {
+    name: "Wavell Hinds",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    // Occasional part-time bowler — ESPNcricinfo + Wikipedia confirmed
+    debutYear: 1999,
+    format: "All-format",
+    // ODI debut 5 Sep 1999, Test debut 16 Mar 2000, 5 T20Is 2006-2010 — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2004 Champions Trophy — confirmed genuine member of the official winning squad via
+    // Wikipedia
+  },
+  {
+    name: "Alzarri Joseph",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 9 Aug 2016, ODI debut 2 Oct 2016, T20I debut 29 Jul 2022 — ESPNcricinfo
+    // confirmed
+    iplTeams: ["Mumbai Indians", "Gujarat Titans", "Royal Challengers Bangalore"],
+    // Mumbai Indians (2019, best-ever IPL bowling figures 6/12 on debut), Gujarat Titans
+    // (2022-2023), Royal Challengers Bangalore (2024) — dedicated IPL-history search
+    // confirmed; Worcestershire/Joburg Super Kings/Peshawar Zalmi are county/SA20/PSL
+    // franchises, not IPL, and correctly excluded
+    iccTrophies: 0
+    // No ICC trophy — West Indies' only trophy since his 2016 debut (2016 T20 WC, won 3 Apr
+    // 2016) predates it; not in either the 2012 or 2016 T20 WC winning squads
+  },
+  {
+    name: "Mervyn Dillon",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1997,
+    format: "Test+ODI",
+    // Test debut 14 Mar 1997, ODI debut 3 Nov 1997 — retired 2005, before T20Is existed
+    // (first T20I was Feb 2005, his last ODI was 26 Jan 2005) — ESPNcricinfo + Wikipedia
+    // confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 2004 Champions Trophy — confirmed genuine member of the official winning squad via
+    // Wikipedia
+  },
+  {
+    name: "Jerome Taylor",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2003,
+    format: "All-format",
+    // ODI debut 11 Jun 2003, Test debut 20 Jun 2003, T20I debut 16 Feb 2006 — ESPNcricinfo
+    // confirmed
+    iplTeams: ["Pune Warriors India", "Mumbai Indians"],
+    // Pune Warriors India (2011, 5 matches), Mumbai Indians (2016, signed mid-season as an
+    // injured Lasith Malinga's replacement, 5 genuine matches) — dedicated IPL-history
+    // search confirmed; a 2009 Kings XI Punjab signing never resulted in a match (injury),
+    // correctly excluded per the standing "signed but never played" rule
+    iccTrophies: 1
+    // 2016 T20 World Cup — confirmed genuine member of the official winning squad via
+    // Wikipedia; NOT in the 2012 squad (confirmed absent) and his 2006 Champions Trophy
+    // campaign ended in a losing final, so doesn't count
+  },
+  {
+    name: "Sherfane Rutherford",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2018,
+    format: "ODI+T20",
+    // T20I debut 22 Dec 2018, ODI debut Dec 2023 — as of Aug 2026 has never played a Test —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Delhi Capitals", "Royal Challengers Bangalore", "Gujarat Titans", "Mumbai Indians"],
+    // Delhi Capitals (2019, 7 matches), Royal Challengers Bangalore (2022, 3 matches),
+    // Gujarat Titans (2025, 13 matches), Mumbai Indians (2026, genuine appearances
+    // confirmed) — dedicated IPL-history search confirmed; a 2020 Mumbai Indians stint and
+    // a 2024 Kolkata Knight Riders stint were both "won a title without playing a single
+    // game," correctly excluded per the standing rule
+    iccTrophies: 0
+    // No ICC trophy — debuted Dec 2018, after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Matthew Forde",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2023,
+    format: "ODI+T20",
+    // ODI debut 9 Dec 2023 (3/29 and Player of the Match on debut), T20I debut 19 Dec 2023
+    // — as of Aug 2026 has never played a Test — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found via dedicated search — plays CPL (Saint Lucia Kings), BPL
+    // (Comilla Victorians), and PSL (Islamabad United), none of which are the IPL
+    iccTrophies: 0
+    // No ICC trophy — debuted 2023, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Teddy Bishop",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Part-time bowler — ESPNcricinfo confirmed
+    debutYear: 2024,
+    format: "ODI",
+    // Only ODI (cap 222), 6 Feb 2024 v Australia — no Test or T20I caps found —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2024, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Jewel Andrew",
+    country: "West Indies",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // ODI debut Oct 2024 (youngest-ever West Indies ODI debutant, breaking Xavier
+    // Marshall's record), T20I debut 31 Jul 2025 (also youngest-ever West Indies T20I
+    // debutant) — no Test caps found — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2024, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Shamar Joseph",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2024,
+    format: "All-format",
+    // Test debut 17 Jan 2024 (played a crucial role in West Indies' Test win over Australia
+    // at Adelaide), T20I debut 23 May 2024, ODI debut 2 Nov 2024 — ESPNcricinfo confirmed
+    iplTeams: ["Lucknow Super Giants"],
+    // 2024 season onward, genuine playing appearances (signed as Mark Wood's replacement) —
+    // dedicated IPL-history search confirmed
+    iccTrophies: 0
+    // No ICC trophy — debuted 2024, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Marquino Mindley",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2022,
+    format: "Test+ODI",
+    // Only Test (cap 332), 8 Dec 2022 v Australia; only ODI (cap 225), 10 Dec 2024 v
+    // Bangladesh — sources conflict on whether a T20I call-up ever became a real cap, and
+    // his own official career record shows no T20I match, so recorded as Test+ODI —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2022, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Jediah Blades",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // ODI debut 12 Dec 2024 v Bangladesh, T20I debut 25 Jul 2025 — no Test caps found —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2024, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Amir Jangoo",
+    country: "West Indies",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2024,
+    format: "All-format",
+    // ODI debut 12 Dec 2024 (century on debut off 83 balls, fastest-ever ODI debut century
+    // by a West Indian, matching a Desmond Haynes-era record), Test debut 25 Jan 2025, T20I
+    // debut 27 Sep 2025 — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2024, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Ackeem Auguste",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2025,
+    format: "ODI+T20",
+    // T20I debut 27 Sep 2025 v Nepal, ODI debut 21 Oct 2025 v Bangladesh — no Test caps
+    // found — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2025, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Shamar Springer",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2024,
+    format: "ODI+T20",
+    // T20I debut 13 Oct 2024 v Sri Lanka, ODI debut 16 Nov 2025 v New Zealand — no Test caps
+    // found — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2024, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Vitel Lawes",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
+    debutYear: 2026,
+    format: "ODI",
+    // ODI debut July 2026 v New Zealand — genuinely his first-ever match at any senior
+    // level, having never played a professional match before this international debut —
+    // ESPNcricinfo + Wikipedia confirmed. A left-arm wrist spinner who rose to prominence
+    // at the 2026 Under-19 World Cup (10 wickets, ICC Team of the Tournament).
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2026
+  },
 
   // ===== NEW ZEALAND (50 players) =====
 
