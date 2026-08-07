@@ -2651,7 +2651,11 @@ const wordlePlayers = [
     iccTrophies: 0
   },
 
-  // ===== WEST INDIES (10 players) =====
+  // ===== WEST INDIES (31 players) =====
+  // Day 59: Round 1 (top-15 all-time Test run-scorers + top-15 all-time Test wicket-takers)
+  // produced 21 genuinely new names in one pass (10 batting + 11 bowling, only Sobers
+  // overlapping both lists) — clears the 20-player Round 1 threshold, so Round 2 (cap-number
+  // method) was not needed, same as Australia/England/Pakistan Test.
 
   {
     name: "Brian Lara",
@@ -2793,6 +2797,332 @@ const wordlePlayers = [
     iplTeams: ["Royal Challengers Bangalore"],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Garry Sobers",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    // Sobers was a genuine triple-threat bowler — left-arm fast-medium, slow left-arm
+    // orthodox, AND left-arm wrist-spin (chinaman), switching styles within a match.
+    // Recorded as Left arm orthodox (closest single match to the app's 13-style schema);
+    // flagged since no single "primary" style fits his real record — Wikipedia confirmed.
+    debutYear: 1954,
+    format: "Test+ODI",
+    // Test debut 30 Mar 1954, only ODI 5 Sep 1973 (cap 11) — retired 1974, before T20Is
+    // existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // Retired 1974, one year before the first World Cup (1975) — confirmed NOT in West
+    // Indies' 14-man 1975 squad via Wikipedia's official squad list
+  },
+  {
+    name: "Gordon Greenidge",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Wikipedia's infobox lists "Right-arm medium/off-break" — recorded as medium (primary)
+    debutYear: 1974,
+    format: "Test+ODI",
+    // Test debut 22 Nov 1974, ODI debut 11 Jun 1975 — retired 1991, before T20Is existed —
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 2
+    // 1975 WC + 1979 WC — confirmed genuine member of both official winning squads via
+    // Wikipedia's squad lists
+  },
+  {
+    name: "Desmond Haynes",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // Wikipedia's infobox lists both "Right arm leg break" and "Right-arm medium" —
+    // recorded the first-listed style
+    debutYear: 1978,
+    format: "Test+ODI",
+    // Test debut 3 Mar 1978, ODI debut 22 Feb 1978 — retired 1994, before T20Is existed —
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1979 WC — confirmed genuine member of the official winning squad via Wikipedia
+    // (debuted 1978, after the 1975 WC, so not eligible for that one)
+  },
+  {
+    name: "Rohan Kanhai",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1957,
+    format: "Test+ODI",
+    // Test debut 1957, ODI career Sep 1973 - Jun 1975 (7 ODIs, including the 1975 WC final)
+    // — retired 1975/76, before T20Is existed — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1975 WC — confirmed genuine member of the official winning squad via Wikipedia
+  },
+  {
+    name: "Kraigg Brathwaite",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Occasional 4th-change part-time bowler — ESPNcricinfo confirmed
+    debutYear: 2011,
+    format: "Test+ODI",
+    // Test debut 20 May 2011, ODI debut 30 Sep 2016 — as of Aug 2026 has never played a T20I
+    // — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No IPL history found — Test specialist. No ICC trophy — West Indies' only trophy since
+    // his debut (2016 T20 WC) was a T20-squad-only win and he has no T20I caps
+  },
+  {
+    name: "Richie Richardson",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1983,
+    format: "Test+ODI",
+    // Test debut 24 Nov 1983, ODI debut 17 Dec 1983 — retired 1996, before T20Is existed —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 1983 (after the 1979 WC) and retired 1996 (before the 2004 CT)
+  },
+  {
+    name: "Ramnaresh Sarwan",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2000,
+    format: "All-format",
+    // Test debut 18 May 2000, ODI debut 20 Jul 2000, T20I debut 11 Sep 2007 — ESPNcricinfo
+    // confirmed
+    iplTeams: ["Kings XI Punjab"],
+    // 2008 season only, 4 matches — dedicated IPL-history search confirmed
+    iccTrophies: 1
+    // 2004 Champions Trophy — confirmed genuine member of the official winning squad via
+    // Wikipedia
+  },
+  {
+    name: "Carl Hooper",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1987,
+    format: "Test+ODI",
+    // Test debut 11 Dec 1987 — retired 2003, before T20Is existed (Feb 2005) — ESPNcricinfo
+    // + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — retired 2003, before the 2004 Champions Trophy
+  },
+  {
+    name: "Everton Weekes",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 1948,
+    format: "Test",
+    // Test debut 21 Jan 1948, retired 1958 — ODI cricket didn't exist until 1971 —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — retired long before the first World Cup (1975)
+  },
+  {
+    name: "Alvin Kallicharran",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1972,
+    format: "Test+ODI",
+    // Test debut 6 Apr 1972, ODI debut 5 Sep 1973 — retired 1981, before T20Is existed —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 2
+    // 1975 WC + 1979 WC — confirmed genuine member of both official winning squads via
+    // Wikipedia
+  },
+  {
+    name: "Lance Gibbs",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 1958,
+    format: "Test+ODI",
+    // Test debut 1958, played 3 ODIs (1973 v England x2, 1975 WC v Sri Lanka) — retired
+    // 1976, before T20Is existed — Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1975 WC — confirmed genuine member of the official winning squad via Wikipedia
+  },
+  {
+    name: "Kemar Roach",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2008,
+    format: "All-format",
+    // T20I debut 20 Jun 2008, ODI debut 20 Aug 2008, Test debut 9 Jul 2009 — ESPNcricinfo
+    // confirmed
+    iplTeams: ["Deccan Chargers"],
+    // 2010 season, 2 matches (wicketless vs MI and KKR) — dedicated IPL-history search
+    // confirmed
+    iccTrophies: 0
+    // No ICC trophy — confirmed NOT in either the 2012 or 2016 T20 World Cup winning squads
+    // via Wikipedia's official squad lists (a Test/ODI-first specialist for most of his
+    // career)
+  },
+  {
+    name: "Joel Garner",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1977,
+    format: "Test+ODI",
+    // Test/ODI career 1977-1987 — retired before T20Is existed — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1979 WC — confirmed genuine member of the official winning squad via Wikipedia
+    // (debuted 1977, after the 1975 WC, so not eligible for that one)
+  },
+  {
+    name: "Michael Holding",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1975,
+    format: "Test+ODI",
+    // Test/ODI career 1975-1987 — retired before T20Is existed — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 1
+    // 1979 WC — confirmed genuine member of the official winning squad via Wikipedia (debuted
+    // 1975, after the 1975 WC squad was already selected, so not eligible for that one)
+  },
+  {
+    name: "Andy Roberts",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1974,
+    format: "Test+ODI",
+    // Test/ODI career 1974-1983 — retired before T20Is existed — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 2
+    // 1975 WC + 1979 WC — confirmed genuine member of both official winning squads via
+    // Wikipedia
+  },
+  {
+    name: "Wes Hall",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1958,
+    format: "Test",
+    // Test debut 28 Nov 1958, retired 1969 — ODI cricket didn't exist until 1971 —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — retired long before the first World Cup (1975)
+  },
+  {
+    name: "Shannon Gabriel",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2012,
+    format: "All-format",
+    // Test debut 17 May 2012, T20I debut 3 Mar 2013, ODI debut 21 Jun 2016 — ESPNcricinfo
+    // confirmed
+    iplTeams: [],
+    // No IPL history found — dedicated search confirmed only domestic/franchise leagues
+    // outside India (CPL, county cricket)
+    iccTrophies: 0
+    // No ICC trophy — confirmed NOT in either the 2012 or 2016 T20 World Cup winning squads
+  },
+  {
+    name: "Fidel Edwards",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2003,
+    format: "All-format",
+    // Test debut 27 Jun 2003, ODI debut 29 Nov 2003, T20I debut 11 Sep 2007 (T20I career ran
+    // all the way to 2021) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Deccan Chargers"],
+    // 2009 season, genuine playing appearances (took wickets vs KKR) — a 2013 Rajasthan
+    // Royals auction signing never resulted in a single match, confirmed via a dedicated
+    // search, so RR is correctly excluded (signed but never played)
+    iccTrophies: 1
+    // 2012 T20 World Cup — confirmed genuine member of the official winning squad via
+    // Wikipedia (a real catch — not an obvious candidate given his Test/ODI-heavy profile)
+  },
+  {
+    name: "Jason Holder",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2013,
+    format: "All-format",
+    // ODI debut 1 Feb 2013, T20I debut 15 Jan 2014, Test debut 26 Jun 2014 — ESPNcricinfo
+    // confirmed
+    iplTeams: ["Chennai Super Kings", "Sunrisers Hyderabad", "Kolkata Knight Riders",
+      "Lucknow Super Giants", "Rajasthan Royals", "Gujarat Titans"],
+    // All 6 confirmed as genuine playing appearances via dedicated searches (CSK 2013, SRH
+    // 2014 & 2020, KKR 2016, LSG 2022, RR 2023, GT 2026)
+    iccTrophies: 1
+    // 2016 T20 World Cup — confirmed genuine member of the official winning squad (vice-
+    // captain) via Wikipedia
+  },
+  {
+    name: "Ian Bishop",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1988,
+    format: "Test+ODI",
+    // ODI debut 21 May 1988, Test debut 25 Mar 1989 — retired 1998, before T20Is existed —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — career (1988-1998) fell entirely between the 1979 WC and 2004 CT
+  },
+  {
+    name: "Sonny Ramadhin",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // A genuine "mystery spinner" who bowled off breaks and leg breaks with no discernible
+    // change of action — recorded as offbreak (closest single match to the app's 13-style
+    // schema), flagged since sources describe a genuinely dual-style bowler
+    debutYear: 1950,
+    format: "Test",
+    // Test debut 8 Jun 1950, retired 1961 — ODI cricket didn't exist until 1971 —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — retired long before the first World Cup (1975)
   },
 
   // ===== NEW ZEALAND (50 players) =====
@@ -7128,6 +7458,369 @@ const wordlePlayers = [
     // Tests, ODIs, T20Is — ESPNcricinfo confirmed
     // Registered for IPL auctions (including 2026) but dedicated search found no
     // record of him ever being bought or playing an actual IPL match — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+
+  // ===== BANGLADESH ODI EXPANSION (Day 59) — Round 1 (16, top-15 run-scorers + top-15
+  // wicket-takers) + Round 2 (4, cap-number method, cap 154 down to 151) — 20/20 total.
+  // Bangladesh has never won an ICC trophy (World Cup / T20 World Cup / Champions Trophy),
+  // so every entry below is iccTrophies: 0, confirmed via Wikipedia's Bangladesh trophy
+  // history rather than assumed — consistent with every existing Bangladesh entry above.
+  {
+    name: "Soumya Sarkar",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium fast",
+    // A rarity among Bangladesh all-rounders — bowls medium-fast rather than spin,
+    // occasionally opening the bowling — ESPNcricinfo confirmed
+    debutYear: 2014,
+    format: "All-format",
+    // ODI debut 1 Dec 2014, Test debut 28 Apr 2015, T20I debut 24 Apr 2015 — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Imrul Kayes",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat, opening batsman with occasional wicketkeeping duty — ESPNcricinfo, Wikipedia agree
+    // UNCONFIRMED — sources list "slow left-arm orthodox" as a nominal style but no source
+    // could confirm an actual bowling record (balls bowled/wickets) either way — flagging
+    // per the KL Rahul precedent rather than asserting NA as a settled, proven fact
+    bowlingStyle: "NA",
+    debutYear: 2008,
+    format: "All-format",
+    // Test debut 19 Nov 2008, ODI debut 14 Oct 2008, T20I debut 1 May 2010 — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Shahriar Nafees",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    // ESPNcricinfo's own profile field literally reads "left arm off-break", an unusual
+    // label for a left-arm finger-spinner — mapped to this file's standard "Left arm
+    // orthodox" category, which the naming standard explicitly covers this exact action under
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2005,
+    format: "All-format",
+    // ODI debut 21 Jun 2005, Test debut 12 Sep 2005, T20I debut 28 Nov 2006 (1 match, cap 10,
+    // Bangladesh's first-ever T20I) — ESPNcricinfo confirmed. Former T20I captain
+    // Played in the 2008 Indian Cricket League (ICL, Dhaka Warriors) — a separate rebel
+    // league, not the IPL, so it does not count per the standing ICL exclusion (see Chris
+    // Cairns' entry) — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Habibul Bashar",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 1995,
+    format: "Test+ODI",
+    // ODI debut 6 Apr 1995, Test debut 10 Nov 2000. Confirmed via Bangladesh's actual
+    // first-ever T20I XI (28 Nov 2006 vs Zimbabwe) that Bashar was NOT in it, and he was
+    // also left out of the 2007 World Twenty20 squad (dropped, "out of favour") — his
+    // career ended (last Test Feb 2008) having never played a T20I — ESPNcricinfo + Wikipedia confirmed
+    // Captained the 2008 Indian Cricket League's Dhaka Warriors — a separate rebel league,
+    // not the IPL, so it does not count — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Najmul Hossain Shanto",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 2017,
+    format: "All-format",
+    // Test debut 20 Jan 2017, ODI debut 20 Sep 2018, T20I debut 18 Sep 2019 — ESPNcricinfo confirmed
+    // Current Bangladesh Test captain (since 2023); was ODI captain 2023-2025, T20I captain 2023-2024
+    // Never played IPL — dedicated search found no franchise history; retained by BPL's
+    // Rajshahi Warriors instead — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Aftab Ahmed",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed — took 5/31 vs New Zealand in just his 3rd ODI, the first
+    // Bangladeshi bowler ever to take a 5-wicket haul in ODIs
+    debutYear: 2004,
+    format: "All-format",
+    // ODI debut 5 Mar 2004, Test debut 26 Oct 2004, T20I debut 28 Nov 2006 (Bangladesh's
+    // first-ever T20I) — ESPNcricinfo confirmed
+    // Played in the 2008 Indian Cricket League (ICL, Dhaka Warriors) — a separate rebel
+    // league, not the IPL, so it does not count — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Khaled Mashud",
+    country: "Bangladesh",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    // Confirmed NA — his own ESPNcricinfo profile lists no bowling style/record at all
+    // ("no bowling"), a genuinely confirmed zero-ball case, not merely unconfirmed
+    bowlingStyle: "NA",
+    debutYear: 1995,
+    format: "Test+ODI",
+    // ODI debut 5 Apr 1995, Test debut 10 Nov 2000. Was dropped/out of favour by 2007 and
+    // never capped in T20I — Bangladesh's first T20I was 28 Nov 2006 and he wasn't in that
+    // XI — ESPNcricinfo + Wikipedia confirmed
+    // Retired 2007, before the IPL existed (2008) — no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Abdur Razzak",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // ESPNcricinfo confirmed — the first Bangladeshi bowler to reach 200 ODI wickets
+    debutYear: 2004,
+    format: "All-format",
+    // ODI debut 16 Jul 2004, Test debut 16 Apr 2006, T20I debut 28 Nov 2006 — ESPNcricinfo confirmed
+    // Bought by Royal Challengers Bangalore ($50,000), played 1 match — ESPNcricinfo confirmed
+    iplTeams: ["Royal Challengers Bangalore"],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Rubel Hossain",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast",
+    // Slingy, quick bowler, action compared to Lasith Malinga's — ESPNcricinfo confirmed
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 14 Jan 2009, T20I debut 6 Jun 2009, Test debut 9 Jul 2009 — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found only BPL (domestic) history, no IPL franchise — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Mohammad Rafique",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat, could bat a bit with the long handle — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // An accurate, rhythmical slow left-armer — ESPNcricinfo confirmed. First Bangladeshi
+    // to take 100 wickets in both Tests and ODIs
+    debutYear: 1995,
+    format: "All-format",
+    // ODI debut 5 Apr 1995, Test debut 10 Nov 2000, T20I debut 28 Nov 2006 (1 match,
+    // Bangladesh's first-ever T20I) — ESPNcricinfo confirmed
+    // Retired 2008 (last Test Feb 2008), before the IPL existed (Apr 2008) — no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Shoriful Islam",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm medium fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2021,
+    format: "All-format",
+    // T20I debut 28 Mar 2021, Test debut 29 Apr 2021, ODI debut 25 May 2021 — ESPNcricinfo confirmed
+    // Shortlisted for the IPL 2026 auction (reserve price 75 lakh) but went unsold —
+    // dedicated search confirmed no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Shafiul Islam",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2010,
+    format: "All-format",
+    // ODI debut 4 Jan 2010, Test debut 17 Jan 2010, T20I debut 3 Feb 2010 — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found no franchise history, only BPL (domestic) — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Khaled Mahmud",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree. Described directly as a "bowling all-rounder"
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed — Man of the Match for 3/31 and 27 runs vs Pakistan, 1999 World Cup
+    debutYear: 1998,
+    format: "Test+ODI",
+    // ODI debut 10 Jan 1998, Test debut 8 Nov 2001. Retired 2006 (last ODI 20 Feb 2006,
+    // last Test 29 Oct 2003), before Bangladesh's first-ever T20I (28 Nov 2006) — ESPNcricinfo confirmed
+    // Retired before the IPL existed (2008) — no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Syed Rasel",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm medium fast",
+    // Left-arm swing bowler — ESPNcricinfo confirmed
+    debutYear: 2005,
+    format: "All-format",
+    // ODI debut 31 Aug 2005, Test debut 12 Sep 2005, T20I debut 1 Sep 2007 (vs Kenya) — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tapash Baisya",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast medium",
+    // A busy run-up and a slingy action — ESPNcricinfo confirmed
+    debutYear: 2002,
+    format: "Test+ODI",
+    // Test debut 28 Jul 2002, ODI debut 4 Aug 2002. Confirmed NOT in Bangladesh's
+    // first-ever T20I XI (28 Nov 2006 vs Zimbabwe), and his international career ended
+    // with his last ODI on 31 Mar 2007, before any other T20I was played — never capped
+    // in T20I — ESPNcricinfo + Wikipedia confirmed
+    // Retired 2007, before the IPL existed (2008) — no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Shahadat Hossain",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2005,
+    format: "All-format",
+    // Test debut 26 May 2005, ODI debut 17 Mar 2006, T20I debut 28 Nov 2006 (Bangladesh's
+    // first-ever T20I); made a T20I comeback in 2023 (cap 85, 17 years after his original
+    // T20I debut) — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found no franchise history — ESPNcricinfo confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Mahidul Islam Ankon",
+    country: "Bangladesh",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    // Right-hand bat, wicketkeeper-batter — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // Occasional off-spin, confirmed as right-arm off spin — ESPNcricinfo confirmed
+    debutYear: 2024,
+    format: "Test+ODI",
+    // Test debut 29 Oct 2024 (cap 106), ODI debut 18 Oct 2025 (cap 154 — the latest BAN
+    // ODI cap as of this batch, Aug 2026). Received a maiden T20I squad call-up for the
+    // Nov-Dec 2025 Ireland series but does not appear anywhere in Bangladesh's actual T20I
+    // caps list (checked up to cap 93, the latest as of 2026) — treated as not yet capped
+    // in T20I rather than asserted, per the standing unconfirmed-call-up precedent
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Saif Hassan",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat, opening batsman — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // Occasional off-spin — ESPNcricinfo confirmed
+    debutYear: 2020,
+    format: "All-format",
+    // Test debut 7 Feb 2020, T20I debut 19 Nov 2021, ODI debut 8 Oct 2025 (cap 153) — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tanvir Islam",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // Slow left-arm orthodox spinner — ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 14 Mar 2023 (cap 79), ODI debut 2 Jul 2025 (cap 152). Was called up to a
+    // Test squad as an uncapped spinner in 2025 but no source could confirm an actual Test
+    // cap/debut match as of this batch (Aug 2026) — treated as not yet capped rather than
+    // asserted, per the standing unconfirmed-call-up precedent
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Parvez Hossain Emon",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat, power-hitting opener — ESPNcricinfo, Wikipedia agree. One of the
+    // 2020 U19 World Cup winners fast-tracked into the senior side
+    // Confirmed NA — his own ESPNcricinfo profile lists no bowling style at all ("na")
+    bowlingStyle: "NA",
+    debutYear: 2022,
+    format: "ODI+T20",
+    // T20I debut 2 Aug 2022 (cap 76), ODI debut 2 Jul 2025 (cap 151). No Test cap found — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
     iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
