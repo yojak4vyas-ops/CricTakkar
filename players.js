@@ -8016,8 +8016,343 @@ const wordlePlayers = [
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
+  {
+    name: "Rahmat Shah",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2013,
+    format: "All-format",
+    // ODI debut 6 Mar 2013 v Scotland, Test debut 14 Jun 2018 v India, T20I debut
+    // 11 Jan 2024 v India — ESPNcricinfo/Wikipedia confirmed. Afghanistan's Test
+    // Round 1 top-run-scorer (970 runs), first Afghan to score a Test century (2019 v Bangladesh)
+    iplTeams: [],
+    // No IPL history found — ESPNcricinfo/Wikipedia confirmed
+    iccTrophies: 0
+    // Afghanistan has never won an ICC trophy — ESPNcricinfo/Wikipedia confirmed
+  },
+  {
+    name: "Afsar Zazai",
+    country: "Afghanistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No bowling record found in any source despite a long, well-covered career —
+    // unconfirmed either way rather than asserted as a proven zero-ball record,
+    // same treatment as KL Rahul's entry
+    debutYear: 2013,
+    format: "All-format",
+    // T20I debut 11 Oct 2013 v Kenya, ODI debut 28 Nov 2014 v UAE, Test debut
+    // 14 Jun 2018 v India (Afghanistan's first-ever Test wicketkeeper) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Nasir Jamal",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // Part-time legspinner (leg-break googly) — ESPNcricinfo/Wikipedia confirmed
+    debutYear: 2014,
+    format: "Test+ODI",
+    // ODI debut Jul 2014 v Zimbabwe, Test debut 27 Nov 2019 v West Indies — confirmed
+    // no T20I cap via direct Wikipedia infobox check — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Noor Ali Zadran",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 19 Apr 2009 v Scotland, T20I debut 4 Feb 2010 v Canada, Test debut
+    // 2 Feb 2024 v Sri Lanka. Retired from international cricket 7 Mar 2024 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // A search snippet suggested Mumbai Indians/Rajasthan Royals/RCB, but a direct
+    // Wikipedia infobox check found no IPL mention at all — this was conflation
+    // with the unrelated, younger player Noor Ahmad (GT/CSK) sharing a similar name
+    iccTrophies: 0
+  },
+  {
+    name: "Javed Ahmadi",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2010,
+    format: "All-format",
+    // ODI debut 9 Jul 2010 v Scotland, T20I debut 14 Mar 2012 v Netherlands, Test
+    // debut 14 Jun 2018 v India — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Ihsanullah",
+    country: "Afghanistan",
+    // Full name Ihsanullah Khan Mangal ("Ihsanullah Janat" on some sources) —
+    // banned from all cricket for 5 years for corruption in August 2024; noted
+    // here for transparency, doesn't affect the recorded playing data below
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No bowling style found in any source — unconfirmed rather than a proven
+    // zero-ball record, same treatment as KL Rahul's entry
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 24 Feb 2017 v Zimbabwe, Test debut 15 Mar 2019 v Ireland, T20I
+    // debut 14 Jun 2022 v Zimbabwe (cap 47) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Ismat Alam",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2025,
+    format: "Test",
+    // Test debut 2 Jan 2025 v Zimbabwe (century on debut batting at No.8, after a
+    // duck in the first innings) — confirmed via direct Wikipedia infobox check.
+    // A search snippet claimed a 10 Aug 2021 T20I debut and ODI caps, but the
+    // infobox lists only the Test debut with no ODI/T20I entries — treated the
+    // direct infobox as authoritative over the ambiguous synthesis claim
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Karim Janat",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2016,
+    format: "All-format",
+    // T20I debut 14 Dec 2016 v UAE, ODI debut 24 Feb 2017 v Zimbabwe, Test debut
+    // 14 Jun 2023 v Bangladesh — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: ["Gujarat Titans"],
+    // Signed Nov 2024, played 1 genuine match v Rajasthan Royals in Apr 2025 — Wikipedia confirmed
+    iccTrophies: 0
+  },
+  {
+    name: "Amir Hamza",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2012,
+    format: "All-format",
+    // ODI debut 10 Feb 2012 v Pakistan, T20I debut 3 Mar 2013 v Scotland, Test
+    // debut 27 Nov 2019 v West Indies — first Afghan bowler with a 5-wicket haul
+    // on Test debut (6/75) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Mohammad Shahzad",
+    country: "Afghanistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // Every source describes him exclusively as batsman/wicketkeeper with zero
+    // bowling mention across a long, heavily-covered career — treated as a
+    // confirmed non-bowler
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 30 Aug 2009 v Netherlands, T20I debut 1 Feb 2010 v Ireland, Test
+    // debut 14 Jun 2018 v India — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Yamin Ahmadzai",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2015,
+    format: "All-format",
+    // T20I debut 29 Nov 2015 v Oman, ODI debut 25 Dec 2015 v Zimbabwe, Test debut
+    // 14 Jun 2018 v India — took Afghanistan's first-ever Test wicket (Shikhar
+    // Dhawan) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Zahir Khan",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
+    debutYear: 2019,
+    format: "All-format",
+    // ODI debut 10 Mar 2019 v Ireland, Test debut 5 Sep 2019 v Bangladesh, T20I
+    // debut 19 Feb 2023 v UAE — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Signed by Rajasthan Royals for 2018 but ruled out through injury before the
+    // season — never played a match, excluded per the signed-but-never-played rule
+    iccTrophies: 0
+  },
+  {
+    name: "Naveed Zadran",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2024,
+    format: "Test+ODI",
+    // Test debut 2 Feb 2024 v Sri Lanka, ODI debut 12 Mar 2024 v Ireland —
+    // confirmed no T20I cap via direct Wikipedia infobox check (a lower-quality
+    // source claimed a 2021 T20I debut but this doesn't match the infobox and
+    // isn't corroborated) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Zia-ur-Rehman",
+    country: "Afghanistan",
+    // Full name Zia-ur-Rehman Akbar
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2023,
+    format: "Test+ODI",
+    // ODI debut 11 Jul 2023 v Bangladesh, Test debut 2 Feb 2024 v Sri Lanka —
+    // confirmed no T20I cap via direct Wikipedia infobox check — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Nijat Masood",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2022,
+    format: "Test+T20",
+    // T20I debut 11 Jun 2022 v Zimbabwe, Test debut 14 Jun 2023 v Bangladesh —
+    // confirmed no ODI cap via direct Wikipedia infobox check — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Waqar Salamkheil",
+    country: "Afghanistan",
+    // Full name Mohammad Waqar Salamkheil
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left Arm Wrist Spin (Chinaman)",
+    debutYear: 2019,
+    format: "Test",
+    // Test debut 15 Mar 2019 v Ireland — ESPNcricinfo's own profile explicitly
+    // states he has not played ODI or T20I at international level (a March 2021
+    // note about pending T20I selection vs Zimbabwe never materialized into a cap)
+    // — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Franchise history is Kandahar Knights (Afghanistan Premier League), Comilla
+    // Victorians (BPL), Peshawar Zalmi (PSL), Edinburgh Rocks, Tshwane Spartans —
+    // none of these are IPL
+    iccTrophies: 0
+  },
+  {
+    name: "Allah Mohammad Ghazanfar",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2024,
+    format: "All-format",
+    // ODI debut 7 Mar 2024 v Ireland, Test debut 26 Dec 2024 v Zimbabwe, T20I
+    // debut 2 Sep 2025 v Pakistan — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Signed by Kolkata Knight Riders as a 2024 replacement (did not play) and by
+    // Mumbai Indians for 2025 (₹4.80cr) but ruled out injured before playing —
+    // both excluded per the signed-but-never-played rule
+    iccTrophies: 0
+  },
+  {
+    name: "Sayed Shirzad",
+    country: "Afghanistan",
+    // Full name Sayed Ahmed Shirzad
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium",
+    debutYear: 2015,
+    format: "All-format",
+    // T20I debut 29 Nov 2015 v Oman, ODI debut 2 Mar 2019 v Ireland, Test debut
+    // 10 Mar 2021 v Zimbabwe — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Qais Ahmad",
+    country: "Afghanistan",
+    // Full name Qais Ahmad Kamawal
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2019,
+    format: "All-format",
+    // Test debut 5 Sep 2019 v Bangladesh, T20I debut 10 Mar 2020 v Ireland, ODI
+    // debut 25 Jan 2022 v Netherlands — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed via dedicated search — has featured in numerous global T10/T20
+    // franchise leagues (e.g. Delhi Bulls in the Abu Dhabi T10) but never sold at
+    // an IPL auction, most recently unsold at the 2026 auction
+    iccTrophies: 0
+  },
+  {
+    name: "Fareed Ahmad",
+    country: "Afghanistan",
+    // Full name Fareed Ahmad Malik
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2014,
+    format: "All-format",
+    // ODI debut 2 Dec 2014 v UAE, T20I debut 14 Dec 2016 v UAE, Test debut
+    // 2 Jan 2025 v Zimbabwe — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Franchise history is MI Emirates (ILT20), Northern Warriors and Chennai
+    // Braves (Abu Dhabi T10), Sunrisers Eastern Cape (SA20) — none of these are IPL
+    iccTrophies: 0
+  },
+  {
+    name: "Wafadar Momand",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2018,
+    format: "Test+T20",
+    // Test debut 14 Jun 2018 v India (one of the XI in Afghanistan's inaugural
+    // Test), T20I debut 16 Jul 2023 v Bangladesh — confirmed no ODI cap via direct
+    // Wikipedia infobox check (he was named in a 2018 ODI squad v Ireland but did
+    // not play) — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Shahidullah",
+    country: "Afghanistan",
+    // Full name Shahidullah Kamal
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2021,
+    format: "All-format",
+    // Test debut 10 Mar 2021 v Zimbabwe, ODI debut 21 Jan 2022 v Netherlands,
+    // T20I debut 4 Oct 2023 v Sri Lanka — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
 
-  // ===== ZIMBABWE (10 players) =====
+  // ===== ZIMBABWE (30 players) =====
 
   {
     name: "Andy Flower",
@@ -8188,6 +8523,346 @@ const wordlePlayers = [
     // Tests, ODIs — retired 1997, T20I format did not exist
     iplTeams: [],
     // Retired 1997, well before IPL began in 2008 — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+
+  // ---- Zimbabwe Test Wordle expansion, Day 59 (Round 1: 18 + Round 2: 2 = 20) ----
+  // Round 1 = top-15 all-time Test run-scorers + top-15 all-time wicket-takers
+  // for Zimbabwe (ESPNcricinfo live tables, browser-fetched). Round 2 = cap-number
+  // method, latest cap = 137 (Kundai Matigimu) confirmed via ESPNcricinfo's own
+  // "Updated List of 2026 Test Cricketers" page cross-checked against Wikipedia's
+  // "List of Zimbabwe Test cricketers" cap table — both agree cap 137 is current.
+  // Zimbabwe has never won any ICC trophy (World Cup/T20 WC/Champions Trophy) —
+  // confirmed by every existing Zimbabwe entry in this file — so every player in
+  // this batch is iccTrophies: 0. Only 5 Zimbabweans have ever played IPL (Taibu,
+  // Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani — established
+  // fact already in this file); Ray Price and Muzarabani fall in this batch and
+  // get real IPL team data, everyone else gets an empty array.
+  {
+    name: "Alistair Campbell",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Occasional off-spin — ESPNcricinfo confirmed
+    debutYear: 1992,
+    format: "Test+ODI",
+    // Test debut 1992 (cap 4), retired 2003, before Zimbabwe's first-ever T20I
+    // (28 Nov 2006) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2003, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Guy Whittall",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Nippy medium pace, combining away swing with nip off the pitch — ESPNcricinfo confirmed
+    debutYear: 1993,
+    format: "Test+ODI",
+    // Test debut 1993 per Wikipedia's cap-ordered table (cap 21, right after Heath
+    // Streak's cap 20) — a search snippet claiming a Dec 1992 Test debut conflicts
+    // with the cap-order logic and was not used, per the standing Day 24 cap-list
+    // data-quality caveat. Retired 2003, before Zimbabwe's first T20I — confirmed
+    iplTeams: [],
+    // Retired 2003, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Craig Ervine",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2010,
+    format: "All-format",
+    // ODI debut 28 May 2010 vs India, T20I debut 3 May 2010 vs Sri Lanka, Test debut
+    // 4 Aug 2011 vs Bangladesh — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Stuart Carlisle",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 1995,
+    format: "Test+ODI",
+    // Test debut 31 Jan 1995, ODI debut 22 Feb 1995 vs Pakistan, quit international
+    // cricket Oct 2005, before Zimbabwe's first T20I (28 Nov 2006) — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2005, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Murray Goodwin",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // Wikipedia infobox lists "Legbreak" as primary style — ESPNcricinfo confirmed
+    debutYear: 1998,
+    format: "Test+ODI",
+    // Represented Zimbabwe 1998-2000, before Zimbabwe's first T20I — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Career ended 2000, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Dion Ebrahim",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2001,
+    format: "Test+ODI",
+    // Test debut Apr 2001 vs Bangladesh, played until end of 2005, before Zimbabwe's
+    // first T20I (28 Nov 2006) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2005, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Ray Price",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 1999,
+    format: "All-format",
+    // Test debut 4 Dec 1999 vs Sri Lanka, ODI debut 14 Sep 2002 vs India, T20I debut
+    // 10 Oct 2008 vs Sri Lanka — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Mumbai Indians"],
+    // One of only 5 Zimbabweans to ever play IPL. Signed by Mumbai Indians as an
+    // injury replacement for Moises Henriques (2011); played his only IPL match
+    // vs Kolkata Knight Riders that season — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Blessing Muzarabani",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2017,
+    format: "All-format",
+    // Test debut 26 Dec 2017 vs South Africa, T20I debut 5 Feb 2018 vs Afghanistan —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
+    // One of only 5 Zimbabweans to ever play IPL. Signed by KKR as a replacement
+    // player for IPL 2026, made his debut in the season opener vs Mumbai Indians
+    // at Wankhede (29 Mar 2026) — ESPNcricinfo + Wikipedia confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Paul Strang",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // Legbreak/googly/topspinner/flipper repertoire — ESPNcricinfo confirmed
+    debutYear: 1994,
+    format: "Test+ODI",
+    // Represented Zimbabwe 1994-2001, before Zimbabwe's first T20I — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Career-ending injury 2001, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Henry Olonga",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 1995,
+    format: "Test+ODI",
+    // Test debut Jan 1995, last international match (ODI) Mar 2003, before Zimbabwe's
+    // first T20I (28 Nov 2006) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2003, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Graeme Cremer",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2005,
+    format: "All-format",
+    // Test debut 2005 per Wikipedia's cap-ordered table, T20I debut 13 Oct 2008 vs
+    // Canada — ESPNcricinfo + Wikipedia confirmed. Captained Zimbabwe 2016-2018;
+    // recalled to the Test squad in 2026 at age 39 — ESPNcricinfo confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Bryan Strang",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm medium fast",
+    debutYear: 1995,
+    format: "Test+ODI",
+    // Represented Zimbabwe 1995-2001, before Zimbabwe's first T20I — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Career ended 2001, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Andy Blignaut",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 1999,
+    format: "All-format",
+    // ODI debut 2 Sep 1999 vs West Indies, Test debut 19 Apr 2001 vs Bangladesh
+    // (took a Test hat-trick vs Bangladesh in 2004, the only bowler to do so for
+    // Zimbabwe), only T20I appearance 4 May 2010 vs New Zealand — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Kyle Jarvis",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 12 Oct 2009 vs Kenya, Test debut 2011, T20I confirmed (22 caps) —
+    // ESPNcricinfo + Wikipedia confirmed. Retired from international cricket in
+    // 2013 to pursue a county contract with Lancashire — confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Pommie Mbangwa",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 1996,
+    format: "Test+ODI",
+    // Represented Zimbabwe 1996-2002, before Zimbabwe's first T20I — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Retired 2002, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tinashe Panyangara",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2004,
+    format: "All-format",
+    // ODI debut 20 Apr 2004 vs Sri Lanka, Test debut 2004, T20I confirmed (6 caps,
+    // 9 wickets) — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "David Brain",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 1992,
+    format: "Test+ODI",
+    // Represented Zimbabwe 1992-1995, before Zimbabwe's first T20I — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Career ended 1995, before the IPL existed (2008) — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Richard Ngarava",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 16 Feb 2017 vs Afghanistan, T20I debut 29 Sep 2019 vs Singapore,
+    // Test debut 2021 — ESPNcricinfo + Wikipedia confirmed. First Zimbabwean to
+    // take 100 T20I wickets; named Zimbabwe's Test and ODI captain in 2025 — confirmed
+    iplTeams: [],
+    // Confirmed by exclusion: only 5 Zimbabweans have ever played IPL
+    // (Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani).
+    // Has played franchise T20 for Galle Marvels (LPL), not the IPL — confirmed
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+
+  // ---- Round 2 (cap-number method), caps 137 and 136, the 2 most recent debutants ----
+  {
+    name: "Kundai Matigimu",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2025,
+    format: "Test",
+    // Test debut 6 Jul 2025 vs South Africa at Queens Sports Club, Bulawayo (cap
+    // 137, the latest Zimbabwe Test cap as of this batch) — ESPNcricinfo confirmed
+    // via its own "Updated List of 2026 Test Cricketers" page. No ODI or T20I cap
+    // found in any source checked — treated as Test-only rather than asserted,
+    // same unconfirmed-format handling as other very recent debutants in this file
+    iplTeams: [],
+    // No IPL history found — confirmed by exclusion (only 5 Zimbabweans have ever
+    // played IPL: Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Vincent Masekesa",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2025,
+    format: "Test",
+    // Test debut 28 Apr 2025 vs Bangladesh at Chattogram (cap 136) — ESPNcricinfo +
+    // Wikipedia confirmed. No ODI or T20I cap found in any source checked — treated
+    // as Test-only rather than asserted, same unconfirmed-format handling as other
+    // very recent debutants in this file
+    iplTeams: [],
+    // No IPL history found — confirmed by exclusion (only 5 Zimbabweans have ever
+    // played IPL: Taibu, Ray Price, Brendan Taylor, Sikandar Raza, Blessing Muzarabani)
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
