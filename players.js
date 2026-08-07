@@ -3451,6 +3451,347 @@ const wordlePlayers = [
     // No ICC trophy — debuted 2026
   },
 
+  // West Indies T20I Wordle expansion (20 new players, Round 1: 18 from top-15
+  // all-time T20I run-scorers + top-15 wicket-takers; Round 2: 2 via cap-number
+  // method, caps 110/109). ESPNcricinfo + Wikipedia confirmed for all 20; Cricbuzz
+  // attempted and unreachable as usual, flagged. iccTrophies cross-checked against
+  // the actual official 2012 and 2016 ICC World Twenty20 winning squads (fetched
+  // directly from Wikipedia) — West Indies' only ICC trophies relevant to any
+  // player in this batch.
+  {
+    name: "Rovman Powell",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2016,
+    format: "ODI+T20",
+    // ODI debut 16 Nov 2016 v Sri Lanka, T20I debut 26 Mar 2017 v Pakistan — no Test
+    // caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders", "Delhi Capitals", "Rajasthan Royals"],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2016, well after West Indies' last trophy (2016 T20 WC,
+    // which concluded before his debut)
+  },
+  {
+    name: "Nicholas Pooran",
+    country: "West Indies",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2016,
+    format: "ODI+T20",
+    // T20I debut 23 Sep 2016 v Pakistan, ODI debut 20 Feb 2019 v England — no Test
+    // caps. Has a confirmed bowling record (part-time off-spin), including a career-best
+    // 4/48 vs Pakistan as ODI captain — ESPNcricinfo + Wikipedia confirmed. Retired from
+    // international cricket June 2025.
+    iplTeams: ["Kings XI Punjab", "Punjab Kings", "Sunrisers Hyderabad", "Lucknow Super Giants"],
+    // Mumbai Indians signed him for 2017 but he did not play a match that season —
+    // excluded per the standing signed-but-never-played rule
+    iccTrophies: 0
+    // No ICC trophy — debuted 2016, after West Indies' 2016 T20 WC win
+  },
+  {
+    name: "Brandon King",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2019,
+    format: "All-format",
+    // ODI debut 11 Nov 2019 v Afghanistan, T20I debut 14 Nov 2019 v Afghanistan, Test
+    // debut 25 Jun 2025 v Australia — ESPNcricinfo + Wikipedia confirmed. Has bowled a
+    // small number of deliveries with 1 career wicket, so recorded with a real style
+    // rather than NA.
+    iplTeams: [],
+    // Confirmed via dedicated search: has never been sold at an IPL auction as of the
+    // 2025-26 cycle, despite recurring interest
+    iccTrophies: 0
+    // No ICC trophy — debuted 2019, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Evin Lewis",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2016,
+    format: "ODI+T20",
+    // T20I debut 27 Mar 2016 v Afghanistan, ODI debut 5 Oct 2016 v Pakistan — no Test
+    // caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Mumbai Indians", "Rajasthan Royals", "Lucknow Super Giants"],
+    iccTrophies: 1
+    // Called up as an in-tournament injury replacement during the winning 2016 T20 World
+    // Cup campaign, confirmed via the official squad's own replacement history — credited
+    // per the same mid-tournament-replacement precedent used elsewhere in this file
+  },
+  {
+    name: "Shimron Hetmyer",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "NA",
+    // FLAGGED: no source found could confirm a bowling record either way (bowled or
+    // never bowled) — marked NA per the standing unconfirmed-attribute precedent (see
+    // KL Rahul's entry), not asserted as a proven zero-ball record
+    debutYear: 2017,
+    format: "All-format",
+    // Test debut 21 Apr 2017 v Pakistan, ODI debut 20 Dec 2017 v New Zealand, T20I
+    // debut 1 Jan 2018 v New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Royal Challengers Bangalore", "Delhi Capitals", "Rajasthan Royals"],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2017, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Lendl Simmons",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2006,
+    format: "All-format",
+    // ODI debut 7 Dec 2006 v Pakistan, T20I debut 29 Jun 2007 v England, Test debut
+    // 6 Mar 2009 v England — ESPNcricinfo + Wikipedia confirmed. Hit the winning six in
+    // the 2016 World T20 final.
+    iplTeams: ["Mumbai Indians"],
+    iccTrophies: 2
+    // Confirmed via the actual official squad lists: member of BOTH the winning 2012
+    // and 2016 ICC World Twenty20 squads (Wikipedia confirmed)
+  },
+  {
+    name: "Johnson Charles",
+    country: "West Indies",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Has bowled a small number of deliveries (5 balls in ODIs) with 0 wickets — per the
+    // standing rule, having bowled even a single delivery means recording a real style,
+    // not NA, regardless of wicket count
+    debutYear: 2011,
+    format: "ODI+T20",
+    // T20I debut 23 Sep 2011 v England, ODI debut 16 Mar 2012 v Australia — no Test
+    // caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Named by Kolkata Knight Riders as a mid-season replacement for Litton Das in IPL
+    // 2023, but official IPL stats confirm 0 matches played — excluded per the standing
+    // signed-but-never-played rule
+    iccTrophies: 2
+    // Confirmed via the actual official squad lists: member of BOTH the winning 2012
+    // and 2016 ICC World Twenty20 squads (Wikipedia confirmed)
+  },
+  {
+    name: "Andre Fletcher",
+    country: "West Indies",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    // Sources list a dual style (right-arm medium-fast and right-arm leg break,
+    // occasional) — first-listed style recorded per the file's standing convention for
+    // dual-style entries, flagged here
+    debutYear: 2008,
+    format: "ODI+T20",
+    // T20I debut 20 Jun 2008 v Australia, ODI debut 24 Jun 2008 v Australia — no Test
+    // caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed via dedicated search: never played in the IPL despite a long career in
+    // the CPL, BPL, PSL, and BBL
+    iccTrophies: 1
+    // Confirmed via a dedicated search (not just the official squad-list page, which
+    // undercounted this one): a genuine member of the winning 2016 T20 World Cup squad
+    // who played matches (84 off 64 balls vs Sri Lanka) before being ruled out with a
+    // hamstring injury just before the semi-final
+  },
+  {
+    name: "Romario Shepherd",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2019,
+    format: "ODI+T20",
+    // ODI debut 6 Nov 2019 v Afghanistan, T20I debut 18 Jan 2020 v Ireland — no Test
+    // caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Lucknow Super Giants", "Mumbai Indians", "Royal Challengers Bangalore"],
+    // Joburg Super Kings (SA20) and Chattogram Challengers (BPL) excluded — not IPL teams
+    iccTrophies: 0
+    // No ICC trophy — debuted 2019, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Akeal Hosein",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2021,
+    format: "ODI+T20",
+    // ODI debut 20 Jan 2021 v Bangladesh, T20I debut 6 Jul 2021 v South Africa — no
+    // Test caps — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Chennai Super Kings"],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2021, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Samuel Badree",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2012,
+    format: "T20",
+    // T20I debut 30 Jun 2012 v New Zealand — no Test or ODI caps, T20I specialist —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals", "Chennai Super Kings", "Royal Challengers Bangalore"],
+    iccTrophies: 2
+    // Confirmed via the actual official squad lists: member of BOTH the winning 2012
+    // and 2016 ICC World Twenty20 squads (Wikipedia confirmed)
+  },
+  {
+    name: "Sunil Narine",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2011,
+    format: "All-format",
+    // ODI debut 5 Dec 2011 v India, T20I debut 27 Mar 2012 v Australia, Test debut
+    // 7 Jun 2012 v England — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kolkata Knight Riders"],
+    // Sydney Sixers/Melbourne Renegades (BBL), Guyana Amazon Warriors (CPL), Cape Cobras
+    // (domestic SA), Comilla Victorians/Dhaka Dynamites (BPL), Lahore Qalandars (PSL),
+    // Oval Invincibles/Surrey (England), Abu Dhabi Knight Riders (ILT20), LA Knight
+    // Riders (MLC) all excluded — none are IPL
+    iccTrophies: 1
+    // Confirmed via the actual official squad list: member of the winning 2012 squad,
+    // but pulled out of the 2016 squad before the tournament (Wikipedia confirmed) — so
+    // only 1 trophy, not 2
+  },
+  {
+    name: "Sheldon Cottrell",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2013,
+    format: "All-format",
+    // Test debut 6 Nov 2013 v India, T20I debut 13 Mar 2014 v England, ODI debut
+    // 25 Jan 2015 v South Africa — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Kings XI Punjab"],
+    // Confirmed via dedicated search: genuinely played 6 matches for KXIP in IPL 2020
+    // (6 wickets), not just a signing
+    iccTrophies: 0
+    // No ICC trophy — his T20I debut (Mar 2014) came before the 2016 T20 WC, but he was
+    // not part of that winning squad (confirmed via the official squad list)
+  },
+  {
+    name: "Obed McCoy",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm fast medium",
+    debutYear: 2018,
+    format: "ODI+T20",
+    // ODI debut 24 Oct 2018 v India, T20I debut 8 Mar 2019 v England — no Test caps —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Rajasthan Royals"],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2018, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Gudakesh Motie",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2021,
+    format: "All-format",
+    // T20I debut 16 Dec 2021 v Pakistan, Test debut 16 Jun 2022 v Bangladesh, ODI debut
+    // 10 Jul 2022 v Bangladesh — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed via dedicated search: has gone unsold at IPL auctions, including 2026 —
+    // no IPL history
+    iccTrophies: 0
+    // No ICC trophy — debuted 2021, well after West Indies' last trophy (2016 T20 WC)
+  },
+  {
+    name: "Darren Sammy",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2004,
+    format: "All-format",
+    // ODI debut 8 Jul 2004 v New Zealand, Test debut 7 Jun 2007 v England, T20I debut
+    // 28 Jun 2007 v England — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: ["Sunrisers Hyderabad", "Royal Challengers Bangalore", "Kings XI Punjab"],
+    iccTrophies: 2
+    // Captained BOTH the winning 2012 and 2016 ICC World Twenty20 squads — confirmed
+    // via the actual official squad lists (Wikipedia confirmed)
+  },
+  {
+    name: "Kesrick Williams",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2016,
+    format: "ODI+T20",
+    // T20I debut 27 Sep 2016 v Pakistan, ODI debut 30 Jun 2017 v India — no Test caps —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — T20I debut (27 Sep 2016) came after the 2016 T20 WC final (3 Apr
+    // 2016), so he could not have been part of that winning squad
+  },
+  {
+    name: "Roston Chase",
+    country: "West Indies",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 21 Jul 2016 v India, ODI debut 9 Jun 2017 v Afghanistan, T20I debut
+    // 29 Oct 2021 v Bangladesh — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // Confirmed via dedicated search: went unsold at the IPL 2025 mega auction, no IPL
+    // history
+    iccTrophies: 0
+    // No ICC trophy — Test debut (Jul 2016) came after the 2016 T20 WC final (Apr 2016)
+  },
+  {
+    name: "Quentin Sampson",
+    country: "West Indies",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 19 Jan 2026 v Afghanistan (cap 110) — no Test or ODI caps —
+    // ESPNcricinfo + Wikipedia confirmed. Real latest West Indies T20I cap holder,
+    // independently confirmed against ESPNcricinfo's live caps list.
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophy — debuted 2026
+  },
+  {
+    name: "Karima Gore",
+    country: "West Indies",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2025,
+    format: "T20",
+    // West Indies T20I debut 30 Sep 2025 v Nepal (cap 109) — no West Indies Test or
+    // ODI caps. NOTE: previously represented the United States internationally
+    // (2019-2021, including 16 ODIs and 8 T20Is), before switching allegiance and
+    // qualifying for West Indies in 2025 — format/debutYear reflect his West Indies
+    // caps only, consistent with the country field — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    // No IPL history found in any source checked
+    iccTrophies: 0
+    // No ICC trophy — debuted for West Indies in 2025
+  },
+
   // ===== NEW ZEALAND (50 players) =====
 
   {
@@ -8146,6 +8487,376 @@ const wordlePlayers = [
     debutYear: 2022,
     format: "ODI+T20",
     // T20I debut 2 Aug 2022 (cap 76), ODI debut 2 Jul 2025 (cap 151). No Test cap found — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+
+  // ===== BANGLADESH TEST EXPANSION (Day 59, done out of the fixed traversal order at the
+  // user's explicit request — West Indies is still the FIXED TRAVERSAL ORDER's next unstarted
+  // cell) — Round 1 (10, top-15 Test run-scorers + top-15 wicket-takers) + Round 2 (10,
+  // cap-number method, cap 111 down to 98) — 20/20 total. Bangladesh has never won an ICC
+  // trophy, so every entry below is iccTrophies: 0, same as the ODI batch earlier this day.
+  {
+    name: "Mominul Haque",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // ESPNcricinfo confirmed
+    debutYear: 2012,
+    format: "All-format",
+    // ODI debut 30 Nov 2012, T20I debut 10 Dec 2012, Test debut 8 Mar 2013 — ESPNcricinfo confirmed
+    // Bangladesh Test captain 2019-2022. Currently 3rd on Bangladesh's all-time Test run list
+    // Never played IPL — bought at the BPL 2026 auction (Sylhet Titans) instead, a separate
+    // domestic league, not the IPL — dedicated search confirmed no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Javed Omar",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo confirmed
+    debutYear: 1995,
+    format: "Test+ODI",
+    // ODI debut 5 Apr 1995, Test debut 19 Apr 2001 (carried his bat for 85* on debut, only
+    // the 3rd player in history to do so). Career ended 2007, and he was not part of
+    // Bangladesh's first-ever T20I XI (28 Nov 2006) — never capped in T20I — ESPNcricinfo + Wikipedia confirmed
+    // Retired before the IPL existed (2008) — no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Shadman Islam",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // Nominal "slow left-arm orthodox" style listed — ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "Test",
+    // Test debut 30 Nov 2018 (76 on debut). Dedicated search confirmed his international
+    // career has been exclusively Test cricket since debut — no ODI or T20I cap — ESPNcricinfo + Wikipedia confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Taijul Islam",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // ESPNcricinfo confirmed — his 8/39 vs Zimbabwe (2014) is still the best-ever figures
+    // by a Bangladeshi in Tests
+    debutYear: 2014,
+    format: "All-format",
+    // Test debut 5 Sep 2014 (5-wicket haul on debut), ODI debut 1 Dec 2014 (took a hat-trick
+    // on debut, the first player ever to do so), T20I debut 13 Sep 2019 — ESPNcricinfo confirmed
+    // Bought at the BPL 2026 auction (Dhaka Capitals) — a separate domestic league, not the
+    // IPL — dedicated search confirmed no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Nayeem Hasan",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed — took 5 wickets on Test debut aged 17y 356d, still the
+    // youngest to do so in Test history
+    debutYear: 2018,
+    format: "Test",
+    // Test debut Nov 2018 (cap 93). Dedicated search confirmed he has never played an ODI,
+    // and his only "T20 debut" (Nov 2017) was for Chittagong Vikings in the domestic BPL,
+    // not a genuine T20I — never capped in T20I — ESPNcricinfo + Wikipedia confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Enamul Haque jnr",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // An accurate, rhythmical left-arm spinner — ESPNcricinfo confirmed
+    debutYear: 2003,
+    format: "Test+ODI",
+    // Test debut 21 Oct 2003 (took 6/45 including a hat-trick in the same match), ODI debut
+    // 24 Jan 2005. Career ended 2013 (last Test Apr 2013, last ODI Nov 2009) with no T20I
+    // section on his profile at any source checked — never capped in T20I — ESPNcricinfo + Wikipedia confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Ebadot Hossain",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast",
+    // Clean load-up, chest-on action, bowls in the middle-to-high 130s kph — ESPNcricinfo confirmed
+    debutYear: 2019,
+    format: "All-format",
+    // Test debut 28 Feb 2019, ODI debut 10 Aug 2022, T20I debut 1 Sep 2022 — ESPNcricinfo confirmed
+    // Retained by Sylhet Titans in the BPL 2026 auction — a separate domestic league, not
+    // the IPL — dedicated search confirmed no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Nahid Rana",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat, lower-order — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast",
+    // Bangladesh's quickest seamer, regularly 145+ kph; bowled a Bangladeshi-record 152.0
+    // km/h delivery vs Pakistan, Sep 2024 — ESPNcricinfo confirmed
+    debutYear: 2024,
+    format: "All-format",
+    // Test debut 22 Mar 2024, ODI debut 11 Nov 2024, T20I debut 19 May 2025 — ESPNcricinfo confirmed
+    // Registered for the IPL 2025 mega auction but his name was never actually called up for
+    // bidding (only Rishad Hossain and Mustafizur Rahman were, and both went unsold) —
+    // confirmed via a dedicated search, no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Sohag Gazi",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // An offspinner, a rarity in Bangladesh cricket — ESPNcricinfo confirmed. The first and
+    // (so far) only player to score a century and take a hat-trick in the same Test
+    debutYear: 2012,
+    format: "All-format",
+    // Test debut 13 Nov 2012, ODI debut 30 Nov 2012, T20I debut 10 Dec 2012 — all three
+    // formats within the same West Indies series — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Hasan Mahmud",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast",
+    // Fuller lengths and outswingers, uses seam/swing/pace to hit the stumps or pads — ESPNcricinfo confirmed
+    debutYear: 2020,
+    format: "All-format",
+    // T20I debut 11 Mar 2020, ODI debut 20 Jan 2021, Test debut 30 Mar 2024 — ESPNcricinfo confirmed
+    // Registered for the IPL 2025 mega auction but his name was never actually called up for
+    // bidding — confirmed via a dedicated search, no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Towhid Hridoy",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat, dazzling wristwork on pulls/flicks — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // Occasional off-break, career centres on batting — ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "All-format",
+    // T20I debut 9 Mar 2023 (cap 78, vs England), ODI debut 18 Mar 2023 (cap 140, vs
+    // Ireland, 92 on debut), Test debut 2026 (cap 111, vs Zimbabwe at Harare) — ESPNcricinfo confirmed
+    // Never played IPL — dedicated search found only BPL/LPL (domestic/franchise) history,
+    // no IPL franchise
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Amite Hasan",
+    country: "Bangladesh",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    // Right-hand bat, wicketkeeper-batter — ESPNcricinfo, Wikipedia agree
+    // Confirmed NA — no bowling style or record found in any source; his role is purely
+    // wicketkeeper-batter
+    bowlingStyle: "NA",
+    debutYear: 2026,
+    format: "Test",
+    // Test debut 2026 (cap 110, vs Zimbabwe at Harare, alongside Towhid Hridoy's Test debut
+    // on the same tour). Confirmed via Bangladesh's own official ODI and T20I caps lists
+    // (up to caps 154 and 93 respectively, as of this batch) that he does not appear in
+    // either — despite that same tour including 3 ODIs and 3 T20Is, he was selected for the
+    // Test only — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tanzid Hasan",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat, aggressive opener — ESPNcricinfo, Wikipedia agree
+    // Confirmed NA — no bowling role found in any source, described as "purely a batter"
+    bowlingStyle: "NA",
+    debutYear: 2023,
+    format: "All-format",
+    // ODI debut 31 Aug 2023 (cap 143, vs Sri Lanka), T20I debut 3 May 2024 (cap 90, vs
+    // Zimbabwe), Test debut 16 May 2026 (cap 109, vs Pakistan) — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Hasan Murad",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // A highly-rated left-arm spinner in Bangladesh domestic cricket, one of only 3 bowlers
+    // to take 150+ first-class wickets since 2021 (alongside Taijul Islam and Nayeem Hasan) — ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "Test+T20",
+    // T20I debut 6 Oct 2023 (cap 87, vs India at the Asian Games), Test debut 11 Nov 2025
+    // (cap 108, vs Ireland). Confirmed via Bangladesh's own official ODI caps list (up to
+    // cap 154, as of this batch) that he does not appear in it — has not yet made an ODI
+    // debut — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tanzim Hasan Sakib",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo confirmed — Bangladesh's leading wicket-taker at the 2024 T20 World Cup
+    // (11 wickets, career-best 4/7 vs Nepal)
+    debutYear: 2023,
+    format: "All-format",
+    // ODI debut 15 Sep 2023 (cap 145, 2023 Asia Cup vs India), T20I debut 27 Dec 2023 (cap
+    // 89, vs New Zealand), Test debut 28 Apr 2025 (cap 107, vs Zimbabwe) — ESPNcricinfo confirmed
+    // Registered for the IPL 2025 auction but his name was never actually called up for
+    // bidding — confirmed via a dedicated search, no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Jaker Ali",
+    country: "Bangladesh",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    // Right-hand bat, wicketkeeper-batter, aggressive big-hitter (47 sixes across formats
+    // in a short career) — ESPNcricinfo, Wikipedia agree
+    // Confirmed NA — no bowling style or record found in any source
+    bowlingStyle: "NA",
+    debutYear: 2023,
+    format: "All-format",
+    // T20I debut 2023 (cap 81, vs Malaysia at the Asian Games in Hangzhou), ODI debut 2024/25
+    // (cap 149, vs Afghanistan at Sharjah), Test debut 2024/25 (cap 105, vs South Africa at
+    // Mirpur, half-century in his 2nd innings) — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Zakir Hasan",
+    country: "Bangladesh",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree. Multiple sources (FanCode, IPL.com)
+    // specifically tag him as a wicketkeeper option, versatile as opener or middle order
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "All-format",
+    // T20I debut 15 Feb 2018 (cap 61, vs Sri Lanka), Test debut Dec 2022 (cap 101, vs India,
+    // century in the 4th innings on debut — only the 4th Bangladeshi to do so), ODI debut
+    // 2023 (cap 147, vs New Zealand) — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Mohammad Naim",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    // Left-hand bat, opening batsman — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2019,
+    format: "All-format",
+    // T20I debut 3 Nov 2019 (cap 67, vs India), ODI debut 6 Mar 2020 (cap 134, vs Zimbabwe),
+    // Test debut 9 Jan 2022 (cap 100, vs New Zealand) — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Mahmudul Hasan Joy",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat, top-order batter — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 2021,
+    format: "All-format",
+    // Test debut Dec 2021 (cap 99, vs Pakistan, 78 vs New Zealand shortly after), ODI debut
+    // Oct 2023 (vs Malaysia), T20I debut 4 Oct 2023 (cap 82, vs Malaysia at the Asian Games) — ESPNcricinfo confirmed
+    // Never played IPL — no franchise history found
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Yasir Ali",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat, middle-order batter — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 2021,
+    format: "All-format",
+    // Test debut 26 Nov 2021 (cap 98, vs Pakistan), ODI debut 23 Feb 2022 (cap 137, vs
+    // Afghanistan), T20I debut 3 Mar 2022 (vs Afghanistan) — ESPNcricinfo confirmed
     // Never played IPL — no franchise history found
     iplTeams: [],
     iccTrophies: 0
