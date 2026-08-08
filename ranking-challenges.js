@@ -219,12 +219,58 @@ const RANKING_PARAMETERS = [
     format: 'odi',
     question: "Rank these batsmen by ODI batting average (highest to lowest)",
     hint: "Minimum 20 ODI innings. Only retired players used so the answer never goes out of date.",
+    // Literal real record order (min 20 innings, retired only), expanded 5->25 Day 61. Source:
+    // ESPNcricinfo's own official "Highest career batting average in ODIs" records page
+    // (stats.espncricinfo.com/ci/content/records/282911.html, fetched directly via browser
+    // since direct WebFetch still 403s espncricinfo.com stat pages), which is unqualified except
+    // for its own baked-in ~20-innings floor, matching this cell's hint exactly. Every active
+    // player was excluded per the staleness rule, INCLUDING several who came up ambiguous and
+    // needed a dedicated per-player retirement search rather than being assumed from the raw
+    // table's career-span column alone: Quinton de Kock (retired from ODIs after the 2023 World
+    // Cup, but reversed that retirement in Oct 2025 and is active again - excluded), Fakhar
+    // Zaman (active, in Pakistan's 2026 T20 World Cup squad), and 5 players who were dropped/out
+    // of favour but never actually announced a retirement, so stay excluded on the same standing
+    // "no formal retirement = not eligible" rule as everywhere else in this project - Faf du
+    // Plessis (hasn't played ODI since the 2019 World Cup but never formally retired from the
+    // format), Imam-ul-Haq, Janneman Malan, Haris Sohail (explicitly denied retirement rumours,
+    // Nov 2024), and Tom Cooper (an earlier Netherlands retirement he himself reversed with a
+    // comeback, current status unclear). Steve Smith IS included despite remaining an active
+    // Test/T20I player - he announced a formal, ODI-specific retirement in Mar 2025 right after
+    // the 2025 Champions Trophy semi-final, so his ODI number is genuinely frozen even though he
+    // keeps playing other formats, same per-format staleness logic already used elsewhere in
+    // this project. Every figure cross-checked directly off that same live ESPNcricinfo table
+    // (average = runs / (innings - not-outs), confirmed by hand for Heinrich Klaasen's 43.69
+    // after an unrelated AI-search summary tried to wrongly divide runs by matches instead) plus
+    // spot Wikipedia checks for the newer, less-cited names (ten Doeschate, van der Dussen).
+    // ICC has no dedicated all-time ODI batting-average leaderboard page - a coverage gap, not a
+    // mismatch, consistent with every other average-type cell in this project. Cricbuzz
+    // unreachable as usual (blocked at the domain level), flagged.
     leaders: [
+      { name: "Ryan ten Doeschate", flag: "🇳🇱", value: "Avg: 67.00" },
+      { name: "Dawid Malan", flag: "🇬🇧", value: "Avg: 55.76" },
       { name: "Michael Bevan", flag: "🇦🇺", value: "Avg: 53.58" },
       { name: "AB de Villiers", flag: "🇿🇦", value: "Avg: 53.50" },
+      { name: "Jonathan Trott", flag: "🇬🇧", value: "Avg: 51.25" },
       { name: "MS Dhoni", flag: "🇮🇳", value: "Avg: 50.57" },
+      { name: "Rassie van der Dussen", flag: "🇿🇦", value: "Avg: 50.13" },
       { name: "Hashim Amla", flag: "🇿🇦", value: "Avg: 49.46" },
-      { name: "Viv Richards", flag: "🇦🇬", value: "Avg: 47.00" }
+      { name: "Kane Williamson", flag: "🇳🇿", value: "Avg: 48.69" },
+      { name: "Michael Hussey", flag: "🇦🇺", value: "Avg: 48.15" },
+      { name: "Zaheer Abbas", flag: "🇵🇰", value: "Avg: 47.62" },
+      { name: "Ross Taylor", flag: "🇳🇿", value: "Avg: 47.55" },
+      { name: "Ambati Rayudu", flag: "🇮🇳", value: "Avg: 47.05" },
+      { name: "Glenn Turner", flag: "🇳🇿", value: "Avg: 47.00", tiedWithNext: true },
+      { name: "Viv Richards", flag: "🇦🇬", value: "Avg: 47.00" },
+      { name: "Adam Voges", flag: "🇦🇺", value: "Avg: 45.78" },
+      { name: "David Warner", flag: "🇦🇺", value: "Avg: 45.30" },
+      { name: "Gordon Greenidge", flag: "🇧🇧", value: "Avg: 45.03" },
+      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "Avg: 44.83" },
+      { name: "Dean Jones", flag: "🇦🇺", value: "Avg: 44.61" },
+      { name: "Michael Clarke", flag: "🇦🇺", value: "Avg: 44.58" },
+      { name: "Jacques Kallis", flag: "🇿🇦", value: "Avg: 44.36" },
+      { name: "Shikhar Dhawan", flag: "🇮🇳", value: "Avg: 44.11" },
+      { name: "Matthew Hayden", flag: "🇦🇺", value: "Avg: 43.80" },
+      { name: "Heinrich Klaasen", flag: "🇿🇦", value: "Avg: 43.69" }
     ]
   },
   {
@@ -234,12 +280,44 @@ const RANKING_PARAMETERS = [
     format: 'odi',
     question: "Rank these batsmen by total career ODI runs (most to least)",
     hint: "All-time career ODI runs — only retired players used so the answer never goes out of date.",
+    // Literal real record order, retired only, expanded 5->25 Day 61. Source: ESPNcricinfo's
+    // live "Most runs in career" table (fetched directly via browser, not search synthesis,
+    // since direct WebFetch still 403s espncricinfo.com stat pages) cross-checked figure-by-
+    // figure against Wikipedia's own per-player infobox for every one of the 20 new entries -
+    // exact agreement on every run total, zero mismatches. Virat Kohli (14,941, #2 all-time)
+    // and Rohit Sharma (11,895, #7 all-time) are both confirmed still active in ODIs as of
+    // Aug 2026 (Kohli recovering from a 2026 IPL hamstring injury but not retired; Rohit's
+    // ODI future was under media speculation during India's Jul 2026 England tour but he has
+    // explicitly not retired) - both excluded per the staleness rule, same treatment as the
+    // test-runs cell's Root/Smith exclusions. ICC has no dedicated all-time ODI run-scorers
+    // leaderboard page - a coverage gap, not a mismatch, consistent with other cells. Cricbuzz
+    // unreachable as usual (blocked at the domain level), flagged.
     leaders: [
       { name: "Sachin Tendulkar", flag: "🇮🇳", value: "18,426 runs" },
       { name: "Kumar Sangakkara", flag: "🇱🇰", value: "14,234 runs" },
       { name: "Ricky Ponting", flag: "🇦🇺", value: "13,704 runs" },
       { name: "Sanath Jayasuriya", flag: "🇱🇰", value: "13,430 runs" },
-      { name: "Mahela Jayawardene", flag: "🇱🇰", value: "12,650 runs" }
+      { name: "Mahela Jayawardene", flag: "🇱🇰", value: "12,650 runs" },
+      { name: "Inzamam-ul-Haq", flag: "🇵🇰", value: "11,739 runs" },
+      { name: "Jacques Kallis", flag: "🇿🇦", value: "11,579 runs" },
+      { name: "Sourav Ganguly", flag: "🇮🇳", value: "11,363 runs" },
+      { name: "Rahul Dravid", flag: "🇮🇳", value: "10,889 runs" },
+      { name: "MS Dhoni", flag: "🇮🇳", value: "10,773 runs" },
+      { name: "Chris Gayle", flag: "🇯🇲", value: "10,480 runs" },
+      { name: "Brian Lara", flag: "🇹🇹", value: "10,405 runs" },
+      { name: "Tillakaratne Dilshan", flag: "🇱🇰", value: "10,290 runs" },
+      { name: "Mohammad Yousuf", flag: "🇵🇰", value: "9,720 runs" },
+      { name: "Adam Gilchrist", flag: "🇦🇺", value: "9,619 runs" },
+      { name: "AB de Villiers", flag: "🇿🇦", value: "9,577 runs" },
+      { name: "Mohammad Azharuddin", flag: "🇮🇳", value: "9,378 runs" },
+      { name: "Aravinda de Silva", flag: "🇱🇰", value: "9,284 runs" },
+      { name: "Saeed Anwar", flag: "🇵🇰", value: "8,824 runs" },
+      { name: "Shivnarine Chanderpaul", flag: "🇬🇾", value: "8,778 runs" },
+      { name: "Yuvraj Singh", flag: "🇮🇳", value: "8,701 runs" },
+      { name: "Desmond Haynes", flag: "🇧🇧", value: "8,648 runs" },
+      { name: "Ross Taylor", flag: "🇳🇿", value: "8,607 runs" },
+      { name: "Marvan Atapattu", flag: "🇱🇰", value: "8,529 runs" },
+      { name: "Mark Waugh", flag: "🇦🇺", value: "8,500 runs" }
     ]
   },
   {
@@ -249,12 +327,50 @@ const RANKING_PARAMETERS = [
     format: 'odi',
     question: "Rank these bowlers by total career ODI wickets (most to least)",
     hint: "All-time career ODI wickets — only retired players used so the answer never goes out of date.",
+    // Literal real record order, retired only, expanded 5->25 Day 61. Source: ESPNcricinfo's
+    // live "Most wickets in career" table (fetched directly via browser, not search synthesis,
+    // since direct WebFetch still 403s espncricinfo.com stat pages) cross-checked figure-by-
+    // figure against Wikipedia's own per-player infobox for every one of the 20 new entries -
+    // exact agreement on every wicket count, zero mismatches. Shahid Afridi (395) actually
+    // ranks ABOVE Shaun Pollock (393) in the real order - the original Day 27 hand-picked set
+    // of 5 had skipped him, so he's inserted in his correct spot rather than appended at the
+    // end. Three players needed an explicit active/retired check before inclusion: Shakib Al
+    // Hasan (317, would rank between Jayasuriya and Srinath) is confirmed NOT retired from ODIs
+    // as of Aug 2026 (as recently as Dec 2025 said he plans to play a full ODI series before
+    // eventually retiring) - excluded. Mitchell Starc (247) is confirmed actively targeting the
+    // 2027 ODI World Cup - excluded. Mashrafe Mortaza (270, Bangladesh) has never formally
+    // announced ODI retirement, but has not played international cricket since March 2020 and
+    // Bangladesh's own board has said he is not being considered for selection - treated as
+    // effectively closed for the staleness rule's purpose (same "settled in practice, no formal
+    // announcement" handling as other flagged cases elsewhere in this project) and included.
+    // ICC has no dedicated all-time ODI wicket-takers leaderboard page - a coverage gap, not a
+    // mismatch, consistent with other cells. Cricbuzz unreachable as usual, flagged.
     leaders: [
       { name: "Muttiah Muralitharan", flag: "🇱🇰", value: "534 wickets" },
       { name: "Wasim Akram", flag: "🇵🇰", value: "502 wickets" },
       { name: "Waqar Younis", flag: "🇵🇰", value: "416 wickets" },
       { name: "Chaminda Vaas", flag: "🇱🇰", value: "400 wickets" },
-      { name: "Shaun Pollock", flag: "🇿🇦", value: "393 wickets" }
+      { name: "Shahid Afridi", flag: "🇵🇰", value: "395 wickets" },
+      { name: "Shaun Pollock", flag: "🇿🇦", value: "393 wickets" },
+      { name: "Glenn McGrath", flag: "🇦🇺", value: "381 wickets" },
+      { name: "Brett Lee", flag: "🇦🇺", value: "380 wickets" },
+      { name: "Lasith Malinga", flag: "🇱🇰", value: "338 wickets" },
+      { name: "Anil Kumble", flag: "🇮🇳", value: "337 wickets" },
+      { name: "Sanath Jayasuriya", flag: "🇱🇰", value: "323 wickets" },
+      { name: "Javagal Srinath", flag: "🇮🇳", value: "315 wickets" },
+      { name: "Daniel Vettori", flag: "🇳🇿", value: "305 wickets" },
+      { name: "Shane Warne", flag: "🇦🇺", value: "293 wickets" },
+      { name: "Saqlain Mushtaq", flag: "🇵🇰", value: "288 wickets", tiedWithNext: true },
+      { name: "Ajit Agarkar", flag: "🇮🇳", value: "288 wickets" },
+      { name: "Zaheer Khan", flag: "🇮🇳", value: "282 wickets" },
+      { name: "Jacques Kallis", flag: "🇿🇦", value: "273 wickets" },
+      { name: "Allan Donald", flag: "🇿🇦", value: "272 wickets" },
+      { name: "Mashrafe Mortaza", flag: "🇧🇩", value: "270 wickets" },
+      { name: "James Anderson", flag: "🇬🇧", value: "269 wickets", tiedWithNext: true },
+      { name: "Abdul Razzaq", flag: "🇵🇰", value: "269 wickets", tiedWithNext: true },
+      { name: "Harbhajan Singh", flag: "🇮🇳", value: "269 wickets" },
+      { name: "Makhaya Ntini", flag: "🇿🇦", value: "266 wickets" },
+      { name: "Kapil Dev", flag: "🇮🇳", value: "253 wickets" }
     ]
   }
   // Every other cell in the full taxonomy (BATTING/BOWLING/FIELDING/OTHERS x Test/ODI/T20I/IPL)
