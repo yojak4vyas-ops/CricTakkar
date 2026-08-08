@@ -10859,6 +10859,347 @@ const wordlePlayers = [
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
   },
+
+  // ---- Zimbabwe T20I Wordle expansion, Day 60 (Round 1: 8 + Round 2: 12 = 20) ----
+  // Round 1 = top-15 all-time T20I run-scorers + top-15 all-time wicket-takers
+  // for Zimbabwe (ESPNcricinfo live tables, browser-fetched), deduped against the
+  // 50-player roster already in the file. Only 8 new names emerged (Ryan Burl,
+  // Tadiwanashe Marumani, Wessly Madhevere, Dion Myers, Regis Chakabva, Malcolm
+  // Waller, Luke Jongwe, Wellington Masakadza) — well short of 20, so Round 2
+  // used Zimbabwe's real, complete T20I cap-ordered list (Wikipedia's "List of
+  // Zimbabwe Twenty20 International cricketers", cross-checked against a
+  // dedicated search for any debutant since that table's own "1 March 2026"
+  // snapshot) rather than just the most-recent caps, since the pool of players
+  // who've ever earned a Zimbabwe T20I cap (82 total) is small enough that many
+  // genuinely new names sit outside the top-15 lists without being especially
+  // recent debutants. Worked backward from the real latest cap (82 = Newman
+  // Nyamhuri, 81 = Ben Curran — both already in this file from earlier Test/ODI
+  // batches; see the correction notes on both of their entries above, since this
+  // research also caught that neither had a real T20I cap until 23 Jul 2026 vs
+  // India, despite what an earlier entry's comment wrongly asserted for Nyamhuri)
+  // down through cap 57, adding every genuinely new cap holder found along the
+  // way until the combined Round 1 + Round 2 total reached 20. Zimbabwe has
+  // never won any ICC trophy — confirmed by every existing Zimbabwe entry in
+  // this file — so every player in this batch is iccTrophies: 0. Only 5
+  // Zimbabweans have ever played IPL (Taibu, Ray Price, Brendan Taylor, Sikandar
+  // Raza, Blessing Muzarabani — all already in this file, none in this batch),
+  // so every player here gets an empty iplTeams array, confirmed by exclusion.
+  {
+    name: "Ryan Burl",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2017,
+    format: "All-format",
+    // ODI debut 16 Feb 2017 vs Afghanistan, Test debut 26 Dec 2017 vs South
+    // Africa, T20I debut 5 Feb 2018 vs Afghanistan — ESPNcricinfo + Wikipedia
+    // confirmed. Zimbabwe's T20I vice-captain; took a T20I 5/10 vs Australia in
+    // 2022 and hit a record-breaking 34 runs in one over vs Bangladesh
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tadiwanashe Marumani",
+    country: "Zimbabwe",
+    role: "Wicketkeeper",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2021,
+    format: "ODI+T20",
+    // T20I debut 21 Apr 2021 vs Pakistan, ODI debut 16 Jul 2021 vs Bangladesh —
+    // confirmed no Test cap (Wikipedia's own infobox has no Test row at all) —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Wessly Madhevere",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2020,
+    format: "All-format",
+    // ODI debut 1 Mar 2020 vs Bangladesh, T20I debut 9 Mar 2020 vs Bangladesh,
+    // Test debut 2 Mar 2021 vs Afghanistan — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Dion Myers",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    // Bowled 60 balls in T20Is with 0 wickets — a genuine, if unproductive,
+    // bowling record, so recorded per the standing rule rather than marked NA
+    debutYear: 2021,
+    format: "All-format",
+    // Test debut 7 Jul 2021 vs Bangladesh, ODI debut 16 Jul 2021 vs Bangladesh,
+    // T20I debut 22 Jul 2021 vs Bangladesh — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Regis Chakabva",
+    country: "Zimbabwe",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2008,
+    format: "All-format",
+    // ODI debut 19 Oct 2008 vs Kenya, T20I debut 12 Oct 2008 vs Pakistan, Test
+    // debut 1 Nov 2011 vs New Zealand — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Malcolm Waller",
+    country: "Zimbabwe",
+    role: "Wicketkeeper",
+    // Primarily known as a middle-order batsman but marked as a wicketkeeper
+    // (†) on Wikipedia's own official Zimbabwe T20I cap list — has also kept
+    // wicket for Zimbabwe at times
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2009,
+    format: "All-format",
+    // ODI debut 19 Jan 2009 vs Bangladesh, Test debut 1 Nov 2011 vs New Zealand,
+    // T20I debut 15 Oct 2011 vs New Zealand — ESPNcricinfo + Wikipedia confirmed.
+    // Remained unbeaten on 99 chasing down 328 vs New Zealand, Zimbabwe's
+    // highest successful ODI run-chase at the time
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Luke Jongwe",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2014,
+    format: "All-format",
+    // ODI debut 17 Aug 2014 vs South Africa, T20I debut 27 Sep 2015 vs Pakistan,
+    // Test debut 7 May 2021 vs Pakistan (his only Test) — ESPNcricinfo +
+    // Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Wellington Masakadza",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    // Slow left-arm orthodox spinner — ESPNcricinfo + Wikipedia confirmed
+    debutYear: 2015,
+    format: "All-format",
+    // ODI debut 9 Oct 2015 vs Ireland, T20I debut 26 Oct 2015 vs Afghanistan,
+    // Test debut 3 Nov 2018 vs Bangladesh — ESPNcricinfo + Wikipedia confirmed.
+    // No relation confirmed to Hamilton Masakadza despite sharing a surname
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+
+  // ---- Round 2 (cap-number method), working backward from the real latest
+  // T20I cap (82) through cap 57, skipping every cap holder already in this
+  // file (including this batch's own Round 1 names and caps 81/82) — 12 new ----
+  {
+    name: "Tashinga Musekiwa",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2024,
+    format: "T20",
+    // T20I debut (his only international caps so far) 19 Oct 2024 vs Seychelles,
+    // 2024 Men's T20 World Cup Africa Sub-regional Qualifier B — confirmed no
+    // Test or ODI cap — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Nyasha Mayavo",
+    country: "Zimbabwe",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // Listed as a genuine style on multiple sources despite a thin match record
+    // — no confirmed zero-ball record found, so recorded rather than marked NA
+    debutYear: 2023,
+    format: "Test+T20",
+    // T20I debut 29 Oct 2023 vs Namibia, Test debut 6 Feb 2024 vs Ireland —
+    // confirmed no ODI cap (Wikipedia's own infobox has no ODI row at all) —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Nick Welch",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    // Occasional leg-break/googly bowler — listed as a genuine style on multiple
+    // sources despite a thin match record — no confirmed zero-ball record found,
+    // so recorded rather than marked NA
+    debutYear: 2023,
+    format: "Test+T20",
+    // T20I debut 24 Oct 2023 vs Namibia (dismissed off the very first ball of
+    // the match), Test debut 6 Feb 2025 vs Ireland (90 in the first innings) —
+    // confirmed no ODI cap (Wikipedia's own infobox has no ODI row at all) —
+    // ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "John Masara",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2022,
+    format: "T20",
+    // T20I debut (his only international cap so far) 2 Aug 2022 vs Bangladesh
+    // (cap 71) — confirmed no Test or ODI cap — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Victor Nyauchi",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2020,
+    format: "All-format",
+    // Test debut 19 Jan 2020 vs Sri Lanka, T20I debut 22 May 2022 vs Namibia,
+    // ODI debut 5 Aug 2022 vs Bangladesh — ESPNcricinfo + Wikipedia confirmed.
+    // Was the leading wicket-taker in the 2017-18 Logan Cup before his debut
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tanaka Chivanga",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast",
+    debutYear: 2022,
+    format: "All-format",
+    // T20I debut 17 May 2022 vs Namibia, ODI debut 4 Jun 2022 vs Afghanistan,
+    // Test debut 12 Feb 2023 vs West Indies — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Innocent Kaia",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm leg break",
+    debutYear: 2021,
+    format: "All-format",
+    // T20I debut 17 Sep 2021 vs Scotland, ODI debut 4 Jun 2022 vs Afghanistan,
+    // Test debut 4 Feb 2023 vs West Indies (aged 30) — ESPNcricinfo + Wikipedia
+    // confirmed. Highest ODI score 110 vs Bangladesh (2022)
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Milton Shumba",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    // Slow left-arm orthodox part-time spinner — ESPNcricinfo + Wikipedia confirmed
+    debutYear: 2020,
+    format: "All-format",
+    // T20I debut 10 Nov 2020 vs Pakistan, Test debut 29 Apr 2021 vs Pakistan,
+    // ODI debut 10 Sep 2021 vs Ireland — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Charlton Tshuma",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2020,
+    format: "All-format",
+    // All 3 international caps came on the same Bangladesh tour: Test debut 22
+    // Feb 2020, ODI debut 3 Mar 2020, T20I debut 11 Mar 2020, all vs Bangladesh
+    // — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Carl Mumba",
+    country: "Zimbabwe",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2016,
+    format: "All-format",
+    // Test debut 29 Oct 2016 vs Sri Lanka (Zimbabwe's 100th Test player), ODI
+    // debut 14 Nov 2016 vs Sri Lanka, T20I debut 9 Mar 2020 vs Bangladesh —
+    // ESPNcricinfo + Wikipedia confirmed. Took a Zimbabwe first-class record 6/7
+    // in domestic cricket, Dec 2018
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "Tinashe Kamunhukamwe",
+    country: "Zimbabwe",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    // Minimal bowling record (1 wicket in 45 first-class matches) but a genuine
+    // one, so recorded per the standing rule rather than marked NA
+    debutYear: 2018,
+    format: "ODI+T20",
+    // ODI debut 20 Jul 2018 vs Pakistan, T20I debut 9 Mar 2020 vs Bangladesh —
+    // confirmed no Test cap — ESPNcricinfo + Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
+  {
+    name: "William Mashinge",
+    country: "Zimbabwe",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2019,
+    format: "T20",
+    // T20I debut (his only international caps so far) 1 Oct 2019 vs Nepal,
+    // 2019-20 Singapore Tri-Nation Series (cap 57) — confirmed no Test or ODI
+    // cap — ESPNcricinfo + Wikipedia confirmed. Played all 6 matches for
+    // Zimbabwe at the 2016 U19 World Cup
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Wikipedia confirmed
+  },
   {
     name: "Ashton Agar",
     country: "Australia",
