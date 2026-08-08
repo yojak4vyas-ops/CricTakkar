@@ -9706,6 +9706,322 @@ const wordlePlayers = [
     iccTrophies: 0
   },
 
+  // ===== AFGHANISTAN T20I EXPANSION (Day 60+, 21 players) =====
+  // Round 1 (top-15 all-time AFG T20I run-scorers + top-15 wicket-takers, pulled
+  // directly from ESPNcricinfo's live tables): only 2 new names emerged after
+  // dedup against the existing 52-player roster (every other top-15 name was
+  // already in the database from earlier Test/ODI batches) — Hazratullah Zazai,
+  // Usman Ghani. Moved to Round 2 (cap-number method): fetched Afghanistan's real
+  // live T20I caps list directly from ESPNcricinfo (latest = cap 65, Imran Mir,
+  // 11 Nov 2025 v Qatar) and worked backward through the full cap sequence
+  // (1-65), skipping every cap holder already in the database, to reach 19
+  // genuinely new Round 2 names — comfortably over the 20-player combined target.
+
+  {
+    name: "Hazratullah Zazai",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2016,
+    format: "ODI+T20",
+    // T20I debut 16 Dec 2016 v UAE (cap 35), ODI debut 27 Aug 2018 v Ireland —
+    // confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed. His 162* v Ireland
+    // (Feb 2019) is still the highest individual score by an Afghan in T20Is
+    iplTeams: [],
+    // Unsold at the 2019 IPL auction (base price ₹50 lakh) despite public interest
+    // from multiple franchises; no record of ever being picked in a later auction
+    // — dedicated search confirmed no IPL history
+    iccTrophies: 0
+  },
+  {
+    name: "Usman Ghani",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2014,
+    format: "ODI+T20",
+    // ODI debut 1 May 2014 v Hong Kong, T20I debut 26 Oct 2015 v Zimbabwe (cap 28)
+    // — confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    // Never appeared in any IPL auction pool found via dedicated search — no IPL history
+    iccTrophies: 0
+  },
+  {
+    name: "Imran Mir",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Confirmed NA — a middle-order batter with "no bowling role" per his own profile
+    bowlingStyle: "NA",
+    debutYear: 2025,
+    format: "T20",
+    // T20I debut (his only T20I so far) 11 Nov 2025 v Qatar (cap 65, Afghanistan's
+    // latest T20I cap holder as of this batch) — confirmed no Test/ODI cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Farmanullah",
+    country: "Afghanistan",
+    // Full name Farmanullah Safi
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2025,
+    format: "T20",
+    // T20I debut (his only T20I so far) 11 Nov 2025 v Qatar (cap 64) — confirmed
+    // no Test/ODI cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Wafiullah Tarakhil",
+    country: "Afghanistan",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2025,
+    format: "T20",
+    // T20I debut Oct 2025 v Bangladesh (cap 61) — confirmed no Test/ODI cap —
+    // ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Abdollah Ahmadzai",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2025,
+    format: "T20",
+    // T20I debut 5 Sep 2025 v UAE (cap 60) — confirmed no Test/ODI cap —
+    // ESPNcricinfo/Wikipedia confirmed. Named in Afghanistan's 2026 T20 World Cup squad
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Ijaz Ahmad Ahmadzai",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2024,
+    format: "T20",
+    // T20I debut 15 Mar 2024 v Ireland (cap 57) — confirmed no Test/ODI cap —
+    // ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Mohammad Ishaq",
+    country: "Afghanistan",
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No bowling style found in any source — unconfirmed rather than a proven
+    // zero-ball record, same treatment as KL Rahul's entry
+    debutYear: 2024,
+    format: "T20",
+    // T20I debut 21 Feb 2024 v Sri Lanka (cap 56) — confirmed no Test/ODI cap —
+    // ESPNcricinfo/Wikipedia confirmed. Named in Afghanistan's 2024 and 2026 T20
+    // World Cup squads
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Zubairullah Akbari",
+    country: "Afghanistan",
+    // Also spelled "Zubaid Akbari" on some sources — same player
+    role: "Batsman",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2023,
+    format: "T20",
+    // T20I debut 7 Oct 2023 v India (cap 53, Asian Games) — confirmed no Test/ODI
+    // cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Fazal Niazai",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium",
+    debutYear: 2019,
+    format: "T20",
+    // T20I debut (his only T20I so far) 20 Sep 2019 v Zimbabwe (cap 39) —
+    // confirmed no Test/ODI cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "M Nasim Baras",
+    country: "Afghanistan",
+    // Full name Mohammad Nasim Baras
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2015,
+    format: "T20",
+    // T20I debut 28 Nov 2015 v Hong Kong (cap 29), only played T20Is in that one
+    // Nov 2015 window — confirmed no Test/ODI cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Rokhan Barakzai",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2015,
+    format: "ODI+T20",
+    // T20I debut 28 Nov 2015 v Hong Kong (cap 30), ODI debut 29 Dec 2015 v
+    // Zimbabwe — confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Sharafuddin Ashraf",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2014,
+    format: "All-format",
+    // ODI debut 18 Jul 2014 v Zimbabwe, T20I debut 9 Jul 2015 v Netherlands (cap
+    // 26), Test debut 20 Oct 2025 v Zimbabwe — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Izatullah Dawlatzai",
+    country: "Afghanistan",
+    // Also played T20Is for Germany from 2019 (the 8th cricketer to play T20Is
+    // for 2 different countries) — this entry records his Afghanistan caps only,
+    // same "only the record for this country" precedent as Gary Ballance/John Traicos
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm medium fast",
+    debutYear: 2010,
+    format: "ODI+T20",
+    // ODI debut 9 Oct 2010 v Kenya, T20I debut 14 Mar 2012 v Netherlands (cap 16)
+    // — confirmed no Test cap for Afghanistan — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Shabir Noori",
+    country: "Afghanistan",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2010,
+    format: "ODI+T20",
+    // ODI debut 18 Feb 2010 v Canada, T20I debut 18 Mar 2012 v Canada (cap 18,
+    // his only T20I) — confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Zamir Khan",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    bowlingStyle: "Left arm orthodox",
+    debutYear: 2012,
+    format: "T20",
+    // T20I debut 8 Mar 2012 v Canada (cap 19), only played T20Is — confirmed no
+    // Test/ODI cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Najeeb Tarakai",
+    country: "Afghanistan",
+    // Died 6 Oct 2020, aged 29, after a road accident in his hometown of
+    // Jalalabad — noted here for transparency, doesn't affect the recorded
+    // playing data below
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2014,
+    format: "ODI+T20",
+    // T20I debut 16 Mar 2014 v Bangladesh (cap 25, 2014 World T20), ODI debut
+    // 24 Mar 2017 v Ireland — confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Dawlat Ahmadzai",
+    country: "Afghanistan",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm fast medium",
+    debutYear: 2009,
+    format: "ODI+T20",
+    // ODI debut 19 Apr 2009 v Scotland — took the first-ever wicket for
+    // Afghanistan in ODI cricket (Gavin Hamilton) — T20I debut 1 Feb 2010 v
+    // Ireland (cap 2) — confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Karim Sadiq",
+    country: "Afghanistan",
+    role: "Batsman",
+    // Opening batsman, occasional wicketkeeper — ESPNcricinfo/Wikipedia confirmed
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2009,
+    format: "ODI+T20",
+    // ODI debut 19 Apr 2009 v Scotland, T20I debut 1 Feb 2010 v Ireland (cap 4)
+    // — confirmed no Test cap. His own Wikipedia bio page claims a 12 Feb 2012
+    // T20I debut, but that conflicts with both ESPNcricinfo's own player profile
+    // and Wikipedia's own cap-ordered T20I cricketers list (both say 1 Feb 2010,
+    // cap 4) — trusted the cap-list/ESPNcricinfo date over the bio-page date
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Raees Ahmadzai",
+    country: "Afghanistan",
+    // Also spelled "Rais Ahmadzai" — former Afghanistan captain, now the
+    // national team's Director of Cricket
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    bowlingStyle: "Right arm offbreak",
+    debutYear: 2009,
+    format: "ODI+T20",
+    // ODI debut 19 Apr 2009 v Scotland, T20I debut 1 Feb 2010 v Ireland (cap 8)
+    // — confirmed no Test cap, retired May 2010 — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+  {
+    name: "Shafiqullah",
+    country: "Afghanistan",
+    // Full name Mohammad Shafiqullah, also "Shafiqullah Shafaq"/"Shafiqullah
+    // Shafiq" on some sources — banned from all cricket for 6 years in May 2020
+    // for corruption; noted here for transparency, doesn't affect the recorded
+    // playing data below
+    role: "Wicketkeeper",
+    battingStyle: "Right-hand",
+    bowlingStyle: "NA",
+    // No bowling style found in any source — unconfirmed rather than a proven
+    // zero-ball record, same treatment as KL Rahul's entry
+    debutYear: 2009,
+    format: "ODI+T20",
+    // ODI debut 1 Sep 2009 v Netherlands, T20I debut 1 Feb 2010 v Ireland (cap
+    // 10) — confirmed no Test cap — ESPNcricinfo/Wikipedia confirmed
+    iplTeams: [],
+    iccTrophies: 0
+  },
+
   // ===== ZIMBABWE (50 players) =====
 
   {
@@ -10391,9 +10707,13 @@ const wordlePlayers = [
     bowlingStyle: "Left arm medium fast",
     debutYear: 2024,
     format: "All-format",
-    // ODI debut 17 Dec 2024 vs Afghanistan, Test debut 26 Dec 2024 vs Afghanistan,
-    // T20I cap confirmed in 2024 — ESPNcricinfo + Wikipedia confirmed. Zimbabwe's
-    // leading wicket-taker at the 2024 U19 World Cup (8 wickets)
+    // ODI debut 17 Dec 2024 vs Afghanistan, Test debut 26 Dec 2024 vs Afghanistan.
+    // CORRECTED Day 60 (Zimbabwe T20I batch): T20I debut was NOT actually 2024 as
+    // this comment previously (wrongly) asserted — Wikipedia's infobox for him
+    // showed no T20I row at all as of mid-2026, and a dedicated check of India's
+    // July 2026 tour of Zimbabwe confirmed his real T20I debut was 23 Jul 2026 vs
+    // India (1st T20I), alongside Ben Curran — ESPNcricinfo + Wikipedia confirmed.
+    // Zimbabwe's leading wicket-taker at the 2024 U19 World Cup (8 wickets)
     iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
@@ -10405,12 +10725,14 @@ const wordlePlayers = [
     battingStyle: "Left-hand",
     bowlingStyle: "Right arm offbreak",
     debutYear: 2024,
-    format: "Test+ODI",
+    format: "All-format",
+    // CORRECTED Day 60 (Zimbabwe T20I batch): format was wrongly "Test+ODI" —
     // Test and ODI debut both 17 Dec 2024 vs Afghanistan (68 on Test debut,
-    // opening the batting in a Boxing Day Test) — no T20I cap found in any source
-    // checked — ESPNcricinfo + Wikipedia confirmed. Brother of England
-    // internationals Tom and Sam Curran, son of former Zimbabwe international
-    // Kevin Curran
+    // opening the batting in a Boxing Day Test); no T20I cap existed at the time
+    // this entry was first written, but he made his real T20I debut 23 Jul 2026
+    // vs India (1st T20I), alongside Newman Nyamhuri — ESPNcricinfo + Wikipedia
+    // confirmed. Brother of England internationals Tom and Sam Curran, son of
+    // former Zimbabwe international Kevin Curran
     iplTeams: [],
     iccTrophies: 0
     // No ICC trophies — Wikipedia confirmed
