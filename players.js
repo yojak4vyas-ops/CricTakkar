@@ -8863,6 +8863,381 @@ const wordlePlayers = [
     // No ICC trophies — Wikipedia confirmed
   },
 
+  // ===== BANGLADESH T20I EXPANSION (Day 60+, 20 players) — the FIXED TRAVERSAL ORDER's
+  // last remaining cell; every other country/format cell is now done. Round 1 (top-15
+  // all-time BAN T20I run-scorers + top-15 wicket-takers, pulled directly from
+  // ESPNcricinfo's live Statsguru tables): 8 new names after dedup against the existing
+  // 50-player roster — Afif Hossain, Sabbir Rahman, Shamim Hossain (batting) and Rishad
+  // Hossain, Mahedi Hasan, Mohammad Saifuddin, Nasum Ahmed, Al-Amin Hossain (bowling).
+  // 8 fell short of 20, so moved to Round 2 (cap-number method): confirmed Bangladesh's
+  // real latest T20I cap directly via a live scorecard (cap 93 = Abdul Gaffar Saqlain,
+  // debut 17 Jun 2026 v Australia — Wikipedia's own cap table was stale at cap 92/2025)
+  // and worked backward, skipping every cap already in the database, to reach exactly 12
+  // new names: Abdul Gaffar Saqlain(93), Khaled Ahmed(92), Mrittunjoy Chowdhury(88), Sumon
+  // Khan(86), Rakibul Hasan(84), Ripon Mondol(83), Munim Shahriar(74), Shohidul Islam(73),
+  // Aminul Islam(65), Abu Jayed(62), Mohammad Nazmul Islam(60), Ariful Haque(59) — cap 85
+  // (also "Shahadat Hossain") was checked and confirmed to be the SAME player already in
+  // the database as a T20I comeback cap, not a new one, per that entry's own comment.
+  // Bangladesh has never won an ICC trophy in any of these players' careers, so every
+  // entry below is iccTrophies: 0 — checked once rather than per-player, same pattern as
+  // the Test/ODI batches. None of the 20 have ever played IPL — every player's own
+  // dedicated search turned up only BPL/PSL/LPL/BBL domestic franchises, consistent with
+  // the file's standing "no Bangladeshi has played IPL" pattern (the one documented
+  // exception, Abdur Razzak, predates this batch). One real synthesis-noise catch,
+  // self-resolved without a user decision: a broad search claimed Khaled Ahmed played
+  // IPL for Sunrisers Hyderabad — traced to confusion with Khaleel Ahmed, an unrelated
+  // Indian bowler already in this file; the real Khaled Ahmed (Syed Khaled Ahmed) has
+  // never played IPL. "Mahedi Hasan" (born 1994, T20I cap 63) is confirmed via Wikipedia
+  // to be a genuinely different player from "Mehidy Hasan Miraz" already in the database
+  // — flagged here so a future session doesn't treat them as the same person.
+
+  {
+    name: "Afif Hossain",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "ODI+T20",
+    // T20I debut 15 Feb 2018 (cap 58), ODI debut 6 Mar 2020 (cap 132) — no Test cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL/LPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Sabbir Rahman",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat, top-order batter — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo confirmed
+    debutYear: 2014,
+    format: "All-format",
+    // T20I debut 14 Feb 2014 (cap 42), ODI debut 21 Nov 2014 (cap 113), Test debut
+    // 20 Oct 2016 (cap 81) — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — reportedly invited by MS Dhoni but the BCB denied permission
+    // due to an international tour clash — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Shamim Hossain",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 2021,
+    format: "ODI+T20",
+    // T20I debut 23 Jul 2021 (cap 71), ODI debut 3 Sep 2023 (cap 144) — no Test cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Rishad Hossain",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "ODI+T20",
+    // T20I debut 31 Mar 2023 (cap 80), ODI debut 20 Dec 2023 (cap 148) — no Test cap found — ESPNcricinfo/Wikipedia confirmed
+    // Went unsold at the IPL 2025 mega auction (base price INR 75 lakh) — never played IPL — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Mahedi Hasan",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm offbreak",
+    // ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "ODI+T20",
+    // T20I debut 18 Feb 2018 (cap 63), ODI debut 20 Mar 2021 (cap 135) — no Test cap found — ESPNcricinfo/Wikipedia confirmed.
+    // Genuinely a different player (born 1994) from "Mehidy Hasan Miraz" elsewhere in
+    // this file — confirmed via separate Wikipedia articles, not a duplicate
+    // Went unsold at the IPL 2025 mega auction (base price INR 75 lakh) — never played IPL — dedicated search confirmed
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Mohammad Saifuddin",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2017,
+    format: "ODI+T20",
+    // T20I debut 4 Apr 2017 (cap 56), ODI debut 17 Oct 2017 (cap 125) — no Test cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search confirmed only BPL and Global T20 Canada franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Nasum Ahmed",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // Left-arm orthodox spin — ESPNcricinfo confirmed
+    debutYear: 2021,
+    format: "ODI+T20",
+    // T20I debut 28 Mar 2021 (cap 69), ODI debut 10 Jul 2022 (cap 138) — no Test cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Al-Amin Hossain",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2013,
+    format: "All-format",
+    // T20I debut 6 Nov 2013 (cap 39), Test debut 21 Oct 2013 (cap 70), ODI debut
+    // 17 Feb 2014 (cap 109) — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only a brief Kandy Warriors (Sri Lanka
+    // LPL) spell, no IPL history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Abdul Gaffar Saqlain",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2026,
+    format: "T20",
+    // T20I debut 17 Jun 2026 (cap 93, vs Australia — Bangladesh's real latest T20I cap
+    // as of this batch, Aug 2026), no Test or ODI cap yet — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only a 2026 BPL debut (Rajshahi Warriors)
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — debuted after Bangladesh's most recent (still winless) era
+  },
+  {
+    name: "Khaled Ahmed",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm fast medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "All-format",
+    // Test debut 11 Nov 2018 (cap 92), ODI debut 23 Sep 2023 (cap 146), only T20I
+    // 1 Jun 2025 (cap 92) — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — a broad search briefly implied a Sunrisers Hyderabad stint, but
+    // that traced to confusion with Khaleel Ahmed (an unrelated Indian bowler already in
+    // this file) — a more specific search confirmed the real Khaled Ahmed has never played IPL
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Mrittunjoy Chowdhury",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm medium fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "ODI+T20",
+    // Only ODI 14 May 2023 (cap 142), only T20I 6 Oct 2023 (cap 88) — no Test cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Sumon Khan",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "T20",
+    // Only T20I 4 Oct 2023 (cap 86, vs Malaysia at the Asian Games), no Test or ODI
+    // cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — a low-quality aggregator briefly implied 2 IPL matches with no
+    // team name attached; a dedicated follow-up search found no real franchise record at all
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Rakibul Hasan",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // Slow left-arm orthodox — ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "T20",
+    // Only T20I 4 Oct 2023 (cap 84, vs Malaysia at the Asian Games), no Test or ODI cap
+    // found — ESPNcricinfo/Wikipedia confirmed. A genuinely different player from the
+    // earlier "Raqibul Hasan" (cap 22, 2008) elsewhere in Bangladesh cricket history —
+    // not in this database, no naming conflict
+    // Never played IPL — dedicated search found only BPL domestic franchise history.
+    // 2020 U19 World Cup winner — a youth trophy, not counted under this app's ICC
+    // trophies field (senior ICC events only)
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies (senior level) — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Ripon Mondol",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2023,
+    format: "T20",
+    // Only T20I 4 Oct 2023 (cap 83, vs Malaysia at the Asian Games), no Test or ODI cap
+    // found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Munim Shahriar",
+    country: "Bangladesh",
+    role: "Batsman",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium fast",
+    // Wikipedia's own infobox has a garbled "Right Handed" bowling-style field (a real
+    // editing error, not a usable value) — ESPNcricinfo's structured profile was used
+    // instead and confirmed a genuine right-arm medium-fast bowling record
+    debutYear: 2022,
+    format: "T20",
+    // Only T20I 3 Mar 2022 (cap 74, vs Afghanistan), no Test or ODI cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — a low-quality aggregator briefly implied IPL stats with no team
+    // name attached; repeated targeted searches found no real franchise record at all
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Shohidul Islam",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium",
+    // ESPNcricinfo confirmed
+    debutYear: 2021,
+    format: "T20",
+    // Only T20I 22 Nov 2021 (cap 73, vs Pakistan), no Test or ODI cap found — ESPNcricinfo/Wikipedia confirmed.
+    // Served a 10-month doping suspension backdated to 28 May 2022 — Wikipedia confirmed,
+    // noted here for transparency
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Aminul Islam",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm leg break",
+    // ESPNcricinfo confirmed
+    debutYear: 2019,
+    format: "T20",
+    // Only T20I 18 Sep 2019 (cap 65, vs Zimbabwe), no Test or ODI cap found — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Abu Jayed",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "All-format",
+    // T20I debut 18 Feb 2018 (cap 62), Test debut 4 Jul 2018 (cap 88), ODI debut
+    // 13 May 2019 (cap 131) — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Mohammad Nazmul Islam",
+    country: "Bangladesh",
+    role: "Bowler",
+    battingStyle: "Left-hand",
+    // Left-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Left arm orthodox",
+    // Slow left-arm orthodox — ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "All-format",
+    // T20I debut 15 Feb 2018 (cap 60), ODI debut 23 Sep 2018 (cap 128), Test debut
+    // 3 Nov 2018 (cap 90, his only Test) — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+  {
+    name: "Ariful Haque",
+    country: "Bangladesh",
+    role: "All-rounder",
+    battingStyle: "Right-hand",
+    // Right-hand bat — ESPNcricinfo, Wikipedia agree
+    bowlingStyle: "Right arm medium fast",
+    // ESPNcricinfo confirmed
+    debutYear: 2018,
+    format: "All-format",
+    // T20I debut 15 Feb 2018 (cap 59), Test debut 3 Nov 2018 (cap 89), ODI debut
+    // 26 Oct 2018 (cap 130) — ESPNcricinfo/Wikipedia confirmed
+    // Never played IPL — dedicated search found only BPL domestic franchise history
+    iplTeams: [],
+    iccTrophies: 0
+    // No ICC trophies — Bangladesh has never won one in his career span
+  },
+
   // ===== AFGHANISTAN (10 players) =====
 
   {
