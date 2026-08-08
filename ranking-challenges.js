@@ -432,5 +432,40 @@ const FIXED_CHALLENGES = [
     ],
     correctOrder: [0, 1, 3, 2, 4]
     // Rohit 264 > Guptill 237* > Sehwag 219 > Gayle 215 > Fakhar 210*
+  },
+  {
+    id: 'ipl-highestscore-1',
+    category: 'batting',
+    statType: 'highestScore',
+    format: 'ipl',
+    question: "Rank these batsmen by highest individual IPL score (highest to lowest)",
+    hint: "Single innings highest score in IPL history. Still a standing record — could change if broken (KL Rahul's 152* was only set in 2026).",
+    // Added Day 61 (session 3), user's explicit request ("IPL, except Most Runs" — a one-off
+    // record stat, allowed to include an active current record-holder per the Question Quality
+    // Rule's "growing record" handling). Verified via ESPNcricinfo's own live "High Scores For
+    // Indian Premier League" records table (stats.espncricinfo.com, fetched directly via
+    // browser since direct WebFetch 403s espncricinfo.com stat pages) — exact figures, balls,
+    // opponents, and dates for all 5 confirmed. Wikipedia's "List of Indian Premier League
+    // centuries" independently confirms Gayle 175* and McCullum 158* as the top two, and states
+    // there are "only three 150+ scores by individual batsmen in the league's history" — the
+    // third being KL Rahul's 152* (25 Apr 2026), corroborating the ESPNcricinfo table rather
+    // than contradicting it. iplt20.com confirmed via 4 separate dedicated per-score searches
+    // (one per player/score, per the standing IPL-source method — a vague query returns nothing
+    // useful) rather than one broad query: Gayle's 175* record, McCullum's 158* in IPL's first-
+    // ever match, KL Rahul's 152* being IPL's "3rd highest TATA IPL Score" (iplt20.com's own
+    // headline), and Abhishek Sharma's 141 explicitly described by iplt20.com as breaking
+    // "KL Rahul's record for the highest score by an Indian in IPL history and becoming the
+    // third-highest overall" at the time (since passed by Rahul's own later 152*). Cricbuzz
+    // attempted via WebSearch domain-restriction — request rejected outright as an inaccessible
+    // domain (standing tool limitation), flagged as usual.
+    players: [
+      { name: "Chris Gayle", flag: "🇯🇲", value: "175* vs Pune Warriors (RCB, 2013)" },
+      { name: "Brendon McCullum", flag: "🇳🇿", value: "158* vs RCB (KKR, 2008)" },
+      { name: "KL Rahul", flag: "🇮🇳", value: "152* vs Punjab Kings (DC, 2026)" },
+      { name: "Abhishek Sharma", flag: "🇮🇳", value: "141 vs Punjab Kings (SRH, 2025)" },
+      { name: "Quinton de Kock", flag: "🇿🇦", value: "140* vs KKR (LSG, 2022)" }
+    ],
+    correctOrder: [0, 1, 2, 3, 4]
+    // Gayle 175* > McCullum 158* > Rahul 152* > Abhishek Sharma 141 > de Kock 140*
   }
 ];
