@@ -373,6 +373,151 @@ const RANKING_PARAMETERS = [
       { name: "Makhaya Ntini", flag: "🇿🇦", value: "266 wickets" },
       { name: "Kapil Dev", flag: "🇮🇳", value: "253 wickets" }
     ]
+  },
+  {
+    id: 'ipl-runs',
+    category: 'batting',
+    statType: 'runs',
+    format: 'ipl',
+    question: "Rank these batsmen by total career IPL runs (most to least)",
+    hint: "All-time career IPL runs — only players fully retired from the IPL used so the answer never goes out of date.",
+    // Literal real record order, retired-from-IPL only, built Day 61 (25 in one go, per the
+    // post-Day-28 build rule). Source: mykhel.com's live, dated (2026) full ranked IPL
+    // run-scorers table (fetched via the browser, since direct WebFetch/browser access to
+    // espncricinfo.com and iplt20.com stat pages is blocked per the standing tool limitation —
+    // iplt20.com's own /stats/most-runs URL now 404s, the site appears to have been
+    // restructured). The top 5 figures were independently cross-checked against Wikipedia's
+    // "List of Indian Premier League records and statistics" page AND a dated (1 Jun 2026)
+    // Olympics.com article — all three sources agree exactly (Dhawan 6,769, Warner 6,565, KL
+    // Rahul 5,815), giving confidence in the rest of the same table. Cricbuzz attempted
+    // (unreachable as usual, flagged). ICC does not cover the IPL at all (a BCCI domestic
+    // league, not an ICC event) — not part of the required source set for IPL facts per the
+    // standing IPL-specific sourcing note.
+    //
+    // STALENESS — this is the hardest cell built so far under that rule, since the IPL started
+    // in 2008 and most of its biggest scorers are still active IN THE LEAGUE even after
+    // retiring from international cricket (Kohli, Rohit Sharma, KL Rahul, Sanju Samson, Rishabh
+    // Pant, Suryakumar Yadav, Shubman Gill, Jos Buttler, etc. — all excluded here despite huge
+    // totals). Every included/excluded player's actual 2026 IPL status (not just international
+    // retirement) was checked individually via dedicated searches:
+    //  - Ajinkya Rahane: confirmed retired from ALL cricket (incl. IPL) 30 Jul 2026, right
+    //    after captaining KKR through IPL 2026 — a genuine, unusually late finisher.
+    //  - Faf du Plessis and Glenn Maxwell: both confirmed to have explicitly skipped the IPL
+    //    2026 auction to join the PSL instead, ending 14- and 13-season IPL careers
+    //    respectively — included as IPL-retired even though neither has made a single-cricket
+    //    retirement announcement.
+    //  - Andre Russell: confirmed retired from playing and moved into KKR's support staff.
+    //  - MS Dhoni: deliberately EXCLUDED despite playing zero matches in IPL 2026 (calf/thumb
+    //    injury) — his own Wikipedia infobox still lists Chennai Super Kings "2018–present" and
+    //    reports on an official IPL retirement conflict with each other; not confirmed enough
+    //    to include under this rule's zero-tolerance standard. Re-check next time this cell (or
+    //    any Dhoni entry anywhere in the app) is touched.
+    //  - Murali Vijay: included — retired from international cricket Jan 2023 and has not
+    //    played a single IPL match since 2020 (6+ years), even though no dedicated "IPL
+    //    retirement" statement exists; treated as effectively closed, same "settled in practice"
+    //    handling already used elsewhere in this project (e.g. Mashrafe Mortaza's ODI entry).
+    //  - Shaun Marsh and Aaron Finch: both confirmed to have gone unsold at their last IPL
+    //    auction (2018 and 2023 respectively) with no franchise appearance since — included.
+    //  - Mayank Agarwal, Manish Pandey, David Miller, Marcus Stoinis, Quinton de Kock,
+    //    Heinrich Klaasen: all confirmed either retained/signed for IPL 2026 or went unsold at
+    //    the same auction while still technically available (not retired) — excluded.
+    leaders: [
+      { name: "Shikhar Dhawan", flag: "🇮🇳", value: "6,769 runs" },
+      { name: "David Warner", flag: "🇦🇺", value: "6,565 runs" },
+      { name: "Suresh Raina", flag: "🇮🇳", value: "5,528 runs" },
+      { name: "Ajinkya Rahane", flag: "🇮🇳", value: "5,367 runs" },
+      { name: "AB de Villiers", flag: "🇿🇦", value: "5,162 runs" },
+      { name: "Chris Gayle", flag: "🇯🇲", value: "4,965 runs" },
+      { name: "Robin Uthappa", flag: "🇮🇳", value: "4,952 runs" },
+      { name: "Dinesh Karthik", flag: "🇮🇳", value: "4,842 runs" },
+      { name: "Faf du Plessis", flag: "🇿🇦", value: "4,773 runs" },
+      { name: "Ambati Rayudu", flag: "🇮🇳", value: "4,348 runs" },
+      { name: "Gautam Gambhir", flag: "🇮🇳", value: "4,217 runs" },
+      { name: "Shane Watson", flag: "🇦🇺", value: "3,874 runs" },
+      { name: "Kieron Pollard", flag: "🇹🇹", value: "3,412 runs" },
+      { name: "Yusuf Pathan", flag: "🇮🇳", value: "3,204 runs" },
+      { name: "Wriddhiman Saha", flag: "🇮🇳", value: "2,934 runs" },
+      { name: "Brendon McCullum", flag: "🇳🇿", value: "2,880 runs" },
+      { name: "Parthiv Patel", flag: "🇮🇳", value: "2,848 runs" },
+      { name: "Glenn Maxwell", flag: "🇦🇺", value: "2,819 runs" },
+      { name: "Yuvraj Singh", flag: "🇮🇳", value: "2,750 runs" },
+      { name: "Virender Sehwag", flag: "🇮🇳", value: "2,728 runs" },
+      { name: "Andre Russell", flag: "🇯🇲", value: "2,651 runs" },
+      { name: "Murali Vijay", flag: "🇮🇳", value: "2,619 runs" },
+      { name: "Shaun Marsh", flag: "🇦🇺", value: "2,477 runs" },
+      { name: "Sachin Tendulkar", flag: "🇮🇳", value: "2,334 runs" },
+      { name: "Aaron Finch", flag: "🇦🇺", value: "2,091 runs" }
+    ]
+  },
+  {
+    id: 'ipl-strikerate',
+    category: 'batting',
+    statType: 'strikeRate',
+    format: 'ipl',
+    question: "Rank these batsmen by career IPL batting strike rate (highest to lowest)",
+    hint: "Minimum 500 balls faced. Only players fully retired from the IPL used so the answer never goes out of date.",
+    // Literal real record order, retired-from-IPL only, built Day 61 (session 4), the second
+    // IPL cell added this session alongside the concurrently-built `ipl-runs` cell above. Source:
+    // ESPNcricinfo's own live "Highest Strike Rates For Indian Premier League" career records
+    // table (fetched directly via browser since WebFetch 403s espncricinfo.com stat pages), which
+    // bakes in a "Minimum of 500 balls faced" qualification matching this cell's hint exactly.
+    // Wikipedia has no dedicated all-time IPL strike-rate leaderboard page (checked directly via
+    // its own "List of Indian Premier League records and statistics" article) — a coverage gap,
+    // not a mismatch, same pattern as every other average/rate-type cell in this project.
+    // iplt20.com's own stats pages 404 as of this session (the site appears to have been
+    // restructured — same finding the concurrent `ipl-runs` cell's own research hit). ICC does
+    // not cover the IPL at all (not part of the required source set for IPL facts). Cricbuzz
+    // attempted (unreachable as usual, flagged).
+    //
+    // RETIREMENT-FROM-IPL CLASSIFICATION — deliberately kept consistent with the sibling
+    // `ipl-runs` cell above, since both cells share several of the same players and a
+    // contradiction between the two would look like a mistake even if each were independently
+    // defensible:
+    //  - Andre Russell: confirmed retired from the IPL specifically on 30 Nov 2025 (his own
+    //    Wikipedia biography states this explicitly), moving into a KKR "power coach" role.
+    //  - Glenn Maxwell, Faf du Plessis, David Warner: none has made a single-sentence "I am
+    //    retiring" statement — all 3 simply did not register for the IPL 2026 auction (Maxwell
+    //    and Faf explicitly announced this themselves; Warner went unsold in 2025 and then also
+    //    skipped 2026) and are now playing elsewhere (Maxwell/Faf both in the PSL). IPL.com's own
+    //    news page headlines Maxwell's case as "Ends 13-Year IPL Career." No source found
+    //    contradicts any of these three ever returning to the IPL. Included as IPL-retired on
+    //    that basis — the same judgment call already made for these same two/three players in
+    //    the `ipl-runs` cell's own leaders list.
+    //  - MS Dhoni: deliberately EXCLUDED despite a batch of low-quality sources (Facebook,
+    //    Instagram reposts, a YouTube title, dailysports.net) claiming an "official retirement"
+    //    — a direct ESPNcricinfo-domain search found no such story, and Chennai Super Kings' own
+    //    CEO Kasi Viswanathan is on record saying Dhoni WILL play IPL 2026, a genuine active
+    //    contradiction unlike the Maxwell/Faf/Warner cases above. Matches the identical exclusion
+    //    and flag already recorded in the `ipl-runs` cell's own comment — re-check both cells
+    //    together next time either is touched.
+    // Tie: Shane Watson and Harbhajan Singh are exactly level at 137.91 (tiedWithNext).
+    leaders: [
+      { name: "Andre Russell", flag: "🇯🇲", value: "SR: 174.17" },
+      { name: "Virender Sehwag", flag: "🇮🇳", value: "SR: 155.44" },
+      { name: "Glenn Maxwell", flag: "🇦🇺", value: "SR: 155.14" },
+      { name: "AB de Villiers", flag: "🇿🇦", value: "SR: 151.68" },
+      { name: "Chris Gayle", flag: "🇯🇲", value: "SR: 148.96" },
+      { name: "Kieron Pollard", flag: "🇹🇹", value: "SR: 147.32" },
+      { name: "Sanath Jayasuriya", flag: "🇱🇰", value: "SR: 144.36" },
+      { name: "Yusuf Pathan", flag: "🇮🇳", value: "SR: 142.97" },
+      { name: "Albie Morkel", flag: "🇿🇦", value: "SR: 141.98" },
+      { name: "David Warner", flag: "🇦🇺", value: "SR: 139.77" },
+      { name: "Adam Gilchrist", flag: "🇦🇺", value: "SR: 138.39" },
+      { name: "Shane Watson", flag: "🇦🇺", value: "SR: 137.91", tiedWithNext: true },
+      { name: "Harbhajan Singh", flag: "🇮🇳", value: "SR: 137.91" },
+      { name: "Matthew Hayden", flag: "🇦🇺", value: "SR: 137.51" },
+      { name: "Suresh Raina", flag: "🇮🇳", value: "SR: 136.73" },
+      { name: "Faf du Plessis", flag: "🇿🇦", value: "SR: 135.78" },
+      { name: "Dinesh Karthik", flag: "🇮🇳", value: "SR: 135.36" },
+      { name: "Kevin Pietersen", flag: "🇬🇧", value: "SR: 134.72" },
+      { name: "Shaun Marsh", flag: "🇦🇺", value: "SR: 132.74" },
+      { name: "Brendon McCullum", flag: "🇳🇿", value: "SR: 131.74" },
+      { name: "Robin Uthappa", flag: "🇮🇳", value: "SR: 130.35" },
+      { name: "Andrew Symonds", flag: "🇦🇺", value: "SR: 129.86" },
+      { name: "Yuvraj Singh", flag: "🇮🇳", value: "SR: 129.71" },
+      { name: "Dwayne Bravo", flag: "🇹🇹", value: "SR: 129.56" },
+      { name: "Aaron Finch", flag: "🇦🇺", value: "SR: 128.20" }
+    ]
   }
   // Every other cell in the full taxonomy (BATTING/BOWLING/FIELDING/OTHERS x Test/ODI/T20I/IPL)
   // is still empty — see the RANKING CHALLENGE EXPANSION PROJECT section in CLAUDE.md for the
