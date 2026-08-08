@@ -74,13 +74,26 @@ function generateChallengeFromParameter(param) {
     value: leaders[i].value
   }));
 
-  // Detect adjacent ties that landed inside this drawn window
+  // Detect ties that landed inside this drawn window and merge chained pairs into one
+  // cluster (e.g. three consecutive players who all share the same stat value must be
+  // treated as ONE 3-way-swappable group, not two overlapping pairs — see the Day 61 fix
+  // note above findTiedGroup()/scoreChallenge() for why the overlapping-pairs shape was a
+  // real scoring bug: a valid reorder within a 3-way tie was under-scored, because
+  // findTiedGroup() only ever returns the FIRST group containing a given position, so the
+  // middle position's involvement in the second pair was silently dropped).
   const tiedGroups = [];
+  let currentGroup = null;
   for (let k = 0; k < indices.length - 1; k++) {
-    if (leaders[indices[k]].tiedWithNext && indices[k + 1] === indices[k] + 1) {
-      tiedGroups.push([k, k + 1]);
+    const chainedToNext = leaders[indices[k]].tiedWithNext && indices[k + 1] === indices[k] + 1;
+    if (chainedToNext) {
+      if (!currentGroup) currentGroup = [k];
+      currentGroup.push(k + 1);
+    } else if (currentGroup) {
+      tiedGroups.push(currentGroup);
+      currentGroup = null;
     }
   }
+  if (currentGroup) tiedGroups.push(currentGroup);
 
   return {
     id: param.id + '-' + indices.join('_'),

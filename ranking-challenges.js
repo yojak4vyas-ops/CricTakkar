@@ -234,11 +234,12 @@ const RANKING_PARAMETERS = [
     // Plessis (hasn't played ODI since the 2019 World Cup but never formally retired from the
     // format), Imam-ul-Haq, Janneman Malan, Haris Sohail (explicitly denied retirement rumours,
     // Nov 2024), and Tom Cooper (an earlier Netherlands retirement he himself reversed with a
-    // comeback, current status unclear). Steve Smith IS included despite remaining an active
-    // Test/T20I player - he announced a formal, ODI-specific retirement in Mar 2025 right after
-    // the 2025 Champions Trophy semi-final, so his ODI number is genuinely frozen even though he
-    // keeps playing other formats, same per-format staleness logic already used elsewhere in
-    // this project. Every figure cross-checked directly off that same live ESPNcricinfo table
+    // comeback, current status unclear). Steve Smith genuinely DOES have a formal, ODI-specific
+    // retirement (Mar 2025, right after the 2025 Champions Trophy semi-final loss to India, while
+    // remaining active in Tests/T20Is - confirmed independently Day 61) but his real average
+    // (43.28) doesn't crack this cell's real top 25, so he correctly does NOT appear in the
+    // leaders list below despite being a genuinely eligible retired-ODI player. Every figure
+    // cross-checked directly off that same live ESPNcricinfo table
     // (average = runs / (innings - not-outs), confirmed by hand for Heinrich Klaasen's 43.69
     // after an unrelated AI-search summary tried to wrongly divide runs by matches instead) plus
     // spot Wikipedia checks for the newer, less-cited names (ten Doeschate, van der Dussen).
